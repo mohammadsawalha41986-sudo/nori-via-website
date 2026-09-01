@@ -255,8 +255,9 @@ npm test                            # 44 unit tests
 # End-to-end suites, against a running server
 npm run build && npm start &
 export ADMIN_EMAIL=... ADMIN_PASSWORD=...
+node tests/e2e/public-qa.mjs           # every public page at 3 widths: layout, a11y, metadata
 node tests/e2e/admin-route-sweep.mjs   # all 22 CMS screens render cleanly
-node tests/e2e/admin-journey.mjs       # 21 checks: sign in → publish → verify → sign out
+node tests/e2e/admin-journey.mjs       # 22 checks: sign in → publish → verify → sign out
 node tests/e2e/branding-journey.mjs    # 27 checks: logo, favicon, contact details, socials
 ```
 
@@ -268,7 +269,12 @@ The unit tests cover upload sniffing and path-escape defence, filename
 sanitising, bilingual field fallback, inquiry/contact/login validation, and the
 Admin list parsers.
 
-The end-to-end suites cover what unit tests cannot: `admin-route-sweep` loads
+The end-to-end suites cover what unit tests cannot: `public-qa` loads every
+public page at desktop, tablet and mobile widths and fails on horizontal
+overflow, a wrong text direction, a missing or duplicated `h1`, images without
+alt text or that failed to load, unlabelled form controls, missing
+title/description/canonical/favicon, any 5xx or any client-side error;
+`admin-route-sweep` loads
 every CMS screen and fails on any non-200 or client-side error; `admin-journey`
 signs in, edits the homepage, creates, publishes and unpublishes a service,
 verifies each change on the public site in both languages, and checks the

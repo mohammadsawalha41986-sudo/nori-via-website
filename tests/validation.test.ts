@@ -82,3 +82,42 @@ describe('slugify', () => {
     expect(slugify('  Multiple   Spaces  ')).toBe('multiple-spaces');
   });
 });
+
+describe('summarise', () => {
+  it('returns short text unchanged', async () => {
+    const { summarise } = await import('../src/lib/seo-text');
+    expect(summarise('A short policy line.')).toBe('A short policy line.');
+  });
+
+  it('collapses whitespace and newlines', async () => {
+    const { summarise } = await import('../src/lib/seo-text');
+    expect(summarise('Line one.\n\n  Line   two.')).toBe('Line one. Line two.');
+  });
+
+  it('cuts at a sentence boundary when one is available', async () => {
+    const { summarise } = await import('../src/lib/seo-text');
+    // The sentence must end past the 60-char guard for the boundary cut to win.
+    const text = `${'This first sentence runs well past sixty characters so the boundary cut applies. '}${'x'.repeat(300)}`;
+    const out = summarise(text);
+    expect(out.endsWith('.')).toBe(true);
+    expect(out.length).toBeLessThanOrEqual(155);
+  });
+
+  it('falls back to a word-boundary ellipsis with no sentence break', async () => {
+    const { summarise } = await import('../src/lib/seo-text');
+    const out = summarise('alpha bravo charlie delta '.repeat(20));
+    expect(out.endsWith('…')).toBe(true);
+    expect(out.length).toBeLessThanOrEqual(156);
+  });
+
+  it('handles empty input', async () => {
+    const { summarise } = await import('../src/lib/seo-text');
+    expect(summarise('')).toBe('');
+    expect(summarise('   \n  ')).toBe('');
+  });
+
+  it('summarises Arabic copy', async () => {
+    const { summarise } = await import('../src/lib/seo-text');
+    expect(summarise('هذه الصفحة نص مبدئي. استبدله من لوحة التحكم.')).toContain('هذه الصفحة');
+  });
+});

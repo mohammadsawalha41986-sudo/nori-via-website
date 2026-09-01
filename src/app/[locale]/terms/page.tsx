@@ -5,6 +5,7 @@ import { Prose } from '@/components/ui/Prose';
 import { isLocale, pick, type Locale } from '@/lib/i18n';
 import { getPage } from '@/lib/content';
 import { buildMetadata } from '@/lib/seo';
+import { summarise } from '@/lib/seo-text';
 
 export const revalidate = 300;
 
@@ -20,6 +21,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     locale,
     path: `/${PAGE_KEY}`,
     fallbackTitle: page ? pick(page, 'title', locale) : PAGE_KEY,
+    fallbackDescription: page ? summarise(pick(page, 'body', locale)) : '',
   });
 }
 
