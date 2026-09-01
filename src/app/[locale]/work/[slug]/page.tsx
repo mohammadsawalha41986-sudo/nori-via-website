@@ -10,10 +10,9 @@ import { Prose } from '@/components/ui/Prose';
 import { TextLink } from '@/components/ui/Button';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { getDictionary } from '@/lib/dictionary';
-import { isLocale, pick, locales, type Locale } from '@/lib/i18n';
+import { isLocale, pick, type Locale } from '@/lib/i18n';
 import {
   getProjectBySlug,
-  getPublishedProjects,
   asObjectList,
   type GalleryItem,
   type DownloadItem,
@@ -25,10 +24,11 @@ import { EVENTS } from '@/lib/track';
 
 export const revalidate = 60;
 
-export async function generateStaticParams() {
-  const projects = await getPublishedProjects();
-  return locales.flatMap((locale) => projects.map((p) => ({ locale, slug: p.slug })));
-}
+/**
+ * No `generateStaticParams`: the slugs live in the CMS, so enumerating them
+ * would require a database connection during `next build`. Pages are rendered
+ * on first request and cached for `revalidate` seconds instead.
+ */
 
 export async function generateMetadata({
   params,

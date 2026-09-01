@@ -33,9 +33,7 @@ export default async function EditPage({ params }: { params: Promise<{ key: stri
       />
 
       <AdminForm action={savePage} className="space-y-5">
-        {(state) => (
-          <>
-            <input type="hidden" name="key" value={page.key} />
+        <input type="hidden" name="key" value={page.key} />
 
             <Card title="Headline and intro" description="Use a line break in the title to control where the headline wraps.">
               <Grid>
@@ -59,7 +57,11 @@ export default async function EditPage({ params }: { params: Promise<{ key: stri
                 title="Section content"
                 description="Structured sections for this page, edited as JSON. Keep the existing shape — each entry needs its English and Arabic fields."
               >
-                <Field label="Sections" htmlFor="contentJson" hint={state.fieldErrors?.contentJson ?? 'Must be valid JSON.'}>
+                <Field
+                  label="Sections"
+                  htmlFor="contentJson"
+                  hint="Must be valid JSON. If it is not, saving is refused and the error is shown next to the Save button."
+                >
                   <textarea
                     id="contentJson"
                     name="contentJson"
@@ -98,9 +100,7 @@ export default async function EditPage({ params }: { params: Promise<{ key: stri
                 <input name="noindex" type="checkbox" defaultChecked={page.noindex} className="h-4 w-4 rounded border-slate-300" />
                 Hide this page from search engines
               </label>
-            </Card>
-          </>
-        )}
+        </Card>
       </AdminForm>
     </>
   );

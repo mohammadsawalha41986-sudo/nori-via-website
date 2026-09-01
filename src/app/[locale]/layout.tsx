@@ -5,13 +5,20 @@ import { Navbar } from '@/components/public/Navbar';
 import { Footer } from '@/components/public/Footer';
 import { Analytics } from '@/components/public/Analytics';
 import { getLayoutData } from '@/lib/layout-data';
-import { isLocale, dirOf, locales, pick, type Locale } from '@/lib/i18n';
+import { isLocale, dirOf, pick, type Locale } from '@/lib/i18n';
 import { getSettings } from '@/lib/content';
 import { env } from '@/lib/env';
 
-export function generateStaticParams() {
-  return locales.map((locale) => ({ locale }));
-}
+/**
+ * Deliberately no `generateStaticParams`.
+ *
+ * Every page under this layout reads CMS content from PostgreSQL. Enumerating
+ * the locales here would make Next prerender those pages during `next build`,
+ * which would require a live database just to compile the app. Without it the
+ * routes are rendered on first request and then cached for `revalidate`
+ * seconds, so the site still serves from cache and `revalidatePath` still
+ * publishes changes instantly — the database is only needed at runtime.
+ */
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale: raw } = await params;
@@ -20,6 +27,9 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const settings = await getSettings();
 
   const name = pick(settings, 'companyName', locale) || 'Noriva';
+  // Prefer a purpose-made share image; fall back to the logo so a shared link
+  // is never a blank card once branding has been uploaded.
+  const shareImage = settings.defaultOgImage || settings.logoUrl || undefined;
   const title = pick(settings, 'seoTitle', locale) || `${name} — ${pick(settings, 'tagline', locale)}`;
   const description = pick(settings, 'seoDescription', locale) || pick(settings, 'description', locale);
 
@@ -38,10 +48,17 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       description,
       locale: locale === 'ar' ? 'ar_SA' : 'en_US',
       url: `${env.siteUrl}/${locale}`,
-      images: settings.defaultOgImage ? [{ url: settings.defaultOgImage }] : undefined,
+      images: shareImage ? [{ url: shareImage }] : undefined,
     },
-    twitter: { card: 'summary_large_image', title, description },
-    icons: settings.faviconUrl ? { icon: settings.faviconUrl } : undefined,
+    twitter: { card: 'summary_large_image', title, description, images: shareImage ? [shareImage] : undefined },
+    // Driven entirely from Admin, falling back to the bundled default. The
+    // file-based icon convention is deliberately not used, because it would
+    // override this and make the favicon uneditable.
+    icons: {
+      icon: settings.faviconUrl || '/icon.svg',
+      shortcut: settings.faviconUrl || '/favicon.ico',
+      apple: settings.faviconUrl || '/icon.svg',
+    },
   };
 }
 
@@ -73,6 +90,7 @@ export default async function LocaleLayout({
           links={headerLinks}
           companyName={companyName}
           logoUrl={settings.logoUrl}
+          logoInverseUrl={settings.logoInverseUrl}
           startLabel={dict.nav.start}
           menuLabel={dict.nav.menu}
           closeLabel={dict.nav.close}
@@ -87,6 +105,7 @@ export default async function LocaleLayout({
           dict={dict}
           companyName={companyName}
           logoUrl={settings.logoUrl}
+          logoInverseUrl={settings.logoInverseUrl}
           description={pick(settings, 'footerDescription', locale)}
           copyright={pick(settings, 'copyright', locale)}
           links={footerLinks}

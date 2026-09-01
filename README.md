@@ -33,6 +33,27 @@ bundle at roughly 103 kB shared JS.
 
 ---
 
+## Rendering and caching
+
+Every public page reads CMS content from PostgreSQL, so **no CMS-backed page is
+prerendered during `next build`**. There is deliberately no `generateStaticParams`
+for locales, service slugs, project slugs or article slugs: enumerating them
+would require a live database just to compile the app, and would bake content
+into the build.
+
+Instead each page is rendered on first request and then cached for its
+`revalidate` window (60s for content pages, 300s for the near-static ones, one
+hour for the sitemap). Publishing from Admin calls `revalidatePath` for the
+concrete paths affected in both languages, so a change is live immediately
+rather than after the window expires.
+
+The practical consequences:
+
+- `npm run build` succeeds with **no** `DATABASE_URL` set.
+- `DATABASE_URL` is required at runtime, and for `prisma migrate deploy`.
+- An empty database is a valid state: pages render honest empty states, unknown
+  slugs 404, and nothing crashes.
+
 ## Getting started
 
 ```bash
@@ -153,6 +174,33 @@ loses a lead. Each inquiry records whether both emails were sent, and Admin
 shows that status. With `SMTP_HOST` unset the form still works end to end;
 inquiries simply wait in the inbox.
 
+### Brand assets and the logo
+
+The logo, the dark-background logo, the favicon and the social share image are
+all uploaded in **Admin → Site settings** and used immediately across the
+public site — desktop navbar, mobile navbar, footer, favicon, and the
+`og:image` / `twitter:image` share card.
+
+Uploaded artwork is never recoloured, cropped or redrawn. It is only scaled,
+always with its aspect ratio preserved:
+
+- **Logo** — used wherever the background is light (the scrolled navbar).
+- **Logo for dark backgrounds** — optional. Used over the dark hero navbar and
+  the footer. Upload a light/reversed version here if the brand has one.
+- If only one logo version exists, the original artwork is placed on a white
+  plate over dark sections rather than being altered. Nothing about the file
+  is changed.
+
+Recommended formats: **PNG or WEBP** at roughly 3× the display size (about
+450×108 for the wordmark, 512×512 for the favicon). SVG upload is deliberately
+not accepted — an SVG served from the site's own origin can carry script, so
+the media library allows only raster images, PDF and video.
+
+The favicon is driven entirely from Admin. The file-based Next.js icon
+convention is intentionally not used, because it silently overrides metadata
+and would make the favicon uneditable; the bundled default in `public/` is only
+a fallback for when nothing has been uploaded.
+
 ### Upload safety
 
 Client attachments accept JPG, PNG, WEBP and PDF only, up to 8 files of 10 MB
@@ -204,9 +252,12 @@ matching `Media` row exists, so the directory cannot be probed.
 ```bash
 npm test                            # 44 unit tests
 
-# 21-check end-to-end admin journey, against a running server
+# End-to-end suites, against a running server
 npm run build && npm start &
-ADMIN_EMAIL=... ADMIN_PASSWORD=... node tests/e2e/admin-journey.mjs
+export ADMIN_EMAIL=... ADMIN_PASSWORD=...
+node tests/e2e/admin-route-sweep.mjs   # all 22 CMS screens render cleanly
+node tests/e2e/admin-journey.mjs       # 21 checks: sign in → publish → verify → sign out
+node tests/e2e/branding-journey.mjs    # 27 checks: logo, favicon, contact details, socials
 ```
 
 The journey needs Playwright (`npm i -D playwright && npx playwright install
@@ -215,10 +266,15 @@ provides, and `BASE_URL` to point at somewhere other than localhost:3000.
 
 The unit tests cover upload sniffing and path-escape defence, filename
 sanitising, bilingual field fallback, inquiry/contact/login validation, and the
-Admin list parsers. The journey script signs in, edits the homepage, creates,
-publishes and unpublishes a service, verifies each change on the public site in
-both languages, checks the inquiry inbox and attachment access control, and
-signs out.
+Admin list parsers.
+
+The end-to-end suites cover what unit tests cannot: `admin-route-sweep` loads
+every CMS screen and fails on any non-200 or client-side error; `admin-journey`
+signs in, edits the homepage, creates, publishes and unpublishes a service,
+verifies each change on the public site in both languages, and checks the
+inquiry inbox and attachment access control; `branding-journey` uploads brand
+artwork, sets it plus the contact details from Admin, and asserts the live site
+picks all of it up in English and Arabic.
 
 ---
 
@@ -258,6 +314,7 @@ proxy in front of it with SSL for `noriva.sa` and `www.noriva.sa`.
 ## Project layout
 
 ```
+public/                     Fallback favicon and icon (overridden by the CMS)
 prisma/schema.prisma        Data model
 prisma/seed.ts              Baseline content and first admin user
 src/app/[locale]/           Public pages (en + ar)

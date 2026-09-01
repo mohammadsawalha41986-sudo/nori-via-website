@@ -5,17 +5,18 @@ import { CTASection } from '@/components/public/CTASection';
 import { Prose } from '@/components/ui/Prose';
 import { TextLink } from '@/components/ui/Button';
 import { getDictionary } from '@/lib/dictionary';
-import { isLocale, pick, formatDate, locales, type Locale } from '@/lib/i18n';
-import { getInsightBySlug, getPublishedInsights, asStringList } from '@/lib/content';
+import { isLocale, pick, formatDate, type Locale } from '@/lib/i18n';
+import { getInsightBySlug, asStringList } from '@/lib/content';
 import { buildMetadata, JsonLd, breadcrumbs } from '@/lib/seo';
 import { env } from '@/lib/env';
 
 export const revalidate = 60;
 
-export async function generateStaticParams() {
-  const insights = await getPublishedInsights();
-  return locales.flatMap((locale) => insights.map((a) => ({ locale, slug: a.slug })));
-}
+/**
+ * No `generateStaticParams`: the slugs live in the CMS, so enumerating them
+ * would require a database connection during `next build`. Pages are rendered
+ * on first request and cached for `revalidate` seconds instead.
+ */
 
 export async function generateMetadata({
   params,

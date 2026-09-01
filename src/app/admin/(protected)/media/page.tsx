@@ -1,6 +1,7 @@
 import { prisma } from '@/lib/db';
 import { PageHeader, Card, EmptyRow, inputClass } from '@/components/admin/ui';
 import { MediaUploader } from '@/components/admin/MediaUploader';
+import { CopyField } from '@/components/admin/CopyField';
 import { SubmitButton } from '@/components/admin/SubmitButton';
 import { deleteMedia, updateMediaAlt } from '@/server/actions';
 
@@ -78,14 +79,7 @@ export default async function MediaPage({
                     {m.width && m.height ? ` · ${m.width}×${m.height}` : ''} · {m.createdAt.toISOString().slice(0, 10)}
                   </p>
 
-                  <input
-                    readOnly
-                    value={m.url}
-                    onFocus={(e) => e.currentTarget.select()}
-                    dir="ltr"
-                    aria-label={`URL for ${m.filename}`}
-                    className="w-full rounded border border-slate-200 bg-slate-50 px-2 py-1 text-[0.6875rem] text-slate-500"
-                  />
+                  <CopyField value={m.url} label={`URL for ${m.filename}`} />
 
                   <form action={updateMediaAlt} className="space-y-1.5">
                     <input type="hidden" name="id" value={m.id} />

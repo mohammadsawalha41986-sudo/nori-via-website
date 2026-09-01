@@ -13,6 +13,7 @@ export function Footer({
   dict,
   companyName,
   logoUrl,
+  logoInverseUrl,
   description,
   copyright,
   email,
@@ -26,6 +27,7 @@ export function Footer({
   dict: Dictionary;
   companyName: string;
   logoUrl: string | null;
+  logoInverseUrl: string | null;
   description: string;
   copyright: string;
   email: string;
@@ -43,7 +45,7 @@ export function Footer({
         <div className="grid gap-14 lg:grid-cols-[1.4fr_1fr_1fr]">
           <div className="max-w-md">
             <Link href={`/${locale}`} aria-label={companyName}>
-              <Logo logoUrl={logoUrl} name={companyName} tone="light" />
+              <Logo logoUrl={logoUrl} logoInverseUrl={logoInverseUrl} name={companyName} tone="light" />
             </Link>
             {description && <p className="mt-6 text-[0.9375rem] leading-relaxed text-white/55">{description}</p>}
             <div className="mt-8">

@@ -7,6 +7,14 @@ import {
   getPublishedInsights,
 } from '@/lib/content';
 
+/**
+ * Built from CMS content, so it must not be generated during `next build`.
+ * It is produced on request and cached for an hour; publishing content calls
+ * `revalidatePath('/sitemap.xml')`, so it refreshes immediately on a change.
+ */
+export const dynamic = 'force-dynamic';
+export const revalidate = 3600;
+
 const STATIC_PATHS = ['', '/about', '/services', '/work', '/restaurant-growth', '/insights', '/contact', '/start-a-project', '/privacy', '/terms'];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {

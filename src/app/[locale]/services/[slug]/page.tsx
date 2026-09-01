@@ -8,10 +8,9 @@ import { SectionHeading } from '@/components/ui/SectionHeading';
 import { Reveal } from '@/components/ui/Reveal';
 import { Prose } from '@/components/ui/Prose';
 import { getDictionary } from '@/lib/dictionary';
-import { isLocale, pick, locales, type Locale } from '@/lib/i18n';
+import { isLocale, pick, type Locale } from '@/lib/i18n';
 import {
   getServiceBySlug,
-  getPublishedServices,
   asObjectList,
   type FaqItem,
   type ProcessItem,
@@ -22,10 +21,11 @@ import { env } from '@/lib/env';
 
 export const revalidate = 60;
 
-export async function generateStaticParams() {
-  const services = await getPublishedServices();
-  return locales.flatMap((locale) => services.map((s) => ({ locale, slug: s.slug })));
-}
+/**
+ * No `generateStaticParams`: the slugs live in the CMS, so enumerating them
+ * would require a database connection during `next build`. Pages are rendered
+ * on first request and cached for `revalidate` seconds instead.
+ */
 
 export async function generateMetadata({
   params,

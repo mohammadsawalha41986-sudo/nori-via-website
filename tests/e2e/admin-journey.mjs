@@ -14,6 +14,31 @@ const ok = (name, pass, detail = '') => {
   console.log(`${pass ? 'PASS' : 'FAIL'}  ${name}${detail ? ` — ${detail}` : ''}`);
 };
 
+// The journey submits its own inquiry through the public form endpoint, so it
+// is self-contained and also exercises the full lead-intake path.
+const LEAD = {
+  name: 'Journey Test Lead',
+  business: 'Journey Test Kitchen',
+  services: ['Advertising'],
+  goals: ['Increase orders'],
+  description: 'Submitted by the automated admin journey to verify lead intake.',
+  email: 'journey.lead@example.com',
+  preferredContact: 'email',
+  locale: 'en',
+};
+
+{
+  const body = new FormData();
+  body.append('payload', JSON.stringify(LEAD));
+  body.append('company_website', '');
+  body.append('files', new Blob([Uint8Array.from([0x25, 0x50, 0x44, 0x46, 0x2d, 0x31, 0x2e, 0x37, ...new Array(64).fill(0x20)])], { type: 'application/pdf' }), 'brief.pdf');
+  const res = await fetch(`${BASE}/api/inquiry`, { method: 'POST', body });
+  if (!res.ok) {
+    console.error(`FAIL  could not submit the seed inquiry — HTTP ${res.status} ${await res.text()}`);
+    process.exit(1);
+  }
+}
+
 const browser = await chromium.launch({
   // Honour a preinstalled browser when one is provided by the environment.
   executablePath: process.env.CHROMIUM_PATH || undefined,
@@ -97,12 +122,16 @@ ok('unpublished service detail returns 404', resp.status() === 404, `status ${re
 // ---- 7. Inquiry inbox shows the real submissions -------------------------
 await page.goto(`${BASE}/admin/inquiries`, { waitUntil: 'networkidle' });
 const inbox = await page.textContent('body');
-ok('inquiry inbox lists submitted leads', inbox.includes('Khalid Al-Harbi') && inbox.includes('Sara Al-Otaibi'));
+ok('inquiry inbox lists the submitted lead', inbox.includes(LEAD.name) && inbox.includes(LEAD.email));
 
-await page.click('text=Khalid Al-Harbi');
+await page.click(`text=${LEAD.name}`);
 await page.waitForURL('**/admin/inquiries/**', { timeout: 10000 });
 const detail = await page.textContent('body');
-ok('inquiry detail shows the full request', detail.includes('Nakhla Grill') && detail.includes('menu.png'));
+ok(
+  'inquiry detail shows the full request and its attachment',
+  detail.includes(LEAD.business) && detail.includes(LEAD.description) && detail.includes('brief.pdf'),
+);
+ok('inquiry created no project workspace — it is only an inbox record', !/workspace|milestone|invoice/i.test(detail));
 
 // ---- 8. Private attachment requires the session --------------------------
 // The session cookie is Secure, which browsers send over localhost but Node's

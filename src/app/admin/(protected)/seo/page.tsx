@@ -75,17 +75,8 @@ export default async function SeoPage() {
           </p>
         </Card>
 
-        {/* Company and contact fields live on Site settings but must round-trip here. */}
-        {(
-          [
-            'companyNameEn', 'companyNameAr', 'taglineEn', 'taglineAr', 'descriptionEn', 'descriptionAr',
-            'logoUrl', 'logoMarkUrl', 'inquiryEmail', 'contactEmail', 'phone', 'whatsapp',
-            'addressEn', 'addressAr', 'mapsUrl', 'instagram', 'tiktok', 'linkedin', 'x', 'youtube',
-            'footerDescriptionEn', 'footerDescriptionAr', 'copyrightEn', 'copyrightAr',
-          ] as const
-        ).map((key) => (
-          <input key={key} type="hidden" name={key} value={s[key] ?? ''} />
-        ))}
+        {/* Company, contact and brand fields live on Site settings. Saves only
+            write the fields actually submitted, so nothing there is affected. */}
       </AdminForm>
     </>
   );

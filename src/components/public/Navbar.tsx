@@ -16,6 +16,7 @@ export function Navbar({
   links,
   companyName,
   logoUrl,
+  logoInverseUrl,
   startLabel,
   menuLabel,
   closeLabel,
@@ -24,6 +25,7 @@ export function Navbar({
   links: NavLink[];
   companyName: string;
   logoUrl: string | null;
+  logoInverseUrl: string | null;
   startLabel: string;
   menuLabel: string;
   closeLabel: string;
@@ -76,7 +78,7 @@ export function Navbar({
       >
         <nav className="shell flex h-[var(--nav-h)] items-center justify-between gap-6" aria-label="Main">
           <Link href={home} className="shrink-0" aria-label={companyName}>
-            <Logo logoUrl={logoUrl} name={companyName} tone={tone} />
+            <Logo logoUrl={logoUrl} logoInverseUrl={logoInverseUrl} name={companyName} tone={tone} />
           </Link>
 
           <ul className="hidden items-center gap-8 lg:flex">

@@ -22,6 +22,9 @@ import {
   asObjectList,
 } from '@/lib/content';
 import { prisma } from '@/lib/db';
+import { getSettings } from '@/lib/content';
+import { JsonLd } from '@/lib/seo';
+import { env } from '@/lib/env';
 
 export const revalidate = 60;
 
@@ -33,8 +36,9 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   const locale = raw as Locale;
   const dict = getDictionary(locale);
 
-  const [home, stageRows, projects, stats, services] = await Promise.all([
+  const [home, settings, stageRows, projects, stats, services] = await Promise.all([
     getHomepage(),
+    getSettings(),
     getSystemStages(),
     getFeaturedProjects(4),
     getStatistics(),
@@ -61,8 +65,25 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     .map((i) => (locale === 'ar' ? i.labelAr || i.labelEn : i.labelEn || i.labelAr) || '')
     .filter(Boolean);
 
+  const socials = [settings.instagram, settings.tiktok, settings.linkedin, settings.x, settings.youtube].filter(Boolean);
+
   return (
     <>
+      {/* Organization identity, including the logo uploaded in Admin. */}
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'Organization',
+          name: pick(settings, 'companyName', locale) || 'Noriva',
+          url: env.siteUrl,
+          description: pick(settings, 'description', locale) || undefined,
+          logo: settings.logoUrl ? `${env.siteUrl}${settings.logoUrl}` : undefined,
+          email: settings.contactEmail || settings.inquiryEmail || undefined,
+          telephone: settings.phone || undefined,
+          sameAs: socials.length ? socials : undefined,
+        }}
+      />
+
       <Hero
         locale={locale}
         eyebrow={pick(home, 'heroEyebrow', locale)}

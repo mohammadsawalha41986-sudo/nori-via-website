@@ -69,13 +69,22 @@ async function guard() {
 
 export async function saveSettings(_prev: ActionState, formData: FormData): Promise<ActionState> {
   await guard();
-  const parsed = settingsSchema.safeParse(formToObject(formData));
+
+  // Settings are spread across two screens (Site settings and SEO), so only the
+  // fields actually submitted are written. Without this a save from one screen
+  // would blank out every field owned by the other.
+  const submitted = formToObject(formData);
+  const parsed = settingsSchema.partial().safeParse(submitted);
   if (!parsed.success) return { error: 'Please check the highlighted fields.', fieldErrors: toFieldErrors(parsed.error) };
+
+  const data = Object.fromEntries(
+    Object.entries(parsed.data).filter(([key]) => key in submitted),
+  ) as Record<string, string>;
 
   await prisma.siteSettings.upsert({
     where: { id: 'singleton' },
-    update: parsed.data,
-    create: { id: 'singleton', ...parsed.data },
+    update: data,
+    create: { id: 'singleton', ...data },
   });
 
   revalidateEverything();

@@ -73,6 +73,9 @@ model SiteSettings {
 
   logoUrl     String?
   logoMarkUrl String?
+  /// Optional light/reversed artwork for dark backgrounds. When absent, the
+  /// primary logo is placed on a light plate rather than being recoloured.
+  logoInverseUrl String?
   faviconUrl  String?
   defaultOgImage String?
 

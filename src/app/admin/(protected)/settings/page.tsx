@@ -44,12 +44,30 @@ export default async function SettingsPage() {
           </Grid>
         </Card>
 
-        <Card title="Brand assets" description="Upload from the media library or paste a URL.">
+        <Card
+          title="Brand assets"
+          description="Upload from the media library or paste a URL. Artwork is only ever scaled — never recoloured or cropped."
+        >
           <Grid>
-            <MediaField name="logoUrl" label="Logo" defaultValue={s.logoUrl ?? ''} />
+            <MediaField
+              name="logoUrl"
+              label="Logo"
+              defaultValue={s.logoUrl ?? ''}
+              hint="Used in the header and footer. PNG or WEBP at roughly 3× the display size (about 450×108) stays sharp on retina screens."
+            />
+            <MediaField
+              name="logoInverseUrl"
+              label="Logo for dark backgrounds"
+              defaultValue={s.logoInverseUrl ?? ''}
+              hint="Optional light/reversed version. Leave empty and the main logo is shown on a white plate over dark sections instead."
+            />
             <MediaField name="logoMarkUrl" label="Logo mark (icon only)" defaultValue={s.logoMarkUrl ?? ''} />
-            <MediaField name="faviconUrl" label="Favicon" defaultValue={s.faviconUrl ?? ''} />
-            <MediaField name="defaultOgImage" label="Default social share image" defaultValue={s.defaultOgImage ?? ''} />
+            <MediaField
+              name="faviconUrl"
+              label="Favicon"
+              defaultValue={s.faviconUrl ?? ''}
+              hint="Square PNG, 512×512. Falls back to the built-in Noriva mark when empty."
+            />
           </Grid>
         </Card>
 
@@ -106,13 +124,8 @@ export default async function SettingsPage() {
           </Grid>
         </Card>
 
-        {/* SEO and analytics are edited on the SEO screen but must round-trip here. */}
-        <input type="hidden" name="seoTitleEn" value={s.seoTitleEn} />
-        <input type="hidden" name="seoTitleAr" value={s.seoTitleAr} />
-        <input type="hidden" name="seoDescriptionEn" value={s.seoDescriptionEn} />
-        <input type="hidden" name="seoDescriptionAr" value={s.seoDescriptionAr} />
-        <input type="hidden" name="gaId" value={s.gaId} />
-        <input type="hidden" name="gtmId" value={s.gtmId} />
+        {/* SEO, the share image and analytics live on the SEO screen. Saves only
+            write the fields actually submitted, so nothing there is affected. */}
       </AdminForm>
     </>
   );

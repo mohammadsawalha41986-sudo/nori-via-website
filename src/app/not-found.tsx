@@ -1,10 +1,22 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import './globals.css';
+import { fontVars } from './fonts';
+
+/**
+ * This page renders outside the locale layout, so it declares its own icon and
+ * metadata rather than inheriting them.
+ */
+export const metadata: Metadata = {
+  title: 'Page not found — Noriva',
+  robots: { index: false, follow: true },
+  icons: { icon: '/icon.svg', shortcut: '/favicon.ico', apple: '/icon.svg' },
+};
 
 /** Root-level 404 for paths outside any locale segment. */
 export default function NotFound() {
   return (
-    <html lang="en" dir="ltr">
+    <html lang="en" dir="ltr" className={fontVars}>
       <body className="flex min-h-screen items-center bg-ink-900 text-white">
         <div className="shell py-32">
           <p className="mb-6 font-mono text-xs tracking-[0.3em] text-brand-300">404</p>
