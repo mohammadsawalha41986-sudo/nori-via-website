@@ -1,0 +1,119 @@
+import { getSettings } from '@/lib/content';
+import { saveSettings } from '@/server/actions';
+import { AdminForm } from '@/components/admin/AdminForm';
+import { MediaField } from '@/components/admin/MediaField';
+import { PageHeader, Card, Field, Grid, inputClass } from '@/components/admin/ui';
+
+export const metadata = { title: 'Site settings' };
+export const dynamic = 'force-dynamic';
+
+export default async function SettingsPage() {
+  const s = await getSettings();
+
+  return (
+    <>
+      <PageHeader
+        title="Site settings"
+        description="Company details, contact information and social links. Every field here updates the public website."
+      />
+
+      <AdminForm action={saveSettings} className="space-y-5">
+        <Card title="Company">
+          <Grid>
+            <Field label="Company name (EN)" htmlFor="companyNameEn" required>
+              <input id="companyNameEn" name="companyNameEn" defaultValue={s.companyNameEn} className={inputClass} />
+            </Field>
+            <Field label="Company name (AR)" htmlFor="companyNameAr">
+              <input id="companyNameAr" name="companyNameAr" defaultValue={s.companyNameAr} dir="rtl" className={inputClass} />
+            </Field>
+            <Field label="Tagline (EN)" htmlFor="taglineEn">
+              <input id="taglineEn" name="taglineEn" defaultValue={s.taglineEn} className={inputClass} />
+            </Field>
+            <Field label="Tagline (AR)" htmlFor="taglineAr">
+              <input id="taglineAr" name="taglineAr" defaultValue={s.taglineAr} dir="rtl" className={inputClass} />
+            </Field>
+          </Grid>
+
+          <Grid>
+            <Field label="Description (EN)" htmlFor="descriptionEn" className="mt-4">
+              <textarea id="descriptionEn" name="descriptionEn" rows={4} defaultValue={s.descriptionEn} className={inputClass} />
+            </Field>
+            <Field label="Description (AR)" htmlFor="descriptionAr" className="mt-4">
+              <textarea id="descriptionAr" name="descriptionAr" rows={4} defaultValue={s.descriptionAr} dir="rtl" className={inputClass} />
+            </Field>
+          </Grid>
+        </Card>
+
+        <Card title="Brand assets" description="Upload from the media library or paste a URL.">
+          <Grid>
+            <MediaField name="logoUrl" label="Logo" defaultValue={s.logoUrl ?? ''} />
+            <MediaField name="logoMarkUrl" label="Logo mark (icon only)" defaultValue={s.logoMarkUrl ?? ''} />
+            <MediaField name="faviconUrl" label="Favicon" defaultValue={s.faviconUrl ?? ''} />
+            <MediaField name="defaultOgImage" label="Default social share image" defaultValue={s.defaultOgImage ?? ''} />
+          </Grid>
+        </Card>
+
+        <Card title="Contact" description="Where inquiries are delivered and what visitors see on the contact page.">
+          <Grid>
+            <Field label="Inquiry email" htmlFor="inquiryEmail" hint="New project inquiries are emailed here.">
+              <input id="inquiryEmail" name="inquiryEmail" type="email" defaultValue={s.inquiryEmail} className={inputClass} />
+            </Field>
+            <Field label="Public contact email" htmlFor="contactEmail">
+              <input id="contactEmail" name="contactEmail" type="email" defaultValue={s.contactEmail} className={inputClass} />
+            </Field>
+            <Field label="Phone" htmlFor="phone">
+              <input id="phone" name="phone" defaultValue={s.phone} dir="ltr" className={inputClass} />
+            </Field>
+            <Field label="WhatsApp" htmlFor="whatsapp" hint="Include the country code, e.g. +966…">
+              <input id="whatsapp" name="whatsapp" defaultValue={s.whatsapp} dir="ltr" className={inputClass} />
+            </Field>
+            <Field label="Address (EN)" htmlFor="addressEn">
+              <input id="addressEn" name="addressEn" defaultValue={s.addressEn} className={inputClass} />
+            </Field>
+            <Field label="Address (AR)" htmlFor="addressAr">
+              <input id="addressAr" name="addressAr" defaultValue={s.addressAr} dir="rtl" className={inputClass} />
+            </Field>
+            <Field label="Google Maps URL" htmlFor="mapsUrl">
+              <input id="mapsUrl" name="mapsUrl" defaultValue={s.mapsUrl} dir="ltr" className={inputClass} />
+            </Field>
+          </Grid>
+        </Card>
+
+        <Card title="Social">
+          <Grid cols={3}>
+            {(['instagram', 'tiktok', 'linkedin', 'x', 'youtube'] as const).map((key) => (
+              <Field key={key} label={key === 'x' ? 'X (Twitter)' : key[0]!.toUpperCase() + key.slice(1)} htmlFor={key}>
+                <input id={key} name={key} defaultValue={s[key]} dir="ltr" placeholder="https://" className={inputClass} />
+              </Field>
+            ))}
+          </Grid>
+        </Card>
+
+        <Card title="Footer">
+          <Grid>
+            <Field label="Footer description (EN)" htmlFor="footerDescriptionEn">
+              <textarea id="footerDescriptionEn" name="footerDescriptionEn" rows={3} defaultValue={s.footerDescriptionEn} className={inputClass} />
+            </Field>
+            <Field label="Footer description (AR)" htmlFor="footerDescriptionAr">
+              <textarea id="footerDescriptionAr" name="footerDescriptionAr" rows={3} defaultValue={s.footerDescriptionAr} dir="rtl" className={inputClass} />
+            </Field>
+            <Field label="Copyright (EN)" htmlFor="copyrightEn">
+              <input id="copyrightEn" name="copyrightEn" defaultValue={s.copyrightEn} className={inputClass} />
+            </Field>
+            <Field label="Copyright (AR)" htmlFor="copyrightAr">
+              <input id="copyrightAr" name="copyrightAr" defaultValue={s.copyrightAr} dir="rtl" className={inputClass} />
+            </Field>
+          </Grid>
+        </Card>
+
+        {/* SEO and analytics are edited on the SEO screen but must round-trip here. */}
+        <input type="hidden" name="seoTitleEn" value={s.seoTitleEn} />
+        <input type="hidden" name="seoTitleAr" value={s.seoTitleAr} />
+        <input type="hidden" name="seoDescriptionEn" value={s.seoDescriptionEn} />
+        <input type="hidden" name="seoDescriptionAr" value={s.seoDescriptionAr} />
+        <input type="hidden" name="gaId" value={s.gaId} />
+        <input type="hidden" name="gtmId" value={s.gtmId} />
+      </AdminForm>
+    </>
+  );
+}
