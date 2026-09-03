@@ -5,12 +5,13 @@ import { CTASection } from '@/components/public/CTASection';
 import { Metrics } from '@/components/public/Metrics';
 import { PageHero } from '@/components/public/PageHero';
 import { TrackView } from '@/components/public/TrackView';
+import { Gallery } from '@/components/public/Gallery';
 import { Reveal } from '@/components/ui/Reveal';
 import { Prose } from '@/components/ui/Prose';
 import { TextLink } from '@/components/ui/Button';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { getDictionary } from '@/lib/dictionary';
-import { isLocale, pick, type Locale } from '@/lib/i18n';
+import { dirOf, isLocale, pick, type Locale } from '@/lib/i18n';
 import {
   getProjectBySlug,
   asObjectList,
@@ -218,25 +219,19 @@ export default async function ProjectPage({ params }: { params: Promise<{ locale
 
       {(gallery.length > 0 || csGallery.length > 0) && (
         <section className="bg-bone py-20 sm:py-28">
-          <div className="shell grid gap-6 sm:grid-cols-2">
-            {[...gallery, ...csGallery].map((g, i) =>
-              g.url ? (
-                <Reveal
-                  key={g.url + i}
-                  delay={(i % 4) * 60}
-                  className={`relative overflow-hidden rounded-xl bg-ink-100 ${i % 3 === 0 ? 'aspect-[4/3] sm:col-span-2' : 'aspect-square'}`}
-                >
-                  <Image
-                    src={g.url}
-                    alt={localisedLabel(g, 'alt') || title}
-                    fill
-                    sizes="(min-width:640px) 50vw, 100vw"
-                    className="object-cover"
-                  />
-                </Reveal>
-              ) : null,
-            )}
-          </div>
+          <Gallery
+            dir={dirOf(locale)}
+            images={[...gallery, ...csGallery]
+              .filter((g): g is GalleryItem & { url: string } => Boolean(g.url))
+              .map((g) => ({ url: g.url, alt: localisedLabel(g, 'alt') || title }))}
+            labels={{
+              title,
+              open: dict.gallery.open,
+              close: dict.gallery.close,
+              previous: dict.gallery.previous,
+              next: dict.gallery.next,
+            }}
+          />
         </section>
       )}
 
