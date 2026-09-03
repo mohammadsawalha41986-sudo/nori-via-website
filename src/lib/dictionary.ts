@@ -4,6 +4,12 @@ import type { Locale } from './i18n';
 const dictionaries = {
   en: {
     nav: { work: 'Work', services: 'Services', growth: 'Restaurant Growth', about: 'About', insights: 'Insights', contact: 'Contact', start: 'Start a Project', menu: 'Menu', close: 'Close', skip: 'Skip to content' },
+    gallery: {
+      open: 'Open image',
+      close: 'Close',
+      previous: 'Previous image',
+      next: 'Next image',
+    },
     common: {
       viewCaseStudy: 'View Case Study',
       exploreWork: 'Explore Our Work',
@@ -86,6 +92,12 @@ const dictionaries = {
   },
   ar: {
     nav: { work: 'أعمالنا', services: 'خدماتنا', growth: 'نمو المطاعم', about: 'من نحن', insights: 'رؤى', contact: 'تواصل معنا', start: 'ابدأ مشروعك', menu: 'القائمة', close: 'إغلاق', skip: 'تخطَّ إلى المحتوى' },
+    gallery: {
+      open: 'فتح الصورة',
+      close: 'إغلاق',
+      previous: 'الصورة السابقة',
+      next: 'الصورة التالية',
+    },
     common: {
       viewCaseStudy: 'اطّلع على دراسة الحالة',
       exploreWork: 'استعرض أعمالنا',
