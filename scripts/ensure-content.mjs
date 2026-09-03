@@ -22,6 +22,8 @@
  */
 import { PrismaClient } from '@prisma/client';
 import bcrypt from 'bcryptjs';
+import { statSync } from 'node:fs';
+import path from 'node:path';
 
 const prisma = new PrismaClient();
 const REPORT_ONLY = process.argv.includes('--report');
@@ -446,6 +448,10 @@ const FOOTER_NAV = [
 ];
 
 const SETTINGS_FILL = {
+  /* Destination for contact and project inquiries. Filled only when still
+   * empty, and editable in Admin -> Site settings at any time. */
+  inquiryEmail: process.env.DEFAULT_INQUIRY_EMAIL || '',
+  contactEmail: process.env.DEFAULT_INQUIRY_EMAIL || '',
   descriptionEn:
     'Noriva is a brand, digital and growth studio. We build identity systems, digital products and content programmes for businesses that need to be understood quickly and remembered afterwards.',
   descriptionAr:
@@ -551,6 +557,25 @@ const PAGES = [
     bodyAr: 'العلامة والرقمنة والنمو في مكان واحد، لأن الخسائر في هذا العمل تقع عند التسليم بينها.',
     content: { sections: ABOUT_SECTIONS },
   },
+];
+
+
+/* The shipped art direction, registered in the Media library so each image is
+ * selectable in Admin's media picker and can be swapped for real photography
+ * without touching code. Dimensions mirror scripts/generate_imagery.py. */
+const MEDIA = [
+  ['hero', 2400, 1350],
+  ['about', 1800, 1200],
+  ['cta', 2000, 1000],
+  ['service-brand', 1400, 1050],
+  ['service-digital', 1400, 1050],
+  ['service-content', 1400, 1050],
+  ['service-growth', 1400, 1050],
+  ['service-experience', 1400, 1050],
+  ...Array.from({ length: 6 }, (_, i) => [`work-${i + 1}`, i % 2 ? 1400 : 1800, i % 2 ? 1750 : 1150]),
+  ...Array.from({ length: 12 }, (_, i) => [`gallery-${i + 1}`, 1600, 1100]),
+  ...Array.from({ length: 4 }, (_, i) => [`insight-${i + 1}`, 1600, 900]),
+  ...Array.from({ length: 5 }, (_, i) => [`stage-${i + 1}`, 1200, 900]),
 ];
 
 /* --------------------------------------------------------------- helpers */
@@ -755,6 +780,34 @@ async function main() {
       await prisma.page.create({ data: p });
       note(`page:${p.key}`);
     }
+  }
+
+  /* --- Media library ---------------------------------------------------- */
+  for (const [name, width, height] of MEDIA) {
+    const url = img(name);
+    const exists = await prisma.media.findFirst({ where: { url } });
+    if (exists) continue;
+    let size = 0;
+    try {
+      size = statSync(path.join(process.cwd(), 'public', 'img', `${name}.jpg`)).size;
+    } catch {
+      /* File missing from the build: skip rather than register a dead row. */
+      continue;
+    }
+    await prisma.media.create({
+      data: {
+        filename: `${name}.jpg`,
+        url,
+        kind: 'IMAGE',
+        mimeType: 'image/jpeg',
+        size,
+        width,
+        height,
+        altEn: 'Noriva art direction',
+        altAr: 'توجيه فني — نوريفا',
+      },
+    });
+    note(`media:${name}`);
   }
 
   /* --- Admin account (only when explicitly requested and configured) ---- */
