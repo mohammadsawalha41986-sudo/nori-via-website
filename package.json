@@ -2,10 +2,14 @@
   "name": "noriva-website",
   "version": "1.0.0",
   "private": true,
+  "engines": {
+    "node": "22.22.2",
+    "npm": "10.9.7"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "prisma generate && next build",
-    "start": "next start",
+    "start": "next start -H 0.0.0.0 -p ${PORT:-3000}",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
@@ -13,7 +17,8 @@
     "db:migrate": "prisma migrate deploy",
     "db:push": "prisma db push",
     "db:seed": "tsx prisma/seed.ts",
-    "postinstall": "prisma generate"
+    "postinstall": "prisma generate",
+    "start:migrate": "prisma migrate deploy && npm run start"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
