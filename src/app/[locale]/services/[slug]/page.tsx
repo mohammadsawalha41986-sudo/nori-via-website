@@ -48,6 +48,10 @@ export async function generateMetadata({
     path: `/services/${slug}`,
     fallbackTitle: pick(service, 'name', locale),
     fallbackDescription: pick(service, 'summary', locale),
+    // Share cards prefer the dedicated social image; the featured image is the
+    // documented fallback so a shared link is never a blank card. The reverse
+    // never happens — the social image is not rendered on the page.
+    fallbackImage: service.featuredImage,
   });
 }
 
@@ -137,6 +141,29 @@ export default async function ServiceDetailPage({
         description={pick(service, 'heroDescription', locale) || pick(service, 'summary', locale)}
       />
 
+      {/*
+        The Featured Image is this service's own main image. It is rendered only
+        when the CMS holds one — no placeholder and no fallback to another
+        service's artwork, so a card or page can never show the wrong image.
+        The social share image is a separate field and belongs in metadata only.
+      */}
+      {service.featuredImage && (
+        <section className="bg-bone pt-16 sm:pt-20">
+          <div className="shell">
+            <Reveal className="relative block aspect-[16/9] overflow-hidden rounded-card bg-ink-100 sm:aspect-[21/9]">
+              <Image
+                src={service.featuredImage}
+                alt={name}
+                fill
+                priority
+                sizes="(min-width:1536px) 1400px, 100vw"
+                className="object-cover"
+              />
+            </Reveal>
+          </div>
+        </section>
+      )}
+
       {sections.length > 0 && (
         <section className="bg-bone py-24 sm:py-32">
           <div className="shell space-y-20 sm:space-y-28">
@@ -203,6 +230,7 @@ export default async function ServiceDetailPage({
         </section>
       )}
 
+      {/* Gallery images are a set, distinct from the single featured image. */}
       {gallery.length > 0 && (
         <section className="bg-white py-20">
           <div className="shell grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

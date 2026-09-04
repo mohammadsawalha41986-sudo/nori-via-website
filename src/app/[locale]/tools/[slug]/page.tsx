@@ -31,6 +31,7 @@ export async function generateMetadata({
     path: `/tools/${slug}`,
     fallbackTitle: pick(tool, 'name', locale),
     fallbackDescription: pick(tool, 'summary', locale),
+    fallbackImage: tool.thumbnail,
   });
 }
 

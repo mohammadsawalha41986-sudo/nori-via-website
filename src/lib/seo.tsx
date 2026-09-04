@@ -14,6 +14,7 @@ export function buildMetadata({
   path,
   fallbackTitle,
   fallbackDescription,
+  fallbackImage,
   type = 'website',
   publishedTime,
 }: {
@@ -22,13 +23,19 @@ export function buildMetadata({
   path: string;
   fallbackTitle: string;
   fallbackDescription?: string;
+  /**
+   * Used for the share card when the row has no dedicated social image — the
+   * page's own main image, so a shared link is never blank. The dedicated
+   * social image always wins, and is never rendered on the page itself.
+   */
+  fallbackImage?: string | null;
   type?: 'website' | 'article';
   publishedTime?: string;
 }): Metadata {
   const title = (row && pick(row, 'seoTitle', locale)) || fallbackTitle;
   const description = (row && pick(row, 'seoDescription', locale)) || fallbackDescription || '';
   const url = `${env.siteUrl}/${locale}${path === '/' ? '' : path}`;
-  const image = row?.ogImage || undefined;
+  const image = row?.ogImage || fallbackImage || undefined;
 
   const languages = Object.fromEntries(
     locales.map((l) => [l, `${env.siteUrl}/${l}${path === '/' ? '' : path}`]),

@@ -49,6 +49,7 @@ export async function generateMetadata({
     path: `/work/${slug}`,
     fallbackTitle: pick(project, 'title', locale),
     fallbackDescription: pick(project, 'description', locale),
+    fallbackImage: project.heroMediaKind === 'IMAGE' ? project.heroMediaUrl : null,
     type: 'article',
   });
 }

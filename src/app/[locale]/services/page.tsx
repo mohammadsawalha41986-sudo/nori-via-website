@@ -44,7 +44,13 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
       description: pick(c, 'description', locale),
       services: services
         .filter((s) => s.categoryId === c.id)
-        .map((s) => ({ id: s.id, slug: s.slug, name: pick(s, 'name', locale), summary: pick(s, 'summary', locale) })),
+        .map((s) => ({
+          id: s.id,
+          slug: s.slug,
+          name: pick(s, 'name', locale),
+          summary: pick(s, 'summary', locale),
+          image: s.featuredImage,
+        })),
     }))
     .filter((g) => g.services.length > 0);
 
@@ -59,6 +65,7 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
         slug: s.slug,
         name: pick(s, 'name', locale),
         summary: pick(s, 'summary', locale),
+        image: s.featuredImage,
       })),
     });
   }

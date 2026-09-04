@@ -84,7 +84,40 @@ check('floating WhatsApp button comes from the CMS',
 check('social link renders in the footer',
   (await page.locator('footer a[href*="linkedin.com/company/example"]').count()) > 0);
 
+/**
+ * The suite has to be re-runnable. Rows it created on an earlier run would
+ * clash on their slug, and the rejected save would leave the form sitting
+ * there while `waitForURL` timed out on a navigation that never comes.
+ */
+page.on('dialog', (d) => d.accept());
+const removeStale = async (section, slug, deleteLabel) => {
+  await page.goto(`${BASE}/admin/${section}?q=${slug}`);
+  const href = await page.$$eval(
+    `a[href^="/admin/${section}/"]`,
+    (links, s) => {
+      const row = links.find((l) => new RegExp(`/${s}(\\s|$|\\u00b7)`).test(l.textContent ?? ''));
+      return row ? row.getAttribute('href') : '';
+    },
+    slug,
+  );
+  if (!href) return;
+  await page.goto(`${BASE}${href}`);
+  await page.click(`button:has-text("${deleteLabel}")`);
+  await page.waitForURL(new RegExp(`/admin/${section}(\\?|$)`), { timeout: 20000 });
+};
+
+/** Reports what a rejected save said, instead of timing out on a navigation. */
+const savedTo = async (section) =>
+  page
+    .waitForURL((u) => new RegExp(`^/admin/${section}/[a-z0-9]+$`).test(u.pathname) && !u.pathname.endsWith('/new'), {
+      timeout: 30000,
+    })
+    .then(() => '')
+    .catch(async () => (await page.locator('body').innerText()).match(/(Please check.*|Another .*)/)?.[1] ?? 'save did not navigate');
+
 // ------------------------------------------------------------------ library
+await removeStale('resources', 'qa-profitability-model', 'Delete resource');
+
 await page.goto(`${BASE}/admin/resources/new`);
 await page.fill('#titleEn', 'QA Profitability Model');
 await page.fill('#titleAr', 'نموذج ربحية للاختبار');
@@ -97,8 +130,8 @@ await page.fill('#audience', 'Owners | أصحاب المشاريع');
 await page.setInputFiles('#file', FIXTURE);
 await page.selectOption('#status', 'PUBLISHED');
 await page.click('button[type="submit"]:has-text("Save changes")');
-await page.waitForURL((u) => /\/admin\/resources\/[a-z0-9]+$/.test(u.pathname) && !u.pathname.endsWith('/new'), { timeout: 30000 });
-check('resource created with an xlsx upload', true);
+const resourceSaved = await savedTo('resources');
+check('resource created with an xlsx upload', resourceSaved === '', resourceSaved);
 
 await page.goto(`${BASE}/en/library?type=EXCEL&q=profitability`);
 check('library search and type filter find it',
@@ -117,6 +150,7 @@ check('download is an attachment with the original name',
 check('unknown resource download 404s', (await context.request.get(`${BASE}/api/library/nope/download`)).status() === 404);
 
 // -------------------------------------------------------------------- tools
+await removeStale('tools', 'qa-break-even', 'Delete tool');
 await page.goto(`${BASE}/admin/tools/new`);
 await page.fill('#nameEn', 'QA Break-even Calculator');
 await page.fill('#slug', 'qa-break-even');
@@ -146,8 +180,8 @@ await out.locator('input[dir="ltr"]').last().fill('ceil(fixedCost / contribution
 await page.waitForTimeout(300);
 await page.selectOption('#status', 'PUBLISHED');
 await page.click('button[type="submit"]:has-text("Save changes")');
-await page.waitForURL((u) => /\/admin\/tools\/[a-z0-9]+$/.test(u.pathname) && !u.pathname.endsWith('/new'), { timeout: 30000 });
-check('tool created', true);
+const toolSaved = await savedTo('tools');
+check('tool created', toolSaved === '', toolSaved);
 
 await page.goto(`${BASE}/en/tools/qa-break-even`);
 check('public tool computes from defaults',
@@ -208,6 +242,7 @@ check('admin preview renders the real site in Arabic',
   (await page.frameLocator('iframe').locator('html').getAttribute('dir').catch(() => null)) === 'rtl');
 
 // -------------------------------------------- insights, scheduling, filters
+await removeStale('insights', 'qa-costing-a-menu', 'Delete article');
 await page.goto(`${BASE}/admin/insights/new`);
 await page.fill('#titleEn', 'QA costing a menu');
 await page.fill('#titleAr', 'اختبار تسعير القائمة');
@@ -218,8 +253,8 @@ await page.fill('#contentAr', 'الفقرة الأولى.\n\nالفقرة الث
 await page.click('button:has-text("QA Break-even Calculator")');
 await page.selectOption('#status', 'PUBLISHED');
 await page.click('button[type="submit"]:has-text("Save changes")');
-await page.waitForURL((u) => /\/admin\/insights\/[a-z0-9]+$/.test(u.pathname) && !u.pathname.endsWith('/new'), { timeout: 30000 });
-check('article created through the existing CMS', true);
+const insightSaved = await savedTo('insights');
+check('article created through the existing CMS', insightSaved === '', insightSaved);
 
 await page.goto(`${BASE}/en/insights/qa-costing-a-menu`);
 check('article links to its related tool', (await page.locator('a[href*="/tools/qa-break-even"]').count()) > 0);

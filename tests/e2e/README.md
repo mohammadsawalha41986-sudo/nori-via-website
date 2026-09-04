@@ -10,6 +10,7 @@ that breaks a flow is caught the same way twice.
     npm start &                       # or `next start -p 3000`
     node tests/e2e/platform.mjs       # design system, library, tools, relations
     node tests/e2e/fnb.mjs            # F&B positioning, menu service, intake
+    node tests/e2e/service-images.mjs # featured / social / gallery imagery
     node tests/e2e/sweep.mjs          # every route, a11y, responsive
 
 They expect an admin account (`ADMIN_EMAIL` / `ADMIN_PASSWORD` when seeding)

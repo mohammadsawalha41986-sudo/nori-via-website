@@ -154,6 +154,12 @@ export function toFieldErrors(error: z.ZodError): Record<string, string> {
   for (const issue of error.issues) {
     const key = issue.path.join('.') || 'form';
     if (!out[key]) out[key] = issue.message;
+    // List fields (gallery, deliverables, …) are edited as one `<name>Raw`
+    // textarea, so a per-row issue has to surface on that control to be seen.
+    if (issue.path.length > 1) {
+      const raw = `${String(issue.path[0])}Raw`;
+      if (!out[raw]) out[raw] = issue.message;
+    }
   }
   return out;
 }

@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { inquirySchema, contactSchema, loginSchema, slugify } from '../src/lib/validation';
+import { inquirySchema, contactSchema, loginSchema, serviceSchema, slugify } from '../src/lib/validation';
 
 const validInquiry = {
   name: 'Sara Al-Otaibi',
@@ -119,5 +119,53 @@ describe('summarise', () => {
   it('summarises Arabic copy', async () => {
     const { summarise } = await import('../src/lib/seo-text');
     expect(summarise('هذه الصفحة نص مبدئي. استبدله من لوحة التحكم.')).toContain('هذه الصفحة');
+  });
+});
+
+/**
+ * The three image slots on a service do different jobs, and each of them ends
+ * up in a `next/image` src or a share card. A value the renderer cannot use
+ * has to be refused at the form, not at request time on a public page.
+ */
+describe('service image slots', () => {
+  const base = { slug: 'menu-strategy', nameEn: 'Menu Strategy' };
+
+  it('accepts same-origin paths and https URLs in every slot', () => {
+    const parsed = serviceSchema.parse({
+      ...base,
+      featuredImage: '/media/menu-hero.jpg',
+      ogImage: 'https://cdn.example.com/share.png',
+      gallery: [{ url: '/img/gallery-1.jpg', altEn: 'Plated dish', altAr: 'طبق' }],
+    });
+    expect(parsed.featuredImage).toBe('/media/menu-hero.jpg');
+    expect(parsed.ogImage).toBe('https://cdn.example.com/share.png');
+    expect(parsed.gallery[0]!.url).toBe('/img/gallery-1.jpg');
+  });
+
+  it('treats every slot as optional and keeps them independent', () => {
+    const parsed = serviceSchema.parse(base);
+    expect(parsed.featuredImage).toBe('');
+    expect(parsed.ogImage).toBe('');
+    expect(parsed.gallery).toEqual([]);
+  });
+
+  it.each([
+    ['javascript:alert(1)'],
+    ['data:text/html,<script>alert(1)</script>'],
+    ['menu-hero.jpg'],
+    ['http://cdn.example.com/share.png'],
+  ])('refuses %s as a featured image', (value) => {
+    expect(serviceSchema.safeParse({ ...base, featuredImage: value }).success).toBe(false);
+  });
+
+  it('refuses an unusable gallery row and says which one', () => {
+    const result = serviceSchema.safeParse({
+      ...base,
+      gallery: [{ url: '/img/ok.jpg' }, { url: 'javascript:alert(1)' }],
+    });
+    expect(result.success).toBe(false);
+    if (!result.success) {
+      expect(result.error.issues[0]!.message).toContain('Row 2');
+    }
   });
 });

@@ -601,3 +601,45 @@ export const START_HERE_PATHS_FNB = [
   titleEn, titleAr, bodyEn, bodyAr, href,
   labelEn: 'Continue', labelAr: 'متابعة',
 }));
+
+
+/* -------------------------------------------------- service repositioning */
+
+/**
+ * Copy that shipped before the Food & Beverage correction, and what replaces
+ * it. As with the site positioning, a field is rewritten only while it still
+ * holds the old shipped text, so anything edited in Admin is left alone.
+ *
+ * Content & Production is a content service for F&B — food and product
+ * photography, short-form video, social content, campaign assets — not film
+ * or editorial production.
+ */
+export const SERVICE_REPOSITIONING = [
+  {
+    slug: 'content-production',
+    was: {
+      summaryEn: 'Photography, film, and editorial content produced against a plan rather than one shoot at a time.',
+      summaryAr: 'تصوير وأفلام ومحتوى تحريري يُنتَج وفق خطة، لا جلسة تصوير في كل مرة.',
+      whatWeDoEn:
+        'Art direction, stills and motion, food and interior photography, short-form social video, and the editorial writing that holds it together in both Arabic and English. We plan production in cycles so a single shoot supplies a quarter of scheduled content rather than a fortnight of scrambling.',
+      whatWeDoAr:
+        'التوجيه الفني، والصور الثابتة والمتحركة، وتصوير الطعام والديكور، والفيديو القصير للمنصات، والكتابة التحريرية التي تربطها بالعربية والإنجليزية. نخطط الإنتاج على دورات، لتغذّي جلسة واحدة محتوى ربع كامل بدل أسبوعين من الارتجال.',
+    },
+    now: {
+      summaryEn: 'Food and product photography, short-form video and social content, produced against a plan rather than one shoot at a time.',
+      summaryAr: 'تصوير الطعام والمنتجات والفيديو القصير ومحتوى المنصات، يُنتَج وفق خطة لا جلسة تصوير في كل مرة.',
+      whatWeDoEn: 'Art direction, food and product photography, short-form video for social, campaign assets, and the content system that holds them together in both Arabic and English. We plan production in cycles, so one shoot supplies a quarter of scheduled content rather than a fortnight of scrambling.',
+      whatWeDoAr: 'التوجيه الفني، وتصوير الطعام والمنتجات، والفيديو القصير للمنصات، وأصول الحملات، ونظام المحتوى الذي يربطها بالعربية والإنجليزية. نخطط الإنتاج على دورات، لتغذّي جلسة واحدة محتوى ربع كامل بدل أسبوعين من الارتجال.',
+      seoDescriptionEn: 'Food and product photography, short-form video and social content, produced against a plan rather than one shoot at a time.',
+      seoDescriptionAr: 'تصوير الطعام والمنتجات والفيديو القصير ومحتوى المنصات، يُنتَج وفق خطة لا جلسة تصوير في كل مرة.',
+    },
+    deliverables: [
+      { labelEn: 'Food photography', labelAr: 'تصوير الطعام' },
+      { labelEn: 'Product photography', labelAr: 'تصوير المنتجات' },
+      { labelEn: 'Short-form video', labelAr: 'الفيديو القصير' },
+      { labelEn: 'Social media content', labelAr: 'محتوى منصات التواصل' },
+      { labelEn: 'Campaign assets', labelAr: 'أصول الحملات' },
+      { labelEn: 'Content systems', labelAr: 'أنظمة المحتوى' },
+    ],
+  },
+];
