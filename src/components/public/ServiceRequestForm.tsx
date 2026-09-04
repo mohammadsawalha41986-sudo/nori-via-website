@@ -112,7 +112,7 @@ export function ServiceRequestForm({
   if (state === 'sent') {
     return (
       <div className="rounded-card border border-ink-900/10 bg-white p-10 text-center">
-        <p className="font-display text-2xl font-extrabold uppercase tracking-tight text-ink-900">{t.successTitle}</p>
+        <p className="font-display text-2xl uppercase text-ink-900">{t.successTitle}</p>
         <p className="mx-auto mt-4 max-w-md text-[0.9375rem] leading-relaxed text-ink-400">{t.successBody}</p>
       </div>
     );

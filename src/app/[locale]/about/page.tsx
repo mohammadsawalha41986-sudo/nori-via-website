@@ -67,7 +67,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
             {sections.map((s, i) => (
               <div key={s.key ?? i} className="grid gap-8 lg:grid-cols-[minmax(0,18rem)_minmax(0,1fr)] lg:gap-16">
                 <Reveal>
-                  <h2 className="font-display text-xl font-extrabold uppercase tracking-tight text-ink-900 sm:text-2xl">
+                  <h2 className="font-display text-xl uppercase text-ink-900 sm:text-2xl">
                     <span className="me-3 font-mono text-xs text-brand">{String(i + 1).padStart(2, '0')}</span>
                     {pick(s, 'title', locale)}
                   </h2>

@@ -19,7 +19,7 @@
     "db:seed": "tsx prisma/seed.ts",
     "postinstall": "prisma generate",
     "start:migrate": "prisma migrate deploy && npm run start",
-    "test:e2e": "node tests/e2e/platform.mjs && node tests/e2e/fnb.mjs && node tests/e2e/sweep.mjs"
+    "test:e2e": "node tests/e2e/platform.mjs && node tests/e2e/design-tokens.mjs && node tests/e2e/fnb.mjs && node tests/e2e/sweep.mjs"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"

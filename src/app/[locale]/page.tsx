@@ -184,7 +184,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                     <span className="block font-mono text-[0.6875rem] text-brand-300">
                       {String(i + 1).padStart(2, '0')}
                     </span>
-                    <span className="mt-2.5 block font-display text-base font-bold uppercase tracking-tight sm:text-lg">
+                    <span className="mt-2.5 block font-display text-base font-display-soft uppercase sm:text-lg">
                       {label}
                     </span>
                   </Reveal>
@@ -273,7 +273,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                     className="group flex h-full flex-col rounded-card border border-ink-900/10 bg-bone p-8 transition-colors duration-300 hover:border-brand"
                   >
                     <span className="font-mono text-[0.6875rem] text-brand">{String(i + 1).padStart(2, '0')}</span>
-                    <span className="mt-4 font-display text-xl font-bold uppercase tracking-tight text-ink-900 transition-colors group-hover:text-brand">
+                    <span className="mt-4 font-display text-xl font-display-soft uppercase text-ink-900 transition-colors group-hover:text-brand">
                       {pick(tool, 'name', locale)}
                     </span>
                     {pick(tool, 'summary', locale) && (
@@ -342,7 +342,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                         {pick(article.category, 'name', locale)}
                       </span>
                     )}
-                    <span className="mt-2 block font-display text-xl font-bold uppercase tracking-tight text-ink-900 transition-colors group-hover:text-brand">
+                    <span className="mt-2 block font-display text-xl font-display-soft uppercase text-ink-900 transition-colors group-hover:text-brand">
                       {pick(article, 'title', locale)}
                     </span>
                     {pick(article, 'excerpt', locale) && (

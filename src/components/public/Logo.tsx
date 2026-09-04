@@ -67,7 +67,7 @@ export function Logo({
       </svg>
       <span
         className={clsx(
-          'font-display text-[1.32rem] font-extrabold uppercase leading-none tracking-[-0.02em] sm:text-[1.45rem]',
+          'font-display text-[1.32rem] uppercase leading-none tracking-[-0.02em] sm:text-[1.45rem]',
           onDark ? 'text-white' : 'text-ink-800',
         )}
       >

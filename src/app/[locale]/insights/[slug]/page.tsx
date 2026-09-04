@@ -103,7 +103,7 @@ export default async function InsightPage({
                 {pick(article.category, 'name', locale)}
               </p>
             )}
-            <h1 className="font-display text-display-sm font-extrabold uppercase">{title}</h1>
+            <h1 className="font-display text-display-sm uppercase">{title}</h1>
             <p className="mt-6 text-sm text-white/50">
               {[
                 article.author && `${dict.common.by} ${article.author}`,

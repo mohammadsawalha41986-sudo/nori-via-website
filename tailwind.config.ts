@@ -27,10 +27,13 @@ const config: Config = {
         display: ['var(--font-display)', 'var(--font-sans)', 'sans-serif'],
         arabic: ['var(--font-arabic)', 'var(--font-sans)', 'sans-serif'],
       },
+      /* Line height is a property of the size; letter spacing is a design
+         token, so it is deliberately not set here — `.font-display` applies
+         `--tracking-heading` instead. */
       fontSize: {
-        'display-sm': ['clamp(2.2rem,6vw,3.4rem)', { lineHeight: '0.95', letterSpacing: '-0.03em' }],
-        'display-md': ['clamp(2.8rem,8vw,5rem)', { lineHeight: '0.92', letterSpacing: '-0.035em' }],
-        'display-lg': ['clamp(3.2rem,10vw,8rem)', { lineHeight: '0.88', letterSpacing: '-0.04em' }],
+        'display-sm': ['clamp(2.2rem,6vw,3.4rem)', { lineHeight: '0.95' }],
+        'display-md': ['clamp(2.8rem,8vw,5rem)', { lineHeight: '0.92' }],
+        'display-lg': ['clamp(3.2rem,10vw,8rem)', { lineHeight: '0.88' }],
       },
       borderRadius: {
         btn: 'var(--radius-btn)',

@@ -80,7 +80,7 @@ export default async function InsightsPage({ params }: { params: Promise<{ local
                           {pick(a.category, 'name', locale)}
                         </span>
                       )}
-                      <h2 className="mt-2 font-display text-xl font-bold uppercase tracking-tight text-ink-900 transition-colors group-hover:text-brand">
+                      <h2 className="mt-2 font-display text-xl font-display-soft uppercase text-ink-900 transition-colors group-hover:text-brand">
                         {pick(a, 'title', locale)}
                       </h2>
                       {pick(a, 'excerpt', locale) && (

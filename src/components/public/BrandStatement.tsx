@@ -43,7 +43,7 @@ export function BrandStatement({ statement, support }: { statement: string; supp
   return (
     <section className="bg-bone py-24 sm:py-36">
       <div className="shell" ref={ref}>
-        <p className="font-display text-display-sm font-extrabold uppercase leading-[1.06]">
+        <p className="font-display text-display-sm uppercase leading-[1.06]">
           {lines.map((line, i) => {
             const threshold = i / (lines.length + 0.6);
             const active = reduced || progress > threshold;

@@ -135,7 +135,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
           </Reveal>
 
           <Reveal delay={120}>
-            <h2 className="mb-8 font-display text-2xl font-extrabold uppercase tracking-tight text-ink-900">
+            <h2 className="mb-8 font-display text-2xl uppercase text-ink-900">
               {dict.contact.formTitle}
             </h2>
             <ContactForm dict={dict} locale={locale} />

@@ -32,7 +32,7 @@ export function SectionHeading({
       )}
       <h2
         className={clsx(
-          'font-display text-display-sm font-extrabold uppercase',
+          'font-display text-display-sm uppercase',
           tone === 'light' ? 'text-white' : 'text-ink-900',
         )}
       >

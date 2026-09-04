@@ -64,7 +64,7 @@ export default async function ToolsPage({ params }: { params: Promise<{ locale: 
                       <span className="font-mono text-[0.6875rem] text-brand">
                         {String(i + 1).padStart(2, '0')}
                       </span>
-                      <span className="mt-4 font-display text-xl font-bold uppercase tracking-tight text-ink-900 transition-colors group-hover:text-brand">
+                      <span className="mt-4 font-display text-xl font-display-soft uppercase text-ink-900 transition-colors group-hover:text-brand">
                         {pick(tool, 'name', locale)}
                       </span>
                       {pick(tool, 'summary', locale) && (

@@ -2,6 +2,7 @@ import { PageHeader, Card, Field, Grid, inputClass } from '@/components/admin/ui
 import { AdminForm } from '@/components/admin/AdminForm';
 import { SubmitButton } from '@/components/admin/SubmitButton';
 import { DesignPreview } from '@/components/admin/DesignPreview';
+import { ColorField } from '@/components/admin/ColorField';
 import { saveDesignTokens, resetDesignTokens } from '@/server/platform-actions';
 import {
   getDesignTokens,
@@ -35,35 +36,17 @@ export default async function DesignSystemAdmin() {
         <Card title="Colours" description="Used across buttons, headings, borders and backgrounds.">
           <Grid cols={3}>
             {COLOR_TOKENS.map((token) => (
-              <Field
+              <ColorField
                 key={token.key}
+                name={`color.${token.key}`}
                 label={token.label}
-                htmlFor={`color-${token.key}`}
-                hint={`Default ${token.default}`}
-              >
-                <div className="flex gap-2">
-                  <input
-                    id={`color-${token.key}`}
-                    name={`color.${token.key}`}
-                    type="color"
-                    defaultValue={tokens.colors[token.key]}
-                    aria-label={`${token.label} colour swatch`}
-                    className="h-[38px] w-12 shrink-0 cursor-pointer rounded-md border border-slate-300 bg-white p-1"
-                  />
-                  <input
-                    name={`color.${token.key}`}
-                    type="text"
-                    defaultValue={tokens.colors[token.key]}
-                    dir="ltr"
-                    aria-label={`${token.label} hex value`}
-                    className={inputClass}
-                  />
-                </div>
-              </Field>
+                defaultValue={tokens.colors[token.key]}
+                fallback={token.default}
+              />
             ))}
           </Grid>
           <p className="mt-4 text-xs text-slate-400">
-            Both fields write the same token — use the swatch to pick, or paste a hex value.
+            The swatch and the hex box are the same value — pick with either.
           </p>
         </Card>
 

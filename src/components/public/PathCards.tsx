@@ -20,7 +20,7 @@ export function PathCards({ items }: { items: PathCard[] }) {
             className="group flex h-full flex-col rounded-card border border-ink-900/10 bg-white p-8 transition-colors duration-300 hover:border-brand"
           >
             <span className="font-mono text-[0.6875rem] text-brand">{String(i + 1).padStart(2, '0')}</span>
-            <span className="mt-4 font-display text-xl font-bold uppercase tracking-tight text-ink-900 transition-colors group-hover:text-brand">
+            <span className="mt-4 font-display text-xl font-display-soft uppercase text-ink-900 transition-colors group-hover:text-brand">
               {item.title}
             </span>
             {item.body && <span className="mt-3 flex-1 text-[0.9375rem] leading-relaxed text-ink-400">{item.body}</span>}

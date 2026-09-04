@@ -143,7 +143,7 @@ export default async function ServiceDetailPage({
             {sections.map((s, i) => (
               <div key={s.key} className="grid gap-8 lg:grid-cols-[minmax(0,18rem)_minmax(0,1fr)] lg:gap-16">
                 <Reveal>
-                  <h2 className="font-display text-xl font-extrabold uppercase tracking-tight text-ink-900 sm:text-2xl">
+                  <h2 className="font-display text-xl uppercase text-ink-900 sm:text-2xl">
                     <span className="me-3 font-mono text-xs text-brand">{String(i + 1).padStart(2, '0')}</span>
                     {s.label}
                   </h2>
@@ -191,7 +191,7 @@ export default async function ServiceDetailPage({
                     <div className="grid gap-4 sm:grid-cols-[4rem_minmax(0,1fr)] sm:gap-8">
                       <span className="font-mono text-xs text-brand">{String(i + 1).padStart(2, '0')}</span>
                       <div>
-                        <h3 className="font-display text-lg font-bold uppercase tracking-tight text-ink-900">{title}</h3>
+                        <h3 className="font-display text-lg font-display-soft uppercase text-ink-900">{title}</h3>
                         {body && <p className="mt-2 max-w-2xl text-[0.9375rem] leading-relaxed text-ink-400">{body}</p>}
                       </div>
                     </div>
@@ -286,7 +286,7 @@ export default async function ServiceDetailPage({
             <p className="mb-4 inline-flex rounded-btn border border-brand/40 px-4 py-1.5 text-[0.6875rem] font-bold uppercase tracking-[0.18em] text-brand">
               {dict.example.label}
             </p>
-            <h2 className="font-display text-display-sm font-extrabold uppercase text-ink-900">
+            <h2 className="font-display text-display-sm uppercase text-ink-900">
               {pick(example, 'title', locale)}
             </h2>
             <div className="mt-8">
