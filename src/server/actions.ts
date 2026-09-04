@@ -8,6 +8,7 @@ import { locales } from '@/lib/i18n';
 import { requireUser } from '@/lib/auth';
 import { deleteStoredFile } from '@/lib/storage';
 import { deleteContentLinksFor, setContentLinks, parseRef } from '@/lib/relations';
+import { intakeSchema } from '@/lib/intake';
 import {
   serviceSchema,
   projectSchema,
@@ -131,6 +132,25 @@ export async function saveHomepage(_prev: ActionState, formData: FormData): Prom
 
 export async function saveService(_prev: ActionState, formData: FormData): Promise<ActionState> {
   await guard();
+
+  // The request questionnaire travels as JSON from the builder, and is
+  // re-validated here: the browser is never the authority on its shape.
+  let intake: unknown = {};
+  const rawIntake = String(formData.get('intakeJson') ?? '').trim();
+  if (rawIntake) {
+    try {
+      intake = JSON.parse(rawIntake);
+    } catch {
+      return { error: 'The request form definition is not valid JSON.', fieldErrors: { intakeJson: 'Invalid JSON' } };
+    }
+  }
+  const parsedIntake = intakeSchema.safeParse(intake);
+  if (!parsedIntake.success) {
+    return {
+      error: 'Please check the request form questions.',
+      fieldErrors: { intakeJson: Object.values(toFieldErrors(parsedIntake.error))[0] ?? 'Invalid' },
+    };
+  }
   const id = String(formData.get('id') ?? '');
 
   const parsed = serviceSchema.safeParse({
@@ -152,6 +172,7 @@ export async function saveService(_prev: ActionState, formData: FormData): Promi
     benefits: J(benefits),
     process: J(process),
     faqs: J(faqs),
+    intake: J(parsedIntake.data),
     gallery: J(gallery),
   };
 

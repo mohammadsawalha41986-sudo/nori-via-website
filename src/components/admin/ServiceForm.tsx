@@ -4,8 +4,10 @@ import { AdminForm } from './AdminForm';
 import { MediaField } from './MediaField';
 import { SubmitButton } from './SubmitButton';
 import { RelationPicker, type RelationOption } from './RelationPicker';
+import { IntakeBuilder } from './IntakeBuilder';
 import { Card, Field, Grid, inputClass } from './ui';
 import { saveService, deleteService } from '@/server/actions';
+import type { Intake } from '@/lib/intake';
 
 export type ServiceFormValues = {
   id?: string;
@@ -33,11 +35,13 @@ export function ServiceForm({
   categories,
   relationOptions,
   selectedRelations,
+  intake,
 }: {
   values: ServiceFormValues;
   categories: { id: string; nameEn: string }[];
   relationOptions: RelationOption[];
   selectedRelations: string[];
+  intake: Intake;
 }) {
   return (
     <AdminForm action={saveService} className="space-y-5">
@@ -131,6 +135,18 @@ export function ServiceForm({
                 <textarea id="galleryRaw" name="galleryRaw" rows={4} defaultValue={values.galleryRaw} className={`${inputClass} font-mono text-xs`} />
               </Field>
             </div>
+          </Card>
+
+          <Card
+            title="Request form"
+            description="The questions a visitor answers when requesting this service. They arrive with the inquiry as a structured brief."
+          >
+            {state.fieldErrors?.intakeJson && (
+              <p role="alert" className="mb-4 rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+                {state.fieldErrors.intakeJson}
+              </p>
+            )}
+            <IntakeBuilder initial={intake} />
           </Card>
 
           <Card

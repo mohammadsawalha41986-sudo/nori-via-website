@@ -20,6 +20,9 @@ import {
 import { buildMetadata, JsonLd, breadcrumbs } from '@/lib/seo';
 import { env } from '@/lib/env';
 import { getRelatedContent } from '@/lib/relations';
+import { ServiceRequestForm } from '@/components/public/ServiceRequestForm';
+import { parseIntake } from '@/lib/intake';
+import { getPage } from '@/lib/content';
 
 export const revalidate = 60;
 
@@ -66,6 +69,14 @@ export default async function ServiceDetailPage({
   if (!service) notFound();
 
   const related = await getRelatedContent('SERVICE', service.id, locale);
+
+  // The service's own intake questionnaire, authored in Admin.
+  const intake = parseIntake(service.intake);
+
+  // An optional worked example, stored as a CMS page so it can be edited or
+  // removed without code. It is always labelled as an illustration.
+  const example =
+    service.slug === 'menu-strategy-engineering-pricing' ? await getPage('menu-example') : null;
 
   const name = pick(service, 'name', locale);
   const deliverables = asObjectList<{ labelEn?: string; labelAr?: string }>(service.deliverables);
@@ -269,7 +280,51 @@ export default async function ServiceDetailPage({
         </section>
       )}
 
+      {example && (
+        <section className="bg-bone section-y">
+          <div className="shell max-w-3xl">
+            <p className="mb-4 inline-flex rounded-btn border border-brand/40 px-4 py-1.5 text-[0.6875rem] font-bold uppercase tracking-[0.18em] text-brand">
+              {dict.example.label}
+            </p>
+            <h2 className="font-display text-display-sm font-extrabold uppercase text-ink-900">
+              {pick(example, 'title', locale)}
+            </h2>
+            <div className="mt-8">
+              <Prose text={pick(example, 'body', locale)} className="text-lg" />
+            </div>
+            <p className="mt-8 border-t border-ink-900/10 pt-5 text-sm text-ink-400">{dict.example.note}</p>
+          </div>
+        </section>
+      )}
+
       <RelatedContent items={related} title={dict.related.title} eyebrow={dict.nav.services} />
+
+      {/* Requesting the service is the point of the page, so the questionnaire
+          lives on it rather than behind a generic contact form. */}
+      <section id="request" className="bg-white section-y">
+        <div className="shell max-w-4xl">
+          <SectionHeading
+            eyebrow={pick(service, 'name', locale)}
+            title={
+              (locale === 'ar' ? intake.headlineAr || intake.headlineEn : intake.headlineEn || intake.headlineAr) ||
+              dict.request.title
+            }
+            description={
+              (locale === 'ar' ? intake.introAr || intake.introEn : intake.introEn || intake.introAr) ||
+              dict.request.intro
+            }
+          />
+          <div className="mt-12">
+            <ServiceRequestForm
+              serviceSlug={service.slug}
+              serviceName={pick(service, 'name', locale)}
+              intake={intake}
+              locale={locale}
+              dict={dict}
+            />
+          </div>
+        </div>
+      </section>
 
       <CTASection
         headline={dict.nav.start}

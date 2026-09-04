@@ -1,0 +1,603 @@
+/**
+ * Food & Beverage positioning, service catalogue, tools and library entries.
+ *
+ * Everything here is provisioning, not code: each item is created only if it is
+ * absent, and each singleton field is rewritten only when it still holds a
+ * value this repository shipped. An edit made in Admin therefore always wins,
+ * and running the script twice changes nothing the second time.
+ *
+ * No client, statistic, award or result is invented. The service catalogue is
+ * the one supplied by the business; every illustrative figure is labelled as an
+ * illustration.
+ */
+
+/* ------------------------------------------------------------- positioning */
+
+export const POSITIONING = {
+  settings: {
+    taglineEn: 'Food & Beverage · Consulting · Development · Growth',
+    taglineAr: 'الأغذية والمشروبات · استشارات · تطوير · نمو',
+    descriptionEn:
+      'A specialized Food & Beverage consulting and development partner, helping restaurants, cafés and food & beverage businesses build, improve, market and grow stronger businesses.',
+    descriptionAr:
+      'شريك متخصص في استشارات وتطوير مشاريع الأغذية والمشروبات، نساعد المطاعم والمقاهي ومشاريع الطعام والشراب على تأسيس أعمال أقوى، وتحسين أدائها، وتسويقها، وتطويرها ونموها.',
+    footerDescriptionEn:
+      'Food & Beverage consulting, development, marketing and growth for restaurants, cafés and F&B concepts.',
+    footerDescriptionAr:
+      'استشارات وتطوير وتسويق ونمو لمشاريع الأغذية والمشروبات: المطاعم والمقاهي ومفاهيم الطعام والشراب.',
+    seoTitleEn: 'Food & Beverage Consulting, Development & Growth',
+    seoTitleAr: 'استشارات وتطوير ونمو مشاريع الأغذية والمشروبات',
+    seoDescriptionEn:
+      'Specialized F&B consulting: concept development, feasibility, operations, profitability, menu engineering and pricing, marketing and growth for restaurants, cafés and food & beverage businesses.',
+    seoDescriptionAr:
+      'استشارات متخصصة في الأغذية والمشروبات: تطوير المفاهيم ودراسات الجدوى والتشغيل والربحية وهندسة وتسعير القوائم والتسويق والنمو للمطاعم والمقاهي ومشاريع الطعام والشراب.',
+  },
+  homepage: {
+    heroEyebrowEn: 'Food & Beverage · Consulting · Development · Growth',
+    heroEyebrowAr: 'الأغذية والمشروبات · استشارات · تطوير · نمو',
+    heroHeadlineEn: 'We develop\nbetter F&B businesses.',
+    heroHeadlineAr: 'نطوّر\nمشاريع أغذية ومشروبات أفضل.',
+    heroSubtitleEn:
+      'We help restaurants, cafés and food & beverage businesses develop stronger concepts, improve performance, build better customer experiences and grow with clearer decisions.',
+    heroSubtitleAr:
+      'نساعد المطاعم والمقاهي ومشاريع الأغذية والمشروبات على تطوير مفاهيم أقوى، وتحسين الأداء، وبناء تجارب أفضل للعملاء، والنمو من خلال قرارات أوضح.',
+    heroPrimaryCtaEn: 'Start a Project',
+    heroPrimaryCtaAr: 'ابدأ مشروعك',
+    heroSecondaryCtaEn: 'Explore Our Services',
+    heroSecondaryCtaAr: 'اكتشف خدماتنا',
+    statementEn:
+      'Food & Beverage is the specialisation, not a sector we also serve. Restaurants, cafés, bakeries, dessert and beverage concepts, cloud kitchens and multi-branch operators — the work is the same discipline applied to each.',
+    statementAr:
+      'الأغذية والمشروبات هي التخصص، لا قطاعاً نخدمه بين قطاعات أخرى. المطاعم والمقاهي والمخابز ومفاهيم الحلويات والمشروبات والمطابخ السحابية والعلامات متعددة الفروع — العمل هو المنهجية ذاتها مطبّقة على كل حالة.',
+  },
+};
+
+/* ------------------------------------------------------- service catalogue */
+
+export const SERVICE_GROUPS = [
+  { slug: 'fnb-consulting-management', nameEn: 'F&B Consulting & Management', nameAr: 'استشارات وإدارة الأغذية والمشروبات', order: 1 },
+  { slug: 'fnb-development', nameEn: 'F&B Development', nameAr: 'تطوير مشاريع الأغذية والمشروبات', order: 2 },
+  { slug: 'finance-profitability', nameEn: 'Finance & Profitability', nameAr: 'المالية والربحية', order: 3 },
+  { slug: 'menu-product', nameEn: 'Menu & Product', nameAr: 'القائمة والمنتج', order: 4 },
+  { slug: 'marketing-advertising', nameEn: 'Marketing & Advertising', nameAr: 'التسويق والإعلان', order: 5 },
+  { slug: 'brand-customer-experience', nameEn: 'Brand & Customer Experience', nameAr: 'العلامة وتجربة العميل', order: 6 },
+  { slug: 'growth-expansion', nameEn: 'Growth & Expansion', nameAr: 'النمو والتوسع', order: 7 },
+];
+
+/** Shared opening questions: who is asking, and about what kind of business. */
+const BASE_QUESTIONS = [
+  {
+    key: 'businessType',
+    labelEn: 'What kind of business is it?',
+    labelAr: 'ما نوع المشروع؟',
+    type: 'select',
+    required: true,
+    helpEn: '', helpAr: '',
+    options: [
+      { value: 'restaurant', labelEn: 'Restaurant', labelAr: 'مطعم' },
+      { value: 'cafe', labelEn: 'Café / coffee shop', labelAr: 'مقهى' },
+      { value: 'bakery', labelEn: 'Bakery / dessert concept', labelAr: 'مخبز / حلويات' },
+      { value: 'qsr', labelEn: 'Fast casual / QSR', labelAr: 'وجبات سريعة' },
+      { value: 'cloud-kitchen', labelEn: 'Cloud kitchen / delivery-only', labelAr: 'مطبخ سحابي / توصيل فقط' },
+      { value: 'beverage', labelEn: 'Beverage concept', labelAr: 'مفهوم مشروبات' },
+      { value: 'food-retail', labelEn: 'Food retail', labelAr: 'تجزئة غذائية' },
+      { value: 'other', labelEn: 'Other F&B concept', labelAr: 'مفهوم آخر في الأغذية والمشروبات' },
+    ],
+  },
+  {
+    key: 'stage',
+    labelEn: 'Is this a new project or an existing business?',
+    labelAr: 'هل المشروع جديد أم قائم؟',
+    type: 'select',
+    required: true,
+    helpEn: '', helpAr: '',
+    options: [
+      { value: 'new', labelEn: 'New project', labelAr: 'مشروع جديد' },
+      { value: 'existing', labelEn: 'Existing business', labelAr: 'مشروع قائم' },
+    ],
+  },
+  {
+    key: 'branches',
+    labelEn: 'How many branches?',
+    labelAr: 'كم عدد الفروع؟',
+    type: 'number',
+    required: false,
+    helpEn: '', helpAr: '', options: [],
+  },
+  {
+    key: 'city',
+    labelEn: 'City',
+    labelAr: 'المدينة',
+    type: 'text',
+    required: false,
+    helpEn: '', helpAr: '', options: [],
+  },
+  {
+    key: 'challenge',
+    labelEn: 'What is the main challenge you want solved?',
+    labelAr: 'ما التحدي الرئيسي الذي تريد حلّه؟',
+    type: 'longtext',
+    required: true,
+    helpEn: '', helpAr: '', options: [],
+  },
+  {
+    key: 'outcome',
+    labelEn: 'What outcome would make this worthwhile?',
+    labelAr: 'ما النتيجة التي تجعل هذا العمل مجدياً بالنسبة لك؟',
+    type: 'longtext',
+    required: false,
+    helpEn: '', helpAr: '', options: [],
+  },
+];
+
+const q = (key, labelEn, labelAr, type = 'text', required = false, options = [], helpEn = '', helpAr = '') => ({
+  key, labelEn, labelAr, type, required, options, helpEn, helpAr,
+});
+
+/** The menu questionnaire the business asked for, in full. */
+const MENU_QUESTIONS = [
+  ...BASE_QUESTIONS,
+  q('menuType', 'What kind of menu is it?', 'ما نوع القائمة؟', 'multiselect', false, [
+    { value: 'dine-in', labelEn: 'Dine-in', labelAr: 'داخل الفرع' },
+    { value: 'delivery', labelEn: 'Delivery', labelAr: 'توصيل' },
+    { value: 'takeaway', labelEn: 'Takeaway', labelAr: 'طلبات خارجية' },
+    { value: 'beverage', labelEn: 'Beverage / café menu', labelAr: 'قائمة مشروبات / مقهى' },
+    { value: 'seasonal', labelEn: 'Seasonal or promotional', labelAr: 'موسمية أو ترويجية' },
+  ]),
+  q('itemCount', 'How many items are on the menu?', 'كم عدد الأصناف في القائمة؟', 'number'),
+  q('cuisine', 'Cuisine or concept', 'نوع المطبخ أو المفهوم'),
+  q('averageTicket', 'Current average ticket', 'متوسط قيمة الفاتورة الحالية', 'number'),
+  q('foodCost', 'Current food cost %, if known', 'نسبة تكلفة الطعام الحالية إن كانت معروفة', 'number'),
+  q('bestSellers', 'Best-selling items', 'الأصناف الأكثر مبيعاً', 'longtext'),
+  q('slowSellers', 'Slow-selling items', 'الأصناف الأقل مبيعاً', 'longtext'),
+  q('salesSplit', 'Roughly how do sales split between dine-in, delivery and takeaway?',
+    'ما التوزيع التقريبي للمبيعات بين داخل الفرع والتوصيل والطلبات الخارجية؟', 'longtext'),
+  q('beverageShare', 'Beverage share of sales, if applicable', 'حصة المشروبات من المبيعات إن وُجدت', 'text'),
+  q('discounts', 'Do you run discounts, combos or add-ons?', 'هل لديك خصومات أو وجبات مركبة أو إضافات؟', 'longtext'),
+  q('menuFormat', 'Current menu format', 'صيغة القائمة الحالية', 'select', false, [
+    { value: 'printed', labelEn: 'Printed', labelAr: 'مطبوعة' },
+    { value: 'digital', labelEn: 'Digital / QR', labelAr: 'رقمية / QR' },
+    { value: 'delivery-app', labelEn: 'Delivery app', labelAr: 'تطبيق توصيل' },
+    { value: 'mixed', labelEn: 'Mixed', labelAr: 'مختلطة' },
+  ]),
+  q('menuProblem', 'What is the main problem with the menu today?', 'ما المشكلة الأساسية في القائمة اليوم؟', 'longtext', true),
+];
+
+const intake = (headlineEn, headlineAr, introEn, introAr, questions, uploadsEn, uploadsAr) => ({
+  headlineEn, headlineAr, introEn, introAr,
+  uploadsEn: uploadsEn ?? 'Anything that helps us understand the business: menus, sales or cost reports, POS exports, photos.',
+  uploadsAr: uploadsAr ?? 'أي ملفات تساعدنا على فهم المشروع: القوائم، تقارير المبيعات أو التكاليف، تصدير نقاط البيع، صور.',
+  questions,
+});
+
+/**
+ * The catalogue. Only the menu service ships published, because its page is
+ * written in full here; the rest are created as drafts carrying their name,
+ * summary and questionnaire, for the team to complete and publish in Admin.
+ */
+export const FNB_SERVICES = [
+  // D — Menu & product (the flagship service, published)
+  {
+    slug: 'menu-strategy-engineering-pricing',
+    group: 'menu-product',
+    status: 'PUBLISHED',
+    order: 1,
+    nameEn: 'Menu Strategy, Engineering & Pricing',
+    nameAr: 'دراسة وتطوير وهندسة وتسعير قوائم الطعام',
+    summaryEn:
+      'A structured study of what your menu sells, what each item earns, and what to change — item performance, food cost, pricing, product mix and menu structure.',
+    summaryAr:
+      'دراسة منهجية لما تبيعه قائمتك، وما يحققه كل صنف، وما الذي يجب تغييره — أداء الأصناف وتكلفة الطعام والتسعير ومزيج المنتجات وبنية القائمة.',
+    heroDescriptionEn:
+      'Most menus are written, then never read as a commercial document. This service reads it as one: which items carry the business, which quietly cost it money, and what the menu should look like next.',
+    heroDescriptionAr:
+      'تُكتب معظم القوائم ثم لا تُقرأ أبداً كوثيقة تجارية. هذه الخدمة تقرؤها كذلك: أي الأصناف يحمل المشروع، وأيها يكلّفه بهدوء، وكيف ينبغي أن تكون القائمة بعد ذلك.',
+    whatWeDoEn:
+      'We work from your own numbers. Sales by item, item cost, price and category are brought together so each item can be placed by two measures at once: how well it sells, and what it contributes after food cost.\n\nFrom there the study covers menu structure and size, category performance, product mix, pricing and gross and contribution margin, combos, add-ons and upselling opportunities, and the differences between the dine-in, delivery and beverage menus — which rarely deserve the same prices or the same list of items.',
+    whatWeDoAr:
+      'نعمل انطلاقاً من أرقامك أنت. نجمع مبيعات كل صنف وتكلفته وسعره وتصنيفه لنتمكن من تحديد موقعه بمقياسين معاً: مدى إقباله، وما يساهم به بعد تكلفة الطعام.\n\nومن هناك تشمل الدراسة بنية القائمة وحجمها، وأداء التصنيفات، ومزيج المنتجات، والتسعير وهوامش الربح الإجمالي والمساهمة، والوجبات المركبة والإضافات وفرص البيع الإضافي، والفروق بين قوائم داخل الفرع والتوصيل والمشروبات — وهي نادراً ما تستحق الأسعار نفسها أو القائمة نفسها من الأصناف.',
+    approachEn:
+      'The analysis is only half of it. Recommendations are written to be acted on: which items to keep, rework, reprice or retire, in what order, and what to measure afterwards so the change can be judged rather than assumed.',
+    approachAr:
+      'التحليل نصف العمل فقط. تُكتب التوصيات لتُنفَّذ: أي الأصناف يُبقى عليه، وأيها يُعاد تطويره أو تسعيره أو سحبه، وبأي ترتيب، وما الذي يُقاس بعد ذلك ليُحكم على التغيير بدل افتراض نتيجته.',
+    deliverables: [
+      ['Menu performance analysis', 'تحليل أداء القائمة'],
+      ['Item profitability analysis', 'تحليل ربحية الأصناف'],
+      ['Menu engineering matrix', 'مصفوفة هندسة القائمة'],
+      ['Pricing recommendations', 'توصيات التسعير'],
+      ['Product mix analysis', 'تحليل مزيج المنتجات'],
+      ['Food cost review', 'مراجعة تكلفة الطعام'],
+      ['Menu structure recommendations', 'توصيات بنية القائمة'],
+      ['Low-performing item identification', 'تحديد الأصناف ضعيفة الأداء'],
+      ['High-potential item identification', 'تحديد الأصناف الواعدة'],
+      ['Delivery menu review', 'مراجعة قائمة التوصيل'],
+      ['Promotional item analysis', 'تحليل الأصناف الترويجية'],
+    ],
+    process: [
+      ['Data', 'البيانات', 'Sales by item, costs, prices and the current menu.', 'مبيعات كل صنف وتكاليفه وأسعاره والقائمة الحالية.'],
+      ['Analysis', 'التحليل', 'Popularity and contribution for every item and category.', 'الإقبال والمساهمة لكل صنف وتصنيف.'],
+      ['Recommendations', 'التوصيات', 'What to keep, rework, reprice or retire — and in what order.', 'ما يُبقى عليه أو يُعاد تطويره أو تسعيره أو سحبه — وبأي ترتيب.'],
+      ['Follow-up', 'المتابعة', 'What to measure after the change, so the result can be judged.', 'ما الذي يُقاس بعد التغيير ليُحكم على النتيجة.'],
+    ],
+    faqs: [
+      [
+        'What do you need from us to start?',
+        'ما الذي تحتاجونه منا للبدء؟',
+        'The current menu, sales by item for a representative period, and item costs. A POS export is usually enough; where costs are missing we work with you to build them.',
+        'القائمة الحالية، ومبيعات كل صنف لفترة تمثيلية، وتكاليف الأصناف. عادةً يكفي تصدير من نقاط البيع؛ وحين تغيب التكاليف نبنيها معك.',
+      ],
+      [
+        'Do you guarantee a specific increase?',
+        'هل تضمنون زيادة محددة؟',
+        'No. The study identifies what the numbers support and what to change; the result depends on execution, and on conditions no consultant controls.',
+        'لا. تحدد الدراسة ما تدعمه الأرقام وما الذي ينبغي تغييره؛ أما النتيجة فتعتمد على التنفيذ وعلى ظروف لا يتحكم بها أي مستشار.',
+      ],
+      [
+        'Does this apply to a café menu?',
+        'هل ينطبق هذا على قائمة مقهى؟',
+        'Yes. Beverage-led menus are analysed the same way, with attention to modifiers, sizes and the share of sales that beverages carry.',
+        'نعم. تُحلَّل القوائم التي تقودها المشروبات بالطريقة ذاتها، مع الانتباه إلى الإضافات والأحجام وحصة المشروبات من المبيعات.',
+      ],
+    ],
+    intake: intake(
+      'Menu study request',
+      'طلب دراسة قائمة',
+      'The more of this you can answer, the more of the first conversation can be about findings rather than fact-finding.',
+      'كلما أجبت عن المزيد من هذه الأسئلة، أصبح اللقاء الأول عن النتائج بدل جمع المعلومات.',
+      MENU_QUESTIONS,
+      'Please attach the current menu (PDF or Excel), a sales report or POS export by item, and a cost sheet if you have one.',
+      'يرجى إرفاق القائمة الحالية (PDF أو Excel)، وتقرير مبيعات أو تصدير نقاط بيع لكل صنف، وورقة تكاليف إن وُجدت.',
+    ),
+    /* Labelled as an illustration wherever it is rendered. */
+    example: {
+      titleEn: 'A café with 40 items',
+      titleAr: 'مقهى يضم ٤٠ صنفاً',
+      bodyEn:
+        'A café lists 40 items, but a small number of them generate most of the sales. Bringing together sales, food cost, price, contribution and popularity places every item in one of four groups — stars, plowhorses, puzzles and dogs — and the shape of the menu becomes an argument rather than an opinion.\n\nWhat follows is a sequence: analysis, then recommendations, then menu changes, then a pricing review, then follow-up measurement. This is an illustration of the method. It is not a client result, and no figure here describes a real business.',
+      bodyAr:
+        'يعرض مقهى ٤٠ صنفاً، لكن عدداً قليلاً منها يحقق معظم المبيعات. جمع المبيعات وتكلفة الطعام والسعر والمساهمة والإقبال يضع كل صنف في واحدة من أربع مجموعات — النجوم، وخيول العمل، والألغاز، والكلاب — فتتحول بنية القائمة إلى حجة مبنية على الأرقام بدل رأي.\n\nثم يأتي التسلسل: تحليل، فتوصيات، فتعديلات على القائمة، فمراجعة أسعار، فقياس للمتابعة. هذا مثال توضيحي للمنهجية، وليس نتيجة عميل، ولا يصف أي رقم فيه مشروعاً حقيقياً.',
+    },
+  },
+
+  // Remaining catalogue — created as drafts for the team to complete.
+  ...[
+    ['fnb-consulting', 'fnb-consulting-management', 'F&B Consulting', 'استشارات الأغذية والمشروبات',
+      'Advisory across concept, operations, cost and commercial performance for food and beverage businesses.',
+      'استشارات تشمل المفهوم والتشغيل والتكلفة والأداء التجاري لمشاريع الأغذية والمشروبات.'],
+    ['restaurant-consulting', 'fnb-consulting-management', 'Restaurant Consulting', 'استشارات المطاعم',
+      'Restaurant-specific advisory: operations, cost, service and commercial performance.',
+      'استشارات خاصة بالمطاعم: التشغيل والتكلفة والخدمة والأداء التجاري.'],
+    ['cafe-consulting', 'fnb-consulting-management', 'Café Consulting', 'استشارات المقاهي',
+      'Café and coffee shop advisory: beverage programme, operations, cost and customer experience.',
+      'استشارات المقاهي ومحلات القهوة: برنامج المشروبات والتشغيل والتكلفة وتجربة العميل.'],
+    ['management-advisory', 'fnb-consulting-management', 'Management Advisory', 'الاستشارات الإدارية',
+      'Ongoing advisory for owners and operators making decisions about their F&B business.',
+      'استشارات مستمرة للملّاك والمشغّلين عند اتخاذ القرارات في مشاريع الأغذية والمشروبات.'],
+    ['fnb-audit', 'fnb-consulting-management', 'Comprehensive F&B Audit', 'تقييم شامل لمشروع الأغذية والمشروبات',
+      'A full review of the business — concept, operations, cost, menu, marketing and customer experience.',
+      'مراجعة شاملة للمشروع: المفهوم والتشغيل والتكلفة والقائمة والتسويق وتجربة العميل.'],
+    ['operational-audit', 'fnb-consulting-management', 'Operational Audit', 'التقييم التشغيلي',
+      'A review of how the operation actually runs, including field visits where appropriate.',
+      'مراجعة لطريقة عمل التشغيل فعلياً، وتشمل زيارات ميدانية عند الحاجة.'],
+
+    ['new-restaurant-project', 'fnb-development', 'New Restaurant Project', 'مشروع مطعم جديد',
+      'Developing a new restaurant from concept through to opening readiness.',
+      'تطوير مطعم جديد من المفهوم وحتى الجاهزية للافتتاح.'],
+    ['new-cafe-project', 'fnb-development', 'New Café Project', 'مشروع مقهى جديد',
+      'Developing a new café or coffee shop from concept through to opening readiness.',
+      'تطوير مقهى جديد من المفهوم وحتى الجاهزية للافتتاح.'],
+    ['concept-development', 'fnb-development', 'F&B Concept Development', 'تطوير مفهوم غذائي',
+      'Defining what the concept is, who it is for, and how it is different in its market.',
+      'تحديد ماهية المفهوم، ولمن هو موجّه، وكيف يختلف في سوقه.'],
+    ['feasibility-study', 'fnb-development', 'Feasibility Study', 'دراسة الجدوى',
+      'Assessing whether the project holds together commercially before the money is committed.',
+      'تقييم مدى تماسك المشروع تجارياً قبل التزام رأس المال.'],
+    ['expansion-study', 'fnb-development', 'Expansion Study', 'دراسة التوسع',
+      'Assessing readiness for a new branch, and what has to be true before opening it.',
+      'تقييم الجاهزية لفرع جديد، وما الذي يجب أن يتحقق قبل افتتاحه.'],
+
+    ['profitability-analysis', 'finance-profitability', 'Profitability Analysis', 'تحليل الربحية',
+      'Where the money is actually made and lost across items, categories, channels and branches.',
+      'أين يُكسب المال ويُخسر فعلياً عبر الأصناف والتصنيفات والقنوات والفروع.'],
+    ['cost-reduction', 'finance-profitability', 'Cost Reduction', 'خفض التكاليف',
+      'Reducing cost without cutting the things customers actually pay for.',
+      'خفض التكاليف دون المساس بما يدفع العملاء مقابله فعلاً.'],
+    ['financial-planning', 'finance-profitability', 'Financial Planning & Budget', 'التخطيط المالي والموازنة',
+      'Annual budget, break-even analysis and the numbers a decision should be made against.',
+      'الموازنة السنوية وتحليل نقطة التعادل والأرقام التي يُبنى عليها القرار.'],
+
+    ['menu-pricing', 'menu-product', 'Menu Pricing', 'تسعير القائمة',
+      'Pricing reviewed against cost, contribution, positioning and what the market will carry.',
+      'مراجعة الأسعار مقابل التكلفة والمساهمة والتموضع وما يحتمله السوق.'],
+    ['food-cost-analysis', 'menu-product', 'Food Cost Analysis', 'تحليل تكلفة الطعام',
+      'Recipe and item costing, and what the food cost percentage is actually telling you.',
+      'تكلفة الوصفات والأصناف، وما الذي تعنيه نسبة تكلفة الطعام فعلياً.'],
+    ['delivery-menu-pricing', 'menu-product', 'Delivery Menu & Pricing', 'قائمة وتسعير التوصيل',
+      'The delivery menu treated as its own commercial problem: commission, packaging and price.',
+      'التعامل مع قائمة التوصيل كمسألة تجارية مستقلة: العمولة والتغليف والسعر.'],
+
+    ['fnb-marketing', 'marketing-advertising', 'F&B Marketing', 'تسويق الأغذية والمشروبات',
+      'Marketing built around what an F&B business actually needs: covers, frequency and spend.',
+      'تسويق مبني على ما يحتاجه مشروع الأغذية والمشروبات فعلاً: عدد الزوار والتكرار والإنفاق.'],
+    ['social-media-management-fnb', 'marketing-advertising', 'Social Media', 'إدارة السوشال ميديا',
+      'Social media for restaurants and cafés: content, publishing and community.',
+      'السوشال ميديا للمطاعم والمقاهي: المحتوى والنشر والتفاعل مع الجمهور.'],
+    ['advertising-campaigns', 'marketing-advertising', 'Advertising & Campaigns', 'الدعاية والحملات الإعلانية',
+      'Paid campaigns for launches, seasons and new branches, measured against what they returned.',
+      'حملات مدفوعة للافتتاحات والمواسم والفروع الجديدة، تُقاس بما حققته.'],
+
+    ['brand-identity-fnb', 'brand-customer-experience', 'Brand & Concept Positioning', 'العلامة وتموضع المفهوم',
+      'Positioning, identity and the way the concept presents itself.',
+      'التموضع والهوية والطريقة التي يقدّم بها المفهوم نفسه.'],
+    ['menu-design', 'brand-customer-experience', 'Menu Design & Packaging', 'تصميم القائمة والتغليف',
+      'The menu and packaging as the two pieces of design a customer always sees.',
+      'القائمة والتغليف بوصفهما العنصرين اللذين يراهما العميل دائماً.'],
+    ['customer-experience', 'brand-customer-experience', 'Customer Experience', 'تجربة العميل',
+      'The experience across the branch, the app and everything between them.',
+      'التجربة داخل الفرع وعبر التطبيق وكل ما بينهما.'],
+
+    ['fnb-growth', 'growth-expansion', 'F&B Growth', 'نمو مشاريع الأغذية والمشروبات',
+      'Growing an existing F&B business on the levers it actually has.',
+      'تنمية مشروع قائم في الأغذية والمشروبات اعتماداً على الأدوات المتاحة له فعلاً.'],
+    ['branch-development', 'growth-expansion', 'Branch Development', 'تطوير الفروع',
+      'Opening and improving branches without losing what made the first one work.',
+      'افتتاح الفروع وتحسينها دون فقدان ما جعل الفرع الأول ناجحاً.'],
+    ['performance-improvement', 'growth-expansion', 'Performance Improvement', 'تحسين الأداء',
+      'A structured programme against the numbers that are underperforming.',
+      'برنامج منظّم يعالج المؤشرات التي يقل أداؤها عن المطلوب.'],
+  ].map(([slug, group, nameEn, nameAr, summaryEn, summaryAr], index) => ({
+    slug,
+    group,
+    status: 'DRAFT',
+    order: index + 2,
+    nameEn,
+    nameAr,
+    summaryEn,
+    summaryAr,
+    heroDescriptionEn: '',
+    heroDescriptionAr: '',
+    whatWeDoEn: '',
+    whatWeDoAr: '',
+    approachEn: '',
+    approachAr: '',
+    deliverables: [],
+    process: [],
+    faqs: [],
+    intake: intake(
+      `${nameEn} request`,
+      `طلب: ${nameAr}`,
+      'Tell us about the business and what you need, and we will come back to you.',
+      'أخبرنا عن المشروع وما تحتاجه وسنعود إليك.',
+      BASE_QUESTIONS,
+    ),
+    example: null,
+  })),
+];
+
+/* ------------------------------------------------------------------- tools */
+
+/** Real calculators, each one arithmetic a consultant would do by hand. */
+export const FNB_TOOLS = [
+  {
+    slug: 'food-cost-calculator',
+    nameEn: 'Food Cost Calculator',
+    nameAr: 'حاسبة تكلفة الطعام',
+    summaryEn: 'Food cost percentage and gross margin for a single item, from its cost and selling price.',
+    summaryAr: 'نسبة تكلفة الطعام وهامش الربح الإجمالي لصنف واحد، انطلاقاً من تكلفته وسعر بيعه.',
+    featured: true,
+    order: 1,
+    config: {
+      currency: '',
+      inputs: [
+        { key: 'itemCost', labelEn: 'Item cost', labelAr: 'تكلفة الصنف', type: 'number', defaultValue: 12, min: 0, max: null, step: null, unit: '', options: [], helpEn: 'What the item costs you to produce.', helpAr: 'ما يكلفك إنتاج الصنف.' },
+        { key: 'sellingPrice', labelEn: 'Selling price', labelAr: 'سعر البيع', type: 'number', defaultValue: 40, min: 0, max: null, step: null, unit: '', options: [], helpEn: '', helpAr: '' },
+      ],
+      outputs: [
+        { key: 'foodCostPct', labelEn: 'Food cost %', labelAr: 'نسبة تكلفة الطعام', expression: 'sellingPrice > 0 ? itemCost / sellingPrice * 100 : 0', format: 'percent', precision: 1, primary: true, helpEn: '', helpAr: '' },
+        { key: 'grossProfit', labelEn: 'Gross profit per item', labelAr: 'الربح الإجمالي للصنف', expression: 'sellingPrice - itemCost', format: 'currency', precision: 2, primary: false, helpEn: '', helpAr: '' },
+        { key: 'grossMargin', labelEn: 'Gross margin %', labelAr: 'هامش الربح الإجمالي', expression: 'sellingPrice > 0 ? (sellingPrice - itemCost) / sellingPrice * 100 : 0', format: 'percent', precision: 1, primary: false, helpEn: '', helpAr: '' },
+      ],
+      notesEn: 'Food cost percentage is a ratio, not a verdict. A high-cost item that sells well can contribute more money than a low-cost item nobody orders — which is why the menu study looks at contribution alongside popularity.',
+      notesAr: 'نسبة تكلفة الطعام مؤشر لا حكم نهائي. قد يساهم صنف مرتفع التكلفة كثير المبيع بمال أكثر من صنف منخفض التكلفة لا يطلبه أحد — ولهذا تنظر دراسة القائمة إلى المساهمة إلى جانب الإقبال.',
+    },
+  },
+  {
+    slug: 'menu-pricing-calculator',
+    nameEn: 'Menu Pricing Calculator',
+    nameAr: 'حاسبة تسعير القائمة',
+    summaryEn: 'The price an item needs to hit a target food cost percentage, before and after VAT.',
+    summaryAr: 'السعر الذي يحتاجه الصنف لتحقيق نسبة تكلفة طعام مستهدفة، قبل الضريبة وبعدها.',
+    featured: true,
+    order: 2,
+    config: {
+      currency: '',
+      inputs: [
+        { key: 'itemCost', labelEn: 'Item cost', labelAr: 'تكلفة الصنف', type: 'number', defaultValue: 12, min: 0, max: null, step: null, unit: '', options: [], helpEn: '', helpAr: '' },
+        { key: 'targetFoodCost', labelEn: 'Target food cost %', labelAr: 'نسبة تكلفة الطعام المستهدفة', type: 'number', defaultValue: 30, min: 1, max: 95, step: null, unit: '%', options: [], helpEn: '', helpAr: '' },
+        { key: 'vat', labelEn: 'VAT %', labelAr: 'نسبة ضريبة القيمة المضافة', type: 'number', defaultValue: 15, min: 0, max: 50, step: null, unit: '%', options: [], helpEn: '', helpAr: '' },
+      ],
+      outputs: [
+        { key: 'priceExVat', labelEn: 'Price before VAT', labelAr: 'السعر قبل الضريبة', expression: 'targetFoodCost > 0 ? itemCost / (targetFoodCost / 100) : 0', format: 'currency', precision: 2, primary: true, helpEn: '', helpAr: '' },
+        { key: 'priceIncVat', labelEn: 'Price including VAT', labelAr: 'السعر شامل الضريبة', expression: 'priceExVat * (1 + vat / 100)', format: 'currency', precision: 2, primary: false, helpEn: '', helpAr: '' },
+        { key: 'contribution', labelEn: 'Contribution per item', labelAr: 'مساهمة الصنف', expression: 'priceExVat - itemCost', format: 'currency', precision: 2, primary: false, helpEn: '', helpAr: '' },
+      ],
+      notesEn: 'This gives the arithmetic price. What a guest will actually pay is a separate question, and the two are reconciled in the pricing review rather than in a calculator.',
+      notesAr: 'يعطي هذا السعر الحسابي. أما ما سيدفعه الضيف فعلاً فمسألة أخرى، ويُوفَّق بينهما في مراجعة التسعير لا في حاسبة.',
+    },
+  },
+  {
+    slug: 'contribution-margin-calculator',
+    nameEn: 'Contribution Margin Calculator',
+    nameAr: 'حاسبة هامش المساهمة',
+    summaryEn: 'What an item contributes per sale and per month, once its cost is taken out.',
+    summaryAr: 'ما يساهم به الصنف في كل عملية بيع وفي الشهر، بعد خصم تكلفته.',
+    featured: false,
+    order: 3,
+    config: {
+      currency: '',
+      inputs: [
+        { key: 'price', labelEn: 'Selling price', labelAr: 'سعر البيع', type: 'number', defaultValue: 40, min: 0, max: null, step: null, unit: '', options: [], helpEn: '', helpAr: '' },
+        { key: 'cost', labelEn: 'Item cost', labelAr: 'تكلفة الصنف', type: 'number', defaultValue: 12, min: 0, max: null, step: null, unit: '', options: [], helpEn: '', helpAr: '' },
+        { key: 'unitsPerMonth', labelEn: 'Units sold per month', labelAr: 'عدد الوحدات المباعة شهرياً', type: 'number', defaultValue: 300, min: 0, max: null, step: null, unit: '', options: [], helpEn: '', helpAr: '' },
+      ],
+      outputs: [
+        { key: 'contribution', labelEn: 'Contribution per unit', labelAr: 'المساهمة لكل وحدة', expression: 'price - cost', format: 'currency', precision: 2, primary: true, helpEn: '', helpAr: '' },
+        { key: 'monthly', labelEn: 'Monthly contribution', labelAr: 'المساهمة الشهرية', expression: 'contribution * unitsPerMonth', format: 'currency', precision: 0, primary: false, helpEn: '', helpAr: '' },
+        { key: 'marginPct', labelEn: 'Contribution margin %', labelAr: 'نسبة هامش المساهمة', expression: 'price > 0 ? contribution / price * 100 : 0', format: 'percent', precision: 1, primary: false, helpEn: '', helpAr: '' },
+      ],
+      notesEn: 'Monthly contribution is the number that decides whether an item earns its place on the menu — a small margin on a popular item often beats a large margin on a rare one.',
+      notesAr: 'المساهمة الشهرية هي الرقم الذي يحدد ما إذا كان الصنف يستحق مكانه في القائمة — فهامش صغير على صنف رائج يتفوق غالباً على هامش كبير على صنف نادر.',
+    },
+  },
+  {
+    slug: 'discount-impact-calculator',
+    nameEn: 'Discount Impact Calculator',
+    nameAr: 'حاسبة أثر الخصم',
+    summaryEn: 'How much extra volume a discount has to generate before it stops costing you money.',
+    summaryAr: 'كم من الزيادة في الكمية يحتاجها الخصم قبل أن يتوقف عن تكليفك مالاً.',
+    featured: true,
+    order: 4,
+    config: {
+      currency: '',
+      inputs: [
+        { key: 'price', labelEn: 'Normal price', labelAr: 'السعر الاعتيادي', type: 'number', defaultValue: 40, min: 0, max: null, step: null, unit: '', options: [], helpEn: '', helpAr: '' },
+        { key: 'cost', labelEn: 'Item cost', labelAr: 'تكلفة الصنف', type: 'number', defaultValue: 12, min: 0, max: null, step: null, unit: '', options: [], helpEn: '', helpAr: '' },
+        { key: 'discount', labelEn: 'Discount %', labelAr: 'نسبة الخصم', type: 'number', defaultValue: 25, min: 0, max: 90, step: null, unit: '%', options: [], helpEn: '', helpAr: '' },
+      ],
+      outputs: [
+        { key: 'newPrice', labelEn: 'Discounted price', labelAr: 'السعر بعد الخصم', expression: 'price * (1 - discount / 100)', format: 'currency', precision: 2, primary: false, helpEn: '', helpAr: '' },
+        { key: 'newContribution', labelEn: 'Contribution after discount', labelAr: 'المساهمة بعد الخصم', expression: 'newPrice - cost', format: 'currency', precision: 2, primary: false, helpEn: '', helpAr: '' },
+        { key: 'volumeNeeded', labelEn: 'Extra volume needed to break even', labelAr: 'الزيادة المطلوبة في الكمية للتعادل', expression: 'newContribution > 0 ? ((price - cost) / newContribution - 1) * 100 : 0', format: 'percent', precision: 1, primary: true, helpEn: 'Compared with selling the same item at full price.', helpAr: 'مقارنةً ببيع الصنف نفسه بالسعر الكامل.' },
+      ],
+      notesEn: 'When contribution after the discount reaches zero or below, no amount of extra volume recovers it: every additional sale increases the loss.',
+      notesAr: 'حين تصل المساهمة بعد الخصم إلى الصفر أو أقل، لا تعوّضها أي زيادة في الكمية: كل عملية بيع إضافية تزيد الخسارة.',
+    },
+  },
+  {
+    slug: 'delivery-pricing-calculator',
+    nameEn: 'Delivery Pricing Calculator',
+    nameAr: 'حاسبة تسعير التوصيل',
+    summaryEn: 'What is left of a delivery order after commission and packaging, and the price that protects it.',
+    summaryAr: 'ما يتبقى من طلب التوصيل بعد العمولة والتغليف، والسعر الذي يحمي هذا المتبقي.',
+    featured: false,
+    order: 5,
+    config: {
+      currency: '',
+      inputs: [
+        { key: 'price', labelEn: 'Delivery menu price', labelAr: 'سعر قائمة التوصيل', type: 'number', defaultValue: 45, min: 0, max: null, step: null, unit: '', options: [], helpEn: '', helpAr: '' },
+        { key: 'cost', labelEn: 'Item cost', labelAr: 'تكلفة الصنف', type: 'number', defaultValue: 12, min: 0, max: null, step: null, unit: '', options: [], helpEn: '', helpAr: '' },
+        { key: 'packaging', labelEn: 'Packaging cost', labelAr: 'تكلفة التغليف', type: 'number', defaultValue: 3, min: 0, max: null, step: null, unit: '', options: [], helpEn: '', helpAr: '' },
+        { key: 'commission', labelEn: 'Platform commission %', labelAr: 'نسبة عمولة المنصة', type: 'number', defaultValue: 25, min: 0, max: 60, step: null, unit: '%', options: [], helpEn: '', helpAr: '' },
+        { key: 'targetContribution', labelEn: 'Target contribution per order', labelAr: 'المساهمة المستهدفة لكل طلب', type: 'number', defaultValue: 15, min: 0, max: null, step: null, unit: '', options: [], helpEn: '', helpAr: '' },
+      ],
+      outputs: [
+        { key: 'netRevenue', labelEn: 'Net revenue after commission', labelAr: 'صافي الإيراد بعد العمولة', expression: 'price * (1 - commission / 100)', format: 'currency', precision: 2, primary: false, helpEn: '', helpAr: '' },
+        { key: 'contribution', labelEn: 'Contribution per order', labelAr: 'المساهمة لكل طلب', expression: 'netRevenue - cost - packaging', format: 'currency', precision: 2, primary: true, helpEn: '', helpAr: '' },
+        { key: 'requiredPrice', labelEn: 'Price needed for the target', labelAr: 'السعر اللازم لتحقيق المستهدف', expression: 'commission < 100 ? (cost + packaging + targetContribution) / (1 - commission / 100) : 0', format: 'currency', precision: 2, primary: false, helpEn: '', helpAr: '' },
+      ],
+      notesEn: 'Commission applies to the menu price, so a delivery menu priced like the dine-in menu quietly sells at a different margin. This is the arithmetic behind pricing the two separately.',
+      notesAr: 'تُحتسب العمولة على سعر القائمة، لذا فإن تسعير قائمة التوصيل كقائمة داخل الفرع يعني البيع بهامش مختلف دون أن يلاحظ أحد. هذه هي الحسبة وراء تسعير القائمتين بشكل منفصل.',
+    },
+  },
+];
+
+/* ----------------------------------------------------------------- library */
+
+/** Entries are created as drafts: a resource cannot publish without its file. */
+export const FNB_RESOURCES = [
+  ['menu-engineering-template', 'EXCEL', 'Menu Engineering Template', 'قالب هندسة القائمة',
+    'A worksheet that places every item by popularity and contribution, and groups them accordingly.',
+    'ورقة عمل تحدد موقع كل صنف حسب الإقبال والمساهمة وتصنّفها تبعاً لذلك.'],
+  ['menu-pricing-worksheet', 'EXCEL', 'Menu Pricing Worksheet', 'ورقة عمل تسعير القائمة',
+    'Item cost, target food cost and resulting price, item by item.',
+    'تكلفة الصنف ونسبة التكلفة المستهدفة والسعر الناتج، صنفاً بصنف.'],
+  ['food-cost-sheet', 'EXCEL', 'Food Cost Sheet', 'ورقة تكلفة الطعام',
+    'Recipe-level costing for a menu, with yields and unit costs.',
+    'تكلفة على مستوى الوصفة للقائمة، مع الكميات وتكاليف الوحدات.'],
+  ['item-profitability-analysis', 'EXCEL', 'Item Profitability Analysis', 'تحليل ربحية الأصناف',
+    'Contribution per item and per month, ranked.',
+    'المساهمة لكل صنف وشهرياً، مرتبة تنازلياً.'],
+  ['product-mix-analysis', 'EXCEL', 'Product Mix Analysis', 'تحليل مزيج المنتجات',
+    'Category and item share of sales, and how it moves over a period.',
+    'حصة التصنيفات والأصناف من المبيعات وتغيرها عبر فترة.'],
+  ['restaurant-kpi-dashboard', 'EXCEL', 'Restaurant KPI Dashboard', 'لوحة مؤشرات أداء المطعم',
+    'The operating numbers a restaurant should be able to see weekly.',
+    'الأرقام التشغيلية التي ينبغي أن يراها المطعم أسبوعياً.'],
+  ['cafe-kpi-dashboard', 'EXCEL', 'Café KPI Dashboard', 'لوحة مؤشرات أداء المقهى',
+    'The same discipline for a café, with beverage-led measures.',
+    'المنهجية ذاتها للمقهى، مع مؤشرات تناسب المشروبات.'],
+  ['annual-budget-model', 'EXCEL', 'Annual Budget Model', 'نموذج الموازنة السنوية',
+    'A budget structure for an F&B business, by month and by cost line.',
+    'هيكل موازنة لمشروع أغذية ومشروبات، بحسب الشهر وبند التكلفة.'],
+  ['menu-review-checklist', 'PDF', 'Menu Review Checklist', 'قائمة مراجعة القائمة',
+    'What to look at before deciding a menu needs to change.',
+    'ما ينبغي فحصه قبل الحكم بأن القائمة تحتاج إلى تغيير.'],
+  ['menu-engineering-guide', 'GUIDE', 'Menu Engineering Guide', 'دليل هندسة القائمة',
+    'How the method works, and how to read the four groups it produces.',
+    'كيف تعمل المنهجية، وكيف تُقرأ المجموعات الأربع التي تنتجها.'],
+  ['menu-pricing-checklist', 'PDF', 'Menu Pricing Checklist', 'قائمة مراجعة التسعير',
+    'The checks to run before changing a price.',
+    'الفحوصات الواجبة قبل تغيير أي سعر.'],
+  ['restaurant-audit-checklist', 'PDF', 'Restaurant Audit Checklist', 'قائمة تقييم المطعم',
+    'A structured walk through a restaurant operation.',
+    'جولة منظّمة في تشغيل المطعم.'],
+  ['cafe-audit-checklist', 'PDF', 'Café Audit Checklist', 'قائمة تقييم المقهى',
+    'The same walk for a café.', 'الجولة ذاتها للمقهى.'],
+  ['opening-checklist', 'PDF', 'Opening Checklist', 'قائمة مراجعة الافتتاح',
+    'What has to be ready before a new branch opens.',
+    'ما الذي يجب أن يكون جاهزاً قبل افتتاح فرع جديد.'],
+  ['expansion-checklist', 'PDF', 'Expansion Checklist', 'قائمة مراجعة التوسع',
+    'What has to be true before opening the next branch.',
+    'ما الذي يجب أن يتحقق قبل افتتاح الفرع التالي.'],
+  ['menu-development-brief', 'WORD', 'Menu Development Brief', 'موجز تطوير القائمة',
+    'A brief template for a menu development project.',
+    'قالب موجز لمشروع تطوير قائمة.'],
+  ['marketing-plan-template', 'WORD', 'Marketing Plan Template', 'قالب الخطة التسويقية',
+    'A marketing plan structure for an F&B business.',
+    'هيكل خطة تسويقية لمشروع أغذية ومشروبات.'],
+  ['campaign-brief-template', 'WORD', 'Campaign Brief', 'موجز الحملة',
+    'A brief template for a campaign, launch or seasonal push.',
+    'قالب موجز لحملة أو افتتاح أو نشاط موسمي.'],
+];
+
+/* ------------------------------------------------- knowledge architecture */
+
+export const INSIGHT_CATEGORIES = [
+  ['fnb-management', 'F&B Management', 'إدارة الأغذية والمشروبات'],
+  ['restaurant-management', 'Restaurant Management', 'إدارة المطاعم'],
+  ['cafe-management', 'Café Management', 'إدارة المقاهي'],
+  ['operations', 'Operations', 'التشغيل'],
+  ['finance-profitability', 'Finance & Profitability', 'المالية والربحية'],
+  ['food-cost', 'Food Cost', 'تكلفة الطعام'],
+  ['menu-engineering', 'Menu Engineering', 'هندسة القائمة'],
+  ['menu-pricing', 'Menu Pricing', 'تسعير القائمة'],
+  ['purchasing-inventory', 'Purchasing & Inventory', 'المشتريات والمخزون'],
+  ['marketing-advertising', 'Marketing & Advertising', 'التسويق والإعلان'],
+  ['social-media', 'Social Media', 'السوشال ميديا'],
+  ['customer-experience', 'Customer Experience', 'تجربة العميل'],
+  ['branding', 'Branding', 'العلامة التجارية'],
+  ['development-new-concepts', 'Development & New Concepts', 'التطوير والمفاهيم الجديدة'],
+  ['expansion-growth', 'Expansion & Growth', 'التوسع والنمو'],
+];
+
+/* ------------------------------------------------------------- start here */
+
+export const START_HERE_PATHS_FNB = [
+  ['I am opening a new F&B project', 'أؤسس مشروعاً جديداً', 'Concept, feasibility and development.', 'المفهوم ودراسة الجدوى والتطوير', '/services/new-restaurant-project'],
+  ['I want my existing business assessed', 'أريد تقييم مشروعي الحالي', 'A comprehensive F&B audit.', 'تقييم شامل للمشروع', '/services/fnb-audit'],
+  ['I want to improve profitability', 'أريد تحسين الربحية', 'Where the money is made and lost.', 'أين يُكسب المال ويُخسر', '/services/profitability-analysis'],
+  ['I want to reduce costs', 'أريد خفض التكاليف', 'Cost reduction without cutting what customers pay for.', 'خفض التكاليف دون المساس بما يدفع العملاء مقابله', '/services/cost-reduction'],
+  ['I want to improve operations', 'أريد تطوير التشغيل', 'An operational audit of how the business runs.', 'تقييم تشغيلي لطريقة عمل المشروع', '/services/operational-audit'],
+  ['I want my menu studied and developed', 'أريد دراسة وتطوير القائمة', 'Menu strategy, engineering and pricing.', 'دراسة وهندسة وتسعير القائمة', '/services/menu-strategy-engineering-pricing'],
+  ['I want to review my prices', 'أريد مراجعة الأسعار', 'Pricing against cost, contribution and positioning.', 'التسعير مقابل التكلفة والمساهمة والتموضع', '/services/menu-pricing'],
+  ['I want better marketing', 'أريد تحسين التسويق', 'F&B marketing built on the numbers.', 'تسويق مبني على الأرقام', '/services/fnb-marketing'],
+  ['I want advertising and campaigns', 'أريد الدعاية والإعلان', 'Paid campaigns, measured.', 'حملات مدفوعة تُقاس نتائجها', '/services/advertising-campaigns'],
+  ['I want social media managed', 'أريد إدارة السوشال ميديا', 'Content, publishing and community.', 'المحتوى والنشر والتفاعل', '/services/social-media-management-fnb'],
+  ['I want to develop the brand and experience', 'أريد تطوير العلامة والتجربة', 'Positioning, identity and customer experience.', 'التموضع والهوية وتجربة العميل', '/services/brand-identity-fnb'],
+  ['I want to expand', 'أريد التوسع', 'Expansion readiness and branch development.', 'الجاهزية للتوسع وتطوير الفروع', '/services/expansion-study'],
+  ['I have a café I want to develop', 'أملك مقهى وأريد تطويره', 'Café consulting and development.', 'استشارات وتطوير المقاهي', '/services/cafe-consulting'],
+  ['I am not sure yet', 'لست متأكداً', 'Start with a conversation and we will point you at the right service.', 'ابدأ بمحادثة وسنوجهك إلى الخدمة المناسبة', '/start-a-project'],
+].map(([titleEn, titleAr, bodyEn, bodyAr, href]) => ({
+  titleEn, titleAr, bodyEn, bodyAr, href,
+  labelEn: 'Continue', labelAr: 'متابعة',
+}));

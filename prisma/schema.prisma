@@ -212,6 +212,10 @@ model Service {
   benefits     Json @default("[]")
   faqs         Json @default("[]")
 
+  /// Service-specific intake questions, asked when a visitor requests this
+  /// service. Shape: { questions: IntakeQuestion[] } — see lib/intake.ts.
+  intake Json @default("{}")
+
   featuredImage String?
   gallery       Json    @default("[]")
 
@@ -498,6 +502,13 @@ model ProjectInquiry {
 
   services Json @default("[]")
   goals    Json @default("[]")
+
+  /// The service this request came through, when it started from a service
+  /// page rather than the general Start a Project flow.
+  serviceId   String?
+  serviceSlug String  @default("")
+  /// Answers to that service's intake questions: [{ key, label, value }].
+  answers     Json    @default("[]")
 
   description String @default("")
   budget      String @default("")
