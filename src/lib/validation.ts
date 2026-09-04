@@ -17,6 +17,18 @@ export const inquirySchema = z.object({
   whatsapp: trimmed(40).default(''),
   preferredContact: z.enum(['email', 'phone', 'whatsapp']).default('email'),
   locale: z.enum(['en', 'ar']).default('en'),
+  /** Set when the request came from a service page's own questionnaire. */
+  serviceSlug: trimmed(120).default(''),
+  answers: z
+    .array(
+      z.object({
+        key: trimmed(40),
+        label: trimmed(300),
+        value: trimmed(2000),
+      }),
+    )
+    .max(40)
+    .default([]),
   /** Honeypot: real visitors never fill this in. */
   company_website: z.string().max(0).optional().or(z.literal('')),
 });

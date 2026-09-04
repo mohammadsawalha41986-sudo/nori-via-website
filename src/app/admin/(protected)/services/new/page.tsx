@@ -2,6 +2,7 @@ import { prisma } from '@/lib/db';
 import { ServiceForm } from '@/components/admin/ServiceForm';
 import { PageHeader, LinkButton } from '@/components/admin/ui';
 import { getRelationOptions } from '@/lib/relation-options';
+import { EMPTY_INTAKE } from '@/lib/intake';
 
 export const metadata = { title: 'New service' };
 export const dynamic = 'force-dynamic';
@@ -17,6 +18,7 @@ export default async function NewServicePage() {
     <>
       <PageHeader title="New service" action={<LinkButton href="/admin/services" variant="secondary">Back</LinkButton>} />
       <ServiceForm
+        intake={EMPTY_INTAKE}
         relationOptions={relationOptions}
         selectedRelations={[]}
         categories={categories}

@@ -13,14 +13,18 @@ import {
   MAX_UPLOAD_BYTES,
   MAX_FILES_PER_INQUIRY,
   IMAGE_MIME,
-  DOC_MIME,
+  RESOURCE_MIME,
 } from '@/lib/storage';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
-/** Only these types may be attached to an inquiry. Never executables. */
-const ALLOWED = [...IMAGE_MIME, ...DOC_MIME] as readonly string[];
+/**
+ * Only these types may be attached to an inquiry. Never executables.
+ * A menu, a POS export or a cost sheet arrives as a PDF, a spreadsheet or a
+ * photograph, so all three families are accepted — sniffed from the bytes.
+ */
+const ALLOWED = [...IMAGE_MIME, ...RESOURCE_MIME] as readonly string[];
 
 export async function POST(req: Request) {
   const ip = clientIp(req);
@@ -72,9 +76,11 @@ export async function POST(req: Request) {
     const sniffed = sniffMime(buffer);
 
     // The declared type and the actual bytes must agree, and both must be allowed.
-    if (!sniffed || !ALLOWED.includes(sniffed) || (file.type && sniffed !== file.type)) {
+    if (!sniffed || !ALLOWED.includes(sniffed)) {
       return NextResponse.json(
-        { error: `"${safeDisplayName(file.name)}" is not an accepted file type. Use JPG, PNG, WEBP or PDF.` },
+        {
+          error: `"${safeDisplayName(file.name)}" is not an accepted file type. Use JPG, PNG, WEBP, PDF, Word or Excel.`,
+        },
         { status: 422 },
       );
     }
@@ -97,6 +103,11 @@ export async function POST(req: Request) {
       social: data.social,
       services: data.services,
       goals: data.goals,
+      serviceSlug: data.serviceSlug,
+      serviceId: data.serviceSlug
+        ? (await prisma.service.findUnique({ where: { slug: data.serviceSlug }, select: { id: true } }))?.id ?? null
+        : null,
+      answers: data.answers,
       description: data.description,
       budget: data.budget,
       timeline: data.timeline,

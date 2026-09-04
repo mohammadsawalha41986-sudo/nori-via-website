@@ -21,6 +21,15 @@
  *                                             from ADMIN_EMAIL/ADMIN_PASSWORD
  */
 import { PrismaClient } from '@prisma/client';
+import {
+  POSITIONING,
+  SERVICE_GROUPS,
+  FNB_SERVICES,
+  FNB_TOOLS,
+  FNB_RESOURCES,
+  INSIGHT_CATEGORIES as FNB_INSIGHT_CATEGORIES,
+  START_HERE_PATHS_FNB,
+} from './fnb-content.mjs';
 import bcrypt from 'bcryptjs';
 import { statSync } from 'node:fs';
 import path from 'node:path';
@@ -684,6 +693,249 @@ function missingFields(row, fill) {
   return patch;
 }
 
+
+/* --------------------------------------------------- Food & Beverage ----
+ * Positioning, the service catalogue, the menu tools and the library entries.
+ *
+ * Singleton copy is only rewritten while it still holds a value this
+ * repository shipped, so anything edited in Admin is never overwritten. Rows
+ * are created only when absent. Nothing here is published on the client's
+ * behalf except the menu service and the calculators, which are complete.
+ */
+
+/** Values previous versions of this script wrote, plus the empty string. */
+const SHIPPED_DEFAULTS = new Set([
+  '',
+  'Restaurant · Creative · Growth',
+  'مطاعم · إبداع · نمو',
+  'Noriva — Brand, Digital & Growth Studio',
+  'نوريفا — استوديو العلامة والرقمنة والنمو',
+  'A brand, digital and growth studio working across identity, product and content.',
+  'استوديو للعلامة والرقمنة والنمو، يعمل عبر الهوية والمنتج والمحتوى.',
+  'Noriva is a brand, digital and growth studio. We build identity systems, digital products and content programmes for businesses that need to be understood quickly and remembered afterwards.',
+  'نوريفا استوديو للعلامة والرقمنة والنمو. نبني أنظمة الهوية والمنتجات الرقمية وبرامج المحتوى للأعمال التي تحتاج أن تُفهم بسرعة وأن تُذكر بعدها.',
+  'Noriva builds identity systems, digital products and content programmes for businesses that need to be understood quickly and remembered afterwards.',
+  'WE MAKE RESTAURANTS\nIMPOSSIBLE TO IGNORE.',
+  // The generic studio hero this script shipped before the F&B positioning.
+  'Brand · Digital · Growth',
+  'علامة · رقمنة · نمو',
+  'WORK WORTH\nREMEMBERING.',
+  'أعمال\nتستحق أن تُذكر.',
+  'We build brands, digital products and content programmes that make a business understood quickly — and remembered afterwards.',
+  'نبني العلامات والمنتجات الرقمية وبرامج المحتوى التي تجعل العمل مفهوماً بسرعة، ومذكوراً بعدها.',
+  'Start a conversation',
+  'ابدأ محادثة',
+  'See our work',
+  'شاهد أعمالنا',
+  'Most businesses are not misunderstood because they lack a logo. They are misunderstood because nobody decided what they stand for, and then held every decision to it.',
+  'معظم الأعمال لا يُساء فهمها لنقص في الشعار، بل لأن أحداً لم يحسم ما تمثّله، ثم يُخضع كل قرار لذلك.',
+  // The restaurant-era hero and tagline shipped in prisma/seed.ts.
+  'Restaurant Marketing · Creative · Advertising · Growth',
+  'تسويق المطاعم · إبداع · إعلانات · نمو',
+  'WE MAKE RESTAURANTS\nIMPOSSIBLE TO IGNORE.',
+  'نجعل المطاعم\nمستحيلة التجاهل.',
+  'We build the attention that turns a brand, an experience and a venue into growth.',
+  'نبني الانتباه الذي يحوّل العلامة والتجربة والنشاط إلى نمو.',
+  'Start a Project',
+  'ابدأ مشروعك',
+  'Explore Our Work',
+  'استعرض أعمالنا',
+]);
+
+/** Rewrites a field only when it still carries shipped copy. */
+function repositionable(row, fill) {
+  const patch = {};
+  for (const [key, value] of Object.entries(fill)) {
+    const current = row?.[key];
+    if (typeof current !== 'string') continue;
+    if (current === value) continue;
+    if (SHIPPED_DEFAULTS.has(current.trim())) patch[key] = value;
+  }
+  return patch;
+}
+
+async function applyFoodAndBeverage() {
+  const settingsRow = await prisma.siteSettings.findUnique({ where: { id: 'singleton' } });
+  const settingsPatch = repositionable(settingsRow, POSITIONING.settings);
+  if (Object.keys(settingsPatch).length && !REPORT_ONLY) {
+    await prisma.siteSettings.update({ where: { id: 'singleton' }, data: settingsPatch });
+    note(`positioning:settings(${Object.keys(settingsPatch).length})`);
+  }
+
+  const homeRow = await prisma.homepageContent.findUnique({ where: { id: 'singleton' } });
+  const homePatch = repositionable(homeRow, POSITIONING.homepage);
+  if (Object.keys(homePatch).length && !REPORT_ONLY) {
+    await prisma.homepageContent.update({ where: { id: 'singleton' }, data: homePatch });
+    note(`positioning:homepage(${Object.keys(homePatch).length})`);
+  }
+
+  if (REPORT_ONLY) return;
+
+  /* Service groups */
+  const groupIdBySlug = {};
+  for (const group of SERVICE_GROUPS) {
+    const row = await prisma.serviceCategory.upsert({
+      where: { slug: group.slug },
+      update: {},
+      create: { slug: group.slug, nameEn: group.nameEn, nameAr: group.nameAr, order: group.order },
+    });
+    groupIdBySlug[group.slug] = row.id;
+  }
+
+  /* Services */
+  for (const service of FNB_SERVICES) {
+    const existing = await prisma.service.findUnique({ where: { slug: service.slug } });
+    if (existing) continue;
+
+    await prisma.service.create({
+      data: {
+        slug: service.slug,
+        nameEn: service.nameEn,
+        nameAr: service.nameAr,
+        categoryId: groupIdBySlug[service.group] ?? null,
+        summaryEn: service.summaryEn,
+        summaryAr: service.summaryAr,
+        heroHeadlineEn: service.nameEn,
+        heroHeadlineAr: service.nameAr,
+        heroDescriptionEn: service.heroDescriptionEn,
+        heroDescriptionAr: service.heroDescriptionAr,
+        whatWeDoEn: service.whatWeDoEn,
+        whatWeDoAr: service.whatWeDoAr,
+        approachEn: service.approachEn,
+        approachAr: service.approachAr,
+        deliverables: service.deliverables.map(([en, ar]) => ({ labelEn: en, labelAr: ar })),
+        process: service.process.map(([titleEn, titleAr, bodyEn, bodyAr]) => ({ titleEn, titleAr, bodyEn, bodyAr })),
+        faqs: service.faqs.map(([questionEn, questionAr, answerEn, answerAr]) => ({
+          questionEn, questionAr, answerEn, answerAr,
+        })),
+        intake: service.intake,
+        seoDescriptionEn: service.summaryEn,
+        seoDescriptionAr: service.summaryAr,
+        status: service.status,
+        order: service.order,
+      },
+    });
+    note(`service:${service.slug}${service.status === 'DRAFT' ? ' (draft)' : ''}`);
+  }
+
+  /* The menu service carries an illustrative example on its page. */
+  const menu = FNB_SERVICES.find((s) => s.example);
+  if (menu) {
+    const page = await prisma.page.findUnique({ where: { key: 'menu-example' } });
+    if (!page) {
+      await prisma.page.create({
+        data: {
+          key: 'menu-example',
+          titleEn: menu.example.titleEn,
+          titleAr: menu.example.titleAr,
+          bodyEn: menu.example.bodyEn,
+          bodyAr: menu.example.bodyAr,
+          noindex: true,
+          content: {},
+        },
+      });
+      note('page:menu-example');
+    }
+  }
+
+  /* Tools — complete calculators, so they ship published. */
+  for (const tool of FNB_TOOLS) {
+    const existing = await prisma.tool.findUnique({ where: { slug: tool.slug } });
+    if (existing) continue;
+    await prisma.tool.create({
+      data: {
+        slug: tool.slug,
+        nameEn: tool.nameEn,
+        nameAr: tool.nameAr,
+        summaryEn: tool.summaryEn,
+        summaryAr: tool.summaryAr,
+        seoDescriptionEn: tool.summaryEn,
+        seoDescriptionAr: tool.summaryAr,
+        config: tool.config,
+        featured: tool.featured,
+        status: 'PUBLISHED',
+        order: tool.order,
+      },
+    });
+    note(`tool:${tool.slug}`);
+  }
+
+  /* Library categories and entries. Entries stay draft until a file is added. */
+  const libraryGroups = [
+    ['menu', 'Menu', 'القائمة', 1],
+    ['finance', 'Finance & Profitability', 'المالية والربحية', 2],
+    ['operations', 'Operations', 'التشغيل', 3],
+    ['marketing', 'Marketing', 'التسويق', 4],
+  ];
+  const resourceCatBySlug = {};
+  for (const [slug, nameEn, nameAr, order] of libraryGroups) {
+    const row = await prisma.resourceCategory.upsert({
+      where: { slug },
+      update: {},
+      create: { slug, nameEn, nameAr, order },
+    });
+    resourceCatBySlug[slug] = row.id;
+  }
+
+  const categoryForResource = (slug) => {
+    if (slug.includes('menu') || slug.includes('food-cost') || slug.includes('product-mix') || slug.includes('item-profitability')) return 'menu';
+    if (slug.includes('budget') || slug.includes('kpi')) return 'finance';
+    if (slug.includes('marketing') || slug.includes('campaign')) return 'marketing';
+    return 'operations';
+  };
+
+  for (const [slug, type, titleEn, titleAr, summaryEn, summaryAr] of FNB_RESOURCES) {
+    const existing = await prisma.resource.findUnique({ where: { slug } });
+    if (existing) continue;
+    await prisma.resource.create({
+      data: {
+        slug,
+        type,
+        titleEn,
+        titleAr,
+        summaryEn,
+        summaryAr,
+        seoDescriptionEn: summaryEn,
+        seoDescriptionAr: summaryAr,
+        categoryId: resourceCatBySlug[categoryForResource(slug)] ?? null,
+        /* Draft by design: a resource cannot be published until its file is
+           uploaded in Admin, so the Library never offers a dead download. */
+        status: 'DRAFT',
+      },
+    });
+    note(`resource:${slug} (draft, awaiting file)`);
+  }
+
+  /* Knowledge-centre categories */
+  for (const [slug, nameEn, nameAr] of FNB_INSIGHT_CATEGORIES) {
+    const existing = await prisma.insightCategory.findUnique({ where: { slug } });
+    if (existing) continue;
+    await prisma.insightCategory.create({ data: { slug, nameEn, nameAr } });
+    note(`insight-category:${slug}`);
+  }
+
+  /* Start Here: replace the generic router with the F&B one, but only while it
+     still holds the cards this repository shipped. */
+  const startHere = await prisma.page.findUnique({ where: { key: 'start-here' } });
+  if (startHere) {
+    const paths = Array.isArray(startHere.content?.paths) ? startHere.content.paths : [];
+    const untouched = paths.length === 0 || paths.every((p) => SHIPPED_START_HERE.has(p?.href));
+    if (untouched) {
+      const same = JSON.stringify(paths) === JSON.stringify(START_HERE_PATHS_FNB);
+      if (!same) {
+        await prisma.page.update({
+          where: { key: 'start-here' },
+          data: { content: { ...(startHere.content ?? {}), paths: START_HERE_PATHS_FNB } },
+        });
+        note('start-here:F&B routing');
+      }
+    }
+  }
+}
+
+/** The hrefs the generic Start Here shipped with. */
+const SHIPPED_START_HERE = new Set(['/services', '/work', '/tools', '/library', '/insights', '/start-a-project']);
+
 async function main() {
   const counts = {
     services: await prisma.service.count(),
@@ -696,6 +948,7 @@ async function main() {
     statistics: await prisma.statistic.count(),
     testimonials: await prisma.testimonial.count(),
   };
+
   console.log('[ensure-content] existing rows:', JSON.stringify(counts));
 
   if (REPORT_ONLY) {
@@ -955,6 +1208,10 @@ async function main() {
       note(`adminUser:${email.toLowerCase()}`);
     }
   }
+
+  // Runs last, so the F&B positioning writes over content this script has
+  // just created rather than racing it.
+  await applyFoodAndBeverage();
 
   console.log(
     created.length

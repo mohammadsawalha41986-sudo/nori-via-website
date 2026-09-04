@@ -5,6 +5,7 @@ import { PageHeader, LinkButton, Card } from '@/components/admin/ui';
 import { stringifyPairs, stringifyBlocks, stringifyFaqs, stringifyUrlList } from '@/server/helpers';
 import { getRelationOptions } from '@/lib/relation-options';
 import { getOutgoingRefs, serialiseRef } from '@/lib/relations';
+import { parseIntake } from '@/lib/intake';
 
 export const dynamic = 'force-dynamic';
 
@@ -40,6 +41,7 @@ export default async function EditServicePage({ params }: { params: Promise<{ id
       />
 
       <ServiceForm
+        intake={parseIntake(service.intake)}
         relationOptions={relationOptions}
         selectedRelations={refs.map(serialiseRef)}
         categories={categories}

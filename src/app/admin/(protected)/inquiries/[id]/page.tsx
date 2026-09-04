@@ -4,6 +4,7 @@ import { PageHeader, Card, Badge, LinkButton, inputClass } from '@/components/ad
 import { SubmitButton } from '@/components/admin/SubmitButton';
 import { updateInquiry, deleteInquiry } from '@/server/actions';
 import { asStringList } from '@/lib/content';
+import { asAnswers } from '@/lib/intake';
 
 export const dynamic = 'force-dynamic';
 
@@ -26,6 +27,9 @@ export default async function InquiryDetail({ params }: { params: Promise<{ id: 
 
   const services = asStringList(inquiry.services);
   const goals = asStringList(inquiry.goals);
+  // Answers to the service's own intake questions, when the request came
+  // through a service page rather than the general flow.
+  const answers = asAnswers(inquiry.answers);
 
   return (
     <>
@@ -44,12 +48,30 @@ export default async function InquiryDetail({ params }: { params: Promise<{ id: 
               <Row label="Website">{inquiry.website}</Row>
               <Row label="Social">{inquiry.social}</Row>
               <Row label="Services">{services.join(', ')}</Row>
+              {inquiry.serviceSlug && <Row label="Requested service">{inquiry.serviceSlug}</Row>}
               <Row label="Goals">{goals.join(', ')}</Row>
               <Row label="Budget">{inquiry.budget}</Row>
               <Row label="Timeline">{inquiry.timeline}</Row>
               <Row label="Description">{inquiry.description}</Row>
             </dl>
           </Card>
+
+          {answers.length > 0 && (
+            <Card
+              title="Service brief"
+              description="Answers to this service's intake questions, as submitted."
+              className="mb-5"
+            >
+              <dl className="divide-y divide-slate-100">
+                {answers.map((answer) => (
+                  <div key={answer.key} className="grid gap-1 py-3 sm:grid-cols-[14rem_1fr] sm:gap-4">
+                    <dt className="text-xs font-medium text-slate-500">{answer.label || answer.key}</dt>
+                    <dd className="whitespace-pre-wrap text-sm text-slate-900">{answer.value}</dd>
+                  </div>
+                ))}
+              </dl>
+            </Card>
+          )}
 
           <Card title="Contact">
             <dl>
