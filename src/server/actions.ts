@@ -7,6 +7,7 @@ import { prisma } from '@/lib/db';
 import { locales } from '@/lib/i18n';
 import { requireUser } from '@/lib/auth';
 import { deleteStoredFile } from '@/lib/storage';
+import { deleteContentLinksFor, setContentLinks, parseRef } from '@/lib/relations';
 import {
   serviceSchema,
   projectSchema,
@@ -63,6 +64,14 @@ function fail(error: string): ActionState {
 
 async function guard() {
   await requireUser();
+}
+
+/** Reads the related-content picker's selection off a submitted form. */
+function relatedRefs(formData: FormData) {
+  return formData
+    .getAll('related[]')
+    .map((value) => parseRef(String(value)))
+    .filter((ref): ref is NonNullable<ReturnType<typeof parseRef>> => ref !== null);
 }
 
 // ---------------------------------------------------------------- settings
@@ -153,6 +162,8 @@ export async function saveService(_prev: ActionState, formData: FormData): Promi
     ? await prisma.service.update({ where: { id }, data })
     : await prisma.service.create({ data });
 
+  await setContentLinks('SERVICE', saved.id, relatedRefs(formData));
+
   revalidatePublic('/services', `/services/${saved.slug}`);
   revalidatePath('/admin/services');
   if (!id) redirect(`/admin/services/${saved.id}`);
@@ -162,7 +173,10 @@ export async function saveService(_prev: ActionState, formData: FormData): Promi
 export async function deleteService(formData: FormData) {
   await guard();
   const id = String(formData.get('id') ?? '');
-  if (id) await prisma.service.delete({ where: { id } });
+  if (id) {
+    await prisma.service.delete({ where: { id } });
+    await deleteContentLinksFor('SERVICE', id);
+  }
   revalidatePublic('/services');
   revalidatePath('/admin/services');
   redirect('/admin/services');
@@ -217,6 +231,8 @@ export async function saveProject(_prev: ActionState, formData: FormData): Promi
     ? await prisma.project.update({ where: { id }, data })
     : await prisma.project.create({ data });
 
+  await setContentLinks('PROJECT', saved.id, relatedRefs(formData));
+
   await prisma.projectService.deleteMany({ where: { projectId: saved.id } });
   if (serviceIds.length) {
     await prisma.projectService.createMany({
@@ -234,7 +250,10 @@ export async function saveProject(_prev: ActionState, formData: FormData): Promi
 export async function deleteProject(formData: FormData) {
   await guard();
   const id = String(formData.get('id') ?? '');
-  if (id) await prisma.project.delete({ where: { id } });
+  if (id) {
+    await prisma.project.delete({ where: { id } });
+    await deleteContentLinksFor('PROJECT', id);
+  }
   revalidatePublic('/work');
   revalidatePath('/admin/work');
   redirect('/admin/work');
@@ -294,6 +313,8 @@ export async function saveCaseStudy(_prev: ActionState, formData: FormData): Pro
     ? await prisma.caseStudy.update({ where: { id }, data })
     : await prisma.caseStudy.create({ data });
 
+  await setContentLinks('CASE_STUDY', saved.id, relatedRefs(formData));
+
   await prisma.caseStudyService.deleteMany({ where: { caseStudyId: saved.id } });
   if (serviceIds.length) {
     await prisma.caseStudyService.createMany({
@@ -311,7 +332,10 @@ export async function saveCaseStudy(_prev: ActionState, formData: FormData): Pro
 export async function deleteCaseStudy(formData: FormData) {
   await guard();
   const id = String(formData.get('id') ?? '');
-  if (id) await prisma.caseStudy.delete({ where: { id } });
+  if (id) {
+    await prisma.caseStudy.delete({ where: { id } });
+    await deleteContentLinksFor('CASE_STUDY', id);
+  }
   revalidatePublic('/work');
   revalidatePath('/admin/case-studies');
   redirect('/admin/case-studies');
@@ -369,6 +393,8 @@ export async function saveInsight(_prev: ActionState, formData: FormData): Promi
     ? await prisma.insight.update({ where: { id }, data })
     : await prisma.insight.create({ data });
 
+  await setContentLinks('INSIGHT', saved.id, relatedRefs(formData));
+
   revalidatePublic('/insights', `/insights/${saved.slug}`);
   revalidatePath('/admin/insights');
   if (!id) redirect(`/admin/insights/${saved.id}`);
@@ -378,7 +404,11 @@ export async function saveInsight(_prev: ActionState, formData: FormData): Promi
 export async function deleteInsight(formData: FormData) {
   await guard();
   const id = String(formData.get('id') ?? '');
-  if (id) await prisma.insight.delete({ where: { id } });
+  if (id) {
+    await prisma.insight.delete({ where: { id } });
+    // Content links are polymorphic, so they carry no cascade of their own.
+    await deleteContentLinksFor('INSIGHT', id);
+  }
   revalidatePublic('/insights');
   revalidatePath('/admin/insights');
   redirect('/admin/insights');
@@ -548,7 +578,7 @@ export async function deleteSystemStage(formData: FormData) {
 
 // -------------------------------------------------------------- taxonomies
 
-type TaxonomyKind = 'service' | 'work' | 'insight';
+type TaxonomyKind = 'service' | 'work' | 'insight' | 'resource';
 
 export async function saveTaxonomy(_prev: ActionState, formData: FormData): Promise<ActionState> {
   await guard();
@@ -570,11 +600,15 @@ export async function saveTaxonomy(_prev: ActionState, formData: FormData): Prom
   } else if (kind === 'insight') {
     if (id) await prisma.insightCategory.update({ where: { id }, data: common });
     else await prisma.insightCategory.create({ data: common });
+  } else if (kind === 'resource') {
+    const data = { ...common, descriptionEn, descriptionAr };
+    if (id) await prisma.resourceCategory.update({ where: { id }, data });
+    else await prisma.resourceCategory.create({ data });
   } else {
     return fail('Unknown category type.');
   }
 
-  revalidatePublic('/services', '/work', '/insights');
+  revalidatePublic('/services', '/work', '/insights', '/library');
   revalidatePath('/admin/taxonomies');
   return { ok: true };
 }
@@ -589,8 +623,9 @@ export async function deleteTaxonomy(formData: FormData) {
   if (kind === 'service') await prisma.serviceCategory.delete({ where: { id } });
   else if (kind === 'work') await prisma.workCategory.delete({ where: { id } });
   else if (kind === 'insight') await prisma.insightCategory.delete({ where: { id } });
+  else if (kind === 'resource') await prisma.resourceCategory.delete({ where: { id } });
 
-  revalidatePublic('/services', '/work', '/insights');
+  revalidatePublic('/services', '/work', '/insights', '/library');
   revalidatePath('/admin/taxonomies');
 }
 

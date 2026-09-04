@@ -7,6 +7,9 @@ import { TextLink } from '@/components/ui/Button';
 import { getDictionary } from '@/lib/dictionary';
 import { isLocale, pick, formatDate, type Locale } from '@/lib/i18n';
 import { getInsightBySlug, asStringList } from '@/lib/content';
+import { getRelatedContent } from '@/lib/relations';
+import { getSessionUser } from '@/lib/auth';
+import { RelatedContent } from '@/components/public/RelatedContent';
 import { buildMetadata, JsonLd, breadcrumbs } from '@/lib/seo';
 import { env } from '@/lib/env';
 
@@ -39,20 +42,36 @@ export async function generateMetadata({
   });
 }
 
-export default async function InsightPage({ params }: { params: Promise<{ locale: string; slug: string }> }) {
+export default async function InsightPage({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ locale: string; slug: string }>;
+  searchParams: Promise<{ preview?: string }>;
+}) {
   const { locale: raw, slug } = await params;
   if (!isLocale(raw)) notFound();
   const locale = raw as Locale;
   const dict = getDictionary(locale);
 
-  const article = await getInsightBySlug(slug);
+  // Drafts are readable only by a signed-in admin following a preview link.
+  const { preview } = await searchParams;
+  const isPreview = preview === '1' && Boolean(await getSessionUser());
+
+  const article = await getInsightBySlug(slug, isPreview);
   if (!article) notFound();
+
+  const related = await getRelatedContent('INSIGHT', article.id, locale);
 
   const title = pick(article, 'title', locale);
   const tags = asStringList(article.tags);
 
   return (
     <>
+      {isPreview && article.status !== 'PUBLISHED' && (
+        <p className="bg-amber-400 px-4 py-2 text-center text-sm font-semibold text-ink-900">{dict.draft.badge}</p>
+      )}
+
       <JsonLd
         data={{
           '@context': 'https://schema.org',
@@ -132,6 +151,8 @@ export default async function InsightPage({ params }: { params: Promise<{ locale
           </div>
         </div>
       </article>
+
+      <RelatedContent items={related} title={dict.related.title} eyebrow={dict.nav.insights} />
 
       <CTASection headline={dict.nav.start} label={dict.nav.start} href={`/${locale}/start-a-project`} />
     </>

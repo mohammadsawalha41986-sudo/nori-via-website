@@ -2,6 +2,7 @@
 
 import { AdminForm } from './AdminForm';
 import { MediaField } from './MediaField';
+import { RelationPicker, type RelationOption } from './RelationPicker';
 import { SubmitButton } from './SubmitButton';
 import { Card, Field, Grid, inputClass } from './ui';
 import { saveInsight, deleteInsight } from '@/server/actions';
@@ -26,9 +27,13 @@ export type InsightFormValues = {
 export function InsightForm({
   values,
   categories,
+  relationOptions,
+  selectedRelations,
 }: {
   values: InsightFormValues;
   categories: { id: string; nameEn: string }[];
+  relationOptions: RelationOption[];
+  selectedRelations: string[];
 }) {
   return (
     <AdminForm action={saveInsight} className="space-y-5">
@@ -80,6 +85,13 @@ export function InsightForm({
             <Field label="Body (AR)" htmlFor="contentAr" className="mt-4">
               <textarea id="contentAr" name="contentAr" rows={16} defaultValue={values.contentAr} dir="rtl" className={inputClass} />
             </Field>
+          </Card>
+
+          <Card
+            title="Related content"
+            description="Attach tools, resources, solutions, work and other articles. They appear on the article, and it appears on them."
+          >
+            <RelationPicker options={relationOptions} selected={selectedRelations} />
           </Card>
 
           <Card title="Media & SEO">

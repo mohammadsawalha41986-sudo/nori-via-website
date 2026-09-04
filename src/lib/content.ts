@@ -110,8 +110,11 @@ export const getPublishedInsights = cache(async () =>
   }),
 );
 
-export const getInsightBySlug = cache(async (slug: string) =>
-  prisma.insight.findFirst({ where: { slug, status: 'PUBLISHED' }, include: { category: true } }),
+export const getInsightBySlug = cache(async (slug: string, includeDrafts = false) =>
+  prisma.insight.findFirst({
+    where: { slug, ...(includeDrafts ? {} : { status: 'PUBLISHED' as const }) },
+    include: { category: true },
+  }),
 );
 
 export const getInsightCategories = cache(async () =>
@@ -134,3 +137,52 @@ export type FaqItem = { questionEn?: string; questionAr?: string; answerEn?: str
 export type ProcessItem = { titleEn?: string; titleAr?: string; bodyEn?: string; bodyAr?: string };
 export type GalleryItem = { url?: string; altEn?: string; altAr?: string };
 export type DownloadItem = { url?: string; labelEn?: string; labelAr?: string };
+
+// ------------------------------------------------- contact & social channels
+
+export const getSocialLinks = cache(async () =>
+  prisma.socialLink.findMany({ where: { enabled: true }, orderBy: { order: 'asc' } }),
+);
+
+export const getFloatingActions = cache(async () =>
+  prisma.floatingAction.findMany({ where: { enabled: true }, orderBy: { order: 'asc' } }),
+);
+
+// --------------------------------------------------------------- library
+
+export const getResourceCategories = cache(async () =>
+  prisma.resourceCategory.findMany({ where: { visible: true }, orderBy: { order: 'asc' } }),
+);
+
+export const getFeaturedResources = cache(async (take = 3) =>
+  prisma.resource.findMany({
+    where: { status: 'PUBLISHED' },
+    orderBy: [{ featured: 'desc' }, { order: 'asc' }, { publishedAt: 'desc' }],
+    include: { category: true },
+    take,
+  }),
+);
+
+export const getResourceBySlug = cache(async (slug: string, includeDrafts = false) =>
+  prisma.resource.findFirst({
+    where: { slug, ...(includeDrafts ? {} : { status: 'PUBLISHED' as const }) },
+    include: { category: true },
+  }),
+);
+
+// ----------------------------------------------------------------- tools
+
+export const getPublishedTools = cache(async () =>
+  prisma.tool.findMany({
+    where: { status: 'PUBLISHED' },
+    orderBy: [{ featured: 'desc' }, { order: 'asc' }, { nameEn: 'asc' }],
+  }),
+);
+
+export const getFeaturedTools = cache(async (take = 3) => (await getPublishedTools()).slice(0, take));
+
+export const getToolBySlug = cache(async (slug: string, includeDrafts = false) =>
+  prisma.tool.findFirst({ where: { slug, ...(includeDrafts ? {} : { status: 'PUBLISHED' as const }) } }),
+);
+
+export type LocalisedBullet = { titleEn?: string; titleAr?: string; bodyEn?: string; bodyAr?: string };

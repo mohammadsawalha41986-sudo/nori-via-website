@@ -249,6 +249,89 @@ export const taxonomySchema = z.object({
   visible: z.boolean().default(true),
 });
 
+const slug = z.string().trim().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, 'Use lowercase letters, numbers and hyphens').max(120);
+
+export const resourceSchema = z.object({
+  slug,
+  titleEn: trimmed(200).min(1),
+  titleAr: trimmed(200).default(''),
+  summaryEn: trimmed(600).default(''),
+  summaryAr: trimmed(600).default(''),
+  descriptionEn: trimmed(20000).default(''),
+  descriptionAr: trimmed(20000).default(''),
+  type: z.enum(['EXCEL', 'WORD', 'PDF', 'TEMPLATE', 'GUIDE', 'REPORT']).default('PDF'),
+  categoryId: z.string().trim().max(40).nullable().default(null),
+  tags: z.array(trimmed(60)).default([]),
+  externalUrl: optionalUrl,
+  thumbnail: optionalUrl,
+  includes: jsonArray,
+  audience: jsonArray,
+  featured: z.boolean().default(false),
+  publishedAt: z.string().trim().max(40).default(''),
+  status: publishStatus.default('DRAFT'),
+  order: z.coerce.number().int().min(0).max(9999).default(0),
+  seoTitleEn: trimmed(200).default(''), seoTitleAr: trimmed(200).default(''),
+  seoDescriptionEn: trimmed(400).default(''), seoDescriptionAr: trimmed(400).default(''),
+  ogImage: optionalUrl,
+  noindex: z.boolean().default(false),
+});
+
+export const toolSchema = z.object({
+  slug,
+  nameEn: trimmed(160).min(1),
+  nameAr: trimmed(160).default(''),
+  summaryEn: trimmed(600).default(''),
+  summaryAr: trimmed(600).default(''),
+  descriptionEn: trimmed(20000).default(''),
+  descriptionAr: trimmed(20000).default(''),
+  purposeEn: trimmed(1200).default(''),
+  purposeAr: trimmed(1200).default(''),
+  thumbnail: optionalUrl,
+  featured: z.boolean().default(false),
+  status: publishStatus.default('DRAFT'),
+  order: z.coerce.number().int().min(0).max(9999).default(0),
+  seoTitleEn: trimmed(200).default(''), seoTitleAr: trimmed(200).default(''),
+  seoDescriptionEn: trimmed(400).default(''), seoDescriptionAr: trimmed(400).default(''),
+  ogImage: optionalUrl,
+  noindex: z.boolean().default(false),
+});
+
+/** Known platforms keep the icon set and the JSON-LD `sameAs` output honest. */
+export const SOCIAL_PLATFORMS = [
+  'instagram',
+  'linkedin',
+  'x',
+  'facebook',
+  'youtube',
+  'tiktok',
+  'whatsapp',
+  'snapchat',
+  'threads',
+  'pinterest',
+  'website',
+] as const;
+
+export const socialLinkSchema = z.object({
+  platform: z.enum(SOCIAL_PLATFORMS),
+  labelEn: trimmed(60).default(''),
+  labelAr: trimmed(60).default(''),
+  url: z.string().trim().url('Enter a full URL, including https://').max(500),
+  enabled: z.boolean().default(true),
+  order: z.coerce.number().int().min(0).max(9999).default(0),
+});
+
+export const FLOATING_ACTION_KINDS = ['whatsapp', 'phone', 'email', 'link'] as const;
+
+export const floatingActionSchema = z.object({
+  kind: z.enum(FLOATING_ACTION_KINDS),
+  labelEn: trimmed(60).default(''),
+  labelAr: trimmed(60).default(''),
+  /** A phone number, an email address or a URL, depending on `kind`. */
+  value: trimmed(300).min(1),
+  enabled: z.boolean().default(true),
+  order: z.coerce.number().int().min(0).max(9999).default(0),
+});
+
 export function slugify(value: string) {
   return value
     .toLowerCase()

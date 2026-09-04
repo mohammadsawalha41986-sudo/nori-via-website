@@ -126,7 +126,7 @@ export function Footer({
 
         <div className="mt-16 border-t border-white/10 pt-7 text-xs text-white/35 sm:flex sm:items-center sm:justify-between">
           <p>{copyright || `© ${year} ${companyName}.`}</p>
-          <p className="mt-3 sm:mt-0">{dict.nav.start} · noriva.sa</p>
+          <p className="mt-3 sm:mt-0">{companyName}</p>
         </div>
       </div>
 

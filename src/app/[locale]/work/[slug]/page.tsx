@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { CTASection } from '@/components/public/CTASection';
+import { RelatedContent } from '@/components/public/RelatedContent';
 import { Metrics } from '@/components/public/Metrics';
 import { PageHero } from '@/components/public/PageHero';
 import { TrackView } from '@/components/public/TrackView';
@@ -22,6 +23,7 @@ import {
 import { buildMetadata, JsonLd, breadcrumbs } from '@/lib/seo';
 import { env } from '@/lib/env';
 import { EVENTS } from '@/lib/track';
+import { getRelatedContent } from '@/lib/relations';
 
 export const revalidate = 60;
 
@@ -66,6 +68,17 @@ export default async function ProjectPage({ params }: { params: Promise<{ locale
   const downloads = asObjectList<DownloadItem>(project.downloads);
   const results = asObjectList<MetricItem>(project.results);
   const cs = project.caseStudy?.status === 'PUBLISHED' ? project.caseStudy : null;
+
+  // A case study is read at its project's URL, so both sets of links belong here.
+  const projectRelated = await getRelatedContent('PROJECT', project.id, locale);
+  const caseStudyRelated = cs ? await getRelatedContent('CASE_STUDY', cs.id, locale) : [];
+  const seen = new Set<string>();
+  const related = [...projectRelated, ...caseStudyRelated].filter((item) => {
+    const key = `${item.type}:${item.id}`;
+    if (seen.has(key) || (item.type === 'PROJECT' && item.id === project.id)) return false;
+    seen.add(key);
+    return true;
+  });
 
   const meta = [
     project.client && { label: dict.common.client, value: project.client },
@@ -281,6 +294,8 @@ export default async function ProjectPage({ params }: { params: Promise<{ locale
           <TextLink href={`/${locale}/work`}>{dict.common.allWork}</TextLink>
         </div>
       </section>
+
+      <RelatedContent items={related} title={dict.related.title} eyebrow={dict.nav.work} />
 
       <CTASection
         headline={dict.nav.start}

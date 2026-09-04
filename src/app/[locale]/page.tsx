@@ -4,6 +4,7 @@ import { Hero } from '@/components/public/Hero';
 import { BrandStatement } from '@/components/public/BrandStatement';
 import { SystemStages, type Stage } from '@/components/public/SystemStages';
 import { ProjectCard } from '@/components/public/ProjectCard';
+import { ResourceCard } from '@/components/public/ResourceCard';
 import { EmptyState } from '@/components/public/EmptyState';
 import { CTASection } from '@/components/public/CTASection';
 import { Metrics } from '@/components/public/Metrics';
@@ -18,6 +19,9 @@ import {
   getFeaturedProjects,
   getStatistics,
   getPublishedServices,
+  getFeaturedTools,
+  getFeaturedResources,
+  getPublishedInsights,
   asStringList,
   asObjectList,
 } from '@/lib/content';
@@ -36,14 +40,19 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   const locale = raw as Locale;
   const dict = getDictionary(locale);
 
-  const [home, settings, stageRows, projects, stats, services] = await Promise.all([
+  const [home, settings, stageRows, projects, stats, services, tools, resources, insights] = await Promise.all([
     getHomepage(),
     getSettings(),
     getSystemStages(),
     getFeaturedProjects(4),
     getStatistics(),
     getPublishedServices(),
+    getFeaturedTools(3),
+    getFeaturedResources(3),
+    getPublishedInsights(),
   ]);
+
+  const featuredInsights = insights.slice(0, 3);
 
   const featuredCase = home.featuredCaseStudyId
     ? await prisma.caseStudy.findFirst({
@@ -239,6 +248,108 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                     className="inline-flex rounded-full border border-ink-900/15 px-5 py-3 text-sm font-medium text-ink-600 transition-all duration-300 ease-noriva hover:border-brand hover:bg-brand hover:text-white"
                   >
                     {pick(s, 'name', locale)}
+                  </Link>
+                </Reveal>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
+
+      {/* Featured tools — only what the CMS has actually published */}
+      {tools.length > 0 && (
+        <section className="bg-white section-y">
+          <div className="shell">
+            <div className="mb-12 flex flex-wrap items-end justify-between gap-6">
+              <SectionHeading eyebrow={dict.tools.title} title={dict.tools.title} description={dict.tools.intro} className="mb-0" />
+              <TextLink href={`/${locale}/tools`}>{dict.tools.title}</TextLink>
+            </div>
+
+            <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {tools.map((tool, i) => (
+                <Reveal as="li" key={tool.id} delay={Math.min(i, 6) * 55} y={14} className="h-full">
+                  <Link
+                    href={`/${locale}/tools/${tool.slug}`}
+                    className="group flex h-full flex-col rounded-card border border-ink-900/10 bg-bone p-8 transition-colors duration-300 hover:border-brand"
+                  >
+                    <span className="font-mono text-[0.6875rem] text-brand">{String(i + 1).padStart(2, '0')}</span>
+                    <span className="mt-4 font-display text-xl font-bold uppercase tracking-tight text-ink-900 transition-colors group-hover:text-brand">
+                      {pick(tool, 'name', locale)}
+                    </span>
+                    {pick(tool, 'summary', locale) && (
+                      <span className="mt-3 text-[0.9375rem] leading-relaxed text-ink-400">
+                        {pick(tool, 'summary', locale)}
+                      </span>
+                    )}
+                  </Link>
+                </Reveal>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
+
+      {/* Featured library resources */}
+      {resources.length > 0 && (
+        <section className="bg-bone section-y">
+          <div className="shell">
+            <div className="mb-12 flex flex-wrap items-end justify-between gap-6">
+              <SectionHeading eyebrow={dict.library.title} title={dict.library.title} description={dict.library.intro} className="mb-0" />
+              <TextLink href={`/${locale}/library`}>{dict.library.title}</TextLink>
+            </div>
+
+            <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {resources.map((r, i) => (
+                <ResourceCard
+                  key={r.id}
+                  locale={locale}
+                  dict={dict}
+                  index={i}
+                  resource={{
+                    id: r.id,
+                    slug: r.slug,
+                    title: pick(r, 'title', locale),
+                    summary: pick(r, 'summary', locale),
+                    type: r.type,
+                    category: r.category ? pick(r.category, 'name', locale) : '',
+                    thumbnail: r.thumbnail,
+                    fileMime: r.fileMime,
+                    fileSize: r.fileSize,
+                    external: !r.fileKey && Boolean(r.externalUrl),
+                  }}
+                />
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
+
+      {/* Featured insights */}
+      {featuredInsights.length > 0 && (
+        <section className="bg-white section-y">
+          <div className="shell">
+            <div className="mb-12 flex flex-wrap items-end justify-between gap-6">
+              <SectionHeading eyebrow={dict.nav.insights} title={dict.nav.insights} className="mb-0" />
+              <TextLink href={`/${locale}/insights`}>{dict.nav.insights}</TextLink>
+            </div>
+
+            <ul className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+              {featuredInsights.map((article, i) => (
+                <Reveal as="li" key={article.id} delay={Math.min(i, 6) * 55} y={14}>
+                  <Link href={`/${locale}/insights/${article.slug}`} className="group block">
+                    {article.category && (
+                      <span className="text-[0.6875rem] font-bold uppercase tracking-[0.2em] text-brand">
+                        {pick(article.category, 'name', locale)}
+                      </span>
+                    )}
+                    <span className="mt-2 block font-display text-xl font-bold uppercase tracking-tight text-ink-900 transition-colors group-hover:text-brand">
+                      {pick(article, 'title', locale)}
+                    </span>
+                    {pick(article, 'excerpt', locale) && (
+                      <span className="mt-2.5 block line-clamp-3 text-[0.9375rem] leading-relaxed text-ink-400">
+                        {pick(article, 'excerpt', locale)}
+                      </span>
+                    )}
                   </Link>
                 </Reveal>
               ))}

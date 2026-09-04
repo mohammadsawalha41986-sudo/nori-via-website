@@ -3,6 +3,8 @@ import { prisma } from '@/lib/db';
 import { ServiceForm, DeleteServiceForm } from '@/components/admin/ServiceForm';
 import { PageHeader, LinkButton, Card } from '@/components/admin/ui';
 import { stringifyPairs, stringifyBlocks, stringifyFaqs, stringifyUrlList } from '@/server/helpers';
+import { getRelationOptions } from '@/lib/relation-options';
+import { getOutgoingRefs, serialiseRef } from '@/lib/relations';
 
 export const dynamic = 'force-dynamic';
 
@@ -15,9 +17,11 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
 export default async function EditServicePage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
 
-  const [service, categories] = await Promise.all([
+  const [service, categories, relationOptions, refs] = await Promise.all([
     prisma.service.findUnique({ where: { id } }),
     prisma.serviceCategory.findMany({ orderBy: { order: 'asc' }, select: { id: true, nameEn: true } }),
+    getRelationOptions({ type: 'SERVICE', id }),
+    getOutgoingRefs('SERVICE', id),
   ]);
 
   if (!service) notFound();
@@ -36,6 +40,8 @@ export default async function EditServicePage({ params }: { params: Promise<{ id
       />
 
       <ServiceForm
+        relationOptions={relationOptions}
+        selectedRelations={refs.map(serialiseRef)}
         categories={categories}
         values={{
           id: service.id,

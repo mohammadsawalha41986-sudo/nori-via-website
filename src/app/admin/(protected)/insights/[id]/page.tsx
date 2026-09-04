@@ -3,6 +3,8 @@ import { prisma } from '@/lib/db';
 import { InsightForm, DeleteInsightForm } from '@/components/admin/InsightForm';
 import { PageHeader, LinkButton, Card } from '@/components/admin/ui';
 import { asStringList } from '@/lib/content';
+import { getRelationOptions } from '@/lib/relation-options';
+import { getOutgoingRefs, serialiseRef } from '@/lib/relations';
 
 export const dynamic = 'force-dynamic';
 
@@ -15,9 +17,11 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
 export default async function EditInsightPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
 
-  const [article, categories] = await Promise.all([
+  const [article, categories, relationOptions, refs] = await Promise.all([
     prisma.insight.findUnique({ where: { id } }),
     prisma.insightCategory.findMany({ orderBy: { order: 'asc' }, select: { id: true, nameEn: true } }),
+    getRelationOptions({ type: 'INSIGHT', id }),
+    getOutgoingRefs('INSIGHT', id),
   ]);
 
   if (!article) notFound();
@@ -29,7 +33,12 @@ export default async function EditInsightPage({ params }: { params: Promise<{ id
         description={`/insights/${article.slug}`}
         action={
           <div className="flex gap-2">
-            <LinkButton href={`/en/insights/${article.slug}`} variant="secondary">Preview ↗</LinkButton>
+            <LinkButton
+              href={`/en/insights/${article.slug}${article.status === 'PUBLISHED' ? '' : '?preview=1'}`}
+              variant="secondary"
+            >
+              Preview ↗
+            </LinkButton>
             <LinkButton href="/admin/insights" variant="secondary">Back</LinkButton>
           </div>
         }
@@ -37,6 +46,8 @@ export default async function EditInsightPage({ params }: { params: Promise<{ id
 
       <InsightForm
         categories={categories}
+        relationOptions={relationOptions}
+        selectedRelations={refs.map(serialiseRef)}
         values={{
           id: article.id,
           slug: article.slug,

@@ -14,7 +14,7 @@ const styles: Record<Variant, string> = {
 };
 
 const base =
-  'group relative inline-flex items-center justify-center gap-2.5 rounded-full px-7 py-4 text-[0.9375rem] font-semibold tracking-tight transition-colors duration-300 ease-noriva';
+  'group relative inline-flex items-center justify-center gap-2.5 rounded-btn px-7 py-4 text-[0.9375rem] font-semibold tracking-tight transition-colors duration-300 ease-noriva';
 
 function Arrow() {
   return (

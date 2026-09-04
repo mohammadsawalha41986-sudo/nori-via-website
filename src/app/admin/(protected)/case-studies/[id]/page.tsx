@@ -3,6 +3,8 @@ import { prisma } from '@/lib/db';
 import { CaseStudyForm, DeleteCaseStudyForm } from '@/components/admin/CaseStudyForm';
 import { PageHeader, LinkButton, Card } from '@/components/admin/ui';
 import { stringifyMetrics, stringifyUrlList } from '@/server/helpers';
+import { getRelationOptions } from '@/lib/relation-options';
+import { getOutgoingRefs, serialiseRef } from '@/lib/relations';
 
 export const dynamic = 'force-dynamic';
 
@@ -15,10 +17,12 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
 export default async function EditCaseStudyPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
 
-  const [cs, projects, services] = await Promise.all([
+  const [cs, projects, services, relationOptions, refs] = await Promise.all([
     prisma.caseStudy.findUnique({ where: { id }, include: { services: true, project: { select: { slug: true } } } }),
     prisma.project.findMany({ orderBy: { titleEn: 'asc' }, select: { id: true, titleEn: true } }),
     prisma.service.findMany({ orderBy: { nameEn: 'asc' }, select: { id: true, nameEn: true } }),
+    getRelationOptions({ type: 'CASE_STUDY', id }),
+    getOutgoingRefs('CASE_STUDY', id),
   ]);
 
   if (!cs) notFound();
@@ -42,6 +46,8 @@ export default async function EditCaseStudyPage({ params }: { params: Promise<{ 
       />
 
       <CaseStudyForm
+        relationOptions={relationOptions}
+        selectedRelations={refs.map(serialiseRef)}
         projects={projects}
         services={services}
         values={{

@@ -3,6 +3,7 @@
 import { AdminForm } from './AdminForm';
 import { MediaField } from './MediaField';
 import { SubmitButton } from './SubmitButton';
+import { RelationPicker, type RelationOption } from './RelationPicker';
 import { Card, Field, Grid, inputClass } from './ui';
 import { saveCaseStudy, deleteCaseStudy } from '@/server/actions';
 
@@ -35,10 +36,14 @@ export function CaseStudyForm({
   values,
   projects,
   services,
+  relationOptions,
+  selectedRelations,
 }: {
   values: CaseStudyFormValues;
   projects: { id: string; titleEn: string }[];
   services: { id: string; nameEn: string }[];
+  relationOptions: RelationOption[];
+  selectedRelations: string[];
 }) {
   return (
     <AdminForm action={saveCaseStudy} className="space-y-5">
@@ -122,6 +127,13 @@ export function CaseStudyForm({
                 </label>
               ))}
             </div>
+          </Card>
+
+          <Card
+            title="Related content"
+            description="Attach articles, resources, tools and other work. Each connection is shown on both pages."
+          >
+            <RelationPicker options={relationOptions} selected={selectedRelations} />
           </Card>
 
           <Card title="SEO & publishing">

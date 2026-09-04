@@ -16,5 +16,8 @@ export const EVENTS = {
   workView: 'work_view',
   caseStudyView: 'case_study_view',
   download: 'asset_download',
+  resourceDownload: 'resource_download',
+  toolUse: 'tool_use',
+  search: 'site_search',
   ctaClick: 'cta_click',
 } as const;

@@ -1,13 +1,15 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { fontVars } from '../fonts';
+import { fontVarsFor } from '../fonts';
 import { Navbar } from '@/components/public/Navbar';
 import { Footer } from '@/components/public/Footer';
 import { Analytics } from '@/components/public/Analytics';
+import { FloatingActions } from '@/components/public/FloatingActions';
 import { getLayoutData } from '@/lib/layout-data';
 import { isLocale, dirOf, pick, type Locale } from '@/lib/i18n';
 import { getSettings } from '@/lib/content';
 import { env } from '@/lib/env';
+import { getDesignTokens, tokensToCss } from '@/lib/design-tokens';
 
 /**
  * Deliberately no `generateStaticParams`.
@@ -73,10 +75,32 @@ export default async function LocaleLayout({
   if (!isLocale(raw)) notFound();
   const locale = raw as Locale;
 
-  const { settings, dict, companyName, headerLinks, footerLinks, socials, contact } = await getLayoutData(locale);
+  const [layout, tokens] = await Promise.all([getLayoutData(locale), getDesignTokens()]);
+  const { settings, dict, companyName, headerLinks, footerLinks, socials, contact, floatingActions } = layout;
+
+  // Token overrides are inlined ahead of the first paint, so a brand change
+  // never flashes the previous palette.
+  const tokenCss = tokensToCss(tokens);
 
   return (
-    <html lang={locale} dir={dirOf(locale)} className={fontVars} suppressHydrationWarning>
+    <html
+      lang={locale}
+      dir={dirOf(locale)}
+      className={fontVarsFor(tokens.typography)}
+      suppressHydrationWarning
+    >
+      {/*
+        No manual <head>: React owns that element in the App Router. A <style>
+        carrying `precedence` is hoisted into the head for us and deduplicated
+        by `href`, which keeps the server and client trees identical.
+      */}
+      {tokenCss ? (
+        <style
+          href="noriva-design-tokens"
+          precedence="high"
+          dangerouslySetInnerHTML={{ __html: tokenCss }}
+        />
+      ) : null}
       <body className="flex min-h-screen flex-col bg-bone">
         <a
           href="#main"
@@ -92,6 +116,7 @@ export default async function LocaleLayout({
           logoUrl={settings.logoUrl}
           logoInverseUrl={settings.logoInverseUrl}
           startLabel={dict.nav.start}
+          searchLabel={dict.nav.search}
           menuLabel={dict.nav.menu}
           closeLabel={dict.nav.close}
         />
@@ -112,6 +137,8 @@ export default async function LocaleLayout({
           socials={socials}
           {...contact}
         />
+
+        <FloatingActions actions={floatingActions} />
 
         <Analytics gaId={settings.gaId || env.analytics.gaId} gtmId={settings.gtmId || env.analytics.gtmId} />
       </body>

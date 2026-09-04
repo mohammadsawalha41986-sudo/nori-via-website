@@ -18,6 +18,7 @@ export function Navbar({
   logoUrl,
   logoInverseUrl,
   startLabel,
+  searchLabel,
   menuLabel,
   closeLabel,
 }: {
@@ -27,6 +28,7 @@ export function Navbar({
   logoUrl: string | null;
   logoInverseUrl: string | null;
   startLabel: string;
+  searchLabel: string;
   menuLabel: string;
   closeLabel: string;
 }) {
@@ -108,6 +110,19 @@ export function Navbar({
           </ul>
 
           <div className="flex items-center gap-3">
+            <Link
+              href={`/${locale}/search`}
+              aria-label={searchLabel}
+              className={clsx(
+                'flex h-11 w-11 items-center justify-center rounded-full border transition-colors duration-300',
+                solid ? 'border-ink-900/15 text-ink-600 hover:text-ink-900' : 'border-white/30 text-white/80 hover:text-white',
+              )}
+            >
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" aria-hidden>
+                <circle cx="11" cy="11" r="7" />
+                <path d="m20 20-3.2-3.2" />
+              </svg>
+            </Link>
             <LanguageSwitcher locale={locale} tone={tone} />
             <MagneticButton href={`/${locale}/start-a-project`} className="hidden !px-6 !py-3 text-sm sm:inline-flex">
               {startLabel}
@@ -155,9 +170,17 @@ export function Navbar({
               </li>
             ))}
           </ul>
-          <MagneticButton href={`/${locale}/start-a-project`} className="w-full">
-            {startLabel}
-          </MagneticButton>
+          <div className="space-y-3">
+            <Link
+              href={`/${locale}/search`}
+              className="block text-sm font-semibold uppercase tracking-[0.16em] text-white/60 transition-colors hover:text-white"
+            >
+              {searchLabel}
+            </Link>
+            <MagneticButton href={`/${locale}/start-a-project`} className="w-full">
+              {startLabel}
+            </MagneticButton>
+          </div>
         </div>
       </div>
     </>

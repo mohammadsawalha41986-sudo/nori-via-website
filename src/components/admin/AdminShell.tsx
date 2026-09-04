@@ -11,6 +11,7 @@ export const NAV_GROUPS = [
     label: 'Overview',
     items: [
       { href: '/admin', label: 'Dashboard', exact: true },
+      { href: '/admin/preview', label: 'Preview site' },
       { href: '/admin/inquiries', label: 'Inquiries' },
       { href: '/admin/messages', label: 'Contact messages' },
     ],
@@ -20,7 +21,7 @@ export const NAV_GROUPS = [
     items: [
       { href: '/admin/homepage', label: 'Homepage' },
       { href: '/admin/system', label: 'Noriva System' },
-      { href: '/admin/services', label: 'Services' },
+      { href: '/admin/services', label: 'Solutions' },
       { href: '/admin/work', label: 'Portfolio' },
       { href: '/admin/case-studies', label: 'Case studies' },
       { href: '/admin/insights', label: 'Insights' },
@@ -28,19 +29,28 @@ export const NAV_GROUPS = [
     ],
   },
   {
-    label: 'Library',
+    label: 'Knowledge platform',
+    items: [
+      { href: '/admin/resources', label: 'Library resources' },
+      { href: '/admin/tools', label: 'Tools' },
+      { href: '/admin/taxonomies', label: 'Categories' },
+    ],
+  },
+  {
+    label: 'Assets',
     items: [
       { href: '/admin/media', label: 'Media' },
       { href: '/admin/statistics', label: 'Statistics' },
       { href: '/admin/testimonials', label: 'Testimonials' },
-      { href: '/admin/taxonomies', label: 'Categories' },
     ],
   },
   {
     label: 'Configuration',
     items: [
+      { href: '/admin/design', label: 'Design system' },
       { href: '/admin/settings', label: 'Site settings' },
       { href: '/admin/navigation', label: 'Navigation' },
+      { href: '/admin/social', label: 'Social & contact' },
       { href: '/admin/seo', label: 'SEO' },
     ],
   },
@@ -55,6 +65,15 @@ export function AdminShell({
 }) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [filter, setFilter] = useState('');
+
+  const term = filter.trim().toLowerCase();
+  const groups = term
+    ? NAV_GROUPS.map((group) => ({
+        ...group,
+        items: group.items.filter((item) => item.label.toLowerCase().includes(term)),
+      })).filter((group) => group.items.length > 0)
+    : NAV_GROUPS;
 
   const active = (href: string, exact?: boolean) =>
     exact ? pathname === href : pathname === href || pathname.startsWith(`${href}/`);
@@ -77,8 +96,24 @@ export function AdminShell({
           <span className="text-sm font-semibold text-slate-900">Noriva Admin</span>
         </div>
 
+        <div className="px-3 pt-3">
+          <label>
+            <span className="sr-only">Filter admin sections</span>
+            <input
+              type="search"
+              value={filter}
+              onChange={(e) => setFilter(e.target.value)}
+              placeholder="Jump to…"
+              className="w-full rounded-md border border-slate-200 bg-slate-50 px-3 py-2 text-sm outline-none transition-colors placeholder:text-slate-400 focus:border-slate-900 focus:bg-white"
+            />
+          </label>
+        </div>
+
         <nav className="flex-1 overflow-y-auto px-3 py-4" aria-label="Admin">
-          {NAV_GROUPS.map((group) => (
+          {groups.length === 0 && (
+            <p className="px-2.5 py-6 text-center text-xs text-slate-400">No section matches that.</p>
+          )}
+          {groups.map((group) => (
             <div key={group.label} className="mb-5">
               <p className="px-2.5 pb-1.5 text-[0.6875rem] font-semibold uppercase tracking-wider text-slate-400">
                 {group.label}

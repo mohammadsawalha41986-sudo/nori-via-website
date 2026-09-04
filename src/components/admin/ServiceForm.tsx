@@ -3,6 +3,7 @@
 import { AdminForm } from './AdminForm';
 import { MediaField } from './MediaField';
 import { SubmitButton } from './SubmitButton';
+import { RelationPicker, type RelationOption } from './RelationPicker';
 import { Card, Field, Grid, inputClass } from './ui';
 import { saveService, deleteService } from '@/server/actions';
 
@@ -30,9 +31,13 @@ export type ServiceFormValues = {
 export function ServiceForm({
   values,
   categories,
+  relationOptions,
+  selectedRelations,
 }: {
   values: ServiceFormValues;
   categories: { id: string; nameEn: string }[];
+  relationOptions: RelationOption[];
+  selectedRelations: string[];
 }) {
   return (
     <AdminForm action={saveService} className="space-y-5">
@@ -126,6 +131,13 @@ export function ServiceForm({
                 <textarea id="galleryRaw" name="galleryRaw" rows={4} defaultValue={values.galleryRaw} className={`${inputClass} font-mono text-xs`} />
               </Field>
             </div>
+          </Card>
+
+          <Card
+            title="Related content"
+            description="Attach articles, resources, tools and other work. Each connection is shown on both pages."
+          >
+            <RelationPicker options={relationOptions} selected={selectedRelations} />
           </Card>
 
           <Card title="Media & SEO">

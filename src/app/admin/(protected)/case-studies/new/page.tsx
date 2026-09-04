@@ -1,15 +1,17 @@
 import { prisma } from '@/lib/db';
 import { CaseStudyForm } from '@/components/admin/CaseStudyForm';
 import { PageHeader, LinkButton } from '@/components/admin/ui';
+import { getRelationOptions } from '@/lib/relation-options';
 
 export const metadata = { title: 'New case study' };
 export const dynamic = 'force-dynamic';
 
 export default async function NewCaseStudyPage() {
-  const [projects, services, count] = await Promise.all([
+  const [projects, services, count, relationOptions] = await Promise.all([
     prisma.project.findMany({ where: { caseStudy: null }, orderBy: { titleEn: 'asc' }, select: { id: true, titleEn: true } }),
     prisma.service.findMany({ orderBy: { nameEn: 'asc' }, select: { id: true, nameEn: true } }),
     prisma.caseStudy.count(),
+    getRelationOptions(),
   ]);
 
   return (
@@ -20,6 +22,8 @@ export default async function NewCaseStudyPage() {
         action={<LinkButton href="/admin/case-studies" variant="secondary">Back</LinkButton>}
       />
       <CaseStudyForm
+        relationOptions={relationOptions}
+        selectedRelations={[]}
         projects={projects}
         services={services}
         values={{

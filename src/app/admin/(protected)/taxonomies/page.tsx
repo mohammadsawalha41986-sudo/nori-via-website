@@ -110,17 +110,18 @@ function Section({
 }
 
 export default async function TaxonomiesPage() {
-  const [serviceCats, workCats, insightCats] = await Promise.all([
+  const [serviceCats, workCats, insightCats, resourceCats] = await Promise.all([
     prisma.serviceCategory.findMany({ orderBy: { order: 'asc' } }),
     prisma.workCategory.findMany({ orderBy: { order: 'asc' } }),
     prisma.insightCategory.findMany({ orderBy: { order: 'asc' } }),
+    prisma.resourceCategory.findMany({ orderBy: { order: 'asc' } }),
   ]);
 
   return (
     <>
       <PageHeader
         title="Categories"
-        description="Grouping for services, portfolio work and insights. Deleting a category never deletes its content."
+        description="Grouping for services, portfolio work, insights and library resources. Deleting a category never deletes its content."
       />
 
       <Section
@@ -141,6 +142,13 @@ export default async function TaxonomiesPage() {
         title="Insight categories"
         description="Article topics."
         rows={insightCats}
+      />
+      <Section
+        kind="resource"
+        title="Library categories"
+        description="Grouping for downloadable resources in the Library."
+        rows={resourceCats}
+        withDescription
       />
     </>
   );
