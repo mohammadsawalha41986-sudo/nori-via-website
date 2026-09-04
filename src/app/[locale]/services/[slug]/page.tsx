@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { PageHero } from '@/components/public/PageHero';
 import { CTASection } from '@/components/public/CTASection';
+import { RelatedContent } from '@/components/public/RelatedContent';
 import { ProjectCard } from '@/components/public/ProjectCard';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { Reveal } from '@/components/ui/Reveal';
@@ -18,6 +19,7 @@ import {
 } from '@/lib/content';
 import { buildMetadata, JsonLd, breadcrumbs } from '@/lib/seo';
 import { env } from '@/lib/env';
+import { getRelatedContent } from '@/lib/relations';
 
 export const revalidate = 60;
 
@@ -62,6 +64,8 @@ export default async function ServiceDetailPage({
 
   const service = await getServiceBySlug(slug);
   if (!service) notFound();
+
+  const related = await getRelatedContent('SERVICE', service.id, locale);
 
   const name = pick(service, 'name', locale);
   const deliverables = asObjectList<{ labelEn?: string; labelAr?: string }>(service.deliverables);
@@ -264,6 +268,8 @@ export default async function ServiceDetailPage({
           </div>
         </section>
       )}
+
+      <RelatedContent items={related} title={dict.related.title} eyebrow={dict.nav.services} />
 
       <CTASection
         headline={dict.nav.start}

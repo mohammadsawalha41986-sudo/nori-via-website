@@ -1,38 +1,26 @@
 import type { Config } from 'tailwindcss';
 
+/**
+ * Colours resolve through CSS custom properties declared in `globals.css`, so
+ * the Design System screen in Admin can re-declare a token and have every
+ * existing utility — opacity modifiers included — follow it. The channel form
+ * (`245 16 110`) is what makes `bg-brand/20` keep working.
+ */
+const channel = (name: string) => `rgb(var(${name}) / <alpha-value>)`;
+
+const ramp = (family: string, stops: (number | 'DEFAULT')[]) =>
+  Object.fromEntries(
+    stops.map((stop) => [stop, channel(`--c-${family}${stop === 'DEFAULT' ? '' : `-${stop}`}`)]),
+  );
+
 const config: Config = {
   content: ['./src/**/*.{ts,tsx}'],
   theme: {
     extend: {
       colors: {
-        ink: {
-          DEFAULT: '#0B1225',
-          50: '#F5F6F9',
-          100: '#E6E9F0',
-          200: '#C6CCDA',
-          300: '#98A2BC',
-          400: '#5F6B8C',
-          500: '#374465',
-          600: '#222E4D',
-          700: '#16213C',
-          800: '#111C3A',
-          900: '#0B1225',
-          950: '#060A16',
-        },
-        brand: {
-          DEFAULT: '#F5106E',
-          50: '#FFF1F6',
-          100: '#FFE0EC',
-          200: '#FFC0DA',
-          300: '#FF8DBB',
-          400: '#FC4B92',
-          500: '#F5106E',
-          600: '#D6005A',
-          700: '#B0004A',
-          800: '#8A003A',
-          900: '#66002B',
-        },
-        bone: '#F7F5F2',
+        ink: ramp('ink', ['DEFAULT', 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950]),
+        brand: ramp('brand', ['DEFAULT', 50, 100, 200, 300, 400, 500, 600, 700, 800, 900]),
+        bone: channel('--c-bone'),
       },
       fontFamily: {
         sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],
@@ -44,7 +32,12 @@ const config: Config = {
         'display-md': ['clamp(2.8rem,8vw,5rem)', { lineHeight: '0.92', letterSpacing: '-0.035em' }],
         'display-lg': ['clamp(3.2rem,10vw,8rem)', { lineHeight: '0.88', letterSpacing: '-0.04em' }],
       },
-      maxWidth: { shell: '88rem' },
+      borderRadius: {
+        btn: 'var(--radius-btn)',
+        card: 'var(--radius-card)',
+        input: 'var(--radius-input)',
+      },
+      maxWidth: { shell: 'var(--shell-max)' },
       transitionTimingFunction: { noriva: 'cubic-bezier(0.22, 1, 0.36, 1)' },
       keyframes: {
         marquee: { from: { transform: 'translateX(0)' }, to: { transform: 'translateX(-50%)' } },

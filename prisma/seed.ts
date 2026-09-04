@@ -380,7 +380,11 @@ const NAVIGATION = [
   { labelEn: 'Services', labelAr: 'خدماتنا', href: '/services', order: 2 },
   { labelEn: 'Restaurant Growth', labelAr: 'نمو المطاعم', href: '/restaurant-growth', order: 3 },
   { labelEn: 'About', labelAr: 'من نحن', href: '/about', order: 4 },
+  { labelEn: 'Library', labelAr: 'المكتبة', href: '/library', order: 6 },
+  { labelEn: 'Tools', labelAr: 'الأدوات', href: '/tools', order: 7 },
   { labelEn: 'Insights', labelAr: 'رؤى', href: '/insights', order: 5 },
+  { labelEn: 'Library', labelAr: 'المكتبة', href: '/library', order: 6 },
+  { labelEn: 'Tools', labelAr: 'الأدوات', href: '/tools', order: 7 },
 ];
 
 const FOOTER_NAV = [
@@ -635,6 +639,20 @@ async function main() {
       titleAr: 'رؤى',
       bodyEn: 'Writing on restaurant marketing, menu engineering, food cost and growth.',
       bodyAr: 'كتابات في تسويق المطاعم وهندسة القوائم وتكلفة الطعام والنمو.',
+    },
+    {
+      key: 'library',
+      titleEn: 'Library',
+      titleAr: 'المكتبة',
+      bodyEn: 'Templates, models and guides from the Noriva team. Edit this introduction, and add resources, from the Noriva Admin.',
+      bodyAr: 'قوالب ونماذج وأدلة من فريق نوريفا. يمكنك تعديل هذه المقدمة وإضافة الموارد من لوحة تحكم نوريفا.',
+    },
+    {
+      key: 'tools',
+      titleEn: 'Tools',
+      titleAr: 'الأدوات',
+      bodyEn: 'Interactive calculators built around the numbers that decide a result. Edit this introduction, and add tools, from the Noriva Admin.',
+      bodyAr: 'حاسبات تفاعلية مبنية على الأرقام التي تصنع الفرق. يمكنك تعديل هذه المقدمة وإضافة الأدوات من لوحة تحكم نوريفا.',
     },
     {
       key: 'privacy',

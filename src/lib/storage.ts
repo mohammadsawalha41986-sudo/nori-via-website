@@ -8,6 +8,20 @@ export const IMAGE_MIME = ['image/jpeg', 'image/png', 'image/webp', 'image/avif'
 export const DOC_MIME = ['application/pdf'] as const;
 export const VIDEO_MIME = ['video/mp4', 'video/webm'] as const;
 
+export const XLSX_MIME = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
+export const DOCX_MIME = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document';
+export const XLS_MIME = 'application/vnd.ms-excel';
+export const DOC_LEGACY_MIME = 'application/msword';
+
+/** Document types accepted for Library resources. Never executables. */
+export const RESOURCE_MIME = [
+  'application/pdf',
+  XLSX_MIME,
+  DOCX_MIME,
+  XLS_MIME,
+  DOC_LEGACY_MIME,
+] as const;
+
 /** Extensions are derived from the validated MIME type, never from user input. */
 const EXT_BY_MIME: Record<string, string> = {
   'image/jpeg': 'jpg',
@@ -17,16 +31,46 @@ const EXT_BY_MIME: Record<string, string> = {
   'application/pdf': 'pdf',
   'video/mp4': 'mp4',
   'video/webm': 'webm',
+  [XLSX_MIME]: 'xlsx',
+  [DOCX_MIME]: 'docx',
+  [XLS_MIME]: 'xls',
+  [DOC_LEGACY_MIME]: 'doc',
 };
 
 export const MAX_UPLOAD_BYTES = 10 * 1024 * 1024;
 export const MAX_MEDIA_BYTES = 50 * 1024 * 1024;
+export const MAX_RESOURCE_BYTES = 25 * 1024 * 1024;
 export const MAX_FILES_PER_INQUIRY = 8;
 
 export type Scope = 'public' | 'private';
 
 function root(scope: Scope) {
   return path.resolve(process.cwd(), env.storageDir, scope);
+}
+
+/** Human label for a document MIME type, shown on Library resource cards. */
+export function documentLabel(mime: string): string {
+  switch (mime) {
+    case XLSX_MIME:
+    case XLS_MIME:
+      return 'XLSX';
+    case DOCX_MIME:
+    case DOC_LEGACY_MIME:
+      return 'DOCX';
+    case 'application/pdf':
+      return 'PDF';
+    default:
+      return 'FILE';
+  }
+}
+
+/** `1048576` → `1 MB`. */
+export function formatBytes(bytes: number): string {
+  if (!bytes || bytes < 0) return '';
+  const units = ['B', 'KB', 'MB', 'GB'];
+  const exponent = Math.min(Math.floor(Math.log(bytes) / Math.log(1024)), units.length - 1);
+  const value = bytes / 1024 ** exponent;
+  return `${value >= 10 || exponent === 0 ? Math.round(value) : value.toFixed(1)} ${units[exponent]}`;
 }
 
 export function kindOfMime(mime: string): 'IMAGE' | 'VIDEO' | 'DOCUMENT' {
@@ -61,6 +105,29 @@ export function sniffMime(buf: Buffer): string | null {
     return 'video/mp4';
   }
   if (b[0] === 0x1a && b[1] === 0x45 && b[2] === 0xdf && b[3] === 0xa3) return 'video/webm';
+
+  // OOXML files are ZIP containers, so the signature alone cannot tell an
+  // .xlsx from a .docx — or from an arbitrary archive. The part names in the
+  // ZIP directory are stored uncompressed, so they identify the real format.
+  if (b[0] === 0x50 && b[1] === 0x4b && (b[2] === 0x03 || b[2] === 0x05 || b[2] === 0x07)) {
+    const text = b.toString('latin1');
+    if (text.includes('xl/workbook.xml') || text.includes('xl/_rels/workbook.xml.rels')) return XLSX_MIME;
+    if (text.includes('word/document.xml')) return DOCX_MIME;
+    return null;
+  }
+
+  // Legacy OLE compound files (.xls/.doc) are told apart by their stream names,
+  // which are stored as UTF-16LE inside the directory entries.
+  if (
+    b[0] === 0xd0 && b[1] === 0xcf && b[2] === 0x11 && b[3] === 0xe0 &&
+    b[4] === 0xa1 && b[5] === 0xb1 && b[6] === 0x1a && b[7] === 0xe1
+  ) {
+    const text = b.toString('utf16le');
+    if (text.includes('Workbook') || text.includes('Book')) return XLS_MIME;
+    if (text.includes('WordDocument')) return DOC_LEGACY_MIME;
+    return null;
+  }
+
   return null;
 }
 

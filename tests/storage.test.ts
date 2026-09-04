@@ -3,7 +3,15 @@ import path from 'node:path';
 
 process.env.STORAGE_DIR = './storage';
 
-import { sniffMime, safeDisplayName, imageSize, resolveKey, kindOfMime } from '../src/lib/storage';
+import {
+  sniffMime,
+  safeDisplayName,
+  imageSize,
+  resolveKey,
+  kindOfMime,
+  formatBytes,
+  documentLabel,
+} from '../src/lib/storage';
 
 /** A minimal but structurally valid PNG header declaring 1280×720. */
 function makePng(width: number, height: number) {
@@ -96,5 +104,55 @@ describe('kindOfMime', () => {
     expect(kindOfMime('image/webp')).toBe('IMAGE');
     expect(kindOfMime('video/mp4')).toBe('VIDEO');
     expect(kindOfMime('application/pdf')).toBe('DOCUMENT');
+  });
+});
+
+describe('office document sniffing', () => {
+  const zip = (...names: string[]) =>
+    Buffer.concat([Buffer.from([0x50, 0x4b, 0x03, 0x04]), Buffer.alloc(24), Buffer.from(names.join(' '), 'latin1')]);
+
+  const ole = (name: string) =>
+    Buffer.concat([
+      Buffer.from([0xd0, 0xcf, 0x11, 0xe0, 0xa1, 0xb1, 0x1a, 0xe1]),
+      Buffer.alloc(40),
+      Buffer.from(name, 'utf16le'),
+    ]);
+
+  it('tells a spreadsheet from a document inside the ZIP container', () => {
+    expect(sniffMime(zip('[Content_Types].xml', 'xl/workbook.xml'))).toBe(
+      'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+    );
+    expect(sniffMime(zip('[Content_Types].xml', 'word/document.xml'))).toBe(
+      'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+    );
+  });
+
+  it('rejects a plain ZIP, which is how an archive of executables would arrive', () => {
+    expect(sniffMime(zip('payload.sh', 'run.exe'))).toBeNull();
+  });
+
+  it('detects legacy .xls and .doc from their OLE stream names', () => {
+    expect(sniffMime(ole('Workbook'))).toBe('application/vnd.ms-excel');
+    expect(sniffMime(ole('WordDocument'))).toBe('application/msword');
+  });
+
+  it('classifies office documents as DOCUMENT media', () => {
+    expect(kindOfMime('application/vnd.ms-excel')).toBe('DOCUMENT');
+  });
+});
+
+describe('formatBytes and documentLabel', () => {
+  it('renders human file sizes', () => {
+    expect(formatBytes(0)).toBe('');
+    expect(formatBytes(900)).toBe('900 B');
+    expect(formatBytes(1024 * 1024)).toBe('1.0 MB');
+    expect(formatBytes(25 * 1024 * 1024)).toBe('25 MB');
+  });
+
+  it('labels documents by family', () => {
+    expect(documentLabel('application/pdf')).toBe('PDF');
+    expect(documentLabel('application/vnd.ms-excel')).toBe('XLSX');
+    expect(documentLabel('application/msword')).toBe('DOCX');
+    expect(documentLabel('text/plain')).toBe('FILE');
   });
 });

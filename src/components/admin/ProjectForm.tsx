@@ -3,6 +3,7 @@
 import { AdminForm } from './AdminForm';
 import { MediaField } from './MediaField';
 import { SubmitButton } from './SubmitButton';
+import { RelationPicker, type RelationOption } from './RelationPicker';
 import { Card, Field, Grid, inputClass } from './ui';
 import { saveProject, deleteProject } from '@/server/actions';
 
@@ -27,10 +28,14 @@ export function ProjectForm({
   values,
   categories,
   services,
+  relationOptions,
+  selectedRelations,
 }: {
   values: ProjectFormValues;
   categories: { id: string; nameEn: string }[];
   services: { id: string; nameEn: string }[];
+  relationOptions: RelationOption[];
+  selectedRelations: string[];
 }) {
   return (
     <AdminForm action={saveProject} className="space-y-5">
@@ -129,6 +134,13 @@ export function ProjectForm({
             <Field label="Results" htmlFor="resultsRaw" hint="One per line: Value | Label EN | Label AR — e.g. 3.4x | Return on ad spend | العائد على الإنفاق">
               <textarea id="resultsRaw" name="resultsRaw" rows={4} defaultValue={values.resultsRaw} className={`${inputClass} font-mono text-xs`} />
             </Field>
+          </Card>
+
+          <Card
+            title="Related content"
+            description="Attach articles, resources, tools and other work. Each connection is shown on both pages."
+          >
+            <RelationPicker options={relationOptions} selected={selectedRelations} />
           </Card>
 
           <Card title="SEO">

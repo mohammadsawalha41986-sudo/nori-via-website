@@ -4,6 +4,8 @@ import { prisma } from '@/lib/db';
 import { ProjectForm, DeleteProjectForm } from '@/components/admin/ProjectForm';
 import { PageHeader, LinkButton, Card } from '@/components/admin/ui';
 import { stringifyUrlList, stringifyMetrics } from '@/server/helpers';
+import { getRelationOptions } from '@/lib/relation-options';
+import { getOutgoingRefs, serialiseRef } from '@/lib/relations';
 
 export const dynamic = 'force-dynamic';
 
@@ -16,10 +18,12 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
 export default async function EditProjectPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
 
-  const [project, categories, services] = await Promise.all([
+  const [project, categories, services, relationOptions, refs] = await Promise.all([
     prisma.project.findUnique({ where: { id }, include: { services: true, caseStudy: { select: { id: true } } } }),
     prisma.workCategory.findMany({ orderBy: { order: 'asc' }, select: { id: true, nameEn: true } }),
     prisma.service.findMany({ orderBy: { nameEn: 'asc' }, select: { id: true, nameEn: true } }),
+    getRelationOptions({ type: 'PROJECT', id }),
+    getOutgoingRefs('PROJECT', id),
   ]);
 
   if (!project) notFound();
@@ -57,6 +61,8 @@ export default async function EditProjectPage({ params }: { params: Promise<{ id
       </div>
 
       <ProjectForm
+        relationOptions={relationOptions}
+        selectedRelations={refs.map(serialiseRef)}
         categories={categories}
         services={services}
         values={{

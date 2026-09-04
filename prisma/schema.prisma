@@ -71,12 +71,12 @@ model SiteSettings {
   descriptionEn String @default("")
   descriptionAr String @default("")
 
-  logoUrl     String?
-  logoMarkUrl String?
+  logoUrl        String?
+  logoMarkUrl    String?
   /// Optional light/reversed artwork for dark backgrounds. When absent, the
   /// primary logo is placed on a light plate rather than being recoloured.
   logoInverseUrl String?
-  faviconUrl  String?
+  faviconUrl     String?
   defaultOgImage String?
 
   inquiryEmail String @default("")
@@ -114,21 +114,21 @@ model SiteSettings {
 model HomepageContent {
   id String @id @default("singleton")
 
-  heroEyebrowEn   String @default("")
-  heroEyebrowAr   String @default("")
-  heroHeadlineEn  String @default("")
-  heroHeadlineAr  String @default("")
-  heroSubtitleEn  String @default("")
-  heroSubtitleAr  String @default("")
-  heroPrimaryCtaEn  String @default("")
-  heroPrimaryCtaAr  String @default("")
-  heroSecondaryCtaEn String @default("")
-  heroSecondaryCtaAr String @default("")
-  heroMediaUrl    String?
-  heroMediaKind   MediaKind @default(IMAGE)
+  heroEyebrowEn      String    @default("")
+  heroEyebrowAr      String    @default("")
+  heroHeadlineEn     String    @default("")
+  heroHeadlineAr     String    @default("")
+  heroSubtitleEn     String    @default("")
+  heroSubtitleAr     String    @default("")
+  heroPrimaryCtaEn   String    @default("")
+  heroPrimaryCtaAr   String    @default("")
+  heroSecondaryCtaEn String    @default("")
+  heroSecondaryCtaAr String    @default("")
+  heroMediaUrl       String?
+  heroMediaKind      MediaKind @default(IMAGE)
 
-  statementEn String @default("")
-  statementAr String @default("")
+  statementEn        String @default("")
+  statementAr        String @default("")
   statementSupportEn String @default("")
   statementSupportAr String @default("")
 
@@ -171,14 +171,14 @@ model SystemStage {
 }
 
 model ServiceCategory {
-  id      String  @id @default(cuid())
-  slug    String  @unique
-  nameEn  String
-  nameAr  String
-  descriptionEn String @default("")
-  descriptionAr String @default("")
-  order   Int     @default(0)
-  visible Boolean @default(true)
+  id            String  @id @default(cuid())
+  slug          String  @unique
+  nameEn        String
+  nameAr        String
+  descriptionEn String  @default("")
+  descriptionAr String  @default("")
+  order         Int     @default(0)
+  visible       Boolean @default(true)
 
   services Service[]
 }
@@ -200,12 +200,12 @@ model Service {
   heroDescriptionEn String @default("")
   heroDescriptionAr String @default("")
 
-  whatWeDoEn    String @default("")
-  whatWeDoAr    String @default("")
+  whatWeDoEn     String @default("")
+  whatWeDoAr     String @default("")
   whyItMattersEn String @default("")
   whyItMattersAr String @default("")
-  approachEn    String @default("")
-  approachAr    String @default("")
+  approachEn     String @default("")
+  approachAr     String @default("")
 
   deliverables Json @default("[]")
   process      Json @default("[]")
@@ -215,10 +215,10 @@ model Service {
   featuredImage String?
   gallery       Json    @default("[]")
 
-  seoTitleEn       String @default("")
-  seoTitleAr       String @default("")
-  seoDescriptionEn String @default("")
-  seoDescriptionAr String @default("")
+  seoTitleEn       String  @default("")
+  seoTitleAr       String  @default("")
+  seoDescriptionEn String  @default("")
+  seoDescriptionAr String  @default("")
   ogImage          String?
   noindex          Boolean @default(false)
 
@@ -228,7 +228,7 @@ model Service {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  projects ProjectService[]
+  projects    ProjectService[]
   caseStudies CaseStudyService[]
 
   @@index([status, order])
@@ -275,10 +275,10 @@ model Project {
   status   PublishStatus @default(DRAFT)
   order    Int           @default(0)
 
-  seoTitleEn       String @default("")
-  seoTitleAr       String @default("")
-  seoDescriptionEn String @default("")
-  seoDescriptionAr String @default("")
+  seoTitleEn       String  @default("")
+  seoTitleAr       String  @default("")
+  seoDescriptionEn String  @default("")
+  seoDescriptionAr String  @default("")
   ogImage          String?
   noindex          Boolean @default(false)
 
@@ -332,10 +332,10 @@ model CaseStudy {
 
   heroMediaUrl String?
 
-  seoTitleEn       String @default("")
-  seoTitleAr       String @default("")
-  seoDescriptionEn String @default("")
-  seoDescriptionAr String @default("")
+  seoTitleEn       String  @default("")
+  seoTitleAr       String  @default("")
+  seoDescriptionEn String  @default("")
+  seoDescriptionAr String  @default("")
   ogImage          String?
   noindex          Boolean @default(false)
 
@@ -392,10 +392,10 @@ model Insight {
   publishedAt DateTime?
   status      PublishStatus @default(DRAFT)
 
-  seoTitleEn       String @default("")
-  seoTitleAr       String @default("")
-  seoDescriptionEn String @default("")
-  seoDescriptionAr String @default("")
+  seoTitleEn       String  @default("")
+  seoTitleAr       String  @default("")
+  seoDescriptionEn String  @default("")
+  seoDescriptionAr String  @default("")
   ogImage          String?
   noindex          Boolean @default(false)
 
@@ -406,16 +406,16 @@ model Insight {
 }
 
 model Media {
-  id        String    @id @default(cuid())
-  filename  String
-  url       String
-  kind      MediaKind @default(IMAGE)
-  mimeType  String
-  size      Int
-  width     Int?
-  height    Int?
-  altEn     String    @default("")
-  altAr     String    @default("")
+  id       String    @id @default(cuid())
+  filename String
+  url      String
+  kind     MediaKind @default(IMAGE)
+  mimeType String
+  size     Int
+  width    Int?
+  height   Int?
+  altEn    String    @default("")
+  altAr    String    @default("")
 
   uploadedById String?
   uploadedBy   AdminUser? @relation(fields: [uploadedById], references: [id], onDelete: SetNull)
@@ -477,11 +477,11 @@ model Page {
   /// Flexible per-page section content, edited from Admin.
   content Json @default("{}")
 
-  seoTitleEn       String @default("")
-  seoTitleAr       String @default("")
-  seoDescriptionEn String @default("")
-  seoDescriptionAr String @default("")
-  canonical        String @default("")
+  seoTitleEn       String  @default("")
+  seoTitleAr       String  @default("")
+  seoDescriptionEn String  @default("")
+  seoDescriptionAr String  @default("")
+  canonical        String  @default("")
   ogImage          String?
   noindex          Boolean @default(false)
 
@@ -515,8 +515,8 @@ model ProjectInquiry {
   ip        String?
   userAgent String?
 
-  emailSentToTeam   Boolean @default(false)
-  confirmationSent  Boolean @default(false)
+  emailSentToTeam  Boolean @default(false)
+  confirmationSent Boolean @default(false)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -531,7 +531,7 @@ model ProjectInquiryAttachment {
   inquiryId String
 
   /// Original client filename, sanitised for display only.
-  filename String
+  filename   String
   /// Randomised on-disk name; never derived from user input.
   storageKey String @unique
   mimeType   String
@@ -578,4 +578,198 @@ model AnalyticsEvent {
   createdAt DateTime @default(now())
 
   @@index([name, createdAt])
+}
+
+// ---------------------------------------------------------------------------
+// Design system, contact channels, library, tools and content relationships.
+// ---------------------------------------------------------------------------
+
+enum ResourceType {
+  EXCEL
+  WORD
+  PDF
+  TEMPLATE
+  GUIDE
+  REPORT
+}
+
+/// Every entity that can be linked to any other entity through ContentLink.
+enum ContentType {
+  INSIGHT
+  RESOURCE
+  TOOL
+  SERVICE
+  CASE_STUDY
+  PROJECT
+}
+
+/// Singleton row (id = "singleton") holding the editable brand design tokens.
+/// Each column is a validated partial override of the CSS variable defaults in
+/// `globals.css`, so an empty row renders exactly the shipped brand.
+model DesignTokens {
+  id String @id @default("singleton")
+
+  /// { brand, brandDark, ink900, …} — hex values, validated before saving.
+  colors     Json @default("{}")
+  /// { sansFont, displayFont, arabicFont, baseSize, lineHeight, headingWeight, … }
+  typography Json @default("{}")
+  /// { radiusButton, radiusCard, radiusInput, containerWidth, spacingScale, … }
+  shape      Json @default("{}")
+
+  updatedAt DateTime @updatedAt
+}
+
+/// Social channels rendered in the footer and Organization JSON-LD. Replaces
+/// the fixed SiteSettings columns, which stay as the fallback for existing data.
+model SocialLink {
+  id       String  @id @default(cuid())
+  platform String
+  labelEn  String  @default("")
+  labelAr  String  @default("")
+  url      String
+  enabled  Boolean @default(true)
+  order    Int     @default(0)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([enabled, order])
+}
+
+/// Floating contact buttons (WhatsApp, phone, email, custom link).
+model FloatingAction {
+  id      String  @id @default(cuid())
+  kind    String  @default("whatsapp")
+  labelEn String  @default("")
+  labelAr String  @default("")
+  value   String  @default("")
+  enabled Boolean @default(true)
+  order   Int     @default(0)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([enabled, order])
+}
+
+model ResourceCategory {
+  id            String  @id @default(cuid())
+  slug          String  @unique
+  nameEn        String
+  nameAr        String
+  descriptionEn String  @default("")
+  descriptionAr String  @default("")
+  order         Int     @default(0)
+  visible       Boolean @default(true)
+
+  resources Resource[]
+}
+
+/// A downloadable asset in the Library: spreadsheet, document, PDF or guide.
+model Resource {
+  id      String @id @default(cuid())
+  slug    String @unique
+  titleEn String
+  titleAr String @default("")
+
+  summaryEn     String @default("")
+  summaryAr     String @default("")
+  descriptionEn String @default("")
+  descriptionAr String @default("")
+
+  type       ResourceType      @default(PDF)
+  categoryId String?
+  category   ResourceCategory? @relation(fields: [categoryId], references: [id], onDelete: SetNull)
+
+  tags Json @default("[]")
+
+  /// Randomised private storage key; never derived from the uploaded filename.
+  fileKey     String?
+  fileName    String  @default("")
+  fileMime    String  @default("")
+  fileSize    Int     @default(0)
+  /// Used instead of an upload when the asset is hosted elsewhere.
+  externalUrl String  @default("")
+
+  thumbnail String?
+
+  /// Localised bullet lists: what the file contains, and who it is for.
+  includes Json @default("[]")
+  audience Json @default("[]")
+
+  downloadCount Int     @default(0)
+  featured      Boolean @default(false)
+
+  publishedAt DateTime?
+  status      PublishStatus @default(DRAFT)
+  order       Int           @default(0)
+
+  seoTitleEn       String  @default("")
+  seoTitleAr       String  @default("")
+  seoDescriptionEn String  @default("")
+  seoDescriptionAr String  @default("")
+  ogImage          String?
+  noindex          Boolean @default(false)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([status, order])
+  @@index([type, status])
+}
+
+/// An interactive calculator/estimator. The inputs, formulas and outputs are
+/// authored in Admin as data, so new tools need no code change.
+model Tool {
+  id     String @id @default(cuid())
+  slug   String @unique
+  nameEn String
+  nameAr String @default("")
+
+  summaryEn     String @default("")
+  summaryAr     String @default("")
+  descriptionEn String @default("")
+  descriptionAr String @default("")
+  purposeEn     String @default("")
+  purposeAr     String @default("")
+
+  /// { inputs: ToolInput[], outputs: ToolOutput[], notesEn, notesAr }
+  config Json @default("{}")
+
+  thumbnail String?
+
+  featured Boolean       @default(false)
+  status   PublishStatus @default(DRAFT)
+  order    Int           @default(0)
+
+  seoTitleEn       String  @default("")
+  seoTitleAr       String  @default("")
+  seoDescriptionEn String  @default("")
+  seoDescriptionAr String  @default("")
+  ogImage          String?
+  noindex          Boolean @default(false)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([status, order])
+}
+
+/// Polymorphic relationship between any two pieces of content. Links are read
+/// in both directions, so an article attached to a tool also surfaces on that
+/// tool. Rows are removed explicitly when either side is deleted, since a
+/// polymorphic edge cannot carry a foreign key.
+model ContentLink {
+  id       String      @id @default(cuid())
+  fromType ContentType
+  fromId   String
+  toType   ContentType
+  toId     String
+  order    Int         @default(0)
+
+  createdAt DateTime @default(now())
+
+  @@unique([fromType, fromId, toType, toId])
+  @@index([fromType, fromId])
+  @@index([toType, toId])
 }

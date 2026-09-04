@@ -5,7 +5,9 @@ import {
   getPublishedServices,
   getPublishedProjects,
   getPublishedInsights,
+  getPublishedTools,
 } from '@/lib/content';
+import { prisma } from '@/lib/db';
 
 /**
  * Built from CMS content, so it must not be generated during `next build`.
@@ -15,13 +17,31 @@ import {
 export const dynamic = 'force-dynamic';
 export const revalidate = 3600;
 
-const STATIC_PATHS = ['', '/about', '/services', '/work', '/restaurant-growth', '/insights', '/contact', '/start-a-project', '/privacy', '/terms'];
+const STATIC_PATHS = [
+  '',
+  '/about',
+  '/services',
+  '/work',
+  '/restaurant-growth',
+  '/insights',
+  '/library',
+  '/tools',
+  '/contact',
+  '/start-a-project',
+  '/privacy',
+  '/terms',
+];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const [services, projects, insights] = await Promise.all([
+  const [services, projects, insights, tools, resources] = await Promise.all([
     getPublishedServices(),
     getPublishedProjects(),
     getPublishedInsights(),
+    getPublishedTools(),
+    prisma.resource.findMany({
+      where: { status: 'PUBLISHED', noindex: false },
+      select: { slug: true, updatedAt: true },
+    }),
   ]);
 
   const entries: MetadataRoute.Sitemap = [];
@@ -44,6 +64,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   for (const s of services) push(`/services/${s.slug}`, s.updatedAt, 0.8);
   for (const p of projects) push(`/work/${p.slug}`, p.updatedAt, 0.8);
   for (const a of insights) push(`/insights/${a.slug}`, a.updatedAt, 0.6);
+  for (const t of tools) push(`/tools/${t.slug}`, t.updatedAt, 0.7);
+  for (const r of resources) push(`/library/${r.slug}`, r.updatedAt, 0.7);
 
   return entries;
 }

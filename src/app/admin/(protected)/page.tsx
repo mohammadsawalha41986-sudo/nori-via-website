@@ -19,6 +19,13 @@ export default async function AdminDashboard() {
     inquiries,
     newMessages,
     settings,
+    resourcesPublished,
+    resourcesTotal,
+    toolsPublished,
+    toolsTotal,
+    draftCount,
+    topDownloads,
+    recentDownloads,
   ] = await Promise.all([
     prisma.service.count({ where: { status: 'PUBLISHED' } }),
     prisma.service.count(),
@@ -31,6 +38,28 @@ export default async function AdminDashboard() {
     prisma.projectInquiry.findMany({ orderBy: { createdAt: 'desc' }, take: 8 }),
     prisma.contactMessage.count({ where: { status: 'NEW' } }),
     prisma.siteSettings.findUnique({ where: { id: 'singleton' } }),
+    prisma.resource.count({ where: { status: 'PUBLISHED' } }),
+    prisma.resource.count(),
+    prisma.tool.count({ where: { status: 'PUBLISHED' } }),
+    prisma.tool.count(),
+    // Everything still waiting to be finished and published.
+    Promise.all([
+      prisma.service.count({ where: { status: 'DRAFT' } }),
+      prisma.project.count({ where: { status: 'DRAFT' } }),
+      prisma.caseStudy.count({ where: { status: 'DRAFT' } }),
+      prisma.insight.count({ where: { status: 'DRAFT' } }),
+      prisma.resource.count({ where: { status: 'DRAFT' } }),
+      prisma.tool.count({ where: { status: 'DRAFT' } }),
+    ]).then((counts) => counts.reduce((total, n) => total + n, 0)),
+    prisma.resource.findMany({
+      where: { downloadCount: { gt: 0 } },
+      orderBy: { downloadCount: 'desc' },
+      take: 6,
+      select: { id: true, titleEn: true, slug: true, downloadCount: true },
+    }),
+    prisma.analyticsEvent.count({
+      where: { name: 'resource_download', createdAt: { gte: new Date(Date.now() - 30 * 864e5) } },
+    }),
   ]);
 
   const warnings: string[] = [];
@@ -41,6 +70,9 @@ export default async function AdminDashboard() {
     warnings.push('No inquiry email address is set. Add one in Site settings so new inquiries reach the team.');
   }
   if (!settings?.logoUrl) warnings.push('No logo has been uploaded. Add one in Site settings.');
+  if (resourcesTotal === 0) {
+    warnings.push('The Library is empty. Upload an Excel, Word or PDF resource in Library resources.');
+  }
   if (projectsTotal === 0) warnings.push('No portfolio projects yet. Add real work in Portfolio — placeholder work is never invented.');
 
   return (
@@ -68,9 +100,32 @@ export default async function AdminDashboard() {
         <Stat label="Projects live" value={`${projectsPublished}/${projectsTotal}`} href="/admin/work" />
         <Stat label="Case studies" value={caseStudies} href="/admin/case-studies" />
         <Stat label="Insights" value={insightsPublished} href="/admin/insights" />
+        <Stat label="Resources live" value={`${resourcesPublished}/${resourcesTotal}`} href="/admin/resources" />
+        <Stat label="Tools live" value={`${toolsPublished}/${toolsTotal}`} href="/admin/tools" />
         <Stat label="Media files" value={mediaCount} href="/admin/media" />
         <Stat label="New inquiries" value={newInquiries} href="/admin/inquiries" />
+        <Stat label="Drafts" value={draftCount} href="/admin/preview" />
+        <Stat label="Downloads (30 days)" value={recentDownloads} href="/admin/resources" />
       </div>
+
+      {topDownloads.length > 0 && (
+        <Card
+          title="Most downloaded resources"
+          description="Counted per visitor, so a refresh loop cannot inflate these numbers."
+          className="mb-6"
+        >
+          <ul className="divide-y divide-slate-100">
+            {topDownloads.map((r) => (
+              <li key={r.id} className="flex items-center gap-3 py-2.5">
+                <Link href={`/admin/resources/${r.id}`} className="min-w-0 flex-1 truncate text-sm text-slate-800 hover:underline">
+                  {r.titleEn}
+                </Link>
+                <span className="text-sm font-semibold text-slate-900">{r.downloadCount}</span>
+              </li>
+            ))}
+          </ul>
+        </Card>
+      )}
 
       {newMessages > 0 && (
         <div className="mb-6 rounded-lg border border-slate-200 bg-white p-4 text-sm text-slate-700">
