@@ -601,6 +601,9 @@ enum ContentType {
   SERVICE
   CASE_STUDY
   PROJECT
+  /// Editable CMS pages (Start Here, Restaurant Growth, About …) so an editor
+  /// can surface tools, resources and articles on them without code.
+  PAGE
 }
 
 /// Singleton row (id = "singleton") holding the editable brand design tokens.

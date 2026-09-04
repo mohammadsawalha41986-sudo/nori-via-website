@@ -24,7 +24,7 @@ export type RelatedItem = {
   badge: string;
 };
 
-export const CONTENT_TYPES = ['INSIGHT', 'RESOURCE', 'TOOL', 'SERVICE', 'CASE_STUDY', 'PROJECT'] as const;
+export const CONTENT_TYPES = ['INSIGHT', 'RESOURCE', 'TOOL', 'SERVICE', 'CASE_STUDY', 'PROJECT', 'PAGE'] as const;
 
 const BADGES: Record<ContentType, { en: string; ar: string }> = {
   INSIGHT: { en: 'Article', ar: 'مقال' },
@@ -33,7 +33,32 @@ const BADGES: Record<ContentType, { en: string; ar: string }> = {
   SERVICE: { en: 'Solution', ar: 'خدمة' },
   CASE_STUDY: { en: 'Case study', ar: 'دراسة حالة' },
   PROJECT: { en: 'Work', ar: 'عمل' },
+  PAGE: { en: 'Page', ar: 'صفحة' },
 };
+
+/**
+ * Editable pages are addressed by their key rather than a slug column, and a
+ * couple of them live at a path that does not match the key.
+ */
+const PAGE_PATHS: Record<string, string> = {
+  home: '',
+  about: '/about',
+  contact: '/contact',
+  'start-here': '/start-here',
+  'start-a-project': '/start-a-project',
+  'restaurant-growth': '/restaurant-growth',
+  insights: '/insights',
+  library: '/library',
+  tools: '/tools',
+  work: '/work',
+  services: '/services',
+  privacy: '/privacy',
+  terms: '/terms',
+};
+
+export function pagePath(key: string) {
+  return PAGE_PATHS[key];
+}
 
 export function badgeFor(type: ContentType, locale: Locale) {
   return locale === 'ar' ? BADGES[type].ar : BADGES[type].en;
@@ -187,6 +212,21 @@ export async function loadRefs(refs: ContentRef[], locale: Locale): Promise<Rela
           summary: pick(row, 'description', locale).split('\n')[0] ?? '',
           href: `/${locale}/work/${row.slug}`,
           image: row.heroMediaUrl,
+        });
+      }
+    })(),
+    (async () => {
+      const ids = byType.get('PAGE');
+      if (!ids) return;
+      for (const row of await prisma.page.findMany({ where: { id: { in: ids } } })) {
+        // A page with no public route of its own is not a destination.
+        const path = pagePath(row.key);
+        if (path === undefined) continue;
+        add('PAGE', row.id, {
+          title: pick(row, 'title', locale) || row.key,
+          summary: pick(row, 'body', locale).split('\n')[0] ?? '',
+          href: `/${locale}${path}`,
+          image: row.ogImage,
         });
       }
     })(),

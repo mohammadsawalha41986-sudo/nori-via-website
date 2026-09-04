@@ -376,6 +376,7 @@ const SYSTEM_STAGES = [
 ];
 
 const NAVIGATION = [
+  { labelEn: 'Start Here', labelAr: 'ابدأ من هنا', href: '/start-here', order: 0 },
   { labelEn: 'Work', labelAr: 'أعمالنا', href: '/work', order: 1 },
   { labelEn: 'Services', labelAr: 'خدماتنا', href: '/services', order: 2 },
   { labelEn: 'Restaurant Growth', labelAr: 'نمو المطاعم', href: '/restaurant-growth', order: 3 },
@@ -639,6 +640,73 @@ async function main() {
       titleAr: 'رؤى',
       bodyEn: 'Writing on restaurant marketing, menu engineering, food cost and growth.',
       bodyAr: 'كتابات في تسويق المطاعم وهندسة القوائم وتكلفة الطعام والنمو.',
+    },
+    {
+      key: 'start-here',
+      titleEn: 'Start here',
+      titleAr: 'ابدأ من هنا',
+      bodyEn: 'Tell us where you are and we will point you at the right place to begin. Edit this introduction, and the cards below it, from the Noriva Admin.',
+      bodyAr: 'أخبرنا أين أنت الآن وسنوجهك إلى النقطة المناسبة للبدء. يمكنك تعديل هذه المقدمة والبطاقات أدناه من لوحة تحكم نوريفا.',
+      content: {
+        // Routes to places that already exist on the site. Add, reorder or
+        // rewrite these from Admin — nothing here is hard-coded in the pages.
+        paths: [
+          {
+            titleEn: 'I know which service I need',
+            titleAr: 'أعرف الخدمة التي أحتاجها',
+            bodyEn: 'Browse the full set of Noriva solutions.',
+            bodyAr: 'تصفح خدمات نوريفا كاملة.',
+            href: '/services',
+            labelEn: 'See solutions',
+            labelAr: 'استعرض الخدمات',
+          },
+          {
+            titleEn: 'I want to see the work first',
+            titleAr: 'أريد الاطلاع على الأعمال أولًا',
+            bodyEn: 'Selected projects and the thinking behind them.',
+            bodyAr: 'مشاريع مختارة والتفكير الذي وراءها.',
+            href: '/work',
+            labelEn: 'See work',
+            labelAr: 'استعرض الأعمال',
+          },
+          {
+            titleEn: 'I want to work the numbers',
+            titleAr: 'أريد العمل على الأرقام',
+            bodyEn: 'Interactive calculators you can use right now.',
+            bodyAr: 'حاسبات تفاعلية يمكنك استخدامها الآن.',
+            href: '/tools',
+            labelEn: 'Open tools',
+            labelAr: 'افتح الأدوات',
+          },
+          {
+            titleEn: 'I need templates and guides',
+            titleAr: 'أحتاج قوالب وأدلة',
+            bodyEn: 'Downloadable Excel models, documents and guides.',
+            bodyAr: 'نماذج إكسل ومستندات وأدلة قابلة للتحميل.',
+            href: '/library',
+            labelEn: 'Open the library',
+            labelAr: 'افتح المكتبة',
+          },
+          {
+            titleEn: 'I want to read first',
+            titleAr: 'أريد القراءة أولًا',
+            bodyEn: 'Articles on restaurant marketing, menu and growth.',
+            bodyAr: 'مقالات في تسويق المطاعم والقوائم والنمو.',
+            href: '/insights',
+            labelEn: 'Read insights',
+            labelAr: 'اقرأ الرؤى',
+          },
+          {
+            titleEn: 'I am ready to start a project',
+            titleAr: 'أنا جاهز لبدء مشروع',
+            bodyEn: 'Answer a few questions and the team will come back to you.',
+            bodyAr: 'أجب عن بضعة أسئلة وسيعود إليك الفريق.',
+            href: '/start-a-project',
+            labelEn: 'Start a project',
+            labelAr: 'ابدأ مشروعك',
+          },
+        ],
+      },
     },
     {
       key: 'library',

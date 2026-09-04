@@ -4,12 +4,31 @@ import { PageHeader, Card, Badge, EmptyRow, LinkButton } from '@/components/admi
 import { SubmitButton } from '@/components/admin/SubmitButton';
 import { toggleResourceStatus } from '@/server/platform-actions';
 import { documentLabel, formatBytes } from '@/lib/storage';
+import { ListFilter } from '@/components/admin/ListFilter';
 
 export const metadata = { title: 'Resources' };
 export const dynamic = 'force-dynamic';
 
-export default async function ResourcesAdmin() {
+export default async function ResourcesAdmin({
+  searchParams,
+}: {
+  searchParams: Promise<{ q?: string; status?: string }>;
+}) {
+  const { q = '', status = '' } = await searchParams;
+
   const items = await prisma.resource.findMany({
+    where: {
+      ...(status === 'PUBLISHED' || status === 'DRAFT' ? { status } : {}),
+      ...(q.trim()
+        ? {
+            OR: [
+              { titleEn: { contains: q.trim(), mode: 'insensitive' as const } },
+              { titleAr: { contains: q.trim(), mode: 'insensitive' as const } },
+              { slug: { contains: q.trim(), mode: 'insensitive' as const } },
+            ],
+          }
+        : {}),
+    },
     orderBy: [{ status: 'asc' }, { order: 'asc' }, { createdAt: 'desc' }],
     include: { category: true },
   });
@@ -22,9 +41,13 @@ export default async function ResourcesAdmin() {
         action={<LinkButton href="/admin/resources/new">New resource</LinkButton>}
       />
 
+      <ListFilter placeholder="Search resources…" />
+
       <Card>
         {items.length === 0 ? (
-          <EmptyRow>No resources yet. Upload the first Excel, Word or PDF file.</EmptyRow>
+          <EmptyRow>
+            {q || status ? 'No resources match that filter.' : 'No resources yet. Upload the first Excel, Word or PDF file.'}
+          </EmptyRow>
         ) : (
           <ul className="divide-y divide-slate-100">
             {items.map((r) => {

@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/db';
+import { publishedNow } from '@/lib/content';
 import { readStoredFile } from '@/lib/storage';
 import { rateLimit, clientIp } from '@/lib/rate-limit';
 
@@ -18,7 +19,7 @@ export async function GET(req: Request, { params }: { params: Promise<{ slug: st
   const { slug } = await params;
 
   const resource = await prisma.resource.findFirst({
-    where: { slug, status: 'PUBLISHED' },
+    where: { slug, ...publishedNow() },
     select: { id: true, slug: true, fileKey: true, fileName: true, fileMime: true, externalUrl: true },
   });
   if (!resource) return new NextResponse('Not found', { status: 404 });

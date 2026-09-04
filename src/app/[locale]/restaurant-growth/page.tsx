@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { PageHero } from '@/components/public/PageHero';
+import { PathCards, toPathCards } from '@/components/public/PathCards';
+import { RelatedContent } from '@/components/public/RelatedContent';
 import { CTASection } from '@/components/public/CTASection';
 import { Reveal } from '@/components/ui/Reveal';
 import { Prose } from '@/components/ui/Prose';
@@ -9,6 +11,7 @@ import { SectionHeading } from '@/components/ui/SectionHeading';
 import { getDictionary } from '@/lib/dictionary';
 import { isLocale, pick, type Locale } from '@/lib/i18n';
 import { getPage, getPublishedServices } from '@/lib/content';
+import { getRelatedContent } from '@/lib/relations';
 import { buildMetadata, JsonLd, breadcrumbs } from '@/lib/seo';
 
 export const revalidate = 60;
@@ -38,10 +41,14 @@ export default async function RestaurantGrowthPage({ params }: { params: Promise
   const dict = getDictionary(locale);
 
   const [page, services] = await Promise.all([getPage('restaurant-growth'), getPublishedServices()]);
-  const content = (page?.content ?? {}) as { pillars?: Pillar[] };
+  const content = (page?.content ?? {}) as { pillars?: Pillar[]; paths?: unknown };
   const pillars = (content.pillars ?? []).filter((p) => pick(p, 'title', locale));
+  const paths = toPathCards(content.paths, locale, dict.common.readMore);
 
   const related = services.filter((s) => s.category && GROWTH_CATEGORIES.includes(s.category.slug));
+
+  // Tools, resources, articles and work attached to this page in Admin.
+  const relatedContent = page ? await getRelatedContent('PAGE', page.id, locale) : [];
 
   return (
     <>
@@ -73,6 +80,17 @@ export default async function RestaurantGrowthPage({ params }: { params: Promise
                 </Reveal>
               ))}
             </ul>
+          </div>
+        </section>
+      )}
+
+      {paths.length > 0 && (
+        <section className="bg-white section-y">
+          <div className="shell">
+            <SectionHeading eyebrow={dict.startHere.eyebrow} title={dict.startHere.title} />
+            <div className="mt-12">
+              <PathCards items={paths} />
+            </div>
           </div>
         </section>
       )}
@@ -114,6 +132,8 @@ export default async function RestaurantGrowthPage({ params }: { params: Promise
           </div>
         </section>
       )}
+
+      <RelatedContent items={relatedContent} title={dict.related.title} eyebrow={dict.nav.growth} tone="white" />
 
       <CTASection
         headline={dict.nav.start}

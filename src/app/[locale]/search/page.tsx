@@ -7,7 +7,7 @@ import { EmptyState } from '@/components/public/EmptyState';
 import { Reveal } from '@/components/ui/Reveal';
 import { getDictionary } from '@/lib/dictionary';
 import { isLocale, type Locale } from '@/lib/i18n';
-import { searchContent } from '@/lib/search';
+import { searchContent, recordSearch } from '@/lib/search';
 import { env } from '@/lib/env';
 
 /** Results depend on the query string, so this route is never cached. */
@@ -41,6 +41,10 @@ export default async function SearchPage({
   const { q } = await searchParams;
   const query = (q ?? '').trim().slice(0, 120);
   const results = query ? await searchContent(query, locale) : [];
+
+  // Search terms are the cheapest signal for what the Library and Insights are
+  // missing. Stored without any visitor identifier.
+  if (query) await recordSearch(query, locale, results.length);
 
   return (
     <>

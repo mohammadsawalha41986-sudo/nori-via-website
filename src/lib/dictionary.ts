@@ -3,7 +3,7 @@ import type { Locale } from './i18n';
 /** UI chrome strings. Business/marketing content lives in the CMS, not here. */
 const dictionaries = {
   en: {
-    nav: { work: 'Work', services: 'Services', growth: 'Restaurant Growth', about: 'About', insights: 'Insights', library: 'Library', tools: 'Tools', search: 'Search', contact: 'Contact', start: 'Start a Project', menu: 'Menu', close: 'Close', skip: 'Skip to content' },
+    nav: { work: 'Work', services: 'Services', growth: 'Restaurant Growth', about: 'About', insights: 'Insights', library: 'Library', tools: 'Tools', search: 'Search', startHere: 'Start Here', contact: 'Contact', start: 'Start a Project', menu: 'Menu', close: 'Close', skip: 'Skip to content' },
     gallery: {
       open: 'Open image',
       close: 'Close',
@@ -87,6 +87,11 @@ const dictionaries = {
       other: 'Other',
     },
     contact: { formTitle: 'Send a message', subject: 'Subject', message: 'Message', send: 'Send Message', sent: 'Message sent. We will be in touch shortly.' },
+    startHere: {
+      eyebrow: 'Where to begin',
+      title: 'What do you need?',
+      solutions: 'Explore the solutions',
+    },
     library: {
       title: 'Library',
       intro: 'Templates, models and guides you can put to work today.',
@@ -143,7 +148,7 @@ const dictionaries = {
     error: { title: 'Something went wrong.', body: 'An unexpected error occurred. Please try again.', retry: 'Try again' },
   },
   ar: {
-    nav: { work: 'أعمالنا', services: 'خدماتنا', growth: 'نمو المطاعم', about: 'من نحن', insights: 'رؤى', library: 'المكتبة', tools: 'الأدوات', search: 'بحث', contact: 'تواصل معنا', start: 'ابدأ مشروعك', menu: 'القائمة', close: 'إغلاق', skip: 'تخطَّ إلى المحتوى' },
+    nav: { work: 'أعمالنا', services: 'خدماتنا', growth: 'نمو المطاعم', about: 'من نحن', insights: 'رؤى', library: 'المكتبة', tools: 'الأدوات', search: 'بحث', startHere: 'ابدأ من هنا', contact: 'تواصل معنا', start: 'ابدأ مشروعك', menu: 'القائمة', close: 'إغلاق', skip: 'تخطَّ إلى المحتوى' },
     gallery: {
       open: 'فتح الصورة',
       close: 'إغلاق',
@@ -227,6 +232,11 @@ const dictionaries = {
       other: 'أخرى',
     },
     contact: { formTitle: 'أرسل رسالة', subject: 'الموضوع', message: 'الرسالة', send: 'إرسال الرسالة', sent: 'تم إرسال رسالتك. سنتواصل معك قريبًا.' },
+    startHere: {
+      eyebrow: 'من أين تبدأ',
+      title: 'ما الذي تحتاجه؟',
+      solutions: 'استعرض الخدمات',
+    },
     library: {
       title: 'المكتبة',
       intro: 'نماذج وقوالب وأدلة جاهزة للاستخدام اليوم.',

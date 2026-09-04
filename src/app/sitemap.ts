@@ -8,6 +8,7 @@ import {
   getPublishedTools,
 } from '@/lib/content';
 import { prisma } from '@/lib/db';
+import { publishedNow } from '@/lib/content';
 
 /**
  * Built from CMS content, so it must not be generated during `next build`.
@@ -19,6 +20,7 @@ export const revalidate = 3600;
 
 const STATIC_PATHS = [
   '',
+  '/start-here',
   '/about',
   '/services',
   '/work',
@@ -39,7 +41,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     getPublishedInsights(),
     getPublishedTools(),
     prisma.resource.findMany({
-      where: { status: 'PUBLISHED', noindex: false },
+      where: { ...publishedNow(), noindex: false },
       select: { slug: true, updatedAt: true },
     }),
   ]);

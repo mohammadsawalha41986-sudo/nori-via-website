@@ -10,6 +10,8 @@ import { getDictionary } from '@/lib/dictionary';
 import { isLocale, pick, type Locale } from '@/lib/i18n';
 import { getPage, getStatistics, getTestimonials } from '@/lib/content';
 import { buildMetadata, JsonLd, breadcrumbs } from '@/lib/seo';
+import { RelatedContent } from '@/components/public/RelatedContent';
+import { getRelatedContent } from '@/lib/relations';
 
 export const revalidate = 60;
 
@@ -36,6 +38,10 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
   const dict = getDictionary(locale);
 
   const [page, stats, testimonials] = await Promise.all([getPage('about'), getStatistics(), getTestimonials()]);
+
+  // Attached in Admin, so About can point at the work, articles and tools that
+  // back up what it claims.
+  const related = page ? await getRelatedContent('PAGE', page.id, locale) : [];
 
   const content = (page?.content ?? {}) as { sections?: Section[] };
   const sections = (content.sections ?? []).filter((s) => pick(s, 'title', locale));
@@ -110,6 +116,8 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
           </div>
         </section>
       )}
+
+      <RelatedContent items={related} title={dict.related.title} eyebrow={dict.nav.about} />
 
       <CTASection
         headline={dict.nav.start}
