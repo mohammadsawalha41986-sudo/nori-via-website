@@ -85,6 +85,20 @@ check('social link renders in the footer',
   (await page.locator('footer a[href*="linkedin.com/company/example"]').count()) > 0);
 
 // ------------------------------------------------------------------ library
+// The suite has to be re-runnable: a resource left behind by an earlier run
+// would clash on the slug and the save would silently never navigate.
+page.on('dialog', (d) => d.accept());
+await page.goto(`${BASE}/admin/resources?q=qa-profitability-model`);
+const stale = await page.$$eval('a[href^="/admin/resources/"]', (links) => {
+  const row = links.find((l) => (l.textContent ?? '').includes('/library/qa-profitability-model'));
+  return row ? row.getAttribute('href') : '';
+});
+if (stale) {
+  await page.goto(`${BASE}${stale}`);
+  await page.click('button:has-text("Delete resource")');
+  await page.waitForURL(/\/admin\/resources(\?|$)/, { timeout: 20000 });
+}
+
 await page.goto(`${BASE}/admin/resources/new`);
 await page.fill('#titleEn', 'QA Profitability Model');
 await page.fill('#titleAr', 'نموذج ربحية للاختبار');
@@ -97,8 +111,16 @@ await page.fill('#audience', 'Owners | أصحاب المشاريع');
 await page.setInputFiles('#file', FIXTURE);
 await page.selectOption('#status', 'PUBLISHED');
 await page.click('button[type="submit"]:has-text("Save changes")');
-await page.waitForURL((u) => /\/admin\/resources\/[a-z0-9]+$/.test(u.pathname) && !u.pathname.endsWith('/new'), { timeout: 30000 });
-check('resource created with an xlsx upload', true);
+const created = await page
+  .waitForURL((u) => /\/admin\/resources\/[a-z0-9]+$/.test(u.pathname) && !u.pathname.endsWith('/new'), { timeout: 30000 })
+  .then(() => '')
+  // A rejected save stays on the form, so report what the form said.
+  .catch(async () => (await page.locator('body').innerText()).match(/(Please check.*|Another resource.*)/)?.[1] ?? 'save did not navigate');
+check('resource created with an xlsx upload', created === '', created);
+if (created) {
+  await browser.close();
+  process.exit(1);
+}
 
 await page.goto(`${BASE}/en/library?type=EXCEL&q=profitability`);
 check('library search and type filter find it',

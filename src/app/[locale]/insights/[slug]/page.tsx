@@ -38,6 +38,9 @@ export async function generateMetadata({
     fallbackTitle: pick(article, 'title', locale),
     fallbackDescription: pick(article, 'excerpt', locale),
     type: 'article',
+    // The cover image is the article's own main image; the dedicated social
+    // image still wins when one is set.
+    fallbackImage: article.coverImage,
     publishedTime: article.publishedAt?.toISOString(),
   });
 }

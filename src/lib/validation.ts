@@ -54,6 +54,36 @@ const publishStatus = z.enum(['DRAFT', 'PUBLISHED']);
 const jsonArray = z.array(z.any()).default([]);
 const optionalUrl = z.string().trim().max(500).default('');
 
+/**
+ * An image address the site can actually render: a same-origin path
+ * (`/img/…`, `/media/…`) or an `https://` URL, which is what the image
+ * optimiser is configured to fetch. Anything else — a `javascript:` paste, a
+ * bare filename, a plain-`http` host — is rejected when the form is saved,
+ * rather than throwing while a public page renders.
+ */
+export const IMAGE_URL_HINT = 'Use a path starting with / or a full https:// URL';
+const optionalImageUrl = optionalUrl.refine(
+  (v) => v === '' || v.startsWith('/') || /^https:\/\/\S+$/i.test(v),
+  IMAGE_URL_HINT,
+);
+
+/** A gallery row: the image plus its bilingual alt text. */
+const galleryList = z
+  .array(
+    z
+      .object({ url: z.string(), altEn: z.string().optional(), altAr: z.string().optional() })
+      .passthrough(),
+  )
+  .default([])
+  .superRefine((rows, ctx) => {
+    rows.forEach((row, i) => {
+      if (!optionalImageUrl.safeParse(row.url).success) {
+        ctx.addIssue({ code: 'custom', path: [i, 'url'], message: `Row ${i + 1}: ${IMAGE_URL_HINT}` });
+      }
+    });
+  });
+
+
 export const serviceSchema = z.object({
   slug: z.string().trim().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, 'Use lowercase letters, numbers and hyphens').max(120),
   nameEn: trimmed(160).min(1),
@@ -75,13 +105,13 @@ export const serviceSchema = z.object({
   process: jsonArray,
   benefits: jsonArray,
   faqs: jsonArray,
-  featuredImage: optionalUrl,
-  gallery: jsonArray,
+  featuredImage: optionalImageUrl,
+  gallery: galleryList,
   seoTitleEn: trimmed(200).default(''),
   seoTitleAr: trimmed(200).default(''),
   seoDescriptionEn: trimmed(400).default(''),
   seoDescriptionAr: trimmed(400).default(''),
-  ogImage: optionalUrl,
+  ogImage: optionalImageUrl,
   noindex: z.boolean().default(false),
   status: publishStatus.default('DRAFT'),
   order: z.coerce.number().int().min(0).max(9999).default(0),
@@ -95,9 +125,9 @@ export const projectSchema = z.object({
   categoryId: z.string().trim().max(40).nullable().default(null),
   descriptionEn: trimmed(6000).default(''),
   descriptionAr: trimmed(6000).default(''),
-  heroMediaUrl: optionalUrl,
+  heroMediaUrl: optionalImageUrl,
   heroMediaKind: z.enum(['IMAGE', 'VIDEO', 'DOCUMENT']).default('IMAGE'),
-  gallery: jsonArray,
+  gallery: galleryList,
   videos: jsonArray,
   downloads: jsonArray,
   year: z.coerce.number().int().min(1900).max(2200).nullable().default(null),
@@ -111,7 +141,7 @@ export const projectSchema = z.object({
   seoTitleAr: trimmed(200).default(''),
   seoDescriptionEn: trimmed(400).default(''),
   seoDescriptionAr: trimmed(400).default(''),
-  ogImage: optionalUrl,
+  ogImage: optionalImageUrl,
   noindex: z.boolean().default(false),
 });
 
@@ -128,16 +158,16 @@ export const caseStudySchema = z.object({
   resultEn: trimmed(6000).default(''), resultAr: trimmed(6000).default(''),
   outcomeEn: trimmed(6000).default(''), outcomeAr: trimmed(6000).default(''),
   metrics: jsonArray,
-  gallery: jsonArray,
+  gallery: galleryList,
   videos: jsonArray,
   files: jsonArray,
-  heroMediaUrl: optionalUrl,
+  heroMediaUrl: optionalImageUrl,
   serviceIds: z.array(z.string().max(40)).default([]),
   seoTitleEn: trimmed(200).default(''),
   seoTitleAr: trimmed(200).default(''),
   seoDescriptionEn: trimmed(400).default(''),
   seoDescriptionAr: trimmed(400).default(''),
-  ogImage: optionalUrl,
+  ogImage: optionalImageUrl,
   noindex: z.boolean().default(false),
   status: publishStatus.default('DRAFT'),
   order: z.coerce.number().int().min(0).max(9999).default(0),
@@ -151,7 +181,7 @@ export const insightSchema = z.object({
   excerptAr: trimmed(600).default(''),
   contentEn: trimmed(60000).default(''),
   contentAr: trimmed(60000).default(''),
-  coverImage: optionalUrl,
+  coverImage: optionalImageUrl,
   categoryId: z.string().trim().max(40).nullable().default(null),
   tags: z.array(trimmed(60)).default([]),
   author: trimmed(120).default(''),
@@ -161,7 +191,7 @@ export const insightSchema = z.object({
   seoTitleAr: trimmed(200).default(''),
   seoDescriptionEn: trimmed(400).default(''),
   seoDescriptionAr: trimmed(400).default(''),
-  ogImage: optionalUrl,
+  ogImage: optionalImageUrl,
   noindex: z.boolean().default(false),
 });
 
@@ -169,8 +199,8 @@ export const settingsSchema = z.object({
   companyNameEn: trimmed(160).default(''), companyNameAr: trimmed(160).default(''),
   taglineEn: trimmed(240).default(''), taglineAr: trimmed(240).default(''),
   descriptionEn: trimmed(1000).default(''), descriptionAr: trimmed(1000).default(''),
-  logoUrl: optionalUrl, logoMarkUrl: optionalUrl, logoInverseUrl: optionalUrl,
-  faviconUrl: optionalUrl, defaultOgImage: optionalUrl,
+  logoUrl: optionalImageUrl, logoMarkUrl: optionalImageUrl, logoInverseUrl: optionalImageUrl,
+  faviconUrl: optionalImageUrl, defaultOgImage: optionalImageUrl,
   inquiryEmail: trimmed(160).default(''), contactEmail: trimmed(160).default(''),
   phone: trimmed(60).default(''), whatsapp: trimmed(60).default(''),
   addressEn: trimmed(400).default(''), addressAr: trimmed(400).default(''), mapsUrl: optionalUrl,
@@ -188,7 +218,7 @@ export const homepageSchema = z.object({
   heroSubtitleEn: trimmed(600).default(''), heroSubtitleAr: trimmed(600).default(''),
   heroPrimaryCtaEn: trimmed(80).default(''), heroPrimaryCtaAr: trimmed(80).default(''),
   heroSecondaryCtaEn: trimmed(80).default(''), heroSecondaryCtaAr: trimmed(80).default(''),
-  heroMediaUrl: optionalUrl,
+  heroMediaUrl: optionalImageUrl,
   heroMediaKind: z.enum(['IMAGE', 'VIDEO', 'DOCUMENT']).default('IMAGE'),
   statementEn: trimmed(1200).default(''), statementAr: trimmed(1200).default(''),
   statementSupportEn: trimmed(1200).default(''), statementSupportAr: trimmed(1200).default(''),
@@ -215,7 +245,7 @@ export const testimonialSchema = z.object({
   company: trimmed(160).default(''),
   role: trimmed(160).default(''),
   quoteEn: trimmed(1200).min(1), quoteAr: trimmed(1200).default(''),
-  imageUrl: optionalUrl,
+  imageUrl: optionalImageUrl,
   rating: z.coerce.number().int().min(1).max(5).nullable().default(null),
   published: z.boolean().default(false),
   order: z.coerce.number().int().min(0).max(9999).default(0),
@@ -286,7 +316,7 @@ export const pageSchema = z.object({
   seoTitleEn: trimmed(200).default(''), seoTitleAr: trimmed(200).default(''),
   seoDescriptionEn: trimmed(400).default(''), seoDescriptionAr: trimmed(400).default(''),
   canonical: optionalUrl,
-  ogImage: optionalUrl,
+  ogImage: optionalImageUrl,
   noindex: z.boolean().default(false),
 });
 
@@ -295,7 +325,7 @@ export const systemStageSchema = z.object({
   titleEn: trimmed(160).min(1), titleAr: trimmed(160).default(''),
   descriptionEn: trimmed(1200).default(''), descriptionAr: trimmed(1200).default(''),
   services: jsonArray,
-  mediaUrl: optionalUrl,
+  mediaUrl: optionalImageUrl,
   order: z.coerce.number().int().min(0).max(9999).default(0),
   visible: z.boolean().default(true),
 });
@@ -324,7 +354,7 @@ export const resourceSchema = z.object({
   categoryId: z.string().trim().max(40).nullable().default(null),
   tags: z.array(trimmed(60)).default([]),
   externalUrl: optionalUrl,
-  thumbnail: optionalUrl,
+  thumbnail: optionalImageUrl,
   includes: jsonArray,
   audience: jsonArray,
   featured: z.boolean().default(false),
@@ -333,7 +363,7 @@ export const resourceSchema = z.object({
   order: z.coerce.number().int().min(0).max(9999).default(0),
   seoTitleEn: trimmed(200).default(''), seoTitleAr: trimmed(200).default(''),
   seoDescriptionEn: trimmed(400).default(''), seoDescriptionAr: trimmed(400).default(''),
-  ogImage: optionalUrl,
+  ogImage: optionalImageUrl,
   noindex: z.boolean().default(false),
 });
 
@@ -347,13 +377,13 @@ export const toolSchema = z.object({
   descriptionAr: trimmed(20000).default(''),
   purposeEn: trimmed(1200).default(''),
   purposeAr: trimmed(1200).default(''),
-  thumbnail: optionalUrl,
+  thumbnail: optionalImageUrl,
   featured: z.boolean().default(false),
   status: publishStatus.default('DRAFT'),
   order: z.coerce.number().int().min(0).max(9999).default(0),
   seoTitleEn: trimmed(200).default(''), seoTitleAr: trimmed(200).default(''),
   seoDescriptionEn: trimmed(400).default(''), seoDescriptionAr: trimmed(400).default(''),
-  ogImage: optionalUrl,
+  ogImage: optionalImageUrl,
   noindex: z.boolean().default(false),
 });
 

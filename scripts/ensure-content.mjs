@@ -28,6 +28,7 @@ import {
   FNB_TOOLS,
   FNB_RESOURCES,
   INSIGHT_CATEGORIES as FNB_INSIGHT_CATEGORIES,
+  SERVICE_REPOSITIONING,
   START_HERE_PATHS_FNB,
 } from './fnb-content.mjs';
 import bcrypt from 'bcryptjs';
@@ -111,25 +112,26 @@ const SERVICES = [
     nameEn: 'Content & Production',
     nameAr: 'المحتوى والإنتاج',
     summaryEn:
-      'Photography, film, and editorial content produced against a plan rather than one shoot at a time.',
-    summaryAr: 'تصوير وأفلام ومحتوى تحريري يُنتَج وفق خطة، لا جلسة تصوير في كل مرة.',
+      'Food and product photography, short-form video and social content, produced against a plan rather than one shoot at a time.',
+    summaryAr: 'تصوير الطعام والمنتجات والفيديو القصير ومحتوى المنصات، يُنتَج وفق خطة لا جلسة تصوير في كل مرة.',
     heroDescriptionEn:
       'Distinctive assets, produced in volume, consistent enough to build recognition over time.',
     heroDescriptionAr: 'أصول مميزة تُنتَج بكمية كافية وباتساق يبني التميّز مع الوقت.',
     whatWeDoEn:
-      'Art direction, stills and motion, food and interior photography, short-form social video, and the editorial writing that holds it together in both Arabic and English. We plan production in cycles so a single shoot supplies a quarter of scheduled content rather than a fortnight of scrambling.',
+      'Art direction, food and product photography, short-form video for social, campaign assets, and the content system that holds them together in both Arabic and English. We plan production in cycles, so one shoot supplies a quarter of scheduled content rather than a fortnight of scrambling.',
     whatWeDoAr:
-      'التوجيه الفني، والصور الثابتة والمتحركة، وتصوير الطعام والديكور، والفيديو القصير للمنصات، والكتابة التحريرية التي تربطها بالعربية والإنجليزية. نخطط الإنتاج على دورات، لتغذّي جلسة واحدة محتوى ربع كامل بدل أسبوعين من الارتجال.',
+      'التوجيه الفني، وتصوير الطعام والمنتجات، والفيديو القصير للمنصات، وأصول الحملات، ونظام المحتوى الذي يربطها بالعربية والإنجليزية. نخطط الإنتاج على دورات، لتغذّي جلسة واحدة محتوى ربع كامل بدل أسبوعين من الارتجال.',
     approachEn:
       'Production without art direction produces volume and no recognition. We define the visual rules first — framing, light, palette, tone of voice — and then produce against them, so the work compounds instead of resetting each month.',
     approachAr:
       'الإنتاج بلا توجيه فني ينتج كمّاً بلا تميّز. نحدد القواعد البصرية أولاً — التأطير والإضاءة واللون ونبرة الصوت — ثم ننتج وفقها، ليتراكم الأثر بدل أن يبدأ من الصفر كل شهر.',
     deliverables: [
-      ['Art direction', 'التوجيه الفني'],
-      ['Photography', 'التصوير الفوتوغرافي'],
-      ['Motion and short-form video', 'الفيديو والحركة'],
-      ['Editorial copy, Arabic and English', 'الكتابة التحريرية بالعربية والإنجليزية'],
-      ['Content calendar', 'تقويم المحتوى'],
+      ['Food photography', 'تصوير الطعام'],
+      ['Product photography', 'تصوير المنتجات'],
+      ['Short-form video', 'الفيديو القصير'],
+      ['Social media content', 'محتوى منصات التواصل'],
+      ['Campaign assets', 'أصول الحملات'],
+      ['Content systems', 'أنظمة المحتوى'],
     ],
     featuredImage: img('service-content'),
     order: 3,
@@ -770,6 +772,34 @@ async function applyFoodAndBeverage() {
   }
 
   if (REPORT_ONLY) return;
+
+  /* Services whose shipped copy no longer matches what the business does.
+     Rewritten field by field, and only while the stored value is still the
+     text this repository shipped. */
+  for (const entry of SERVICE_REPOSITIONING) {
+    const row = await prisma.service.findUnique({ where: { slug: entry.slug } });
+    if (!row) continue;
+
+    const patch = {};
+    for (const [key, oldValue] of Object.entries(entry.was)) {
+      if (row[key] === oldValue) patch[key] = entry.now[key];
+    }
+    // The SEO description follows the summary when it was left as the summary.
+    for (const key of ['seoDescriptionEn', 'seoDescriptionAr']) {
+      const source = key.endsWith('En') ? 'summaryEn' : 'summaryAr';
+      if (row[key] === entry.was[source]) patch[key] = entry.now[key];
+    }
+    if (entry.deliverables && JSON.stringify(row.deliverables) !== JSON.stringify(entry.deliverables)) {
+      const shipped = ['Art direction', 'Photography', 'Motion and short-form video'];
+      const current = Array.isArray(row.deliverables) ? row.deliverables.map((d) => d?.labelEn) : [];
+      if (shipped.every((label) => current.includes(label))) patch.deliverables = entry.deliverables;
+    }
+
+    if (Object.keys(patch).length) {
+      await prisma.service.update({ where: { slug: entry.slug }, data: patch });
+      note(`repositioned:${entry.slug}(${Object.keys(patch).length})`);
+    }
+  }
 
   /* Service groups */
   const groupIdBySlug = {};

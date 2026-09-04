@@ -81,3 +81,33 @@ describe('form helpers', () => {
     expect(nullableId(null)).toBeNull();
   });
 });
+
+describe('toFieldErrors', () => {
+  it('surfaces a per-row list error on the textarea that edits the list', async () => {
+    const { toFieldErrors } = await import('../src/server/helpers');
+    const { serviceSchema } = await import('../src/lib/validation');
+    const result = serviceSchema.safeParse({
+      slug: 'menu-strategy',
+      nameEn: 'Menu Strategy',
+      gallery: [{ url: 'javascript:alert(1)' }],
+    });
+    expect(result.success).toBe(false);
+    if (!result.success) {
+      const errors = toFieldErrors(result.error);
+      expect(errors['gallery.0.url']).toContain('Row 1');
+      expect(errors.galleryRaw).toBe(errors['gallery.0.url']);
+    }
+  });
+
+  it('keeps a top-level field error on its own control', async () => {
+    const { toFieldErrors } = await import('../src/server/helpers');
+    const { serviceSchema } = await import('../src/lib/validation');
+    const result = serviceSchema.safeParse({ slug: 'menu-strategy', nameEn: 'X', featuredImage: 'nope.jpg' });
+    expect(result.success).toBe(false);
+    if (!result.success) {
+      const errors = toFieldErrors(result.error);
+      expect(errors.featuredImage).toBeTruthy();
+      expect(errors.featuredImageRaw).toBeUndefined();
+    }
+  });
+});

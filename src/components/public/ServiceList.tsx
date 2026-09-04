@@ -1,8 +1,17 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { Reveal } from '../ui/Reveal';
 import type { Locale } from '@/lib/i18n';
 
-export type ServiceRow = { id: string; slug: string; name: string; summary: string };
+export type ServiceRow = {
+  id: string;
+  slug: string;
+  name: string;
+  summary: string;
+  /** This service's own featured image. Absent means no image is drawn — a
+   *  row never borrows another service's artwork. */
+  image?: string | null;
+};
 export type ServiceGroup = { id: string; name: string; description: string; services: ServiceRow[] };
 
 /**
@@ -31,6 +40,19 @@ export function ServiceList({ groups, locale }: { groups: ServiceGroup[]; locale
                   <span className="mt-2 shrink-0 font-mono text-[0.6875rem] text-ink-300">
                     {String(i + 1).padStart(2, '0')}
                   </span>
+
+                  {s.image && (
+                    <span className="relative hidden aspect-[4/3] w-28 shrink-0 overflow-hidden rounded-card bg-ink-100 sm:block">
+                      <Image
+                        src={s.image}
+                        alt=""
+                        fill
+                        loading="lazy"
+                        sizes="112px"
+                        className="object-cover transition-transform duration-700 ease-noriva group-hover:scale-105"
+                      />
+                    </span>
+                  )}
 
                   <span className="flex-1">
                     <span className="block font-display text-xl font-display-soft uppercase text-ink-900 transition-colors duration-300 group-hover:text-brand sm:text-2xl">
