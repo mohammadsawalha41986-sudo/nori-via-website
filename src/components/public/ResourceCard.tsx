@@ -50,7 +50,7 @@ export function ResourceCard({
             />
           ) : (
             <span className="flex h-full w-full items-center justify-center">
-              <span className="font-display text-3xl font-extrabold uppercase tracking-tight text-ink-200">
+              <span className="font-display text-3xl uppercase text-ink-200">
                 {format}
               </span>
             </span>
@@ -64,7 +64,7 @@ export function ResourceCard({
           {resource.category && (
             <span className="text-[0.6875rem] font-bold uppercase tracking-[0.2em] text-brand">{resource.category}</span>
           )}
-          <span className="mt-2 font-display text-lg font-bold uppercase tracking-tight text-ink-900 transition-colors group-hover:text-brand">
+          <span className="mt-2 font-display text-lg font-display-soft uppercase text-ink-900 transition-colors group-hover:text-brand">
             {resource.title}
           </span>
           {resource.summary && (

@@ -62,7 +62,7 @@ export function ProjectCard({
               className="flex h-full w-full items-end p-8"
               style={{ background: `linear-gradient(${135 + index * 35}deg,#16213C 0%,#0B1225 55%,rgba(245,16,110,0.5) 130%)` }}
             >
-              <span className="font-display text-3xl font-extrabold uppercase leading-none text-white/25">
+              <span className="font-display text-3xl uppercase leading-none text-white/25">
                 {project.title}
               </span>
             </div>
@@ -77,7 +77,7 @@ export function ProjectCard({
 
         <div className="mt-5 flex items-start justify-between gap-6">
           <div>
-            <h3 className="font-display text-xl font-bold uppercase tracking-tight text-ink-900 sm:text-2xl">
+            <h3 className="font-display text-xl font-display-soft uppercase text-ink-900 sm:text-2xl">
               {project.title}
             </h3>
             {(project.client || project.category) && (

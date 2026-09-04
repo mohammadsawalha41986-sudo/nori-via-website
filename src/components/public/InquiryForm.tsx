@@ -174,7 +174,7 @@ export function InquiryForm({ dict, locale }: { dict: Dictionary; locale: Locale
   if (state === 'done') {
     return (
       <div className="rounded-2xl border border-brand/25 bg-brand/[0.06] px-8 py-16 text-center">
-        <p className="font-display text-3xl font-extrabold uppercase tracking-tight text-ink-900">
+        <p className="font-display text-3xl uppercase text-ink-900">
           {dict.form.successTitle}
         </p>
         <p className="mx-auto mt-5 max-w-lg text-[1.0625rem] leading-relaxed text-ink-500">{dict.form.successBody}</p>
@@ -234,7 +234,7 @@ export function InquiryForm({ dict, locale }: { dict: Dictionary; locale: Locale
       <h2
         ref={headingRef}
         tabIndex={-1}
-        className="font-display text-2xl font-extrabold uppercase tracking-tight text-ink-900 outline-none focus-visible:ring-0 sm:text-3xl"
+        className="font-display text-2xl uppercase text-ink-900 outline-none focus-visible:ring-0 sm:text-3xl"
       >
         {current.title}
       </h2>

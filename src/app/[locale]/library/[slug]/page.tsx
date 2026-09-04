@@ -152,7 +152,7 @@ export default async function ResourcePage({
 
             {includes.length > 0 && (
               <div className="mt-14">
-                <h2 className="font-display text-xl font-extrabold uppercase tracking-tight text-ink-900">
+                <h2 className="font-display text-xl uppercase text-ink-900">
                   {dict.library.whatsIncluded}
                 </h2>
                 <ul className="mt-6 space-y-3">
@@ -168,7 +168,7 @@ export default async function ResourcePage({
 
             {audience.length > 0 && (
               <div className="mt-12">
-                <h2 className="font-display text-xl font-extrabold uppercase tracking-tight text-ink-900">
+                <h2 className="font-display text-xl uppercase text-ink-900">
                   {dict.library.whoFor}
                 </h2>
                 <ul className="mt-6 flex flex-wrap gap-2">
@@ -187,7 +187,7 @@ export default async function ResourcePage({
 
           <aside className="lg:sticky lg:top-28 lg:self-start">
             <div className="rounded-card border border-ink-900/10 bg-white p-8">
-              <p className="font-display text-lg font-extrabold uppercase tracking-tight text-ink-900">
+              <p className="font-display text-lg uppercase text-ink-900">
                 {dict.library.download}
               </p>
               <dl className="mt-6 space-y-3 text-sm text-ink-500">

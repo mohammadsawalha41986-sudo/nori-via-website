@@ -97,7 +97,7 @@ export default async function SearchPage({
                     <span className="text-[0.6875rem] font-bold uppercase tracking-[0.2em] text-brand">
                       {item.badge}
                     </span>
-                    <span className="mt-2 block font-display text-xl font-bold uppercase tracking-tight text-ink-900 transition-colors group-hover:text-brand sm:text-2xl">
+                    <span className="mt-2 block font-display text-xl font-display-soft uppercase text-ink-900 transition-colors group-hover:text-brand sm:text-2xl">
                       {item.title}
                     </span>
                     {item.summary && (

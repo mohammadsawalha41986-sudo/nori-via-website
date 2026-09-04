@@ -9,7 +9,7 @@ export function Prose({ text, className }: { text: string; className?: string })
   if (!paragraphs.length) return null;
 
   return (
-    <div className={clsx('prose-noriva', className)}>
+    <div className={clsx('prose-noriva prose-noriva', className)}>
       {paragraphs.map((p, i) => (
         <p key={i}>
           {p.split('\n').map((line, j, arr) => (

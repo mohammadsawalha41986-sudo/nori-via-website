@@ -203,7 +203,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ locale
             {chapters.map((c, i) => (
               <div key={c.label} className="grid gap-6 lg:grid-cols-[minmax(0,16rem)_minmax(0,1fr)] lg:gap-16">
                 <Reveal>
-                  <h2 className="font-display text-xl font-extrabold uppercase tracking-tight text-ink-900">
+                  <h2 className="font-display text-xl uppercase text-ink-900">
                     <span className="me-3 font-mono text-xs text-brand">{String(i + 1).padStart(2, '0')}</span>
                     {c.label}
                   </h2>
@@ -265,7 +265,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ locale
       {[...downloads, ...csFiles].length > 0 && (
         <section className="bg-white py-20">
           <div className="shell max-w-3xl">
-            <h2 className="font-display text-xl font-extrabold uppercase tracking-tight text-ink-900">
+            <h2 className="font-display text-xl uppercase text-ink-900">
               {dict.common.downloads}
             </h2>
             <ul className="mt-6 border-t border-ink-900/10">

@@ -94,7 +94,7 @@ export default async function ToolPage({
             )}
             {notes && (
               <div className="mt-12 rounded-card border border-ink-900/10 bg-bone p-8">
-                <h2 className="font-display text-lg font-extrabold uppercase tracking-tight text-ink-900">
+                <h2 className="font-display text-lg uppercase text-ink-900">
                   {dict.tools.notes}
                 </h2>
                 <div className="mt-4">

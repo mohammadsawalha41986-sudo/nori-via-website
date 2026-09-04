@@ -41,7 +41,7 @@ export function ContactForm({ dict, locale }: { dict: Dictionary; locale: Locale
   if (state === 'sent') {
     return (
       <div className="rounded-2xl border border-brand/25 bg-brand/[0.06] p-8">
-        <p className="font-display text-xl font-bold uppercase tracking-tight text-ink-900">{dict.form.successTitle}</p>
+        <p className="font-display text-xl font-display-soft uppercase text-ink-900">{dict.form.successTitle}</p>
         <p className="mt-3 text-[0.9375rem] leading-relaxed text-ink-500">{dict.contact.sent}</p>
       </div>
     );

@@ -160,7 +160,7 @@ export function Navbar({
               <li key={link.id}>
                 <Link
                   href={link.external ? link.href : `/${locale}${link.href}`}
-                  className="block border-b border-white/10 py-4 font-display text-3xl font-extrabold uppercase tracking-tight transition-colors duration-300 hover:text-brand"
+                  className="block border-b border-white/10 py-4 font-display text-3xl uppercase transition-colors duration-300 hover:text-brand"
                   style={{
                     animation: open ? `fade-up 0.55s cubic-bezier(0.22,1,0.36,1) ${i * 55}ms both` : undefined,
                   }}

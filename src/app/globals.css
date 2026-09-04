@@ -91,9 +91,19 @@
     text-wrap: balance;
   }
 
+  /* Display headings take their weight and tracking from the design tokens,
+     so the Design System controls actually govern them. Utilities that set
+     the same properties are removed from those elements rather than left to
+     win the cascade. */
   .font-display {
     font-weight: var(--weight-heading);
     letter-spacing: var(--tracking-heading);
+  }
+
+  /* Secondary display headings (card and list titles) sit one step lighter,
+     derived from the same token so the control moves both together. */
+  .font-display-soft {
+    font-weight: calc(var(--weight-heading) - 100);
   }
 
   p {
@@ -126,6 +136,12 @@
   .prose-noriva {
     @apply text-ink-600;
     font-size: var(--font-size-base);
+  }
+
+  /* Doubled class, so the token still governs the rhythm of long-form copy
+     when a caller sizes a lead paragraph with a text-* utility — those
+     utilities set a line height of their own, and would otherwise win. */
+  .prose-noriva.prose-noriva {
     line-height: var(--leading-body);
   }
   .prose-noriva > p + p {

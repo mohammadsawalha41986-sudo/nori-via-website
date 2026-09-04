@@ -9,7 +9,7 @@ export default function LocaleNotFound() {
     <section className="flex min-h-[80svh] items-center bg-ink-900 py-32 text-white">
       <div className="shell">
         <p className="mb-6 font-mono text-xs tracking-[0.3em] text-brand-300">404</p>
-        <h1 className="font-display text-display-md font-extrabold uppercase">
+        <h1 className="font-display text-display-md uppercase">
           THIS PAGE GOT LOST.
           <br />
           <span className="text-white/45">LET&apos;S GET YOU BACK TO NORIVA.</span>

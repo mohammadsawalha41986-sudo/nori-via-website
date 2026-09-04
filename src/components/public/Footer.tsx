@@ -132,7 +132,7 @@ export function Footer({
 
       <div aria-hidden className="pointer-events-none select-none overflow-hidden">
         <div className="shell">
-          <span className="block translate-y-[26%] font-display text-[clamp(4rem,20vw,17rem)] font-extrabold uppercase leading-none tracking-[-0.05em] text-white/[0.045]">
+          <span className="block translate-y-[26%] font-display text-[clamp(4rem,20vw,17rem)] uppercase leading-none tracking-[-0.05em] text-white/[0.045]">
             {companyName}
           </span>
         </div>

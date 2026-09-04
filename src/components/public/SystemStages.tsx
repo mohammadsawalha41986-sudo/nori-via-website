@@ -31,7 +31,7 @@ export function SystemStages({ headline, stages }: { headline: string; stages: S
       <div className="shell relative">
         {headline && (
           <Reveal>
-            <h2 className="max-w-3xl font-display text-display-sm font-extrabold uppercase">
+            <h2 className="max-w-3xl font-display text-display-sm uppercase">
               {headline}
               <span className="text-brand">.</span>
             </h2>
@@ -64,7 +64,7 @@ export function SystemStages({ headline, stages }: { headline: string; stages: S
                       <span className="flex-1">
                         <span
                           className={clsx(
-                            'block font-display text-2xl font-extrabold uppercase leading-tight transition-colors duration-300 sm:text-[2rem]',
+                            'block font-display text-2xl uppercase leading-tight transition-colors duration-300 sm:text-[2rem]',
                             open ? 'text-white' : 'text-white/40 group-hover:text-white/75',
                           )}
                         >
@@ -126,7 +126,7 @@ export function SystemStages({ headline, stages }: { headline: string; stages: S
 
             <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink-950/85 to-transparent p-8">
               <p className="font-mono text-xs font-bold tracking-widest text-brand-300">{current.step}</p>
-              <p className="mt-2 font-display text-xl font-extrabold uppercase">{current.title}</p>
+              <p className="mt-2 font-display text-xl uppercase">{current.title}</p>
             </div>
           </div>
         </div>

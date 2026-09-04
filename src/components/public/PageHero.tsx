@@ -24,7 +24,7 @@ export function PageHero({
           </Reveal>
         )}
 
-        <AnimatedText text={title} as="h1" className="max-w-5xl font-display text-display-md font-extrabold uppercase" />
+        <AnimatedText text={title} as="h1" className="max-w-5xl font-display text-display-md uppercase" />
 
         {description && (
           <Reveal delay={200}>

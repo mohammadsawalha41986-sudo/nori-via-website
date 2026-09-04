@@ -17,7 +17,7 @@ export function ServiceList({ groups, locale }: { groups: ServiceGroup[]; locale
           <Reveal className="mb-8 max-w-2xl">
             <h2
               id={`group-${group.id}`}
-              className="font-display text-2xl font-extrabold uppercase tracking-tight text-ink-900 sm:text-3xl"
+              className="font-display text-2xl uppercase text-ink-900 sm:text-3xl"
             >
               {group.name}
             </h2>
@@ -33,7 +33,7 @@ export function ServiceList({ groups, locale }: { groups: ServiceGroup[]; locale
                   </span>
 
                   <span className="flex-1">
-                    <span className="block font-display text-xl font-bold uppercase tracking-tight text-ink-900 transition-colors duration-300 group-hover:text-brand sm:text-2xl">
+                    <span className="block font-display text-xl font-display-soft uppercase text-ink-900 transition-colors duration-300 group-hover:text-brand sm:text-2xl">
                       {s.name}
                     </span>
                     {s.summary && (

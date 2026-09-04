@@ -73,7 +73,7 @@ export default async function RestaurantGrowthPage({ params }: { params: Promise
               {pillars.map((p, i) => (
                 <Reveal as="li" key={i} delay={i * 55} y={16} className="bg-bone px-7 py-9">
                   <span className="font-mono text-[0.6875rem] text-brand">{String(i + 1).padStart(2, '0')}</span>
-                  <h3 className="mt-3 font-display text-lg font-extrabold uppercase tracking-tight text-ink-900">
+                  <h3 className="mt-3 font-display text-lg uppercase text-ink-900">
                     {pick(p, 'title', locale)}
                   </h3>
                   <p className="mt-3 text-sm leading-relaxed text-ink-400">{pick(p, 'body', locale)}</p>
@@ -115,7 +115,7 @@ export default async function RestaurantGrowthPage({ params }: { params: Promise
                       {String(i + 1).padStart(2, '0')}
                     </span>
                     <span className="flex-1">
-                      <span className="block font-display text-xl font-bold uppercase tracking-tight text-ink-900 transition-colors group-hover:text-brand sm:text-2xl">
+                      <span className="block font-display text-xl font-display-soft uppercase text-ink-900 transition-colors group-hover:text-brand sm:text-2xl">
                         {pick(s, 'name', locale)}
                       </span>
                       <span className="mt-2 block max-w-2xl text-[0.9375rem] leading-relaxed text-ink-400">

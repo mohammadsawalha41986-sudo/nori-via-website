@@ -63,7 +63,7 @@ export function Hero({
           </p>
         )}
 
-        <h1 className="font-display text-display-lg font-extrabold uppercase">
+        <h1 className="font-display text-display-lg uppercase">
           {lines.map((line, i) => (
             <span key={i} className="block overflow-hidden">
               <span

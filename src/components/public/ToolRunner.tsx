@@ -54,7 +54,7 @@ export function ToolRunner({
   return (
     <div className="grid gap-10 lg:grid-cols-[1fr_1fr] lg:gap-14">
       <div>
-        <h2 className="font-display text-xl font-extrabold uppercase tracking-tight text-ink-900">
+        <h2 className="font-display text-xl uppercase text-ink-900">
           {dict.tools.inputs}
         </h2>
 
@@ -113,7 +113,7 @@ export function ToolRunner({
       </div>
 
       <div className="rounded-card bg-ink-900 p-8 text-white sm:p-10">
-        <h2 className="font-display text-xl font-extrabold uppercase tracking-tight">{dict.tools.results}</h2>
+        <h2 className="font-display text-xl uppercase ">{dict.tools.results}</h2>
 
         <dl className="mt-8 space-y-7">
           {primaryOutputs.concat(secondaryOutputs).map((output) => {
@@ -126,7 +126,7 @@ export function ToolRunner({
                 </dt>
                 <dd
                   className={clsx(
-                    'mt-1.5 font-display font-extrabold tracking-tight',
+                    'mt-1.5 font-display ',
                     output.primary ? 'text-4xl text-brand-300 sm:text-5xl' : 'text-2xl',
                   )}
                   dir="ltr"

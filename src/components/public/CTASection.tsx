@@ -29,7 +29,7 @@ export function CTASection({
         <AnimatedText
           text={headline}
           as="h2"
-          className="max-w-4xl font-display text-display-md font-extrabold uppercase"
+          className="max-w-4xl font-display text-display-md uppercase"
         />
         {description && (
           <Reveal delay={140}>

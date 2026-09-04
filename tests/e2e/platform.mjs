@@ -29,7 +29,7 @@ check('admin login', page.url().includes('/admin'));
 
 // ------------------------------------------------------------ design tokens
 await page.goto(`${BASE}/admin/design`);
-await page.fill('input[name="color.brand"][type="text"]', '#1E9E6A');
+await page.fill('input[name="color.brand"]', '#1E9E6A');
 await page.fill('input[name="shape.radiusCard"]', '4');
 await page.click('button[type="submit"]:has-text("Save changes")');
 await page.waitForSelector('text=Saved', { timeout: 20000 });
@@ -45,7 +45,7 @@ await page.goto(`${BASE}/admin/design`);
 await page.selectOption('#type-arabic', 'tajawal');
 await page.fill('#type-size', '19');
 await page.fill('#shape-btn', '6');
-await page.fill('input[name="color.brand"][type="text"]', '#F5106E');
+await page.fill('input[name="color.brand"]', '#F5106E');
 await page.fill('input[name="shape.radiusCard"]', '16');
 await page.click('button[type="submit"]:has-text("Save changes")');
 await page.waitForSelector('text=Saved', { timeout: 20000 });
