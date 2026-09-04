@@ -1,6 +1,8 @@
 import { prisma } from './db';
 import { pick, type Locale } from './i18n';
 import { badgeFor, type RelatedItem } from './relations';
+import { publishedNow } from './content';
+import { rateLimit } from './rate-limit';
 
 /**
  * Global search across every published content type.
@@ -18,11 +20,13 @@ export async function searchContent(query: string, locale: Locale): Promise<Rela
 
   const match = { contains: q, mode: 'insensitive' as const };
   const published = { status: 'PUBLISHED' as const };
+  // Articles and resources also respect a future publication date.
+  const live = publishedNow();
 
   const [insights, resources, tools, services, projects, caseStudies] = await Promise.all([
     prisma.insight.findMany({
       where: {
-        ...published,
+        ...live,
         OR: [
           { titleEn: match }, { titleAr: match },
           { excerptEn: match }, { excerptAr: match },
@@ -34,7 +38,7 @@ export async function searchContent(query: string, locale: Locale): Promise<Rela
     }),
     prisma.resource.findMany({
       where: {
-        ...published,
+        ...live,
         OR: [
           { titleEn: match }, { titleAr: match },
           { summaryEn: match }, { summaryAr: match },
@@ -157,4 +161,25 @@ export async function searchContent(query: string, locale: Locale): Promise<Rela
   }
 
   return results;
+}
+
+/**
+ * Records a search term for the Analytics extension point. No IP, no cookie,
+ * no session — just the query, the locale and how many results it returned.
+ */
+export async function recordSearch(query: string, locale: Locale, results: number) {
+  const q = query.trim().slice(0, 120);
+  if (q.length < 2) return;
+  try {
+    // Bounded so a scripted query loop cannot grow the analytics table without
+    // limit. Losing a sample matters less than an unbounded write path.
+    const allowed = await rateLimit('site_search', 600, 3600_000);
+    if (!allowed.ok) return;
+
+    await prisma.analyticsEvent.create({
+      data: { name: 'site_search', path: '/search', locale, meta: { q, results } },
+    });
+  } catch {
+    // Analytics must never take a page down.
+  }
 }

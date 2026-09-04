@@ -209,14 +209,63 @@ export const testimonialSchema = z.object({
   order: z.coerce.number().int().min(0).max(9999).default(0),
 });
 
-export const navigationSchema = z.object({
-  labelEn: trimmed(80).min(1), labelAr: trimmed(80).default(''),
-  href: trimmed(300).min(1),
-  location: z.enum(['header', 'footer']).default('header'),
-  order: z.coerce.number().int().min(0).max(9999).default(0),
-  visible: z.boolean().default(true),
-  external: z.boolean().default(false),
-});
+/**
+ * Routes an internal navigation link may point at. Anything else is refused at
+ * save time, so the CMS cannot publish a link that 404s. Detail routes are
+ * matched by prefix because their slugs live in the database.
+ */
+const INTERNAL_ROUTES = [
+  '/', '/start-here', '/services', '/work', '/insights', '/library', '/tools',
+  '/restaurant-growth', '/about', '/contact', '/start-a-project', '/search',
+  '/privacy', '/terms',
+] as const;
+
+const PREFIX_ROUTES = ['/services/', '/work/', '/insights/', '/library/', '/tools/'] as const;
+
+export function isKnownInternalRoute(href: string) {
+  const path = href.split(/[?#]/)[0] ?? '';
+  if ((INTERNAL_ROUTES as readonly string[]).includes(path)) return true;
+  return PREFIX_ROUTES.some((prefix) => path.startsWith(prefix) && path.length > prefix.length);
+}
+
+export const navigationSchema = z
+  .object({
+    labelEn: trimmed(80).min(1), labelAr: trimmed(80).default(''),
+    href: trimmed(300).min(1),
+    location: z.enum(['header', 'footer']).default('header'),
+    order: z.coerce.number().int().min(0).max(9999).default(0),
+    visible: z.boolean().default(true),
+    external: z.boolean().default(false),
+  })
+  .superRefine((value, ctx) => {
+    if (value.external) {
+      if (!/^https?:\/\//i.test(value.href)) {
+        ctx.addIssue({
+          code: 'custom',
+          path: ['href'],
+          message: 'An external link must start with http:// or https://',
+        });
+      }
+      return;
+    }
+
+    if (!value.href.startsWith('/')) {
+      ctx.addIssue({
+        code: 'custom',
+        path: ['href'],
+        message: 'Internal links start with / — tick “External link” for another site.',
+      });
+      return;
+    }
+
+    if (!isKnownInternalRoute(value.href)) {
+      ctx.addIssue({
+        code: 'custom',
+        path: ['href'],
+        message: `“${value.href}” is not a page on this site, so the link would 404.`,
+      });
+    }
+  });
 
 export const pageSchema = z.object({
   titleEn: trimmed(300).default(''), titleAr: trimmed(300).default(''),

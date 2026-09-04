@@ -8,7 +8,7 @@ import { LibraryFilters } from '@/components/public/LibraryFilters';
 import { ResourceCard } from '@/components/public/ResourceCard';
 import { getDictionary } from '@/lib/dictionary';
 import { isLocale, pick, type Locale } from '@/lib/i18n';
-import { getPage, getResourceCategories } from '@/lib/content';
+import { getPage, getResourceCategories, publishedNow } from '@/lib/content';
 import { prisma } from '@/lib/db';
 import { buildMetadata, JsonLd, breadcrumbs } from '@/lib/seo';
 
@@ -64,7 +64,7 @@ export default async function LibraryPage({
   const category = categories.find((c) => c.slug === categorySlug);
 
   const where: Prisma.ResourceWhereInput = {
-    status: 'PUBLISHED',
+    ...publishedNow(),
     ...(type ? { type } : {}),
     ...(category ? { categoryId: category.id } : {}),
     ...(q

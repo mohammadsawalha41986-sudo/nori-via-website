@@ -455,7 +455,9 @@ export async function savePage(_prev: ActionState, formData: FormData): Promise<
   const { content: parsedContent, ...rest } = parsed.data;
   const data = { ...rest, content: J(parsedContent) };
 
-  await prisma.page.upsert({ where: { key }, update: data, create: { key, ...data } });
+  const saved = await prisma.page.upsert({ where: { key }, update: data, create: { key, ...data } });
+
+  await setContentLinks('PAGE', saved.id, relatedRefs(formData));
 
   revalidatePublic(`/${key === 'home' ? '' : key}`);
   revalidatePath('/admin/pages');

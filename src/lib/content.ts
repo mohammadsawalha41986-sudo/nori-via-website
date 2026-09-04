@@ -102,9 +102,21 @@ export const getCaseStudyBySlug = cache(async (slug: string) =>
   }),
 );
 
+/**
+ * A published row dated in the future is scheduled, not live: the public
+ * queries exclude it until its publication date arrives. `revalidate` on the
+ * public pages is what brings it in without a deployment.
+ */
+export const publishedNow = () => ({
+  status: 'PUBLISHED' as const,
+  // Wrapped in AND, not a bare OR: callers add their own OR for text search,
+  // and a second `OR` key would silently replace this one.
+  AND: [{ OR: [{ publishedAt: null }, { publishedAt: { lte: new Date() } }] }],
+});
+
 export const getPublishedInsights = cache(async () =>
   prisma.insight.findMany({
-    where: { status: 'PUBLISHED' },
+    where: publishedNow(),
     orderBy: [{ publishedAt: 'desc' }, { createdAt: 'desc' }],
     include: { category: true },
   }),
@@ -112,7 +124,7 @@ export const getPublishedInsights = cache(async () =>
 
 export const getInsightBySlug = cache(async (slug: string, includeDrafts = false) =>
   prisma.insight.findFirst({
-    where: { slug, ...(includeDrafts ? {} : { status: 'PUBLISHED' as const }) },
+    where: { slug, ...(includeDrafts ? {} : publishedNow()) },
     include: { category: true },
   }),
 );
@@ -156,7 +168,7 @@ export const getResourceCategories = cache(async () =>
 
 export const getFeaturedResources = cache(async (take = 3) =>
   prisma.resource.findMany({
-    where: { status: 'PUBLISHED' },
+    where: publishedNow(),
     orderBy: [{ featured: 'desc' }, { order: 'asc' }, { publishedAt: 'desc' }],
     include: { category: true },
     take,
@@ -165,7 +177,7 @@ export const getFeaturedResources = cache(async (take = 3) =>
 
 export const getResourceBySlug = cache(async (slug: string, includeDrafts = false) =>
   prisma.resource.findFirst({
-    where: { slug, ...(includeDrafts ? {} : { status: 'PUBLISHED' as const }) },
+    where: { slug, ...(includeDrafts ? {} : publishedNow()) },
     include: { category: true },
   }),
 );

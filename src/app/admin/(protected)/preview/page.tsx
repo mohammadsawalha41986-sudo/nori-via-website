@@ -21,6 +21,7 @@ export default async function PreviewAdmin() {
 
   const routes: PreviewRoute[] = [
     { href: '/', label: 'Home', group: 'Pages' },
+    { href: '/start-here', label: 'Start Here', group: 'Pages' },
     { href: '/services', label: 'Solutions', group: 'Pages' },
     { href: '/work', label: 'Work', group: 'Pages' },
     { href: '/restaurant-growth', label: 'Restaurant Growth', group: 'Pages' },

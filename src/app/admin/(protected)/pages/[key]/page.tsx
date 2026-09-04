@@ -4,6 +4,9 @@ import { savePage } from '@/server/actions';
 import { AdminForm } from '@/components/admin/AdminForm';
 import { MediaField } from '@/components/admin/MediaField';
 import { PageHeader, Card, Field, Grid, inputClass, LinkButton } from '@/components/admin/ui';
+import { RelationPicker } from '@/components/admin/RelationPicker';
+import { getRelationOptions } from '@/lib/relation-options';
+import { getOutgoingRefs, serialiseRef, pagePath } from '@/lib/relations';
 
 export const dynamic = 'force-dynamic';
 
@@ -17,6 +20,13 @@ export default async function EditPage({ params }: { params: Promise<{ key: stri
   const page = await prisma.page.findUnique({ where: { key } });
   if (!page) notFound();
 
+  const [relationOptions, refs] = await Promise.all([
+    getRelationOptions({ type: 'PAGE', id: page.id }),
+    getOutgoingRefs('PAGE', page.id),
+  ]);
+
+  const publicPath = pagePath(page.key);
+
   const hasSections = page.content && typeof page.content === 'object' && Object.keys(page.content).length > 0;
 
   return (
@@ -26,7 +36,9 @@ export default async function EditPage({ params }: { params: Promise<{ key: stri
         description={`/${key}`}
         action={
           <div className="flex gap-2">
-            <LinkButton href={`/en/${key === 'home' ? '' : key}`} variant="secondary">Preview ↗</LinkButton>
+            {publicPath !== undefined && (
+              <LinkButton href={`/en${publicPath}`} variant="secondary">Preview ↗</LinkButton>
+            )}
             <LinkButton href="/admin/pages" variant="secondary">Back</LinkButton>
           </div>
         }
@@ -75,6 +87,16 @@ export default async function EditPage({ params }: { params: Promise<{ key: stri
               </Card>
             )}
             {!hasSections && <input type="hidden" name="contentJson" value="{}" />}
+
+            {publicPath !== undefined && (
+              <Card
+                title="Related content"
+                description="Tools, resources, articles and solutions to surface on this page. Nothing here is hard-coded in the site."
+              >
+                <input type="hidden" name="id" value={page.id} />
+                <RelationPicker options={relationOptions} selected={refs.map(serialiseRef)} />
+              </Card>
+            )}
 
             <Card title="SEO">
               <Grid>

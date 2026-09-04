@@ -430,11 +430,14 @@ const STAGES = [
 ];
 
 const HEADER_NAV = [
+  { labelEn: 'Start Here', labelAr: 'ابدأ من هنا', href: '/start-here', order: 0 },
   { labelEn: 'About', labelAr: 'من نحن', href: '/about', order: 1 },
   { labelEn: 'Services', labelAr: 'خدماتنا', href: '/services', order: 2 },
   { labelEn: 'Work', labelAr: 'أعمالنا', href: '/work', order: 3 },
   { labelEn: 'Insights', labelAr: 'رؤى', href: '/insights', order: 4 },
-  { labelEn: 'Contact', labelAr: 'تواصل', href: '/contact', order: 5 },
+  { labelEn: 'Library', labelAr: 'المكتبة', href: '/library', order: 5 },
+  { labelEn: 'Tools', labelAr: 'الأدوات', href: '/tools', order: 6 },
+  { labelEn: 'Contact', labelAr: 'تواصل', href: '/contact', order: 7 },
 ];
 
 const FOOTER_NAV = [
@@ -443,8 +446,10 @@ const FOOTER_NAV = [
   { labelEn: 'Work', labelAr: 'أعمالنا', href: '/work', order: 3 },
   { labelEn: 'Insights', labelAr: 'رؤى', href: '/insights', order: 4 },
   { labelEn: 'Contact', labelAr: 'تواصل', href: '/contact', order: 5 },
-  { labelEn: 'Privacy', labelAr: 'الخصوصية', href: '/privacy', order: 6 },
-  { labelEn: 'Terms', labelAr: 'الشروط', href: '/terms', order: 7 },
+  { labelEn: 'Library', labelAr: 'المكتبة', href: '/library', order: 5 },
+  { labelEn: 'Tools', labelAr: 'الأدوات', href: '/tools', order: 6 },
+  { labelEn: 'Privacy', labelAr: 'الخصوصية', href: '/privacy', order: 7 },
+  { labelEn: 'Terms', labelAr: 'الشروط', href: '/terms', order: 8 },
 ];
 
 const SETTINGS_FILL = {
@@ -547,6 +552,65 @@ const ABOUT_SECTIONS = [
   },
 ];
 
+/* The Start Here router. Every card points at a section that already exists,
+ * and all of it is editable in Admin — nothing here is hard-coded in a page. */
+const START_HERE_PATHS = [
+  {
+    titleEn: 'I know which service I need',
+    titleAr: 'أعرف الخدمة التي أحتاجها',
+    bodyEn: 'Browse the full set of solutions and how each one works.',
+    bodyAr: 'تصفح الخدمات كاملة وكيف تعمل كل واحدة منها.',
+    href: '/services',
+    labelEn: 'See solutions',
+    labelAr: 'استعرض الخدمات',
+  },
+  {
+    titleEn: 'I want to see the work first',
+    titleAr: 'أريد الاطلاع على الأعمال أولًا',
+    bodyEn: 'Selected projects and the thinking behind them.',
+    bodyAr: 'مشاريع مختارة والتفكير الذي وراءها.',
+    href: '/work',
+    labelEn: 'See work',
+    labelAr: 'استعرض الأعمال',
+  },
+  {
+    titleEn: 'I want to work the numbers',
+    titleAr: 'أريد العمل على الأرقام',
+    bodyEn: 'Interactive calculators you can use right now.',
+    bodyAr: 'حاسبات تفاعلية يمكنك استخدامها الآن.',
+    href: '/tools',
+    labelEn: 'Open tools',
+    labelAr: 'افتح الأدوات',
+  },
+  {
+    titleEn: 'I need templates and guides',
+    titleAr: 'أحتاج قوالب وأدلة',
+    bodyEn: 'Downloadable models, documents and guides.',
+    bodyAr: 'نماذج ومستندات وأدلة قابلة للتحميل.',
+    href: '/library',
+    labelEn: 'Open the library',
+    labelAr: 'افتح المكتبة',
+  },
+  {
+    titleEn: 'I want to read first',
+    titleAr: 'أريد القراءة أولًا',
+    bodyEn: 'Articles on brand, digital and growth.',
+    bodyAr: 'مقالات في العلامة والرقمنة والنمو.',
+    href: '/insights',
+    labelEn: 'Read insights',
+    labelAr: 'اقرأ الرؤى',
+  },
+  {
+    titleEn: 'I am ready to start a project',
+    titleAr: 'أنا جاهز لبدء مشروع',
+    bodyEn: 'Answer a few questions and the team will come back to you.',
+    bodyAr: 'أجب عن بضعة أسئلة وسيعود إليك الفريق.',
+    href: '/start-a-project',
+    labelEn: 'Start a project',
+    labelAr: 'ابدأ مشروعك',
+  },
+];
+
 const PAGES = [
   {
     key: 'about',
@@ -556,6 +620,30 @@ const PAGES = [
       'Brand, digital and growth in one place — because the losses in this kind of work happen at the handovers between them.',
     bodyAr: 'العلامة والرقمنة والنمو في مكان واحد، لأن الخسائر في هذا العمل تقع عند التسليم بينها.',
     content: { sections: ABOUT_SECTIONS },
+  },
+  {
+    key: 'start-here',
+    titleEn: 'Start here',
+    titleAr: 'ابدأ من هنا',
+    bodyEn: 'Tell us where you are and we will point you at the right place to begin.',
+    bodyAr: 'أخبرنا أين أنت الآن وسنوجهك إلى النقطة المناسبة للبدء.',
+    content: { paths: START_HERE_PATHS },
+  },
+  {
+    key: 'library',
+    titleEn: 'Library',
+    titleAr: 'المكتبة',
+    bodyEn: 'Templates, models and guides you can put to work today. Add resources from Admin.',
+    bodyAr: 'قوالب ونماذج وأدلة جاهزة للاستخدام اليوم. أضف الموارد من لوحة التحكم.',
+    content: {},
+  },
+  {
+    key: 'tools',
+    titleEn: 'Tools',
+    titleAr: 'الأدوات',
+    bodyEn: 'Interactive calculators built around the numbers that decide a result. Add tools from Admin.',
+    bodyAr: 'حاسبات تفاعلية مبنية على الأرقام التي تصنع الفرق. أضف الأدوات من لوحة التحكم.',
+    content: {},
   },
 ];
 
@@ -580,12 +668,17 @@ const MEDIA = [
 
 /* --------------------------------------------------------------- helpers */
 
-/** Fills only the fields that are still empty on a singleton row. */
+/**
+ * Fills only the fields that are still empty on a singleton row. An empty fill
+ * value is skipped, so an unset environment variable does not report a write
+ * that changes nothing on every deploy.
+ */
 function missingFields(row, fill) {
   const patch = {};
   for (const [k, v] of Object.entries(fill)) {
     const current = row?.[k];
     if (current === undefined) continue;
+    if (v === '' || v === null || v === undefined) continue;
     if (current === null || current === '') patch[k] = v;
   }
   return patch;
@@ -704,7 +797,11 @@ async function main() {
     workCatIdBySlug[c.slug] = row.id;
   }
 
-  /* --- Projects --------------------------------------------------------- */
+  /* --- Projects ---------------------------------------------------------
+   * These are placeholders, not client work: they carry the client name
+   * "Sample project" and no verified results. They are created as DRAFT so an
+   * editor can see the shape of a case study in Admin, and they never reach a
+   * visitor until real work replaces them. */
   for (const p of PROJECTS) {
     const existing = await prisma.project.findUnique({ where: { slug: p.slug } });
     if (existing) continue;
@@ -721,8 +818,9 @@ async function main() {
         gallery: p.gallery,
         year: p.year,
         location: p.location,
-        featured: p.featured,
-        status: 'PUBLISHED',
+        featured: false,
+        status: 'DRAFT',
+        noindex: true,
         order: p.order,
         seoDescriptionEn: p.descriptionEn,
         seoDescriptionAr: p.descriptionAr,
@@ -736,6 +834,28 @@ async function main() {
       }
     }
     note(`project:${p.slug}`);
+  }
+
+  /* --- Retire previously published placeholders --------------------------
+   * Earlier versions of this script published the sample projects. They are
+   * demo content, so they must not sit on the public site presenting
+   * themselves as real client work. Only rows this script created are touched
+   * — matched on both the sample slug and the "Sample project" client — and
+   * the rows are unpublished, never deleted, so nothing an editor wrote is
+   * lost and Admin can republish if a placeholder was adopted deliberately. */
+  const placeholderSlugs = PROJECTS.map((p) => p.slug);
+  const stillLive = await prisma.project.findMany({
+    where: { slug: { in: placeholderSlugs }, client: 'Sample project', status: 'PUBLISHED' },
+    select: { id: true, slug: true },
+  });
+  if (stillLive.length && !REPORT_ONLY) {
+    await prisma.project.updateMany({
+      where: { id: { in: stillLive.map((r) => r.id) } },
+      data: { status: 'DRAFT', featured: false, noindex: true },
+    });
+    for (const row of stillLive) note(`unpublished placeholder:${row.slug}`);
+  } else if (stillLive.length) {
+    for (const row of stillLive) note(`would unpublish placeholder:${row.slug}`);
   }
 
   /* --- Insights --------------------------------------------------------- */
