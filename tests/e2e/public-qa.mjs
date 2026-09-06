@@ -32,7 +32,13 @@ for (const [vpName,vp] of Object.entries({desktop:{width:1440,height:900},tablet
     await p.screenshot({path:`${OUT}/${vpName}-${name}.png`, fullPage: vpName==='desktop'});
     const r=await p.evaluate(()=>{const de=document.documentElement;
       const imgs=[...document.querySelectorAll('img')];
-      const inputs=[...document.querySelectorAll('input,select,textarea')].filter(e=>e.type!=='hidden');
+      // Controls removed from the accessibility tree (aria-hidden, or a
+      // hidden honeypot) are not exposed to assistive technology, so an
+      // accessible name is not only unnecessary but wrong: naming a spam trap
+      // announces it to the users it must stay invisible to.
+      const inputs=[...document.querySelectorAll('input,select,textarea')]
+        .filter(e=>e.type!=='hidden')
+        .filter(e=>!e.closest('[aria-hidden="true"]'));
       return {ov:de.scrollWidth-de.clientWidth,dir:de.getAttribute('dir'),lang:de.getAttribute('lang'),
         h1:document.querySelectorAll('h1').length,
         noAlt:imgs.filter(i=>!i.hasAttribute('alt')).length,

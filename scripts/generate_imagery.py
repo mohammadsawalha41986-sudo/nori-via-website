@@ -15,7 +15,10 @@ Deterministic: a given name always renders the same image.
 """
 from __future__ import annotations
 
+import json
 import os
+import sys
+import zlib
 import numpy as np
 from PIL import Image, ImageFilter
 
@@ -91,9 +94,19 @@ def streaks(rs: np.random.Generator, h: int, w: int, count: int, angle: float) -
     return band
 
 
+def stable_seed(name: str) -> int:
+    """Process-independent seed.
+
+    `hash()` on a str is randomised per interpreter run unless PYTHONHASHSEED
+    is pinned, so it cannot back a deterministic renderer. CRC32 over the
+    encoded name is stable everywhere.
+    """
+    return zlib.crc32(name.encode("utf-8"))
+
+
 def render(name: str, w: int, h: int, ramp: str = "signature", angle_deg: float | None = None,
-           role: str = "backdrop") -> str:
-    rs = np.random.default_rng(abs(hash(name)) % (2**32))
+           role: str = "backdrop", fmt: str = "JPEG") -> str:
+    rs = np.random.default_rng(stable_seed(name))
 
     # Work at reduced scale, then upsample: cheaper and inherently soft.
     sw, sh = max(160, w // 4), max(160, h // 4)
@@ -154,8 +167,12 @@ def render(name: str, w: int, h: int, ramp: str = "signature", angle_deg: float 
     rgb += grain[..., None] * (5.0 if ramp != "bone" else 3.2)
 
     out = Image.fromarray(np.clip(rgb, 0, 255).astype(np.uint8), "RGB")
-    path = os.path.join(OUT, f"{name}.jpg")
-    out.save(path, "JPEG", quality=88, optimize=True, progressive=True, subsampling=0)
+    if fmt == "WEBP":
+        path = os.path.join(OUT, f"{name}.webp")
+        out.save(path, "WEBP", quality=76, method=6)
+    else:
+        path = os.path.join(OUT, f"{name}.jpg")
+        out.save(path, "JPEG", quality=88, optimize=True, progressive=True, subsampling=0)
     return path
 
 
@@ -185,11 +202,53 @@ for i in range(5):
     SPECS.append((f"stage-{i + 1}", 1200, 900, ["signature", "cool", "warm", "brand", "cool"][i]))
 
 
+# Additional art direction for the content the CMS now holds — one composed
+# frame per service, article, engagement and system discipline, so no two
+# records share a visual. The manifest is generated from the content modules by
+# `node scripts/build-visual-manifest.mjs`, which keeps this file free of any
+# duplicated list of slugs.
+MANIFEST = os.path.join(os.path.dirname(os.path.abspath(__file__)), "visual-manifest.json")
+
+
+def load_manifest() -> list[dict]:
+    if not os.path.exists(MANIFEST):
+        return []
+    with open(MANIFEST, encoding="utf-8") as fh:
+        return json.load(fh)["images"]
+
+
 def main() -> None:
+    """Renders anything missing from public/img.
+
+    An image that already exists is left alone unless --force is passed. Two
+    reasons: the file may have been replaced deliberately, and the seeding fix
+    that made this script genuinely deterministic also changed what a given
+    name renders — so a blind re-run would rewrite committed art direction.
+    """
+    force = "--force" in sys.argv
     os.makedirs(OUT, exist_ok=True)
+
+    written = 0
     for name, w, h, ramp in SPECS:
+        if not force and os.path.exists(os.path.join(OUT, f"{name}.jpg")):
+            continue
         role = "content" if name.split("-")[0] in {"work", "gallery", "insight", "service"} else "backdrop"
         render(name, w, h, ramp, role=role)
+        written += 1
+
+    manifest = load_manifest()
+    for item in manifest:
+        if not force and os.path.exists(os.path.join(OUT, f"{item['name']}.webp")):
+            continue
+        render(
+            item["name"],
+            item["width"],
+            item["height"],
+            item["ramp"],
+            role=item.get("role", "content"),
+            fmt="WEBP",
+        )
+        written += 1
     with open(os.path.join(OUT, "README.md"), "w") as fh:
         fh.write(
             "# Temporary art direction\n\n"
@@ -198,7 +257,7 @@ def main() -> None:
             "uploading real images in Admin — no code change is required, because every\n"
             "reference is a database field.\n"
         )
-    print(f"rendered {len(SPECS)} images into public/img")
+    print(f"rendered {written} new image(s); {len(SPECS)} jpeg and {len(manifest)} webp specs in total")
 
 
 if __name__ == "__main__":
