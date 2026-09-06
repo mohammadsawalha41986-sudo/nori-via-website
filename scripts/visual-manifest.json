@@ -1,0 +1,1897 @@
+{
+  "images": [
+    {
+      "name": "noriva-service-advertising-campaigns",
+      "width": 1400,
+      "height": 1050,
+      "ramp": "brand",
+      "role": "content"
+    },
+    {
+      "name": "noriva-service-branch-development",
+      "width": 1400,
+      "height": 1050,
+      "ramp": "cool",
+      "role": "content"
+    },
+    {
+      "name": "noriva-service-brand-identity",
+      "width": 1400,
+      "height": 1050,
+      "ramp": "signature",
+      "role": "content"
+    },
+    {
+      "name": "noriva-service-brand-identity-fnb",
+      "width": 1400,
+      "height": 1050,
+      "ramp": "signature",
+      "role": "content"
+    },
+    {
+      "name": "noriva-service-brand-strategy-identity",
+      "width": 1400,
+      "height": 1050,
+      "ramp": "signature",
+      "role": "content"
+    },
+    {
+      "name": "noriva-service-cafe-consulting",
+      "width": 1400,
+      "height": 1050,
+      "ramp": "cool",
+      "role": "content"
+    },
+    {
+      "name": "noriva-service-campaign-creatives",
+      "width": 1400,
+      "height": 1050,
+      "ramp": "signature",
+      "role": "content"
+    },
+    {
+      "name": "noriva-service-campaign-optimization",
+      "width": 1400,
+      "height": 1050,
+      "ramp": "brand",
+      "role": "content"
+    },
+    {
+      "name": "noriva-service-community-management",
+      "width": 1400,
+      "height": 1050,
+      "ramp": "brand",
+      "role": "content"
+    },
+    {
+      "name": "noriva-service-concept-development",
+      "width": 1400,
+      "height": 1050,
+      "ramp": "cool",
+      "role": "content"
+    },
+    {
+      "name": "noriva-service-content-creation",
+      "width": 1400,
+      "height": 1050,
+      "ramp": "brand",
+      "role": "content"
+    },
+    {
+      "name": "noriva-service-content-production",
+      "width": 1400,
+      "height": 1050,
+      "ramp": "brand",
+      "role": "content"
+    },
+    {
+      "name": "noriva-service-content-strategy",
+      "width": 1400,
+      "height": 1050,
+      "ramp": "brand",
+      "role": "content"
+    },
+    {
+      "name": "noriva-service-cost-control",
+      "width": 1400,
+      "height": 1050,
+      "ramp": "signature",
+      "role": "content"
+    },
+    {
+      "name": "noriva-service-cost-reduction",
+      "width": 1400,
+      "height": 1050,
+      "ramp": "signature",
+      "role": "content"
+    },
+    {
+      "name": "noriva-service-creative-direction",
+      "width": 1400,
+      "height": 1050,
+      "ramp": "signature",
+      "role": "content"
+    },
+    {
+      "name": "noriva-service-customer-experience",
+      "width": 1400,
+      "height": 1050,
+      "ramp": "signature",
+      "role": "content"
+    },
+    {
+      "name": "noriva-service-delivery-menu-pricing",
+      "width": 1400,
+      "height": 1050,
+      "ramp": "warm",
+      "role": "content"
+    },
+    {
+      "name": "noriva-service-digital-product-web",
+      "width": 1400,
+      "height": 1050,
+      "ramp": "brand",
+      "role": "content"
+    },
+    {
+      "name": "noriva-service-expansion-study",
+      "width": 1400,
+      "height": 1050,
+      "ramp": "cool",
+      "role": "content"
+    },
+    {
+      "name": "noriva-service-feasibility-study",
+      "width": 1400,
+      "height": 1050,
+      "ramp": "cool",
+      "role": "content"
+    },
+    {
+      "name": "noriva-service-financial-planning",
+      "width": 1400,
+      "height": 1050,
+      "ramp": "signature",
+      "role": "content"
+    },
+    {
+      "name": "noriva-service-fnb-audit",
+      "width": 1400,
+      "height": 1050,
+      "ramp": "cool",
+      "role": "content"
+    },
+    {
+      "name": "noriva-service-fnb-consulting",
+      "width": 1400,
+      "height": 1050,
+      "ramp": "cool",
+      "role": "content"
+    },
+    {
+      "name": "noriva-service-fnb-growth",
+      "width": 1400,
+      "height": 1050,
+      "ramp": "cool",
+      "role": "content"
+    },
+    {
+      "name": "noriva-service-fnb-marketing",
+      "width": 1400,
+      "height": 1050,
+      "ramp": "brand",
+      "role": "content"
+    },
+    {
+      "name": "noriva-service-food-cost-analysis",
+      "width": 1400,
+      "height": 1050,
+      "ramp": "warm",
+      "role": "content"
+    },
+    {
+      "name": "noriva-service-google-ads",
+      "width": 1400,
+      "height": 1050,
+      "ramp": "brand",
+      "role": "content"
+    },
+    {
+      "name": "noriva-service-graphic-design",
+      "width": 1400,
+      "height": 1050,
+      "ramp": "signature",
+      "role": "content"
+    },
+    {
+      "name": "noriva-service-growth-performance",
+      "width": 1400,
+      "height": 1050,
+      "ramp": "signature",
+      "role": "content"
+    },
+    {
+      "name": "noriva-service-growth-strategy",
+      "width": 1400,
+      "height": 1050,
+      "ramp": "signature",
+      "role": "content"
+    },
+    {
+      "name": "noriva-service-management-advisory",
+      "width": 1400,
+      "height": 1050,
+      "ramp": "cool",
+      "role": "content"
+    },
+    {
+      "name": "noriva-service-menu-design",
+      "width": 1400,
+      "height": 1050,
+      "ramp": "signature",
+      "role": "content"
+    },
+    {
+      "name": "noriva-service-menu-development",
+      "width": 1400,
+      "height": 1050,
+      "ramp": "warm",
+      "role": "content"
+    },
+    {
+      "name": "noriva-service-menu-engineering",
+      "width": 1400,
+      "height": 1050,
+      "ramp": "warm",
+      "role": "content"
+    },
+    {
+      "name": "noriva-service-menu-pricing",
+      "width": 1400,
+      "height": 1050,
+      "ramp": "warm",
+      "role": "content"
+    },
+    {
+      "name": "noriva-service-menu-strategy-engineering-pricing",
+      "width": 1400,
+      "height": 1050,
+      "ramp": "warm",
+      "role": "content"
+    },
+    {
+      "name": "noriva-service-meta-ads",
+      "width": 1400,
+      "height": 1050,
+      "ramp": "brand",
+      "role": "content"
+    },
+    {
+      "name": "noriva-service-new-cafe-project",
+      "width": 1400,
+      "height": 1050,
+      "ramp": "cool",
+      "role": "content"
+    },
+    {
+      "name": "noriva-service-new-restaurant-project",
+      "width": 1400,
+      "height": 1050,
+      "ramp": "cool",
+      "role": "content"
+    },
+    {
+      "name": "noriva-service-operational-audit",
+      "width": 1400,
+      "height": 1050,
+      "ramp": "cool",
+      "role": "content"
+    },
+    {
+      "name": "noriva-service-performance-analysis",
+      "width": 1400,
+      "height": 1050,
+      "ramp": "signature",
+      "role": "content"
+    },
+    {
+      "name": "noriva-service-performance-improvement",
+      "width": 1400,
+      "height": 1050,
+      "ramp": "cool",
+      "role": "content"
+    },
+    {
+      "name": "noriva-service-performance-marketing",
+      "width": 1400,
+      "height": 1050,
+      "ramp": "brand",
+      "role": "content"
+    },
+    {
+      "name": "noriva-service-photography",
+      "width": 1400,
+      "height": 1050,
+      "ramp": "signature",
+      "role": "content"
+    },
+    {
+      "name": "noriva-service-profitability-analysis",
+      "width": 1400,
+      "height": 1050,
+      "ramp": "signature",
+      "role": "content"
+    },
+    {
+      "name": "noriva-service-recipe-costing",
+      "width": 1400,
+      "height": 1050,
+      "ramp": "warm",
+      "role": "content"
+    },
+    {
+      "name": "noriva-service-reels-short-form",
+      "width": 1400,
+      "height": 1050,
+      "ramp": "signature",
+      "role": "content"
+    },
+    {
+      "name": "noriva-service-restaurant-consulting",
+      "width": 1400,
+      "height": 1050,
+      "ramp": "signature",
+      "role": "content"
+    },
+    {
+      "name": "noriva-service-roas-analysis",
+      "width": 1400,
+      "height": 1050,
+      "ramp": "brand",
+      "role": "content"
+    },
+    {
+      "name": "noriva-service-social-media-design",
+      "width": 1400,
+      "height": 1050,
+      "ramp": "brand",
+      "role": "content"
+    },
+    {
+      "name": "noriva-service-social-media-management",
+      "width": 1400,
+      "height": 1050,
+      "ramp": "brand",
+      "role": "content"
+    },
+    {
+      "name": "noriva-service-social-media-management-fnb",
+      "width": 1400,
+      "height": 1050,
+      "ramp": "brand",
+      "role": "content"
+    },
+    {
+      "name": "noriva-service-spatial-experience",
+      "width": 1400,
+      "height": 1050,
+      "ramp": "signature",
+      "role": "content"
+    },
+    {
+      "name": "noriva-service-tiktok-ads",
+      "width": 1400,
+      "height": 1050,
+      "ramp": "brand",
+      "role": "content"
+    },
+    {
+      "name": "noriva-service-video-production",
+      "width": 1400,
+      "height": 1050,
+      "ramp": "signature",
+      "role": "content"
+    },
+    {
+      "name": "noriva-insight-cash-before-profit",
+      "width": 1600,
+      "height": 900,
+      "ramp": "signature",
+      "role": "content"
+    },
+    {
+      "name": "noriva-insight-consistency-across-branches",
+      "width": 1600,
+      "height": 900,
+      "ramp": "cool",
+      "role": "content"
+    },
+    {
+      "name": "noriva-insight-contribution-by-daypart-and-channel",
+      "width": 1600,
+      "height": 900,
+      "ramp": "signature",
+      "role": "content"
+    },
+    {
+      "name": "noriva-insight-defining-a-concept-before-designing-it",
+      "width": 1600,
+      "height": 900,
+      "ramp": "cool",
+      "role": "content"
+    },
+    {
+      "name": "noriva-insight-delivery-economics-what-commission-really-costs",
+      "width": 1600,
+      "height": 900,
+      "ramp": "warm",
+      "role": "content"
+    },
+    {
+      "name": "noriva-insight-designing-arabic-and-english-together",
+      "width": 1600,
+      "height": 900,
+      "ramp": "cool",
+      "role": "content"
+    },
+    {
+      "name": "noriva-insight-documenting-the-first-site-before-opening-the-second",
+      "width": 1600,
+      "height": 900,
+      "ramp": "cool",
+      "role": "content"
+    },
+    {
+      "name": "noriva-insight-five-growth-routes-before-a-second-branch",
+      "width": 1600,
+      "height": 900,
+      "ramp": "cool",
+      "role": "content"
+    },
+    {
+      "name": "noriva-insight-how-a-menu-is-actually-read",
+      "width": 1600,
+      "height": 900,
+      "ramp": "warm",
+      "role": "content"
+    },
+    {
+      "name": "noriva-insight-measure-fewer-things",
+      "width": 1600,
+      "height": 900,
+      "ramp": "signature",
+      "role": "content"
+    },
+    {
+      "name": "noriva-insight-positioning-in-a-crowded-catchment",
+      "width": 1600,
+      "height": 900,
+      "ramp": "signature",
+      "role": "content"
+    },
+    {
+      "name": "noriva-insight-production-cycles-beat-one-off-shoots",
+      "width": 1600,
+      "height": 900,
+      "ramp": "signature",
+      "role": "content"
+    },
+    {
+      "name": "noriva-insight-raising-prices-without-losing-guests",
+      "width": 1600,
+      "height": 900,
+      "ramp": "warm",
+      "role": "content"
+    },
+    {
+      "name": "noriva-insight-reading-a-menu-as-a-commercial-document",
+      "width": 1600,
+      "height": 900,
+      "ramp": "warm",
+      "role": "content"
+    },
+    {
+      "name": "noriva-insight-the-assumptions-that-decide-a-feasibility-study",
+      "width": 1600,
+      "height": 900,
+      "ramp": "signature",
+      "role": "content"
+    },
+    {
+      "name": "noriva-insight-the-cost-that-leaks-before-the-kitchen",
+      "width": 1600,
+      "height": 900,
+      "ramp": "warm",
+      "role": "content"
+    },
+    {
+      "name": "noriva-insight-the-few-numbers-worth-reviewing-monthly",
+      "width": 1600,
+      "height": 900,
+      "ramp": "cool",
+      "role": "content"
+    },
+    {
+      "name": "noriva-insight-the-pre-opening-sequence-that-protects-the-budget",
+      "width": 1600,
+      "height": 900,
+      "ramp": "cool",
+      "role": "content"
+    },
+    {
+      "name": "noriva-insight-the-second-visit-is-where-the-margin-is",
+      "width": 1600,
+      "height": 900,
+      "ramp": "signature",
+      "role": "content"
+    },
+    {
+      "name": "noriva-insight-theoretical-versus-actual-food-cost",
+      "width": 1600,
+      "height": 900,
+      "ramp": "signature",
+      "role": "content"
+    },
+    {
+      "name": "noriva-insight-what-a-brand-guideline-is-actually-for",
+      "width": 1600,
+      "height": 900,
+      "ramp": "signature",
+      "role": "content"
+    },
+    {
+      "name": "noriva-insight-what-a-restaurant-website-is-actually-for",
+      "width": 1600,
+      "height": 900,
+      "ramp": "cool",
+      "role": "content"
+    },
+    {
+      "name": "noriva-insight-when-marketing-is-the-wrong-answer",
+      "width": 1600,
+      "height": 900,
+      "ramp": "brand",
+      "role": "content"
+    },
+    {
+      "name": "noriva-insight-where-service-breaks-at-peak",
+      "width": 1600,
+      "height": 900,
+      "ramp": "cool",
+      "role": "content"
+    },
+    {
+      "name": "noriva-work-booking-experience",
+      "width": 1800,
+      "height": 1150,
+      "ramp": "signature",
+      "role": "content"
+    },
+    {
+      "name": "noriva-work-booking-experience-1",
+      "width": 1600,
+      "height": 1100,
+      "ramp": "warm",
+      "role": "content"
+    },
+    {
+      "name": "noriva-work-booking-experience-2",
+      "width": 1600,
+      "height": 1100,
+      "ramp": "cool",
+      "role": "content"
+    },
+    {
+      "name": "noriva-work-booking-experience-3",
+      "width": 1600,
+      "height": 1100,
+      "ramp": "brand",
+      "role": "content"
+    },
+    {
+      "name": "noriva-work-brand-refresh",
+      "width": 1800,
+      "height": 1150,
+      "ramp": "warm",
+      "role": "content"
+    },
+    {
+      "name": "noriva-work-brand-refresh-1",
+      "width": 1600,
+      "height": 1100,
+      "ramp": "cool",
+      "role": "content"
+    },
+    {
+      "name": "noriva-work-brand-refresh-2",
+      "width": 1600,
+      "height": 1100,
+      "ramp": "brand",
+      "role": "content"
+    },
+    {
+      "name": "noriva-work-brand-refresh-3",
+      "width": 1600,
+      "height": 1100,
+      "ramp": "signature",
+      "role": "content"
+    },
+    {
+      "name": "noriva-work-cafe-concept-development",
+      "width": 1800,
+      "height": 1150,
+      "ramp": "cool",
+      "role": "content"
+    },
+    {
+      "name": "noriva-work-cafe-concept-development-1",
+      "width": 1600,
+      "height": 1100,
+      "ramp": "brand",
+      "role": "content"
+    },
+    {
+      "name": "noriva-work-cafe-concept-development-2",
+      "width": 1600,
+      "height": 1100,
+      "ramp": "signature",
+      "role": "content"
+    },
+    {
+      "name": "noriva-work-cafe-concept-development-3",
+      "width": 1600,
+      "height": 1100,
+      "ramp": "warm",
+      "role": "content"
+    },
+    {
+      "name": "noriva-work-delivery-channel-rebuild",
+      "width": 1800,
+      "height": 1150,
+      "ramp": "brand",
+      "role": "content"
+    },
+    {
+      "name": "noriva-work-delivery-channel-rebuild-1",
+      "width": 1600,
+      "height": 1100,
+      "ramp": "signature",
+      "role": "content"
+    },
+    {
+      "name": "noriva-work-delivery-channel-rebuild-2",
+      "width": 1600,
+      "height": 1100,
+      "ramp": "warm",
+      "role": "content"
+    },
+    {
+      "name": "noriva-work-delivery-channel-rebuild-3",
+      "width": 1600,
+      "height": 1100,
+      "ramp": "cool",
+      "role": "content"
+    },
+    {
+      "name": "noriva-work-editorial-platform",
+      "width": 1800,
+      "height": 1150,
+      "ramp": "signature",
+      "role": "content"
+    },
+    {
+      "name": "noriva-work-editorial-platform-1",
+      "width": 1600,
+      "height": 1100,
+      "ramp": "warm",
+      "role": "content"
+    },
+    {
+      "name": "noriva-work-editorial-platform-2",
+      "width": 1600,
+      "height": 1100,
+      "ramp": "cool",
+      "role": "content"
+    },
+    {
+      "name": "noriva-work-editorial-platform-3",
+      "width": 1600,
+      "height": 1100,
+      "ramp": "brand",
+      "role": "content"
+    },
+    {
+      "name": "noriva-work-guest-experience-programme",
+      "width": 1800,
+      "height": 1150,
+      "ramp": "warm",
+      "role": "content"
+    },
+    {
+      "name": "noriva-work-guest-experience-programme-1",
+      "width": 1600,
+      "height": 1100,
+      "ramp": "cool",
+      "role": "content"
+    },
+    {
+      "name": "noriva-work-guest-experience-programme-2",
+      "width": 1600,
+      "height": 1100,
+      "ramp": "brand",
+      "role": "content"
+    },
+    {
+      "name": "noriva-work-guest-experience-programme-3",
+      "width": 1600,
+      "height": 1100,
+      "ramp": "signature",
+      "role": "content"
+    },
+    {
+      "name": "noriva-work-hospitality-identity",
+      "width": 1800,
+      "height": 1150,
+      "ramp": "cool",
+      "role": "content"
+    },
+    {
+      "name": "noriva-work-hospitality-identity-1",
+      "width": 1600,
+      "height": 1100,
+      "ramp": "brand",
+      "role": "content"
+    },
+    {
+      "name": "noriva-work-hospitality-identity-2",
+      "width": 1600,
+      "height": 1100,
+      "ramp": "signature",
+      "role": "content"
+    },
+    {
+      "name": "noriva-work-hospitality-identity-3",
+      "width": 1600,
+      "height": 1100,
+      "ramp": "warm",
+      "role": "content"
+    },
+    {
+      "name": "noriva-work-launch-campaign",
+      "width": 1800,
+      "height": 1150,
+      "ramp": "brand",
+      "role": "content"
+    },
+    {
+      "name": "noriva-work-launch-campaign-1",
+      "width": 1600,
+      "height": 1100,
+      "ramp": "signature",
+      "role": "content"
+    },
+    {
+      "name": "noriva-work-launch-campaign-2",
+      "width": 1600,
+      "height": 1100,
+      "ramp": "warm",
+      "role": "content"
+    },
+    {
+      "name": "noriva-work-launch-campaign-3",
+      "width": 1600,
+      "height": 1100,
+      "ramp": "cool",
+      "role": "content"
+    },
+    {
+      "name": "noriva-work-menu-restructure",
+      "width": 1800,
+      "height": 1150,
+      "ramp": "signature",
+      "role": "content"
+    },
+    {
+      "name": "noriva-work-menu-restructure-1",
+      "width": 1600,
+      "height": 1100,
+      "ramp": "warm",
+      "role": "content"
+    },
+    {
+      "name": "noriva-work-menu-restructure-2",
+      "width": 1600,
+      "height": 1100,
+      "ramp": "cool",
+      "role": "content"
+    },
+    {
+      "name": "noriva-work-menu-restructure-3",
+      "width": 1600,
+      "height": 1100,
+      "ramp": "brand",
+      "role": "content"
+    },
+    {
+      "name": "noriva-work-multi-branch-readiness",
+      "width": 1800,
+      "height": 1150,
+      "ramp": "warm",
+      "role": "content"
+    },
+    {
+      "name": "noriva-work-multi-branch-readiness-1",
+      "width": 1600,
+      "height": 1100,
+      "ramp": "cool",
+      "role": "content"
+    },
+    {
+      "name": "noriva-work-multi-branch-readiness-2",
+      "width": 1600,
+      "height": 1100,
+      "ramp": "brand",
+      "role": "content"
+    },
+    {
+      "name": "noriva-work-multi-branch-readiness-3",
+      "width": 1600,
+      "height": 1100,
+      "ramp": "signature",
+      "role": "content"
+    },
+    {
+      "name": "noriva-work-restaurant-opening-programme",
+      "width": 1800,
+      "height": 1150,
+      "ramp": "cool",
+      "role": "content"
+    },
+    {
+      "name": "noriva-work-restaurant-opening-programme-1",
+      "width": 1600,
+      "height": 1100,
+      "ramp": "brand",
+      "role": "content"
+    },
+    {
+      "name": "noriva-work-restaurant-opening-programme-2",
+      "width": 1600,
+      "height": 1100,
+      "ramp": "signature",
+      "role": "content"
+    },
+    {
+      "name": "noriva-work-restaurant-opening-programme-3",
+      "width": 1600,
+      "height": 1100,
+      "ramp": "warm",
+      "role": "content"
+    },
+    {
+      "name": "noriva-work-retail-experience",
+      "width": 1800,
+      "height": 1150,
+      "ramp": "brand",
+      "role": "content"
+    },
+    {
+      "name": "noriva-work-retail-experience-1",
+      "width": 1600,
+      "height": 1100,
+      "ramp": "signature",
+      "role": "content"
+    },
+    {
+      "name": "noriva-work-retail-experience-2",
+      "width": 1600,
+      "height": 1100,
+      "ramp": "warm",
+      "role": "content"
+    },
+    {
+      "name": "noriva-work-retail-experience-3",
+      "width": 1600,
+      "height": 1100,
+      "ramp": "cool",
+      "role": "content"
+    },
+    {
+      "name": "noriva-case-study-cafe-concept",
+      "width": 1800,
+      "height": 1150,
+      "ramp": "warm",
+      "role": "content"
+    },
+    {
+      "name": "noriva-case-study-delivery-rebuild",
+      "width": 1800,
+      "height": 1150,
+      "ramp": "cool",
+      "role": "content"
+    },
+    {
+      "name": "noriva-case-study-guest-experience",
+      "width": 1800,
+      "height": 1150,
+      "ramp": "brand",
+      "role": "content"
+    },
+    {
+      "name": "noriva-case-study-menu-restructure",
+      "width": 1800,
+      "height": 1150,
+      "ramp": "signature",
+      "role": "content"
+    },
+    {
+      "name": "noriva-case-study-multi-branch-readiness",
+      "width": 1800,
+      "height": 1150,
+      "ramp": "warm",
+      "role": "content"
+    },
+    {
+      "name": "noriva-case-study-opening-programme",
+      "width": 1800,
+      "height": 1150,
+      "ramp": "cool",
+      "role": "content"
+    },
+    {
+      "name": "noriva-system-01",
+      "width": 1200,
+      "height": 900,
+      "ramp": "signature",
+      "role": "content"
+    },
+    {
+      "name": "noriva-system-02",
+      "width": 1200,
+      "height": 900,
+      "ramp": "cool",
+      "role": "content"
+    },
+    {
+      "name": "noriva-system-03",
+      "width": 1200,
+      "height": 900,
+      "ramp": "warm",
+      "role": "content"
+    },
+    {
+      "name": "noriva-system-04",
+      "width": 1200,
+      "height": 900,
+      "ramp": "brand",
+      "role": "content"
+    },
+    {
+      "name": "noriva-system-05",
+      "width": 1200,
+      "height": 900,
+      "ramp": "cool",
+      "role": "content"
+    },
+    {
+      "name": "noriva-system-06",
+      "width": 1200,
+      "height": 900,
+      "ramp": "signature",
+      "role": "content"
+    },
+    {
+      "name": "noriva-system-07",
+      "width": 1200,
+      "height": 900,
+      "ramp": "brand",
+      "role": "content"
+    },
+    {
+      "name": "noriva-system-08",
+      "width": 1200,
+      "height": 900,
+      "ramp": "signature",
+      "role": "content"
+    },
+    {
+      "name": "noriva-system-09",
+      "width": 1200,
+      "height": 900,
+      "ramp": "cool",
+      "role": "content"
+    },
+    {
+      "name": "noriva-system-10",
+      "width": 1200,
+      "height": 900,
+      "ramp": "warm",
+      "role": "content"
+    },
+    {
+      "name": "noriva-tool-branch-payback",
+      "width": 1200,
+      "height": 900,
+      "ramp": "cool",
+      "role": "content"
+    },
+    {
+      "name": "noriva-tool-break-even",
+      "width": 1200,
+      "height": 900,
+      "ramp": "signature",
+      "role": "content"
+    },
+    {
+      "name": "noriva-tool-contribution-margin",
+      "width": 1200,
+      "height": 900,
+      "ramp": "cool",
+      "role": "content"
+    },
+    {
+      "name": "noriva-tool-delivery-pricing",
+      "width": 1200,
+      "height": 900,
+      "ramp": "signature",
+      "role": "content"
+    },
+    {
+      "name": "noriva-tool-discount-impact",
+      "width": 1200,
+      "height": 900,
+      "ramp": "cool",
+      "role": "content"
+    },
+    {
+      "name": "noriva-tool-food-cost",
+      "width": 1200,
+      "height": 900,
+      "ramp": "signature",
+      "role": "content"
+    },
+    {
+      "name": "noriva-tool-labour-cost",
+      "width": 1200,
+      "height": 900,
+      "ramp": "cool",
+      "role": "content"
+    },
+    {
+      "name": "noriva-tool-marketing-roi",
+      "width": 1200,
+      "height": 900,
+      "ramp": "signature",
+      "role": "content"
+    },
+    {
+      "name": "noriva-tool-menu-pricing",
+      "width": 1200,
+      "height": 900,
+      "ramp": "cool",
+      "role": "content"
+    },
+    {
+      "name": "noriva-tool-prime-cost",
+      "width": 1200,
+      "height": 900,
+      "ramp": "signature",
+      "role": "content"
+    },
+    {
+      "name": "noriva-og-default",
+      "width": 1200,
+      "height": 630,
+      "ramp": "signature",
+      "role": "backdrop"
+    }
+  ],
+  "links": {
+    "services": {
+      "advertising-campaigns": {
+        "url": "/img/noriva-service-advertising-campaigns.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Advertising & Campaigns — campaign and channel strategy.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـالدعاية والحملات الإعلانية — استراتيجية الحملات والقنوات."
+      },
+      "branch-development": {
+        "url": "/img/noriva-service-branch-development.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Branch Development — growth and expansion planning.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتطوير الفروع — تخطيط النمو والتوسع."
+      },
+      "brand-identity": {
+        "url": "/img/noriva-service-brand-identity.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Brand Identity — identity and art direction.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـالهوية البصرية — الهوية والإدارة الفنية."
+      },
+      "brand-identity-fnb": {
+        "url": "/img/noriva-service-brand-identity-fnb.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Brand & Concept Positioning — brand positioning and guest experience.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـالعلامة وتموضع المفهوم — تموضع العلامة وتجربة الضيف."
+      },
+      "brand-strategy-identity": {
+        "url": "/img/noriva-service-brand-strategy-identity.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Brand Strategy & Identity — brand positioning and guest experience.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـاستراتيجية وهوية العلامة — تموضع العلامة وتجربة الضيف."
+      },
+      "cafe-consulting": {
+        "url": "/img/noriva-service-cafe-consulting.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Café Consulting — operational review and management advisory.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـاستشارات المقاهي — المراجعة التشغيلية والاستشارات الإدارية."
+      },
+      "campaign-creatives": {
+        "url": "/img/noriva-service-campaign-creatives.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Campaign Creatives — identity and art direction.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـإبداعات الحملات — الهوية والإدارة الفنية."
+      },
+      "campaign-optimization": {
+        "url": "/img/noriva-service-campaign-optimization.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Campaign Optimization — paid media and performance.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتحسين الحملات — الإعلانات المدفوعة والأداء."
+      },
+      "community-management": {
+        "url": "/img/noriva-service-community-management.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Community Management — content and channel management.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـإدارة المجتمع — إدارة المحتوى والقنوات."
+      },
+      "concept-development": {
+        "url": "/img/noriva-service-concept-development.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for F&B Concept Development — concept development and pre-opening work.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتطوير مفهوم غذائي — تطوير المفاهيم وأعمال ما قبل الافتتاح."
+      },
+      "content-creation": {
+        "url": "/img/noriva-service-content-creation.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Content Creation — content and channel management.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـإنتاج المحتوى — إدارة المحتوى والقنوات."
+      },
+      "content-production": {
+        "url": "/img/noriva-service-content-production.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Content & Production — content and channel management.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـالمحتوى والإنتاج — إدارة المحتوى والقنوات."
+      },
+      "content-strategy": {
+        "url": "/img/noriva-service-content-strategy.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Content Strategy — content and channel management.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـاستراتيجية المحتوى — إدارة المحتوى والقنوات."
+      },
+      "cost-control": {
+        "url": "/img/noriva-service-cost-control.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Cost Control — profitability and business performance.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـضبط التكاليف — الربحية وأداء المشروع."
+      },
+      "cost-reduction": {
+        "url": "/img/noriva-service-cost-reduction.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Cost Reduction — financial structure and profitability.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـخفض التكاليف — الهيكل المالي والربحية."
+      },
+      "creative-direction": {
+        "url": "/img/noriva-service-creative-direction.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Creative Direction — identity and art direction.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـالإدارة الإبداعية — الهوية والإدارة الفنية."
+      },
+      "customer-experience": {
+        "url": "/img/noriva-service-customer-experience.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Customer Experience — brand positioning and guest experience.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتجربة العميل — تموضع العلامة وتجربة الضيف."
+      },
+      "delivery-menu-pricing": {
+        "url": "/img/noriva-service-delivery-menu-pricing.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Delivery Menu & Pricing — menu architecture and product economics.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـقائمة وتسعير التوصيل — بنية القائمة واقتصاديات المنتج."
+      },
+      "digital-product-web": {
+        "url": "/img/noriva-service-digital-product-web.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Digital Product & Web — campaign and channel strategy.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـالمنتجات الرقمية والويب — استراتيجية الحملات والقنوات."
+      },
+      "expansion-study": {
+        "url": "/img/noriva-service-expansion-study.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Expansion Study — concept development and pre-opening work.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـدراسة التوسع — تطوير المفاهيم وأعمال ما قبل الافتتاح."
+      },
+      "feasibility-study": {
+        "url": "/img/noriva-service-feasibility-study.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Feasibility Study — concept development and pre-opening work.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـدراسة الجدوى — تطوير المفاهيم وأعمال ما قبل الافتتاح."
+      },
+      "financial-planning": {
+        "url": "/img/noriva-service-financial-planning.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Financial Planning & Budget — financial structure and profitability.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـالتخطيط المالي والموازنة — الهيكل المالي والربحية."
+      },
+      "fnb-audit": {
+        "url": "/img/noriva-service-fnb-audit.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Comprehensive F&B Audit — operational review and management advisory.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتقييم شامل لمشروع الأغذية والمشروبات — المراجعة التشغيلية والاستشارات الإدارية."
+      },
+      "fnb-consulting": {
+        "url": "/img/noriva-service-fnb-consulting.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for F&B Consulting — operational review and management advisory.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـاستشارات الأغذية والمشروبات — المراجعة التشغيلية والاستشارات الإدارية."
+      },
+      "fnb-growth": {
+        "url": "/img/noriva-service-fnb-growth.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for F&B Growth — growth and expansion planning.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـنمو مشاريع الأغذية والمشروبات — تخطيط النمو والتوسع."
+      },
+      "fnb-marketing": {
+        "url": "/img/noriva-service-fnb-marketing.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for F&B Marketing — campaign and channel strategy.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتسويق الأغذية والمشروبات — استراتيجية الحملات والقنوات."
+      },
+      "food-cost-analysis": {
+        "url": "/img/noriva-service-food-cost-analysis.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Food Cost Analysis — menu development and costing.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتحليل تكلفة الطعام — تطوير القائمة وحساب تكلفتها."
+      },
+      "google-ads": {
+        "url": "/img/noriva-service-google-ads.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Google Ads — paid media and performance.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـإعلانات جوجل — الإعلانات المدفوعة والأداء."
+      },
+      "graphic-design": {
+        "url": "/img/noriva-service-graphic-design.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Graphic Design — identity and art direction.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـالتصميم الجرافيكي — الهوية والإدارة الفنية."
+      },
+      "growth-performance": {
+        "url": "/img/noriva-service-growth-performance.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Growth & Performance — profitability and business performance.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـالنمو والأداء — الربحية وأداء المشروع."
+      },
+      "growth-strategy": {
+        "url": "/img/noriva-service-growth-strategy.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Growth Strategy — profitability and business performance.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـاستراتيجية النمو — الربحية وأداء المشروع."
+      },
+      "management-advisory": {
+        "url": "/img/noriva-service-management-advisory.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Management Advisory — operational review and management advisory.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـالاستشارات الإدارية — المراجعة التشغيلية والاستشارات الإدارية."
+      },
+      "menu-design": {
+        "url": "/img/noriva-service-menu-design.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Menu Design & Packaging — brand positioning and guest experience.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتصميم القائمة والتغليف — تموضع العلامة وتجربة الضيف."
+      },
+      "menu-development": {
+        "url": "/img/noriva-service-menu-development.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Menu Development — menu development and costing.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتطوير قائمة الطعام — تطوير القائمة وحساب تكلفتها."
+      },
+      "menu-engineering": {
+        "url": "/img/noriva-service-menu-engineering.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Menu Engineering — menu development and costing.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـهندسة قائمة الطعام — تطوير القائمة وحساب تكلفتها."
+      },
+      "menu-pricing": {
+        "url": "/img/noriva-service-menu-pricing.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Menu Pricing — menu development and costing.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتسعير قائمة الطعام — تطوير القائمة وحساب تكلفتها."
+      },
+      "menu-strategy-engineering-pricing": {
+        "url": "/img/noriva-service-menu-strategy-engineering-pricing.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Menu Strategy, Engineering & Pricing — menu architecture and product economics.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـدراسة وتطوير وهندسة وتسعير قوائم الطعام — بنية القائمة واقتصاديات المنتج."
+      },
+      "meta-ads": {
+        "url": "/img/noriva-service-meta-ads.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Meta Ads — paid media and performance.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـإعلانات ميتا — الإعلانات المدفوعة والأداء."
+      },
+      "new-cafe-project": {
+        "url": "/img/noriva-service-new-cafe-project.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for New Café Project — concept development and pre-opening work.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـمشروع مقهى جديد — تطوير المفاهيم وأعمال ما قبل الافتتاح."
+      },
+      "new-restaurant-project": {
+        "url": "/img/noriva-service-new-restaurant-project.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for New Restaurant Project — concept development and pre-opening work.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـمشروع مطعم جديد — تطوير المفاهيم وأعمال ما قبل الافتتاح."
+      },
+      "operational-audit": {
+        "url": "/img/noriva-service-operational-audit.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Operational Audit — operational review and management advisory.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـالتقييم التشغيلي — المراجعة التشغيلية والاستشارات الإدارية."
+      },
+      "performance-analysis": {
+        "url": "/img/noriva-service-performance-analysis.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Performance Analysis — profitability and business performance.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتحليل الأداء — الربحية وأداء المشروع."
+      },
+      "performance-improvement": {
+        "url": "/img/noriva-service-performance-improvement.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Performance Improvement — growth and expansion planning.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتحسين الأداء — تخطيط النمو والتوسع."
+      },
+      "performance-marketing": {
+        "url": "/img/noriva-service-performance-marketing.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Performance Marketing — paid media and performance.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـالتسويق بالأداء — الإعلانات المدفوعة والأداء."
+      },
+      "photography": {
+        "url": "/img/noriva-service-photography.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Photography — identity and art direction.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـالتصوير الفوتوغرافي — الهوية والإدارة الفنية."
+      },
+      "profitability-analysis": {
+        "url": "/img/noriva-service-profitability-analysis.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Profitability Analysis — profitability and business performance.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتحليل الربحية — الربحية وأداء المشروع."
+      },
+      "recipe-costing": {
+        "url": "/img/noriva-service-recipe-costing.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Recipe Costing — menu development and costing.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتكلفة الوصفات — تطوير القائمة وحساب تكلفتها."
+      },
+      "reels-short-form": {
+        "url": "/img/noriva-service-reels-short-form.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Reels & Short-Form — identity and art direction.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـالريلز والفيديو القصير — الهوية والإدارة الفنية."
+      },
+      "restaurant-consulting": {
+        "url": "/img/noriva-service-restaurant-consulting.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Restaurant Consulting — profitability and business performance.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـاستشارات المطاعم — الربحية وأداء المشروع."
+      },
+      "roas-analysis": {
+        "url": "/img/noriva-service-roas-analysis.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for ROAS Analysis — paid media and performance.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتحليل العائد على الإنفاق الإعلاني — الإعلانات المدفوعة والأداء."
+      },
+      "social-media-design": {
+        "url": "/img/noriva-service-social-media-design.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Social Media Design — content and channel management.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتصميم وسائل التواصل — إدارة المحتوى والقنوات."
+      },
+      "social-media-management": {
+        "url": "/img/noriva-service-social-media-management.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Social Media Management — content and channel management.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـإدارة وسائل التواصل الاجتماعي — إدارة المحتوى والقنوات."
+      },
+      "social-media-management-fnb": {
+        "url": "/img/noriva-service-social-media-management-fnb.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Social Media — campaign and channel strategy.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـإدارة السوشال ميديا — استراتيجية الحملات والقنوات."
+      },
+      "spatial-experience": {
+        "url": "/img/noriva-service-spatial-experience.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Spatial & Experience — brand positioning and guest experience.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـالتجربة والمكان — تموضع العلامة وتجربة الضيف."
+      },
+      "tiktok-ads": {
+        "url": "/img/noriva-service-tiktok-ads.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for TikTok Ads — paid media and performance.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـإعلانات تيك توك — الإعلانات المدفوعة والأداء."
+      },
+      "video-production": {
+        "url": "/img/noriva-service-video-production.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Video Production — identity and art direction.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـإنتاج الفيديو — الهوية والإدارة الفنية."
+      }
+    },
+    "insights": {
+      "cash-before-profit": {
+        "url": "/img/noriva-insight-cash-before-profit.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Cash before profit: planning a year in F&B — finance and profitability.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـالنقد قبل الربح: التخطيط لسنة في قطاع الأغذية والمشروبات — المالية والربحية."
+      },
+      "consistency-across-branches": {
+        "url": "/img/noriva-insight-consistency-across-branches.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Consistency across branches is not uniformity — restaurant management.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـالاتساق بين الفروع ليس التماثل — إدارة المطاعم."
+      },
+      "contribution-by-daypart-and-channel": {
+        "url": "/img/noriva-insight-contribution-by-daypart-and-channel.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Contribution by daypart and channel — finance and profitability.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـالمساهمة حسب الوقت والقناة — المالية والربحية."
+      },
+      "defining-a-concept-before-designing-it": {
+        "url": "/img/noriva-insight-defining-a-concept-before-designing-it.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Defining a concept before designing it — concept development.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتعريف المفهوم قبل تصميمه — تطوير المفاهيم."
+      },
+      "delivery-economics-what-commission-really-costs": {
+        "url": "/img/noriva-insight-delivery-economics-what-commission-really-costs.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Delivery economics: what commission really costs — menu and pricing.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـاقتصاديات التوصيل: التكلفة الحقيقية للعمولة — القائمة والتسعير."
+      },
+      "designing-arabic-and-english-together": {
+        "url": "/img/noriva-insight-designing-arabic-and-english-together.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Designing Arabic and English together — digital experience.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتصميم العربية والإنجليزية معاً — التجربة الرقمية."
+      },
+      "documenting-the-first-site-before-opening-the-second": {
+        "url": "/img/noriva-insight-documenting-the-first-site-before-opening-the-second.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Documenting the first site before opening the second — growth and expansion.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتوثيق الفرع الأول قبل افتتاح الثاني — النمو والتوسع."
+      },
+      "five-growth-routes-before-a-second-branch": {
+        "url": "/img/noriva-insight-five-growth-routes-before-a-second-branch.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Five growth routes to exhaust before a second branch — growth and expansion.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـخمسة مسارات نمو تستنفدها قبل الفرع الثاني — النمو والتوسع."
+      },
+      "how-a-menu-is-actually-read": {
+        "url": "/img/noriva-insight-how-a-menu-is-actually-read.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for How a menu is actually read — menu and pricing.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـكيف تُقرأ القائمة فعلاً — القائمة والتسعير."
+      },
+      "measure-fewer-things": {
+        "url": "/img/noriva-insight-measure-fewer-things.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Measure fewer things — food and beverage strategy.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـقِس أشياء أقل — استراتيجية الأغذية والمشروبات."
+      },
+      "positioning-in-a-crowded-catchment": {
+        "url": "/img/noriva-insight-positioning-in-a-crowded-catchment.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Positioning in a crowded catchment — brand and positioning.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـالتموضع في نطاق مزدحم — العلامة والتموضع."
+      },
+      "production-cycles-beat-one-off-shoots": {
+        "url": "/img/noriva-insight-production-cycles-beat-one-off-shoots.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Production cycles beat one-off shoots — food and beverage strategy.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـدورات الإنتاج تتفوق على الجلسات المتفرقة — استراتيجية الأغذية والمشروبات."
+      },
+      "raising-prices-without-losing-guests": {
+        "url": "/img/noriva-insight-raising-prices-without-losing-guests.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Raising prices without losing guests — menu and pricing.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـرفع الأسعار دون خسارة الضيوف — القائمة والتسعير."
+      },
+      "reading-a-menu-as-a-commercial-document": {
+        "url": "/img/noriva-insight-reading-a-menu-as-a-commercial-document.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Reading a menu as a commercial document — menu and pricing.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـقراءة القائمة بوصفها وثيقة تجارية — القائمة والتسعير."
+      },
+      "the-assumptions-that-decide-a-feasibility-study": {
+        "url": "/img/noriva-insight-the-assumptions-that-decide-a-feasibility-study.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for The assumptions that decide a feasibility study — finance and profitability.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـالافتراضات التي تحسم دراسة الجدوى — المالية والربحية."
+      },
+      "the-cost-that-leaks-before-the-kitchen": {
+        "url": "/img/noriva-insight-the-cost-that-leaks-before-the-kitchen.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for The cost that leaks before the kitchen — purchasing and inventory.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـالتكلفة التي تتسرب قبل المطبخ — الشراء والمخزون."
+      },
+      "the-few-numbers-worth-reviewing-monthly": {
+        "url": "/img/noriva-insight-the-few-numbers-worth-reviewing-monthly.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for The few numbers worth reviewing monthly — restaurant operations.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـالأرقام القليلة التي تستحق مراجعة شهرية — تشغيل المطاعم."
+      },
+      "the-pre-opening-sequence-that-protects-the-budget": {
+        "url": "/img/noriva-insight-the-pre-opening-sequence-that-protects-the-budget.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for The pre-opening sequence that protects the budget — concept development.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتسلسل ما قبل الافتتاح الذي يحمي الميزانية — تطوير المفاهيم."
+      },
+      "the-second-visit-is-where-the-margin-is": {
+        "url": "/img/noriva-insight-the-second-visit-is-where-the-margin-is.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for The second visit is where the margin is — customer experience.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـالزيارة الثانية هي موضع الهامش — تجربة العميل."
+      },
+      "theoretical-versus-actual-food-cost": {
+        "url": "/img/noriva-insight-theoretical-versus-actual-food-cost.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Theoretical versus actual food cost: reading the gap — finance and profitability.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتكلفة الطعام النظرية مقابل الفعلية: قراءة الفجوة — المالية والربحية."
+      },
+      "what-a-brand-guideline-is-actually-for": {
+        "url": "/img/noriva-insight-what-a-brand-guideline-is-actually-for.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for What a brand guideline is actually for — food and beverage strategy.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـما الغرض الحقيقي من دليل العلامة — استراتيجية الأغذية والمشروبات."
+      },
+      "what-a-restaurant-website-is-actually-for": {
+        "url": "/img/noriva-insight-what-a-restaurant-website-is-actually-for.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for What a restaurant website is actually for — digital experience.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـما الغرض الحقيقي من موقع المطعم — التجربة الرقمية."
+      },
+      "when-marketing-is-the-wrong-answer": {
+        "url": "/img/noriva-insight-when-marketing-is-the-wrong-answer.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for When marketing is the wrong answer — marketing and advertising.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـحين لا يكون التسويق هو الجواب — التسويق والإعلان."
+      },
+      "where-service-breaks-at-peak": {
+        "url": "/img/noriva-insight-where-service-breaks-at-peak.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Where service breaks at peak — restaurant operations.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـأين تنهار الخدمة في الذروة — تشغيل المطاعم."
+      }
+    },
+    "projects": {
+      "sample-booking-experience": {
+        "url": "/img/noriva-work-booking-experience.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Booking Experience — an illustrative engagement, not client photography.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتجربة الحجز — نموذج توضيحي لا تصوير لعمل عميل.",
+        "gallery": [
+          {
+            "url": "/img/noriva-work-booking-experience-1.webp",
+            "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Booking Experience — an illustrative engagement, not client photography.",
+            "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتجربة الحجز — نموذج توضيحي لا تصوير لعمل عميل."
+          },
+          {
+            "url": "/img/noriva-work-booking-experience-2.webp",
+            "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Booking Experience — an illustrative engagement, not client photography.",
+            "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتجربة الحجز — نموذج توضيحي لا تصوير لعمل عميل."
+          },
+          {
+            "url": "/img/noriva-work-booking-experience-3.webp",
+            "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Booking Experience — an illustrative engagement, not client photography.",
+            "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتجربة الحجز — نموذج توضيحي لا تصوير لعمل عميل."
+          }
+        ]
+      },
+      "sample-brand-refresh": {
+        "url": "/img/noriva-work-brand-refresh.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Brand Refresh — an illustrative engagement, not client photography.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتحديث علامة — نموذج توضيحي لا تصوير لعمل عميل.",
+        "gallery": [
+          {
+            "url": "/img/noriva-work-brand-refresh-1.webp",
+            "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Brand Refresh — an illustrative engagement, not client photography.",
+            "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتحديث علامة — نموذج توضيحي لا تصوير لعمل عميل."
+          },
+          {
+            "url": "/img/noriva-work-brand-refresh-2.webp",
+            "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Brand Refresh — an illustrative engagement, not client photography.",
+            "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتحديث علامة — نموذج توضيحي لا تصوير لعمل عميل."
+          },
+          {
+            "url": "/img/noriva-work-brand-refresh-3.webp",
+            "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Brand Refresh — an illustrative engagement, not client photography.",
+            "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتحديث علامة — نموذج توضيحي لا تصوير لعمل عميل."
+          }
+        ]
+      },
+      "sample-cafe-concept-development": {
+        "url": "/img/noriva-work-cafe-concept-development.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Café Concept Development — an illustrative engagement, not client photography.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتطوير مفهوم مقهى — نموذج توضيحي لا تصوير لعمل عميل.",
+        "gallery": [
+          {
+            "url": "/img/noriva-work-cafe-concept-development-1.webp",
+            "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Café Concept Development — an illustrative engagement, not client photography.",
+            "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتطوير مفهوم مقهى — نموذج توضيحي لا تصوير لعمل عميل."
+          },
+          {
+            "url": "/img/noriva-work-cafe-concept-development-2.webp",
+            "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Café Concept Development — an illustrative engagement, not client photography.",
+            "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتطوير مفهوم مقهى — نموذج توضيحي لا تصوير لعمل عميل."
+          },
+          {
+            "url": "/img/noriva-work-cafe-concept-development-3.webp",
+            "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Café Concept Development — an illustrative engagement, not client photography.",
+            "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتطوير مفهوم مقهى — نموذج توضيحي لا تصوير لعمل عميل."
+          }
+        ]
+      },
+      "sample-delivery-channel-rebuild": {
+        "url": "/img/noriva-work-delivery-channel-rebuild.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Delivery Channel Rebuild — an illustrative engagement, not client photography.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـإعادة بناء قناة التوصيل — نموذج توضيحي لا تصوير لعمل عميل.",
+        "gallery": [
+          {
+            "url": "/img/noriva-work-delivery-channel-rebuild-1.webp",
+            "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Delivery Channel Rebuild — an illustrative engagement, not client photography.",
+            "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـإعادة بناء قناة التوصيل — نموذج توضيحي لا تصوير لعمل عميل."
+          },
+          {
+            "url": "/img/noriva-work-delivery-channel-rebuild-2.webp",
+            "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Delivery Channel Rebuild — an illustrative engagement, not client photography.",
+            "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـإعادة بناء قناة التوصيل — نموذج توضيحي لا تصوير لعمل عميل."
+          },
+          {
+            "url": "/img/noriva-work-delivery-channel-rebuild-3.webp",
+            "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Delivery Channel Rebuild — an illustrative engagement, not client photography.",
+            "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـإعادة بناء قناة التوصيل — نموذج توضيحي لا تصوير لعمل عميل."
+          }
+        ]
+      },
+      "sample-editorial-platform": {
+        "url": "/img/noriva-work-editorial-platform.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Editorial Content Platform — an illustrative engagement, not client photography.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـمنصة محتوى تحريري — نموذج توضيحي لا تصوير لعمل عميل.",
+        "gallery": [
+          {
+            "url": "/img/noriva-work-editorial-platform-1.webp",
+            "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Editorial Content Platform — an illustrative engagement, not client photography.",
+            "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـمنصة محتوى تحريري — نموذج توضيحي لا تصوير لعمل عميل."
+          },
+          {
+            "url": "/img/noriva-work-editorial-platform-2.webp",
+            "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Editorial Content Platform — an illustrative engagement, not client photography.",
+            "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـمنصة محتوى تحريري — نموذج توضيحي لا تصوير لعمل عميل."
+          },
+          {
+            "url": "/img/noriva-work-editorial-platform-3.webp",
+            "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Editorial Content Platform — an illustrative engagement, not client photography.",
+            "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـمنصة محتوى تحريري — نموذج توضيحي لا تصوير لعمل عميل."
+          }
+        ]
+      },
+      "sample-guest-experience-programme": {
+        "url": "/img/noriva-work-guest-experience-programme.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Guest Experience Programme — an illustrative engagement, not client photography.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـبرنامج تجربة الضيف — نموذج توضيحي لا تصوير لعمل عميل.",
+        "gallery": [
+          {
+            "url": "/img/noriva-work-guest-experience-programme-1.webp",
+            "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Guest Experience Programme — an illustrative engagement, not client photography.",
+            "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـبرنامج تجربة الضيف — نموذج توضيحي لا تصوير لعمل عميل."
+          },
+          {
+            "url": "/img/noriva-work-guest-experience-programme-2.webp",
+            "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Guest Experience Programme — an illustrative engagement, not client photography.",
+            "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـبرنامج تجربة الضيف — نموذج توضيحي لا تصوير لعمل عميل."
+          },
+          {
+            "url": "/img/noriva-work-guest-experience-programme-3.webp",
+            "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Guest Experience Programme — an illustrative engagement, not client photography.",
+            "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـبرنامج تجربة الضيف — نموذج توضيحي لا تصوير لعمل عميل."
+          }
+        ]
+      },
+      "sample-hospitality-identity": {
+        "url": "/img/noriva-work-hospitality-identity.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Hospitality Identity System — an illustrative engagement, not client photography.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـنظام هوية لمشروع ضيافة — نموذج توضيحي لا تصوير لعمل عميل.",
+        "gallery": [
+          {
+            "url": "/img/noriva-work-hospitality-identity-1.webp",
+            "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Hospitality Identity System — an illustrative engagement, not client photography.",
+            "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـنظام هوية لمشروع ضيافة — نموذج توضيحي لا تصوير لعمل عميل."
+          },
+          {
+            "url": "/img/noriva-work-hospitality-identity-2.webp",
+            "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Hospitality Identity System — an illustrative engagement, not client photography.",
+            "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـنظام هوية لمشروع ضيافة — نموذج توضيحي لا تصوير لعمل عميل."
+          },
+          {
+            "url": "/img/noriva-work-hospitality-identity-3.webp",
+            "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Hospitality Identity System — an illustrative engagement, not client photography.",
+            "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـنظام هوية لمشروع ضيافة — نموذج توضيحي لا تصوير لعمل عميل."
+          }
+        ]
+      },
+      "sample-launch-campaign": {
+        "url": "/img/noriva-work-launch-campaign.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Opening Campaign — an illustrative engagement, not client photography.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـحملة افتتاح — نموذج توضيحي لا تصوير لعمل عميل.",
+        "gallery": [
+          {
+            "url": "/img/noriva-work-launch-campaign-1.webp",
+            "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Opening Campaign — an illustrative engagement, not client photography.",
+            "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـحملة افتتاح — نموذج توضيحي لا تصوير لعمل عميل."
+          },
+          {
+            "url": "/img/noriva-work-launch-campaign-2.webp",
+            "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Opening Campaign — an illustrative engagement, not client photography.",
+            "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـحملة افتتاح — نموذج توضيحي لا تصوير لعمل عميل."
+          },
+          {
+            "url": "/img/noriva-work-launch-campaign-3.webp",
+            "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Opening Campaign — an illustrative engagement, not client photography.",
+            "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـحملة افتتاح — نموذج توضيحي لا تصوير لعمل عميل."
+          }
+        ]
+      },
+      "sample-menu-restructure": {
+        "url": "/img/noriva-work-menu-restructure.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Menu Restructure for a Casual Dining Concept — an illustrative engagement, not client photography.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـإعادة بناء قائمة لمفهوم مطعم غير رسمي — نموذج توضيحي لا تصوير لعمل عميل.",
+        "gallery": [
+          {
+            "url": "/img/noriva-work-menu-restructure-1.webp",
+            "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Menu Restructure for a Casual Dining Concept — an illustrative engagement, not client photography.",
+            "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـإعادة بناء قائمة لمفهوم مطعم غير رسمي — نموذج توضيحي لا تصوير لعمل عميل."
+          },
+          {
+            "url": "/img/noriva-work-menu-restructure-2.webp",
+            "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Menu Restructure for a Casual Dining Concept — an illustrative engagement, not client photography.",
+            "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـإعادة بناء قائمة لمفهوم مطعم غير رسمي — نموذج توضيحي لا تصوير لعمل عميل."
+          },
+          {
+            "url": "/img/noriva-work-menu-restructure-3.webp",
+            "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Menu Restructure for a Casual Dining Concept — an illustrative engagement, not client photography.",
+            "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـإعادة بناء قائمة لمفهوم مطعم غير رسمي — نموذج توضيحي لا تصوير لعمل عميل."
+          }
+        ]
+      },
+      "sample-multi-branch-readiness": {
+        "url": "/img/noriva-work-multi-branch-readiness.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Multi-Branch Readiness Programme — an illustrative engagement, not client photography.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـبرنامج الجاهزية لتعدد الفروع — نموذج توضيحي لا تصوير لعمل عميل.",
+        "gallery": [
+          {
+            "url": "/img/noriva-work-multi-branch-readiness-1.webp",
+            "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Multi-Branch Readiness Programme — an illustrative engagement, not client photography.",
+            "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـبرنامج الجاهزية لتعدد الفروع — نموذج توضيحي لا تصوير لعمل عميل."
+          },
+          {
+            "url": "/img/noriva-work-multi-branch-readiness-2.webp",
+            "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Multi-Branch Readiness Programme — an illustrative engagement, not client photography.",
+            "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـبرنامج الجاهزية لتعدد الفروع — نموذج توضيحي لا تصوير لعمل عميل."
+          },
+          {
+            "url": "/img/noriva-work-multi-branch-readiness-3.webp",
+            "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Multi-Branch Readiness Programme — an illustrative engagement, not client photography.",
+            "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـبرنامج الجاهزية لتعدد الفروع — نموذج توضيحي لا تصوير لعمل عميل."
+          }
+        ]
+      },
+      "sample-restaurant-opening-programme": {
+        "url": "/img/noriva-work-restaurant-opening-programme.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Restaurant Opening Programme — an illustrative engagement, not client photography.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـبرنامج افتتاح مطعم — نموذج توضيحي لا تصوير لعمل عميل.",
+        "gallery": [
+          {
+            "url": "/img/noriva-work-restaurant-opening-programme-1.webp",
+            "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Restaurant Opening Programme — an illustrative engagement, not client photography.",
+            "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـبرنامج افتتاح مطعم — نموذج توضيحي لا تصوير لعمل عميل."
+          },
+          {
+            "url": "/img/noriva-work-restaurant-opening-programme-2.webp",
+            "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Restaurant Opening Programme — an illustrative engagement, not client photography.",
+            "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـبرنامج افتتاح مطعم — نموذج توضيحي لا تصوير لعمل عميل."
+          },
+          {
+            "url": "/img/noriva-work-restaurant-opening-programme-3.webp",
+            "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Restaurant Opening Programme — an illustrative engagement, not client photography.",
+            "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـبرنامج افتتاح مطعم — نموذج توضيحي لا تصوير لعمل عميل."
+          }
+        ]
+      },
+      "sample-retail-experience": {
+        "url": "/img/noriva-work-retail-experience.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Retail Experience Design — an illustrative engagement, not client photography.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتصميم تجربة التجزئة — نموذج توضيحي لا تصوير لعمل عميل.",
+        "gallery": [
+          {
+            "url": "/img/noriva-work-retail-experience-1.webp",
+            "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Retail Experience Design — an illustrative engagement, not client photography.",
+            "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتصميم تجربة التجزئة — نموذج توضيحي لا تصوير لعمل عميل."
+          },
+          {
+            "url": "/img/noriva-work-retail-experience-2.webp",
+            "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Retail Experience Design — an illustrative engagement, not client photography.",
+            "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتصميم تجربة التجزئة — نموذج توضيحي لا تصوير لعمل عميل."
+          },
+          {
+            "url": "/img/noriva-work-retail-experience-3.webp",
+            "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Retail Experience Design — an illustrative engagement, not client photography.",
+            "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتصميم تجربة التجزئة — نموذج توضيحي لا تصوير لعمل عميل."
+          }
+        ]
+      }
+    },
+    "caseStudies": {
+      "cafe-concept-case-study": {
+        "url": "/img/noriva-case-study-cafe-concept.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Defining a café before designing it — an illustrative engagement, not client photography.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتعريف مقهى قبل تصميمه — نموذج توضيحي لا تصوير لعمل عميل."
+      },
+      "delivery-rebuild-case-study": {
+        "url": "/img/noriva-case-study-delivery-rebuild.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Rebuilding a delivery channel from the margin backwards — an illustrative engagement, not client photography.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـإعادة بناء قناة التوصيل انطلاقاً من الهامش — نموذج توضيحي لا تصوير لعمل عميل."
+      },
+      "guest-experience-case-study": {
+        "url": "/img/noriva-case-study-guest-experience.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Finding the friction nobody complains about — an illustrative engagement, not client photography.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـالعثور على الاحتكاك الذي لا يشتكي منه أحد — نموذج توضيحي لا تصوير لعمل عميل."
+      },
+      "menu-restructure-case-study": {
+        "url": "/img/noriva-case-study-menu-restructure.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Reading a four-year-old menu as a commercial document — an illustrative engagement, not client photography.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـقراءة قائمة عمرها أربع سنوات كوثيقة تجارية — نموذج توضيحي لا تصوير لعمل عميل."
+      },
+      "multi-branch-readiness-case-study": {
+        "url": "/img/noriva-case-study-multi-branch-readiness.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Writing down what one person knew — an illustrative engagement, not client photography.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـكتابة ما يعرفه شخص واحد — نموذج توضيحي لا تصوير لعمل عميل."
+      },
+      "opening-programme-case-study": {
+        "url": "/img/noriva-case-study-opening-programme.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for A pre-opening sequence run in the right order — an illustrative engagement, not client photography.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتسلسل ما قبل الافتتاح منفَّذ بالترتيب الصحيح — نموذج توضيحي لا تصوير لعمل عميل."
+      }
+    },
+    "stages": {
+      "10": {
+        "url": "/img/noriva-system-10.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Performance — the Performance discipline of the Noriva System.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـالأداء — تخصص الأداء في نظام نوريفا."
+      },
+      "01": {
+        "url": "/img/noriva-system-01.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Strategy — the Strategy discipline of the Noriva System.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـالاستراتيجية — تخصص الاستراتيجية في نظام نوريفا."
+      },
+      "02": {
+        "url": "/img/noriva-system-02.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Brand — the Brand discipline of the Noriva System.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـالعلامة — تخصص العلامة في نظام نوريفا."
+      },
+      "03": {
+        "url": "/img/noriva-system-03.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Concept — the Concept discipline of the Noriva System.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـالمفهوم — تخصص المفهوم في نظام نوريفا."
+      },
+      "04": {
+        "url": "/img/noriva-system-04.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Customer Experience — the Customer Experience discipline of the Noriva System.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتجربة العميل — تخصص تجربة العميل في نظام نوريفا."
+      },
+      "05": {
+        "url": "/img/noriva-system-05.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Menu & Product — the Menu & Product discipline of the Noriva System.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـالقائمة والمنتج — تخصص القائمة والمنتج في نظام نوريفا."
+      },
+      "06": {
+        "url": "/img/noriva-system-06.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Operations — the Operations discipline of the Noriva System.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـالتشغيل — تخصص التشغيل في نظام نوريفا."
+      },
+      "07": {
+        "url": "/img/noriva-system-07.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Marketing — the Marketing discipline of the Noriva System.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـالتسويق — تخصص التسويق في نظام نوريفا."
+      },
+      "08": {
+        "url": "/img/noriva-system-08.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Finance — the Finance discipline of the Noriva System.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـالمالية — تخصص المالية في نظام نوريفا."
+      },
+      "09": {
+        "url": "/img/noriva-system-09.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Growth — the Growth discipline of the Noriva System.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـالنمو — تخصص النمو في نظام نوريفا."
+      }
+    },
+    "tools": {
+      "branch-payback-calculator": {
+        "url": "/img/noriva-tool-branch-payback.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Branch Payback Calculator — an interactive calculator for food and beverage decisions.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـحاسبة استرداد استثمار الفرع — حاسبة تفاعلية لقرارات الأغذية والمشروبات."
+      },
+      "break-even-calculator": {
+        "url": "/img/noriva-tool-break-even.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Break-Even Calculator — an interactive calculator for food and beverage decisions.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـحاسبة نقطة التعادل — حاسبة تفاعلية لقرارات الأغذية والمشروبات."
+      },
+      "contribution-margin-calculator": {
+        "url": "/img/noriva-tool-contribution-margin.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Contribution Margin Calculator — an interactive calculator for food and beverage decisions.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـحاسبة هامش المساهمة — حاسبة تفاعلية لقرارات الأغذية والمشروبات."
+      },
+      "delivery-pricing-calculator": {
+        "url": "/img/noriva-tool-delivery-pricing.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Delivery Pricing Calculator — an interactive calculator for food and beverage decisions.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـحاسبة تسعير التوصيل — حاسبة تفاعلية لقرارات الأغذية والمشروبات."
+      },
+      "discount-impact-calculator": {
+        "url": "/img/noriva-tool-discount-impact.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Discount Impact Calculator — an interactive calculator for food and beverage decisions.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـحاسبة أثر الخصم — حاسبة تفاعلية لقرارات الأغذية والمشروبات."
+      },
+      "food-cost-calculator": {
+        "url": "/img/noriva-tool-food-cost.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Food Cost Calculator — an interactive calculator for food and beverage decisions.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـحاسبة تكلفة الطعام — حاسبة تفاعلية لقرارات الأغذية والمشروبات."
+      },
+      "labour-cost-calculator": {
+        "url": "/img/noriva-tool-labour-cost.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Labour Cost Calculator — an interactive calculator for food and beverage decisions.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـحاسبة تكلفة العمالة — حاسبة تفاعلية لقرارات الأغذية والمشروبات."
+      },
+      "marketing-roi-calculator": {
+        "url": "/img/noriva-tool-marketing-roi.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Marketing Return Calculator — an interactive calculator for food and beverage decisions.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـحاسبة عائد التسويق — حاسبة تفاعلية لقرارات الأغذية والمشروبات."
+      },
+      "menu-pricing-calculator": {
+        "url": "/img/noriva-tool-menu-pricing.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Menu Pricing Calculator — an interactive calculator for food and beverage decisions.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـحاسبة تسعير القائمة — حاسبة تفاعلية لقرارات الأغذية والمشروبات."
+      },
+      "prime-cost-calculator": {
+        "url": "/img/noriva-tool-prime-cost.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Prime Cost Calculator — an interactive calculator for food and beverage decisions.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـحاسبة التكلفة الأولية — حاسبة تفاعلية لقرارات الأغذية والمشروبات."
+      }
+    }
+  }
+}
