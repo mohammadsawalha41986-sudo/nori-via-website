@@ -122,6 +122,47 @@ export default async function SettingsPage() {
               <input id="copyrightAr" name="copyrightAr" defaultValue={s.copyrightAr} dir="rtl" className={inputClass} />
             </Field>
           </Grid>
+
+          {/* Backdrop. The image is kept on file even while Colour is selected,
+              so switching back and forth costs nothing. Neither option changes
+              how tall the footer is. */}
+          <Grid cols={2}>
+            <Field
+              label="Footer background"
+              htmlFor="footerBackgroundType"
+              hint="Image uses the picture below behind a dark overlay. Colour uses the swatch, and an empty swatch falls back to the brand ink."
+            >
+              <select
+                id="footerBackgroundType"
+                name="footerBackgroundType"
+                defaultValue={s.footerBackgroundType}
+                className={inputClass}
+              >
+                <option value="COLOR">Colour</option>
+                <option value="IMAGE">Image</option>
+              </select>
+            </Field>
+            <Field
+              label="Footer background colour"
+              htmlFor="footerBackgroundColor"
+              hint="Hex, e.g. #0B1225. Leave empty for the default brand ink."
+            >
+              <input
+                id="footerBackgroundColor"
+                name="footerBackgroundColor"
+                defaultValue={s.footerBackgroundColor}
+                dir="ltr"
+                placeholder="#0B1225"
+                className={inputClass}
+              />
+            </Field>
+          </Grid>
+          <MediaField
+            name="footerBackgroundImage"
+            label="Footer background image"
+            defaultValue={s.footerBackgroundImage ?? ''}
+            hint="Used only when the background is set to Image. It is drawn full-bleed behind an overlay and never changes the footer's height."
+          />
         </Card>
 
         {/* SEO, the share image and analytics live on the SEO screen. Saves only

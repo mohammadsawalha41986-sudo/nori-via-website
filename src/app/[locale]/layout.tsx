@@ -76,7 +76,10 @@ export default async function LocaleLayout({
   const locale = raw as Locale;
 
   const [layout, tokens] = await Promise.all([getLayoutData(locale), getDesignTokens()]);
-  const { settings, dict, companyName, headerLinks, footerLinks, socials, contact, floatingActions } = layout;
+  const {
+    settings, dict, companyName, headerLinks, footerLinks, footerServices,
+    footerBackground, socials, contact, floatingActions,
+  } = layout;
 
   // Token overrides are inlined ahead of the first paint, so a brand change
   // never flashes the previous palette.
@@ -134,7 +137,9 @@ export default async function LocaleLayout({
           description={pick(settings, 'footerDescription', locale)}
           copyright={pick(settings, 'copyright', locale)}
           links={footerLinks}
+          services={footerServices}
           socials={socials}
+          background={footerBackground}
           {...contact}
         />
 

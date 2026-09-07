@@ -62,6 +62,18 @@ const optionalUrl = z.string().trim().max(500).default('');
  * rather than throwing while a public page renders.
  */
 export const IMAGE_URL_HINT = 'Use a path starting with / or a full https:// URL';
+
+export const HEX_COLOUR_HINT = 'Use a hex colour such as #0B1225';
+/**
+ * A hex colour or nothing. Deliberately strict: the value reaches an inline
+ * `style` attribute, so anything that is not a colour must not get through.
+ */
+export const optionalHexColour = z
+  .string()
+  .trim()
+  .max(9)
+  .default('')
+  .refine((v) => v === '' || /^#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})$/.test(v), HEX_COLOUR_HINT);
 const optionalImageUrl = optionalUrl.refine(
   (v) => v === '' || v.startsWith('/') || /^https:\/\/\S+$/i.test(v),
   IMAGE_URL_HINT,
@@ -206,6 +218,9 @@ export const settingsSchema = z.object({
   addressEn: trimmed(400).default(''), addressAr: trimmed(400).default(''), mapsUrl: optionalUrl,
   instagram: optionalUrl, tiktok: optionalUrl, linkedin: optionalUrl, x: optionalUrl, youtube: optionalUrl,
   footerDescriptionEn: trimmed(800).default(''), footerDescriptionAr: trimmed(800).default(''),
+  footerBackgroundType: z.enum(['COLOR', 'IMAGE']).default('COLOR'),
+  footerBackgroundImage: optionalImageUrl,
+  footerBackgroundColor: optionalHexColour,
   copyrightEn: trimmed(300).default(''), copyrightAr: trimmed(300).default(''),
   seoTitleEn: trimmed(200).default(''), seoTitleAr: trimmed(200).default(''),
   seoDescriptionEn: trimmed(400).default(''), seoDescriptionAr: trimmed(400).default(''),

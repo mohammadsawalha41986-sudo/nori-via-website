@@ -30,6 +30,13 @@ enum MediaKind {
   DOCUMENT
 }
 
+/// How the footer paints its background. IMAGE keeps a stored image on file
+/// even while COLOR is selected, so switching back and forth costs nothing.
+enum FooterBackground {
+  COLOR
+  IMAGE
+}
+
 model AdminUser {
   id           String    @id @default(cuid())
   email        String    @unique
@@ -96,6 +103,13 @@ model SiteSettings {
 
   footerDescriptionEn String @default("")
   footerDescriptionAr String @default("")
+
+  /// Footer backdrop. When the type is IMAGE and an image is set, it is drawn
+  /// full-bleed behind an overlay; otherwise the colour is used, and an empty
+  /// colour falls back to the brand's dark ink.
+  footerBackgroundType  FooterBackground @default(COLOR)
+  footerBackgroundImage String?
+  footerBackgroundColor String           @default("")
   copyrightEn         String @default("")
   copyrightAr         String @default("")
 
