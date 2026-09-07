@@ -77,7 +77,7 @@ export default async function LocaleLayout({
 
   const [layout, tokens] = await Promise.all([getLayoutData(locale), getDesignTokens()]);
   const {
-    settings, dict, companyName, headerLinks, footerLinks, footerServices,
+    settings, dict, companyName, headerLinks, footerLinks, footerServiceGroups,
     footerBackground, socials, contact, floatingActions,
   } = layout;
 
@@ -137,7 +137,7 @@ export default async function LocaleLayout({
           description={pick(settings, 'footerDescription', locale)}
           copyright={pick(settings, 'copyright', locale)}
           links={footerLinks}
-          services={footerServices}
+          serviceGroups={footerServiceGroups}
           socials={socials}
           background={footerBackground}
           {...contact}

@@ -37,6 +37,16 @@ enum FooterBackground {
   IMAGE
 }
 
+/// Where a footer background image is anchored inside the footer box. Only the
+/// focal point moves; the image always covers the box.
+enum FooterBackgroundPosition {
+  CENTER
+  TOP
+  BOTTOM
+  LEFT
+  RIGHT
+}
+
 model AdminUser {
   id           String    @id @default(cuid())
   email        String    @unique
@@ -107,9 +117,15 @@ model SiteSettings {
   /// Footer backdrop. When the type is IMAGE and an image is set, it is drawn
   /// full-bleed behind an overlay; otherwise the colour is used, and an empty
   /// colour falls back to the brand's dark ink.
-  footerBackgroundType  FooterBackground @default(COLOR)
-  footerBackgroundImage String?
-  footerBackgroundColor String           @default("")
+  footerBackgroundType     FooterBackground         @default(COLOR)
+  footerBackgroundImage    String?
+  footerBackgroundColor    String                   @default("")
+  footerBackgroundPosition FooterBackgroundPosition @default(CENTER)
+
+  /// Overlay drawn over a footer background image so the type stays readable.
+  /// The opacity is a percentage; 0 shows the bare image, 100 hides it.
+  footerOverlayColor   String @default("")
+  footerOverlayOpacity Int    @default(80)
   copyrightEn         String @default("")
   copyrightAr         String @default("")
 

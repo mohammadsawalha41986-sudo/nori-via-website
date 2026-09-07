@@ -79,8 +79,10 @@ await page.click('button:has-text("Add button")');
 await page.waitForTimeout(1500);
 
 await page.goto(`${BASE}/en`);
+// Scoped to the floating container: the footer's contact column links to
+// WhatsApp too, and an unscoped selector would test whichever came first.
 check('floating WhatsApp button comes from the CMS',
-  (await page.getAttribute('a[href^="https://wa.me/"]', 'href')) === 'https://wa.me/966500000000');
+  (await page.getAttribute('div.fixed a[href^="https://wa.me/"]', 'href')) === 'https://wa.me/966500000000');
 check('social link renders in the footer',
   (await page.locator('footer a[href*="linkedin.com/company/example"]').count()) > 0);
 
