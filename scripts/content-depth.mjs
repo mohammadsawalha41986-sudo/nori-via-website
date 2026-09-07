@@ -640,6 +640,67 @@ async function applyEvidenceGatedContent() {
   }
 }
 
+/* ---------------------------------------------------------- footer backdrop */
+
+/**
+ * Gives the footer a backdrop on a deployment that has never had one.
+ *
+ * The footer renders a flat colour until an editor picks an image, which is a
+ * correct default but not the intended finished look. This selects an image
+ * the Media Library already holds — never an invented URL, never an external
+ * one — and only while every backdrop field is still at its shipped default.
+ * The moment anyone chooses an image, a colour, an anchor or an overlay in
+ * Admin, this stops touching the row.
+ *
+ * The candidates are the site's own wide art-direction frames, in preference
+ * order. They are brand visuals rather than photography of a venue: when real
+ * restaurant photography is uploaded, selecting it in Admin -> Site settings
+ * -> Footer replaces this with no code change.
+ */
+const BACKDROP_CANDIDATES = ['/img/cta.jpg', '/img/hero.jpg', '/img/about.jpg'];
+
+async function applyFooterBackdrop() {
+  const settings = await prisma.siteSettings.findUnique({ where: { id: 'singleton' } });
+  if (!settings) return;
+
+  /* Untouched means: still the flat default, with no image, colour or overlay
+     chosen. Any one of those being set means an editor has made a decision. */
+  const untouched =
+    settings.footerBackgroundType === 'COLOR' &&
+    isEmpty(settings.footerBackgroundImage) &&
+    isEmpty(settings.footerBackgroundColor) &&
+    isEmpty(settings.footerOverlayColor);
+  if (!untouched) return;
+
+  /* Only an image the Media Library actually holds and that is present on
+     disk, so the footer can never point at a backdrop that 404s. */
+  let chosen = null;
+  for (const url of BACKDROP_CANDIDATES) {
+    const row = await prisma.media.findFirst({ where: { url } });
+    if (!row) continue;
+    if (!existsSync(path.join(process.cwd(), 'public', url.replace(/^\//, '')))) continue;
+    chosen = row;
+    break;
+  }
+  if (!chosen) {
+    note('footer backdrop: no library image available yet');
+    return;
+  }
+
+  await update(
+    'siteSettings',
+    { id: 'singleton' },
+    {
+      footerBackgroundType: 'IMAGE',
+      footerBackgroundImage: chosen.url,
+      footerBackgroundPosition: 'CENTER',
+      footerOverlayColor: '#0B1225',
+      footerOverlayOpacity: 78,
+    },
+    `footer backdrop:${chosen.url}`,
+  );
+}
+
 /* ----------------------------------------------------------------- visuals */
 
 /**
@@ -766,6 +827,7 @@ async function main() {
   await applyNavigation();
   await applyEvidenceGatedContent();
   await applyVisuals();
+  await applyFooterBackdrop();
 
   console.log(
     changes.length
