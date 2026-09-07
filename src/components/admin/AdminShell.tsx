@@ -52,6 +52,7 @@ export const NAV_GROUPS = [
       { href: '/admin/navigation', label: 'Navigation' },
       { href: '/admin/social', label: 'Social & contact' },
       { href: '/admin/seo', label: 'SEO' },
+      { href: '/admin/account', label: 'Your account' },
     ],
   },
 ] as const;

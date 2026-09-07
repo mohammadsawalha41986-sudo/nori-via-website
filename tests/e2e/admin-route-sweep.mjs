@@ -12,6 +12,7 @@ const ROUTES = [
   '/admin/case-studies', '/admin/case-studies/new', '/admin/insights', '/admin/insights/new',
   '/admin/pages', '/admin/pages/about', '/admin/media', '/admin/statistics',
   '/admin/testimonials', '/admin/taxonomies', '/admin/settings', '/admin/navigation', '/admin/seo',
+  '/admin/account',
 ];
 
 const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH || undefined, args: ['--no-sandbox'] });

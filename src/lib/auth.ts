@@ -93,6 +93,46 @@ export async function requireOwner(): Promise<SessionUser> {
   return user;
 }
 
+/**
+ * The hashed id of the session making this request, or null. Used to change a
+ * password without signing the administrator out of the tab they are working
+ * in while every other session is revoked.
+ */
+async function currentTokenHash(): Promise<string | null> {
+  const store = await cookies();
+  const raw = store.get(SESSION_COOKIE)?.value;
+  if (!raw) return null;
+  try {
+    const { payload } = await jwtVerify(raw, secretKey());
+    const sid = String(payload.sid || '');
+    return sid ? hashToken(sid) : null;
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Replaces a password and revokes every session but this one.
+ *
+ * Changing a password has to end anyone else's access: a password is changed
+ * precisely when it may have been seen, and a session cookie outlives it
+ * otherwise. The caller has already proved it knows the current password.
+ */
+export async function changePassword(userId: string, newPassword: string) {
+  const keep = await currentTokenHash();
+
+  await prisma.adminUser.update({
+    where: { id: userId },
+    data: { passwordHash: await hashPassword(newPassword) },
+  });
+
+  const { count } = await prisma.adminSession.deleteMany({
+    where: { userId, ...(keep ? { NOT: { tokenHash: keep } } : {}) },
+  });
+
+  return { revokedSessions: count };
+}
+
 export async function destroySession() {
   const store = await cookies();
   const raw = store.get(SESSION_COOKIE)?.value;

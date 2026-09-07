@@ -50,6 +50,19 @@ export const loginSchema = z.object({
   password: z.string().min(8).max(200),
 });
 
+/**
+ * Ten characters is the floor the provisioning scripts already enforce on
+ * ADMIN_PASSWORD; the screen must not accept a password the CLI would refuse.
+ * The confirmation is compared in the action so the mismatch gets its own
+ * message rather than a schema error on a field the administrator did fill in.
+ */
+export const MIN_PASSWORD_LENGTH = 10;
+
+export const changePasswordSchema = z.object({
+  currentPassword: z.string().min(1).max(200),
+  newPassword: z.string().min(MIN_PASSWORD_LENGTH).max(200),
+});
+
 const publishStatus = z.enum(['DRAFT', 'PUBLISHED']);
 const jsonArray = z.array(z.any()).default([]);
 const optionalUrl = z.string().trim().max(500).default('');

@@ -34,6 +34,7 @@ const adminRoutes = [
   '/admin/tools', '/admin/tools/new',
   '/admin/taxonomies', '/admin/media', '/admin/statistics', '/admin/testimonials',
   '/admin/design', '/admin/settings', '/admin/navigation', '/admin/social', '/admin/seo',
+  '/admin/account',
 ];
 
 const publicPaths = [
