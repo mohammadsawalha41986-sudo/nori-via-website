@@ -17,6 +17,15 @@ export async function rateLimit(bucket: string, limit: number, windowMs: number)
   return { ok: true as const, remaining: limit - used - 1 };
 }
 
+/**
+ * Forget a bucket's recorded attempts. Used after a successful sign-in so an
+ * administrator who mistyped their password several times is not then locked
+ * out for fifteen minutes by the attempts that led up to getting it right.
+ */
+export async function clearRateLimit(bucket: string) {
+  await prisma.rateLimitHit.deleteMany({ where: { bucket } });
+}
+
 export function clientIp(req: Request) {
   const h = req.headers;
   const fwd = h.get('x-forwarded-for');

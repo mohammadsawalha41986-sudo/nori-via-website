@@ -12,8 +12,23 @@ export const metadata: Metadata = {
 
 export const dynamic = 'force-dynamic';
 
+/**
+ * Reading the existing session must never stop the form from rendering. If
+ * the database is unreachable or AUTH_SECRET is missing, the visitor is not
+ * signed in either way — showing the form (and letting the sign-in attempt
+ * report the real fault) beats a crash on the one page used to recover.
+ */
+async function currentUser() {
+  try {
+    return await getSessionUser();
+  } catch (err) {
+    console.error('[noriva] could not read the session on the login page', err);
+    return null;
+  }
+}
+
 export default async function LoginPage() {
-  const user = await getSessionUser();
+  const user = await currentUser();
   if (user) redirect('/admin');
 
   return (

@@ -82,6 +82,46 @@ session without it. Generate one with `openssl rand -base64 48`.
 | `npm test` | Vitest unit tests |
 | `npm run db:migrate` | Apply migrations (`prisma migrate deploy`) |
 | `npm run db:seed` | Seed baseline content and the first admin user |
+| `npm run admin:reset` | Create or reset the admin account from `ADMIN_*` |
+
+---
+
+## When you cannot sign in
+
+`/admin/login` fails in a small number of ways, and they are told apart by what
+the page says.
+
+**"Invalid email or password."** — the credentials do not match a row in
+`AdminUser`. Note that the deploy scripts never change an existing account's
+password: `prisma/seed.ts` and `scripts/ensure-content.mjs` both *upsert*, so
+editing `ADMIN_PASSWORD` in the hosting panel and redeploying has no effect on
+an account that already exists. To set the password of the existing owner
+account, run, with `ADMIN_EMAIL` and `ADMIN_PASSWORD` set to what you want:
+
+```bash
+npm run admin:reset
+```
+
+On Railway that is a one-off command run against the service (or a temporary
+addition to the pre-deploy command, removed afterwards). It rewrites the
+password hash of the account matching `ADMIN_EMAIL`, reactivates it, and
+touches nothing else. It is the only supported password recovery path: there
+is no reset-by-email flow, by design.
+
+**"Too many attempts. Please wait 15 minutes and try again."** — eight attempts
+from one IP inside fifteen minutes. Wait it out; a successful sign-in clears
+the counter, so the fumbled attempts before it do not count against you again.
+
+**Nothing happens, or a "Something went wrong" page appears** — almost always a
+tab left open across a deployment. Server Action ids are minted per build, so
+the sign-in posts an id the new server does not recognise and the server logs
+`Failed to find Server Action`. Reload the page and sign in again; the
+credentials are fine.
+
+**"Sign-in is temporarily unavailable."** — the server reached the sign-in code
+but could not complete it: the database is unreachable, or `AUTH_SECRET` is
+missing or shorter than 32 characters. Check the service logs and the
+environment variables.
 
 ---
 
@@ -309,7 +349,10 @@ proxy in front of it with SSL for `noriva.sa` and `www.noriva.sa`.
 5. Point `STORAGE_DIR` at a **persistent, writable** directory outside the
    deploy folder, so uploads survive redeploys. Back it up with the database.
 6. Run `npm run db:seed` once, sign in, change the admin password, then clear
-   `ADMIN_PASSWORD` from the environment.
+   `ADMIN_PASSWORD` from the environment. If you are ever locked out later,
+   `npm run admin:reset` resets that account's password — changing
+   `ADMIN_PASSWORD` and redeploying does not, because the seed only ever
+   creates a missing account.
 7. DNS: `A`/`CNAME` for `noriva.sa` and `www.noriva.sa`; issue SSL for both.
 8. In Admin → Site settings, add the logo, contact details and social links.
 
