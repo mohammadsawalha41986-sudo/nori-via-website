@@ -107,7 +107,10 @@ export default async function SettingsPage() {
           </Grid>
         </Card>
 
-        <Card title="Footer">
+        <Card
+          title="Footer"
+          description="The footer's brand column, backdrop and bottom bar. Its Explore links are managed on the Navigation screen, its service groups come from Services → categories, and its social icons from the Social screen."
+        >
           <Grid>
             <Field label="Footer description (EN)" htmlFor="footerDescriptionEn">
               <textarea id="footerDescriptionEn" name="footerDescriptionEn" rows={3} defaultValue={s.footerDescriptionEn} className={inputClass} />
@@ -130,7 +133,7 @@ export default async function SettingsPage() {
             <Field
               label="Footer background"
               htmlFor="footerBackgroundType"
-              hint="Image uses the picture below behind a dark overlay. Colour uses the swatch, and an empty swatch falls back to the brand ink."
+              hint="Image uses the picture below behind an overlay. Colour uses the swatch, and an empty swatch falls back to the brand ink."
             >
               <select
                 id="footerBackgroundType"
@@ -157,12 +160,68 @@ export default async function SettingsPage() {
               />
             </Field>
           </Grid>
+
           <MediaField
             name="footerBackgroundImage"
             label="Footer background image"
             defaultValue={s.footerBackgroundImage ?? ''}
-            hint="Used only when the background is set to Image. It is drawn full-bleed behind an overlay and never changes the footer's height."
+            kind="IMAGE"
+            hint="Used only when the background is set to Image. Browse the media library or paste a URL. It is drawn full-bleed behind the overlay and never changes the footer's height."
           />
+
+          {/* Overlay. Only these three fields stand between a photograph and
+              unreadable small type, so they are editable rather than baked in. */}
+          <Grid cols={3}>
+            <Field
+              label="Background position"
+              htmlFor="footerBackgroundPosition"
+              hint="Which part of the image stays in view as the footer is cropped."
+            >
+              <select
+                id="footerBackgroundPosition"
+                name="footerBackgroundPosition"
+                defaultValue={s.footerBackgroundPosition}
+                className={inputClass}
+              >
+                <option value="CENTER">Centre</option>
+                <option value="TOP">Top</option>
+                <option value="BOTTOM">Bottom</option>
+                <option value="LEFT">Left</option>
+                <option value="RIGHT">Right</option>
+              </select>
+            </Field>
+            <Field
+              label="Overlay colour"
+              htmlFor="footerOverlayColor"
+              hint="Hex. Leave empty for the brand's dark navy."
+            >
+              <input
+                id="footerOverlayColor"
+                name="footerOverlayColor"
+                defaultValue={s.footerOverlayColor}
+                dir="ltr"
+                placeholder="#070D1C"
+                className={inputClass}
+              />
+            </Field>
+            <Field
+              label="Overlay opacity (%)"
+              htmlFor="footerOverlayOpacity"
+              hint="70–85 keeps the picture visible and the text legible. Applies to images only."
+            >
+              <input
+                id="footerOverlayOpacity"
+                name="footerOverlayOpacity"
+                type="number"
+                min={0}
+                max={100}
+                step={1}
+                defaultValue={s.footerOverlayOpacity}
+                dir="ltr"
+                className={inputClass}
+              />
+            </Field>
+          </Grid>
         </Card>
 
         {/* SEO, the share image and analytics live on the SEO screen. Saves only

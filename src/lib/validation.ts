@@ -234,6 +234,14 @@ export const settingsSchema = z.object({
   footerBackgroundType: z.enum(['COLOR', 'IMAGE']).default('COLOR'),
   footerBackgroundImage: optionalImageUrl,
   footerBackgroundColor: optionalHexColour,
+  footerBackgroundPosition: z.enum(['CENTER', 'TOP', 'BOTTOM', 'LEFT', 'RIGHT']).default('CENTER'),
+  footerOverlayColor: optionalHexColour,
+  // An empty field means "unset", not 0 — otherwise clearing the box would
+  // strip the overlay and leave the type sitting on a bare photograph.
+  footerOverlayOpacity: z.preprocess(
+    (v) => (v === '' || v === null || v === undefined ? 80 : v),
+    z.coerce.number().int().min(0).max(100),
+  ),
   copyrightEn: trimmed(300).default(''), copyrightAr: trimmed(300).default(''),
   seoTitleEn: trimmed(200).default(''), seoTitleAr: trimmed(200).default(''),
   seoDescriptionEn: trimmed(400).default(''), seoDescriptionAr: trimmed(400).default(''),
