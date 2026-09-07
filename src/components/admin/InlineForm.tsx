@@ -32,7 +32,7 @@ export function InlineForm({
           <SubmitButton>{submitLabel}</SubmitButton>
           {state.ok && (
             <span role="status" className="text-xs font-medium text-emerald-700">
-              Saved
+              {state.message ?? 'Saved'}
             </span>
           )}
           {state.error && (

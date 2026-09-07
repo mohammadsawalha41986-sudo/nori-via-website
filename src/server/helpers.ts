@@ -1,7 +1,13 @@
 import 'server-only';
 import type { z } from 'zod';
 
-export type ActionState = { ok?: boolean; error?: string; fieldErrors?: Record<string, string> };
+export type ActionState = {
+  ok?: boolean;
+  error?: string;
+  fieldErrors?: Record<string, string>;
+  /** Replaces the generic "Saved" when an action has something specific to report. */
+  message?: string;
+};
 
 /** FormData → plain object, expanding `field[]` keys into arrays. */
 export function formToObject(formData: FormData): Record<string, unknown> {

@@ -82,7 +82,7 @@ session without it. Generate one with `openssl rand -base64 48`.
 | `npm test` | Vitest unit tests |
 | `npm run db:migrate` | Apply migrations (`prisma migrate deploy`) |
 | `npm run db:seed` | Seed baseline content and the first admin user |
-| `npm run admin:reset` | Create or reset the admin account from `ADMIN_*` |
+| `npm run admin:reset` | Create or reset the admin account from `ADMIN_*` (recovery only — the password is normally changed in Admin) |
 
 ---
 
@@ -95,8 +95,12 @@ the page says.
 `AdminUser`. Note that the deploy scripts never change an existing account's
 password: `prisma/seed.ts` and `scripts/ensure-content.mjs` both *upsert*, so
 editing `ADMIN_PASSWORD` in the hosting panel and redeploying has no effect on
-an account that already exists. To set the password of the existing owner
-account, run, with `ADMIN_EMAIL` and `ADMIN_PASSWORD` set to what you want:
+an account that already exists. `ADMIN_PASSWORD` is read only while
+provisioning an account; it is not what signs you in, and once you are in,
+**Admin → Your account** is where you change the password.
+
+When you are locked out and cannot reach that screen, `ADMIN_EMAIL` and
+`ADMIN_PASSWORD` set to what you want, plus:
 
 ```bash
 npm run admin:reset
@@ -105,8 +109,8 @@ npm run admin:reset
 On Railway that is a one-off command run against the service (or a temporary
 addition to the pre-deploy command, removed afterwards). It rewrites the
 password hash of the account matching `ADMIN_EMAIL`, reactivates it, and
-touches nothing else. It is the only supported password recovery path: there
-is no reset-by-email flow, by design.
+touches nothing else. It is the recovery path of last resort: there is no
+reset-by-email flow, by design.
 
 **"Too many attempts. Please wait 15 minutes and try again."** — eight attempts
 from one IP inside fifteen minutes. Wait it out; a successful sign-in clears
@@ -190,6 +194,7 @@ excluded in `robots.txt`.
 | Statistics · Testimonials | Hidden until explicitly marked visible |
 | Categories | Service, work and insight taxonomies |
 | Site settings · Navigation · SEO | Company, contact, social, footer, links, metadata, analytics |
+| Your account | Your sign-in details, and changing your own password |
 
 Saving publishes immediately: each action revalidates the concrete public paths
 it affects, in both languages.
@@ -348,8 +353,9 @@ proxy in front of it with SSL for `noriva.sa` and `www.noriva.sa`.
 4. Configure SMTP, or leave `SMTP_HOST` empty and collect leads from Admin.
 5. Point `STORAGE_DIR` at a **persistent, writable** directory outside the
    deploy folder, so uploads survive redeploys. Back it up with the database.
-6. Run `npm run db:seed` once, sign in, change the admin password, then clear
-   `ADMIN_PASSWORD` from the environment. If you are ever locked out later,
+6. Run `npm run db:seed` once, sign in, change the password in
+   **Admin → Your account**, then clear `ADMIN_PASSWORD` from the environment.
+   If you are ever locked out later,
    `npm run admin:reset` resets that account's password — changing
    `ADMIN_PASSWORD` and redeploying does not, because the seed only ever
    creates a missing account.
