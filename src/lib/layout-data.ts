@@ -1,17 +1,32 @@
-import { getSettings, getNavigation, getSocialLinks, getFloatingActions } from './content';
+import {
+  getSettings,
+  getNavigation,
+  getSocialLinks,
+  getFloatingActions,
+  getServiceCategories,
+  getPublishedServices,
+} from './content';
 import { pick, type Locale } from './i18n';
 import { getDictionary } from './dictionary';
 import type { NavLink } from '@/components/public/Navbar';
-import type { FooterLink, SocialLink } from '@/components/public/Footer';
+import type {
+  FooterBackground,
+  FooterLink,
+  FooterService,
+  SocialLink,
+} from '@/components/public/Footer';
 
 export async function getLayoutData(locale: Locale) {
-  const [settings, header, footer, socialRows, floatingRows] = await Promise.all([
-    getSettings(),
-    getNavigation('header'),
-    getNavigation('footer'),
-    getSocialLinks(),
-    getFloatingActions(),
-  ]);
+  const [settings, header, footer, socialRows, floatingRows, serviceCategories, services] =
+    await Promise.all([
+      getSettings(),
+      getNavigation('header'),
+      getNavigation('footer'),
+      getSocialLinks(),
+      getFloatingActions(),
+      getServiceCategories(),
+      getPublishedServices(),
+    ]);
 
   const dict = getDictionary(locale);
 
@@ -42,6 +57,26 @@ export async function getLayoutData(locale: Locale) {
       }))
     : legacySocials;
 
+  /**
+   * The footer's Services column lists the practice groups rather than every
+   * service, and only the groups that have something published in them — the
+   * same rule the services index uses to decide which anchors exist, so a
+   * footer link can never point at a heading that is not on the page.
+   *
+   * Capped at six so the column has a deliberate ending rather than growing
+   * with the taxonomy; the footer renders an "all services" link after it.
+   */
+  const footerServices: FooterService[] = serviceCategories
+    .filter((c) => services.some((s) => s.categoryId === c.id))
+    .map((c) => ({ id: c.id, label: pick(c, 'name', locale) }))
+    .slice(0, 6);
+
+  const footerBackground: FooterBackground = {
+    type: settings.footerBackgroundType,
+    image: settings.footerBackgroundImage,
+    color: settings.footerBackgroundColor,
+  };
+
   const floatingActions = floatingRows.map((row) => ({
     id: row.id,
     kind: row.kind,
@@ -56,6 +91,8 @@ export async function getLayoutData(locale: Locale) {
     headerLinks: toLinks(header),
     floatingActions,
     footerLinks: toLinks(footer) as FooterLink[],
+    footerServices,
+    footerBackground,
     socials,
     contact: {
       email: settings.contactEmail || settings.inquiryEmail,
