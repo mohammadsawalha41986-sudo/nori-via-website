@@ -17,6 +17,7 @@
     "db:migrate": "prisma migrate deploy",
     "db:push": "prisma db push",
     "db:seed": "tsx prisma/seed.ts",
+    "admin:reset": "node scripts/ensure-content.mjs --admin",
     "postinstall": "prisma generate",
     "start:migrate": "prisma migrate deploy && npm run start",
     "test:e2e": "node tests/e2e/platform.mjs && node tests/e2e/design-tokens.mjs && node tests/e2e/fnb.mjs && node tests/e2e/service-images.mjs && node tests/e2e/sweep.mjs"
