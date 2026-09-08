@@ -30,7 +30,6 @@
     "bcryptjs": "^3.0.3",
     "clsx": "^2.1.1",
     "dotenv": "^17.4.2",
-    "framer-motion": "^13.1.1",
     "jose": "^6.2.10",
     "next": "^15.5.25",
     "nodemailer": "^9.1.0",
