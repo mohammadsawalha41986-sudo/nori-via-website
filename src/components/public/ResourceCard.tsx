@@ -55,8 +55,13 @@ export function ResourceCard({
               </span>
             </span>
           )}
-          <span className="absolute top-3 rounded-btn bg-ink-900/85 px-3 py-1 text-[0.625rem] font-bold uppercase tracking-[0.16em] text-white start-3">
-            {dict.library.types[resource.type]}
+          <span className="absolute top-3 flex items-center gap-2 start-3">
+            <span className="rounded-btn bg-ink-900/85 px-3 py-1 text-[0.625rem] font-bold uppercase tracking-[0.16em] text-white">
+              {dict.library.types[resource.type]}
+            </span>
+            <span className="rounded-btn bg-white/90 px-3 py-1 text-[0.625rem] font-bold tracking-[0.08em] text-ink-700">
+              EN / العربية
+            </span>
           </span>
         </span>
 
@@ -70,9 +75,14 @@ export function ResourceCard({
           {resource.summary && (
             <span className="mt-2.5 line-clamp-3 text-sm leading-relaxed text-ink-400">{resource.summary}</span>
           )}
-          <span className="mt-5 flex items-center gap-3 pt-1 text-xs text-ink-300">
-            <span className="font-semibold text-ink-500">{format}</span>
-            {size && !resource.external && <span>{size}</span>}
+          <span className="mt-5 flex items-center justify-between gap-3 pt-1 text-xs text-ink-300">
+            <span className="flex items-center gap-3">
+              <span className="font-semibold text-ink-500">{format}</span>
+              {size && !resource.external && <span>{size}</span>}
+            </span>
+            <span className="font-semibold text-brand">
+              {dict.library.openResource} <span aria-hidden>→</span>
+            </span>
           </span>
         </span>
       </Link>

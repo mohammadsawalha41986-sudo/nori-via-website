@@ -1,0 +1,65 @@
+name: Quality
+
+on:
+  push:
+    branches: [claude/new-session-39olxc]
+  pull_request:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: noriva
+          POSTGRES_PASSWORD: noriva
+          POSTGRES_DB: noriva_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U noriva -d noriva_test"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    env:
+      DATABASE_URL: postgresql://noriva:noriva@127.0.0.1:5432/noriva_test?schema=public
+      AUTH_SECRET: ci-only-auth-secret-that-is-longer-than-thirty-two-characters
+      ADMIN_EMAIL: qa@example.com
+      ADMIN_PASSWORD: LocalQaPassword123!
+      QA_EMAIL: qa@example.com
+      QA_PASSWORD: LocalQaPassword123!
+      QA_XLSX: resources/library/xlsx/noriva-restaurant-feasibility-study-template.xlsx
+      NEXT_PUBLIC_SITE_URL: https://norivaglobal.com
+      NODE_ENV: test
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22.22.0
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run lint
+      - run: npm test
+      - run: npm run build
+        env:
+          NODE_ENV: production
+      - run: npx prisma migrate deploy
+      - run: npm run db:seed
+      - run: npm run content:provision
+      - run: npm run content:audit
+      - run: npx playwright install --with-deps chromium
+      - name: Browser journeys
+        run: |
+          NODE_ENV=production npm start > /tmp/noriva-server.log 2>&1 &
+          for attempt in $(seq 1 40); do
+            if curl --fail --silent http://127.0.0.1:3000/en >/dev/null; then break; fi
+            sleep 1
+          done
+          npm run test:e2e
+      - name: Server log on failure
+        if: failure()
+        run: tail -200 /tmp/noriva-server.log 2>/dev/null || true

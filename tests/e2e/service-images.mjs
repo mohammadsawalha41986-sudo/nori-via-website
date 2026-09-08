@@ -17,7 +17,7 @@ import { chromium } from 'playwright';
 const BASE = process.env.QA_BASE_URL ?? 'http://127.0.0.1:3000';
 const EMAIL = process.env.QA_EMAIL ?? 'qa@example.com';
 const PASSWORD = process.env.QA_PASSWORD ?? 'LocalQaPassword123!';
-const CHROMIUM = process.env.QA_CHROMIUM ?? '/opt/pw-browsers/chromium';
+const CHROMIUM = process.env.QA_CHROMIUM;
 const SLUG = process.env.QA_SERVICE_SLUG ?? 'menu-strategy-engineering-pricing';
 
 const FEATURED = '/img/gallery-11.jpg';
@@ -78,7 +78,7 @@ const settle = async (page) => {
   await page.evaluate(() => window.scrollTo(0, 0));
 };
 
-const browser = await chromium.launch({ executablePath: CHROMIUM });
+const browser = await chromium.launch({ executablePath: CHROMIUM || undefined, args: ['--no-sandbox'] });
 const context = await browser.newContext({ viewport: { width: 1440, height: 900 } });
 const page = await context.newPage();
 const errors = [];

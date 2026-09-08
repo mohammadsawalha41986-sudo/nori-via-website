@@ -63,7 +63,7 @@ const altAr = (subject, name) =>
 const fileName = (section, slug) => `noriva-${section}-${slug}`;
 
 const images = [];
-const links = { services: {}, insights: {}, projects: {}, caseStudies: {}, stages: {}, tools: {} };
+const links = { services: {}, insights: {}, projects: {}, caseStudies: {}, stages: {}, tools: {}, resources: {} };
 
 const services = await prisma.service.findMany({ include: { category: true }, orderBy: { slug: 'asc' } });
 for (const s of services) {
@@ -91,7 +91,10 @@ for (const a of insights) {
 
 /* Only the engagements this repository created as illustrations get generated
    artwork; anything an editor uploaded is left exactly as it is. */
-const projects = await prisma.project.findMany({ where: { client: 'Sample project' }, orderBy: { slug: 'asc' } });
+const projects = await prisma.project.findMany({
+  where: { client: { in: ['Sample project', 'Illustrative project'] } },
+  orderBy: { slug: 'asc' },
+});
 const projectRamps = ['signature', 'warm', 'cool', 'brand'];
 for (const [i, p] of projects.entries()) {
   const ramp = projectRamps[i % projectRamps.length];
@@ -146,6 +149,18 @@ for (const [i, t] of tools.entries()) {
     url: `/img/${name}.webp`,
     altEn: altEn('an interactive calculator for food and beverage decisions', t.nameEn),
     altAr: altAr('حاسبة تفاعلية لقرارات الأغذية والمشروبات', t.nameAr || t.nameEn),
+  };
+}
+
+const resources = await prisma.resource.findMany({ orderBy: { slug: 'asc' } });
+const resourceRamps = ['cool', 'signature', 'warm', 'brand'];
+for (const [i, r] of resources.entries()) {
+  const name = fileName('resource', r.slug);
+  images.push({ name, width: 1400, height: 875, ramp: resourceRamps[i % resourceRamps.length], role: 'content' });
+  links.resources[r.slug] = {
+    url: `/img/${name}.webp`,
+    altEn: altEn('a downloadable restaurant planning resource', r.titleEn),
+    altAr: altAr('مورد قابل للتنزيل لتخطيط المطاعم', r.titleAr || r.titleEn),
   };
 }
 

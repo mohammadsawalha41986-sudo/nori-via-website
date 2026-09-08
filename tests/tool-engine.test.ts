@@ -8,6 +8,7 @@ import {
   FormulaError,
   type ToolConfig,
 } from '../src/lib/tool-engine';
+import { NEW_TOOLS } from '../scripts/content/tools.mjs';
 
 describe('evaluateFormula', () => {
   it('applies arithmetic precedence', () => {
@@ -108,5 +109,21 @@ describe('parseToolConfig', () => {
   it('falls back to an empty tool when the stored config is unusable', () => {
     expect(parseToolConfig({ inputs: 'nonsense' }).inputs).toEqual([]);
     expect(parseToolConfig(null).outputs).toEqual([]);
+  });
+});
+
+describe('provisioned calculator catalogue', () => {
+  it('has valid bilingual configurations and working default calculations', () => {
+    expect(NEW_TOOLS).toHaveLength(9);
+    for (const tool of NEW_TOOLS) {
+      const config = parseToolConfig(tool.config);
+      expect(config.inputs.length, tool.slug).toBeGreaterThan(0);
+      expect(config.outputs.length, tool.slug).toBeGreaterThan(0);
+      expect(config.notesEn.length, tool.slug).toBeGreaterThan(20);
+      expect(config.notesAr, tool.slug).toMatch(/[\u0600-\u06ff]/);
+      const values = Object.fromEntries(config.inputs.map((input) => [input.key, input.defaultValue]));
+      const outputs = computeOutputs(config, values);
+      expect(outputs.every((output) => output.error === null && output.value !== null && Number.isFinite(output.value)), tool.slug).toBe(true);
+    }
   });
 });

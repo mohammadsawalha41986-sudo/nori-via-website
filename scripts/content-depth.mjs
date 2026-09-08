@@ -25,7 +25,7 @@
  */
 import 'dotenv/config';
 import { PrismaClient } from '@prisma/client';
-import { existsSync, readFileSync } from 'node:fs';
+import { copyFileSync, existsSync, mkdirSync, readFileSync, statSync } from 'node:fs';
 import path from 'node:path';
 
 import { SERVICE_DEPTH_PART_1 } from './content/services-depth.mjs';
@@ -45,6 +45,7 @@ import {
   NEW_RESOURCE_CATEGORIES,
   RESOURCE_CATEGORY_DEPTH,
 } from './content/library.mjs';
+import { LIBRARY_ASSETS } from './content/library-assets.mjs';
 import { TOOL_DEPTH, NEW_TOOLS } from './content/tools.mjs';
 import {
   SYSTEM_STAGES,
@@ -160,7 +161,16 @@ async function applyServices() {
       categoryId: d.category ? byCategory[d.category] : undefined,
     };
 
-    await update('service', { slug: d.slug }, fillEmpty(row, patch), `service:${d.slug}`);
+    const data = fillEmpty(row, patch);
+    /* Every slug in SERVICE_DEPTH is a completed public professional service,
+       not a client claim or placeholder. The F&B seed originally held most of
+       them in draft for editorial review; this completion pass supplies that
+       review and makes the finished catalogue live. */
+    if (row.status === 'DRAFT') {
+      data.status = 'PUBLISHED';
+      data.noindex = false;
+    }
+    await update('service', { slug: d.slug }, data, `service:${d.slug}`);
   }
 }
 
@@ -232,15 +242,22 @@ async function applyWork() {
   for (const p of FNB_SAMPLE_PROJECTS) {
     const existing = await prisma.project.findUnique({ where: { slug: p.slug } });
     if (existing) {
+      const isManagedExample = existing.client === 'Sample project' || existing.client === SAMPLE_CLIENT;
+      const managedPatch = isManagedExample
+        ? { client: SAMPLE_CLIENT, status: 'PUBLISHED', noindex: false }
+        : {};
       await update(
         'project',
         { slug: p.slug },
-        fillEmpty(existing, {
-          seoTitleEn: clamp(`${p.titleEn} — Noriva`, 160),
-          seoTitleAr: clamp(`${p.titleAr} — نوريفا`, 160),
-          seoDescriptionEn: clamp(p.descriptionEn.split('\n\n').pop(), 320),
-          seoDescriptionAr: clamp(p.descriptionAr.split('\n\n').pop(), 320),
-        }),
+        {
+          ...fillEmpty(existing, {
+            seoTitleEn: clamp(`${p.titleEn} — Noriva`, 160),
+            seoTitleAr: clamp(`${p.titleAr} — نوريفا`, 160),
+            seoDescriptionEn: clamp(p.descriptionEn.split('\n\n').pop(), 320),
+            seoDescriptionAr: clamp(p.descriptionAr.split('\n\n').pop(), 320),
+          }),
+          ...managedPatch,
+        },
         `project:${p.slug}`,
       );
       continue;
@@ -254,8 +271,8 @@ async function applyWork() {
         slug: p.slug,
         titleEn: p.titleEn,
         titleAr: p.titleAr,
-        /* The same client label the existing placeholder guard matches on, so
-           these can never be published as client work by accident. */
+        /* The visible client label and opening disclaimer both identify this
+           as educational example content rather than client work. */
         client: SAMPLE_CLIENT,
         categoryId: workCats[p.categorySlug] ?? null,
         descriptionEn: p.descriptionEn,
@@ -263,8 +280,8 @@ async function applyWork() {
         year: p.year,
         location: p.location,
         featured: false,
-        status: 'DRAFT',
-        noindex: true,
+        status: 'PUBLISHED',
+        noindex: false,
         order: p.order,
         seoTitleEn: clamp(`${p.titleEn} — Noriva`, 160),
         seoTitleAr: clamp(`${p.titleAr} — نوريفا`, 160),
@@ -278,7 +295,7 @@ async function applyWork() {
         await prisma.projectService.create({ data: { projectId: row.id, serviceId: serviceIds[slug] } });
       }
     }
-    note(`project:${p.slug} (draft)`);
+    note(`project:${p.slug} (published illustrative example)`);
   }
 
   /* The placeholder engagements that shipped before this pass carry no SEO
@@ -306,8 +323,8 @@ async function applyWork() {
       : null;
 
     const body = {
-      titleEn: c.titleEn,
-      titleAr: c.titleAr,
+      titleEn: `Illustrative Case — ${c.titleEn}`,
+      titleAr: `حالة توضيحية — ${c.titleAr}`,
       challengeEn: c.challengeEn,
       challengeAr: c.challengeAr,
       ideaEn: c.ideaEn,
@@ -322,8 +339,8 @@ async function applyWork() {
       outcomeAr: c.outcomeAr,
       resultEn: c.resultEn,
       resultAr: c.resultAr,
-      seoTitleEn: clamp(`${c.titleEn} — Noriva`, 160),
-      seoTitleAr: clamp(`${c.titleAr} — نوريفا`, 160),
+      seoTitleEn: clamp(`Illustrative Case — ${c.titleEn} — Noriva`, 160),
+      seoTitleAr: clamp(`حالة توضيحية — ${c.titleAr} — نوريفا`, 160),
       seoDescriptionEn: clamp(c.outcomeEn, 320),
       seoDescriptionAr: clamp(c.outcomeAr, 320),
     };
@@ -337,9 +354,9 @@ async function applyWork() {
         data: {
           slug: c.slug,
           projectId: project?.id ?? null,
-          /* Draft and noindex: illustrative, and no verified metric exists. */
-          status: 'DRAFT',
-          noindex: true,
+          /* Public educational example, explicitly labelled and metric-free. */
+          status: 'PUBLISHED',
+          noindex: false,
           order: CASE_STUDIES.indexOf(c) + 1,
           ...body,
           /* metrics stays empty by design. */
@@ -352,10 +369,27 @@ async function applyWork() {
       for (const s of serviceIdsForCase) {
         await prisma.caseStudyService.create({ data: { caseStudyId: row.id, serviceId: s.id } });
       }
-      note(`case-study:${c.slug} (draft)`);
+      note(`case-study:${c.slug} (published illustrative example)`);
       continue;
     }
-    await update('caseStudy', { slug: c.slug }, fillEmpty(existing, body), `case-study:${c.slug}`);
+    const isManagedExample = existing.status === 'DRAFT' && (
+      existing.challengeEn?.startsWith('This is an illustrative engagement') ||
+      existing.challengeAr?.startsWith('هذا نموذج توضيحي')
+    );
+    await update(
+      'caseStudy',
+      { slug: c.slug },
+      {
+        ...fillEmpty(existing, body),
+        ...(isManagedExample ? {
+          titleEn: body.titleEn,
+          titleAr: body.titleAr,
+          status: 'PUBLISHED',
+          noindex: false,
+        } : {}),
+      },
+      `case-study:${c.slug}`,
+    );
   }
 }
 
@@ -438,6 +472,70 @@ async function applyLibrary() {
     }
     await update('resource', { slug: r.slug }, fillEmpty(existing, data), `resource:${r.slug}`);
   }
+
+  /* Repository-backed downloads. An existing Admin upload always wins. When
+     a catalogue row is still waiting for a file, the verified bundled asset
+     is copied into private storage before the row is made public. */
+  for (const asset of LIBRARY_ASSETS) {
+    const source = path.resolve(process.cwd(), asset.sourcePath);
+    if (!existsSync(source) || statSync(source).size === 0) {
+      note(`missing library asset:${asset.sourcePath}`);
+      continue;
+    }
+
+    const existing = await prisma.resource.findUnique({ where: { slug: asset.slug } });
+    const hasEditorialFile = Boolean(existing?.fileKey && existing.fileKey !== asset.storageKey) || Boolean(existing?.externalUrl);
+    const storageRoot = path.resolve(process.cwd(), process.env.STORAGE_DIR || './storage', 'private');
+    const target = path.resolve(storageRoot, asset.storageKey);
+    if (target !== storageRoot && !target.startsWith(`${storageRoot}${path.sep}`)) {
+      throw new Error(`Unsafe library storage key: ${asset.storageKey}`);
+    }
+
+    if (!REPORT_ONLY && !hasEditorialFile) {
+      mkdirSync(path.dirname(target), { recursive: true });
+      copyFileSync(source, target);
+    }
+
+    const editorial = {
+      titleEn: asset.titleEn,
+      titleAr: asset.titleAr,
+      summaryEn: asset.summaryEn,
+      summaryAr: asset.summaryAr,
+      descriptionEn: asset.descriptionEn,
+      descriptionAr: asset.descriptionAr,
+      type: asset.type,
+      categoryId: cats[asset.category] ?? null,
+      tags: asset.tags,
+      includes: labels(asset.includes),
+      audience: labels(asset.audience),
+      order: asset.order,
+      seoTitleEn: clamp(`${asset.titleEn} — Noriva Library`, 160),
+      seoTitleAr: clamp(`${asset.titleAr} — مكتبة نوريفا`, 160),
+      seoDescriptionEn: clamp(asset.summaryEn, 320),
+      seoDescriptionAr: clamp(asset.summaryAr, 320),
+    };
+    const bundledFile = {
+      fileKey: asset.storageKey,
+      fileName: asset.file,
+      fileMime: asset.mime,
+      fileSize: statSync(source).size,
+      status: 'PUBLISHED',
+      publishedAt: existing?.publishedAt || new Date(),
+      noindex: false,
+    };
+
+    if (!existing) {
+      if (!REPORT_ONLY) {
+        await prisma.resource.create({ data: { slug: asset.slug, ...editorial, ...bundledFile } });
+      }
+      note(`resource:${asset.slug} (published bundled asset)`);
+      continue;
+    }
+
+    const patch = fillEmpty(existing, editorial);
+    if (!hasEditorialFile) Object.assign(patch, bundledFile);
+    await update('resource', { slug: asset.slug }, patch, `resource:${asset.slug}`);
+  }
 }
 
 /* ------------------------------------------------------------------ tools */
@@ -489,6 +587,109 @@ async function applyTools() {
     }
     await update('tool', { slug: t.slug }, fillEmpty(existing, data), `tool:${t.slug}`);
   }
+}
+
+/* ---------------------------------------------------------- relationships */
+
+const RELATION_THEMES = [
+  {
+    key: 'delivery', match: /delivery|commission|aggregator/,
+    services: ['delivery-menu-pricing', 'profitability-analysis'],
+    resources: ['delivery-profitability-checklist', 'delivery-platform-performance'],
+    tools: ['delivery-pricing-calculator', 'contribution-margin-calculator'],
+  },
+  {
+    key: 'menu', match: /menu|recipe|pricing|food-cost|food cost|contribution/,
+    services: ['menu-strategy-engineering-pricing', 'menu-engineering', 'recipe-costing'],
+    resources: ['menu-engineering-template', 'recipe-costing', 'menu-engineering-guide'],
+    tools: ['food-cost-calculator', 'menu-pricing-calculator'],
+  },
+  {
+    key: 'feasibility', match: /feasibility|site|opening|pre-opening|concept/,
+    services: ['feasibility-study', 'new-restaurant-project', 'concept-development'],
+    resources: ['restaurant-feasibility-study-template', 'restaurant-opening-workbook', 'site-evaluation-scorecard'],
+    tools: ['break-even-calculator', 'revenue-target-calculator'],
+  },
+  {
+    key: 'growth', match: /growth|branch|expansion|franchise|payback|turnaround/,
+    services: ['growth-strategy', 'branch-development', 'expansion-study'],
+    resources: ['expansion-feasibility', 'franchise-readiness-scorecard', '90-day-turnaround-plan'],
+    tools: ['branch-payback-calculator', 'revenue-target-calculator'],
+  },
+  {
+    key: 'marketing', match: /marketing|campaign|advertising|social|brand|customer|guest/,
+    services: ['fnb-marketing', 'performance-marketing', 'customer-experience'],
+    resources: ['marketing-plan-template', 'marketing-campaign-planner', 'restaurant-brand-brief'],
+    tools: ['marketing-roi-calculator', 'average-check-calculator'],
+  },
+  {
+    key: 'operations', match: /operation|inventory|waste|purchas|supplier|audit|labou?r|kpi|performance|profit|cash|cost|financial/,
+    services: ['operational-audit', 'cost-control', 'profitability-analysis'],
+    resources: ['restaurant-audit-scorecard', 'restaurant-kpi-dashboard', 'restaurant-pl-template'],
+    tools: ['prime-cost-calculator', 'labour-cost-calculator'],
+  },
+  {
+    key: 'general', match: /.*/,
+    services: ['restaurant-consulting', 'fnb-consulting', 'management-advisory'],
+    resources: ['restaurant-kpi-dashboard', 'restaurant-business-plan-template'],
+    tools: ['average-check-calculator', 'gross-profit-calculator'],
+  },
+];
+
+async function applyRelationships() {
+  const [services, insights, resources, tools, projects, caseStudies] = await Promise.all([
+    prisma.service.findMany({ where: { status: 'PUBLISHED' }, select: { id: true, slug: true } }),
+    prisma.insight.findMany({ where: { status: 'PUBLISHED' }, select: { id: true, slug: true, tags: true } }),
+    prisma.resource.findMany({ where: { status: 'PUBLISHED' }, select: { id: true, slug: true } }),
+    prisma.tool.findMany({ where: { status: 'PUBLISHED' }, select: { id: true, slug: true } }),
+    prisma.project.findMany({ where: { status: 'PUBLISHED' }, select: { id: true, slug: true } }),
+    prisma.caseStudy.findMany({ where: { status: 'PUBLISHED' }, select: { id: true, slug: true } }),
+  ]);
+  const indexes = {
+    SERVICE: new Map(services.map((r) => [r.slug, r.id])),
+    INSIGHT: new Map(insights.map((r) => [r.slug, r.id])),
+    RESOURCE: new Map(resources.map((r) => [r.slug, r.id])),
+    TOOL: new Map(tools.map((r) => [r.slug, r.id])),
+  };
+  const themeFor = (text) => RELATION_THEMES.find((theme) => theme.match.test(text.toLowerCase())) || RELATION_THEMES.at(-1);
+  const insightTheme = new Map(insights.map((row) => [row.id, themeFor(`${row.slug} ${JSON.stringify(row.tags)}`).key]));
+
+  const refsFor = (theme, fromType, fromId) => {
+    const refs = [];
+    const add = (type, slugs) => {
+      for (const slug of slugs) {
+        const id = indexes[type].get(slug);
+        if (id && !(type === fromType && id === fromId)) refs.push({ toType: type, toId: id });
+      }
+    };
+    add('SERVICE', theme.services.slice(0, 2));
+    add('RESOURCE', theme.resources.slice(0, 2));
+    add('TOOL', theme.tools.slice(0, 2));
+    const relatedInsight = insights.find((row) => insightTheme.get(row.id) === theme.key && !(fromType === 'INSIGHT' && row.id === fromId));
+    if (relatedInsight) refs.push({ toType: 'INSIGHT', toId: relatedInsight.id });
+    return refs.slice(0, 6);
+  };
+
+  const linkIfEmpty = async (fromType, row, text) => {
+    const existing = await prisma.contentLink.count({ where: { fromType, fromId: row.id } });
+    if (existing) return;
+    const refs = refsFor(themeFor(text), fromType, row.id);
+    if (!refs.length) return;
+    if (!REPORT_ONLY) {
+      await prisma.contentLink.createMany({
+        data: refs.map((ref, order) => ({ fromType, fromId: row.id, ...ref, order })),
+        skipDuplicates: true,
+      });
+    }
+    note(`relations:${fromType.toLowerCase()}:${row.slug}(${refs.length})`);
+  };
+
+  for (const row of services) await linkIfEmpty('SERVICE', row, row.slug);
+  for (const row of insights) await linkIfEmpty('INSIGHT', row, `${row.slug} ${JSON.stringify(row.tags)}`);
+  for (const row of resources) await linkIfEmpty('RESOURCE', row, row.slug);
+  for (const row of tools) await linkIfEmpty('TOOL', row, row.slug);
+  for (const row of projects) await linkIfEmpty('PROJECT', row, row.slug);
+  for (const row of caseStudies) await linkIfEmpty('CASE_STUDY', row, row.slug);
 }
 
 /* ------------------------------------------------- pages and taxonomies */
@@ -740,6 +941,9 @@ async function applyVisuals() {
   for (const [slug, entry] of Object.entries(manifest.links.tools)) {
     await link('tool', { slug }, entry, ['thumbnail', 'ogImage'], `tool:${slug}`);
   }
+  for (const [slug, entry] of Object.entries(manifest.links.resources || {})) {
+    await link('resource', { slug }, entry, ['thumbnail', 'ogImage'], `resource:${slug}`);
+  }
   for (const [slug, entry] of Object.entries(manifest.links.caseStudies)) {
     await link('caseStudy', { slug }, entry, ['heroMediaUrl', 'ogImage'], `case-study:${slug}`);
   }
@@ -821,6 +1025,7 @@ async function main() {
   await applyWork();
   await applyLibrary();
   await applyTools();
+  await applyRelationships();
   await applyPages();
   await applyTaxonomyTidy();
   await applySystem();

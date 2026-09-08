@@ -14,7 +14,7 @@ import { chromium } from 'playwright';
 const BASE = process.env.QA_BASE_URL ?? 'http://127.0.0.1:3000';
 const EMAIL = process.env.QA_EMAIL ?? 'qa@example.com';
 const PASSWORD = process.env.QA_PASSWORD ?? 'LocalQaPassword123!';
-const CHROMIUM = process.env.QA_CHROMIUM ?? '/opt/pw-browsers/chromium';
+const CHROMIUM = process.env.QA_CHROMIUM;
 
 const results = [];
 const check = (name, ok, detail = '') => {
@@ -38,7 +38,7 @@ const rgb = (hex) => {
   return `rgb(${(n >> 16) & 255}, ${(n >> 8) & 255}, ${n & 255})`;
 };
 
-const browser = await chromium.launch({ executablePath: CHROMIUM });
+const browser = await chromium.launch({ executablePath: CHROMIUM || undefined, args: ['--no-sandbox'] });
 const context = await browser.newContext();
 const page = await context.newPage();
 

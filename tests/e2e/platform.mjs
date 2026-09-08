@@ -7,7 +7,7 @@ import { chromium } from 'playwright';
 const BASE = process.env.QA_BASE_URL ?? 'http://127.0.0.1:3000';
 const EMAIL = process.env.QA_EMAIL ?? 'qa@example.com';
 const PASSWORD = process.env.QA_PASSWORD ?? 'LocalQaPassword123!';
-const CHROMIUM = process.env.QA_CHROMIUM ?? '/opt/pw-browsers/chromium';
+const CHROMIUM = process.env.QA_CHROMIUM;
 const FIXTURE = process.env.QA_XLSX ?? '/var/tmp/qa-model.xlsx';
 
 const results = [];
@@ -16,7 +16,7 @@ const check = (name, ok, detail = '') => {
   console.log(`${ok ? 'PASS' : 'FAIL'}  ${name}${detail ? ` — ${detail}` : ''}`);
 };
 
-const browser = await chromium.launch({ executablePath: CHROMIUM });
+const browser = await chromium.launch({ executablePath: CHROMIUM || undefined, args: ['--no-sandbox'] });
 const context = await browser.newContext({ viewport: { width: 1440, height: 900 } });
 const page = await context.newPage();
 

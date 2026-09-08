@@ -7,9 +7,9 @@
  * an editor can see the shape of a finished record, and so the public
  * templates can be reviewed with realistic content. Every one of them:
  *
- *   - carries the client value "Sample project", which the existing guard in
- *     ensure-content.mjs matches when it unpublishes placeholders;
- *   - is created DRAFT and noindex, so it never reaches a visitor;
+ *   - carries the client value "Illustrative project", which is visibly shown
+ *     on the public work card and cannot be mistaken for a client name;
+ *   - is published only as an educational example, never as client work;
  *   - states in its own opening line that it is an illustrative engagement;
  *   - contains no client name, no revenue figure, no percentage, no ROI and
  *     no quoted testimonial.
@@ -20,8 +20,8 @@
  * The `metrics` field is deliberately left empty on every record.
  */
 
-/** Client label reused so the existing placeholder guard keeps applying. */
-export const SAMPLE_CLIENT = 'Sample project';
+/** Public label: explicit enough to prevent the example being read as client work. */
+export const SAMPLE_CLIENT = 'Illustrative project';
 
 const disclaimerEn =
   'This is an illustrative engagement written to show how Noriva works. It is not client work, and it contains no client name, figure or verified result.';
@@ -104,9 +104,8 @@ export const FNB_SAMPLE_PROJECTS = [
 ];
 
 /**
- * Case studies. `projectSlug` links to a project above (or to one of the
- * placeholder projects that shipped earlier). Every record is DRAFT + noindex
- * and carries no metric.
+ * Case studies. `projectSlug` links to a project above. Every record carries
+ * an explicit illustrative label and no metric.
  */
 export const CASE_STUDIES = [
   {
