@@ -41,6 +41,18 @@ const PLATFORM_HOST_SUFFIXES = [
 
 const LOCAL_HOSTNAMES = new Set(['localhost', '127.0.0.1', '0.0.0.0', '::1']);
 
+/**
+ * A hostname that can actually be reached from the public internet: at least
+ * one dot, and nothing but the characters a domain is made of.
+ *
+ * Because a value without a scheme is completed to `https://…`, a typo such as
+ * `not-a-url` would otherwise parse cleanly and be published as the canonical
+ * host. A single label is never a public address, so it is treated as
+ * malformed. Local hostnames are checked separately, since they are legitimate
+ * in development and meaningless in production.
+ */
+const PUBLIC_HOSTNAME = /^(?=.{1,253}$)(?!-)[a-z0-9-]{1,63}(?:\.(?!-)[a-z0-9-]{1,63})+$/i;
+
 /** True when the hostname belongs to a hosting platform rather than the brand. */
 export function isPlatformHost(hostname: string): boolean {
   const host = hostname.trim().toLowerCase().replace(/\.$/, '');
@@ -71,9 +83,18 @@ export function resolveSiteUrl(raw: string | undefined, isProduction: boolean): 
     return fallback;
   }
 
-  if (isPlatformHost(url.hostname)) return fallback;
-  // A local address is legitimate in development and meaningless in production.
-  if (isProduction && LOCAL_HOSTNAMES.has(url.hostname.toLowerCase())) return CANONICAL_SITE_URL;
+  const hostname = url.hostname.toLowerCase().replace(/\.$/, '');
+
+  if (isPlatformHost(hostname)) return fallback;
+
+  if (LOCAL_HOSTNAMES.has(hostname)) {
+    // A local address is legitimate in development and meaningless in production.
+    return isProduction ? CANONICAL_SITE_URL : `${url.protocol}//${url.host}`;
+  }
+
+  // Anything that is neither a local address nor a real public domain — an
+  // unfinished value, a typo, a bare label — is malformed configuration.
+  if (!PUBLIC_HOSTNAME.test(hostname)) return fallback;
 
   return `${url.protocol}//${url.host}${url.pathname}`.replace(/\/+$/, '');
 }

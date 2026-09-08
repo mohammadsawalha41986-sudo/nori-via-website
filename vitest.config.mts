@@ -6,6 +6,9 @@ export default defineConfig({
     environment: 'node',
     include: ['tests/**/*.test.ts'],
   },
+  // `lib/seo.tsx` carries a JSX component beside the metadata builder, so the
+  // transform has to understand JSX for a test to import it.
+  oxc: { jsx: { runtime: 'automatic' } },
   resolve: {
     alias: {
       '@': path.resolve(import.meta.dirname, 'src'),
