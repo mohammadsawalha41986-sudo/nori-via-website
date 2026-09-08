@@ -79,7 +79,7 @@ export default async function AdminDashboard() {
     <>
       <PageHeader
         title="Dashboard"
-        description="Everything published on noriva.sa is managed from here."
+        description="Everything published on norivaglobal.com is managed from here."
       />
 
       {warnings.length > 0 && (
