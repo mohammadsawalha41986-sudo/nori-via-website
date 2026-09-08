@@ -16,6 +16,7 @@ import {
   insightSchema,
   settingsSchema,
   homepageSchema,
+  homepageFaqSchema,
   statisticSchema,
   testimonialSchema,
   navigationSchema,
@@ -111,6 +112,7 @@ export async function saveHomepage(_prev: ActionState, formData: FormData): Prom
   const parsed = homepageSchema.safeParse({
     ...raw,
     featuredCaseStudyId: nullableId(formData.get('featuredCaseStudyId')),
+    featuredServiceId: nullableId(formData.get('featuredServiceId')),
     intelligenceItems: parsePairs(String(formData.get('intelligenceItemsRaw') ?? '')),
   });
   if (!parsed.success) return { error: 'Please check the highlighted fields.', fieldErrors: toFieldErrors(parsed.error) };
@@ -126,6 +128,36 @@ export async function saveHomepage(_prev: ActionState, formData: FormData): Prom
   revalidatePublic();
   revalidatePath('/admin/homepage');
   return { ok: true };
+}
+
+/**
+ * Creates or updates one homepage question. The same action serves both
+ * blocks; the submitted `group` decides which one the row belongs to.
+ */
+export async function saveHomepageFaq(_prev: ActionState, formData: FormData): Promise<ActionState> {
+  await guard();
+  const id = String(formData.get('id') ?? '');
+  const parsed = homepageFaqSchema.safeParse({
+    ...formToObject(formData),
+    visible: checkbox(formData, 'visible'),
+  });
+  if (!parsed.success) return { error: 'Please check the highlighted fields.', fieldErrors: toFieldErrors(parsed.error) };
+
+  if (id) await prisma.homepageFaq.update({ where: { id }, data: parsed.data });
+  else await prisma.homepageFaq.create({ data: parsed.data });
+
+  revalidatePublic();
+  revalidatePath('/admin/homepage/questions');
+  return { ok: true };
+}
+
+export async function deleteHomepageFaq(formData: FormData) {
+  await guard();
+  const id = String(formData.get('id') ?? '');
+  if (id) await prisma.homepageFaq.delete({ where: { id } });
+
+  revalidatePublic();
+  revalidatePath('/admin/homepage/questions');
 }
 
 // ---------------------------------------------------------------- services

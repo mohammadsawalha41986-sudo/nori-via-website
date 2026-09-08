@@ -19,7 +19,8 @@ export const NAV_GROUPS = [
   {
     label: 'Content',
     items: [
-      { href: '/admin/homepage', label: 'Homepage' },
+      { href: '/admin/homepage', label: 'Homepage', exact: true },
+      { href: '/admin/homepage/questions', label: 'Homepage questions' },
       { href: '/admin/system', label: 'Noriva System' },
       { href: '/admin/services', label: 'Solutions' },
       { href: '/admin/work', label: 'Portfolio' },

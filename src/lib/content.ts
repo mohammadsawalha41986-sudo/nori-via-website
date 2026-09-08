@@ -1,4 +1,5 @@
 import { cache } from 'react';
+import type { HomepageFaqGroup } from '@prisma/client';
 import { prisma } from './db';
 
 /** Defaults used the first time the site boots, before anything is edited in Admin. */
@@ -27,6 +28,17 @@ export const getNavigation = cache(async (location = 'header') =>
 
 export const getSystemStages = cache(async () =>
   prisma.systemStage.findMany({ where: { visible: true }, orderBy: { order: 'asc' } }),
+);
+
+/**
+ * The questions shown in one of the homepage's two question blocks, in the
+ * order an editor arranged them. Hidden rows never reach the public site.
+ */
+export const getHomepageFaqs = cache(async (group: HomepageFaqGroup) =>
+  prisma.homepageFaq.findMany({
+    where: { group, visible: true },
+    orderBy: [{ order: 'asc' }, { createdAt: 'asc' }],
+  }),
 );
 
 export const getStatistics = cache(async () =>

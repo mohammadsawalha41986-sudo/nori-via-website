@@ -126,8 +126,8 @@ model SiteSettings {
   /// The opacity is a percentage; 0 shows the bare image, 100 hides it.
   footerOverlayColor   String @default("")
   footerOverlayOpacity Int    @default(80)
-  copyrightEn         String @default("")
-  copyrightAr         String @default("")
+  copyrightEn          String @default("")
+  copyrightAr          String @default("")
 
   seoTitleEn       String @default("")
   seoTitleAr       String @default("")
@@ -173,6 +173,43 @@ model HomepageContent {
 
   featuredCaseStudyId String?
 
+  /// "Questions that usually go unanswered" — the numbered split block whose
+  /// answers are always visible. Its rows live in HomepageFaq (group NUMBERED).
+  questionsEyebrowEn  String @default("")
+  questionsEyebrowAr  String @default("")
+  questionsHeadlineEn String @default("")
+  questionsHeadlineAr String @default("")
+  questionsBodyEn     String @default("")
+  questionsBodyAr     String @default("")
+
+  /// The collapsible FAQ block. Rows live in HomepageFaq (group ACCORDION).
+  faqEyebrowEn  String @default("")
+  faqEyebrowAr  String @default("")
+  faqHeadlineEn String @default("")
+  faqHeadlineAr String @default("")
+  faqBodyEn     String @default("")
+  faqBodyAr     String @default("")
+
+  /// The services showcase: a grid of published services with one of them
+  /// promoted to a large image card.
+  servicesHeadlineEn String  @default("")
+  servicesHeadlineAr String  @default("")
+  servicesBodyEn     String  @default("")
+  servicesBodyAr     String  @default("")
+  featuredServiceId  String?
+
+  /// The full-width image banner and its call to action.
+  bannerEyebrowEn  String  @default("")
+  bannerEyebrowAr  String  @default("")
+  bannerHeadlineEn String  @default("")
+  bannerHeadlineAr String  @default("")
+  bannerBodyEn     String  @default("")
+  bannerBodyAr     String  @default("")
+  bannerCtaLabelEn String  @default("")
+  bannerCtaLabelAr String  @default("")
+  bannerCtaHref    String  @default("")
+  bannerImageUrl   String?
+
   ctaHeadlineEn    String @default("")
   ctaHeadlineAr    String @default("")
   ctaDescriptionEn String @default("")
@@ -198,6 +235,32 @@ model SystemStage {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+/// Which homepage block a question belongs to. One table serves both because
+/// the fields are identical; only the presentation differs.
+enum HomepageFaqGroup {
+  /// Numbered list with the answers always visible.
+  NUMBERED
+  /// Collapsible accordion.
+  ACCORDION
+}
+
+/// A question shown on the homepage, in either of its two question blocks.
+model HomepageFaq {
+  id         String           @id @default(cuid())
+  group      HomepageFaqGroup @default(ACCORDION)
+  questionEn String
+  questionAr String           @default("")
+  answerEn   String           @default("")
+  answerAr   String           @default("")
+  order      Int              @default(0)
+  visible    Boolean          @default(true)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([group, visible, order])
 }
 
 model ServiceCategory {
