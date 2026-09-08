@@ -1,17 +1,23 @@
-/**
- * The public production domain. Used for canonical URLs, sitemap, robots,
- * structured data and the website line in the footer whenever
- * NEXT_PUBLIC_SITE_URL is not supplied by the deployment.
- */
-export const CANONICAL_SITE_URL = 'https://norivaglobal.com';
+import { resolveSiteUrl } from './site-url';
 
-/** Local development falls back to the dev server rather than the live domain. */
-const DEFAULT_SITE_URL =
-  process.env.NODE_ENV === 'production' ? CANONICAL_SITE_URL : 'http://localhost:3000';
+/**
+ * The public production domain. Re-exported so `@/lib/env` stays a valid
+ * import path for it, while `site-url.ts` remains the single definition.
+ */
+export { CANONICAL_SITE_URL } from './site-url';
 
 /** Central place for reading configuration, so nothing is hard-coded in components. */
 export const env = {
-  siteUrl: (process.env.NEXT_PUBLIC_SITE_URL || DEFAULT_SITE_URL).replace(/\/$/, ''),
+  /**
+   * The public origin of the site.
+   *
+   * Resolved rather than read directly: falling back to the canonical domain
+   * only when NEXT_PUBLIC_SITE_URL is absent still leaves the deployment host
+   * on the public site whenever the platform sets that variable to its own
+   * generated hostname, which is exactly what it does. Resolving the value
+   * rejects such a hostname however it arrives. See `site-url.ts`.
+   */
+  siteUrl: resolveSiteUrl(process.env.NEXT_PUBLIC_SITE_URL, process.env.NODE_ENV === 'production'),
   authSecret: process.env.AUTH_SECRET || '',
   contactEmail: process.env.CONTACT_EMAIL || '',
   storageDir: process.env.STORAGE_DIR || './storage',
