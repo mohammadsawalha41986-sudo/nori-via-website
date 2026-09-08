@@ -1,6 +1,13 @@
+import { resolveSiteUrl } from './site-url';
+
 /** Central place for reading configuration, so nothing is hard-coded in components. */
 export const env = {
-  siteUrl: (process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000').replace(/\/$/, ''),
+  /**
+   * The public origin of the site. Resolved rather than read directly: a
+   * hosting platform's generated hostname is never shown to visitors or used
+   * as a canonical URL. See `site-url.ts`.
+   */
+  siteUrl: resolveSiteUrl(process.env.NEXT_PUBLIC_SITE_URL, process.env.NODE_ENV === 'production'),
   authSecret: process.env.AUTH_SECRET || '',
   contactEmail: process.env.CONTACT_EMAIL || '',
   storageDir: process.env.STORAGE_DIR || './storage',

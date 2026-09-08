@@ -343,13 +343,13 @@ npm start            # serves on PORT, default 3000
 ```
 
 Point the Node application entry at `npm start` and put Nginx or the Hostinger
-proxy in front of it with SSL for `noriva.sa` and `www.noriva.sa`.
+proxy in front of it with SSL for `norivaglobal.com` and `www.norivaglobal.com`.
 
 **Checklist**
 
 1. Create the PostgreSQL database and set `DATABASE_URL`.
 2. Set `AUTH_SECRET` to a fresh 32+ character random value.
-3. Set `NEXT_PUBLIC_SITE_URL=https://noriva.sa`.
+3. Set `NEXT_PUBLIC_SITE_URL=https://norivaglobal.com`.
 4. Configure SMTP, or leave `SMTP_HOST` empty and collect leads from Admin.
 5. Point `STORAGE_DIR` at a **persistent, writable** directory outside the
    deploy folder, so uploads survive redeploys. Back it up with the database.
@@ -359,7 +359,7 @@ proxy in front of it with SSL for `noriva.sa` and `www.noriva.sa`.
    `npm run admin:reset` resets that account's password — changing
    `ADMIN_PASSWORD` and redeploying does not, because the seed only ever
    creates a missing account.
-7. DNS: `A`/`CNAME` for `noriva.sa` and `www.noriva.sa`; issue SSL for both.
+7. DNS: `A`/`CNAME` for `norivaglobal.com` and `www.norivaglobal.com`; issue SSL for both.
 8. In Admin → Site settings, add the logo, contact details and social links.
 
 `.env` is git-ignored and must never be committed.
