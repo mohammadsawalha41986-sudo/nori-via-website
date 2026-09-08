@@ -515,6 +515,38 @@ const HOMEPAGE_FILL = {
     'Strategy, design, engineering and production sit in one team, so nothing is lost in the handover between them. We design in Arabic and English in both directions from the first screen. And what we build is handed over so you can run it — templates, training and accounts that stay yours.',
   intelligenceBodyAr:
     'الاستراتيجية والتصميم والهندسة والإنتاج في فريق واحد، فلا يضيع شيء في التسليم بينها. نصمّم بالعربية والإنجليزية بالاتجاهين من أول شاشة. وما نبنيه يُسلَّم لتديره بنفسك: قوالب وتدريب وحسابات تبقى ملكك.',
+  questionsEyebrowEn: 'Where owners get stuck',
+  questionsEyebrowAr: 'أين يتوقف أصحاب المطاعم',
+  questionsHeadlineEn: 'QUESTIONS THAT USUALLY\nGO UNANSWERED.',
+  questionsHeadlineAr: 'أسئلة غالباً ما تبقى\nبلا إجابة.',
+  questionsBodyEn:
+    'If you cannot answer these today, the business is being run on instinct. Each one is answerable, and each one changes a decision.',
+  questionsBodyAr:
+    'إن لم تكن تملك إجاباتها اليوم، فالمشروع يُدار بالإحساس. كل سؤال منها قابل للإجابة، وكل إجابة تغيّر قراراً.',
+  servicesHeadlineEn: 'WHAT WE WORK ON',
+  servicesHeadlineAr: 'ما نعمل عليه',
+  servicesBodyEn:
+    'Consulting, development and the commercial work behind them — applied to restaurants, cafés and F&B concepts.',
+  servicesBodyAr:
+    'الاستشارات والتطوير والعمل التجاري خلفهما — مطبّقة على المطاعم والمقاهي ومفاهيم الأغذية والمشروبات.',
+  bannerEyebrowEn: 'Free resources',
+  bannerEyebrowAr: 'موارد مجانية',
+  bannerHeadlineEn: 'THE NORIVA LIBRARY',
+  bannerHeadlineAr: 'مكتبة نوريفا',
+  bannerBodyEn:
+    'Calculators, templates, studies and checklists — ready to download, with no sign-up and no fee. Start with them today, whether or not you work with us.',
+  bannerBodyAr:
+    'حاسبات ونماذج ودراسات وقوائم تحقق جاهزة للتحميل — دون تسجيل ودون مقابل. ابدأ بها اليوم، سواء عملت معنا أو لم تعمل.',
+  bannerCtaLabelEn: 'Browse the library',
+  bannerCtaLabelAr: 'تصفّح المكتبة',
+  bannerCtaHref: '/library',
+  bannerImageUrl: img('cta'),
+  faqEyebrowEn: 'Before you start',
+  faqEyebrowAr: 'قبل أن تبدأ',
+  faqHeadlineEn: 'FREQUENTLY ASKED QUESTIONS',
+  faqHeadlineAr: 'أسئلة شائعة',
+  faqBodyEn: 'What restaurant owners ask us before the first engagement.',
+  faqBodyAr: 'ما يسأل عنه أصحاب المطاعم قبل أن يبدأوا معنا.',
   ctaHeadlineEn: "LET'S BUILD SOMETHING\nWORTH REMEMBERING.",
   ctaHeadlineAr: 'لنبنِ شيئاً\nيستحق أن يُذكر.',
   ctaDescriptionEn:
@@ -658,6 +690,94 @@ const PAGES = [
   },
 ];
 
+
+/*
+ * The homepage question blocks. Written as questions an F&B owner actually
+ * carries, and answered without inventing a number or a promise. Created only
+ * when a block is still empty, so an editor's own set is never added to.
+ */
+const HOMEPAGE_QUESTIONS = [
+  {
+    group: 'NUMBERED',
+    questionEn: 'What does this dish actually cost you?',
+    questionAr: 'كم يكلّفك هذا الطبق فعلاً؟',
+    answerEn:
+      'Not the price of the ingredients, but the full cost of the plate: waste in prep, packaging, and the portion your kitchen actually serves.',
+    answerAr:
+      'ليس سعر المكوّن، بل تكلفة الطبق كاملاً: مع الفاقد في التجهيز، والتغليف، والحصة التي يقدّمها مطبخك بالفعل.',
+  },
+  {
+    group: 'NUMBERED',
+    questionEn: 'Is delivery actually making a profit?',
+    questionAr: 'هل التوصيل يحقق ربحاً؟',
+    answerEn:
+      'After commission, after VAT on that commission, after packaging, and after the discount the platform ran without asking you.',
+    answerAr:
+      'بعد العمولة، وبعد ضريبة القيمة المضافة على تلك العمولة، وبعد التغليف، وبعد الخصم الذي أطلقته المنصة دون الرجوع إليك.',
+  },
+  {
+    group: 'NUMBERED',
+    questionEn: 'Which items is the kitchen carrying?',
+    questionAr: 'أي الأصناف تحمل المطبخ؟',
+    answerEn:
+      'Popularity and margin are two different things. The best-selling item is often the largest source of your losses.',
+    answerAr:
+      'الرواج والهامش أمران مختلفان. الصنف الأكثر مبيعاً كثيراً ما يكون أكبر مصادر خسارتك.',
+  },
+  {
+    group: 'NUMBERED',
+    questionEn: 'Is the price right?',
+    questionAr: 'هل السعر صحيح؟',
+    answerEn:
+      'A price built on what the restaurant next door does is a guess at their costs, not a decision about yours.',
+    answerAr:
+      'السعر المبني على ما يفعله المطعم المجاور تخمين لتكاليفه هو، لا قرار مبني على تكاليفك أنت.',
+  },
+  {
+    group: 'ACCORDION',
+    questionEn: 'Who is this for?',
+    questionAr: 'لمن هذه الخدمة؟',
+    answerEn:
+      'Restaurants, cafés and F&B concepts — from a first location being planned to a multi-branch operation preparing to expand.',
+    answerAr:
+      'المطاعم والمقاهي ومفاهيم الأغذية والمشروبات — من فرع أول قيد التخطيط إلى عملية متعددة الفروع تستعد للتوسع.',
+  },
+  {
+    group: 'ACCORDION',
+    questionEn: 'What if my data is not organised?',
+    questionAr: 'ماذا لو لم تكن بياناتي مرتبة؟',
+    answerEn:
+      'That is the usual starting point. We work from what exists — sales exports, invoices, recipes as they are actually cooked — and tell you plainly where a gap remains.',
+    answerAr:
+      'هذه هي نقطة البداية المعتادة. نعمل مما هو موجود: تقارير المبيعات والفواتير والوصفات كما تُطبخ فعلاً، ونخبرك بوضوح أين تبقى فجوة.',
+  },
+  {
+    group: 'ACCORDION',
+    questionEn: 'Where do the numbers come from?',
+    questionAr: 'من أين تأتي الأرقام؟',
+    answerEn:
+      'From your own data, never from an industry average. Every figure in a report traces back to its source and to the assumptions built on it, and you are free to challenge both.',
+    answerAr:
+      'من بياناتك أنت، لا من متوسط قطاع. كل رقم في التقرير يعود إلى مصدره وإلى الافتراضات التي بُنيت عليه، ومن حقك مراجعة الاثنين.',
+  },
+  {
+    group: 'ACCORDION',
+    questionEn: 'What do I receive at the end?',
+    questionAr: 'ماذا أستلم في النهاية؟',
+    answerEn:
+      'Something the kitchen and the floor can act on next week — not a description of the problem read back to you.',
+    answerAr:
+      'شيء يستطيع المطبخ والصالة تنفيذه الأسبوع القادم — لا وصفاً للمشكلة يُعاد عليك.',
+  },
+  {
+    group: 'ACCORDION',
+    questionEn: 'Is the library really free?',
+    questionAr: 'هل المكتبة مجانية فعلاً؟',
+    answerEn:
+      'Yes. No sign-up, no fee, and no obligation to work with us.',
+    answerAr: 'نعم. دون تسجيل، ودون مقابل، ودون التزام بالعمل معنا.',
+  },
+];
 
 /* The shipped art direction, registered in the Media library so each image is
  * selectable in Admin's media picker and can be swapped for real photography
@@ -977,6 +1097,7 @@ async function main() {
     admins: await prisma.adminUser.count(),
     statistics: await prisma.statistic.count(),
     testimonials: await prisma.testimonial.count(),
+    homepageQuestions: await prisma.homepageFaq.count(),
   };
 
   console.log('[ensure-content] existing rows:', JSON.stringify(counts));
@@ -1007,6 +1128,19 @@ async function main() {
   if (Object.keys(homePatch).length) {
     await prisma.homepageContent.update({ where: { id: 'singleton' }, data: homePatch });
     note(`homepageContent(${Object.keys(homePatch).length} empty fields)`);
+  }
+
+  /* --- Homepage questions ----------------------------------------------- */
+  /* Per block, so filling one never touches a block an editor already wrote. */
+  for (const group of ['NUMBERED', 'ACCORDION']) {
+    const existing = await prisma.homepageFaq.count({ where: { group } });
+    if (existing > 0) continue;
+
+    const rows = HOMEPAGE_QUESTIONS.filter((q) => q.group === group);
+    await prisma.homepageFaq.createMany({
+      data: rows.map((q, i) => ({ ...q, order: i + 1, visible: true })),
+    });
+    note(`homepageFaq:${group}(${rows.length})`);
   }
 
   /* --- Navigation ------------------------------------------------------- */

@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { prisma } from '@/lib/db';
 import { getHomepage } from '@/lib/content';
 import { saveHomepage } from '@/server/actions';
@@ -10,10 +11,19 @@ export const metadata = { title: 'Homepage' };
 export const dynamic = 'force-dynamic';
 
 export default async function HomepageEditor() {
-  const [home, caseStudies] = await Promise.all([
+  const [home, caseStudies, services, questionCounts] = await Promise.all([
     getHomepage(),
     prisma.caseStudy.findMany({ orderBy: { titleEn: 'asc' }, select: { id: true, titleEn: true, status: true } }),
+    prisma.service.findMany({
+      where: { status: 'PUBLISHED' },
+      orderBy: [{ order: 'asc' }, { nameEn: 'asc' }],
+      select: { id: true, nameEn: true, featuredImage: true },
+    }),
+    prisma.homepageFaq.groupBy({ by: ['group'], _count: { _all: true } }),
   ]);
+
+  const countFor = (group: 'NUMBERED' | 'ACCORDION') =>
+    questionCounts.find((row) => row.group === group)?._count._all ?? 0;
 
   return (
     <>
@@ -142,6 +152,157 @@ export default async function HomepageEditor() {
               ))}
             </select>
           </Field>
+        </Card>
+
+        <Card
+          title="Questions block"
+          description="The numbered questions whose answers are always visible. Write the questions themselves under Homepage questions."
+        >
+          <Grid>
+            <Field label="Eyebrow (EN)" htmlFor="questionsEyebrowEn">
+              <input id="questionsEyebrowEn" name="questionsEyebrowEn" defaultValue={home.questionsEyebrowEn} className={inputClass} />
+            </Field>
+            <Field label="Eyebrow (AR)" htmlFor="questionsEyebrowAr">
+              <input id="questionsEyebrowAr" name="questionsEyebrowAr" defaultValue={home.questionsEyebrowAr} dir="rtl" className={inputClass} />
+            </Field>
+            <Field label="Headline (EN)" htmlFor="questionsHeadlineEn">
+              <input id="questionsHeadlineEn" name="questionsHeadlineEn" defaultValue={home.questionsHeadlineEn} className={inputClass} />
+            </Field>
+            <Field label="Headline (AR)" htmlFor="questionsHeadlineAr">
+              <input id="questionsHeadlineAr" name="questionsHeadlineAr" defaultValue={home.questionsHeadlineAr} dir="rtl" className={inputClass} />
+            </Field>
+            <Field label="Intro (EN)" htmlFor="questionsBodyEn">
+              <textarea id="questionsBodyEn" name="questionsBodyEn" rows={3} defaultValue={home.questionsBodyEn} className={inputClass} />
+            </Field>
+            <Field label="Intro (AR)" htmlFor="questionsBodyAr">
+              <textarea id="questionsBodyAr" name="questionsBodyAr" rows={3} defaultValue={home.questionsBodyAr} dir="rtl" className={inputClass} />
+            </Field>
+          </Grid>
+          <p className="mt-4 text-sm text-slate-500">
+            {countFor('NUMBERED')} question(s) in this block.{' '}
+            <Link href="/admin/homepage/questions" className="font-semibold text-slate-700 underline">
+              Edit the questions
+            </Link>
+          </p>
+        </Card>
+
+        <Card
+          title="Services showcase"
+          description="The services grid. Pick one service to promote to the large image card — it needs a featured image of its own."
+        >
+          <Grid>
+            <Field label="Headline (EN)" htmlFor="servicesHeadlineEn" hint="Leave empty to use “Services”.">
+              <input id="servicesHeadlineEn" name="servicesHeadlineEn" defaultValue={home.servicesHeadlineEn} className={inputClass} />
+            </Field>
+            <Field label="Headline (AR)" htmlFor="servicesHeadlineAr">
+              <input id="servicesHeadlineAr" name="servicesHeadlineAr" defaultValue={home.servicesHeadlineAr} dir="rtl" className={inputClass} />
+            </Field>
+            <Field label="Intro (EN)" htmlFor="servicesBodyEn">
+              <textarea id="servicesBodyEn" name="servicesBodyEn" rows={3} defaultValue={home.servicesBodyEn} className={inputClass} />
+            </Field>
+            <Field label="Intro (AR)" htmlFor="servicesBodyAr">
+              <textarea id="servicesBodyAr" name="servicesBodyAr" rows={3} defaultValue={home.servicesBodyAr} dir="rtl" className={inputClass} />
+            </Field>
+          </Grid>
+
+          <Field
+            label="Promoted service"
+            htmlFor="featuredServiceId"
+            hint="Only published services are listed. One without an image stays a normal card."
+            className="mt-4"
+          >
+            <select id="featuredServiceId" name="featuredServiceId" defaultValue={home.featuredServiceId ?? ''} className={inputClass}>
+              <option value="">None</option>
+              {services.map((service) => (
+                <option key={service.id} value={service.id}>
+                  {service.nameEn} {service.featuredImage ? '' : '(no image)'}
+                </option>
+              ))}
+            </select>
+          </Field>
+        </Card>
+
+        <Card
+          title="Image banner"
+          description="The full-width band that sends visitors to one destination, such as the library."
+        >
+          <Grid>
+            <Field label="Eyebrow (EN)" htmlFor="bannerEyebrowEn">
+              <input id="bannerEyebrowEn" name="bannerEyebrowEn" defaultValue={home.bannerEyebrowEn} className={inputClass} />
+            </Field>
+            <Field label="Eyebrow (AR)" htmlFor="bannerEyebrowAr">
+              <input id="bannerEyebrowAr" name="bannerEyebrowAr" defaultValue={home.bannerEyebrowAr} dir="rtl" className={inputClass} />
+            </Field>
+            <Field label="Headline (EN)" htmlFor="bannerHeadlineEn" hint="The banner is hidden until this is filled in.">
+              <input id="bannerHeadlineEn" name="bannerHeadlineEn" defaultValue={home.bannerHeadlineEn} className={inputClass} />
+            </Field>
+            <Field label="Headline (AR)" htmlFor="bannerHeadlineAr">
+              <input id="bannerHeadlineAr" name="bannerHeadlineAr" defaultValue={home.bannerHeadlineAr} dir="rtl" className={inputClass} />
+            </Field>
+            <Field label="Body (EN)" htmlFor="bannerBodyEn">
+              <textarea id="bannerBodyEn" name="bannerBodyEn" rows={3} defaultValue={home.bannerBodyEn} className={inputClass} />
+            </Field>
+            <Field label="Body (AR)" htmlFor="bannerBodyAr">
+              <textarea id="bannerBodyAr" name="bannerBodyAr" rows={3} defaultValue={home.bannerBodyAr} dir="rtl" className={inputClass} />
+            </Field>
+            <Field label="Button label (EN)" htmlFor="bannerCtaLabelEn">
+              <input id="bannerCtaLabelEn" name="bannerCtaLabelEn" defaultValue={home.bannerCtaLabelEn} className={inputClass} />
+            </Field>
+            <Field label="Button label (AR)" htmlFor="bannerCtaLabelAr">
+              <input id="bannerCtaLabelAr" name="bannerCtaLabelAr" defaultValue={home.bannerCtaLabelAr} dir="rtl" className={inputClass} />
+            </Field>
+          </Grid>
+
+          <Grid>
+            <Field
+              label="Button link"
+              htmlFor="bannerCtaHref"
+              hint="A path on this site, for example /library. Leave empty for a banner without a button."
+              className="mt-4"
+            >
+              <input id="bannerCtaHref" name="bannerCtaHref" defaultValue={home.bannerCtaHref} placeholder="/library" className={inputClass} />
+            </Field>
+            <div className="mt-4">
+              <MediaField
+                name="bannerImageUrl"
+                label="Background image"
+                defaultValue={home.bannerImageUrl ?? ''}
+                hint="Wide artwork works best. Without one the band uses the brand's dark ink."
+              />
+            </div>
+          </Grid>
+        </Card>
+
+        <Card
+          title="FAQ block"
+          description="The collapsible questions near the bottom of the page. Write them under Homepage questions."
+        >
+          <Grid>
+            <Field label="Eyebrow (EN)" htmlFor="faqEyebrowEn">
+              <input id="faqEyebrowEn" name="faqEyebrowEn" defaultValue={home.faqEyebrowEn} className={inputClass} />
+            </Field>
+            <Field label="Eyebrow (AR)" htmlFor="faqEyebrowAr">
+              <input id="faqEyebrowAr" name="faqEyebrowAr" defaultValue={home.faqEyebrowAr} dir="rtl" className={inputClass} />
+            </Field>
+            <Field label="Headline (EN)" htmlFor="faqHeadlineEn" hint="Leave empty to use “Frequently Asked Questions”.">
+              <input id="faqHeadlineEn" name="faqHeadlineEn" defaultValue={home.faqHeadlineEn} className={inputClass} />
+            </Field>
+            <Field label="Headline (AR)" htmlFor="faqHeadlineAr">
+              <input id="faqHeadlineAr" name="faqHeadlineAr" defaultValue={home.faqHeadlineAr} dir="rtl" className={inputClass} />
+            </Field>
+            <Field label="Intro (EN)" htmlFor="faqBodyEn">
+              <textarea id="faqBodyEn" name="faqBodyEn" rows={3} defaultValue={home.faqBodyEn} className={inputClass} />
+            </Field>
+            <Field label="Intro (AR)" htmlFor="faqBodyAr">
+              <textarea id="faqBodyAr" name="faqBodyAr" rows={3} defaultValue={home.faqBodyAr} dir="rtl" className={inputClass} />
+            </Field>
+          </Grid>
+          <p className="mt-4 text-sm text-slate-500">
+            {countFor('ACCORDION')} question(s) in this block.{' '}
+            <Link href="/admin/homepage/questions" className="font-semibold text-slate-700 underline">
+              Edit the questions
+            </Link>
+          </p>
         </Card>
 
         <Card title="Closing call to action">

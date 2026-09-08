@@ -8,6 +8,7 @@ import {
 } from './content';
 import { pick, type Locale } from './i18n';
 import { env } from './env';
+import { publicWebsiteUrl } from './site-url';
 import { getDictionary } from './dictionary';
 import type { NavLink } from '@/components/public/Navbar';
 import type {
@@ -129,8 +130,10 @@ export async function getLayoutData(locale: Locale) {
       whatsapp: settings.whatsapp,
       address: pick(settings, 'address', locale),
       // The public site URL, shown in the footer as the studio's own address.
-      // It comes from configuration rather than being typed into a component.
-      website: env.siteUrl,
+      // It comes from configuration rather than being typed into a component,
+      // and is resolved so a hosting platform's hostname can never surface
+      // here in place of the brand's domain.
+      website: publicWebsiteUrl(env.siteUrl),
     },
   };
 }

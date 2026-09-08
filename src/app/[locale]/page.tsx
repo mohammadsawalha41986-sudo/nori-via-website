@@ -7,6 +7,10 @@ import { ProjectCard } from '@/components/public/ProjectCard';
 import { ResourceCard } from '@/components/public/ResourceCard';
 import { EmptyState } from '@/components/public/EmptyState';
 import { CTASection } from '@/components/public/CTASection';
+import { QuestionList } from '@/components/public/QuestionList';
+import { FaqSection } from '@/components/public/FaqAccordion';
+import { ServiceShowcase } from '@/components/public/ServiceShowcase';
+import { FeatureBanner } from '@/components/public/FeatureBanner';
 import { Metrics } from '@/components/public/Metrics';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { Reveal } from '@/components/ui/Reveal';
@@ -15,6 +19,7 @@ import { getDictionary } from '@/lib/dictionary';
 import { isLocale, pick, type Locale } from '@/lib/i18n';
 import {
   getHomepage,
+  getHomepageFaqs,
   getSystemStages,
   getFeaturedProjects,
   getStatistics,
@@ -40,7 +45,19 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   const locale = raw as Locale;
   const dict = getDictionary(locale);
 
-  const [home, settings, stageRows, projects, stats, services, tools, resources, insights] = await Promise.all([
+  const [
+    home,
+    settings,
+    stageRows,
+    projects,
+    stats,
+    services,
+    tools,
+    resources,
+    insights,
+    numberedQuestions,
+    faqQuestions,
+  ] = await Promise.all([
     getHomepage(),
     getSettings(),
     getSystemStages(),
@@ -50,6 +67,8 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     getFeaturedTools(3),
     getFeaturedResources(3),
     getPublishedInsights(),
+    getHomepageFaqs('NUMBERED'),
+    getHomepageFaqs('ACCORDION'),
   ]);
 
   const featuredInsights = insights.slice(0, 3);
@@ -60,6 +79,32 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         include: { project: true },
       })
     : null;
+
+  /** A question is only worth a row once it actually asks something. */
+  const toQuestions = (rows: typeof numberedQuestions) =>
+    rows
+      .map((row) => ({
+        id: row.id,
+        question: pick(row, 'question', locale),
+        answer: pick(row, 'answer', locale),
+      }))
+      .filter((row) => row.question);
+
+  const questions = toQuestions(numberedQuestions);
+  const faqs = toQuestions(faqQuestions);
+
+  // The promoted services card, if the chosen service is still published.
+  const featuredService = home.featuredServiceId
+    ? services.find((service) => service.id === home.featuredServiceId) ?? null
+    : null;
+
+  const toShowcase = (service: (typeof services)[number]) => ({
+    id: service.id,
+    slug: service.slug,
+    name: pick(service, 'name', locale),
+    summary: pick(service, 'summary', locale),
+    image: service.featuredImage,
+  });
 
   const stages: Stage[] = stageRows.map((s) => ({
     id: s.id,
@@ -93,6 +138,23 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         }}
       />
 
+      {/* Homepage FAQs are eligible for rich results, so they are described too. */}
+      {faqs.length > 0 && (
+        <JsonLd
+          data={{
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: faqs
+              .filter((f) => f.answer)
+              .map((f) => ({
+                '@type': 'Question',
+                name: f.question,
+                acceptedAnswer: { '@type': 'Answer', text: f.answer },
+              })),
+          }}
+        />
+      )}
+
       <Hero
         locale={locale}
         eyebrow={pick(home, 'heroEyebrow', locale)}
@@ -110,6 +172,14 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       />
 
       <SystemStages headline={pick(home, 'systemHeadline', locale)} stages={stages} />
+
+      {/* The questions an owner is usually left carrying on their own. */}
+      <QuestionList
+        eyebrow={pick(home, 'questionsEyebrow', locale)}
+        headline={pick(home, 'questionsHeadline', locale)}
+        body={pick(home, 'questionsBody', locale)}
+        items={questions}
+      />
 
       {/* Selected work */}
       <section className="bg-bone py-24 sm:py-32">
@@ -231,30 +301,16 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </section>
       )}
 
-      {/* Services index preview */}
-      {services.length > 0 && (
-        <section className="bg-bone py-24 sm:py-32">
-          <div className="shell">
-            <div className="mb-12 flex flex-wrap items-end justify-between gap-6">
-              <SectionHeading eyebrow={dict.nav.services} title={dict.nav.services} className="mb-0" />
-              <TextLink href={`/${locale}/services`}>{dict.common.allServices}</TextLink>
-            </div>
-
-            <ul className="flex flex-wrap gap-2">
-              {services.map((s, i) => (
-                <Reveal as="li" key={s.id} delay={Math.min(i, 12) * 30} y={12}>
-                  <Link
-                    href={`/${locale}/services/${s.slug}`}
-                    className="inline-flex rounded-full border border-ink-900/15 px-5 py-3 text-sm font-medium text-ink-600 transition-all duration-300 ease-noriva hover:border-brand hover:bg-brand hover:text-white"
-                  >
-                    {pick(s, 'name', locale)}
-                  </Link>
-                </Reveal>
-              ))}
-            </ul>
-          </div>
-        </section>
-      )}
+      {/* Services, as cards with one of them promoted. Falls back to the
+          navigation label so the section survives an empty headline. */}
+      <ServiceShowcase
+        locale={locale}
+        headline={pick(home, 'servicesHeadline', locale) || dict.nav.services}
+        body={pick(home, 'servicesBody', locale)}
+        allLabel={dict.common.allServices}
+        services={services.filter((service) => service.id !== featuredService?.id).map(toShowcase)}
+        featured={featuredService ? toShowcase(featuredService) : null}
+      />
 
       {/* Featured tools — only what the CMS has actually published */}
       {tools.length > 0 && (
@@ -357,6 +413,22 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           </div>
         </section>
       )}
+
+      <FeatureBanner
+        eyebrow={pick(home, 'bannerEyebrow', locale)}
+        headline={pick(home, 'bannerHeadline', locale)}
+        body={pick(home, 'bannerBody', locale)}
+        ctaLabel={pick(home, 'bannerCtaLabel', locale)}
+        ctaHref={home.bannerCtaHref ? `/${locale}${home.bannerCtaHref === '/' ? '' : home.bannerCtaHref}` : ''}
+        imageUrl={home.bannerImageUrl}
+      />
+
+      <FaqSection
+        eyebrow={pick(home, 'faqEyebrow', locale)}
+        headline={pick(home, 'faqHeadline', locale) || (faqs.length ? dict.common.faq : '')}
+        body={pick(home, 'faqBody', locale)}
+        items={faqs}
+      />
 
       <CTASection
         headline={pick(home, 'ctaHeadline', locale) || dict.nav.start}

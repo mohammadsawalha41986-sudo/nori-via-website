@@ -92,6 +92,21 @@ const optionalImageUrl = optionalUrl.refine(
   IMAGE_URL_HINT,
 );
 
+/**
+ * A link to a page this site actually has. Empty means "no link", which is how
+ * a banner without a call to action is stored. Kept in step with the routes the
+ * navigation editor accepts, so the CMS can never publish a button that 404s.
+ */
+const internalPath = z
+  .string()
+  .trim()
+  .max(300)
+  .default('')
+  .refine(
+    (v) => v === '' || (v.startsWith('/') && isKnownInternalRoute(v)),
+    'Use a path this site has, for example /services or /library.',
+  );
+
 /** A gallery row: the image plus its bilingual alt text. */
 const galleryList = z
   .array(
@@ -263,9 +278,35 @@ export const homepageSchema = z.object({
   intelligenceBodyEn: trimmed(3000).default(''), intelligenceBodyAr: trimmed(3000).default(''),
   intelligenceItems: jsonArray,
   featuredCaseStudyId: z.string().trim().max(40).nullable().default(null),
+  questionsEyebrowEn: trimmed(120).default(''), questionsEyebrowAr: trimmed(120).default(''),
+  questionsHeadlineEn: trimmed(300).default(''), questionsHeadlineAr: trimmed(300).default(''),
+  questionsBodyEn: trimmed(800).default(''), questionsBodyAr: trimmed(800).default(''),
+  faqEyebrowEn: trimmed(120).default(''), faqEyebrowAr: trimmed(120).default(''),
+  faqHeadlineEn: trimmed(300).default(''), faqHeadlineAr: trimmed(300).default(''),
+  faqBodyEn: trimmed(800).default(''), faqBodyAr: trimmed(800).default(''),
+  servicesHeadlineEn: trimmed(300).default(''), servicesHeadlineAr: trimmed(300).default(''),
+  servicesBodyEn: trimmed(800).default(''), servicesBodyAr: trimmed(800).default(''),
+  featuredServiceId: z.string().trim().max(40).nullable().default(null),
+  bannerEyebrowEn: trimmed(120).default(''), bannerEyebrowAr: trimmed(120).default(''),
+  bannerHeadlineEn: trimmed(300).default(''), bannerHeadlineAr: trimmed(300).default(''),
+  bannerBodyEn: trimmed(800).default(''), bannerBodyAr: trimmed(800).default(''),
+  bannerCtaLabelEn: trimmed(80).default(''), bannerCtaLabelAr: trimmed(80).default(''),
+  bannerCtaHref: internalPath,
+  bannerImageUrl: optionalImageUrl,
   ctaHeadlineEn: trimmed(300).default(''), ctaHeadlineAr: trimmed(300).default(''),
   ctaDescriptionEn: trimmed(800).default(''), ctaDescriptionAr: trimmed(800).default(''),
   ctaLabelEn: trimmed(80).default(''), ctaLabelAr: trimmed(80).default(''),
+});
+
+/** A question in one of the homepage's two question blocks. */
+export const homepageFaqSchema = z.object({
+  group: z.enum(['NUMBERED', 'ACCORDION']).default('ACCORDION'),
+  questionEn: trimmed(300).min(1),
+  questionAr: trimmed(300).default(''),
+  answerEn: trimmed(2000).default(''),
+  answerAr: trimmed(2000).default(''),
+  order: z.coerce.number().int().min(0).max(9999).default(0),
+  visible: z.boolean().default(true),
 });
 
 export const statisticSchema = z.object({

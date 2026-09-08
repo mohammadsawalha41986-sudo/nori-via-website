@@ -38,6 +38,10 @@ nothing the second time.
   client, a benchmark or an industry statistic; where a figure appears it is
   arithmetic inside a worked example and is labelled illustrative.
 - **36 library resources** and **10 calculators**.
+- **9 homepage questions** — four in the open-questions block and five in the
+  FAQ block, in both languages. They answer with method rather than with a
+  number, so none of them claims a result. Edit them in Admin → Homepage
+  questions; a block an editor has already written is never added to.
 
 **Deliberately left empty, because inventing them would fabricate facts:**
 

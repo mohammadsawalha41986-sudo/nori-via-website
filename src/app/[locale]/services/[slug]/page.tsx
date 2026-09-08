@@ -5,6 +5,7 @@ import { PageHero } from '@/components/public/PageHero';
 import { CTASection } from '@/components/public/CTASection';
 import { RelatedContent } from '@/components/public/RelatedContent';
 import { ProjectCard } from '@/components/public/ProjectCard';
+import { FaqAccordion } from '@/components/public/FaqAccordion';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { Reveal } from '@/components/ui/Reveal';
 import { Prose } from '@/components/ui/Prose';
@@ -284,26 +285,10 @@ export default async function ServiceDetailPage({
         <section className="bg-white py-24 sm:py-32">
           <div className="shell max-w-3xl">
             <SectionHeading title={dict.common.faq} />
-            <div className="mt-10 border-t border-ink-900/10">
-              {faqEntries.map((f, i) => (
-                <Reveal key={i} delay={i * 50} y={14}>
-                  <details className="group border-b border-ink-900/10 py-5">
-                    <summary className="flex cursor-pointer list-none items-start justify-between gap-6 text-start font-semibold text-ink-900 marker:hidden">
-                      {f.q}
-                      <span
-                        aria-hidden
-                        className="mt-1 shrink-0 text-brand transition-transform duration-300 group-open:rotate-45"
-                      >
-                        +
-                      </span>
-                    </summary>
-                    <div className="pt-4">
-                      <Prose text={f.a} />
-                    </div>
-                  </details>
-                </Reveal>
-              ))}
-            </div>
+            <FaqAccordion
+              className="mt-10 border-t border-ink-900/10"
+              items={faqEntries.map((f, i) => ({ id: String(i), question: f.q, answer: f.a }))}
+            />
           </div>
         </section>
       )}
