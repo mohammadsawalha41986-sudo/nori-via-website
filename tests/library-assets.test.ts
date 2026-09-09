@@ -8,18 +8,21 @@ import { LIBRARY_ASSETS } from '../scripts/content/library-assets.mjs';
 const root = process.cwd();
 
 describe('bundled Library resources', () => {
-  it('ships the requested 35 XLSX, 15 DOCX and 10 PDF files', () => {
+  it('ships the requested 42 XLSX, 19 DOCX and 20 PDF files', () => {
     const counts = LIBRARY_ASSETS.reduce<Record<string, number>>((all, asset) => {
       all[asset.type] = (all[asset.type] || 0) + 1;
       return all;
     }, {});
-    expect(LIBRARY_ASSETS).toHaveLength(60);
-    expect(counts).toEqual({ EXCEL: 35, WORD: 15, PDF: 10 });
+    expect(LIBRARY_ASSETS).toHaveLength(81);
+    expect(counts).toEqual({ EXCEL: 42, WORD: 19, PDF: 20 });
   });
 
   it('has unique, bilingual and complete catalogue metadata', () => {
-    expect(new Set(LIBRARY_ASSETS.map((asset) => asset.slug)).size).toBe(60);
-    expect(new Set(LIBRARY_ASSETS.map((asset) => asset.sourcePath)).size).toBe(60);
+    // Counted against the manifest itself: a duplicate slug or source path is
+    // the defect being tested for, not the catalogue's size.
+    expect(new Set(LIBRARY_ASSETS.map((asset) => asset.slug)).size).toBe(LIBRARY_ASSETS.length);
+    expect(new Set(LIBRARY_ASSETS.map((asset) => asset.storageKey)).size).toBe(LIBRARY_ASSETS.length);
+    expect(new Set(LIBRARY_ASSETS.map((asset) => asset.sourcePath)).size).toBe(LIBRARY_ASSETS.length);
 
     for (const asset of LIBRARY_ASSETS) {
       expect(asset.slug).toMatch(/^[a-z0-9-]+$/);

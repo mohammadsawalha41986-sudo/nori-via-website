@@ -1,6 +1,6 @@
 /** Launch-readiness audit for the database-backed public catalogue. */
 import 'dotenv/config';
-import { existsSync } from 'node:fs';
+import { existsSync, statSync } from 'node:fs';
 import path from 'node:path';
 import { PrismaClient } from '@prisma/client';
 import { LIBRARY_ASSETS } from './content/library-assets.mjs';
@@ -64,6 +64,38 @@ async function main() {
   );
   const missingAssetRecords = LIBRARY_ASSETS.filter((asset) => !configuredAssets.some((row) => row.slug === asset.slug));
 
+  /* Every published resource must actually be downloadable — not only the ones
+     this repository ships. A row published through Admin with a lost file is
+     the same dead download to a visitor, so the check follows the promise the
+     page makes rather than the manifest. */
+  const publishedResources = await prisma.resource.findMany({
+    where: { status: 'PUBLISHED' },
+    select: { slug: true, fileKey: true, fileName: true, fileSize: true, externalUrl: true },
+  });
+  const brokenDownloads = publishedResources.filter((row) => {
+    if (row.externalUrl) return false;
+    if (!row.fileKey || !row.fileName || row.fileSize <= 0) return true;
+    const onDisk = path.resolve(storageRoot, row.fileKey);
+    if (!existsSync(onDisk)) return true;
+    // A file that exists but is empty answers 200 with nothing in it.
+    return statSync(onDisk).size === 0;
+  });
+
+  /* A link is only useful if both ends still exist. contentLink stores plain
+     ids with no foreign key, so a deleted row leaves a link pointing nowhere
+     and the related-content rail renders a gap. */
+  const linkIds = {
+    SERVICE: new Set((await prisma.service.findMany({ select: { id: true } })).map((r) => r.id)),
+    INSIGHT: new Set((await prisma.insight.findMany({ select: { id: true } })).map((r) => r.id)),
+    RESOURCE: new Set((await prisma.resource.findMany({ select: { id: true } })).map((r) => r.id)),
+    TOOL: new Set((await prisma.tool.findMany({ select: { id: true } })).map((r) => r.id)),
+    PROJECT: new Set((await prisma.project.findMany({ select: { id: true } })).map((r) => r.id)),
+    CASE_STUDY: new Set((await prisma.caseStudy.findMany({ select: { id: true } })).map((r) => r.id)),
+  };
+  const danglingLinks = (await prisma.contentLink.findMany({ select: { id: true, fromType: true, fromId: true, toType: true, toId: true } }))
+    .filter((link) => !linkIds[link.fromType]?.has(link.fromId) || !linkIds[link.toType]?.has(link.toId))
+    .map((link) => `${link.fromType}:${link.fromId} -> ${link.toType}:${link.toId}`);
+
   const imageCounts = {
     services: await prisma.service.count({ where: { status: 'PUBLISHED', featuredImage: { not: null } } }),
     insights: await prisma.insight.count({ where: { status: 'PUBLISHED', coverImage: { not: null } } }),
@@ -72,6 +104,20 @@ async function main() {
     projects: await prisma.project.count({ where: { status: 'PUBLISHED', heroMediaUrl: { not: null } } }),
     caseStudies: await prisma.caseStudy.count({ where: { status: 'PUBLISHED', heroMediaUrl: { not: null } } }),
   };
+  /* Counts alone cannot say which record is missing its image. */
+  const missingImages = [];
+  for (const [label, [model, field]] of Object.entries({
+    services: ['service', 'featuredImage'], insights: ['insight', 'coverImage'],
+    resources: ['resource', 'thumbnail'], tools: ['tool', 'thumbnail'],
+    projects: ['project', 'heroMediaUrl'], caseStudies: ['caseStudy', 'heroMediaUrl'],
+  })) {
+    const rows = await prisma[model].findMany({
+      where: { status: 'PUBLISHED', OR: [{ [field]: null }, { [field]: '' }] },
+      select: { slug: true },
+    });
+    for (const row of rows) missingImages.push(`${label}:${row.slug}`);
+  }
+
   const report = {
     published,
     downloadableFiles: configuredAssets.length - missingDownloads.length,
@@ -85,6 +131,9 @@ async function main() {
     missingTranslations,
     missingDownloads: missingDownloads.map((row) => row.slug),
     missingAssetRecords: missingAssetRecords.map((asset) => asset.slug),
+    brokenDownloads: brokenDownloads.map((row) => row.slug),
+    danglingLinks,
+    missingImages,
     drafts,
   };
   if (SUMMARY) {
@@ -96,7 +145,8 @@ async function main() {
         `resources=${published.resources} tools=${published.tools} projects=${published.projects} ` +
         `caseStudies=${published.caseStudies} downloads=${report.downloadableFiles}/${LIBRARY_ASSETS.length} ` +
         `relations=${report.relationships} missingTranslations=${t} ` +
-        `missingDownloads=${missingDownloads.length} drafts=${drafts.length}`,
+        `missingDownloads=${missingDownloads.length} brokenDownloads=${brokenDownloads.length} ` +
+        `danglingLinks=${danglingLinks.length} missingImages=${missingImages.length} drafts=${drafts.length}`,
     );
     // Naming them turns "3 rows are short a translation" into something an
     // editor can act on, which matters most where the database cannot be
@@ -109,8 +159,13 @@ async function main() {
   }
 
   const translationFailures = Object.values(missingTranslations).flat().length;
-  const failed = published.services < 56 || published.insights < 20 || published.resources < 60 || published.tools < 14 ||
-    published.projects < 6 || published.caseStudies < 6 || missingDownloads.length || missingAssetRecords.length || translationFailures;
+  /* The resource floor is the size of the shipped manifest, so adding a
+     document to the Library raises the bar automatically and no number here
+     has to be maintained by hand. */
+  const failed = published.services < 56 || published.insights < 20 || published.resources < LIBRARY_ASSETS.length ||
+    published.tools < 14 || published.projects < 6 || published.caseStudies < 6 ||
+    missingDownloads.length || missingAssetRecords.length || translationFailures ||
+    brokenDownloads.length || danglingLinks.length || missingImages.length;
   if (failed) process.exitCode = 1;
 }
 
