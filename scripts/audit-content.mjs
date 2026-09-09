@@ -6,6 +6,7 @@ import { PrismaClient } from '@prisma/client';
 import { LIBRARY_ASSETS } from './content/library-assets.mjs';
 
 const prisma = new PrismaClient();
+const SUMMARY = process.argv.includes('--summary');
 const empty = (field) => ({ [field]: '' });
 
 const models = {
@@ -86,7 +87,20 @@ async function main() {
     missingAssetRecords: missingAssetRecords.map((asset) => asset.slug),
     drafts,
   };
-  console.log(JSON.stringify(report, null, 2));
+  if (SUMMARY) {
+    // One line, for boot logs on a host where the only way to see production
+    // state is what the deploy prints.
+    const t = Object.values(missingTranslations).flat().length;
+    console.log(
+      `[content-audit] services=${published.services} insights=${published.insights} ` +
+        `resources=${published.resources} tools=${published.tools} projects=${published.projects} ` +
+        `caseStudies=${published.caseStudies} downloads=${report.downloadableFiles}/${LIBRARY_ASSETS.length} ` +
+        `relations=${report.relationships} missingTranslations=${t} ` +
+        `missingDownloads=${missingDownloads.length} drafts=${drafts.length}`,
+    );
+  } else {
+    console.log(JSON.stringify(report, null, 2));
+  }
 
   const translationFailures = Object.values(missingTranslations).flat().length;
   const failed = published.services < 56 || published.insights < 20 || published.resources < 60 || published.tools < 14 ||
