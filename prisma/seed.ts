@@ -510,6 +510,42 @@ async function main() {
   for (const s of SERVICES) {
     const category = await prisma.serviceCategory.findUnique({ where: { slug: s.category } });
     order += 1;
+
+    /* An existing row is backfilled, not replaced.
+     *
+     * `update: {}` leaves a row exactly as the seed that first created it left
+     * it, so any field added to SERVICES afterwards stays empty on a database
+     * seeded before that — which is how three live services ended up published
+     * with an empty Arabic column. Only columns that are currently blank are
+     * written, so an editor's text is never touched and a field they cleared
+     * is the one case this refills. */
+    const existing = await prisma.service.findUnique({ where: { slug: s.slug } });
+    if (existing) {
+      const backfill: Prisma.ServiceUpdateInput = {};
+      const fill = (key: keyof typeof existing & keyof Prisma.ServiceUpdateInput, value: string) => {
+        if (!String(existing[key] ?? '').trim() && value) {
+          (backfill as Record<string, string>)[key] = value;
+        }
+      };
+      fill('nameEn', s.nameEn);
+      fill('nameAr', s.nameAr);
+      fill('summaryEn', s.summaryEn);
+      fill('summaryAr', s.summaryAr);
+      fill('heroDescriptionEn', s.summaryEn);
+      fill('heroDescriptionAr', s.summaryAr);
+      fill('whatWeDoEn', s.whatWeDoEn);
+      fill('whatWeDoAr', s.whatWeDoAr);
+      fill('whyItMattersEn', s.whyEn);
+      fill('whyItMattersAr', s.whyAr);
+      fill('approachEn', s.approachEn);
+      fill('approachAr', s.approachAr);
+      if (Object.keys(backfill).length) {
+        await prisma.service.update({ where: { slug: s.slug }, data: backfill });
+        console.log(`  ↺ backfilled ${s.slug}: ${Object.keys(backfill).join(', ')}`);
+      }
+      continue;
+    }
+
     await prisma.service.upsert({
       where: { slug: s.slug },
       update: {},
