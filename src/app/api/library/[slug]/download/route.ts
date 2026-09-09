@@ -24,10 +24,19 @@ export async function GET(req: Request, { params }: { params: Promise<{ slug: st
   });
   if (!resource) return new NextResponse('Not found', { status: 404 });
 
+  // A router prefetch reaches this route without anybody asking for the file,
+  // so it must never be counted: the figure is shown on the resource page, and
+  // counting speculative fetches would publish a download total nobody earned.
+  const prefetch =
+    req.headers.get('next-router-prefetch') !== null ||
+    req.headers.get('purpose') === 'prefetch' ||
+    req.headers.get('sec-purpose')?.includes('prefetch') === true ||
+    new URL(req.url).searchParams.has('_rsc');
+
   // Counted at most a few times per visitor per resource, so a refresh loop
   // cannot inflate the download statistics.
   const ip = clientIp(req);
-  const countable = await rateLimit(`download:${resource.id}:${ip}`, 3, 3600_000);
+  const countable = prefetch ? { ok: false as const } : await rateLimit(`download:${resource.id}:${ip}`, 3, 3600_000);
   if (countable.ok) {
     await Promise.all([
       prisma.resource.update({ where: { id: resource.id }, data: { downloadCount: { increment: 1 } } }),

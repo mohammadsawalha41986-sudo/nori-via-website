@@ -37,6 +37,7 @@ export function MagneticButton({
   onClick,
   type,
   disabled,
+  plain,
 }: {
   href?: string;
   children: React.ReactNode;
@@ -46,6 +47,13 @@ export function MagneticButton({
   onClick?: () => void;
   type?: 'button' | 'submit';
   disabled?: boolean;
+  /**
+   * Render a plain anchor instead of a router link. Required whenever the href
+   * is a file rather than a page: the router prefetches its links, and a
+   * prefetch of a download endpoint transfers the file and is recorded as a
+   * download that nobody asked for.
+   */
+  plain?: boolean;
 }) {
   const ref = useRef<HTMLElement>(null);
   const [offset, setOffset] = useState({ x: 0, y: 0 });
@@ -74,6 +82,13 @@ export function MagneticButton({
   );
 
   if (href) {
+    if (plain) {
+      return (
+        <a href={href} {...shared} onClick={onClick}>
+          {content}
+        </a>
+      );
+    }
     return (
       <Link href={href} {...shared} onClick={onClick}>
         {content}
