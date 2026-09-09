@@ -217,6 +217,17 @@ def load_manifest() -> list[dict]:
         return json.load(fh)["images"]
 
 
+def _present(path: str) -> bool:
+    """True when the file exists *and* holds an image.
+
+    A zero-byte file is a failed or interrupted write, not art direction. Plain
+    `os.path.exists` treats one as done, so an empty file survives every re-run
+    while the pages referencing it render a broken image: the file is served,
+    but the image optimiser cannot decode it and answers 400.
+    """
+    return os.path.exists(path) and os.path.getsize(path) > 0
+
+
 def main() -> None:
     """Renders anything missing from public/img.
 
@@ -230,7 +241,7 @@ def main() -> None:
 
     written = 0
     for name, w, h, ramp in SPECS:
-        if not force and os.path.exists(os.path.join(OUT, f"{name}.jpg")):
+        if not force and _present(os.path.join(OUT, f"{name}.jpg")):
             continue
         role = "content" if name.split("-")[0] in {"work", "gallery", "insight", "service"} else "backdrop"
         render(name, w, h, ramp, role=role)
@@ -238,7 +249,7 @@ def main() -> None:
 
     manifest = load_manifest()
     for item in manifest:
-        if not force and os.path.exists(os.path.join(OUT, f"{item['name']}.webp")):
+        if not force and _present(os.path.join(OUT, f"{item['name']}.webp")):
             continue
         render(
             item["name"],
