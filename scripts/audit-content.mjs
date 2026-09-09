@@ -98,6 +98,12 @@ async function main() {
         `relations=${report.relationships} missingTranslations=${t} ` +
         `missingDownloads=${missingDownloads.length} drafts=${drafts.length}`,
     );
+    // Naming them turns "3 rows are short a translation" into something an
+    // editor can act on, which matters most where the database cannot be
+    // queried directly and the log is the only view of it.
+    for (const [label, rows] of Object.entries(missingTranslations)) {
+      if (rows.length) console.log(`[content-audit] ${label} missing a translation: ${rows.map((r) => r.slug).join(', ')}`);
+    }
   } else {
     console.log(JSON.stringify(report, null, 2));
   }
