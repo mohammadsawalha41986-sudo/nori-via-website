@@ -77,6 +77,10 @@ ok('dashboard shows the inquiry inbox', (await page.textContent('body')).include
 // ---- 4. Edit the homepage hero and verify it on the public site ----------
 const NEW_HEADLINE = 'WE MAKE RESTAURANTS\nIMPOSSIBLE TO IGNORE.\nEDITED FROM ADMIN.';
 await page.goto(`${BASE}/admin/homepage`, { waitUntil: 'networkidle' });
+// Kept so the headline can be put back: this suite edits live content, and
+// leaving test copy on the homepage would both mislead anyone looking at the
+// environment and break the suites that assert the real positioning line.
+const ORIGINAL_HEADLINE = await page.inputValue('#heroHeadlineEn');
 await page.fill('#heroHeadlineEn', NEW_HEADLINE);
 await page.click('main button:has-text("Save changes")');
 await page.waitForSelector('form [role=status]', { timeout: 20000 });
@@ -86,6 +90,16 @@ const pub = await ctx.newPage();
 await pub.goto(`${BASE}/en`, { waitUntil: 'networkidle' });
 const h1 = (await pub.textContent('h1')) || '';
 ok('edited headline appears on the public homepage', h1.includes('EDITED FROM ADMIN'), h1.replace(/\s+/g, ' ').trim());
+
+// Put the real headline back before moving on, so a failure later in the run
+// cannot leave the homepage advertising the test string.
+await page.goto(`${BASE}/admin/homepage`, { waitUntil: 'networkidle' });
+await page.fill('#heroHeadlineEn', ORIGINAL_HEADLINE);
+await page.click('main button:has-text("Save changes")');
+await page.waitForSelector('form [role=status]', { timeout: 20000 });
+await pub.goto(`${BASE}/en`, { waitUntil: 'networkidle' });
+ok('homepage headline is restored', ((await pub.textContent('h1')) || '').trim() === ORIGINAL_HEADLINE.trim(),
+  ((await pub.textContent('h1')) || '').replace(/\s+/g, ' ').trim());
 
 // ---- 5. Create and publish a service, verify it appears publicly ---------
 await page.goto(`${BASE}/admin/services/new`, { waitUntil: 'networkidle' });

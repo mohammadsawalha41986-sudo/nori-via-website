@@ -1,3 +1,5 @@
+import { basename } from 'node:path';
+import { PrismaClient } from '@prisma/client';
 import { chromium } from 'playwright';
 
 const BASE = process.env.QA_BASE_URL ?? 'http://127.0.0.1:3000';
@@ -5,6 +7,9 @@ const EMAIL = process.env.QA_EMAIL ?? 'qa@example.com';
 const PASSWORD = process.env.QA_PASSWORD ?? 'LocalQaPassword123!';
 const CHROMIUM = process.env.QA_CHROMIUM;
 const FIXTURE = process.env.QA_XLSX ?? '/var/tmp/qa-model.xlsx';
+// The attachment keeps its original name, so the expectation follows whichever
+// fixture this run was pointed at rather than one hard-coded file.
+const FIXTURE_NAME = basename(FIXTURE);
 const results = [];
 const check = (name, ok, detail = '') => {
   results.push({ name, ok });
@@ -75,7 +80,7 @@ const brief = await page.locator('body').innerText();
 check('admin shows the requested service', brief.includes('menu-strategy-engineering-pricing'));
 check('admin shows the structured brief', brief.includes('Service brief') && brief.includes('Too many items'));
 check('admin shows the multi-select answer', brief.includes('delivery'));
-check('admin lists the attachment', /qa-model\.xlsx/.test(brief));
+check('admin lists the attachment', brief.includes(FIXTURE_NAME), FIXTURE_NAME);
 
 // ------------------------------------------------------------------- tools
 const toolChecks = [
@@ -98,11 +103,37 @@ check('Start Here asks the F&B question in Arabic', startAr.includes('أريد �
 check('Start Here routes to the menu service', (await page.locator('a[href*="/services/menu-strategy-engineering-pricing"]').count()) > 0);
 
 // ------------------------------------------------------- drafts stay private
+// Bound to whatever is unpublished right now instead of fixed slugs: publishing
+// a catalogue entry must never silently turn this check into a no-op.
+const prisma = new PrismaClient();
+const [draftServices, draftResources] = await Promise.all([
+  prisma.service.findMany({ where: { status: 'DRAFT' }, select: { slug: true }, orderBy: { slug: 'asc' } }),
+  prisma.resource.findMany({ where: { status: 'DRAFT' }, select: { slug: true }, orderBy: { slug: 'asc' } }),
+]);
+await prisma.$disconnect();
+
 const anon = await browser.newContext();
-check('draft services are not public', (await anon.request.get(`${BASE}/en/services/cafe-consulting`)).status() === 404);
-check('draft library entries are not public', (await anon.request.get(`${BASE}/en/library/menu-engineering-template`)).status() === 404);
+const unreachable = async (paths) => {
+  const leaked = [];
+  for (const path of paths) {
+    if ((await anon.request.get(`${BASE}${path}`)).status() !== 404) leaked.push(path);
+  }
+  return leaked;
+};
+
+const leakedServices = await unreachable(draftServices.map((r) => `/en/services/${r.slug}`));
+check(`draft services are not public (${draftServices.length})`, leakedServices.length === 0, leakedServices.join(', '));
+
+const leakedResources = await unreachable(draftResources.map((r) => `/en/library/${r.slug}`));
+check(`draft library entries are not public (${draftResources.length})`, leakedResources.length === 0, leakedResources.join(', '));
+
 const servicesIndex = await (await anon.request.get(`${BASE}/en/services`)).text();
-check('draft services are off the index', !servicesIndex.includes('cafe-consulting'));
+const onIndex = draftServices.filter((r) => servicesIndex.includes(`/services/${r.slug}`));
+check('draft services are off the index', onIndex.length === 0, onIndex.map((r) => r.slug).join(', '));
+
+const libraryIndex = await (await anon.request.get(`${BASE}/en/library`)).text();
+const onLibrary = draftResources.filter((r) => libraryIndex.includes(`/library/${r.slug}`));
+check('draft library entries are off the index', onLibrary.length === 0, onLibrary.map((r) => r.slug).join(', '));
 await anon.close();
 
 // ------------------------------------------------------------------ search

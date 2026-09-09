@@ -2,6 +2,7 @@
  * Platform suite: the design system, Library, Tools, content relationships,
  * publishing states, search, admin preview and navigation validation.
  */
+import { basename } from 'node:path';
 import { chromium } from 'playwright';
 
 const BASE = process.env.QA_BASE_URL ?? 'http://127.0.0.1:3000';
@@ -9,6 +10,9 @@ const EMAIL = process.env.QA_EMAIL ?? 'qa@example.com';
 const PASSWORD = process.env.QA_PASSWORD ?? 'LocalQaPassword123!';
 const CHROMIUM = process.env.QA_CHROMIUM;
 const FIXTURE = process.env.QA_XLSX ?? '/var/tmp/qa-model.xlsx';
+// The upload keeps its original name, so the expected Content-Disposition
+// follows whichever fixture this run was pointed at.
+const FIXTURE_NAME = basename(FIXTURE);
 
 const results = [];
 const check = (name, ok, detail = '') => {
@@ -147,8 +151,10 @@ const download = await context.request.get(`${BASE}/api/library/qa-profitability
 const body = await download.body();
 check('download serves the uploaded file',
   download.status() === 200 && body.subarray(0, 2).toString('latin1') === 'PK', `${body.length} bytes`);
+const disposition = download.headers()['content-disposition'] ?? '';
 check('download is an attachment with the original name',
-  (download.headers()['content-disposition'] ?? '').includes('qa-model.xlsx'));
+  disposition.startsWith('attachment;') && disposition.includes(encodeURIComponent(FIXTURE_NAME)),
+  disposition);
 check('unknown resource download 404s', (await context.request.get(`${BASE}/api/library/nope/download`)).status() === 404);
 
 // -------------------------------------------------------------------- tools
