@@ -1039,7 +1039,36 @@ async function main() {
       ? `[content-depth]${REPORT_ONLY ? ' (report only)' : ''} ${changes.length} changes: ${changes.join(', ')}`
       : '[content-depth] nothing to fill; no changes made.',
   );
+  reportStorage();
   await prisma.$disconnect();
+}
+
+/**
+ * Prints where the Library files actually landed.
+ *
+ * Downloads depend on a fact no database column records: whether the bundled
+ * files are on disk where the running server will look for them. On a platform
+ * that mounts a volume this is easy to get wrong — Railway, for one, does not
+ * mount volumes during the pre-deploy command, so provisioning that runs there
+ * writes the files into a container that is thrown away, leaving published
+ * resources whose download 404s while every migration and count looks healthy.
+ *
+ * So the run says it out loud, and warns when the storage root is outside a
+ * mounted volume that the platform has told us about.
+ */
+function reportStorage() {
+  const root = path.resolve(process.cwd(), process.env.STORAGE_DIR || './storage', 'private');
+  const present = LIBRARY_ASSETS.filter((asset) => existsSync(path.resolve(root, asset.storageKey))).length;
+  console.log(`[content-depth] library storage: ${present}/${LIBRARY_ASSETS.length} files under ${root}`);
+
+  const mount = process.env.RAILWAY_VOLUME_MOUNT_PATH;
+  if (mount && !`${root}${path.sep}`.startsWith(`${path.resolve(mount)}${path.sep}`)) {
+    console.warn(
+      `[content-depth] WARNING: storage root ${root} is outside the mounted volume ${mount}. ` +
+        'These files will not survive this container, so every Library download will 404. ' +
+        'Point STORAGE_DIR inside the volume and provision from the start command, not pre-deploy.',
+    );
+  }
 }
 
 main().catch(async (err) => {
