@@ -654,42 +654,90 @@ async function applyRelationships() {
   const themeFor = (text) => RELATION_THEMES.find((theme) => theme.match.test(text.toLowerCase())) || RELATION_THEMES.at(-1);
   const insightTheme = new Map(insights.map((row) => [row.id, themeFor(`${row.slug} ${JSON.stringify(row.tags)}`).key]));
 
-  const refsFor = (theme, fromType, fromId) => {
+  const LINK_LIMIT = 6;
+
+  /**
+   * The links a row is meant to have.
+   *
+   * The slots are decided by the theme, then filled — not the other way round.
+   * Resolving first and capping afterwards made the intended set depend on what
+   * happened to be published at that moment: with two of a theme's services
+   * absent, the cap stopped biting and a themed insight took a slot a service
+   * was meant to hold. The row then looked complete forever, and the same row
+   * on a full catalogue had different links. Deciding the slots from the theme
+   * keeps the intended set a pure function of the theme, so a reference that
+   * cannot be resolved yet simply reappears once its row exists.
+   */
+  const refsFor = (theme, fromType, fromSlug, fromId) => {
+    // A row never links to itself. That is a property of the row, not of the
+    // catalogue, so it is applied before the cap — unlike a reference that is
+    // merely unresolved, which must leave its slot reserved.
+    const declared = [
+      ...theme.services.slice(0, 2).map((slug) => ['SERVICE', slug]),
+      ...theme.resources.slice(0, 2).map((slug) => ['RESOURCE', slug]),
+      ...theme.tools.slice(0, 2).map((slug) => ['TOOL', slug]),
+    ]
+      .filter(([type, slug]) => !(type === fromType && slug === fromSlug))
+      .slice(0, LINK_LIMIT);
+
     const refs = [];
-    const add = (type, slugs) => {
-      for (const slug of slugs) {
-        const id = indexes[type].get(slug);
-        if (id && !(type === fromType && id === fromId)) refs.push({ toType: type, toId: id });
-      }
-    };
-    add('SERVICE', theme.services.slice(0, 2));
-    add('RESOURCE', theme.resources.slice(0, 2));
-    add('TOOL', theme.tools.slice(0, 2));
-    const relatedInsight = insights.find((row) => insightTheme.get(row.id) === theme.key && !(fromType === 'INSIGHT' && row.id === fromId));
-    if (relatedInsight) refs.push({ toType: 'INSIGHT', toId: relatedInsight.id });
-    return refs.slice(0, 6);
+    for (const [type, slug] of declared) {
+      const id = indexes[type].get(slug);
+      if (id && !(type === fromType && id === fromId)) refs.push({ toType: type, toId: id });
+    }
+
+    // The themed insight fills a slot the theme itself left free, never one a
+    // missing row vacated.
+    if (declared.length < LINK_LIMIT) {
+      const relatedInsight = insights.find((row) => insightTheme.get(row.id) === theme.key && !(fromType === 'INSIGHT' && row.id === fromId));
+      if (relatedInsight) refs.push({ toType: 'INSIGHT', toId: relatedInsight.id });
+    }
+    return refs.slice(0, LINK_LIMIT);
   };
 
-  const linkIfEmpty = async (fromType, row, text) => {
-    const existing = await prisma.contentLink.count({ where: { fromType, fromId: row.id } });
-    if (existing) return;
-    const refs = refsFor(themeFor(text), fromType, row.id);
+  /**
+   * Adds the intended links this row is missing.
+   *
+   * The previous rule was "skip the row if it has any link at all", which made
+   * the pass create-once rather than idempotent. `refsFor` resolves each
+   * reference against the published rows that exist *at that moment* and
+   * silently drops the ones it cannot find, so a row provisioned while part of
+   * the catalogue was absent got a permanently short set of links: the next run
+   * saw one link and moved on. That is how production settled 24 links below a
+   * clean install, and it would have stayed there.
+   *
+   * Only the missing links are inserted. Nothing is deleted or reordered, so
+   * links an editor added survive and their ordering is untouched; new links
+   * are appended after the existing ones.
+   */
+  const linkMissing = async (fromType, row, text) => {
+    const refs = refsFor(themeFor(text), fromType, row.slug, row.id);
     if (!refs.length) return;
+
+    const existing = await prisma.contentLink.findMany({
+      where: { fromType, fromId: row.id },
+      select: { toType: true, toId: true, order: true },
+    });
+    const held = new Set(existing.map((link) => `${link.toType}:${link.toId}`));
+    const missing = refs.filter((ref) => !held.has(`${ref.toType}:${ref.toId}`));
+    if (!missing.length) return;
+
+    const nextOrder = existing.length ? Math.max(...existing.map((link) => link.order)) + 1 : 0;
     if (!REPORT_ONLY) {
       await prisma.contentLink.createMany({
-        data: refs.map((ref, order) => ({ fromType, fromId: row.id, ...ref, order })),
+        data: missing.map((ref, i) => ({ fromType, fromId: row.id, ...ref, order: nextOrder + i })),
         skipDuplicates: true,
       });
     }
-    note(`relations:${fromType.toLowerCase()}:${row.slug}(${refs.length})`);
+    note(`relations:${fromType.toLowerCase()}:${row.slug}(+${missing.length})`);
   };
 
-  for (const row of services) await linkIfEmpty('SERVICE', row, row.slug);
-  for (const row of insights) await linkIfEmpty('INSIGHT', row, `${row.slug} ${JSON.stringify(row.tags)}`);
-  for (const row of resources) await linkIfEmpty('RESOURCE', row, row.slug);
-  for (const row of tools) await linkIfEmpty('TOOL', row, row.slug);
-  for (const row of projects) await linkIfEmpty('PROJECT', row, row.slug);
-  for (const row of caseStudies) await linkIfEmpty('CASE_STUDY', row, row.slug);
+  for (const row of services) await linkMissing('SERVICE', row, row.slug);
+  for (const row of insights) await linkMissing('INSIGHT', row, `${row.slug} ${JSON.stringify(row.tags)}`);
+  for (const row of resources) await linkMissing('RESOURCE', row, row.slug);
+  for (const row of tools) await linkMissing('TOOL', row, row.slug);
+  for (const row of projects) await linkMissing('PROJECT', row, row.slug);
+  for (const row of caseStudies) await linkMissing('CASE_STUDY', row, row.slug);
 }
 
 /* ------------------------------------------------- pages and taxonomies */
@@ -1025,7 +1073,6 @@ async function main() {
   await applyWork();
   await applyLibrary();
   await applyTools();
-  await applyRelationships();
   await applyPages();
   await applyTaxonomyTidy();
   await applySystem();
@@ -1033,6 +1080,12 @@ async function main() {
   await applyEvidenceGatedContent();
   await applyVisuals();
   await applyFooterBackdrop();
+
+  /* Last, once every row that can be linked exists and is in its final
+     published state. The pass reconciles rather than creates, so running it
+     here costs one read per row when there is nothing to add, and it removes
+     the ordering dependency that otherwise left the graph a pass behind. */
+  await applyRelationships();
 
   console.log(
     changes.length
