@@ -207,118 +207,23 @@ const gallery = (a, b, c) => [
   { url: img(`gallery-${c}`), altEn: 'Project visual', altAr: 'صورة من المشروع' },
 ];
 
-/* Illustrative sample projects. The client names are placeholders for layout
- * purposes and are not Noriva clients; `results` is deliberately left empty
- * because no real metrics exist to report. */
-const PROJECTS = [
-  {
-    slug: 'sample-hospitality-identity',
-    titleEn: 'Hospitality Identity System',
-    titleAr: 'نظام هوية لمشروع ضيافة',
-    client: 'Sample project',
-    categorySlug: 'brand-identity',
-    descriptionEn:
-      'A full identity system for a multi-site dining concept: positioning, wordmark, typographic palette, menu architecture and the signage specification that carried it into the space.',
-    descriptionAr:
-      'نظام هوية متكامل لمفهوم مطاعم متعدد الفروع: التموضع، وعلامة الاسم، ونظام الخطوط، وبنية القوائم، ومواصفات اللافتات التي نقلته إلى المكان.',
-    heroMediaUrl: img('work-1'),
-    gallery: gallery(1, 2, 3),
-    year: 2025,
-    location: 'Riyadh',
-    featured: true,
-    order: 1,
-    serviceSlugs: ['brand-strategy-identity', 'spatial-experience'],
-  },
-  {
-    slug: 'sample-editorial-platform',
-    titleEn: 'Editorial Content Platform',
-    titleAr: 'منصة محتوى تحريري',
-    client: 'Sample project',
-    categorySlug: 'digital',
-    descriptionEn:
-      'A bilingual publishing platform designed around long-form reading, with an editing experience the in-house team runs without developer involvement.',
-    descriptionAr:
-      'منصة نشر ثنائية اللغة مصمّمة حول القراءة الطويلة، بتجربة تحرير يديرها الفريق الداخلي دون تدخل المطورين.',
-    heroMediaUrl: img('work-2'),
-    gallery: gallery(4, 5, 6),
-    year: 2025,
-    location: 'Jeddah',
-    featured: true,
-    order: 2,
-    serviceSlugs: ['digital-product-web', 'content-production'],
-  },
-  {
-    slug: 'sample-launch-campaign',
-    titleEn: 'Opening Campaign',
-    titleAr: 'حملة افتتاح',
-    client: 'Sample project',
-    categorySlug: 'campaign',
-    descriptionEn:
-      'Art direction, production and paid media for an opening: one production cycle supplying a full quarter of scheduled content across channels.',
-    descriptionAr:
-      'توجيه فني وإنتاج وإعلانات مدفوعة لافتتاح: دورة إنتاج واحدة غذّت ربعاً كاملاً من المحتوى المجدول عبر القنوات.',
-    heroMediaUrl: img('work-3'),
-    gallery: gallery(7, 8, 9),
-    year: 2024,
-    location: 'Riyadh',
-    featured: true,
-    order: 3,
-    serviceSlugs: ['content-production', 'growth-performance'],
-  },
-  {
-    slug: 'sample-retail-experience',
-    titleEn: 'Retail Experience Design',
-    titleAr: 'تصميم تجربة التجزئة',
-    client: 'Sample project',
-    categorySlug: 'spatial',
-    descriptionEn:
-      'Applied identity across a retail footprint: wayfinding, packaging, print collateral and the production specification issued to fabricators.',
-    descriptionAr:
-      'تطبيق الهوية عبر مساحة تجزئة: الإرشاد، والتغليف، والمطبوعات، ومواصفات التنفيذ المسلّمة للمصنّعين.',
-    heroMediaUrl: img('work-4'),
-    gallery: gallery(10, 11, 12),
-    year: 2024,
-    location: 'Dammam',
-    featured: true,
-    order: 4,
-    serviceSlugs: ['spatial-experience', 'brand-strategy-identity'],
-  },
-  {
-    slug: 'sample-brand-refresh',
-    titleEn: 'Brand Refresh',
-    titleAr: 'تحديث علامة',
-    client: 'Sample project',
-    categorySlug: 'brand-identity',
-    descriptionEn:
-      'A restrained refresh of an established mark: retaining the equity already built while resolving how the identity behaves in digital contexts.',
-    descriptionAr:
-      'تحديث متحفظ لعلامة قائمة: الحفاظ على الرصيد المتراكم مع معالجة سلوك الهوية في السياقات الرقمية.',
-    heroMediaUrl: img('work-5'),
-    gallery: gallery(2, 6, 10),
-    year: 2024,
-    location: 'Riyadh',
-    featured: false,
-    order: 5,
-    serviceSlugs: ['brand-strategy-identity'],
-  },
-  {
-    slug: 'sample-booking-experience',
-    titleEn: 'Booking Experience',
-    titleAr: 'تجربة الحجز',
-    client: 'Sample project',
-    categorySlug: 'digital',
-    descriptionEn:
-      'An end-to-end reservation journey rebuilt around fewer steps, clearer availability and a bilingual interface designed in both directions from the first screen.',
-    descriptionAr:
-      'رحلة حجز أُعيد بناؤها بخطوات أقل، وإتاحة أوضح، وواجهة ثنائية اللغة مصمّمة بالاتجاهين من أول شاشة.',
-    heroMediaUrl: img('work-6'),
-    gallery: gallery(3, 7, 11),
-    year: 2023,
-    location: 'Jeddah',
-    featured: false,
-    order: 6,
-    serviceSlugs: ['digital-product-web'],
-  },
+/* Legacy placeholder engagements.
+ *
+ * Earlier versions of this script created six generic studio projects — a
+ * booking experience, an editorial platform, a retail concept — under the
+ * client name "Sample project". They were never F&B work, they were never
+ * published, and the six labelled illustrative restaurant engagements have
+ * since replaced them entirely. They are no longer created, and the ones a
+ * previous run left behind are removed below.
+ *
+ * Only the slugs are kept, so an existing row can still be recognised. */
+const LEGACY_PLACEHOLDER_PROJECT_SLUGS = [
+  'sample-hospitality-identity',
+  'sample-editorial-platform',
+  'sample-launch-campaign',
+  'sample-retail-experience',
+  'sample-brand-refresh',
+  'sample-booking-experience',
 ];
 
 const INSIGHT_CATEGORIES = [
@@ -1214,65 +1119,41 @@ async function main() {
     workCatIdBySlug[c.slug] = row.id;
   }
 
-  /* --- Projects ---------------------------------------------------------
-   * These are placeholders, not client work: they carry the client name
-   * "Sample project" and no verified results. They are created as DRAFT so an
-   * editor can see the shape of a case study in Admin, and they never reach a
-   * visitor until real work replaces them. */
-  for (const p of PROJECTS) {
-    const existing = await prisma.project.findUnique({ where: { slug: p.slug } });
-    if (existing) continue;
-    const row = await prisma.project.create({
-      data: {
-        slug: p.slug,
-        titleEn: p.titleEn,
-        titleAr: p.titleAr,
-        client: p.client,
-        categoryId: workCatIdBySlug[p.categorySlug] ?? null,
-        descriptionEn: p.descriptionEn,
-        descriptionAr: p.descriptionAr,
-        heroMediaUrl: p.heroMediaUrl,
-        gallery: p.gallery,
-        year: p.year,
-        location: p.location,
-        featured: false,
-        status: 'DRAFT',
-        noindex: true,
-        order: p.order,
-        seoDescriptionEn: p.descriptionEn,
-        seoDescriptionAr: p.descriptionAr,
-        /* results intentionally left empty: no verified metrics exist. */
-      },
-    });
-    for (const slug of p.serviceSlugs) {
-      const serviceId = serviceIdBySlug[slug];
-      if (serviceId) {
-        await prisma.projectService.create({ data: { projectId: row.id, serviceId } });
-      }
-    }
-    note(`project:${p.slug}`);
-  }
-
-  /* --- Retire previously published placeholders --------------------------
-   * Earlier versions of this script published the sample projects. They are
-   * demo content, so they must not sit on the public site presenting
-   * themselves as real client work. Only rows this script created are touched
-   * — matched on both the sample slug and the "Sample project" client — and
-   * the rows are unpublished, never deleted, so nothing an editor wrote is
-   * lost and Admin can republish if a placeholder was adopted deliberately. */
-  const placeholderSlugs = PROJECTS.map((p) => p.slug);
-  const stillLive = await prisma.project.findMany({
-    where: { slug: { in: placeholderSlugs }, client: 'Sample project', status: 'PUBLISHED' },
-    select: { id: true, slug: true },
+  /* --- Remove the legacy placeholder projects ----------------------------
+   * They are no longer created. A row from an earlier run is deleted, but
+   * only when it is still demonstrably untouched demo content:
+   *
+   *   - the client is still "Sample project" (an editor who adopted one would
+   *     have replaced that name),
+   *   - it is not PUBLISHED,
+   *   - no case study hangs off it,
+   *   - nothing links to or from it.
+   *
+   * Anything that fails one of those tests is left exactly as it is and
+   * reported instead, so a placeholder somebody built on is never destroyed.
+   * ProjectService rows cascade with the project. */
+  const legacyPlaceholders = await prisma.project.findMany({
+    where: { slug: { in: LEGACY_PLACEHOLDER_PROJECT_SLUGS } },
+    select: { id: true, slug: true, client: true, status: true, caseStudy: { select: { id: true } } },
   });
-  if (stillLive.length && !REPORT_ONLY) {
-    await prisma.project.updateMany({
-      where: { id: { in: stillLive.map((r) => r.id) } },
-      data: { status: 'DRAFT', featured: false, noindex: true },
+
+  for (const row of legacyPlaceholders) {
+    const links = await prisma.contentLink.count({
+      where: { OR: [{ fromId: row.id }, { toId: row.id }] },
     });
-    for (const row of stillLive) note(`unpublished placeholder:${row.slug}`);
-  } else if (stillLive.length) {
-    for (const row of stillLive) note(`would unpublish placeholder:${row.slug}`);
+    const adopted =
+      row.client !== 'Sample project' || row.status === 'PUBLISHED' || Boolean(row.caseStudy) || links > 0;
+
+    if (adopted) {
+      note(`kept legacy placeholder:${row.slug} (in use — not removed)`);
+      continue;
+    }
+    if (REPORT_ONLY) {
+      note(`would remove legacy placeholder:${row.slug}`);
+      continue;
+    }
+    await prisma.project.delete({ where: { id: row.id } });
+    note(`removed legacy placeholder:${row.slug}`);
   }
 
   /* --- Insights --------------------------------------------------------- */
