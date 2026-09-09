@@ -561,339 +561,171 @@
       "role": "content"
     },
     {
-      "name": "noriva-work-booking-experience",
-      "width": 1800,
-      "height": 1150,
-      "ramp": "signature",
-      "role": "content"
-    },
-    {
-      "name": "noriva-work-booking-experience-1",
-      "width": 1600,
-      "height": 1100,
-      "ramp": "warm",
-      "role": "content"
-    },
-    {
-      "name": "noriva-work-booking-experience-2",
-      "width": 1600,
-      "height": 1100,
-      "ramp": "cool",
-      "role": "content"
-    },
-    {
-      "name": "noriva-work-booking-experience-3",
-      "width": 1600,
-      "height": 1100,
-      "ramp": "brand",
-      "role": "content"
-    },
-    {
-      "name": "noriva-work-brand-refresh",
-      "width": 1800,
-      "height": 1150,
-      "ramp": "warm",
-      "role": "content"
-    },
-    {
-      "name": "noriva-work-brand-refresh-1",
-      "width": 1600,
-      "height": 1100,
-      "ramp": "cool",
-      "role": "content"
-    },
-    {
-      "name": "noriva-work-brand-refresh-2",
-      "width": 1600,
-      "height": 1100,
-      "ramp": "brand",
-      "role": "content"
-    },
-    {
-      "name": "noriva-work-brand-refresh-3",
-      "width": 1600,
-      "height": 1100,
-      "ramp": "signature",
-      "role": "content"
-    },
-    {
       "name": "noriva-work-cafe-concept-development",
       "width": 1800,
       "height": 1150,
-      "ramp": "cool",
+      "ramp": "signature",
       "role": "content"
     },
     {
       "name": "noriva-work-cafe-concept-development-1",
       "width": 1600,
       "height": 1100,
-      "ramp": "brand",
+      "ramp": "warm",
       "role": "content"
     },
     {
       "name": "noriva-work-cafe-concept-development-2",
       "width": 1600,
       "height": 1100,
-      "ramp": "signature",
+      "ramp": "cool",
       "role": "content"
     },
     {
       "name": "noriva-work-cafe-concept-development-3",
       "width": 1600,
       "height": 1100,
-      "ramp": "warm",
+      "ramp": "brand",
       "role": "content"
     },
     {
       "name": "noriva-work-delivery-channel-rebuild",
       "width": 1800,
       "height": 1150,
-      "ramp": "brand",
+      "ramp": "warm",
       "role": "content"
     },
     {
       "name": "noriva-work-delivery-channel-rebuild-1",
       "width": 1600,
       "height": 1100,
-      "ramp": "signature",
+      "ramp": "cool",
       "role": "content"
     },
     {
       "name": "noriva-work-delivery-channel-rebuild-2",
       "width": 1600,
       "height": 1100,
-      "ramp": "warm",
+      "ramp": "brand",
       "role": "content"
     },
     {
       "name": "noriva-work-delivery-channel-rebuild-3",
       "width": 1600,
       "height": 1100,
-      "ramp": "cool",
-      "role": "content"
-    },
-    {
-      "name": "noriva-work-editorial-platform",
-      "width": 1800,
-      "height": 1150,
       "ramp": "signature",
-      "role": "content"
-    },
-    {
-      "name": "noriva-work-editorial-platform-1",
-      "width": 1600,
-      "height": 1100,
-      "ramp": "warm",
-      "role": "content"
-    },
-    {
-      "name": "noriva-work-editorial-platform-2",
-      "width": 1600,
-      "height": 1100,
-      "ramp": "cool",
-      "role": "content"
-    },
-    {
-      "name": "noriva-work-editorial-platform-3",
-      "width": 1600,
-      "height": 1100,
-      "ramp": "brand",
       "role": "content"
     },
     {
       "name": "noriva-work-guest-experience-programme",
       "width": 1800,
       "height": 1150,
-      "ramp": "warm",
+      "ramp": "cool",
       "role": "content"
     },
     {
       "name": "noriva-work-guest-experience-programme-1",
       "width": 1600,
       "height": 1100,
-      "ramp": "cool",
+      "ramp": "brand",
       "role": "content"
     },
     {
       "name": "noriva-work-guest-experience-programme-2",
       "width": 1600,
       "height": 1100,
-      "ramp": "brand",
+      "ramp": "signature",
       "role": "content"
     },
     {
       "name": "noriva-work-guest-experience-programme-3",
       "width": 1600,
       "height": 1100,
-      "ramp": "signature",
-      "role": "content"
-    },
-    {
-      "name": "noriva-work-hospitality-identity",
-      "width": 1800,
-      "height": 1150,
-      "ramp": "cool",
-      "role": "content"
-    },
-    {
-      "name": "noriva-work-hospitality-identity-1",
-      "width": 1600,
-      "height": 1100,
-      "ramp": "brand",
-      "role": "content"
-    },
-    {
-      "name": "noriva-work-hospitality-identity-2",
-      "width": 1600,
-      "height": 1100,
-      "ramp": "signature",
-      "role": "content"
-    },
-    {
-      "name": "noriva-work-hospitality-identity-3",
-      "width": 1600,
-      "height": 1100,
       "ramp": "warm",
-      "role": "content"
-    },
-    {
-      "name": "noriva-work-launch-campaign",
-      "width": 1800,
-      "height": 1150,
-      "ramp": "brand",
-      "role": "content"
-    },
-    {
-      "name": "noriva-work-launch-campaign-1",
-      "width": 1600,
-      "height": 1100,
-      "ramp": "signature",
-      "role": "content"
-    },
-    {
-      "name": "noriva-work-launch-campaign-2",
-      "width": 1600,
-      "height": 1100,
-      "ramp": "warm",
-      "role": "content"
-    },
-    {
-      "name": "noriva-work-launch-campaign-3",
-      "width": 1600,
-      "height": 1100,
-      "ramp": "cool",
       "role": "content"
     },
     {
       "name": "noriva-work-menu-restructure",
       "width": 1800,
       "height": 1150,
-      "ramp": "signature",
+      "ramp": "brand",
       "role": "content"
     },
     {
       "name": "noriva-work-menu-restructure-1",
       "width": 1600,
       "height": 1100,
-      "ramp": "warm",
+      "ramp": "signature",
       "role": "content"
     },
     {
       "name": "noriva-work-menu-restructure-2",
       "width": 1600,
       "height": 1100,
-      "ramp": "cool",
+      "ramp": "warm",
       "role": "content"
     },
     {
       "name": "noriva-work-menu-restructure-3",
       "width": 1600,
       "height": 1100,
-      "ramp": "brand",
+      "ramp": "cool",
       "role": "content"
     },
     {
       "name": "noriva-work-multi-branch-readiness",
       "width": 1800,
       "height": 1150,
-      "ramp": "warm",
+      "ramp": "signature",
       "role": "content"
     },
     {
       "name": "noriva-work-multi-branch-readiness-1",
       "width": 1600,
       "height": 1100,
-      "ramp": "cool",
+      "ramp": "warm",
       "role": "content"
     },
     {
       "name": "noriva-work-multi-branch-readiness-2",
       "width": 1600,
       "height": 1100,
-      "ramp": "brand",
+      "ramp": "cool",
       "role": "content"
     },
     {
       "name": "noriva-work-multi-branch-readiness-3",
       "width": 1600,
       "height": 1100,
-      "ramp": "signature",
+      "ramp": "brand",
       "role": "content"
     },
     {
       "name": "noriva-work-restaurant-opening-programme",
       "width": 1800,
       "height": 1150,
-      "ramp": "cool",
+      "ramp": "warm",
       "role": "content"
     },
     {
       "name": "noriva-work-restaurant-opening-programme-1",
       "width": 1600,
       "height": 1100,
-      "ramp": "brand",
+      "ramp": "cool",
       "role": "content"
     },
     {
       "name": "noriva-work-restaurant-opening-programme-2",
       "width": 1600,
       "height": 1100,
-      "ramp": "signature",
+      "ramp": "brand",
       "role": "content"
     },
     {
       "name": "noriva-work-restaurant-opening-programme-3",
       "width": 1600,
       "height": 1100,
-      "ramp": "warm",
-      "role": "content"
-    },
-    {
-      "name": "noriva-work-retail-experience",
-      "width": 1800,
-      "height": 1150,
-      "ramp": "brand",
-      "role": "content"
-    },
-    {
-      "name": "noriva-work-retail-experience-1",
-      "width": 1600,
-      "height": 1100,
       "ramp": "signature",
-      "role": "content"
-    },
-    {
-      "name": "noriva-work-retail-experience-2",
-      "width": 1600,
-      "height": 1100,
-      "ramp": "warm",
-      "role": "content"
-    },
-    {
-      "name": "noriva-work-retail-experience-3",
-      "width": 1600,
-      "height": 1100,
-      "ramp": "cool",
       "role": "content"
     },
     {
@@ -1009,42 +841,56 @@
       "role": "content"
     },
     {
-      "name": "noriva-tool-branch-payback",
+      "name": "noriva-tool-average-check",
       "width": 1200,
       "height": 900,
       "ramp": "cool",
+      "role": "content"
+    },
+    {
+      "name": "noriva-tool-branch-payback",
+      "width": 1200,
+      "height": 900,
+      "ramp": "signature",
       "role": "content"
     },
     {
       "name": "noriva-tool-break-even",
       "width": 1200,
       "height": 900,
-      "ramp": "signature",
+      "ramp": "cool",
       "role": "content"
     },
     {
       "name": "noriva-tool-contribution-margin",
       "width": 1200,
       "height": 900,
-      "ramp": "cool",
+      "ramp": "signature",
       "role": "content"
     },
     {
       "name": "noriva-tool-delivery-pricing",
       "width": 1200,
       "height": 900,
-      "ramp": "signature",
+      "ramp": "cool",
       "role": "content"
     },
     {
       "name": "noriva-tool-discount-impact",
       "width": 1200,
       "height": 900,
-      "ramp": "cool",
+      "ramp": "signature",
       "role": "content"
     },
     {
       "name": "noriva-tool-food-cost",
+      "width": 1200,
+      "height": 900,
+      "ramp": "cool",
+      "role": "content"
+    },
+    {
+      "name": "noriva-tool-gross-profit",
       "width": 1200,
       "height": 900,
       "ramp": "signature",
@@ -1079,343 +925,49 @@
       "role": "content"
     },
     {
-      "name": "noriva-resource-restaurant-feasibility-study-template",
-      "width": 1400,
-      "height": 875,
+      "name": "noriva-tool-revenue-target",
+      "width": 1200,
+      "height": 900,
       "ramp": "cool",
       "role": "content"
     },
     {
-      "name": "noriva-resource-restaurant-startup-budget",
-      "width": 1400,
-      "height": 875,
+      "name": "noriva-tool-seat-productivity",
+      "width": 1200,
+      "height": 900,
       "ramp": "signature",
       "role": "content"
     },
     {
-      "name": "noriva-resource-capex-budget",
-      "width": 1400,
-      "height": 875,
-      "ramp": "warm",
-      "role": "content"
-    },
-    {
-      "name": "noriva-resource-pre-opening-budget",
-      "width": 1400,
-      "height": 875,
-      "ramp": "brand",
-      "role": "content"
-    },
-    {
-      "name": "noriva-resource-restaurant-pl-template",
+      "name": "noriva-resource-30-questions-before-opening",
       "width": 1400,
       "height": 875,
       "ramp": "cool",
-      "role": "content"
-    },
-    {
-      "name": "noriva-resource-break-even-model",
-      "width": 1400,
-      "height": 875,
-      "ramp": "signature",
-      "role": "content"
-    },
-    {
-      "name": "noriva-resource-restaurant-sales-forecast",
-      "width": 1400,
-      "height": 875,
-      "ramp": "warm",
-      "role": "content"
-    },
-    {
-      "name": "noriva-resource-revenue-forecast-by-channel",
-      "width": 1400,
-      "height": 875,
-      "ramp": "brand",
-      "role": "content"
-    },
-    {
-      "name": "noriva-resource-food-cost-calculator",
-      "width": 1400,
-      "height": 875,
-      "ramp": "cool",
-      "role": "content"
-    },
-    {
-      "name": "noriva-resource-recipe-costing",
-      "width": 1400,
-      "height": 875,
-      "ramp": "signature",
-      "role": "content"
-    },
-    {
-      "name": "noriva-resource-menu-engineering-template",
-      "width": 1400,
-      "height": 875,
-      "ramp": "warm",
-      "role": "content"
-    },
-    {
-      "name": "noriva-resource-menu-pricing-worksheet",
-      "width": 1400,
-      "height": 875,
-      "ramp": "brand",
-      "role": "content"
-    },
-    {
-      "name": "noriva-resource-inventory-count",
-      "width": 1400,
-      "height": 875,
-      "ramp": "cool",
-      "role": "content"
-    },
-    {
-      "name": "noriva-resource-stock-movement",
-      "width": 1400,
-      "height": 875,
-      "ramp": "signature",
-      "role": "content"
-    },
-    {
-      "name": "noriva-resource-purchasing-tracker",
-      "width": 1400,
-      "height": 875,
-      "ramp": "warm",
-      "role": "content"
-    },
-    {
-      "name": "noriva-resource-supplier-evaluation-template",
-      "width": 1400,
-      "height": 875,
-      "ramp": "brand",
-      "role": "content"
-    },
-    {
-      "name": "noriva-resource-waste-log",
-      "width": 1400,
-      "height": 875,
-      "ramp": "cool",
-      "role": "content"
-    },
-    {
-      "name": "noriva-resource-theoretical-vs-actual-food-cost",
-      "width": 1400,
-      "height": 875,
-      "ramp": "signature",
-      "role": "content"
-    },
-    {
-      "name": "noriva-resource-labour-cost-tracker",
-      "width": 1400,
-      "height": 875,
-      "ramp": "warm",
-      "role": "content"
-    },
-    {
-      "name": "noriva-resource-staffing-plan",
-      "width": 1400,
-      "height": 875,
-      "ramp": "brand",
-      "role": "content"
-    },
-    {
-      "name": "noriva-resource-restaurant-kpi-dashboard",
-      "width": 1400,
-      "height": 875,
-      "ramp": "cool",
-      "role": "content"
-    },
-    {
-      "name": "noriva-resource-branch-performance-comparison",
-      "width": 1400,
-      "height": 875,
-      "ramp": "signature",
-      "role": "content"
-    },
-    {
-      "name": "noriva-resource-delivery-platform-performance",
-      "width": 1400,
-      "height": 875,
-      "ramp": "warm",
-      "role": "content"
-    },
-    {
-      "name": "noriva-resource-marketing-budget",
-      "width": 1400,
-      "height": 875,
-      "ramp": "brand",
-      "role": "content"
-    },
-    {
-      "name": "noriva-resource-marketing-campaign-planner",
-      "width": 1400,
-      "height": 875,
-      "ramp": "cool",
-      "role": "content"
-    },
-    {
-      "name": "noriva-resource-restaurant-opening-workbook",
-      "width": 1400,
-      "height": 875,
-      "ramp": "signature",
-      "role": "content"
-    },
-    {
-      "name": "noriva-resource-site-evaluation-scorecard",
-      "width": 1400,
-      "height": 875,
-      "ramp": "warm",
-      "role": "content"
-    },
-    {
-      "name": "noriva-resource-competitor-analysis-template",
-      "width": 1400,
-      "height": 875,
-      "ramp": "brand",
-      "role": "content"
-    },
-    {
-      "name": "noriva-resource-swot-analysis",
-      "width": 1400,
-      "height": 875,
-      "ramp": "cool",
-      "role": "content"
-    },
-    {
-      "name": "noriva-resource-customer-feedback-analysis",
-      "width": 1400,
-      "height": 875,
-      "ramp": "signature",
-      "role": "content"
-    },
-    {
-      "name": "noriva-resource-restaurant-audit-scorecard",
-      "width": 1400,
-      "height": 875,
-      "ramp": "warm",
-      "role": "content"
-    },
-    {
-      "name": "noriva-resource-mystery-shopper-scorecard",
-      "width": 1400,
-      "height": 875,
-      "ramp": "brand",
-      "role": "content"
-    },
-    {
-      "name": "noriva-resource-expansion-feasibility",
-      "width": 1400,
-      "height": 875,
-      "ramp": "cool",
-      "role": "content"
-    },
-    {
-      "name": "noriva-resource-franchise-readiness-scorecard",
-      "width": 1400,
-      "height": 875,
-      "ramp": "signature",
       "role": "content"
     },
     {
       "name": "noriva-resource-90-day-turnaround-plan",
       "width": 1400,
       "height": 875,
-      "ramp": "warm",
-      "role": "content"
-    },
-    {
-      "name": "noriva-resource-restaurant-feasibility-study-report",
-      "width": 1400,
-      "height": 875,
-      "ramp": "brand",
-      "role": "content"
-    },
-    {
-      "name": "noriva-resource-restaurant-business-plan-template",
-      "width": 1400,
-      "height": 875,
-      "ramp": "cool",
-      "role": "content"
-    },
-    {
-      "name": "noriva-resource-restaurant-audit-report",
-      "width": 1400,
-      "height": 875,
       "ramp": "signature",
       "role": "content"
     },
     {
-      "name": "noriva-resource-restaurant-development-plan",
+      "name": "noriva-resource-annual-budget-model",
       "width": 1400,
       "height": 875,
       "ramp": "warm",
       "role": "content"
     },
     {
-      "name": "noriva-resource-restaurant-opening-plan",
+      "name": "noriva-resource-branch-feasibility-checklist",
       "width": 1400,
       "height": 875,
       "ramp": "brand",
       "role": "content"
     },
     {
-      "name": "noriva-resource-restaurant-operations-manual",
-      "width": 1400,
-      "height": 875,
-      "ramp": "cool",
-      "role": "content"
-    },
-    {
-      "name": "noriva-resource-restaurant-sop-template",
-      "width": 1400,
-      "height": 875,
-      "ramp": "signature",
-      "role": "content"
-    },
-    {
-      "name": "noriva-resource-marketing-plan-template",
-      "width": 1400,
-      "height": 875,
-      "ramp": "warm",
-      "role": "content"
-    },
-    {
-      "name": "noriva-resource-restaurant-brand-brief",
-      "width": 1400,
-      "height": 875,
-      "ramp": "brand",
-      "role": "content"
-    },
-    {
-      "name": "noriva-resource-menu-development-brief",
-      "width": 1400,
-      "height": 875,
-      "ramp": "cool",
-      "role": "content"
-    },
-    {
-      "name": "noriva-resource-site-visit-report",
-      "width": 1400,
-      "height": 875,
-      "ramp": "signature",
-      "role": "content"
-    },
-    {
-      "name": "noriva-resource-mystery-shopping-report",
-      "width": 1400,
-      "height": 875,
-      "ramp": "warm",
-      "role": "content"
-    },
-    {
-      "name": "noriva-resource-restaurant-turnaround-report",
-      "width": 1400,
-      "height": 875,
-      "ramp": "brand",
-      "role": "content"
-    },
-    {
-      "name": "noriva-resource-monthly-management-report",
+      "name": "noriva-resource-branch-performance-comparison",
       "width": 1400,
       "height": 875,
       "ramp": "cool",
@@ -1429,56 +981,84 @@
       "role": "content"
     },
     {
-      "name": "noriva-resource-restaurant-feasibility-study-checklist",
+      "name": "noriva-resource-brand-and-digital-presence-audit",
       "width": 1400,
       "height": 875,
       "ramp": "warm",
       "role": "content"
     },
     {
-      "name": "noriva-resource-30-questions-before-opening",
+      "name": "noriva-resource-brand-positioning-worksheet",
       "width": 1400,
       "height": 875,
       "ramp": "brand",
       "role": "content"
     },
     {
-      "name": "noriva-resource-restaurant-profitability-checklist",
+      "name": "noriva-resource-break-even-model",
       "width": 1400,
       "height": 875,
       "ramp": "cool",
       "role": "content"
     },
     {
-      "name": "noriva-resource-food-cost-control-guide",
+      "name": "noriva-resource-cafe-audit-checklist",
       "width": 1400,
       "height": 875,
       "ramp": "signature",
       "role": "content"
     },
     {
-      "name": "noriva-resource-menu-engineering-guide",
+      "name": "noriva-resource-cafe-kpi-dashboard",
       "width": 1400,
       "height": 875,
       "ramp": "warm",
       "role": "content"
     },
     {
-      "name": "noriva-resource-opening-checklist",
+      "name": "noriva-resource-campaign-brief-template",
       "width": 1400,
       "height": 875,
       "ramp": "brand",
       "role": "content"
     },
     {
-      "name": "noriva-resource-restaurant-kpi-guide",
+      "name": "noriva-resource-capex-budget",
       "width": 1400,
       "height": 875,
       "ramp": "cool",
       "role": "content"
     },
     {
-      "name": "noriva-resource-restaurant-audit-checklist",
+      "name": "noriva-resource-cash-flow-forecast",
+      "width": 1400,
+      "height": 875,
+      "ramp": "signature",
+      "role": "content"
+    },
+    {
+      "name": "noriva-resource-competitor-analysis-template",
+      "width": 1400,
+      "height": 875,
+      "ramp": "warm",
+      "role": "content"
+    },
+    {
+      "name": "noriva-resource-customer-experience-audit",
+      "width": 1400,
+      "height": 875,
+      "ramp": "brand",
+      "role": "content"
+    },
+    {
+      "name": "noriva-resource-customer-feedback-analysis",
+      "width": 1400,
+      "height": 875,
+      "ramp": "cool",
+      "role": "content"
+    },
+    {
+      "name": "noriva-resource-delivery-platform-performance",
       "width": 1400,
       "height": 875,
       "ramp": "signature",
@@ -1492,38 +1072,437 @@
       "role": "content"
     },
     {
-      "name": "noriva-resource-restaurant-marketing-planning-guide",
+      "name": "noriva-resource-expansion-checklist",
       "width": 1400,
       "height": 875,
       "ramp": "brand",
       "role": "content"
     },
     {
-      "name": "noriva-tool-average-check",
-      "width": 1200,
-      "height": 900,
+      "name": "noriva-resource-expansion-feasibility",
+      "width": 1400,
+      "height": 875,
       "ramp": "cool",
       "role": "content"
     },
     {
-      "name": "noriva-tool-gross-profit",
-      "width": 1200,
-      "height": 900,
+      "name": "noriva-resource-expansion-readiness-assessment",
+      "width": 1400,
+      "height": 875,
       "ramp": "signature",
       "role": "content"
     },
     {
-      "name": "noriva-tool-revenue-target",
-      "width": 1200,
-      "height": 900,
+      "name": "noriva-resource-food-cost-calculator",
+      "width": 1400,
+      "height": 875,
       "ramp": "warm",
       "role": "content"
     },
     {
-      "name": "noriva-tool-seat-productivity",
-      "width": 1200,
-      "height": 900,
+      "name": "noriva-resource-food-cost-control-guide",
+      "width": 1400,
+      "height": 875,
       "ramp": "brand",
+      "role": "content"
+    },
+    {
+      "name": "noriva-resource-food-cost-sheet",
+      "width": 1400,
+      "height": 875,
+      "ramp": "cool",
+      "role": "content"
+    },
+    {
+      "name": "noriva-resource-franchise-readiness-scorecard",
+      "width": 1400,
+      "height": 875,
+      "ramp": "signature",
+      "role": "content"
+    },
+    {
+      "name": "noriva-resource-inventory-control-checklist",
+      "width": 1400,
+      "height": 875,
+      "ramp": "warm",
+      "role": "content"
+    },
+    {
+      "name": "noriva-resource-inventory-count",
+      "width": 1400,
+      "height": 875,
+      "ramp": "brand",
+      "role": "content"
+    },
+    {
+      "name": "noriva-resource-item-profitability-analysis",
+      "width": 1400,
+      "height": 875,
+      "ramp": "cool",
+      "role": "content"
+    },
+    {
+      "name": "noriva-resource-labour-cost-tracker",
+      "width": 1400,
+      "height": 875,
+      "ramp": "signature",
+      "role": "content"
+    },
+    {
+      "name": "noriva-resource-marketing-budget",
+      "width": 1400,
+      "height": 875,
+      "ramp": "warm",
+      "role": "content"
+    },
+    {
+      "name": "noriva-resource-marketing-campaign-planner",
+      "width": 1400,
+      "height": 875,
+      "ramp": "brand",
+      "role": "content"
+    },
+    {
+      "name": "noriva-resource-marketing-plan-template",
+      "width": 1400,
+      "height": 875,
+      "ramp": "cool",
+      "role": "content"
+    },
+    {
+      "name": "noriva-resource-menu-development-brief",
+      "width": 1400,
+      "height": 875,
+      "ramp": "signature",
+      "role": "content"
+    },
+    {
+      "name": "noriva-resource-menu-engineering-guide",
+      "width": 1400,
+      "height": 875,
+      "ramp": "warm",
+      "role": "content"
+    },
+    {
+      "name": "noriva-resource-menu-engineering-template",
+      "width": 1400,
+      "height": 875,
+      "ramp": "brand",
+      "role": "content"
+    },
+    {
+      "name": "noriva-resource-menu-pricing-checklist",
+      "width": 1400,
+      "height": 875,
+      "ramp": "cool",
+      "role": "content"
+    },
+    {
+      "name": "noriva-resource-menu-pricing-worksheet",
+      "width": 1400,
+      "height": 875,
+      "ramp": "signature",
+      "role": "content"
+    },
+    {
+      "name": "noriva-resource-menu-review-checklist",
+      "width": 1400,
+      "height": 875,
+      "ramp": "warm",
+      "role": "content"
+    },
+    {
+      "name": "noriva-resource-monthly-management-report",
+      "width": 1400,
+      "height": 875,
+      "ramp": "brand",
+      "role": "content"
+    },
+    {
+      "name": "noriva-resource-mystery-shopper-scorecard",
+      "width": 1400,
+      "height": 875,
+      "ramp": "cool",
+      "role": "content"
+    },
+    {
+      "name": "noriva-resource-mystery-shopping-report",
+      "width": 1400,
+      "height": 875,
+      "ramp": "signature",
+      "role": "content"
+    },
+    {
+      "name": "noriva-resource-opening-checklist",
+      "width": 1400,
+      "height": 875,
+      "ramp": "warm",
+      "role": "content"
+    },
+    {
+      "name": "noriva-resource-pre-opening-budget",
+      "width": 1400,
+      "height": 875,
+      "ramp": "brand",
+      "role": "content"
+    },
+    {
+      "name": "noriva-resource-procurement-checklist",
+      "width": 1400,
+      "height": 875,
+      "ramp": "cool",
+      "role": "content"
+    },
+    {
+      "name": "noriva-resource-product-mix-analysis",
+      "width": 1400,
+      "height": 875,
+      "ramp": "signature",
+      "role": "content"
+    },
+    {
+      "name": "noriva-resource-purchasing-tracker",
+      "width": 1400,
+      "height": 875,
+      "ramp": "warm",
+      "role": "content"
+    },
+    {
+      "name": "noriva-resource-recipe-costing",
+      "width": 1400,
+      "height": 875,
+      "ramp": "brand",
+      "role": "content"
+    },
+    {
+      "name": "noriva-resource-restaurant-audit-checklist",
+      "width": 1400,
+      "height": 875,
+      "ramp": "cool",
+      "role": "content"
+    },
+    {
+      "name": "noriva-resource-restaurant-audit-report",
+      "width": 1400,
+      "height": 875,
+      "ramp": "signature",
+      "role": "content"
+    },
+    {
+      "name": "noriva-resource-restaurant-audit-scorecard",
+      "width": 1400,
+      "height": 875,
+      "ramp": "warm",
+      "role": "content"
+    },
+    {
+      "name": "noriva-resource-restaurant-brand-brief",
+      "width": 1400,
+      "height": 875,
+      "ramp": "brand",
+      "role": "content"
+    },
+    {
+      "name": "noriva-resource-restaurant-business-plan-template",
+      "width": 1400,
+      "height": 875,
+      "ramp": "cool",
+      "role": "content"
+    },
+    {
+      "name": "noriva-resource-restaurant-concept-brief",
+      "width": 1400,
+      "height": 875,
+      "ramp": "signature",
+      "role": "content"
+    },
+    {
+      "name": "noriva-resource-restaurant-development-plan",
+      "width": 1400,
+      "height": 875,
+      "ramp": "warm",
+      "role": "content"
+    },
+    {
+      "name": "noriva-resource-restaurant-feasibility-study-checklist",
+      "width": 1400,
+      "height": 875,
+      "ramp": "brand",
+      "role": "content"
+    },
+    {
+      "name": "noriva-resource-restaurant-feasibility-study-report",
+      "width": 1400,
+      "height": 875,
+      "ramp": "cool",
+      "role": "content"
+    },
+    {
+      "name": "noriva-resource-restaurant-feasibility-study-template",
+      "width": 1400,
+      "height": 875,
+      "ramp": "signature",
+      "role": "content"
+    },
+    {
+      "name": "noriva-resource-restaurant-kpi-dashboard",
+      "width": 1400,
+      "height": 875,
+      "ramp": "warm",
+      "role": "content"
+    },
+    {
+      "name": "noriva-resource-restaurant-kpi-guide",
+      "width": 1400,
+      "height": 875,
+      "ramp": "brand",
+      "role": "content"
+    },
+    {
+      "name": "noriva-resource-restaurant-launch-plan",
+      "width": 1400,
+      "height": 875,
+      "ramp": "cool",
+      "role": "content"
+    },
+    {
+      "name": "noriva-resource-restaurant-marketing-planning-guide",
+      "width": 1400,
+      "height": 875,
+      "ramp": "signature",
+      "role": "content"
+    },
+    {
+      "name": "noriva-resource-restaurant-opening-plan",
+      "width": 1400,
+      "height": 875,
+      "ramp": "warm",
+      "role": "content"
+    },
+    {
+      "name": "noriva-resource-restaurant-opening-workbook",
+      "width": 1400,
+      "height": 875,
+      "ramp": "brand",
+      "role": "content"
+    },
+    {
+      "name": "noriva-resource-restaurant-operations-manual",
+      "width": 1400,
+      "height": 875,
+      "ramp": "cool",
+      "role": "content"
+    },
+    {
+      "name": "noriva-resource-restaurant-pl-template",
+      "width": 1400,
+      "height": 875,
+      "ramp": "signature",
+      "role": "content"
+    },
+    {
+      "name": "noriva-resource-restaurant-profitability-checklist",
+      "width": 1400,
+      "height": 875,
+      "ramp": "warm",
+      "role": "content"
+    },
+    {
+      "name": "noriva-resource-restaurant-sales-forecast",
+      "width": 1400,
+      "height": 875,
+      "ramp": "brand",
+      "role": "content"
+    },
+    {
+      "name": "noriva-resource-restaurant-sop-template",
+      "width": 1400,
+      "height": 875,
+      "ramp": "cool",
+      "role": "content"
+    },
+    {
+      "name": "noriva-resource-restaurant-startup-budget",
+      "width": 1400,
+      "height": 875,
+      "ramp": "signature",
+      "role": "content"
+    },
+    {
+      "name": "noriva-resource-restaurant-turnaround-report",
+      "width": 1400,
+      "height": 875,
+      "ramp": "warm",
+      "role": "content"
+    },
+    {
+      "name": "noriva-resource-revenue-forecast-by-channel",
+      "width": 1400,
+      "height": 875,
+      "ramp": "brand",
+      "role": "content"
+    },
+    {
+      "name": "noriva-resource-site-evaluation-scorecard",
+      "width": 1400,
+      "height": 875,
+      "ramp": "cool",
+      "role": "content"
+    },
+    {
+      "name": "noriva-resource-site-visit-report",
+      "width": 1400,
+      "height": 875,
+      "ramp": "signature",
+      "role": "content"
+    },
+    {
+      "name": "noriva-resource-social-media-content-planner",
+      "width": 1400,
+      "height": 875,
+      "ramp": "warm",
+      "role": "content"
+    },
+    {
+      "name": "noriva-resource-staffing-plan",
+      "width": 1400,
+      "height": 875,
+      "ramp": "brand",
+      "role": "content"
+    },
+    {
+      "name": "noriva-resource-stock-movement",
+      "width": 1400,
+      "height": 875,
+      "ramp": "cool",
+      "role": "content"
+    },
+    {
+      "name": "noriva-resource-supplier-evaluation-template",
+      "width": 1400,
+      "height": 875,
+      "ramp": "signature",
+      "role": "content"
+    },
+    {
+      "name": "noriva-resource-swot-analysis",
+      "width": 1400,
+      "height": 875,
+      "ramp": "warm",
+      "role": "content"
+    },
+    {
+      "name": "noriva-resource-theoretical-vs-actual-food-cost",
+      "width": 1400,
+      "height": 875,
+      "ramp": "brand",
+      "role": "content"
+    },
+    {
+      "name": "noriva-resource-waste-log",
+      "width": 1400,
+      "height": 875,
+      "ramp": "cool",
       "role": "content"
     },
     {
@@ -1940,50 +1919,6 @@
       }
     },
     "projects": {
-      "sample-booking-experience": {
-        "url": "/img/noriva-work-booking-experience.webp",
-        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Booking Experience — an illustrative engagement, not client photography.",
-        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتجربة الحجز — نموذج توضيحي لا تصوير لعمل عميل.",
-        "gallery": [
-          {
-            "url": "/img/noriva-work-booking-experience-1.webp",
-            "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Booking Experience — an illustrative engagement, not client photography.",
-            "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتجربة الحجز — نموذج توضيحي لا تصوير لعمل عميل."
-          },
-          {
-            "url": "/img/noriva-work-booking-experience-2.webp",
-            "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Booking Experience — an illustrative engagement, not client photography.",
-            "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتجربة الحجز — نموذج توضيحي لا تصوير لعمل عميل."
-          },
-          {
-            "url": "/img/noriva-work-booking-experience-3.webp",
-            "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Booking Experience — an illustrative engagement, not client photography.",
-            "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتجربة الحجز — نموذج توضيحي لا تصوير لعمل عميل."
-          }
-        ]
-      },
-      "sample-brand-refresh": {
-        "url": "/img/noriva-work-brand-refresh.webp",
-        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Brand Refresh — an illustrative engagement, not client photography.",
-        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتحديث علامة — نموذج توضيحي لا تصوير لعمل عميل.",
-        "gallery": [
-          {
-            "url": "/img/noriva-work-brand-refresh-1.webp",
-            "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Brand Refresh — an illustrative engagement, not client photography.",
-            "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتحديث علامة — نموذج توضيحي لا تصوير لعمل عميل."
-          },
-          {
-            "url": "/img/noriva-work-brand-refresh-2.webp",
-            "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Brand Refresh — an illustrative engagement, not client photography.",
-            "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتحديث علامة — نموذج توضيحي لا تصوير لعمل عميل."
-          },
-          {
-            "url": "/img/noriva-work-brand-refresh-3.webp",
-            "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Brand Refresh — an illustrative engagement, not client photography.",
-            "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتحديث علامة — نموذج توضيحي لا تصوير لعمل عميل."
-          }
-        ]
-      },
       "sample-cafe-concept-development": {
         "url": "/img/noriva-work-cafe-concept-development.webp",
         "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Café Concept Development — an illustrative engagement, not client photography.",
@@ -2028,28 +1963,6 @@
           }
         ]
       },
-      "sample-editorial-platform": {
-        "url": "/img/noriva-work-editorial-platform.webp",
-        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Editorial Content Platform — an illustrative engagement, not client photography.",
-        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـمنصة محتوى تحريري — نموذج توضيحي لا تصوير لعمل عميل.",
-        "gallery": [
-          {
-            "url": "/img/noriva-work-editorial-platform-1.webp",
-            "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Editorial Content Platform — an illustrative engagement, not client photography.",
-            "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـمنصة محتوى تحريري — نموذج توضيحي لا تصوير لعمل عميل."
-          },
-          {
-            "url": "/img/noriva-work-editorial-platform-2.webp",
-            "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Editorial Content Platform — an illustrative engagement, not client photography.",
-            "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـمنصة محتوى تحريري — نموذج توضيحي لا تصوير لعمل عميل."
-          },
-          {
-            "url": "/img/noriva-work-editorial-platform-3.webp",
-            "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Editorial Content Platform — an illustrative engagement, not client photography.",
-            "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـمنصة محتوى تحريري — نموذج توضيحي لا تصوير لعمل عميل."
-          }
-        ]
-      },
       "sample-guest-experience-programme": {
         "url": "/img/noriva-work-guest-experience-programme.webp",
         "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Guest Experience Programme — an illustrative engagement, not client photography.",
@@ -2069,50 +1982,6 @@
             "url": "/img/noriva-work-guest-experience-programme-3.webp",
             "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Guest Experience Programme — an illustrative engagement, not client photography.",
             "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـبرنامج تجربة الضيف — نموذج توضيحي لا تصوير لعمل عميل."
-          }
-        ]
-      },
-      "sample-hospitality-identity": {
-        "url": "/img/noriva-work-hospitality-identity.webp",
-        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Hospitality Identity System — an illustrative engagement, not client photography.",
-        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـنظام هوية لمشروع ضيافة — نموذج توضيحي لا تصوير لعمل عميل.",
-        "gallery": [
-          {
-            "url": "/img/noriva-work-hospitality-identity-1.webp",
-            "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Hospitality Identity System — an illustrative engagement, not client photography.",
-            "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـنظام هوية لمشروع ضيافة — نموذج توضيحي لا تصوير لعمل عميل."
-          },
-          {
-            "url": "/img/noriva-work-hospitality-identity-2.webp",
-            "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Hospitality Identity System — an illustrative engagement, not client photography.",
-            "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـنظام هوية لمشروع ضيافة — نموذج توضيحي لا تصوير لعمل عميل."
-          },
-          {
-            "url": "/img/noriva-work-hospitality-identity-3.webp",
-            "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Hospitality Identity System — an illustrative engagement, not client photography.",
-            "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـنظام هوية لمشروع ضيافة — نموذج توضيحي لا تصوير لعمل عميل."
-          }
-        ]
-      },
-      "sample-launch-campaign": {
-        "url": "/img/noriva-work-launch-campaign.webp",
-        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Opening Campaign — an illustrative engagement, not client photography.",
-        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـحملة افتتاح — نموذج توضيحي لا تصوير لعمل عميل.",
-        "gallery": [
-          {
-            "url": "/img/noriva-work-launch-campaign-1.webp",
-            "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Opening Campaign — an illustrative engagement, not client photography.",
-            "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـحملة افتتاح — نموذج توضيحي لا تصوير لعمل عميل."
-          },
-          {
-            "url": "/img/noriva-work-launch-campaign-2.webp",
-            "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Opening Campaign — an illustrative engagement, not client photography.",
-            "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـحملة افتتاح — نموذج توضيحي لا تصوير لعمل عميل."
-          },
-          {
-            "url": "/img/noriva-work-launch-campaign-3.webp",
-            "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Opening Campaign — an illustrative engagement, not client photography.",
-            "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـحملة افتتاح — نموذج توضيحي لا تصوير لعمل عميل."
           }
         ]
       },
@@ -2181,60 +2050,38 @@
             "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـبرنامج افتتاح مطعم — نموذج توضيحي لا تصوير لعمل عميل."
           }
         ]
-      },
-      "sample-retail-experience": {
-        "url": "/img/noriva-work-retail-experience.webp",
-        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Retail Experience Design — an illustrative engagement, not client photography.",
-        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتصميم تجربة التجزئة — نموذج توضيحي لا تصوير لعمل عميل.",
-        "gallery": [
-          {
-            "url": "/img/noriva-work-retail-experience-1.webp",
-            "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Retail Experience Design — an illustrative engagement, not client photography.",
-            "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتصميم تجربة التجزئة — نموذج توضيحي لا تصوير لعمل عميل."
-          },
-          {
-            "url": "/img/noriva-work-retail-experience-2.webp",
-            "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Retail Experience Design — an illustrative engagement, not client photography.",
-            "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتصميم تجربة التجزئة — نموذج توضيحي لا تصوير لعمل عميل."
-          },
-          {
-            "url": "/img/noriva-work-retail-experience-3.webp",
-            "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Retail Experience Design — an illustrative engagement, not client photography.",
-            "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتصميم تجربة التجزئة — نموذج توضيحي لا تصوير لعمل عميل."
-          }
-        ]
       }
     },
     "caseStudies": {
       "cafe-concept-case-study": {
         "url": "/img/noriva-case-study-cafe-concept.webp",
-        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Defining a café before designing it — an illustrative engagement, not client photography.",
-        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتعريف مقهى قبل تصميمه — نموذج توضيحي لا تصوير لعمل عميل."
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Illustrative Case — Defining a café before designing it — an illustrative engagement, not client photography.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـحالة توضيحية — تعريف مقهى قبل تصميمه — نموذج توضيحي لا تصوير لعمل عميل."
       },
       "delivery-rebuild-case-study": {
         "url": "/img/noriva-case-study-delivery-rebuild.webp",
-        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Rebuilding a delivery channel from the margin backwards — an illustrative engagement, not client photography.",
-        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـإعادة بناء قناة التوصيل انطلاقاً من الهامش — نموذج توضيحي لا تصوير لعمل عميل."
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Illustrative Case — Rebuilding a delivery channel from the margin backwards — an illustrative engagement, not client photography.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـحالة توضيحية — إعادة بناء قناة التوصيل انطلاقاً من الهامش — نموذج توضيحي لا تصوير لعمل عميل."
       },
       "guest-experience-case-study": {
         "url": "/img/noriva-case-study-guest-experience.webp",
-        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Finding the friction nobody complains about — an illustrative engagement, not client photography.",
-        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـالعثور على الاحتكاك الذي لا يشتكي منه أحد — نموذج توضيحي لا تصوير لعمل عميل."
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Illustrative Case — Finding the friction nobody complains about — an illustrative engagement, not client photography.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـحالة توضيحية — العثور على الاحتكاك الذي لا يشتكي منه أحد — نموذج توضيحي لا تصوير لعمل عميل."
       },
       "menu-restructure-case-study": {
         "url": "/img/noriva-case-study-menu-restructure.webp",
-        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Reading a four-year-old menu as a commercial document — an illustrative engagement, not client photography.",
-        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـقراءة قائمة عمرها أربع سنوات كوثيقة تجارية — نموذج توضيحي لا تصوير لعمل عميل."
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Illustrative Case — Reading a four-year-old menu as a commercial document — an illustrative engagement, not client photography.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـحالة توضيحية — قراءة قائمة عمرها أربع سنوات كوثيقة تجارية — نموذج توضيحي لا تصوير لعمل عميل."
       },
       "multi-branch-readiness-case-study": {
         "url": "/img/noriva-case-study-multi-branch-readiness.webp",
-        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Writing down what one person knew — an illustrative engagement, not client photography.",
-        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـكتابة ما يعرفه شخص واحد — نموذج توضيحي لا تصوير لعمل عميل."
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Illustrative Case — Writing down what one person knew — an illustrative engagement, not client photography.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـحالة توضيحية — كتابة ما يعرفه شخص واحد — نموذج توضيحي لا تصوير لعمل عميل."
       },
       "opening-programme-case-study": {
         "url": "/img/noriva-case-study-opening-programme.webp",
-        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for A pre-opening sequence run in the right order — an illustrative engagement, not client photography.",
-        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتسلسل ما قبل الافتتاح منفَّذ بالترتيب الصحيح — نموذج توضيحي لا تصوير لعمل عميل."
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Illustrative Case — A pre-opening sequence run in the right order — an illustrative engagement, not client photography.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـحالة توضيحية — تسلسل ما قبل الافتتاح منفَّذ بالترتيب الصحيح — نموذج توضيحي لا تصوير لعمل عميل."
       }
     },
     "stages": {
@@ -2290,6 +2137,11 @@
       }
     },
     "tools": {
+      "average-check-calculator": {
+        "url": "/img/noriva-tool-average-check.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Average Check Calculator — an interactive calculator for food and beverage decisions.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـحاسبة متوسط الفاتورة — حاسبة تفاعلية لقرارات الأغذية والمشروبات."
+      },
       "branch-payback-calculator": {
         "url": "/img/noriva-tool-branch-payback.webp",
         "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Branch Payback Calculator — an interactive calculator for food and beverage decisions.",
@@ -2320,6 +2172,11 @@
         "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Food Cost Calculator — an interactive calculator for food and beverage decisions.",
         "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـحاسبة تكلفة الطعام — حاسبة تفاعلية لقرارات الأغذية والمشروبات."
       },
+      "gross-profit-calculator": {
+        "url": "/img/noriva-tool-gross-profit.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Gross Profit Calculator — an interactive calculator for food and beverage decisions.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـحاسبة الربح الإجمالي — حاسبة تفاعلية لقرارات الأغذية والمشروبات."
+      },
       "labour-cost-calculator": {
         "url": "/img/noriva-tool-labour-cost.webp",
         "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Labour Cost Calculator — an interactive calculator for food and beverage decisions.",
@@ -2340,16 +2197,6 @@
         "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Prime Cost Calculator — an interactive calculator for food and beverage decisions.",
         "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـحاسبة التكلفة الأولية — حاسبة تفاعلية لقرارات الأغذية والمشروبات."
       },
-      "average-check-calculator": {
-        "url": "/img/noriva-tool-average-check.webp",
-        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Average Check Calculator — an interactive calculator for food and beverage decisions.",
-        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـحاسبة متوسط الفاتورة — حاسبة تفاعلية لقرارات الأغذية والمشروبات."
-      },
-      "gross-profit-calculator": {
-        "url": "/img/noriva-tool-gross-profit.webp",
-        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Gross Profit Calculator — an interactive calculator for food and beverage decisions.",
-        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـحاسبة الربح الإجمالي — حاسبة تفاعلية لقرارات الأغذية والمشروبات."
-      },
       "revenue-target-calculator": {
         "url": "/img/noriva-tool-revenue-target.webp",
         "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Revenue Target Calculator — an interactive calculator for food and beverage decisions.",
@@ -2362,120 +2209,155 @@
       }
     },
     "resources": {
-      "restaurant-feasibility-study-template": {
-        "url": "/img/noriva-resource-restaurant-feasibility-study-template.webp",
-        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Noriva Restaurant Feasibility Study — a downloadable restaurant planning resource.",
-        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـدراسة جدوى المطاعم من نوريفا — مورد قابل للتنزيل لتخطيط المطاعم."
+      "30-questions-before-opening": {
+        "url": "/img/noriva-resource-30-questions-before-opening.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for 30 Questions Before Opening a Restaurant — a downloadable restaurant planning resource.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـ30 سؤالاً قبل افتتاح مطعم — مورد قابل للتنزيل لتخطيط المطاعم."
       },
-      "restaurant-startup-budget": {
-        "url": "/img/noriva-resource-restaurant-startup-budget.webp",
-        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Restaurant Startup Budget — a downloadable restaurant planning resource.",
-        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـميزانية تأسيس مطعم — مورد قابل للتنزيل لتخطيط المطاعم."
+      "90-day-turnaround-plan": {
+        "url": "/img/noriva-resource-90-day-turnaround-plan.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for 90-day Turnaround Plan — a downloadable restaurant planning resource.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـخطة تحول لمدة 90 يوماً — مورد قابل للتنزيل لتخطيط المطاعم."
       },
-      "capex-budget": {
-        "url": "/img/noriva-resource-capex-budget.webp",
-        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for CAPEX Budget — a downloadable restaurant planning resource.",
-        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـميزانية النفقات الرأسمالية — مورد قابل للتنزيل لتخطيط المطاعم."
+      "annual-budget-model": {
+        "url": "/img/noriva-resource-annual-budget-model.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Annual Budget Model — a downloadable restaurant planning resource.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـنموذج الموازنة السنوية — مورد قابل للتنزيل لتخطيط المطاعم."
       },
-      "pre-opening-budget": {
-        "url": "/img/noriva-resource-pre-opening-budget.webp",
-        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Pre-opening Budget — a downloadable restaurant planning resource.",
-        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـميزانية ما قبل الافتتاح — مورد قابل للتنزيل لتخطيط المطاعم."
-      },
-      "restaurant-pl-template": {
-        "url": "/img/noriva-resource-restaurant-pl-template.webp",
-        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Monthly Restaurant P&L — a downloadable restaurant planning resource.",
-        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـقائمة أرباح وخسائر شهرية للمطعم — مورد قابل للتنزيل لتخطيط المطاعم."
-      },
-      "break-even-model": {
-        "url": "/img/noriva-resource-break-even-model.webp",
-        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Break-even Analysis — a downloadable restaurant planning resource.",
-        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتحليل نقطة التعادل — مورد قابل للتنزيل لتخطيط المطاعم."
-      },
-      "restaurant-sales-forecast": {
-        "url": "/img/noriva-resource-restaurant-sales-forecast.webp",
-        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Restaurant Sales Forecast — a downloadable restaurant planning resource.",
-        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتوقع مبيعات المطعم — مورد قابل للتنزيل لتخطيط المطاعم."
-      },
-      "revenue-forecast-by-channel": {
-        "url": "/img/noriva-resource-revenue-forecast-by-channel.webp",
-        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Revenue Forecast by Channel — a downloadable restaurant planning resource.",
-        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتوقع الإيرادات حسب القناة — مورد قابل للتنزيل لتخطيط المطاعم."
-      },
-      "food-cost-calculator": {
-        "url": "/img/noriva-resource-food-cost-calculator.webp",
-        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Food Cost Calculator — a downloadable restaurant planning resource.",
-        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـحاسبة تكلفة الطعام — مورد قابل للتنزيل لتخطيط المطاعم."
-      },
-      "recipe-costing": {
-        "url": "/img/noriva-resource-recipe-costing.webp",
-        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Recipe Costing — a downloadable restaurant planning resource.",
-        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتكلفة الوصفات — مورد قابل للتنزيل لتخطيط المطاعم."
-      },
-      "menu-engineering-template": {
-        "url": "/img/noriva-resource-menu-engineering-template.webp",
-        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Menu Engineering — a downloadable restaurant planning resource.",
-        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـهندسة القائمة — مورد قابل للتنزيل لتخطيط المطاعم."
-      },
-      "menu-pricing-worksheet": {
-        "url": "/img/noriva-resource-menu-pricing-worksheet.webp",
-        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Menu Pricing Calculator — a downloadable restaurant planning resource.",
-        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـحاسبة تسعير القائمة — مورد قابل للتنزيل لتخطيط المطاعم."
-      },
-      "inventory-count": {
-        "url": "/img/noriva-resource-inventory-count.webp",
-        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Inventory Count — a downloadable restaurant planning resource.",
-        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـجرد المخزون — مورد قابل للتنزيل لتخطيط المطاعم."
-      },
-      "stock-movement": {
-        "url": "/img/noriva-resource-stock-movement.webp",
-        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Stock Movement — a downloadable restaurant planning resource.",
-        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـحركة المخزون — مورد قابل للتنزيل لتخطيط المطاعم."
-      },
-      "purchasing-tracker": {
-        "url": "/img/noriva-resource-purchasing-tracker.webp",
-        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Purchasing Tracker — a downloadable restaurant planning resource.",
-        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـمتتبع المشتريات — مورد قابل للتنزيل لتخطيط المطاعم."
-      },
-      "supplier-evaluation-template": {
-        "url": "/img/noriva-resource-supplier-evaluation-template.webp",
-        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Supplier Comparison — a downloadable restaurant planning resource.",
-        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـمقارنة الموردين — مورد قابل للتنزيل لتخطيط المطاعم."
-      },
-      "waste-log": {
-        "url": "/img/noriva-resource-waste-log.webp",
-        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Waste Log — a downloadable restaurant planning resource.",
-        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـسجل الهدر — مورد قابل للتنزيل لتخطيط المطاعم."
-      },
-      "theoretical-vs-actual-food-cost": {
-        "url": "/img/noriva-resource-theoretical-vs-actual-food-cost.webp",
-        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Theoretical vs Actual Food Cost — a downloadable restaurant planning resource.",
-        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتكلفة الطعام النظرية مقابل الفعلية — مورد قابل للتنزيل لتخطيط المطاعم."
-      },
-      "labour-cost-tracker": {
-        "url": "/img/noriva-resource-labour-cost-tracker.webp",
-        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Labor Cost Tracker — a downloadable restaurant planning resource.",
-        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـمتتبع تكلفة العمالة — مورد قابل للتنزيل لتخطيط المطاعم."
-      },
-      "staffing-plan": {
-        "url": "/img/noriva-resource-staffing-plan.webp",
-        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Staffing Plan — a downloadable restaurant planning resource.",
-        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـخطة التوظيف — مورد قابل للتنزيل لتخطيط المطاعم."
-      },
-      "restaurant-kpi-dashboard": {
-        "url": "/img/noriva-resource-restaurant-kpi-dashboard.webp",
-        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Restaurant KPI Dashboard — a downloadable restaurant planning resource.",
-        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـلوحة مؤشرات أداء المطعم — مورد قابل للتنزيل لتخطيط المطاعم."
+      "branch-feasibility-checklist": {
+        "url": "/img/noriva-resource-branch-feasibility-checklist.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Branch Feasibility Checklist — a downloadable restaurant planning resource.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـقائمة تحقق جدوى الفرع — مورد قابل للتنزيل لتخطيط المطاعم."
       },
       "branch-performance-comparison": {
         "url": "/img/noriva-resource-branch-performance-comparison.webp",
         "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Branch Performance Comparison — a downloadable restaurant planning resource.",
         "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـمقارنة أداء الفروع — مورد قابل للتنزيل لتخطيط المطاعم."
       },
+      "branch-performance-review": {
+        "url": "/img/noriva-resource-branch-performance-review.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Branch Performance Review — a downloadable restaurant planning resource.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـمراجعة أداء الفروع — مورد قابل للتنزيل لتخطيط المطاعم."
+      },
+      "brand-and-digital-presence-audit": {
+        "url": "/img/noriva-resource-brand-and-digital-presence-audit.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Brand & Digital Presence Audit — a downloadable restaurant planning resource.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتدقيق العلامة والحضور الرقمي — مورد قابل للتنزيل لتخطيط المطاعم."
+      },
+      "brand-positioning-worksheet": {
+        "url": "/img/noriva-resource-brand-positioning-worksheet.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Brand Positioning Worksheet — a downloadable restaurant planning resource.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـورقة عمل تموضع العلامة — مورد قابل للتنزيل لتخطيط المطاعم."
+      },
+      "break-even-model": {
+        "url": "/img/noriva-resource-break-even-model.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Break-Even Model — a downloadable restaurant planning resource.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـنموذج نقطة التعادل — مورد قابل للتنزيل لتخطيط المطاعم."
+      },
+      "cafe-audit-checklist": {
+        "url": "/img/noriva-resource-cafe-audit-checklist.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Café Audit Checklist — a downloadable restaurant planning resource.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـقائمة تقييم المقهى — مورد قابل للتنزيل لتخطيط المطاعم."
+      },
+      "cafe-kpi-dashboard": {
+        "url": "/img/noriva-resource-cafe-kpi-dashboard.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Café KPI Dashboard — a downloadable restaurant planning resource.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـلوحة مؤشرات أداء المقهى — مورد قابل للتنزيل لتخطيط المطاعم."
+      },
+      "campaign-brief-template": {
+        "url": "/img/noriva-resource-campaign-brief-template.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Campaign Brief — a downloadable restaurant planning resource.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـموجز الحملة — مورد قابل للتنزيل لتخطيط المطاعم."
+      },
+      "capex-budget": {
+        "url": "/img/noriva-resource-capex-budget.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for CAPEX Budget — a downloadable restaurant planning resource.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـميزانية النفقات الرأسمالية — مورد قابل للتنزيل لتخطيط المطاعم."
+      },
+      "cash-flow-forecast": {
+        "url": "/img/noriva-resource-cash-flow-forecast.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Cash Flow Forecast — a downloadable restaurant planning resource.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتوقعات التدفق النقدي — مورد قابل للتنزيل لتخطيط المطاعم."
+      },
+      "competitor-analysis-template": {
+        "url": "/img/noriva-resource-competitor-analysis-template.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Competitor Analysis Template — a downloadable restaurant planning resource.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـقالب تحليل المنافسين — مورد قابل للتنزيل لتخطيط المطاعم."
+      },
+      "customer-experience-audit": {
+        "url": "/img/noriva-resource-customer-experience-audit.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Customer Experience Audit — a downloadable restaurant planning resource.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتدقيق تجربة العميل — مورد قابل للتنزيل لتخطيط المطاعم."
+      },
+      "customer-feedback-analysis": {
+        "url": "/img/noriva-resource-customer-feedback-analysis.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Customer Feedback Analysis — a downloadable restaurant planning resource.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتحليل ملاحظات العملاء — مورد قابل للتنزيل لتخطيط المطاعم."
+      },
       "delivery-platform-performance": {
         "url": "/img/noriva-resource-delivery-platform-performance.webp",
         "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Delivery Platform Performance — a downloadable restaurant planning resource.",
         "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـأداء منصات التوصيل — مورد قابل للتنزيل لتخطيط المطاعم."
+      },
+      "delivery-profitability-checklist": {
+        "url": "/img/noriva-resource-delivery-profitability-checklist.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Delivery Profitability Checklist — a downloadable restaurant planning resource.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـقائمة تحقق ربحية التوصيل — مورد قابل للتنزيل لتخطيط المطاعم."
+      },
+      "expansion-checklist": {
+        "url": "/img/noriva-resource-expansion-checklist.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Expansion Checklist — a downloadable restaurant planning resource.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـقائمة مراجعة التوسع — مورد قابل للتنزيل لتخطيط المطاعم."
+      },
+      "expansion-feasibility": {
+        "url": "/img/noriva-resource-expansion-feasibility.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Expansion Feasibility — a downloadable restaurant planning resource.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـجدوى التوسع — مورد قابل للتنزيل لتخطيط المطاعم."
+      },
+      "expansion-readiness-assessment": {
+        "url": "/img/noriva-resource-expansion-readiness-assessment.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Expansion Readiness Assessment — a downloadable restaurant planning resource.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتقييم الجاهزية للتوسع — مورد قابل للتنزيل لتخطيط المطاعم."
+      },
+      "food-cost-calculator": {
+        "url": "/img/noriva-resource-food-cost-calculator.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Food Cost Calculator — a downloadable restaurant planning resource.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـحاسبة تكلفة الطعام — مورد قابل للتنزيل لتخطيط المطاعم."
+      },
+      "food-cost-control-guide": {
+        "url": "/img/noriva-resource-food-cost-control-guide.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Food Cost Control Guide — a downloadable restaurant planning resource.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـدليل ضبط تكلفة الطعام — مورد قابل للتنزيل لتخطيط المطاعم."
+      },
+      "food-cost-sheet": {
+        "url": "/img/noriva-resource-food-cost-sheet.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Food Cost Sheet — a downloadable restaurant planning resource.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـورقة تكلفة الطعام — مورد قابل للتنزيل لتخطيط المطاعم."
+      },
+      "franchise-readiness-scorecard": {
+        "url": "/img/noriva-resource-franchise-readiness-scorecard.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Franchise Readiness Scorecard — a downloadable restaurant planning resource.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـبطاقة الجاهزية للامتياز التجاري — مورد قابل للتنزيل لتخطيط المطاعم."
+      },
+      "inventory-control-checklist": {
+        "url": "/img/noriva-resource-inventory-control-checklist.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Inventory Control Checklist — a downloadable restaurant planning resource.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـقائمة تحقق ضبط المخزون — مورد قابل للتنزيل لتخطيط المطاعم."
+      },
+      "inventory-count": {
+        "url": "/img/noriva-resource-inventory-count.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Inventory Count — a downloadable restaurant planning resource.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـجرد المخزون — مورد قابل للتنزيل لتخطيط المطاعم."
+      },
+      "item-profitability-analysis": {
+        "url": "/img/noriva-resource-item-profitability-analysis.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Item Profitability Analysis — a downloadable restaurant planning resource.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتحليل ربحية الأصناف — مورد قابل للتنزيل لتخطيط المطاعم."
+      },
+      "labour-cost-tracker": {
+        "url": "/img/noriva-resource-labour-cost-tracker.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Labour Cost Tracker — a downloadable restaurant planning resource.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـمتتبع تكلفة العمالة — مورد قابل للتنزيل لتخطيط المطاعم."
       },
       "marketing-budget": {
         "url": "/img/noriva-resource-marketing-budget.webp",
@@ -2484,183 +2366,253 @@
       },
       "marketing-campaign-planner": {
         "url": "/img/noriva-resource-marketing-campaign-planner.webp",
-        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Marketing Campaign Tracker — a downloadable restaurant planning resource.",
-        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـمتتبع الحملات التسويقية — مورد قابل للتنزيل لتخطيط المطاعم."
-      },
-      "restaurant-opening-workbook": {
-        "url": "/img/noriva-resource-restaurant-opening-workbook.webp",
-        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Restaurant Opening Checklist Workbook — a downloadable restaurant planning resource.",
-        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـمصنف قائمة تحقق افتتاح مطعم — مورد قابل للتنزيل لتخطيط المطاعم."
-      },
-      "site-evaluation-scorecard": {
-        "url": "/img/noriva-resource-site-evaluation-scorecard.webp",
-        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Site Evaluation Scorecard — a downloadable restaurant planning resource.",
-        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـبطاقة تقييم الموقع — مورد قابل للتنزيل لتخطيط المطاعم."
-      },
-      "competitor-analysis-template": {
-        "url": "/img/noriva-resource-competitor-analysis-template.webp",
-        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Competitor Analysis — a downloadable restaurant planning resource.",
-        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتحليل المنافسين — مورد قابل للتنزيل لتخطيط المطاعم."
-      },
-      "swot-analysis": {
-        "url": "/img/noriva-resource-swot-analysis.webp",
-        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for SWOT Analysis — a downloadable restaurant planning resource.",
-        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتحليل نقاط القوة والضعف والفرص والتهديدات — مورد قابل للتنزيل لتخطيط المطاعم."
-      },
-      "customer-feedback-analysis": {
-        "url": "/img/noriva-resource-customer-feedback-analysis.webp",
-        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Customer Feedback Analysis — a downloadable restaurant planning resource.",
-        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتحليل ملاحظات العملاء — مورد قابل للتنزيل لتخطيط المطاعم."
-      },
-      "restaurant-audit-scorecard": {
-        "url": "/img/noriva-resource-restaurant-audit-scorecard.webp",
-        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Restaurant Audit Scorecard — a downloadable restaurant planning resource.",
-        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـبطاقة تدقيق المطعم — مورد قابل للتنزيل لتخطيط المطاعم."
-      },
-      "mystery-shopper-scorecard": {
-        "url": "/img/noriva-resource-mystery-shopper-scorecard.webp",
-        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Mystery Shopper Scorecard — a downloadable restaurant planning resource.",
-        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـبطاقة تقييم المتسوق الخفي — مورد قابل للتنزيل لتخطيط المطاعم."
-      },
-      "expansion-feasibility": {
-        "url": "/img/noriva-resource-expansion-feasibility.webp",
-        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Expansion Feasibility — a downloadable restaurant planning resource.",
-        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـجدوى التوسع — مورد قابل للتنزيل لتخطيط المطاعم."
-      },
-      "franchise-readiness-scorecard": {
-        "url": "/img/noriva-resource-franchise-readiness-scorecard.webp",
-        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Franchise Readiness Scorecard — a downloadable restaurant planning resource.",
-        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـبطاقة الجاهزية للامتياز التجاري — مورد قابل للتنزيل لتخطيط المطاعم."
-      },
-      "90-day-turnaround-plan": {
-        "url": "/img/noriva-resource-90-day-turnaround-plan.webp",
-        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for 90-day Turnaround Plan — a downloadable restaurant planning resource.",
-        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـخطة تحول لمدة 90 يوماً — مورد قابل للتنزيل لتخطيط المطاعم."
-      },
-      "restaurant-feasibility-study-report": {
-        "url": "/img/noriva-resource-restaurant-feasibility-study-report.webp",
-        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Restaurant Feasibility Study Report — a downloadable restaurant planning resource.",
-        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتقرير دراسة جدوى مطعم — مورد قابل للتنزيل لتخطيط المطاعم."
-      },
-      "restaurant-business-plan-template": {
-        "url": "/img/noriva-resource-restaurant-business-plan-template.webp",
-        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Restaurant Business Plan — a downloadable restaurant planning resource.",
-        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـخطة عمل مطعم — مورد قابل للتنزيل لتخطيط المطاعم."
-      },
-      "restaurant-audit-report": {
-        "url": "/img/noriva-resource-restaurant-audit-report.webp",
-        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Restaurant Audit Report — a downloadable restaurant planning resource.",
-        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتقرير تدقيق مطعم — مورد قابل للتنزيل لتخطيط المطاعم."
-      },
-      "restaurant-development-plan": {
-        "url": "/img/noriva-resource-restaurant-development-plan.webp",
-        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Restaurant Development Plan — a downloadable restaurant planning resource.",
-        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـخطة تطوير مطعم — مورد قابل للتنزيل لتخطيط المطاعم."
-      },
-      "restaurant-opening-plan": {
-        "url": "/img/noriva-resource-restaurant-opening-plan.webp",
-        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Restaurant Opening Plan — a downloadable restaurant planning resource.",
-        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـخطة افتتاح مطعم — مورد قابل للتنزيل لتخطيط المطاعم."
-      },
-      "restaurant-operations-manual": {
-        "url": "/img/noriva-resource-restaurant-operations-manual.webp",
-        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Restaurant Operations Manual — a downloadable restaurant planning resource.",
-        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـدليل تشغيل مطعم — مورد قابل للتنزيل لتخطيط المطاعم."
-      },
-      "restaurant-sop-template": {
-        "url": "/img/noriva-resource-restaurant-sop-template.webp",
-        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Restaurant SOP Template — a downloadable restaurant planning resource.",
-        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـقالب إجراء تشغيلي قياسي للمطعم — مورد قابل للتنزيل لتخطيط المطاعم."
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Marketing Campaign Planner — a downloadable restaurant planning resource.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـمخطط الحملات التسويقية — مورد قابل للتنزيل لتخطيط المطاعم."
       },
       "marketing-plan-template": {
         "url": "/img/noriva-resource-marketing-plan-template.webp",
-        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Restaurant Marketing Plan — a downloadable restaurant planning resource.",
-        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـخطة تسويق مطعم — مورد قابل للتنزيل لتخطيط المطاعم."
-      },
-      "restaurant-brand-brief": {
-        "url": "/img/noriva-resource-restaurant-brand-brief.webp",
-        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Restaurant Brand Brief — a downloadable restaurant planning resource.",
-        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـموجز علامة مطعم — مورد قابل للتنزيل لتخطيط المطاعم."
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Marketing Plan Template — a downloadable restaurant planning resource.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـقالب الخطة التسويقية — مورد قابل للتنزيل لتخطيط المطاعم."
       },
       "menu-development-brief": {
         "url": "/img/noriva-resource-menu-development-brief.webp",
         "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Menu Development Brief — a downloadable restaurant planning resource.",
-        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـموجز تطوير قائمة — مورد قابل للتنزيل لتخطيط المطاعم."
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـموجز تطوير القائمة — مورد قابل للتنزيل لتخطيط المطاعم."
       },
-      "site-visit-report": {
-        "url": "/img/noriva-resource-site-visit-report.webp",
-        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Restaurant Site Visit Report — a downloadable restaurant planning resource.",
-        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتقرير زيارة موقع مطعم — مورد قابل للتنزيل لتخطيط المطاعم."
+      "menu-engineering-guide": {
+        "url": "/img/noriva-resource-menu-engineering-guide.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Menu Engineering Guide — a downloadable restaurant planning resource.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـدليل هندسة القائمة — مورد قابل للتنزيل لتخطيط المطاعم."
       },
-      "mystery-shopping-report": {
-        "url": "/img/noriva-resource-mystery-shopping-report.webp",
-        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Mystery Shopping Report — a downloadable restaurant planning resource.",
-        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتقرير المتسوق الخفي — مورد قابل للتنزيل لتخطيط المطاعم."
+      "menu-engineering-template": {
+        "url": "/img/noriva-resource-menu-engineering-template.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Menu Engineering Template — a downloadable restaurant planning resource.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـقالب هندسة القائمة — مورد قابل للتنزيل لتخطيط المطاعم."
       },
-      "restaurant-turnaround-report": {
-        "url": "/img/noriva-resource-restaurant-turnaround-report.webp",
-        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Restaurant Turnaround Report — a downloadable restaurant planning resource.",
-        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتقرير تحول المطعم — مورد قابل للتنزيل لتخطيط المطاعم."
+      "menu-pricing-checklist": {
+        "url": "/img/noriva-resource-menu-pricing-checklist.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Menu Pricing Checklist — a downloadable restaurant planning resource.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـقائمة مراجعة التسعير — مورد قابل للتنزيل لتخطيط المطاعم."
+      },
+      "menu-pricing-worksheet": {
+        "url": "/img/noriva-resource-menu-pricing-worksheet.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Menu Pricing Worksheet — a downloadable restaurant planning resource.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـورقة عمل تسعير القائمة — مورد قابل للتنزيل لتخطيط المطاعم."
+      },
+      "menu-review-checklist": {
+        "url": "/img/noriva-resource-menu-review-checklist.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Menu Review Checklist — a downloadable restaurant planning resource.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـقائمة مراجعة القائمة — مورد قابل للتنزيل لتخطيط المطاعم."
       },
       "monthly-management-report": {
         "url": "/img/noriva-resource-monthly-management-report.webp",
         "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Restaurant Monthly Management Report — a downloadable restaurant planning resource.",
         "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتقرير الإدارة الشهري للمطعم — مورد قابل للتنزيل لتخطيط المطاعم."
       },
-      "branch-performance-review": {
-        "url": "/img/noriva-resource-branch-performance-review.webp",
-        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Branch Performance Review — a downloadable restaurant planning resource.",
-        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـمراجعة أداء الفروع — مورد قابل للتنزيل لتخطيط المطاعم."
+      "mystery-shopper-scorecard": {
+        "url": "/img/noriva-resource-mystery-shopper-scorecard.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Mystery Shopper Scorecard — a downloadable restaurant planning resource.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـبطاقة تقييم المتسوق الخفي — مورد قابل للتنزيل لتخطيط المطاعم."
+      },
+      "mystery-shopping-report": {
+        "url": "/img/noriva-resource-mystery-shopping-report.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Mystery Shopping Report — a downloadable restaurant planning resource.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتقرير المتسوق الخفي — مورد قابل للتنزيل لتخطيط المطاعم."
+      },
+      "opening-checklist": {
+        "url": "/img/noriva-resource-opening-checklist.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Opening Checklist — a downloadable restaurant planning resource.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـقائمة مراجعة الافتتاح — مورد قابل للتنزيل لتخطيط المطاعم."
+      },
+      "pre-opening-budget": {
+        "url": "/img/noriva-resource-pre-opening-budget.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Pre-opening Budget — a downloadable restaurant planning resource.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـميزانية ما قبل الافتتاح — مورد قابل للتنزيل لتخطيط المطاعم."
+      },
+      "procurement-checklist": {
+        "url": "/img/noriva-resource-procurement-checklist.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Purchasing & Receiving Checklist — a downloadable restaurant planning resource.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـقائمة تحقق الشراء والاستلام — مورد قابل للتنزيل لتخطيط المطاعم."
+      },
+      "product-mix-analysis": {
+        "url": "/img/noriva-resource-product-mix-analysis.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Product Mix Analysis — a downloadable restaurant planning resource.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتحليل مزيج المنتجات — مورد قابل للتنزيل لتخطيط المطاعم."
+      },
+      "purchasing-tracker": {
+        "url": "/img/noriva-resource-purchasing-tracker.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Purchasing Tracker — a downloadable restaurant planning resource.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـمتتبع المشتريات — مورد قابل للتنزيل لتخطيط المطاعم."
+      },
+      "recipe-costing": {
+        "url": "/img/noriva-resource-recipe-costing.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Recipe Costing — a downloadable restaurant planning resource.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتكلفة الوصفات — مورد قابل للتنزيل لتخطيط المطاعم."
+      },
+      "restaurant-audit-checklist": {
+        "url": "/img/noriva-resource-restaurant-audit-checklist.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Restaurant Audit Checklist — a downloadable restaurant planning resource.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـقائمة تقييم المطعم — مورد قابل للتنزيل لتخطيط المطاعم."
+      },
+      "restaurant-audit-report": {
+        "url": "/img/noriva-resource-restaurant-audit-report.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Restaurant Audit Report — a downloadable restaurant planning resource.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتقرير تدقيق مطعم — مورد قابل للتنزيل لتخطيط المطاعم."
+      },
+      "restaurant-audit-scorecard": {
+        "url": "/img/noriva-resource-restaurant-audit-scorecard.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Restaurant Audit Scorecard — a downloadable restaurant planning resource.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـبطاقة تدقيق المطعم — مورد قابل للتنزيل لتخطيط المطاعم."
+      },
+      "restaurant-brand-brief": {
+        "url": "/img/noriva-resource-restaurant-brand-brief.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Restaurant Brand Brief — a downloadable restaurant planning resource.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـموجز علامة مطعم — مورد قابل للتنزيل لتخطيط المطاعم."
+      },
+      "restaurant-business-plan-template": {
+        "url": "/img/noriva-resource-restaurant-business-plan-template.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Restaurant Business Plan Template — a downloadable restaurant planning resource.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـقالب خطة عمل مطعم — مورد قابل للتنزيل لتخطيط المطاعم."
+      },
+      "restaurant-concept-brief": {
+        "url": "/img/noriva-resource-restaurant-concept-brief.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Restaurant Concept Brief — a downloadable restaurant planning resource.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـموجز مفهوم مطعم — مورد قابل للتنزيل لتخطيط المطاعم."
+      },
+      "restaurant-development-plan": {
+        "url": "/img/noriva-resource-restaurant-development-plan.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Restaurant Development Plan — a downloadable restaurant planning resource.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـخطة تطوير مطعم — مورد قابل للتنزيل لتخطيط المطاعم."
       },
       "restaurant-feasibility-study-checklist": {
         "url": "/img/noriva-resource-restaurant-feasibility-study-checklist.webp",
         "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Restaurant Feasibility Study Checklist — a downloadable restaurant planning resource.",
         "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـقائمة تحقق دراسة جدوى مطعم — مورد قابل للتنزيل لتخطيط المطاعم."
       },
-      "30-questions-before-opening": {
-        "url": "/img/noriva-resource-30-questions-before-opening.webp",
-        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for 30 Questions Before Opening a Restaurant — a downloadable restaurant planning resource.",
-        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـ30 سؤالاً قبل افتتاح مطعم — مورد قابل للتنزيل لتخطيط المطاعم."
+      "restaurant-feasibility-study-report": {
+        "url": "/img/noriva-resource-restaurant-feasibility-study-report.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Restaurant Feasibility Study Report — a downloadable restaurant planning resource.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتقرير دراسة جدوى مطعم — مورد قابل للتنزيل لتخطيط المطاعم."
       },
-      "restaurant-profitability-checklist": {
-        "url": "/img/noriva-resource-restaurant-profitability-checklist.webp",
-        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Restaurant Profitability Checklist — a downloadable restaurant planning resource.",
-        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـقائمة تحقق ربحية المطعم — مورد قابل للتنزيل لتخطيط المطاعم."
+      "restaurant-feasibility-study-template": {
+        "url": "/img/noriva-resource-restaurant-feasibility-study-template.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Noriva Restaurant Feasibility Study — a downloadable restaurant planning resource.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـدراسة جدوى المطاعم من نوريفا — مورد قابل للتنزيل لتخطيط المطاعم."
       },
-      "food-cost-control-guide": {
-        "url": "/img/noriva-resource-food-cost-control-guide.webp",
-        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Food Cost Control Guide — a downloadable restaurant planning resource.",
-        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـدليل ضبط تكلفة الطعام — مورد قابل للتنزيل لتخطيط المطاعم."
-      },
-      "menu-engineering-guide": {
-        "url": "/img/noriva-resource-menu-engineering-guide.webp",
-        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Menu Engineering Quick Guide — a downloadable restaurant planning resource.",
-        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـدليل سريع لهندسة القائمة — مورد قابل للتنزيل لتخطيط المطاعم."
-      },
-      "opening-checklist": {
-        "url": "/img/noriva-resource-opening-checklist.webp",
-        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Restaurant Opening Checklist — a downloadable restaurant planning resource.",
-        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـقائمة تحقق افتتاح مطعم — مورد قابل للتنزيل لتخطيط المطاعم."
+      "restaurant-kpi-dashboard": {
+        "url": "/img/noriva-resource-restaurant-kpi-dashboard.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Restaurant KPI Dashboard — a downloadable restaurant planning resource.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـلوحة مؤشرات أداء المطعم — مورد قابل للتنزيل لتخطيط المطاعم."
       },
       "restaurant-kpi-guide": {
         "url": "/img/noriva-resource-restaurant-kpi-guide.webp",
         "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Restaurant KPI Guide — a downloadable restaurant planning resource.",
         "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـدليل مؤشرات أداء المطاعم — مورد قابل للتنزيل لتخطيط المطاعم."
       },
-      "restaurant-audit-checklist": {
-        "url": "/img/noriva-resource-restaurant-audit-checklist.webp",
-        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Restaurant Audit Checklist — a downloadable restaurant planning resource.",
-        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـقائمة تدقيق مطعم — مورد قابل للتنزيل لتخطيط المطاعم."
-      },
-      "delivery-profitability-checklist": {
-        "url": "/img/noriva-resource-delivery-profitability-checklist.webp",
-        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Delivery Profitability Checklist — a downloadable restaurant planning resource.",
-        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـقائمة تحقق ربحية التوصيل — مورد قابل للتنزيل لتخطيط المطاعم."
+      "restaurant-launch-plan": {
+        "url": "/img/noriva-resource-restaurant-launch-plan.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Restaurant Launch Plan — a downloadable restaurant planning resource.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـخطة إطلاق مطعم — مورد قابل للتنزيل لتخطيط المطاعم."
       },
       "restaurant-marketing-planning-guide": {
         "url": "/img/noriva-resource-restaurant-marketing-planning-guide.webp",
         "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Restaurant Marketing Planning Guide — a downloadable restaurant planning resource.",
         "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـدليل تخطيط تسويق المطاعم — مورد قابل للتنزيل لتخطيط المطاعم."
+      },
+      "restaurant-opening-plan": {
+        "url": "/img/noriva-resource-restaurant-opening-plan.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Restaurant Opening Plan — a downloadable restaurant planning resource.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـخطة افتتاح مطعم — مورد قابل للتنزيل لتخطيط المطاعم."
+      },
+      "restaurant-opening-workbook": {
+        "url": "/img/noriva-resource-restaurant-opening-workbook.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Restaurant Opening Checklist Workbook — a downloadable restaurant planning resource.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـمصنف قائمة تحقق افتتاح مطعم — مورد قابل للتنزيل لتخطيط المطاعم."
+      },
+      "restaurant-operations-manual": {
+        "url": "/img/noriva-resource-restaurant-operations-manual.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Restaurant Operations Manual — a downloadable restaurant planning resource.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـدليل تشغيل مطعم — مورد قابل للتنزيل لتخطيط المطاعم."
+      },
+      "restaurant-pl-template": {
+        "url": "/img/noriva-resource-restaurant-pl-template.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Restaurant P&L Template — a downloadable restaurant planning resource.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـقالب قائمة الأرباح والخسائر للمطاعم — مورد قابل للتنزيل لتخطيط المطاعم."
+      },
+      "restaurant-profitability-checklist": {
+        "url": "/img/noriva-resource-restaurant-profitability-checklist.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Restaurant Profitability Checklist — a downloadable restaurant planning resource.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـقائمة تحقق ربحية المطعم — مورد قابل للتنزيل لتخطيط المطاعم."
+      },
+      "restaurant-sales-forecast": {
+        "url": "/img/noriva-resource-restaurant-sales-forecast.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Restaurant Sales Forecast — a downloadable restaurant planning resource.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتوقع مبيعات المطعم — مورد قابل للتنزيل لتخطيط المطاعم."
+      },
+      "restaurant-sop-template": {
+        "url": "/img/noriva-resource-restaurant-sop-template.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Restaurant SOP Template — a downloadable restaurant planning resource.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـقالب إجراء تشغيلي قياسي للمطعم — مورد قابل للتنزيل لتخطيط المطاعم."
+      },
+      "restaurant-startup-budget": {
+        "url": "/img/noriva-resource-restaurant-startup-budget.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Restaurant Startup Budget — a downloadable restaurant planning resource.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـميزانية تأسيس مطعم — مورد قابل للتنزيل لتخطيط المطاعم."
+      },
+      "restaurant-turnaround-report": {
+        "url": "/img/noriva-resource-restaurant-turnaround-report.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Restaurant Turnaround Report — a downloadable restaurant planning resource.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتقرير تحول المطعم — مورد قابل للتنزيل لتخطيط المطاعم."
+      },
+      "revenue-forecast-by-channel": {
+        "url": "/img/noriva-resource-revenue-forecast-by-channel.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Revenue Forecast by Channel — a downloadable restaurant planning resource.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتوقع الإيرادات حسب القناة — مورد قابل للتنزيل لتخطيط المطاعم."
+      },
+      "site-evaluation-scorecard": {
+        "url": "/img/noriva-resource-site-evaluation-scorecard.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Site Evaluation Scorecard — a downloadable restaurant planning resource.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـبطاقة تقييم الموقع — مورد قابل للتنزيل لتخطيط المطاعم."
+      },
+      "site-visit-report": {
+        "url": "/img/noriva-resource-site-visit-report.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Restaurant Site Visit Report — a downloadable restaurant planning resource.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتقرير زيارة موقع مطعم — مورد قابل للتنزيل لتخطيط المطاعم."
+      },
+      "social-media-content-planner": {
+        "url": "/img/noriva-resource-social-media-content-planner.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Social Media Content Planner — a downloadable restaurant planning resource.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـمخطط محتوى وسائل التواصل — مورد قابل للتنزيل لتخطيط المطاعم."
+      },
+      "staffing-plan": {
+        "url": "/img/noriva-resource-staffing-plan.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Staffing Plan — a downloadable restaurant planning resource.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـخطة التوظيف — مورد قابل للتنزيل لتخطيط المطاعم."
+      },
+      "stock-movement": {
+        "url": "/img/noriva-resource-stock-movement.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Stock Movement — a downloadable restaurant planning resource.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـحركة المخزون — مورد قابل للتنزيل لتخطيط المطاعم."
+      },
+      "supplier-evaluation-template": {
+        "url": "/img/noriva-resource-supplier-evaluation-template.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Supplier Evaluation Template — a downloadable restaurant planning resource.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـقالب تقييم الموردين — مورد قابل للتنزيل لتخطيط المطاعم."
+      },
+      "swot-analysis": {
+        "url": "/img/noriva-resource-swot-analysis.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for SWOT Analysis — a downloadable restaurant planning resource.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتحليل نقاط القوة والضعف والفرص والتهديدات — مورد قابل للتنزيل لتخطيط المطاعم."
+      },
+      "theoretical-vs-actual-food-cost": {
+        "url": "/img/noriva-resource-theoretical-vs-actual-food-cost.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Theoretical vs Actual Food Cost — a downloadable restaurant planning resource.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـتكلفة الطعام النظرية مقابل الفعلية — مورد قابل للتنزيل لتخطيط المطاعم."
+      },
+      "waste-log": {
+        "url": "/img/noriva-resource-waste-log.webp",
+        "altEn": "Composed abstract light study in the Noriva palette, used as the editorial visual for Waste Log — a downloadable restaurant planning resource.",
+        "altAr": "دراسة ضوئية مجرّدة بألوان نوريفا، تُستخدم كصورة تحريرية لـسجل الهدر — مورد قابل للتنزيل لتخطيط المطاعم."
       }
     }
   }
