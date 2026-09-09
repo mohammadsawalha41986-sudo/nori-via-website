@@ -106,6 +106,31 @@ export const LIBRARY_ASSETS = [
   pdf('restaurant-audit-checklist-guide.pdf', 'restaurant-audit-checklist', 'Restaurant Audit Checklist', 'قائمة تدقيق مطعم', 'operations'),
   pdf('delivery-profitability-checklist.pdf', 'delivery-profitability-checklist', 'Delivery Profitability Checklist', 'قائمة تحقق ربحية التوصيل', 'finance'),
   pdf('restaurant-marketing-planning-guide.pdf', 'restaurant-marketing-planning-guide', 'Restaurant Marketing Planning Guide', 'دليل تخطيط تسويق المطاعم', 'marketing'),
+
+  /* Documents rendered by scripts/generate_library_docs.py from the catalogue
+   * entries themselves. They complete the Library rows that were published
+   * as drafts while no file existed for them. */
+  xlsx('annual-budget-model.xlsx', 'annual-budget-model', 'Annual Budget Model', 'نموذج الموازنة السنوية', 'finance'),
+  xlsx('cafe-kpi-dashboard.xlsx', 'cafe-kpi-dashboard', 'Café KPI Dashboard', 'لوحة مؤشرات أداء المقهى', 'finance'),
+  xlsx('cash-flow-forecast.xlsx', 'cash-flow-forecast', 'Cash Flow Forecast', 'توقعات التدفق النقدي', 'finance'),
+  xlsx('food-cost-sheet.xlsx', 'food-cost-sheet', 'Food Cost Sheet', 'ورقة تكلفة الطعام', 'menu'),
+  xlsx('item-profitability-analysis.xlsx', 'item-profitability-analysis', 'Item Profitability Analysis', 'تحليل ربحية الأصناف', 'menu'),
+  xlsx('product-mix-analysis.xlsx', 'product-mix-analysis', 'Product Mix Analysis', 'تحليل مزيج المنتجات', 'menu'),
+  xlsx('social-media-content-planner.xlsx', 'social-media-content-planner', 'Social Media Content Planner', 'مخطط محتوى وسائل التواصل', 'marketing'),
+  docx('brand-positioning-worksheet.docx', 'brand-positioning-worksheet', 'Brand Positioning Worksheet', 'ورقة عمل تموضع العلامة', 'brand-experience'),
+  docx('campaign-brief-template.docx', 'campaign-brief-template', 'Campaign Brief', 'موجز الحملة', 'marketing'),
+  docx('restaurant-concept-brief.docx', 'restaurant-concept-brief', 'Restaurant Concept Brief', 'موجز مفهوم مطعم', 'strategy-development'),
+  docx('restaurant-launch-plan.docx', 'restaurant-launch-plan', 'Restaurant Launch Plan', 'خطة إطلاق مطعم', 'marketing'),
+  pdf('branch-feasibility-checklist.pdf', 'branch-feasibility-checklist', 'Branch Feasibility Checklist', 'قائمة تحقق جدوى الفرع', 'growth-expansion'),
+  pdf('brand-and-digital-presence-audit.pdf', 'brand-and-digital-presence-audit', 'Brand & Digital Presence Audit', 'تدقيق العلامة والحضور الرقمي', 'brand-experience'),
+  pdf('cafe-audit-checklist.pdf', 'cafe-audit-checklist', 'Café Audit Checklist', 'قائمة تقييم المقهى', 'operations'),
+  pdf('customer-experience-audit.pdf', 'customer-experience-audit', 'Customer Experience Audit', 'تدقيق تجربة العميل', 'brand-experience'),
+  pdf('expansion-checklist.pdf', 'expansion-checklist', 'Expansion Checklist', 'قائمة مراجعة التوسع', 'operations'),
+  pdf('expansion-readiness-assessment.pdf', 'expansion-readiness-assessment', 'Expansion Readiness Assessment', 'تقييم الجاهزية للتوسع', 'growth-expansion'),
+  pdf('inventory-control-checklist.pdf', 'inventory-control-checklist', 'Inventory Control Checklist', 'قائمة تحقق ضبط المخزون', 'operations'),
+  pdf('menu-pricing-checklist.pdf', 'menu-pricing-checklist', 'Menu Pricing Checklist', 'قائمة مراجعة التسعير', 'menu'),
+  pdf('menu-review-checklist.pdf', 'menu-review-checklist', 'Menu Review Checklist', 'قائمة مراجعة القائمة', 'menu'),
+  pdf('procurement-checklist.pdf', 'procurement-checklist', 'Purchasing & Receiving Checklist', 'قائمة تحقق الشراء والاستلام', 'operations'),
 ].map((asset, order) => ({
   ...asset,
   order: order + 1,

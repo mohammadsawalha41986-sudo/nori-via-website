@@ -1,0 +1,883 @@
+{
+  "documents": [
+    {
+      "slug": "annual-budget-model",
+      "kind": "xlsx",
+      "file": "annual-budget-model.xlsx",
+      "titleEn": "Annual Budget Model",
+      "titleAr": "نموذج الموازنة السنوية",
+      "summaryEn": "A budget structure for an F&B business, by month and by cost line.",
+      "summaryAr": "هيكل موازنة لمشروع أغذية ومشروبات، بحسب الشهر وبند التكلفة.",
+      "descEn": "A twelve-month operating plan built as a working model rather than a document. Revenue by daypart and channel, cost of sales from the menu mix, labour modelled from a rota rather than a ratio, fixed overheads placed in the month they actually land, and a monthly cash flow that shows the lowest point of the year before it arrives.",
+      "descAr": "خطة تشغيل لاثني عشر شهراً مبنية كنموذج عمل لا كوثيقة: الإيراد حسب الوقت والقناة، وتكلفة المبيعات من مزيج القائمة، والعمالة منمذجة من جدول لا من نسبة، والمصاريف الثابتة موضوعة في الشهر الذي تقع فيه فعلاً، وتدفق نقدي شهري يُظهر أدنى نقطة في السنة قبل وصولها.",
+      "includes": [
+        [
+          "Monthly revenue model by segment",
+          "نموذج إيراد شهري حسب الشريحة"
+        ],
+        [
+          "Cost of sales from menu mix",
+          "تكلفة المبيعات من مزيج القائمة"
+        ],
+        [
+          "Labour schedule model",
+          "نموذج جدول العمالة"
+        ],
+        [
+          "Fixed and annual cost calendar",
+          "تقويم التكاليف الثابتة والسنوية"
+        ],
+        [
+          "Monthly cash flow and break-even",
+          "التدفق النقدي الشهري ونقطة التعادل"
+        ],
+        [
+          "Downside case toggle",
+          "مفتاح حالة الهبوط"
+        ]
+      ],
+      "audience": [
+        [
+          "Owners and finance managers",
+          "الملاك ومديرو المالية"
+        ],
+        [
+          "Operators preparing an annual plan",
+          "المشغّلون عند إعداد خطة سنوية"
+        ]
+      ]
+    },
+    {
+      "slug": "branch-feasibility-checklist",
+      "kind": "pdf",
+      "file": "branch-feasibility-checklist.pdf",
+      "titleEn": "Branch Feasibility Checklist",
+      "titleAr": "قائمة تحقق جدوى الفرع",
+      "summaryEn": "Site criteria, catchment comparison and the format question — asked in that order, after readiness rather than before it.",
+      "summaryAr": "معايير الموقع ومقارنة النطاقات وسؤال الصيغة، مطروحة بهذا الترتيب وبعد الجاهزية لا قبلها.",
+      "descEn": "A structured way to compare candidate sites on the same criteria rather than on enthusiasm: catchment profile, competitive set, access and visibility, format fit, investment and payback profile, and the management cost a second site adds.",
+      "descAr": "طريقة منهجية لمقارنة المواقع المرشحة بالمعايير نفسها لا بالحماس: ملف النطاق، والمجموعة التنافسية، والوصول والظهور، وملاءمة الصيغة، وملف الاستثمار والاسترداد، والتكلفة الإدارية التي يضيفها فرع ثانٍ.",
+      "includes": [
+        [
+          "Site scoring criteria",
+          "معايير تقييم الموقع"
+        ],
+        [
+          "Catchment comparison grid",
+          "شبكة مقارنة النطاقات"
+        ],
+        [
+          "Format fit assessment",
+          "تقييم ملاءمة الصيغة"
+        ],
+        [
+          "Investment and payback outline",
+          "مخطط الاستثمار والاسترداد"
+        ]
+      ],
+      "audience": [
+        [
+          "Owners evaluating sites",
+          "الملاك عند تقييم المواقع"
+        ],
+        [
+          "Expansion and development managers",
+          "مديرو التوسع والتطوير"
+        ]
+      ]
+    },
+    {
+      "slug": "brand-and-digital-presence-audit",
+      "kind": "pdf",
+      "file": "brand-and-digital-presence-audit.pdf",
+      "titleEn": "Brand & Digital Presence Audit",
+      "titleAr": "تدقيق العلامة والحضور الرقمي",
+      "summaryEn": "Every surface a guest meets before arriving — listing, photos, menu, website, hours, reviews — checked for accuracy before anything else.",
+      "summaryAr": "كل سطح يلتقيه الضيف قبل الوصول — القائمة المعروضة والصور والقائمة والموقع والساعات والتقييمات — يُفحص للدقة قبل أي شيء آخر.",
+      "descEn": "Audit the pre-arrival experience: whether hours are correct today, whether the menu is readable on a phone in both languages, whether the map link works, what the listing photography promises, and whether the brand reads as one thing across every surface.",
+      "descAr": "دقّق تجربة ما قبل الوصول: هل الساعات صحيحة اليوم، وهل القائمة مقروءة على الهاتف باللغتين، وهل رابط الخريطة يعمل، وبماذا تعد صور القائمة المعروضة، وهل تُقرأ العلامة كشيء واحد عبر كل سطح.",
+      "includes": [
+        [
+          "Listing and map accuracy checks",
+          "فحوصات دقة القوائم المعروضة والخرائط"
+        ],
+        [
+          "Website task-completion timing",
+          "توقيت إنجاز مهام الموقع"
+        ],
+        [
+          "Bilingual consistency checks",
+          "فحوصات الاتساق بين اللغتين"
+        ],
+        [
+          "Photography and expectation review",
+          "مراجعة الصور والتوقعات"
+        ],
+        [
+          "Review sentiment themes",
+          "أنماط انطباع التقييمات"
+        ]
+      ],
+      "audience": [
+        [
+          "Owners and marketing managers",
+          "الملاك ومديرو التسويق"
+        ],
+        [
+          "Anyone preparing a brand refresh",
+          "كل من يحضّر لتحديث العلامة"
+        ]
+      ]
+    },
+    {
+      "slug": "brand-positioning-worksheet",
+      "kind": "docx",
+      "file": "brand-positioning-worksheet.docx",
+      "titleEn": "Brand Positioning Worksheet",
+      "titleAr": "ورقة عمل تموضع العلامة",
+      "summaryEn": "A worksheet that produces a position you can be wrong for some guests about — which is the only kind that does any work.",
+      "summaryAr": "ورقة عمل تنتج موقعاً يمكن أن تكون به خاطئاً لبعض الضيوف، وهو النوع الوحيد الذي يؤدي عملاً فعلاً.",
+      "descEn": "Positioning works by exclusion. This worksheet takes you through the occasion, the named alternatives and the operational proof that makes a position credible before a guest has to take it on trust — and ends with a statement some potential guests would read and self-exclude from.",
+      "descAr": "يعمل التموضع بالاستبعاد. تأخذك هذه الورقة عبر المناسبة والبدائل المسمّاة والدليل التشغيلي الذي يجعل الموقع قابلاً للتصديق قبل أن يضطر الضيف لأخذه على الثقة، وتنتهي ببيان يقرأه بعض الضيوف المحتملين فيستبعدون أنفسهم.",
+      "includes": [
+        [
+          "Occasion and audience mapping",
+          "رسم المناسبة والجمهور"
+        ],
+        [
+          "Named competitive set exercise",
+          "تمرين المجموعة التنافسية بالأسماء"
+        ],
+        [
+          "Operational proof checklist",
+          "قائمة تحقق الدليل التشغيلي"
+        ],
+        [
+          "Position statement drafting",
+          "صياغة بيان التموضع"
+        ],
+        [
+          "Self-exclusion test",
+          "اختبار الاستبعاد الذاتي"
+        ]
+      ],
+      "audience": [
+        [
+          "Owners and brand leads",
+          "الملاك ومسؤولو العلامة"
+        ],
+        [
+          "Teams preparing a rebrand",
+          "الفرق عند التحضير لتحديث العلامة"
+        ]
+      ]
+    },
+    {
+      "slug": "cafe-audit-checklist",
+      "kind": "pdf",
+      "file": "cafe-audit-checklist.pdf",
+      "titleEn": "Café Audit Checklist",
+      "titleAr": "قائمة تقييم المقهى",
+      "summaryEn": "The same walk for a café.",
+      "summaryAr": "الجولة ذاتها للمقهى.",
+      "descEn": "The café version of the audit, written around the things that actually decide a café: beverage specification and consistency, attachment, throughput at peak, the food offer beside the bar, dwell time and the off-peak hours.",
+      "descAr": "نسخة المقهى من التدقيق، مكتوبة حول ما يحسم أمر المقهى فعلاً: مواصفات المشروبات واتساقها، والإضافات، والطاقة في الذروة، وعرض الطعام بجانب البار، ومدة البقاء، وساعات ما بين الذروات.",
+      "includes": [
+        [
+          "Beverage specification and consistency checks",
+          "فحوصات مواصفات المشروبات واتساقها"
+        ],
+        [
+          "Attachment and ticket size section",
+          "قسم الإضافات وحجم الفاتورة"
+        ],
+        [
+          "Bar throughput and queue checks",
+          "فحوصات طاقة البار والطوابير"
+        ],
+        [
+          "Food offer and preparation load",
+          "عرض الطعام وحمل التحضير"
+        ],
+        [
+          "Dwell time and seating review",
+          "مراجعة مدة البقاء والجلوس"
+        ]
+      ],
+      "audience": [
+        [
+          "Café owners and managers",
+          "ملاك المقاهي ومديروها"
+        ],
+        [
+          "Specialty coffee operators",
+          "مشغّلو القهوة المختصة"
+        ]
+      ]
+    },
+    {
+      "slug": "cafe-kpi-dashboard",
+      "kind": "xlsx",
+      "file": "cafe-kpi-dashboard.xlsx",
+      "titleEn": "Café KPI Dashboard",
+      "titleAr": "لوحة مؤشرات أداء المقهى",
+      "summaryEn": "The same discipline for a café, with beverage-led measures.",
+      "summaryAr": "المنهجية ذاتها للمقهى، مع مؤشرات تناسب المشروبات.",
+      "descEn": "The same discipline sized for a café, where the economics behave differently: beverage margin, attachment rate, ticket size, throughput at peak and the off-peak hours that decide whether the space pays for itself.",
+      "descAr": "الانضباط نفسه مقاساً على المقهى حيث تتصرف الاقتصاديات بشكل مختلف: هامش المشروبات، ونسبة الإضافات، وحجم الفاتورة، والطاقة في الذروة، وساعات ما بين الذروات التي تحدد إن كانت المساحة تسدد ثمنها.",
+      "includes": [
+        [
+          "Beverage and food margin split",
+          "فصل هامش المشروبات عن الطعام"
+        ],
+        [
+          "Attachment rate tracking",
+          "تتبع نسبة الإضافات"
+        ],
+        [
+          "Ticket size by hour",
+          "حجم الفاتورة حسب الساعة"
+        ],
+        [
+          "Peak throughput measure",
+          "مقياس الطاقة في الذروة"
+        ]
+      ],
+      "audience": [
+        [
+          "Café owners and managers",
+          "ملاك المقاهي ومديروها"
+        ],
+        [
+          "Specialty operators tracking consistency",
+          "مشغّلو القهوة المختصة عند تتبع الاتساق"
+        ]
+      ]
+    },
+    {
+      "slug": "campaign-brief-template",
+      "kind": "docx",
+      "file": "campaign-brief-template.docx",
+      "titleEn": "Campaign Brief",
+      "titleAr": "موجز الحملة",
+      "summaryEn": "A brief template for a campaign, launch or seasonal push.",
+      "summaryAr": "قالب موجز لحملة أو افتتاح أو نشاط موسمي.",
+      "descEn": "A campaign brief that forces the awkward questions before budget is committed: what has to change, what would prove it changed, what the offer costs in margin, how many creative variants are needed, and when the campaign will be judged.",
+      "descAr": "موجز حملة يفرض الأسئلة الصعبة قبل الالتزام بالميزانية: ما الذي يجب أن يتغير، وما الذي يثبت تغيره، وكم يكلّف العرض من الهامش، وكم نسخة إبداعية مطلوبة، ومتى سيُحكم على الحملة.",
+      "includes": [
+        [
+          "Objective and success definition",
+          "الهدف وتعريف النجاح"
+        ],
+        [
+          "Offer design and margin check",
+          "تصميم العرض وفحص الهامش"
+        ],
+        [
+          "Audience and channel selection",
+          "اختيار الجمهور والقنوات"
+        ],
+        [
+          "Creative variant requirements",
+          "متطلبات النسخ الإبداعية"
+        ],
+        [
+          "Measurement and review date",
+          "القياس وتاريخ المراجعة"
+        ]
+      ],
+      "audience": [
+        [
+          "Marketing managers and owners",
+          "مديرو التسويق والملاك"
+        ],
+        [
+          "Anyone briefing an agency or freelancer",
+          "كل من يوجّه وكالة أو مستقلاً"
+        ]
+      ]
+    },
+    {
+      "slug": "cash-flow-forecast",
+      "kind": "xlsx",
+      "file": "cash-flow-forecast.xlsx",
+      "titleEn": "Cash Flow Forecast",
+      "titleAr": "توقعات التدفق النقدي",
+      "summaryEn": "A monthly cash view that shows the tight month while there is still time to act on it.",
+      "summaryAr": "منظور نقدي شهري يُظهر الشهر الضيق بينما ما زال الوقت متاحاً للتصرف.",
+      "descEn": "Model receipts and payments by month, including the annual and quarterly costs that are forgotten in a monthly view — licences, insurance, maintenance — plus supplier terms, rent timing and a downside case where revenue runs below plan for two consecutive months.",
+      "descAr": "انمذج المقبوضات والمدفوعات شهرياً بما يشمل التكاليف السنوية والربع سنوية المنسية في المنظور الشهري — التراخيص والتأمين والصيانة — إضافة إلى شروط الموردين وتوقيت الإيجار وحالة هبوط يكون فيها الإيراد دون الخطة لشهرين متتاليين.",
+      "includes": [
+        [
+          "Monthly receipts and payments model",
+          "نموذج المقبوضات والمدفوعات الشهري"
+        ],
+        [
+          "Annual and quarterly cost calendar",
+          "تقويم التكاليف السنوية والربع سنوية"
+        ],
+        [
+          "Supplier terms and rent timing",
+          "شروط الموردين وتوقيت الإيجار"
+        ],
+        [
+          "Lowest-point identification",
+          "تحديد أدنى نقطة"
+        ],
+        [
+          "Downside case toggle",
+          "مفتاح حالة الهبوط"
+        ]
+      ],
+      "audience": [
+        [
+          "Owners and finance managers",
+          "الملاك ومديرو المالية"
+        ],
+        [
+          "Operators planning through a slow season",
+          "المشغّلون عند التخطيط لموسم بطيء"
+        ]
+      ]
+    },
+    {
+      "slug": "customer-experience-audit",
+      "kind": "pdf",
+      "file": "customer-experience-audit.pdf",
+      "titleEn": "Customer Experience Audit",
+      "titleAr": "تدقيق تجربة العميل",
+      "summaryEn": "A journey audit covering both the dining room and delivery, with friction ranked by how many guests meet it rather than by how it feels.",
+      "summaryAr": "تدقيق رحلة يغطي الصالة والتوصيل، مع ترتيب الاحتكاك حسب عدد من يمر به لا حسب شعوره.",
+      "descEn": "Walk the journey as a guest, at the hours guests actually come, and record every point where effort is required of them: discovery, arrival, seating, ordering, service pace, payment, departure and — for delivery — packaging, temperature, completeness and the unboxing.",
+      "descAr": "خُض الرحلة كضيف في الساعات التي يأتي فيها الضيوف فعلاً، وسجّل كل نقطة يُطلب فيها منهم جهد: الاكتشاف والوصول والجلوس والطلب وإيقاع الخدمة والدفع والمغادرة، وللتوصيل: التغليف والحرارة والاكتمال ولحظة الفتح.",
+      "includes": [
+        [
+          "Dining room journey sections",
+          "أقسام رحلة الصالة"
+        ],
+        [
+          "Delivery journey sections",
+          "أقسام رحلة التوصيل"
+        ],
+        [
+          "Friction register with frequency scoring",
+          "سجل الاحتكاك بتقييم التكرار"
+        ],
+        [
+          "Standards drafting page",
+          "صفحة صياغة المعايير"
+        ]
+      ],
+      "audience": [
+        [
+          "Owners and general managers",
+          "الملاك والمديرون العامون"
+        ],
+        [
+          "Service and floor managers",
+          "مديرو الخدمة والصالة"
+        ]
+      ]
+    },
+    {
+      "slug": "expansion-checklist",
+      "kind": "pdf",
+      "file": "expansion-checklist.pdf",
+      "titleEn": "Expansion Checklist",
+      "titleAr": "قائمة مراجعة التوسع",
+      "summaryEn": "What has to be true before opening the next branch.",
+      "summaryAr": "ما الذي يجب أن يتحقق قبل افتتاح الفرع التالي.",
+      "descEn": "A readiness checklist to work through before a second lease is discussed: is the first site documented, can training transfer without the founder, is the supplier base ready for volume, does the reporting compare sites, and what is fixed versus flexible.",
+      "descAr": "قائمة تحقق للجاهزية يُعمل بها قبل مناقشة عقد إيجار ثانٍ: هل الفرع الأول موثق، وهل ينتقل التدريب دون المؤسس، وهل قاعدة الموردين جاهزة للحجم، وهل تقارن التقارير بين الفروع، وما هو الثابت مقابل المرن.",
+      "includes": [
+        [
+          "Documentation readiness section",
+          "قسم جاهزية التوثيق"
+        ],
+        [
+          "Training transfer test",
+          "اختبار انتقال التدريب"
+        ],
+        [
+          "Supplier scalability checks",
+          "فحوصات قابلية الموردين للتوسع"
+        ],
+        [
+          "Management structure requirements",
+          "متطلبات الهيكل الإداري"
+        ],
+        [
+          "Fixed versus flexible register template",
+          "قالب سجل الثابت مقابل المرن"
+        ]
+      ],
+      "audience": [
+        [
+          "Owners considering a second site",
+          "الملاك عند التفكير في فرع ثانٍ"
+        ],
+        [
+          "Operations directors preparing to scale",
+          "مديرو التشغيل عند التحضير للتوسع"
+        ]
+      ]
+    },
+    {
+      "slug": "expansion-readiness-assessment",
+      "kind": "pdf",
+      "file": "expansion-readiness-assessment.pdf",
+      "titleEn": "Expansion Readiness Assessment",
+      "titleAr": "تقييم الجاهزية للتوسع",
+      "summaryEn": "One question, scored honestly: could someone who did not build the first site run the second one from your documents?",
+      "summaryAr": "سؤال واحد يُقيَّم بصدق: هل يستطيع من لم يبنِ الفرع الأول أن يدير الثاني من وثائقك؟",
+      "descEn": "A readiness score across documentation, training transfer, supplier scalability, management depth and reporting comparability — with the gaps listed as a work plan rather than a verdict.",
+      "descAr": "درجة جاهزية عبر التوثيق وانتقال التدريب وقابلية الموردين للتوسع وعمق الإدارة وقابلية التقارير للمقارنة، مع سرد الفجوات كخطة عمل لا كحكم.",
+      "includes": [
+        [
+          "Documentation completeness score",
+          "درجة اكتمال التوثيق"
+        ],
+        [
+          "Training transfer test",
+          "اختبار انتقال التدريب"
+        ],
+        [
+          "Supplier and management readiness",
+          "جاهزية الموردين والإدارة"
+        ],
+        [
+          "Gap list as a work plan",
+          "قائمة الفجوات كخطة عمل"
+        ]
+      ],
+      "audience": [
+        [
+          "Owners considering expansion",
+          "الملاك عند التفكير في التوسع"
+        ],
+        [
+          "Operations directors",
+          "مديرو التشغيل"
+        ]
+      ]
+    },
+    {
+      "slug": "food-cost-sheet",
+      "kind": "xlsx",
+      "file": "food-cost-sheet.xlsx",
+      "titleEn": "Food Cost Sheet",
+      "titleAr": "ورقة تكلفة الطعام",
+      "summaryEn": "Recipe-level costing for a menu, with yields and unit costs.",
+      "summaryAr": "تكلفة على مستوى الوصفة للقائمة، مع الكميات وتكاليف الوحدات.",
+      "descEn": "A recipe costing sheet built to be maintained rather than filled in once. It handles sub-recipes, yield and waste factors, pack sizes and portion weights, so a supplier price change can be entered in one place and flow through every item that uses the ingredient.",
+      "descAr": "ورقة تكلفة وصفات مبنية للصيانة لا لتُملأ مرة واحدة. تتعامل مع الوصفات الفرعية ونسب الاستخلاص والهدر وأحجام العبوات وأوزان الحصص، فيمكن إدخال تغيير سعر المورّد في مكان واحد ليسري على كل صنف يستخدم المكوّن.",
+      "includes": [
+        [
+          "Ingredient master list with pack sizes",
+          "قائمة مكونات رئيسية بأحجام العبوات"
+        ],
+        [
+          "Yield and waste factor fields",
+          "حقول نسب الاستخلاص والهدر"
+        ],
+        [
+          "Sub-recipe support",
+          "دعم الوصفات الفرعية"
+        ],
+        [
+          "Cost per portion and per plate",
+          "التكلفة لكل حصة ولكل طبق"
+        ],
+        [
+          "Supplier price update column",
+          "عمود تحديث أسعار الموردين"
+        ]
+      ],
+      "audience": [
+        [
+          "Head chefs and sous chefs",
+          "رؤساء الطهاة ومساعدوهم"
+        ],
+        [
+          "Cost controllers",
+          "مراقبو التكاليف"
+        ]
+      ]
+    },
+    {
+      "slug": "inventory-control-checklist",
+      "kind": "pdf",
+      "file": "inventory-control-checklist.pdf",
+      "titleEn": "Inventory Control Checklist",
+      "titleAr": "قائمة تحقق ضبط المخزون",
+      "summaryEn": "The storage, rotation and counting routine that makes a theoretical-versus-actual food cost reading possible.",
+      "summaryAr": "روتين التخزين والتدوير والجرد الذي يجعل قراءة التكلفة النظرية مقابل الفعلية ممكنة.",
+      "descEn": "A count routine designed to be consistent rather than exhaustive: the same person, the same order, the same day, the same level of detail — because an inconsistent count measures the counter rather than the kitchen. Includes storage, rotation and par level review sections.",
+      "descAr": "روتين جرد مصمم للاتساق لا للشمول: الشخص نفسه، والترتيب نفسه، واليوم نفسه، ومستوى التفصيل نفسه، لأن الجرد غير المتسق يقيس القائم بالجرد لا المطبخ. ويتضمن أقسام التخزين والتدوير ومراجعة حدود المخزون.",
+      "includes": [
+        [
+          "Count routine and sheet structure",
+          "روتين الجرد وبنية الورقة"
+        ],
+        [
+          "Storage and rotation checks",
+          "فحوصات التخزين والتدوير"
+        ],
+        [
+          "Par level review section",
+          "قسم مراجعة حدود المخزون"
+        ],
+        [
+          "Waste log guidance",
+          "إرشادات سجل الهدر"
+        ]
+      ],
+      "audience": [
+        [
+          "Kitchen and stores managers",
+          "مديرو المطبخ والمستودعات"
+        ],
+        [
+          "Cost controllers",
+          "مراقبو التكاليف"
+        ]
+      ]
+    },
+    {
+      "slug": "item-profitability-analysis",
+      "kind": "xlsx",
+      "file": "item-profitability-analysis.xlsx",
+      "titleEn": "Item Profitability Analysis",
+      "titleAr": "تحليل ربحية الأصناف",
+      "summaryEn": "Contribution per item and per month, ranked.",
+      "summaryAr": "المساهمة لكل صنف وشهرياً، مرتبة تنازلياً.",
+      "descEn": "A per-item view of what each dish actually earns the business, in money rather than as a ratio. It separates gross profit from contribution after packaging and channel commission, so an item that looks healthy in the dining room and loses money on delivery is visible before it scales.",
+      "descAr": "منظور لكل صنف لما يحققه كل طبق فعلاً للمشروع، بالمال لا كنسبة. يفصل الربح الإجمالي عن المساهمة بعد التغليف وعمولة القناة، ليصير الصنف الذي يبدو صحياً في الصالة ويخسر في التوصيل مرئياً قبل أن يتوسع.",
+      "includes": [
+        [
+          "Gross profit and contribution per item",
+          "الربح الإجمالي والمساهمة لكل صنف"
+        ],
+        [
+          "Channel commission and packaging inputs",
+          "مدخلات عمولة القناة والتغليف"
+        ],
+        [
+          "Ranking by total contribution",
+          "ترتيب حسب إجمالي المساهمة"
+        ],
+        [
+          "Loss-making item flag",
+          "إشارة للأصناف الخاسرة"
+        ]
+      ],
+      "audience": [
+        [
+          "Owners and finance managers",
+          "الملاك ومديرو المالية"
+        ],
+        [
+          "Operators running delivery channels",
+          "المشغّلون الذين يديرون قنوات التوصيل"
+        ]
+      ]
+    },
+    {
+      "slug": "menu-pricing-checklist",
+      "kind": "pdf",
+      "file": "menu-pricing-checklist.pdf",
+      "titleEn": "Menu Pricing Checklist",
+      "titleAr": "قائمة مراجعة التسعير",
+      "summaryEn": "The checks to run before changing a price.",
+      "summaryAr": "الفحوصات الواجبة قبل تغيير أي سعر.",
+      "descEn": "A pre-flight checklist for a price change: is the cost base current, which items are anchors, where do thresholds sit, is delivery being priced separately, is the change staged, and how will mix be re-measured afterwards.",
+      "descAr": "قائمة تحقق قبل تغيير الأسعار: هل قاعدة التكلفة حديثة، وأي الأصناف مرجعية، وأين تقع العتبات، وهل يُسعَّر التوصيل منفصلاً، وهل التغيير متدرج، وكيف سيُعاد قياس المزيج بعده.",
+      "includes": [
+        [
+          "Cost base verification steps",
+          "خطوات التحقق من قاعدة التكلفة"
+        ],
+        [
+          "Anchor item identification",
+          "تحديد الأصناف المرجعية"
+        ],
+        [
+          "Threshold and rounding checks",
+          "فحوصات العتبات والتقريب"
+        ],
+        [
+          "Channel separation check",
+          "فحص فصل القنوات"
+        ],
+        [
+          "Staging plan and re-measurement",
+          "خطة التدرج وإعادة القياس"
+        ]
+      ],
+      "audience": [
+        [
+          "Owners planning a price change",
+          "الملاك عند التخطيط لتغيير الأسعار"
+        ],
+        [
+          "Finance and operations managers",
+          "مديرو المالية والتشغيل"
+        ]
+      ]
+    },
+    {
+      "slug": "menu-review-checklist",
+      "kind": "pdf",
+      "file": "menu-review-checklist.pdf",
+      "titleEn": "Menu Review Checklist",
+      "titleAr": "قائمة مراجعة القائمة",
+      "summaryEn": "What to look at before deciding a menu needs to change.",
+      "summaryAr": "ما ينبغي فحصه قبل الحكم بأن القائمة تحتاج إلى تغيير.",
+      "descEn": "The checklist we work through when reading a menu: structure and length, category sequence, item hierarchy, description discipline, price presentation, threshold crossings, sole-use ingredients, kitchen load at peak, and the differences between the dine-in and delivery lists.",
+      "descAr": "قائمة التحقق التي نعمل بها عند قراءة قائمة: البنية والطول، وتسلسل التصنيفات، وهرمية الأصناف، وانضباط الأوصاف، وعرض السعر، وعبور العتبات، والمكونات وحيدة الاستخدام، وحمل المطبخ في الذروة، والفروق بين قائمتي الصالة والتوصيل.",
+      "includes": [
+        [
+          "Structure and length review",
+          "مراجعة البنية والطول"
+        ],
+        [
+          "Category and item sequence checks",
+          "فحوصات تسلسل التصنيفات والأصناف"
+        ],
+        [
+          "Description and price presentation checks",
+          "فحوصات الأوصاف وعرض السعر"
+        ],
+        [
+          "Kitchen load and sole-use ingredient checks",
+          "فحوصات حمل المطبخ والمكونات وحيدة الاستخدام"
+        ],
+        [
+          "Delivery list comparison",
+          "مقارنة قائمة التوصيل"
+        ]
+      ],
+      "audience": [
+        [
+          "Owners and managers reviewing a menu",
+          "الملاك والمديرون عند مراجعة القائمة"
+        ],
+        [
+          "Chefs preparing a menu change",
+          "الطهاة عند إعداد تغيير في القائمة"
+        ]
+      ]
+    },
+    {
+      "slug": "procurement-checklist",
+      "kind": "pdf",
+      "file": "procurement-checklist.pdf",
+      "titleEn": "Purchasing & Receiving Checklist",
+      "titleAr": "قائمة تحقق الشراء والاستلام",
+      "summaryEn": "The back-door routine that decides a large part of food cost before a chef touches anything.",
+      "summaryAr": "روتين الباب الخلفي الذي يحسم جزءاً كبيراً من تكلفة الطعام قبل أن يلمس الطاهي شيئاً.",
+      "descEn": "A receiving standard that can actually be followed on a busy morning: named responsibility, delivery checked against the order rather than the invoice, weights verified for anything priced by weight, quality inspected before signature, and discrepancies recorded the same day.",
+      "descAr": "معيار استلام يمكن اتباعه فعلاً في صباح مزدحم: مسؤولية مسمّاة، وفحص التوريد مقابل الطلب لا الفاتورة، وتحقق الأوزان لكل ما يُسعَّر بالوزن، وفحص الجودة قبل التوقيع، وتسجيل الفروق في اليوم نفسه.",
+      "includes": [
+        [
+          "Receiving standard and responsibilities",
+          "معيار الاستلام والمسؤوليات"
+        ],
+        [
+          "Order-versus-delivery check sheet",
+          "ورقة فحص الطلب مقابل التوريد"
+        ],
+        [
+          "Weight and quality verification",
+          "التحقق من الوزن والجودة"
+        ],
+        [
+          "Discrepancy log",
+          "سجل الفروق"
+        ],
+        [
+          "Price drift check",
+          "فحص انحراف الأسعار"
+        ]
+      ],
+      "audience": [
+        [
+          "Stores and receiving staff",
+          "موظفو المستودعات والاستلام"
+        ],
+        [
+          "Kitchen managers",
+          "مديرو المطابخ"
+        ]
+      ]
+    },
+    {
+      "slug": "product-mix-analysis",
+      "kind": "xlsx",
+      "file": "product-mix-analysis.xlsx",
+      "titleEn": "Product Mix Analysis",
+      "titleAr": "تحليل مزيج المنتجات",
+      "summaryEn": "Category and item share of sales, and how it moves over a period.",
+      "summaryAr": "حصة التصنيفات والأصناف من المبيعات وتغيرها عبر فترة.",
+      "descEn": "A product mix model that shows what your guests are actually buying and how that mix moves over time. Category share, item ranking and period-on-period movement, so a shift in mix is caught while it is still small — mix drift is the most common reason revenue holds while contribution falls.",
+      "descAr": "نموذج لمزيج المنتجات يُظهر ما يشتريه ضيوفك فعلاً وكيف يتحرك ذلك المزيج عبر الزمن: حصة التصنيف وترتيب الأصناف والحركة بين الفترات، ليُلتقط تحوّل المزيج وهو ما يزال صغيراً، فانحراف المزيج أشيع أسباب ثبات الإيراد مع هبوط المساهمة.",
+      "includes": [
+        [
+          "Category and item share of sales",
+          "حصة التصنيفات والأصناف من المبيعات"
+        ],
+        [
+          "Period-on-period movement",
+          "الحركة بين الفترات"
+        ],
+        [
+          "Mix-weighted contribution",
+          "المساهمة مرجّحة بالمزيج"
+        ],
+        [
+          "Top and bottom mover lists",
+          "قوائم الأصناف الأكثر صعوداً وهبوطاً"
+        ]
+      ],
+      "audience": [
+        [
+          "Owners and general managers",
+          "الملاك والمديرون العامون"
+        ],
+        [
+          "Anyone preparing a monthly review",
+          "كل من يعدّ مراجعة شهرية"
+        ]
+      ]
+    },
+    {
+      "slug": "restaurant-concept-brief",
+      "kind": "docx",
+      "file": "restaurant-concept-brief.docx",
+      "titleEn": "Restaurant Concept Brief",
+      "titleAr": "موجز مفهوم مطعم",
+      "summaryEn": "The document that turns an idea into a definition specific enough for a designer, a chef and a marketer to work from.",
+      "summaryAr": "الوثيقة التي تحوّل الفكرة إلى تعريف محدد بما يكفي ليعمل منه المصمم والطاهي والمسوّق.",
+      "descEn": "A concept brief built around the five questions a definition has to answer — who it is for, what occasion it serves, what the offer is, where it sits on price and why it would be chosen over the named alternatives nearby — with a test at the end: could someone disagree with this?",
+      "descAr": "موجز مفهوم مبني على الأسئلة الخمسة التي يجب أن يجيب عنها التعريف — لمن هو، وأي مناسبة يخدم، وما هو العرض، وأين يقع سعرياً، ولماذا يُختار على البدائل المسمّاة القريبة — مع اختبار في النهاية: هل يستطيع أحد الاعتراض على هذا؟",
+      "includes": [
+        [
+          "Audience and occasion definition",
+          "تعريف الجمهور والمناسبة"
+        ],
+        [
+          "Offer structure and menu direction",
+          "بنية العرض واتجاه القائمة"
+        ],
+        [
+          "Price positioning worksheet",
+          "ورقة عمل التموضع السعري"
+        ],
+        [
+          "Named competitive set",
+          "المجموعة التنافسية بالأسماء"
+        ],
+        [
+          "One-sentence definition test",
+          "اختبار التعريف في جملة واحدة"
+        ]
+      ],
+      "audience": [
+        [
+          "Founders and concept owners",
+          "المؤسسون وأصحاب المفاهيم"
+        ],
+        [
+          "Anyone briefing a design or kitchen team",
+          "كل من يوجّه فريق تصميم أو مطبخ"
+        ]
+      ]
+    },
+    {
+      "slug": "restaurant-launch-plan",
+      "kind": "docx",
+      "file": "restaurant-launch-plan.docx",
+      "titleEn": "Restaurant Launch Plan",
+      "titleAr": "خطة إطلاق مطعم",
+      "summaryEn": "A launch plan that waits for the operation to be stable, because a full launch into an untested kitchen buys negative first impressions.",
+      "summaryAr": "خطة إطلاق تنتظر استقرار التشغيل، لأن الإطلاق الكامل على مطبخ غير مختبر يشتري انطباعات أولى سلبية.",
+      "descEn": "A staged launch: soft opening as a test with limited covers and a shortened menu, corrections, then a controlled build of awareness — with the capacity check written in as a gate rather than assumed.",
+      "descAr": "إطلاق متدرج: افتتاح تجريبي كاختبار بعدد طلبات محدود وقائمة مختصرة، ثم تصحيحات، ثم بناء وعي متحكم فيه، مع كتابة فحص الطاقة كبوابة لا افتراضه.",
+      "includes": [
+        [
+          "Soft opening test plan",
+          "خطة اختبار الافتتاح التجريبي"
+        ],
+        [
+          "Capacity gate before launch",
+          "بوابة الطاقة قبل الإطلاق"
+        ],
+        [
+          "Awareness build sequence",
+          "تسلسل بناء الوعي"
+        ],
+        [
+          "Content and asset checklist",
+          "قائمة تحقق المحتوى والمواد"
+        ],
+        [
+          "Week-by-week timeline",
+          "جدول زمني أسبوعاً بأسبوع"
+        ]
+      ],
+      "audience": [
+        [
+          "Owners opening a venue",
+          "الملاك عند افتتاح مطعم"
+        ],
+        [
+          "Marketing leads planning an opening",
+          "مسؤولو التسويق عند التخطيط لافتتاح"
+        ]
+      ]
+    },
+    {
+      "slug": "social-media-content-planner",
+      "kind": "xlsx",
+      "file": "social-media-content-planner.xlsx",
+      "titleEn": "Social Media Content Planner",
+      "titleAr": "مخطط محتوى وسائل التواصل",
+      "summaryEn": "A monthly content plan sized to the production capacity you actually have, not to an ideal cadence.",
+      "summaryAr": "خطة محتوى شهرية مقاسة على طاقتك الإنتاجية الفعلية لا على إيقاع مثالي.",
+      "descEn": "Plan the month from a commercial brief — a launch, a soft daypart, a category that needs attention — then map pillars, formats, production days and publishing slots so the calendar can actually be produced by the team that has to produce it.",
+      "descAr": "خطط للشهر انطلاقاً من موجز تجاري — إطلاق، أو وقت ضعيف، أو تصنيف يحتاج انتباهاً — ثم ارسم المحاور والصيغ وأيام الإنتاج وفترات النشر ليكون التقويم قابلاً للإنتاج فعلاً من الفريق الذي عليه إنتاجه.",
+      "includes": [
+        [
+          "Monthly commercial brief page",
+          "صفحة الموجز التجاري الشهري"
+        ],
+        [
+          "Content pillar and format library",
+          "مكتبة محاور المحتوى وصيغه"
+        ],
+        [
+          "Production day planner",
+          "مخطط أيام الإنتاج"
+        ],
+        [
+          "Publishing calendar in both languages",
+          "تقويم نشر باللغتين"
+        ],
+        [
+          "Performance review sheet",
+          "ورقة مراجعة الأداء"
+        ]
+      ],
+      "audience": [
+        [
+          "In-house social media managers",
+          "مديرو التواصل الاجتماعي الداخليون"
+        ],
+        [
+          "Owners running their own channels",
+          "الملاك الذين يديرون قنواتهم بأنفسهم"
+        ]
+      ]
+    }
+  ]
+}
