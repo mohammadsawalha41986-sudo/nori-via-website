@@ -38,7 +38,9 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 22.22.0
+          # Read from .node-version so CI cannot drift from the version the
+          # project declares in package.json engines.
+          node-version-file: .node-version
           cache: npm
       - run: npm ci
       - run: npm run typecheck
@@ -55,10 +57,18 @@ jobs:
       - name: Browser journeys
         run: |
           NODE_ENV=production npm start > /tmp/noriva-server.log 2>&1 &
-          for attempt in $(seq 1 40); do
-            if curl --fail --silent http://127.0.0.1:3000/en >/dev/null; then break; fi
+          ready=""
+          for attempt in $(seq 1 60); do
+            if curl --fail --silent http://127.0.0.1:3000/en >/dev/null; then ready=1; break; fi
             sleep 1
           done
+          # Without this the suite runs against a server that never started and
+          # reports a wall of browser errors instead of the real cause.
+          if [ -z "$ready" ]; then
+            echo "::error::the production server did not answer on :3000 within 60s"
+            tail -200 /tmp/noriva-server.log || true
+            exit 1
+          fi
           npm run test:e2e
       - name: Server log on failure
         if: failure()

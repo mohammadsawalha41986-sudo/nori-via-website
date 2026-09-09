@@ -338,9 +338,18 @@ Requires Node.js 20+ (built and verified on 22) and a PostgreSQL 14+ database.
 ```bash
 npm ci
 npx prisma migrate deploy
+npm run content:provision   # required: see below
 npm run build
 npm start            # serves on PORT, default 3000
 ```
+
+`content:provision` is not optional and is not a one-off. The 60 Library files
+are committed under `resources/library/`, and provisioning is what copies them
+into `STORAGE_DIR/private` and publishes the rows that point at them. It is
+idempotent, it never overwrites a file uploaded through Admin, and it must run
+on **every** deploy: if `STORAGE_DIR` is not a persistent volume, the files
+exist only because the previous run put them there, so skipping it leaves 60
+published resources whose download returns 404.
 
 Point the Node application entry at `npm start` and put Nginx or the Hostinger
 proxy in front of it with SSL for `norivaglobal.com` and `www.norivaglobal.com`.
@@ -353,6 +362,11 @@ proxy in front of it with SSL for `norivaglobal.com` and `www.norivaglobal.com`.
 4. Configure SMTP, or leave `SMTP_HOST` empty and collect leads from Admin.
 5. Point `STORAGE_DIR` at a **persistent, writable** directory outside the
    deploy folder, so uploads survive redeploys. Back it up with the database.
+   Files uploaded through Admin exist *only* there and cannot be regenerated,
+   unlike the bundled Library files that `content:provision` restores from the
+   repository. On Railway this means a volume (the production service mounts
+   one at `/data`) with `STORAGE_DIR` pointing inside it, and the migrate +
+   provision steps above set as the pre-deploy command.
 6. Run `npm run db:seed` once, sign in, change the password in
    **Admin → Your account**, then clear `ADMIN_PASSWORD` from the environment.
    If you are ever locked out later,
