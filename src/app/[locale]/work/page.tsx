@@ -7,6 +7,8 @@ import { getDictionary } from '@/lib/dictionary';
 import { isLocale, pick, type Locale } from '@/lib/i18n';
 import { getPublishedProjects, getWorkCategories, getPage } from '@/lib/content';
 import { buildMetadata, JsonLd, breadcrumbs } from '@/lib/seo';
+import { summarise } from '@/lib/seo-text';
+import { brandName } from '@/lib/brand';
 
 export const revalidate = 60;
 
@@ -20,7 +22,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     locale,
     path: '/work',
     fallbackTitle: getDictionary(locale).nav.work,
-    fallbackDescription: page ? pick(page, 'body', locale) : '',
+    fallbackDescription: page ? summarise(pick(page, 'body', locale)) : '',
   });
 }
 
@@ -40,7 +42,7 @@ export default async function WorkPage({ params }: { params: Promise<{ locale: s
     <>
       <JsonLd
         data={breadcrumbs(locale, [
-          { name: 'Noriva', path: '/' },
+          { name: brandName(locale), path: '/' },
           { name: dict.nav.work, path: '/work' },
         ])}
       />

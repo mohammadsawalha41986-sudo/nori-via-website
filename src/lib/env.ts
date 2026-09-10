@@ -33,6 +33,14 @@ export const env = {
     gaId: process.env.NEXT_PUBLIC_GA_ID || '',
     gtmId: process.env.NEXT_PUBLIC_GTM_ID || '',
   },
+  /**
+   * Search Console's HTML-tag verification token.
+   *
+   * Kept in the environment rather than the CMS: it is deployment
+   * configuration, not content, and it must survive a database restore. Unset
+   * is the normal state once the property is verified by DNS instead.
+   */
+  googleSiteVerification: process.env.GOOGLE_SITE_VERIFICATION || '',
 };
 
 export function isMailConfigured() {

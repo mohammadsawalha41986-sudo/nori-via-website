@@ -13,7 +13,9 @@ import { asObjectList, getResourceBySlug } from '@/lib/content';
 import { getRelatedContent } from '@/lib/relations';
 import { getSessionUser } from '@/lib/auth';
 import { documentLabel, formatBytes } from '@/lib/storage';
-import { buildMetadata, JsonLd, breadcrumbs } from '@/lib/seo';
+import { buildMetadata, JsonLd} from '@/lib/seo';
+import { Breadcrumbs } from '@/components/public/Breadcrumbs';
+import { brandName } from '@/lib/brand';
 import { env } from '@/lib/env';
 
 export const revalidate = 60;
@@ -72,12 +74,6 @@ export default async function ResourcePage({
 
   return (
     <>
-      <JsonLd
-        data={breadcrumbs(locale, [
-          { name: dict.library.title, path: '/library' },
-          { name: pick(resource, 'title', locale), path: `/library/${resource.slug}` },
-        ])}
-      />
       {resource.status === 'PUBLISHED' && (
         <JsonLd
           data={{
@@ -129,6 +125,15 @@ export default async function ResourcePage({
             )}
           </ul>
         }
+      />
+
+      <Breadcrumbs
+        locale={locale}
+        trail={[
+          { name: brandName(locale), path: '/' },
+          { name: dict.library.title, path: '/library' },
+          { name: pick(resource, 'title', locale), path: `/library/${resource.slug}` },
+        ]}
       />
 
       <section className="bg-bone section-y">

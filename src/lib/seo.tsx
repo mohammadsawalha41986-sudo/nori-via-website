@@ -1,6 +1,33 @@
 import type { Metadata } from 'next';
 import { env } from './env';
-import { pick, locales, type Locale } from './i18n';
+import { pick, defaultLocale, type Locale } from './i18n';
+import { BRAND, BRAND_DESCRIPTION, BRAND_LOGO, BRAND_TOPICS, SCHEMA_IDS } from './brand';
+
+/** Absolute URL for a locale-prefixed path, with no trailing slash. */
+export function absoluteUrl(locale: Locale, path = '/') {
+  return `${env.siteUrl}/${locale}${path === '/' ? '' : path}`;
+}
+
+/**
+ * Canonical plus the full hreflang cluster for one page.
+ *
+ * Every page emits the same shape, so the reciprocal references can never
+ * disagree between the layout and an individual route. `ar-SA` is listed
+ * alongside the bare `ar` because the audience is Saudi, and `x-default`
+ * points at Arabic because that is where an unrecognised visitor is actually
+ * sent — an `x-default` that contradicts the redirect is a crawl trap.
+ */
+export function alternatesFor(locale: Locale, path = '/'): Metadata['alternates'] {
+  return {
+    canonical: absoluteUrl(locale, path),
+    languages: {
+      en: absoluteUrl('en', path),
+      ar: absoluteUrl('ar', path),
+      'ar-SA': absoluteUrl('ar', path),
+      'x-default': absoluteUrl(defaultLocale, path),
+    },
+  };
+}
 
 type SeoSource = Record<string, unknown> & { noindex?: boolean; ogImage?: string | null };
 
@@ -33,29 +60,105 @@ export function buildMetadata({
   publishedTime?: string;
 }): Metadata {
   const title = (row && pick(row, 'seoTitle', locale)) || fallbackTitle;
-  const description = (row && pick(row, 'seoDescription', locale)) || fallbackDescription || '';
-  const url = `${env.siteUrl}/${locale}${path === '/' ? '' : path}`;
+  const description =
+    (row && pick(row, 'seoDescription', locale)) || fallbackDescription || BRAND_DESCRIPTION[locale];
+  const url = absoluteUrl(locale, path);
   const image = row?.ogImage || fallbackImage || undefined;
-
-  const languages = Object.fromEntries(
-    locales.map((l) => [l, `${env.siteUrl}/${l}${path === '/' ? '' : path}`]),
-  ) as Record<string, string>;
 
   return {
     title,
     description,
-    alternates: { canonical: url, languages: { ...languages, 'x-default': languages.en! } },
+    alternates: alternatesFor(locale, path),
     robots: row?.noindex ? { index: false, follow: false } : undefined,
     openGraph: {
       type,
       url,
       title,
       description,
+      // Stated on every page, so the brand a crawler reads never depends on
+      // which page it happened to land on first.
+      siteName: BRAND.name,
       images: image ? [{ url: image }] : undefined,
       publishedTime,
       locale: locale === 'ar' ? 'ar_SA' : 'en_US',
     },
     twitter: { card: 'summary_large_image', title, description, images: image ? [image] : undefined },
+  };
+}
+
+/**
+ * The company, as a single reusable node.
+ *
+ * Referenced by `@id` from every other node rather than repeated inline, so a
+ * crawler resolves one organisation instead of a dozen near-duplicates. Only
+ * facts the site already publishes are included: contact details and social
+ * profiles come from Admin and are omitted entirely when unset — an invented
+ * profile or address is worse than an absent one.
+ */
+export function organizationSchema({
+  locale,
+  description,
+  email,
+  telephone,
+  sameAs,
+  logoUrl,
+}: {
+  locale: Locale;
+  description?: string;
+  email?: string | null;
+  telephone?: string | null;
+  sameAs?: string[];
+  logoUrl?: string | null;
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    '@id': SCHEMA_IDS.organization,
+    name: BRAND.name,
+    // Both the short form and the Arabic spellings resolve to this entity.
+    alternateName: [BRAND.shortName, BRAND.nameAr, BRAND.shortNameAr],
+    url: env.siteUrl,
+    description: description || BRAND_DESCRIPTION[locale],
+    logo: {
+      '@type': 'ImageObject',
+      url: `${env.siteUrl}${logoUrl || BRAND_LOGO.path}`,
+      width: BRAND_LOGO.width,
+      height: BRAND_LOGO.height,
+    },
+    image: `${env.siteUrl}${BRAND_LOGO.path}`,
+    email: email || undefined,
+    telephone: telephone || undefined,
+    areaServed: { '@type': 'Country', name: BRAND.areaServed },
+    knowsAbout: BRAND_TOPICS[locale],
+    sameAs: sameAs && sameAs.length ? sameAs : undefined,
+  };
+}
+
+/**
+ * The site itself.
+ *
+ * `name` here is what Google reads for the site name shown above a result, and
+ * `publisher` ties the site back to the one organisation node.
+ */
+export function websiteSchema(locale: Locale) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': SCHEMA_IDS.website,
+    name: BRAND.name,
+    alternateName: [BRAND.shortName, BRAND.nameAr],
+    url: env.siteUrl,
+    description: BRAND_DESCRIPTION[locale],
+    inLanguage: locale === 'ar' ? 'ar-SA' : 'en',
+    publisher: { '@id': SCHEMA_IDS.organization },
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: {
+        '@type': 'EntryPoint',
+        urlTemplate: `${absoluteUrl(locale, '/search')}?q={search_term_string}`,
+      },
+      'query-input': 'required name=search_term_string',
+    },
   };
 }
 
@@ -78,7 +181,7 @@ export function breadcrumbs(locale: Locale, trail: { name: string; path: string 
       '@type': 'ListItem',
       position: i + 1,
       name: t.name,
-      item: `${env.siteUrl}/${locale}${t.path === '/' ? '' : t.path}`,
+      item: absoluteUrl(locale, t.path),
     })),
   };
 }

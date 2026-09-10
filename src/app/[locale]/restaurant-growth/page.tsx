@@ -13,6 +13,8 @@ import { isLocale, pick, type Locale } from '@/lib/i18n';
 import { getPage, getPublishedServices } from '@/lib/content';
 import { getRelatedContent } from '@/lib/relations';
 import { buildMetadata, JsonLd, breadcrumbs } from '@/lib/seo';
+import { summarise } from '@/lib/seo-text';
+import { brandName } from '@/lib/brand';
 
 export const revalidate = 60;
 
@@ -30,7 +32,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     locale,
     path: '/restaurant-growth',
     fallbackTitle: getDictionary(locale).nav.growth,
-    fallbackDescription: page ? pick(page, 'body', locale) : '',
+    fallbackDescription: page ? summarise(pick(page, 'body', locale)) : '',
   });
 }
 
@@ -54,7 +56,7 @@ export default async function RestaurantGrowthPage({ params }: { params: Promise
     <>
       <JsonLd
         data={breadcrumbs(locale, [
-          { name: 'Noriva', path: '/' },
+          { name: brandName(locale), path: '/' },
           { name: dict.nav.growth, path: '/restaurant-growth' },
         ])}
       />

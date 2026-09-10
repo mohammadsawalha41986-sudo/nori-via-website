@@ -13,12 +13,16 @@ import { getDictionary } from '@/lib/dictionary';
 import { isLocale, pick, type Locale } from '@/lib/i18n';
 import {
   getServiceBySlug,
+  getPublishedServices,
   asObjectList,
   type FaqItem,
   type ProcessItem,
   type GalleryItem,
 } from '@/lib/content';
-import { buildMetadata, JsonLd, breadcrumbs } from '@/lib/seo';
+import { buildMetadata, JsonLd} from '@/lib/seo';
+import { Breadcrumbs } from '@/components/public/Breadcrumbs';
+import { ServiceCrossLinks } from '@/components/public/ServiceCrossLinks';
+import { brandName, SCHEMA_IDS } from '@/lib/brand';
 import { env } from '@/lib/env';
 import { getRelatedContent } from '@/lib/relations';
 import { ServiceRequestForm } from '@/components/public/ServiceRequestForm';
@@ -75,6 +79,23 @@ export default async function ServiceDetailPage({
 
   const related = await getRelatedContent('SERVICE', service.id, locale);
 
+  /*
+    Sibling services, so the catalogue is a network rather than a hub and
+    spokes. Services in the same category come first — they are the closest
+    alternatives to what the visitor is reading — and the rest of the
+    catalogue fills the remaining slots.
+  */
+  const catalogue = (await getPublishedServices()).filter((s) => s.id !== service.id);
+  const sameCategory = catalogue.filter((s) => s.categoryId && s.categoryId === service.categoryId);
+  const crossLinks = [...sameCategory, ...catalogue.filter((s) => !sameCategory.includes(s))]
+    .slice(0, 6)
+    .map((s) => ({
+      id: s.id,
+      slug: s.slug,
+      name: pick(s, 'name', locale),
+      summary: pick(s, 'summary', locale),
+    }));
+
   // The service's own intake questionnaire, authored in Admin.
   const intake = parseIntake(service.intake);
 
@@ -110,17 +131,12 @@ export default async function ServiceDetailPage({
           name,
           description: pick(service, 'summary', locale),
           serviceType: service.category ? pick(service.category, 'name', locale) : undefined,
-          provider: { '@type': 'Organization', name: 'Noriva', url: env.siteUrl },
+          // Points at the organisation declared on the homepage rather than
+          // restating it, so both resolve to a single entity.
+          provider: { '@id': SCHEMA_IDS.organization },
           areaServed: 'SA',
           url: `${env.siteUrl}/${locale}/services/${slug}`,
         }}
-      />
-      <JsonLd
-        data={breadcrumbs(locale, [
-          { name: 'Noriva', path: '/' },
-          { name: dict.nav.services, path: '/services' },
-          { name, path: `/services/${slug}` },
-        ])}
       />
       {faqEntries.length > 0 && (
         <JsonLd
@@ -140,6 +156,15 @@ export default async function ServiceDetailPage({
         eyebrow={service.category ? pick(service.category, 'name', locale) : dict.nav.services}
         title={pick(service, 'heroHeadline', locale) || name}
         description={pick(service, 'heroDescription', locale) || pick(service, 'summary', locale)}
+      />
+
+      <Breadcrumbs
+        locale={locale}
+        trail={[
+          { name: brandName(locale), path: '/' },
+          { name: dict.nav.services, path: '/services' },
+          { name, path: `/services/${slug}` },
+        ]}
       />
 
       {/*
@@ -311,6 +336,13 @@ export default async function ServiceDetailPage({
       )}
 
       <RelatedContent items={related} title={dict.related.title} eyebrow={dict.nav.services} />
+
+      <ServiceCrossLinks
+        locale={locale}
+        title={dict.common.moreServices}
+        allLabel={dict.common.allServices}
+        services={crossLinks}
+      />
 
       {/* Requesting the service is the point of the page, so the questionnaire
           lives on it rather than behind a generic contact form. */}

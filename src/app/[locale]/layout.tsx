@@ -10,6 +10,8 @@ import { isLocale, dirOf, pick, type Locale } from '@/lib/i18n';
 import { getSettings } from '@/lib/content';
 import { env } from '@/lib/env';
 import { getDesignTokens, tokensToCss } from '@/lib/design-tokens';
+import { alternatesFor } from '@/lib/seo';
+import { BRAND, BRAND_DESCRIPTION, brandName, withBrand } from '@/lib/brand';
 
 /**
  * Deliberately no `generateStaticParams`.
@@ -28,25 +30,40 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const locale = raw as Locale;
   const settings = await getSettings();
 
-  const name = pick(settings, 'companyName', locale) || 'Noriva';
   // Prefer a purpose-made share image; fall back to the logo so a shared link
   // is never a blank card once branding has been uploaded.
   const shareImage = settings.defaultOgImage || settings.logoUrl || undefined;
-  const title = pick(settings, 'seoTitle', locale) || `${name} — ${pick(settings, 'tagline', locale)}`;
-  const description = pick(settings, 'seoDescription', locale) || pick(settings, 'description', locale);
+  const tagline = pick(settings, 'tagline', locale);
+  /*
+    The homepage title is the strongest brand signal Google has, so the entity
+    is guaranteed to appear in it whatever Admin holds — `withBrand` completes
+    a short name rather than replacing the editor's words.
+  */
+  const title = withBrand(
+    pick(settings, 'seoTitle', locale) || (tagline ? `${brandName(locale)} — ${tagline}` : ''),
+    locale,
+  );
+  const description =
+    pick(settings, 'seoDescription', locale) ||
+    pick(settings, 'description', locale) ||
+    BRAND_DESCRIPTION[locale];
 
   return {
     metadataBase: new URL(env.siteUrl),
-    title: { default: title, template: `%s — ${name}` },
+    /*
+      The title template carries the brand entity rather than the editable
+      company name: every result in the SERP should read "… — NORIVA GLOBAL",
+      which is the string that separates this company from the similarly
+      spelled businesses it competes with there. The editable name still drives
+      everything visible on the page.
+    */
+    title: { default: title, template: `%s — ${BRAND.name}` },
     description,
-    alternates: {
-      canonical: `${env.siteUrl}/${locale}`,
-      // Arabic is the default entry point, so it is what an unmatched locale resolves to.
-      languages: { en: `${env.siteUrl}/en`, ar: `${env.siteUrl}/ar`, 'x-default': `${env.siteUrl}/ar` },
-    },
+    applicationName: BRAND.name,
+    alternates: alternatesFor(locale),
     openGraph: {
       type: 'website',
-      siteName: name,
+      siteName: BRAND.name,
       title,
       description,
       locale: locale === 'ar' ? 'ar_SA' : 'en_US',
@@ -54,14 +71,34 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       images: shareImage ? [{ url: shareImage }] : undefined,
     },
     twitter: { card: 'summary_large_image', title, description, images: shareImage ? [shareImage] : undefined },
-    // Driven entirely from Admin, falling back to the bundled default. The
-    // file-based icon convention is deliberately not used, because it would
-    // override this and make the favicon uneditable.
-    icons: {
-      icon: settings.faviconUrl || '/icon.svg',
-      shortcut: settings.faviconUrl || '/favicon.ico',
-      apple: settings.faviconUrl || '/icon.svg',
-    },
+    /*
+      Icons.
+
+      An icon uploaded in Admin still wins, but the bundled fallback is now a
+      full set generated from the N mark rather than a single 32px file: Google
+      ignores a favicon smaller than 48px, which is why a generic globe was
+      showing next to the domain. The file-based icon convention is
+      deliberately not used, because it would override this and make the
+      favicon uneditable.
+    */
+    icons: settings.faviconUrl
+      ? { icon: settings.faviconUrl, shortcut: settings.faviconUrl, apple: settings.faviconUrl }
+      : {
+          icon: [
+            { url: '/favicon.ico', sizes: '16x16 32x32 48x48', type: 'image/x-icon' },
+            { url: '/favicon-48x48.png', sizes: '48x48', type: 'image/png' },
+            { url: '/favicon-96x96.png', sizes: '96x96', type: 'image/png' },
+            { url: '/icon.svg', type: 'image/svg+xml' },
+          ],
+          shortcut: '/favicon.ico',
+          apple: [{ url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }],
+        },
+    manifest: '/manifest.webmanifest',
+    // Only rendered when a token is configured; Search Console also accepts
+    // DNS verification, in which case this stays unset.
+    verification: env.googleSiteVerification
+      ? { google: env.googleSiteVerification }
+      : undefined,
   };
 }
 

@@ -11,7 +11,10 @@ import { getToolBySlug } from '@/lib/content';
 import { parseToolConfig } from '@/lib/tool-engine';
 import { getRelatedContent } from '@/lib/relations';
 import { getSessionUser } from '@/lib/auth';
-import { buildMetadata, JsonLd, breadcrumbs } from '@/lib/seo';
+import { buildMetadata, JsonLd } from '@/lib/seo';
+import { env } from '@/lib/env';
+import { Breadcrumbs } from '@/components/public/Breadcrumbs';
+import { brandName, SCHEMA_IDS } from '@/lib/brand';
 
 export const revalidate = 60;
 
@@ -59,12 +62,6 @@ export default async function ToolPage({
 
   return (
     <>
-      <JsonLd
-        data={breadcrumbs(locale, [
-          { name: dict.tools.title, path: '/tools' },
-          { name: pick(tool, 'name', locale), path: `/tools/${tool.slug}` },
-        ])}
-      />
 
       {isPreview && tool.status !== 'PUBLISHED' && (
         <p className="bg-amber-400 px-4 py-2 text-center text-sm font-semibold text-ink-900">{dict.draft.badge}</p>
@@ -74,6 +71,38 @@ export default async function ToolPage({
         eyebrow={dict.tools.title}
         title={pick(tool, 'name', locale)}
         description={pick(tool, 'summary', locale)}
+      />
+
+      {/*
+        The tool is an interactive calculator that runs on the page, so it is
+        described as a web application rather than an article. No offer, price
+        or rating is claimed — none exists.
+      */}
+      {tool.status === 'PUBLISHED' && (
+        <JsonLd
+          data={{
+            '@context': 'https://schema.org',
+            '@type': 'WebApplication',
+            name: pick(tool, 'name', locale),
+            description: pick(tool, 'summary', locale) || undefined,
+            url: `${env.siteUrl}/${locale}/tools/${tool.slug}`,
+            applicationCategory: 'BusinessApplication',
+            operatingSystem: 'Any',
+            browserRequirements: 'Requires JavaScript',
+            inLanguage: locale === 'ar' ? 'ar-SA' : 'en',
+            isPartOf: { '@id': SCHEMA_IDS.website },
+            publisher: { '@id': SCHEMA_IDS.organization },
+          }}
+        />
+      )}
+
+      <Breadcrumbs
+        locale={locale}
+        trail={[
+          { name: brandName(locale), path: '/' },
+          { name: dict.tools.title, path: '/tools' },
+          { name: pick(tool, 'name', locale), path: `/tools/${tool.slug}` },
+        ]}
       />
 
       {config.outputs.length > 0 ? (

@@ -1,9 +1,10 @@
 import type { Metadata, Viewport } from 'next';
 import './globals.css';
+import { BRAND, BRAND_DESCRIPTION } from '@/lib/brand';
 
 export const metadata: Metadata = {
-  title: 'Noriva',
-  description: 'Restaurant marketing, creative and growth.',
+  title: BRAND.name,
+  description: BRAND_DESCRIPTION.en,
 };
 
 export const viewport: Viewport = {
