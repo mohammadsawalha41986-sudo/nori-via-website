@@ -67,7 +67,7 @@ export function FaqSection({
         <Reveal className="lg:col-span-5">
           <div className="lg:sticky lg:top-32">
             {eyebrow && (
-              <div className="mb-5 flex items-center gap-3 text-[0.6875rem] font-bold uppercase tracking-[0.24em] text-brand">
+              <div className="mb-5 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.24em] text-brand">
                 <span aria-hidden className="h-px w-8 bg-current" />
                 {eyebrow}
               </div>

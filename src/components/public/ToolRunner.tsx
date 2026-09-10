@@ -74,7 +74,7 @@ export function ToolRunner({
                     id={id}
                     value={String(values[input.key] ?? input.defaultValue)}
                     onChange={(e) => update(input.key, e.target.value)}
-                    className="w-full rounded-input border border-ink-900/15 bg-white px-4 py-3 text-[0.9375rem] text-ink-900 outline-none focus:border-brand"
+                    className="w-full rounded-input border border-ink-900/15 bg-white px-4 py-3 text-sm text-ink-900 outline-none focus:border-brand"
                   >
                     {input.options.map((option) => (
                       <option key={option.value} value={option.value}>
@@ -93,7 +93,7 @@ export function ToolRunner({
                     max={input.max ?? undefined}
                     step={input.step ?? 'any'}
                     onChange={(e) => update(input.key, e.target.value)}
-                    className="w-full rounded-input border border-ink-900/15 bg-white px-4 py-3 text-[0.9375rem] text-ink-900 outline-none focus:border-brand"
+                    className="w-full rounded-input border border-ink-900/15 bg-white px-4 py-3 text-sm text-ink-900 outline-none focus:border-brand"
                   />
                 )}
 
@@ -121,7 +121,7 @@ export function ToolRunner({
             const hint = help(output);
             return (
               <div key={output.key}>
-                <dt className="text-[0.6875rem] font-bold uppercase tracking-[0.2em] text-white/45">
+                <dt className="text-xs font-bold uppercase tracking-[0.2em] text-white/45">
                   {label(output)}
                 </dt>
                 <dd

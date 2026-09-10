@@ -140,8 +140,8 @@ export default async function ProjectPage({ params }: { params: Promise<{ locale
             <dl className="mt-12 grid max-w-3xl grid-cols-2 gap-x-8 gap-y-6 sm:grid-cols-4">
               {meta.map((m) => (
                 <div key={m.label}>
-                  <dt className="text-[0.6875rem] font-bold uppercase tracking-[0.2em] text-white/35">{m.label}</dt>
-                  <dd className="mt-2 text-[0.9375rem] font-medium text-white">{m.value}</dd>
+                  <dt className="text-xs font-bold uppercase tracking-[0.2em] text-white/35">{m.label}</dt>
+                  <dd className="mt-2 text-sm font-medium text-white">{m.value}</dd>
                 </div>
               ))}
             </dl>
@@ -166,7 +166,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ locale
       {project.services.length > 0 && (
         <section className="bg-bone pt-16">
           <div className="shell">
-            <h2 className="text-[0.6875rem] font-bold uppercase tracking-[0.24em] text-ink-400">{dict.common.services}</h2>
+            <h2 className="text-xs font-bold uppercase tracking-[0.24em] text-ink-400">{dict.common.services}</h2>
             <ul className="mt-4 flex flex-wrap gap-2">
               {project.services.map((s) => (
                 <li key={s.serviceId}>
@@ -277,7 +277,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ locale
                       href={d.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group flex items-center justify-between gap-6 text-[0.9375rem] font-medium text-ink-700 transition-colors hover:text-brand"
+                      className="group flex items-center justify-between gap-6 text-sm font-medium text-ink-700 transition-colors hover:text-brand"
                     >
                       {localisedLabel(d, 'label') || d.url.split('/').pop()}
                       <span aria-hidden className="text-ink-300 transition-transform group-hover:translate-y-0.5">↓</span>

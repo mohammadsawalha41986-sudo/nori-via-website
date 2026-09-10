@@ -46,7 +46,7 @@ export function RelatedContent({
                   </span>
                 )}
                 <span className="flex flex-1 flex-col p-6">
-                  <span className="text-[0.6875rem] font-bold uppercase tracking-[0.2em] text-brand">{item.badge}</span>
+                  <span className="text-xs font-bold uppercase tracking-[0.2em] text-brand">{item.badge}</span>
                   <span className="mt-2.5 font-display text-lg font-display-soft uppercase text-ink-900 transition-colors group-hover:text-brand">
                     {item.title}
                   </span>

@@ -56,10 +56,10 @@ export function ResourceCard({
             </span>
           )}
           <span className="absolute top-3 flex items-center gap-2 start-3">
-            <span className="rounded-btn bg-ink-900/85 px-3 py-1 text-[0.625rem] font-bold uppercase tracking-[0.16em] text-white">
+            <span className="rounded-btn bg-ink-900/85 px-3 py-1 text-xs font-bold uppercase tracking-[0.16em] text-white">
               {dict.library.types[resource.type]}
             </span>
-            <span className="rounded-btn bg-white/90 px-3 py-1 text-[0.625rem] font-bold tracking-[0.08em] text-ink-700">
+            <span className="rounded-btn bg-white/90 px-3 py-1 text-xs font-bold tracking-[0.08em] text-ink-700">
               EN / العربية
             </span>
           </span>
@@ -67,7 +67,7 @@ export function ResourceCard({
 
         <span className="flex flex-1 flex-col p-6">
           {resource.category && (
-            <span className="text-[0.6875rem] font-bold uppercase tracking-[0.2em] text-brand">{resource.category}</span>
+            <span className="text-xs font-bold uppercase tracking-[0.2em] text-brand">{resource.category}</span>
           )}
           <span className="mt-2 font-display text-lg font-display-soft uppercase text-ink-900 transition-colors group-hover:text-brand">
             {resource.title}

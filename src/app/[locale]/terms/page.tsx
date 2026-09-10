@@ -37,7 +37,7 @@ export default async function LegalPage({ params }: { params: Promise<{ locale: 
       <PageHero title={pick(page, 'title', locale)} />
       <section className="bg-bone py-20 sm:py-28">
         <div className="shell max-w-3xl">
-          <Prose text={pick(page, 'body', locale)} className="text-[1.0625rem]" />
+          <Prose text={pick(page, 'body', locale)} className="text-base" />
         </div>
       </section>
     </>

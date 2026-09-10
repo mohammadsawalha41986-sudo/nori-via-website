@@ -104,14 +104,14 @@ export default async function ResourcePage({
         meta={
           <ul className="mt-10 flex flex-wrap gap-x-10 gap-y-4 text-sm text-white/55">
             <li>
-              <span className="block text-[0.6875rem] font-bold uppercase tracking-[0.2em] text-white/35">
+              <span className="block text-xs font-bold uppercase tracking-[0.2em] text-white/35">
                 {dict.library.fileType}
               </span>
               <span className="mt-1 block font-semibold text-white">{format}</span>
             </li>
             {size && !isExternal && (
               <li>
-                <span className="block text-[0.6875rem] font-bold uppercase tracking-[0.2em] text-white/35">
+                <span className="block text-xs font-bold uppercase tracking-[0.2em] text-white/35">
                   {dict.library.fileSize}
                 </span>
                 <span className="mt-1 block font-semibold text-white">{size}</span>
@@ -119,7 +119,7 @@ export default async function ResourcePage({
             )}
             {resource.publishedAt && (
               <li>
-                <span className="block text-[0.6875rem] font-bold uppercase tracking-[0.2em] text-white/35">
+                <span className="block text-xs font-bold uppercase tracking-[0.2em] text-white/35">
                   {dict.library.updated}
                 </span>
                 <span className="mt-1 block font-semibold text-white">
@@ -158,7 +158,7 @@ export default async function ResourcePage({
                 </h2>
                 <ul className="mt-6 space-y-3">
                   {includes.map((item) => (
-                    <li key={item} className="flex gap-3 text-[0.9375rem] leading-relaxed text-ink-600">
+                    <li key={item} className="flex gap-3 text-sm leading-relaxed text-ink-600">
                       <span aria-hidden className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand" />
                       {item}
                     </li>

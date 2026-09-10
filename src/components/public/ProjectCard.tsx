@@ -92,7 +92,7 @@ export function ProjectCard({
         {project.services.length > 0 && (
           <ul className="mt-3 flex flex-wrap gap-1.5">
             {project.services.slice(0, 4).map((s) => (
-              <li key={s} className="rounded-full bg-ink-900/[0.06] px-3 py-1 text-[0.6875rem] font-medium text-ink-500">
+              <li key={s} className="rounded-full bg-ink-900/[0.06] px-3 py-1 text-xs font-medium text-ink-500">
                 {s}
               </li>
             ))}

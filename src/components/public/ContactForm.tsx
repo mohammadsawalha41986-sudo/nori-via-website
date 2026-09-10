@@ -7,7 +7,7 @@ import type { Dictionary } from '@/lib/dictionary';
 import type { Locale } from '@/lib/i18n';
 
 const field =
-  'w-full rounded-lg border border-ink-900/15 bg-white px-4 py-3.5 text-[0.9375rem] text-ink-900 outline-none transition-colors duration-200 placeholder:text-ink-300 focus:border-brand';
+  'w-full rounded-lg border border-ink-900/15 bg-white px-4 py-3.5 text-sm text-ink-900 outline-none transition-colors duration-200 placeholder:text-ink-300 focus:border-brand';
 
 export function ContactForm({ dict, locale }: { dict: Dictionary; locale: Locale }) {
   const [state, setState] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
@@ -42,7 +42,7 @@ export function ContactForm({ dict, locale }: { dict: Dictionary; locale: Locale
     return (
       <div className="rounded-2xl border border-brand/25 bg-brand/[0.06] p-8">
         <p className="font-display text-xl font-display-soft uppercase text-ink-900">{dict.form.successTitle}</p>
-        <p className="mt-3 text-[0.9375rem] leading-relaxed text-ink-500">{dict.contact.sent}</p>
+        <p className="mt-3 text-sm leading-relaxed text-ink-500">{dict.contact.sent}</p>
       </div>
     );
   }

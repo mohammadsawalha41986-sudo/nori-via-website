@@ -1,33 +1,42 @@
+'use client';
+
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { getDictionary } from '@/lib/dictionary';
+import { localeFromPath, localePath } from '@/lib/i18n';
 
 /**
- * Locale-segment 404. It cannot read the route params, so it stays bilingual
- * and links to the default locale.
+ * Locale-segment 404.
+ *
+ * Next does not hand route params to a `not-found` boundary, so the language
+ * comes from the URL the visitor is actually on.
  */
 export default function LocaleNotFound() {
+  const locale = localeFromPath(usePathname());
+  const dict = getDictionary(locale);
+
   return (
     <section className="flex min-h-[80svh] items-center bg-ink-900 py-32 text-white">
       <div className="shell">
         <p className="mb-6 font-mono text-xs tracking-[0.3em] text-brand-300">404</p>
         <h1 className="font-display text-display-md uppercase">
-          THIS PAGE GOT LOST.
+          {dict.notFound.title}
           <br />
-          <span className="text-white/45">LET&apos;S GET YOU BACK TO NORIVA.</span>
+          <span className="text-white/45">{dict.notFound.subtitle}</span>
         </h1>
-        <p className="mt-6 text-lg text-white/45">هذه الصفحة ضاعت. لنعُد بك إلى نوريفا.</p>
 
         <div className="mt-11 flex flex-wrap gap-3">
           <Link
-            href="/en"
-            className="inline-flex items-center gap-2 rounded-full bg-brand px-7 py-4 text-[0.9375rem] font-semibold text-white transition-colors hover:bg-brand-600"
+            href={localePath(locale)}
+            className="inline-flex items-center gap-2 rounded-full bg-brand px-7 py-4 text-sm font-semibold text-white transition-colors hover:bg-brand-600"
           >
-            Back Home →
+            {dict.common.backHome} →
           </Link>
           <Link
-            href="/en/work"
-            className="inline-flex items-center gap-2 rounded-full border border-white/35 px-7 py-4 text-[0.9375rem] font-semibold text-white transition-colors hover:bg-white hover:text-ink-900"
+            href={localePath(locale, '/work')}
+            className="inline-flex items-center gap-2 rounded-full border border-white/35 px-7 py-4 text-sm font-semibold text-white transition-colors hover:bg-white hover:text-ink-900"
           >
-            Explore Our Work →
+            {dict.common.exploreWork} →
           </Link>
         </div>
       </div>

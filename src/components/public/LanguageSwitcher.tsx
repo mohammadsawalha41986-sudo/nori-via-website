@@ -3,7 +3,7 @@
 import { usePathname, useRouter } from 'next/navigation';
 import { useTransition } from 'react';
 import clsx from 'clsx';
-import { locales, type Locale } from '@/lib/i18n';
+import { locales, LOCALE_COOKIE, type Locale } from '@/lib/i18n';
 
 const LABELS: Record<Locale, string> = { en: 'EN', ar: 'ع' };
 const FULL: Record<Locale, string> = { en: 'English', ar: 'العربية' };
@@ -16,7 +16,7 @@ export function LanguageSwitcher({ locale, tone = 'dark' }: { locale: Locale; to
   function switchTo(next: Locale) {
     if (next === locale) return;
     // Remember the choice so the middleware honours it on the next visit.
-    document.cookie = `noriva_locale=${next};path=/;max-age=31536000;samesite=lax`;
+    document.cookie = `${LOCALE_COOKIE}=${next};path=/;max-age=31536000;samesite=lax`;
     const rest = pathname.replace(new RegExp(`^/(${locales.join('|')})`), '') || '';
     startTransition(() => router.push(`/${next}${rest}`));
   }

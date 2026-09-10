@@ -49,7 +49,7 @@ export function FeatureBanner({
       <div className="shell relative py-24 text-center sm:py-32">
         <Reveal className="mx-auto max-w-2xl">
           {eyebrow && (
-            <div className="mb-5 text-[0.6875rem] font-bold uppercase tracking-[0.24em] text-brand-300">
+            <div className="mb-5 text-xs font-bold uppercase tracking-[0.24em] text-brand-300">
               {eyebrow}
             </div>
           )}

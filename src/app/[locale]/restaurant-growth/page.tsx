@@ -72,7 +72,7 @@ export default async function RestaurantGrowthPage({ params }: { params: Promise
             <ul className="mt-14 grid gap-px overflow-hidden rounded-2xl bg-ink-900/10 sm:grid-cols-2 lg:grid-cols-4">
               {pillars.map((p, i) => (
                 <Reveal as="li" key={i} delay={i * 55} y={16} className="bg-bone px-7 py-9">
-                  <span className="font-mono text-[0.6875rem] text-brand">{String(i + 1).padStart(2, '0')}</span>
+                  <span className="font-mono text-xs text-brand">{String(i + 1).padStart(2, '0')}</span>
                   <h3 className="mt-3 font-display text-lg uppercase text-ink-900">
                     {pick(p, 'title', locale)}
                   </h3>
@@ -111,14 +111,14 @@ export default async function RestaurantGrowthPage({ params }: { params: Promise
               {related.map((s, i) => (
                 <Reveal as="li" key={s.id} delay={i * 45} y={14} className="border-b border-ink-900/10">
                   <Link href={`/${locale}/services/${s.slug}`} className="group flex items-start gap-6 py-6 sm:gap-10">
-                    <span className="mt-2 shrink-0 font-mono text-[0.6875rem] text-ink-300">
+                    <span className="mt-2 shrink-0 font-mono text-xs text-ink-300">
                       {String(i + 1).padStart(2, '0')}
                     </span>
                     <span className="flex-1">
                       <span className="block font-display text-xl font-display-soft uppercase text-ink-900 transition-colors group-hover:text-brand sm:text-2xl">
                         {pick(s, 'name', locale)}
                       </span>
-                      <span className="mt-2 block max-w-2xl text-[0.9375rem] leading-relaxed text-ink-400">
+                      <span className="mt-2 block max-w-2xl text-sm leading-relaxed text-ink-400">
                         {pick(s, 'summary', locale)}
                       </span>
                     </span>

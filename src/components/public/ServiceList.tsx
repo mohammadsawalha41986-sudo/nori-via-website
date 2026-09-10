@@ -30,14 +30,14 @@ export function ServiceList({ groups, locale }: { groups: ServiceGroup[]; locale
             >
               {group.name}
             </h2>
-            {group.description && <p className="mt-3 text-[0.9375rem] leading-relaxed text-ink-400">{group.description}</p>}
+            {group.description && <p className="mt-3 text-sm leading-relaxed text-ink-400">{group.description}</p>}
           </Reveal>
 
           <ul className="border-t border-ink-900/10">
             {group.services.map((s, i) => (
               <Reveal as="li" key={s.id} delay={i * 45} y={16} className="border-b border-ink-900/10">
                 <Link href={`/${locale}/services/${s.slug}`} className="group flex items-start gap-6 py-6 sm:gap-10 sm:py-7">
-                  <span className="mt-2 shrink-0 font-mono text-[0.6875rem] text-ink-300">
+                  <span className="mt-2 shrink-0 font-mono text-xs text-ink-300">
                     {String(i + 1).padStart(2, '0')}
                   </span>
 
@@ -59,7 +59,7 @@ export function ServiceList({ groups, locale }: { groups: ServiceGroup[]; locale
                       {s.name}
                     </span>
                     {s.summary && (
-                      <span className="mt-2 block max-w-2xl text-[0.9375rem] leading-relaxed text-ink-400">
+                      <span className="mt-2 block max-w-2xl text-sm leading-relaxed text-ink-400">
                         {s.summary}
                       </span>
                     )}

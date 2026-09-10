@@ -9,7 +9,7 @@ import type { Dictionary } from '@/lib/dictionary';
 import type { Locale } from '@/lib/i18n';
 
 const field =
-  'w-full rounded-lg border border-ink-900/15 bg-white px-4 py-3.5 text-[0.9375rem] text-ink-900 outline-none transition-colors duration-200 placeholder:text-ink-300 focus:border-brand';
+  'w-full rounded-lg border border-ink-900/15 bg-white px-4 py-3.5 text-sm text-ink-900 outline-none transition-colors duration-200 placeholder:text-ink-300 focus:border-brand';
 
 const SERVICE_OPTIONS = [
   ['Social Media', 'وسائل التواصل الاجتماعي'],
@@ -177,7 +177,7 @@ export function InquiryForm({ dict, locale }: { dict: Dictionary; locale: Locale
         <p className="font-display text-3xl uppercase text-ink-900">
           {dict.form.successTitle}
         </p>
-        <p className="mx-auto mt-5 max-w-lg text-[1.0625rem] leading-relaxed text-ink-500">{dict.form.successBody}</p>
+        <p className="mx-auto mt-5 max-w-lg text-base leading-relaxed text-ink-500">{dict.form.successBody}</p>
         <div className="mt-10 flex justify-center">
           <MagneticButton href={`/${locale}/work`} variant="ghost">
             {dict.common.exploreWork}
@@ -238,7 +238,7 @@ export function InquiryForm({ dict, locale }: { dict: Dictionary; locale: Locale
       >
         {current.title}
       </h2>
-      <p className="mt-2.5 text-[0.9375rem] text-ink-400">{current.sub}</p>
+      <p className="mt-2.5 text-sm text-ink-400">{current.sub}</p>
 
       <div className="mt-9 space-y-6">
         {step === 0 && (

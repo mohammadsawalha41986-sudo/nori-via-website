@@ -56,7 +56,7 @@ export function Hero({
       <div className="shell w-full">
         {eyebrow && (
           <p
-            className="mb-8 max-w-xl text-[0.6875rem] font-bold uppercase leading-relaxed tracking-[0.24em] text-brand-300 transition-all duration-1000 ease-noriva"
+            className="mb-8 max-w-xl text-xs font-bold uppercase leading-relaxed tracking-[0.24em] text-brand-300 transition-all duration-1000 ease-noriva"
             style={{ opacity: ready ? 1 : 0, transform: ready ? 'none' : 'translateY(16px)' }}
           >
             {eyebrow}

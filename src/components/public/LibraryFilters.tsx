@@ -66,7 +66,7 @@ export function LibraryFilters({
             value={term}
             onChange={(e) => setTerm(e.target.value)}
             placeholder={dict.library.searchPlaceholder}
-            className="w-full rounded-input border border-ink-900/15 bg-white px-5 py-3.5 text-[0.9375rem] text-ink-900 outline-none transition-colors placeholder:text-ink-300 focus:border-brand"
+            className="w-full rounded-input border border-ink-900/15 bg-white px-5 py-3.5 text-sm text-ink-900 outline-none transition-colors placeholder:text-ink-300 focus:border-brand"
           />
         </label>
 
@@ -76,7 +76,7 @@ export function LibraryFilters({
             <select
               value={activeCategory}
               onChange={(e) => apply({ category: e.target.value })}
-              className="w-full rounded-input border border-ink-900/15 bg-white px-4 py-3.5 text-[0.9375rem] text-ink-900 outline-none focus:border-brand"
+              className="w-full rounded-input border border-ink-900/15 bg-white px-4 py-3.5 text-sm text-ink-900 outline-none focus:border-brand"
             >
               <option value="">{dict.library.allCategories}</option>
               {categories.map((c) => (
@@ -93,7 +93,7 @@ export function LibraryFilters({
           <select
             value={activeSort}
             onChange={(e) => apply({ sort: e.target.value === 'newest' ? '' : e.target.value })}
-            className="w-full rounded-input border border-ink-900/15 bg-white px-4 py-3.5 text-[0.9375rem] text-ink-900 outline-none focus:border-brand"
+            className="w-full rounded-input border border-ink-900/15 bg-white px-4 py-3.5 text-sm text-ink-900 outline-none focus:border-brand"
           >
             <option value="newest">{dict.library.sortNewest}</option>
             <option value="popular">{dict.library.sortPopular}</option>

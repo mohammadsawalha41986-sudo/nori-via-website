@@ -66,7 +66,7 @@ export function FileUploader({
           dragging ? 'border-brand bg-brand/[0.05]' : 'border-ink-900/15 bg-white',
         )}
       >
-        <p className="text-[0.9375rem] text-ink-500">{dict.form.s6Sub}</p>
+        <p className="text-sm text-ink-500">{dict.form.s6Sub}</p>
         <p className="mt-1.5 text-xs text-ink-300">{dict.form.maxFiles}</p>
 
         <button

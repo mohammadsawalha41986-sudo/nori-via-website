@@ -92,7 +92,7 @@ export function Navbar({
                   rel={link.external ? 'noopener noreferrer' : undefined}
                   aria-current={isActive(link.href) ? 'page' : undefined}
                   className={clsx(
-                    'relative text-[0.9375rem] font-medium tracking-tight transition-colors duration-300',
+                    'relative text-sm font-medium tracking-tight transition-colors duration-300',
                     'after:absolute after:-bottom-1.5 after:left-0 after:h-px after:bg-brand after:transition-all after:duration-300',
                     isActive(link.href)
                       ? solid

@@ -21,7 +21,7 @@ export function SectionHeading({
       {eyebrow && (
         <div
           className={clsx(
-            'mb-5 flex items-center gap-3 text-[0.6875rem] font-bold uppercase tracking-[0.24em]',
+            'mb-5 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.24em]',
             align === 'center' && 'justify-center',
             tone === 'light' ? 'text-brand-300' : 'text-brand',
           )}

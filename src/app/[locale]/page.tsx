@@ -251,7 +251,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                     y={14}
                     className="bg-ink-900 px-6 py-8 transition-colors duration-300 hover:bg-ink-800"
                   >
-                    <span className="block font-mono text-[0.6875rem] text-brand-300">
+                    <span className="block font-mono text-xs text-brand-300">
                       {String(i + 1).padStart(2, '0')}
                     </span>
                     <span className="mt-2.5 block font-display text-base font-display-soft uppercase sm:text-lg">
@@ -328,12 +328,12 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                     href={`/${locale}/tools/${tool.slug}`}
                     className="group flex h-full flex-col rounded-card border border-ink-900/10 bg-bone p-8 transition-colors duration-300 hover:border-brand"
                   >
-                    <span className="font-mono text-[0.6875rem] text-brand">{String(i + 1).padStart(2, '0')}</span>
+                    <span className="font-mono text-xs text-brand">{String(i + 1).padStart(2, '0')}</span>
                     <span className="mt-4 font-display text-xl font-display-soft uppercase text-ink-900 transition-colors group-hover:text-brand">
                       {pick(tool, 'name', locale)}
                     </span>
                     {pick(tool, 'summary', locale) && (
-                      <span className="mt-3 text-[0.9375rem] leading-relaxed text-ink-400">
+                      <span className="mt-3 text-sm leading-relaxed text-ink-400">
                         {pick(tool, 'summary', locale)}
                       </span>
                     )}
@@ -394,7 +394,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 <Reveal as="li" key={article.id} delay={Math.min(i, 6) * 55} y={14}>
                   <Link href={`/${locale}/insights/${article.slug}`} className="group block">
                     {article.category && (
-                      <span className="text-[0.6875rem] font-bold uppercase tracking-[0.2em] text-brand">
+                      <span className="text-xs font-bold uppercase tracking-[0.2em] text-brand">
                         {pick(article.category, 'name', locale)}
                       </span>
                     )}
@@ -402,7 +402,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                       {pick(article, 'title', locale)}
                     </span>
                     {pick(article, 'excerpt', locale) && (
-                      <span className="mt-2.5 block line-clamp-3 text-[0.9375rem] leading-relaxed text-ink-400">
+                      <span className="mt-2.5 block line-clamp-3 text-sm leading-relaxed text-ink-400">
                         {pick(article, 'excerpt', locale)}
                       </span>
                     )}
