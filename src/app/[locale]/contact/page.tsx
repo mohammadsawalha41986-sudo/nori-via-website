@@ -91,7 +91,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
               <dl className="border-t border-ink-900/10">
                 {rows.map((r) => (
                   <div key={r.label} className="border-b border-ink-900/10 py-6">
-                    <dt className="text-[0.6875rem] font-bold uppercase tracking-[0.22em] text-ink-400">{r.label}</dt>
+                    <dt className="text-xs font-bold uppercase tracking-[0.22em] text-ink-400">{r.label}</dt>
                     <dd className="mt-2.5 text-lg text-ink-900">
                       {r.href ? (
                         <a

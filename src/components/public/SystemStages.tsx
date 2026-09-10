@@ -77,7 +77,7 @@ export function SystemStages({ headline, stages }: { headline: string; stages: S
                         >
                           <span className="overflow-hidden">
                             {stage.description && (
-                              <span className="mt-4 block max-w-lg text-[0.9375rem] leading-relaxed text-white/60">
+                              <span className="mt-4 block max-w-lg text-sm leading-relaxed text-white/60">
                                 {stage.description}
                               </span>
                             )}

@@ -1,9 +1,40 @@
 export const locales = ['en', 'ar'] as const;
 export type Locale = (typeof locales)[number];
-export const defaultLocale: Locale = 'en';
+
+/**
+ * Arabic is the house language: a visitor who has never chosen one lands on
+ * the Arabic site, whatever their browser advertises. English stays one click
+ * away in the header, and the choice is remembered in `LOCALE_COOKIE`.
+ */
+export const defaultLocale: Locale = 'ar';
+
+/** Cookie that stores an explicit language choice made in the switcher. */
+export const LOCALE_COOKIE = 'noriva_locale';
 
 export function isLocale(value: string): value is Locale {
   return (locales as readonly string[]).includes(value);
+}
+
+/**
+ * Resolves the locale for an unprefixed request.
+ *
+ * Only an explicit, remembered choice can move a visitor off Arabic —
+ * `Accept-Language` is deliberately ignored, because an Arabic-speaking guest
+ * on an English-configured phone is the common case here, not the exception.
+ */
+export function resolveLocale(cookieValue?: string | null): Locale {
+  if (cookieValue && isLocale(cookieValue)) return cookieValue;
+  return defaultLocale;
+}
+
+/**
+ * Reads the locale out of a pathname. Routes rendered outside the params tree
+ * — the `error` and `not-found` boundaries — have no `params` to read, but the
+ * segment is still right there in the URL.
+ */
+export function localeFromPath(pathname: string): Locale {
+  const segment = pathname.split('/')[1] ?? '';
+  return isLocale(segment) ? segment : defaultLocale;
 }
 
 export function dirOf(locale: Locale) {

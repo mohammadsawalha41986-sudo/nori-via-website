@@ -43,6 +43,13 @@
     --weight-heading: 800;
     --tracking-heading: -0.03em;
 
+    /* Locale typography multipliers. Every step of the Tailwind type scale is
+       `calc(<rem> * var(--font-scale))`, so these two values retune the whole
+       interface for a script without touching a single component. Latin is the
+       1.0 baseline; the RTL block below steps both up. */
+    --font-scale: 1;
+    --leading-scale: 1;
+
     --radius-btn: 999px;
     --radius-card: 16px;
     --radius-input: 10px;
@@ -64,12 +71,27 @@
 
   body {
     @apply bg-bone text-ink-900 font-sans antialiased;
-    font-size: var(--font-size-base);
+    font-size: calc(var(--font-size-base) * var(--font-scale));
     text-rendering: optimizeLegibility;
+  }
+
+  /*
+   * Arabic typography.
+   *
+   * At an identical nominal size Arabic reads smaller and denser than Latin:
+   * there are no capitals to set the apparent height, the letters join, and the
+   * marks sit above and below the baseline. So the scale steps up, the leading
+   * opens up, and the two Latin display habits that actively damage the script
+   * — negative tracking and a sub-1 line height — are switched off.
+   */
+  [dir='rtl'] {
+    --font-scale: 1.06;
+    --leading-scale: 1.08;
   }
 
   [dir='rtl'] body {
     @apply font-arabic;
+    line-height: calc(1.5 * var(--leading-scale));
   }
 
   ::selection {
@@ -135,14 +157,14 @@
   /* Editorial long-form copy rendered from CMS text fields. */
   .prose-noriva {
     @apply text-ink-600;
-    font-size: var(--font-size-base);
+    font-size: calc(var(--font-size-base) * var(--font-scale));
   }
 
   /* Doubled class, so the token still governs the rhythm of long-form copy
      when a caller sizes a lead paragraph with a text-* utility — those
      utilities set a line height of their own, and would otherwise win. */
   .prose-noriva.prose-noriva {
-    line-height: var(--leading-body);
+    line-height: calc(var(--leading-body) * var(--leading-scale));
   }
   .prose-noriva > p + p {
     @apply mt-5;
@@ -153,6 +175,39 @@
 }
 
 @layer utilities {
+  /*
+   * RTL corrections that have to outrank Tailwind's own utilities, so they are
+   * declared in the same layer and win on specificity rather than on order.
+   */
+
+  /* The display family is Latin-only; without this, Arabic headings silently
+     fall through to whatever the operating system happens to ship. */
+  [dir='rtl'] .font-display {
+    font-family: var(--font-arabic), var(--font-sans), sans-serif;
+    letter-spacing: 0;
+    /* The Arabic families are hosted up to 700, so a heavier token would only
+       buy a synthesised bold. The first declaration is the fallback for
+       engines that reject math functions in `font-weight`. */
+    font-weight: 700;
+    font-weight: min(var(--weight-heading), 700);
+  }
+
+  [dir='rtl'] .font-display-soft {
+    font-weight: 600;
+    font-weight: min(calc(var(--weight-heading) - 100), 600);
+  }
+
+  /* Tracked-out micro labels are a Latin uppercase device; in Arabic the same
+     letter spacing only pulls the joined letterforms apart. */
+  [dir='rtl'] [class*='tracking-'] {
+    letter-spacing: 0;
+  }
+
+  /* Display leading below 1 clips the ascenders and the marks. */
+  [dir='rtl'] .text-display-sm { line-height: 1.2; }
+  [dir='rtl'] .text-display-md { line-height: 1.16; }
+  [dir='rtl'] .text-display-lg { line-height: 1.12; }
+
   .text-balance { text-wrap: balance; }
 
   .grain::before {

@@ -19,7 +19,7 @@ export function EmptyState({
   return (
     <div className="rounded-card border border-dashed border-ink-900/15 bg-white/60 px-8 py-20 text-center">
       <p className="font-display text-2xl font-display-soft uppercase text-ink-900">{title}</p>
-      <p className="mx-auto mt-4 max-w-md text-[0.9375rem] leading-relaxed text-ink-400">{body}</p>
+      <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-ink-400">{body}</p>
       {ctaHref && ctaLabel && (
         <div className="mt-8 flex justify-center">
           <MagneticButton href={ctaHref} variant="ghost">

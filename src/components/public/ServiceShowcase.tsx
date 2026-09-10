@@ -71,7 +71,7 @@ export function ServiceShowcase({
                     {featured.name}
                   </h3>
                   {featured.summary && (
-                    <p className="mt-3 max-w-xl text-[0.9375rem] leading-relaxed text-white/75">
+                    <p className="mt-3 max-w-xl text-sm leading-relaxed text-white/75">
                       {featured.summary}
                     </p>
                   )}
@@ -86,14 +86,14 @@ export function ServiceShowcase({
                 href={`/${locale}/services/${service.slug}`}
                 className="group flex h-full flex-col rounded-card border border-ink-900/10 bg-bone p-7 transition-colors duration-300 hover:border-brand"
               >
-                <span aria-hidden className="font-mono text-[0.6875rem] text-brand">
+                <span aria-hidden className="font-mono text-xs text-brand">
                   {String(i + 1).padStart(2, '0')}
                 </span>
                 <h3 className="mt-4 font-display text-lg font-display-soft uppercase text-ink-900 transition-colors duration-300 group-hover:text-brand">
                   {service.name}
                 </h3>
                 {service.summary && (
-                  <p className="mt-3 line-clamp-3 text-[0.9375rem] leading-relaxed text-ink-400">
+                  <p className="mt-3 line-clamp-3 text-sm leading-relaxed text-ink-400">
                     {service.summary}
                   </p>
                 )}

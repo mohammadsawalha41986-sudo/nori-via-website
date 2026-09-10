@@ -76,7 +76,7 @@ export default async function InsightsPage({ params }: { params: Promise<{ local
 
                     <div className="mt-5">
                       {a.category && (
-                        <span className="text-[0.6875rem] font-bold uppercase tracking-[0.2em] text-brand">
+                        <span className="text-xs font-bold uppercase tracking-[0.2em] text-brand">
                           {pick(a.category, 'name', locale)}
                         </span>
                       )}
@@ -84,7 +84,7 @@ export default async function InsightsPage({ params }: { params: Promise<{ local
                         {pick(a, 'title', locale)}
                       </h2>
                       {pick(a, 'excerpt', locale) && (
-                        <p className="mt-2.5 line-clamp-3 text-[0.9375rem] leading-relaxed text-ink-400">
+                        <p className="mt-2.5 line-clamp-3 text-sm leading-relaxed text-ink-400">
                           {pick(a, 'excerpt', locale)}
                         </p>
                       )}

@@ -1,20 +1,7 @@
 import { NextResponse, type NextRequest } from 'next/server';
-import { locales, defaultLocale } from '@/lib/i18n';
+import { locales, resolveLocale, LOCALE_COOKIE } from '@/lib/i18n';
 
 const PUBLIC_FILE = /\.[a-zA-Z0-9]+$/;
-
-function preferredLocale(req: NextRequest) {
-  const cookie = req.cookies.get('noriva_locale')?.value;
-  if (cookie && (locales as readonly string[]).includes(cookie)) return cookie;
-
-  const header = req.headers.get('accept-language') || '';
-  for (const part of header.split(',')) {
-    const tag = part.split(';')[0]!.trim().toLowerCase();
-    if (tag.startsWith('ar')) return 'ar';
-    if (tag.startsWith('en')) return 'en';
-  }
-  return defaultLocale;
-}
 
 export function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
@@ -35,10 +22,15 @@ export function middleware(req: NextRequest) {
   const hasLocale = locales.some((l) => pathname === `/${l}` || pathname.startsWith(`/${l}/`));
   if (hasLocale) return NextResponse.next();
 
-  const locale = preferredLocale(req);
+  const locale = resolveLocale(req.cookies.get(LOCALE_COOKIE)?.value);
   const url = req.nextUrl.clone();
   url.pathname = `/${locale}${pathname === '/' ? '' : pathname}`;
-  return NextResponse.redirect(url);
+
+  const res = NextResponse.redirect(url);
+  // The target depends on the visitor's stored choice, so a shared cache must
+  // not serve one visitor's redirect to another.
+  res.headers.set('Vary', 'Cookie');
+  return res;
 }
 
 export const config = {

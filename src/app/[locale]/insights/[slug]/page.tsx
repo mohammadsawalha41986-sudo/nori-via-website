@@ -102,7 +102,7 @@ export default async function InsightPage({
           <div aria-hidden className="absolute inset-0 bg-[radial-gradient(90%_80%_at_85%_0%,rgba(245,16,110,0.28),transparent_60%)]" />
           <div className="shell relative max-w-3xl">
             {article.category && (
-              <p className="mb-5 text-[0.6875rem] font-bold uppercase tracking-[0.24em] text-brand-300">
+              <p className="mb-5 text-xs font-bold uppercase tracking-[0.24em] text-brand-300">
                 {pick(article.category, 'name', locale)}
               </p>
             )}

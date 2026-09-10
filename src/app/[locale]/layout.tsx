@@ -41,7 +41,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     description,
     alternates: {
       canonical: `${env.siteUrl}/${locale}`,
-      languages: { en: `${env.siteUrl}/en`, ar: `${env.siteUrl}/ar`, 'x-default': `${env.siteUrl}/en` },
+      // Arabic is the default entry point, so it is what an unmatched locale resolves to.
+      languages: { en: `${env.siteUrl}/en`, ar: `${env.siteUrl}/ar`, 'x-default': `${env.siteUrl}/ar` },
     },
     openGraph: {
       type: 'website',

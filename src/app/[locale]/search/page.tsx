@@ -61,12 +61,12 @@ export default async function SearchPage({
                 defaultValue={query}
                 autoFocus
                 placeholder={dict.search.placeholder}
-                className="w-full rounded-input border border-ink-900/15 bg-white px-5 py-4 text-[0.9375rem] text-ink-900 outline-none transition-colors placeholder:text-ink-300 focus:border-brand"
+                className="w-full rounded-input border border-ink-900/15 bg-white px-5 py-4 text-sm text-ink-900 outline-none transition-colors placeholder:text-ink-300 focus:border-brand"
               />
             </label>
             <button
               type="submit"
-              className="rounded-btn bg-ink-900 px-7 py-4 text-[0.9375rem] font-semibold text-white transition-colors hover:bg-brand"
+              className="rounded-btn bg-ink-900 px-7 py-4 text-sm font-semibold text-white transition-colors hover:bg-brand"
             >
               {dict.search.submit}
             </button>
@@ -94,14 +94,14 @@ export default async function SearchPage({
               {results.map((item, i) => (
                 <Reveal as="li" key={`${item.type}-${item.id}`} delay={Math.min(i, 8) * 40} y={12} className="border-b border-ink-900/10">
                   <Link href={item.href} className="group block py-7">
-                    <span className="text-[0.6875rem] font-bold uppercase tracking-[0.2em] text-brand">
+                    <span className="text-xs font-bold uppercase tracking-[0.2em] text-brand">
                       {item.badge}
                     </span>
                     <span className="mt-2 block font-display text-xl font-display-soft uppercase text-ink-900 transition-colors group-hover:text-brand sm:text-2xl">
                       {item.title}
                     </span>
                     {item.summary && (
-                      <span className="mt-2.5 block max-w-3xl text-[0.9375rem] leading-relaxed text-ink-400 line-clamp-2">
+                      <span className="mt-2.5 block max-w-3xl text-sm leading-relaxed text-ink-400 line-clamp-2">
                         {item.summary}
                       </span>
                     )}

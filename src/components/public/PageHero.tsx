@@ -20,7 +20,7 @@ export function PageHero({
       <div className="shell relative">
         {eyebrow && (
           <Reveal>
-            <p className="mb-6 text-[0.6875rem] font-bold uppercase tracking-[0.24em] text-brand-300">{eyebrow}</p>
+            <p className="mb-6 text-xs font-bold uppercase tracking-[0.24em] text-brand-300">{eyebrow}</p>
           </Reveal>
         )}
 

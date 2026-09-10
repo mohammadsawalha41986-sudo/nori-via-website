@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { pick, dirOf, isLocale, localePath, formatDate } from '../src/lib/i18n';
+import { pick, dirOf, isLocale, localePath, formatDate, resolveLocale, defaultLocale } from '../src/lib/i18n';
 
 const row = {
   titleEn: 'Menu Engineering',
@@ -51,9 +51,30 @@ describe('locale helpers', () => {
     expect(localePath('en', '/')).toBe('/en');
   });
 
+  it('opens in Arabic by default', () => {
+    expect(defaultLocale).toBe('ar');
+  });
+
   it('formats dates per locale and tolerates bad input', () => {
     expect(formatDate('2026-03-14', 'en')).toContain('2026');
     expect(formatDate('not-a-date', 'en')).toBe('');
     expect(formatDate(null, 'ar')).toBe('');
+  });
+});
+
+describe('resolveLocale', () => {
+  it('sends a first-time visitor to Arabic', () => {
+    expect(resolveLocale(undefined)).toBe('ar');
+    expect(resolveLocale(null)).toBe('ar');
+    expect(resolveLocale('')).toBe('ar');
+  });
+
+  it('honours a remembered choice', () => {
+    expect(resolveLocale('en')).toBe('en');
+    expect(resolveLocale('ar')).toBe('ar');
+  });
+
+  it('ignores an unknown cookie value', () => {
+    expect(resolveLocale('fr')).toBe(defaultLocale);
   });
 });

@@ -19,11 +19,11 @@ export function PathCards({ items }: { items: PathCard[] }) {
             href={item.href}
             className="group flex h-full flex-col rounded-card border border-ink-900/10 bg-white p-8 transition-colors duration-300 hover:border-brand"
           >
-            <span className="font-mono text-[0.6875rem] text-brand">{String(i + 1).padStart(2, '0')}</span>
+            <span className="font-mono text-xs text-brand">{String(i + 1).padStart(2, '0')}</span>
             <span className="mt-4 font-display text-xl font-display-soft uppercase text-ink-900 transition-colors group-hover:text-brand">
               {item.title}
             </span>
-            {item.body && <span className="mt-3 flex-1 text-[0.9375rem] leading-relaxed text-ink-400">{item.body}</span>}
+            {item.body && <span className="mt-3 flex-1 text-sm leading-relaxed text-ink-400">{item.body}</span>}
             <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-ink-900">
               {item.label}
               <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1 rtl:rotate-180">

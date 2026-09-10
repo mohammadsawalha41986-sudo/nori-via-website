@@ -47,7 +47,7 @@ export function FooterColumn({
           screens, so a two-line heading in one column does not push its list
           out of line with the columns beside it. */}
       <div className="lg:flex lg:min-h-[3rem] lg:flex-col">
-        <h2 className="text-[0.7rem] sm:text-[0.72rem]">
+        <h2 className="text-xs">
           {collapsible ? (
             <button
               type="button"

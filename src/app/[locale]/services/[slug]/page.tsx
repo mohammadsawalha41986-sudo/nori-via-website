@@ -195,8 +195,8 @@ export default async function ServiceDetailPage({
                 if (!label) return null;
                 return (
                   <Reveal as="li" key={`${label}-${i}`} delay={i * 45} y={14} className="bg-white px-7 py-8">
-                    <span className="font-mono text-[0.6875rem] text-brand">{String(i + 1).padStart(2, '0')}</span>
-                    <span className="mt-2.5 block text-[0.9375rem] font-semibold leading-snug text-ink-800">{label}</span>
+                    <span className="font-mono text-xs text-brand">{String(i + 1).padStart(2, '0')}</span>
+                    <span className="mt-2.5 block text-sm font-semibold leading-snug text-ink-800">{label}</span>
                   </Reveal>
                 );
               })}
@@ -220,7 +220,7 @@ export default async function ServiceDetailPage({
                       <span className="font-mono text-xs text-brand">{String(i + 1).padStart(2, '0')}</span>
                       <div>
                         <h3 className="font-display text-lg font-display-soft uppercase text-ink-900">{title}</h3>
-                        {body && <p className="mt-2 max-w-2xl text-[0.9375rem] leading-relaxed text-ink-400">{body}</p>}
+                        {body && <p className="mt-2 max-w-2xl text-sm leading-relaxed text-ink-400">{body}</p>}
                       </div>
                     </div>
                   </Reveal>
@@ -296,7 +296,7 @@ export default async function ServiceDetailPage({
       {example && (
         <section className="bg-bone section-y">
           <div className="shell max-w-3xl">
-            <p className="mb-4 inline-flex rounded-btn border border-brand/40 px-4 py-1.5 text-[0.6875rem] font-bold uppercase tracking-[0.18em] text-brand">
+            <p className="mb-4 inline-flex rounded-btn border border-brand/40 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-brand">
               {dict.example.label}
             </p>
             <h2 className="font-display text-display-sm uppercase text-ink-900">

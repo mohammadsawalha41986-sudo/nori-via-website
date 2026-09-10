@@ -8,6 +8,12 @@ import type { Config } from 'tailwindcss';
  */
 const channel = (name: string) => `rgb(var(${name}) / <alpha-value>)`;
 
+/** A type step that follows the locale multiplier declared in `globals.css`. */
+const size = (rem: number, leading: number): [string, { lineHeight: string }] => [
+  `calc(${rem}rem * var(--font-scale, 1))`,
+  { lineHeight: String(leading) },
+];
+
 const ramp = (family: string, stops: (number | 'DEFAULT')[]) =>
   Object.fromEntries(
     stops.map((stop) => [stop, channel(`--c-${family}${stop === 'DEFAULT' ? '' : `-${stop}`}`)]),
@@ -29,11 +35,30 @@ const config: Config = {
       },
       /* Line height is a property of the size; letter spacing is a design
          token, so it is deliberately not set here — `.font-display` applies
-         `--tracking-heading` instead. */
+         `--tracking-heading` instead.
+
+         Every step is multiplied by `--font-scale`, declared in `globals.css`
+         as 1 and stepped up for RTL: Arabic has no capitals and a smaller
+         apparent x-height, so the same nominal size reads noticeably smaller
+         than its Latin counterpart. Keeping the multiplier inside the scale —
+         rather than zooming the root font size — moves type without dragging
+         the rem-based spacing and container widths along with it.
+
+         The lower steps also start higher than Tailwind's defaults: nothing in
+         the public UI should render below ~13px. */
       fontSize: {
-        'display-sm': ['clamp(2.2rem,6vw,3.4rem)', { lineHeight: '0.95' }],
-        'display-md': ['clamp(2.8rem,8vw,5rem)', { lineHeight: '0.92' }],
-        'display-lg': ['clamp(3.2rem,10vw,8rem)', { lineHeight: '0.88' }],
+        xs: size(0.8125, 1.6),
+        sm: size(0.9375, 1.6),
+        base: size(1.0625, 1.7),
+        lg: size(1.1875, 1.55),
+        xl: size(1.375, 1.45),
+        '2xl': size(1.625, 1.35),
+        '3xl': size(2, 1.25),
+        '4xl': size(2.5, 1.18),
+        '5xl': size(3.25, 1.1),
+        'display-sm': ['calc(clamp(2.2rem,6vw,3.4rem) * var(--font-scale, 1))', { lineHeight: '0.95' }],
+        'display-md': ['calc(clamp(2.8rem,8vw,5rem) * var(--font-scale, 1))', { lineHeight: '0.92' }],
+        'display-lg': ['calc(clamp(3.2rem,10vw,8rem) * var(--font-scale, 1))', { lineHeight: '0.88' }],
       },
       borderRadius: {
         btn: 'var(--radius-btn)',
