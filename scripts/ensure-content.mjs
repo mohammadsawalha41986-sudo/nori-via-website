@@ -30,6 +30,10 @@ import {
   INSIGHT_CATEGORIES as FNB_INSIGHT_CATEGORIES,
   SERVICE_REPOSITIONING,
   START_HERE_PATHS_FNB,
+  ABOUT_FNB,
+  ABOUT_SHIPPED,
+  SERVICE_RETIREMENT,
+  CONTENT_SERVICE_REPOSITIONING,
 } from './fnb-content.mjs';
 import bcrypt from 'bcryptjs';
 import { statSync } from 'node:fs';
@@ -112,26 +116,26 @@ const SERVICES = [
     nameEn: 'Content & Production',
     nameAr: 'المحتوى والإنتاج',
     summaryEn:
-      'Food and product photography, short-form video and social content, produced against a plan rather than one shoot at a time.',
-    summaryAr: 'تصوير الطعام والمنتجات والفيديو القصير ومحتوى المنصات، يُنتَج وفق خطة لا جلسة تصوير في كل مرة.',
+      'Designed social posts, stories and carousels — planned as a monthly set rather than made one post at a time.',
+    summaryAr: 'تصميم منشورات وقصص ومنشورات متعددة الشرائح، تُخطَّط كحزمة شهرية لا منشوراً في كل مرة.',
     heroDescriptionEn:
       'Distinctive assets, produced in volume, consistent enough to build recognition over time.',
     heroDescriptionAr: 'أصول مميزة تُنتَج بكمية كافية وباتساق يبني التميّز مع الوقت.',
     whatWeDoEn:
-      'Art direction, food and product photography, short-form video for social, campaign assets, and the content system that holds them together in both Arabic and English. We plan production in cycles, so one shoot supplies a quarter of scheduled content rather than a fortnight of scrambling.',
+      'Art direction and design for the social channel: Instagram feed posts, Instagram and TikTok stories, multi-slide carousels, offer and campaign artwork, and the Arabic and English typography that keeps all of it reading as one brand.',
     whatWeDoAr:
-      'التوجيه الفني، وتصوير الطعام والمنتجات، والفيديو القصير للمنصات، وأصول الحملات، ونظام المحتوى الذي يربطها بالعربية والإنجليزية. نخطط الإنتاج على دورات، لتغذّي جلسة واحدة محتوى ربع كامل بدل أسبوعين من الارتجال.',
+      'التوجيه الفني والتصميم لقناة التواصل: منشورات إنستغرام، وقصص إنستغرام وتيك توك، والمنشورات متعددة الشرائح، وتصاميم العروض والحملات، والقواعد الطباعية العربية والإنجليزية.',
     approachEn:
-      'Production without art direction produces volume and no recognition. We define the visual rules first — framing, light, palette, tone of voice — and then produce against them, so the work compounds instead of resetting each month.',
+      'Design without art direction produces volume and no recognition. We define the visual rules first — grid, type, palette, tone of voice — and then design against them, so the channel compounds instead of resetting each month.',
     approachAr:
-      'الإنتاج بلا توجيه فني ينتج كمّاً بلا تميّز. نحدد القواعد البصرية أولاً — التأطير والإضاءة واللون ونبرة الصوت — ثم ننتج وفقها، ليتراكم الأثر بدل أن يبدأ من الصفر كل شهر.',
+      'التصميم بلا توجيه فني ينتج كمّاً بلا تميّز. نحدد القواعد البصرية أولاً — الشبكة والخط واللون ونبرة الصوت — ثم نصمم وفقها، ليتراكم الأثر بدل أن يبدأ من الصفر كل شهر.',
     deliverables: [
-      ['Food photography', 'تصوير الطعام'],
-      ['Product photography', 'تصوير المنتجات'],
-      ['Short-form video', 'الفيديو القصير'],
-      ['Social media content', 'محتوى منصات التواصل'],
-      ['Campaign assets', 'أصول الحملات'],
-      ['Content systems', 'أنظمة المحتوى'],
+      ['Social media post design', 'تصميم بوستات السوشال ميديا'],
+      ['Instagram feed design', 'تصميم Instagram Feed'],
+      ['Instagram and TikTok stories', 'قصص إنستغرام وتيك توك'],
+      ['Carousels', 'منشورات متعددة الشرائح (Carousels)'],
+      ['Campaign designs', 'تصاميم الحملات'],
+      ['Arabic and English content', 'المحتوى العربي والإنجليزي'],
     ],
     featuredImage: img('service-content'),
     order: 3,
@@ -842,6 +846,106 @@ async function applyFoodAndBeverage() {
     if (Object.keys(patch).length) {
       await prisma.service.update({ where: { slug: entry.slug }, data: patch });
       note(`repositioned:${entry.slug}(${Object.keys(patch).length})`);
+    }
+  }
+
+  /*
+    Services the company no longer offers.
+
+    Withdrawn from the published catalogue rather than deleted: an unpublished
+    service disappears from the listings, the sitemap and search results, while
+    its row, its image and anything linked to it survive. Only a published row
+    still carrying the shipped copy is touched, so this is idempotent, and an
+    owner who rewrites the service into a real offering keeps it published.
+  */
+  for (const { slug, shippedSummaryEn } of SERVICE_RETIREMENT) {
+    const row = await prisma.service.findUnique({ where: { slug } });
+    if (!row || row.status !== 'PUBLISHED') continue;
+    // Still the service this repository shipped, so still the one being
+    // withdrawn. A rewritten service is a different offering and is left alone.
+    if (row.summaryEn !== shippedSummaryEn) continue;
+    if (REPORT_ONLY) {
+      note(`would-retire:${slug}`);
+      continue;
+    }
+    await prisma.service.update({ where: { slug }, data: { status: 'DRAFT', noindex: true } });
+    note(`retired:${slug}`);
+  }
+
+  /*
+    The content service, moved from producing video to designing social posts.
+
+    Same contract as SERVICE_REPOSITIONING above: every field is rewritten only
+    where it still holds the exact string this repository shipped, so an
+    editor's own wording always wins.
+  */
+  for (const entry of CONTENT_SERVICE_REPOSITIONING) {
+    const row = await prisma.service.findUnique({ where: { slug: entry.slug } });
+    if (!row) continue;
+
+    const patch = {};
+    for (const [key, oldValue] of Object.entries(entry.was)) {
+      if (row[key] === oldValue && entry.now[key] !== undefined) patch[key] = entry.now[key];
+    }
+
+    // The name moves with the summary: renaming a service whose description an
+    // editor has rewritten would leave the two describing different things.
+    if (patch.summaryEn && entry.now.nameEn) patch.nameEn = entry.now.nameEn;
+    if (patch.summaryAr && entry.now.nameAr) patch.nameAr = entry.now.nameAr;
+
+    // The SEO description follows the summary when it was left as the summary.
+    for (const key of ['seoDescriptionEn', 'seoDescriptionAr']) {
+      const source = key.endsWith('En') ? 'summaryEn' : 'summaryAr';
+      if (row[key] === entry.was[source] && entry.now[key]) patch[key] = entry.now[key];
+    }
+
+    if (entry.deliverables) {
+      const current = Array.isArray(row.deliverables) ? row.deliverables.map((d) => d?.labelEn) : [];
+      if (entry.shippedDeliverables.every((label) => current.includes(label))) {
+        patch.deliverables = entry.deliverables;
+      }
+    }
+
+    if (Object.keys(patch).length && !REPORT_ONLY) {
+      await prisma.service.update({ where: { slug: entry.slug }, data: patch });
+      note(`content-repositioned:${entry.slug}(${Object.keys(patch).length})`);
+    }
+  }
+
+  /*
+    The About page, rewritten as a restaurant and café consultancy.
+
+    The page is replaced only when its title, body and section keys are all
+    still the studio-era copy this repository shipped. One edited field is
+    enough to leave the whole page alone, because a half-rewritten About page
+    is worse than an out-of-date one.
+  */
+  const aboutRow = await prisma.page.findUnique({ where: { key: 'about' } });
+  if (aboutRow) {
+    const currentKeys = Array.isArray(aboutRow.content?.sections)
+      ? aboutRow.content.sections.map((section) => section?.key)
+      : [];
+    const untouched =
+      ABOUT_SHIPPED.titleEn.includes(aboutRow.titleEn.trim()) &&
+      ABOUT_SHIPPED.titleAr.includes(aboutRow.titleAr.trim()) &&
+      ABOUT_SHIPPED.bodyEn.includes(aboutRow.bodyEn.trim()) &&
+      ABOUT_SHIPPED.bodyAr.includes(aboutRow.bodyAr.trim()) &&
+      ABOUT_SHIPPED.sectionKeys.some((keys) => JSON.stringify(currentKeys) === JSON.stringify(keys));
+
+    if (untouched && !REPORT_ONLY) {
+      await prisma.page.update({
+        where: { key: 'about' },
+        data: {
+          titleEn: ABOUT_FNB.titleEn,
+          titleAr: ABOUT_FNB.titleAr,
+          bodyEn: ABOUT_FNB.bodyEn,
+          bodyAr: ABOUT_FNB.bodyAr,
+          content: { heroImage: ABOUT_FNB.heroImage, sections: ABOUT_FNB.sections },
+        },
+      });
+      note(`about:repositioned(${ABOUT_FNB.sections.length} sections)`);
+    } else if (untouched) {
+      note('would-reposition:about');
     }
   }
 

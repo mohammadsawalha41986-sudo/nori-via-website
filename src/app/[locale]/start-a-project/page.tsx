@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { PageHero } from '@/components/public/PageHero';
+import { sectionHero } from '@/lib/section-images';
 import { InquiryForm } from '@/components/public/InquiryForm';
 import { getDictionary } from '@/lib/dictionary';
 import { isLocale, pick, type Locale } from '@/lib/i18n';
@@ -39,6 +40,7 @@ export default async function StartAProjectPage({ params }: { params: Promise<{ 
         eyebrow={dict.nav.start}
         title={page ? pick(page, 'title', locale) : dict.nav.start}
         description={page ? pick(page, 'body', locale) : undefined}
+        image={sectionHero('start-a-project')}
       />
 
       <section className="bg-white py-20 sm:py-28">

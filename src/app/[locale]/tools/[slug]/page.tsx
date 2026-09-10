@@ -71,6 +71,9 @@ export default async function ToolPage({
         eyebrow={dict.tools.title}
         title={pick(tool, 'name', locale)}
         description={pick(tool, 'summary', locale)}
+        // The calculator's own artwork. Every other detail page already shows
+        // the image belonging to the thing it describes; this one was the gap.
+        image={tool.thumbnail}
       />
 
       {/*

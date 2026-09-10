@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { CTASection } from '@/components/public/CTASection';
 import { PageHero } from '@/components/public/PageHero';
+import { sectionHero } from '@/lib/section-images';
 import { PathCards, toPathCards } from '@/components/public/PathCards';
 import { RelatedContent } from '@/components/public/RelatedContent';
 import { Prose } from '@/components/ui/Prose';
@@ -65,6 +66,7 @@ export default async function StartHerePage({ params }: { params: Promise<{ loca
         eyebrow={dict.nav.startHere}
         title={(page && pick(page, 'title', locale)) || dict.nav.startHere}
         description={page ? pick(page, 'body', locale) : undefined}
+        image={sectionHero('start-here')}
       />
 
       <section className="bg-bone section-y">

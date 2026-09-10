@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { PageHero } from '@/components/public/PageHero';
+import { sectionHero } from '@/lib/section-images';
 import { CTASection } from '@/components/public/CTASection';
 import { EmptyState } from '@/components/public/EmptyState';
 import { Reveal } from '@/components/ui/Reveal';
@@ -47,6 +48,7 @@ export default async function ToolsPage({ params }: { params: Promise<{ locale: 
         eyebrow={dict.tools.title}
         title={page ? pick(page, 'title', locale) || dict.tools.title : dict.tools.title}
         description={page ? pick(page, 'body', locale) || dict.tools.intro : dict.tools.intro}
+        image={sectionHero('tools')}
       />
 
       <section className="bg-bone section-y">

@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { PageHero } from '@/components/public/PageHero';
+import { sectionHero } from '@/lib/section-images';
 import { PathCards, toPathCards } from '@/components/public/PathCards';
 import { RelatedContent } from '@/components/public/RelatedContent';
 import { CTASection } from '@/components/public/CTASection';
@@ -65,6 +66,7 @@ export default async function RestaurantGrowthPage({ params }: { params: Promise
         eyebrow={dict.nav.growth}
         title={page ? pick(page, 'title', locale) : dict.nav.growth}
         description={page ? pick(page, 'body', locale) : undefined}
+        image={sectionHero('restaurant-growth')}
       />
 
       {pillars.length > 0 && (

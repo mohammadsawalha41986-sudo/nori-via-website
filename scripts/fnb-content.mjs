@@ -616,8 +616,15 @@ export const START_HERE_PATHS_FNB = [
  * holds the old shipped text, so anything edited in Admin is left alone.
  *
  * Content & Production is a content service for F&B — food and product
- * photography, short-form video, social content, campaign assets — not film
+ * photography, social post design, campaign assets — not film
  * or editorial production.
+ */
+/*
+ * Superseded by CONTENT_SERVICE_REPOSITIONING below, and deliberately left in
+ * place: its `now` values are what production rows still hold, and they are
+ * matched verbatim as the `was` of the newer entry. Both run in one pass, so a
+ * row at either the original or the intermediate wording lands on the current
+ * one. Editing the strings here would break that chain.
  */
 export const SERVICE_REPOSITIONING = [
   {
@@ -631,12 +638,12 @@ export const SERVICE_REPOSITIONING = [
         'التوجيه الفني، والصور الثابتة والمتحركة، وتصوير الطعام والديكور، والفيديو القصير للمنصات، والكتابة التحريرية التي تربطها بالعربية والإنجليزية. نخطط الإنتاج على دورات، لتغذّي جلسة واحدة محتوى ربع كامل بدل أسبوعين من الارتجال.',
     },
     now: {
-      summaryEn: 'Food and product photography, short-form video and social content, produced against a plan rather than one shoot at a time.',
-      summaryAr: 'تصوير الطعام والمنتجات والفيديو القصير ومحتوى المنصات، يُنتَج وفق خطة لا جلسة تصوير في كل مرة.',
-      whatWeDoEn: 'Art direction, food and product photography, short-form video for social, campaign assets, and the content system that holds them together in both Arabic and English. We plan production in cycles, so one shoot supplies a quarter of scheduled content rather than a fortnight of scrambling.',
-      whatWeDoAr: 'التوجيه الفني، وتصوير الطعام والمنتجات، والفيديو القصير للمنصات، وأصول الحملات، ونظام المحتوى الذي يربطها بالعربية والإنجليزية. نخطط الإنتاج على دورات، لتغذّي جلسة واحدة محتوى ربع كامل بدل أسبوعين من الارتجال.',
-      seoDescriptionEn: 'Food and product photography, short-form video and social content, produced against a plan rather than one shoot at a time.',
-      seoDescriptionAr: 'تصوير الطعام والمنتجات والفيديو القصير ومحتوى المنصات، يُنتَج وفق خطة لا جلسة تصوير في كل مرة.',
+      summaryEn: 'Designed social posts, stories and carousels — planned as a monthly set rather than made one post at a time.',
+      summaryAr: 'تصميم منشورات وقصص ومنشورات متعددة الشرائح، تُخطَّط كحزمة شهرية لا منشوراً في كل مرة.',
+      whatWeDoEn: 'Art direction and design for the social channel: Instagram feed posts, Instagram and TikTok stories, multi-slide carousels, offer and campaign artwork, and the Arabic and English typography that keeps all of it reading as one brand. We plan a month at a time, so the channel is designed against a calendar rather than assembled the night before.',
+      whatWeDoAr: 'التوجيه الفني والتصميم لقناة التواصل: منشورات إنستغرام، وقصص إنستغرام وتيك توك، والمنشورات متعددة الشرائح، وتصاميم العروض والحملات، والقواعد الطباعية العربية والإنجليزية التي تُبقيها جميعاً بصوت علامة واحدة. نخطط شهراً كاملاً، فتُصمَّم القناة وفق تقويم لا في الليلة السابقة للنشر.',
+      seoDescriptionEn: 'Social media post design for restaurants and cafés: Instagram feed, Instagram and TikTok stories, carousels and campaign artwork in Arabic and English.',
+      seoDescriptionAr: 'تصميم منشورات منصات التواصل للمطاعم والمقاهي: إنستغرام فيد، وقصص إنستغرام وتيك توك، والمنشورات متعددة الشرائح، وتصاميم الحملات بالعربية والإنجليزية.',
     },
     deliverables: [
       { labelEn: 'Food photography', labelAr: 'تصوير الطعام' },
@@ -646,5 +653,265 @@ export const SERVICE_REPOSITIONING = [
       { labelEn: 'Campaign assets', labelAr: 'أصول الحملات' },
       { labelEn: 'Content systems', labelAr: 'أنظمة المحتوى' },
     ],
+  },
+];
+
+/*
+ * The About page, as a restaurant and café consultancy.
+ *
+ * The page shipped with the studio-era copy that described a brand and digital
+ * studio — an accurate description of neither the company nor the catalogue it
+ * publishes. Each section names one of the disciplines the service catalogue
+ * actually contains, and carries the photograph that belongs to that
+ * discipline, so the page reads as a specialisation rather than a list of
+ * capabilities. Nothing here claims a client, a number or a result.
+ */
+export const ABOUT_FNB = {
+  titleEn: 'Restaurant and café consulting, built around the numbers',
+  titleAr: 'استشارات وتطوير المطاعم والمقاهي، مبنية على الأرقام',
+  bodyEn:
+    'NORIVA GLOBAL is a Food & Beverage consulting and development company working with restaurants and cafés in Saudi Arabia — on profitability, cost, menu, operations and the decisions behind opening and expanding.',
+  bodyAr:
+    'نوريفا جلوبال شركة استشارات وتطوير في قطاع الأغذية والمشروبات، تعمل مع المطاعم والمقاهي في السعودية على الربحية والتكلفة والمنيو والتشغيل والقرارات التي تسبق الافتتاح والتوسّع.',
+  heroImage: '/img/about.jpg',
+  sections: [
+    {
+      key: 'who-we-are',
+      titleEn: 'Who we are',
+      titleAr: 'من نحن',
+      bodyEn:
+        'We are a Food & Beverage consulting and development company working with restaurants, cafés and F&B concepts across Saudi Arabia. Our work sits where the kitchen, the menu and the P&L meet — with owners and operators who need a clear reading of the business before they decide what to change.\n\nWe are not a marketing agency that also advises on operations. The starting point is the commercial position of the business, and everything else follows from it.',
+      bodyAr:
+        'نحن شركة استشارات وتطوير في قطاع الأغذية والمشروبات، نعمل مع المطاعم والمقاهي والمفاهيم الغذائية في السعودية. يقع عملنا عند نقطة التقاء المطبخ والمنيو وقائمة الأرباح والخسائر، مع ملاك ومشغّلين يحتاجون قراءة واضحة لأعمالهم قبل أن يقرروا ما الذي يغيّرونه.\n\nنحن لسنا وكالة تسويق تقدّم نصائح تشغيلية على الهامش. نقطة البداية هي الوضع التجاري للنشاط، وكل ما بعدها يُبنى عليه.',
+      image: '/img/noriva-service-restaurant-consulting.webp',
+      imageAltEn: 'A consulting session with a restaurant owner in the dining room',
+      imageAltAr: 'جلسة استشارية مع صاحب مطعم داخل صالة المطعم',
+    },
+    {
+      key: 'sales-profitability',
+      titleEn: 'Sales and profitability analysis',
+      titleAr: 'تحليل المبيعات والربحية',
+      bodyEn:
+        'We read the business through its own numbers: sales by daypart, by channel and by item, contribution margin, average check and the gap between revenue that looks healthy and profit that is not.\n\nThe outcome is a picture of where the money is actually made and where it quietly leaves — before anyone spends on fixing the wrong thing.',
+      bodyAr:
+        'نقرأ النشاط من أرقامه: المبيعات حسب أوقات اليوم والقنوات والأصناف، وهامش المساهمة، ومتوسط الفاتورة، والفجوة بين إيراد يبدو جيداً وربح ليس كذلك.\n\nالنتيجة صورة واضحة لأين يُصنع الربح فعلاً وأين يتسرّب بهدوء، قبل أن تُنفق ميزانية على إصلاح الشيء الخطأ.',
+      image: '/img/noriva-service-profitability-analysis.webp',
+      imageAltEn: 'Reviewing restaurant sales and profitability reports',
+      imageAltAr: 'مراجعة تقارير المبيعات والربحية في مطعم',
+    },
+    {
+      key: 'food-cost',
+      titleEn: 'Food cost and operating costs',
+      titleAr: 'تكلفة الطعام والتكاليف التشغيلية',
+      bodyEn:
+        'Recipe costing, theoretical versus actual food cost, purchasing, inventory, waste and labour — examined as one cost structure rather than as separate line items.\n\nMost cost problems are not a supplier price. They are a difference between what a dish is supposed to cost and what it costs on a busy Thursday, and that difference is measurable.',
+      bodyAr:
+        'تكلفة الوصفات، والفرق بين التكلفة النظرية والفعلية للطعام، والمشتريات والمخزون والهدر والعمالة — تُدرس كهيكل تكلفة واحد لا كبنود منفصلة.\n\nمعظم مشاكل التكلفة ليست سعر مورّد، بل فرق بين ما يُفترض أن يكلّفه الطبق وما يكلّفه فعلاً في ليلة مزدحمة، وهذا الفرق قابل للقياس.',
+      image: '/img/noriva-service-food-cost-analysis.webp',
+      imageAltEn: 'Costing ingredients and portions in a professional kitchen',
+      imageAltAr: 'احتساب تكلفة المكونات والحصص في مطبخ احترافي',
+    },
+    {
+      key: 'menu',
+      titleEn: 'Menu engineering and pricing',
+      titleAr: 'هندسة المنيو وتسعيره',
+      bodyEn:
+        'The menu is the most commercial document a restaurant owns. We engineer it by margin and popularity, restructure what it leads with, and price it against cost, positioning and what the catchment will carry — including a separate reading for delivery, where commission changes the arithmetic.',
+      bodyAr:
+        'المنيو هو أكثر مستند تجاري يملكه المطعم. نهندسه وفق الهامش والإقبال، ونعيد ترتيب ما يتصدّره، ونسعّره وفق التكلفة والتموضع وما يحتمله النطاق المحيط — مع قراءة منفصلة للتوصيل، حيث تغيّر العمولة الحساب كله.',
+      image: '/img/noriva-service-menu-strategy-engineering-pricing.webp',
+      imageAltEn: 'Working through a menu as a commercial document',
+      imageAltAr: 'العمل على المنيو بوصفه وثيقة تجارية',
+    },
+    {
+      key: 'operations-experience',
+      titleEn: 'Operations and guest experience',
+      titleAr: 'تحسين التشغيل وتجربة العميل',
+      bodyEn:
+        'Where service breaks at peak, how long a table actually turns, what the second visit depends on, and which steps of the journey decide whether a guest returns.\n\nWe document the operating standard, then work with the team that has to run it — because an operations manual nobody uses changes nothing.',
+      bodyAr:
+        'أين تنكسر الخدمة في وقت الذروة، وكم تستغرق الطاولة فعلاً، وعلى ماذا تعتمد الزيارة الثانية، وأي خطوات الرحلة تحسم عودة الضيف من عدمها.\n\nنوثّق المعيار التشغيلي، ثم نعمل مع الفريق الذي سيطبّقه — لأن دليل تشغيل لا يستخدمه أحد لا يغيّر شيئاً.',
+      image: '/img/noriva-service-customer-experience.webp',
+      imageAltEn: 'Service and guest experience on the restaurant floor',
+      imageAltAr: 'الخدمة وتجربة الضيف في صالة المطعم',
+    },
+    {
+      key: 'feasibility',
+      titleEn: 'Feasibility studies and project development',
+      titleAr: 'دراسات الجدوى وتطوير المشاريع',
+      bodyEn:
+        'For a new restaurant or café, and for a second branch: concept definition, site evaluation, investment and pre-opening budget, revenue and cost modelling, break-even, and the pre-opening sequence that protects the budget.\n\nA feasibility study is only as good as the assumptions under it, so we write those down where they can be argued with.',
+      bodyAr:
+        'لمشروع مطعم أو مقهى جديد، وللفرع الثاني: تحديد المفهوم، وتقييم الموقع، وميزانية الاستثمار وما قبل الافتتاح، ونمذجة الإيرادات والتكاليف، ونقطة التعادل، وتسلسل ما قبل الافتتاح الذي يحمي الميزانية.\n\nقيمة دراسة الجدوى من قيمة افتراضاتها، لذلك نكتب تلك الافتراضات صراحةً حيث يمكن مناقشتها.',
+      image: '/img/noriva-service-feasibility-study.webp',
+      imageAltEn: 'Planning a new restaurant project and its feasibility',
+      imageAltAr: 'التخطيط لمشروع مطعم جديد ودراسة جدواه',
+    },
+    {
+      key: 'practical',
+      titleEn: 'Practical work you can implement and measure',
+      titleAr: 'حلول عملية قابلة للتنفيذ والقياس',
+      bodyEn:
+        'Every engagement ends with something the team can act on: a decision, a number to watch, a standard to hold, and a way to tell in thirty days whether it worked.\n\nWe would rather hand over a short list that gets implemented than a long report that gets filed.',
+      bodyAr:
+        'كل تكليف ينتهي بشيء يستطيع الفريق تنفيذه: قرار، ورقم يُتابَع، ومعيار يُلتزم به، وطريقة تُظهر خلال ثلاثين يوماً ما إذا كان قد نجح.\n\nنفضّل تسليم قائمة قصيرة تُنفَّذ على تقرير طويل يُحفَظ في الدرج.',
+      image: '/img/noriva-service-performance-improvement.webp',
+      imageAltEn: 'Reviewing measurable results with a restaurant team',
+      imageAltAr: 'مراجعة نتائج قابلة للقياس مع فريق المطعم',
+    },
+  ],
+};
+
+/**
+ * The studio-era About copy this page shipped with.
+ *
+ * Recorded so the rewrite above can replace it and *only* it: if an editor has
+ * touched the page in Admin, none of these will match and the page is left
+ * exactly as they left it.
+ */
+export const ABOUT_SHIPPED = {
+  titleEn: [
+    // The marketing-agency page prisma/seed.ts creates, which is what the live
+    // site is actually serving.
+    "WE'RE NOT JUST\nANOTHER MARKETING AGENCY.",
+    // The studio-era page this provisioning script used to fill in.
+    'A studio built as one team',
+  ],
+  titleAr: ['لسنا مجرد\nوكالة تسويق أخرى.', 'استوديو مبني كفريق واحد'],
+  bodyEn: [
+    'Noriva is a creative and growth company built specifically for restaurants. We work across marketing, advertising, branding and the commercial side of the business — the menu, the pricing and the margin that most agencies never look at.',
+    'Brand, digital and growth in one place — because the losses in this kind of work happen at the handovers between them.',
+  ],
+  bodyAr: [
+    'نوريفا شركة إبداع ونمو بُنيت خصيصًا للمطاعم. نعمل عبر التسويق والإعلان والهوية والجانب التجاري للنشاط: القائمة والتسعير والهامش الذي لا تنظر إليه معظم الوكالات.',
+    'العلامة والرقمنة والنمو في مكان واحد، لأن الخسائر في هذا العمل تقع عند التسليم بينها.',
+  ],
+  /**
+   * The section-key signatures the page has shipped with. Two of them, because
+   * the page has had two shipped versions and a deployment may be sitting on
+   * either — matching only one would silently skip the rewrite on the other.
+   */
+  sectionKeys: [
+    ['who', 'believe', 'think', 'approach', 'expertise'],
+    ['story', 'approach', 'bilingual', 'handover'],
+  ],
+};
+
+/*
+ * Services the company no longer offers.
+ *
+ * NORIVA GLOBAL does not produce video. These two services promised exactly
+ * that, so they are withdrawn from the published catalogue and marked
+ * `noindex` — a service that cannot be delivered is worse than a gap in the
+ * list. The rows are kept rather than deleted: they hold their own history,
+ * their images and any relations pointing at them.
+ *
+ * `shippedSummaryEn` is what makes this reversible. A service still carrying
+ * the copy this repository shipped is still the video service, and is withdrawn
+ * again on every deploy. Rewrite it in Admin into something the company does
+ * deliver, and it stays published — the same contract every other rule in this
+ * file follows, rather than a permanent lock an owner cannot undo.
+ */
+export const SERVICE_RETIREMENT = [
+  {
+    slug: 'video-production',
+    shippedSummaryEn: 'Short-form video, campaign assets and the social content that carries the channel.',
+  },
+  {
+    slug: 'reels-short-form',
+    shippedSummaryEn: 'A steady supply of vertical video, produced at the volume the algorithm rewards.',
+  },
+];
+
+/*
+ * The content service, repositioned from production to design.
+ *
+ * It described recurring shoot days and short-form video — the same promise
+ * the retired services made. What the company actually produces is the design
+ * of social content: feed posts, stories, carousels and campaign artwork, in
+ * Arabic and English. The `was` values are matched exactly, so an edited
+ * service is never rewritten.
+ */
+export const CONTENT_SERVICE_REPOSITIONING = [
+  {
+    slug: 'content-production',
+    was: {
+      summaryEn:
+        'Food and product photography, short-form video and social content, produced against a plan rather than one shoot at a time.',
+      summaryAr: 'تصوير الطعام والمنتجات والفيديو القصير ومحتوى المنصات، يُنتَج وفق خطة لا جلسة تصوير في كل مرة.',
+      whatWeDoEn:
+        'Art direction, food and product photography, short-form video for social, campaign assets, and the content system that holds them together in both Arabic and English. We plan production in cycles, so one shoot supplies a quarter of scheduled content rather than a fortnight of scrambling.',
+      whatWeDoAr:
+        'التوجيه الفني، وتصوير الطعام والمنتجات، والفيديو القصير للمنصات، وأصول الحملات، ونظام المحتوى الذي يربطها بالعربية والإنجليزية. نخطط الإنتاج على دورات، لتغذّي جلسة واحدة محتوى ربع كامل بدل أسبوعين من الارتجال.',
+    },
+    now: {
+      nameEn: 'Social Media Content Design',
+      nameAr: 'تصميم محتوى منصات التواصل',
+      summaryEn:
+        'Designed social posts, stories and carousels — planned as a monthly set rather than made one post at a time.',
+      summaryAr: 'تصميم منشورات وقصص ومنشورات متعددة الشرائح، تُخطَّط كحزمة شهرية لا منشوراً في كل مرة.',
+      whatWeDoEn:
+        'Art direction and design for the social channel: Instagram feed posts, Instagram and TikTok stories, multi-slide carousels, offer and campaign artwork, and the Arabic and English typography that keeps all of it reading as one brand. We plan a month at a time, so the channel is designed against a calendar rather than assembled the night before.',
+      whatWeDoAr:
+        'التوجيه الفني والتصميم لقناة التواصل: منشورات إنستغرام، وقصص إنستغرام وتيك توك، والمنشورات متعددة الشرائح، وتصاميم العروض والحملات، والقواعد الطباعية العربية والإنجليزية التي تُبقيها جميعاً بصوت علامة واحدة. نخطط شهراً كاملاً، فتُصمَّم القناة وفق تقويم لا في الليلة السابقة للنشر.',
+      seoDescriptionEn:
+        'Social media post design for restaurants and cafés: Instagram feed, Instagram and TikTok stories, carousels and campaign artwork in Arabic and English.',
+      seoDescriptionAr:
+        'تصميم منشورات منصات التواصل للمطاعم والمقاهي: إنستغرام فيد، وقصص إنستغرام وتيك توك، والمنشورات متعددة الشرائح، وتصاميم الحملات بالعربية والإنجليزية.',
+    },
+    deliverables: [
+      { labelEn: 'Social media post design', labelAr: 'تصميم بوستات السوشال ميديا' },
+      { labelEn: 'Instagram feed design', labelAr: 'تصميم Instagram Feed' },
+      { labelEn: 'Instagram and TikTok stories', labelAr: 'قصص إنستغرام وتيك توك' },
+      { labelEn: 'Carousels', labelAr: 'منشورات متعددة الشرائح (Carousels)' },
+      { labelEn: 'Campaign designs', labelAr: 'تصاميم الحملات' },
+      { labelEn: 'Arabic and English content', labelAr: 'المحتوى العربي والإنجليزي' },
+    ],
+    /** The deliverable set this service shipped with, matched before replacing. */
+    shippedDeliverables: ['Food photography', 'Short-form video', 'Social media content'],
+  },
+  {
+    slug: 'content-creation',
+    was: {
+      summaryEn: 'Food, people and place, shot properly — the raw material every other channel depends on.',
+      summaryAr: 'الطعام والناس والمكان، بتصوير احترافي — المادة الخام التي تعتمد عليها كل قناة أخرى.',
+      whatWeDoEn:
+        'Recurring shoot days covering dishes, atmosphere, staff and process. We deliver a stocked library, not a one-off gallery, so the channel never runs dry.',
+      whatWeDoAr: 'أيام تصوير دورية تغطي الأطباق والأجواء والفريق والعملية، مع تسليم مكتبة متجددة.',
+      whyEn: 'You cannot run good advertising on bad assets. Creative quality sets the ceiling on every campaign that follows.',
+      whyAr: 'لا يمكن تشغيل إعلان جيد بمواد رديئة؛ جودة الإبداع تحدد سقف كل حملة.',
+      approachEn:
+        'Shot list built from the content plan, art-directed on site, delivered as an organised and tagged asset library.',
+      approachAr: 'قائمة لقطات مبنية على خطة المحتوى، بإدارة فنية في الموقع، وتسليم منظم.',
+    },
+    now: {
+      nameEn: 'Social Post Design',
+      nameAr: 'تصميم منشورات السوشال',
+      summaryEn: 'The designed posts themselves — feed, stories, carousels and campaign artwork, in Arabic and English.',
+      summaryAr: 'المنشورات المصمَّمة نفسها: الفيد والقصص والشرائح وتصاميم الحملات، بالعربية والإنجليزية.',
+      whatWeDoEn:
+        'Monthly design sets for the social channel: Instagram feed posts, Instagram and TikTok story frames, multi-slide carousels that carry an idea properly, and the offer and campaign artwork that sits alongside them.',
+      whatWeDoAr:
+        'حزم تصميم شهرية لقناة التواصل: منشورات إنستغرام، وإطارات قصص إنستغرام وتيك توك، ومنشورات متعددة الشرائح تحمل الفكرة كما ينبغي، وتصاميم العروض والحملات المرافقة لها.',
+      whyEn:
+        'A feed is read as one thing. Posts designed one at a time look like several brands sharing an account, and that is what a guest notices first.',
+      whyAr: 'يُقرأ الحساب ككل واحد. المنشورات المصمَّمة واحداً تلو الآخر تبدو كعلامات متعددة تتشارك حساباً، وهذا أول ما يلاحظه الضيف.',
+      approachEn:
+        'A monthly plan, designed as a set against a template system, delivered in every size each placement needs and in both languages.',
+      approachAr: 'خطة شهرية، تُصمَّم كحزمة واحدة وفق نظام قوالب، وتُسلَّم بكل المقاسات التي يحتاجها كل موضع وباللغتين.',
+      seoDescriptionEn:
+        'Social media post design for restaurants and cafés: Instagram feed, stories, carousels and campaign designs in Arabic and English.',
+      seoDescriptionAr:
+        'تصميم منشورات السوشال للمطاعم والمقاهي: إنستغرام فيد، والقصص، والمنشورات متعددة الشرائح، وتصاميم الحملات بالعربية والإنجليزية.',
+    },
+    deliverables: [
+      { labelEn: 'Social media post design', labelAr: 'تصميم بوستات السوشال ميديا' },
+      { labelEn: 'Instagram feed design', labelAr: 'تصميم Instagram Feed' },
+      { labelEn: 'Instagram and TikTok stories', labelAr: 'قصص إنستغرام وتيك توك' },
+      { labelEn: 'Carousels', labelAr: 'منشورات متعددة الشرائح (Carousels)' },
+      { labelEn: 'Campaign designs', labelAr: 'تصاميم الحملات' },
+      { labelEn: 'Arabic and English content', labelAr: 'المحتوى العربي والإنجليزي' },
+    ],
+    shippedDeliverables: ['Photography shoot days', 'Short-form video and reels'],
   },
 ];

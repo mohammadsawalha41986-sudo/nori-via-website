@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { PageHero } from '@/components/public/PageHero';
+import { sectionHero } from '@/lib/section-images';
 import { WorkGrid } from '@/components/public/WorkGrid';
 import { CTASection } from '@/components/public/CTASection';
 import { getDictionary } from '@/lib/dictionary';
@@ -51,6 +52,7 @@ export default async function WorkPage({ params }: { params: Promise<{ locale: s
         eyebrow={dict.nav.work}
         title={page ? pick(page, 'title', locale) : dict.common.relatedWork}
         description={page ? pick(page, 'body', locale) : undefined}
+        image={sectionHero('work')}
       />
 
       <section className="bg-bone py-24 sm:py-32">

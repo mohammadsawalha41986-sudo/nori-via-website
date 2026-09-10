@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { PageHero } from '@/components/public/PageHero';
+import { sectionHero } from '@/lib/section-images';
 import { ContactForm } from '@/components/public/ContactForm';
 import { Reveal } from '@/components/ui/Reveal';
 import { getDictionary } from '@/lib/dictionary';
@@ -85,6 +86,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
         eyebrow={dict.nav.contact}
         title={page ? pick(page, 'title', locale) : dict.nav.contact}
         description={page ? pick(page, 'body', locale) : undefined}
+        image={sectionHero('contact')}
       />
 
       <section className="bg-bone py-24 sm:py-32">

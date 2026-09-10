@@ -28,9 +28,13 @@ import { PrismaClient } from '@prisma/client';
 import { copyFileSync, existsSync, mkdirSync, readFileSync, statSync } from 'node:fs';
 import path from 'node:path';
 
+import { SERVICE_RETIREMENT } from './fnb-content.mjs';
 import { SERVICE_DEPTH_PART_1 } from './content/services-depth.mjs';
 import { SERVICE_DEPTH_PART_2 } from './content/services-depth-2.mjs';
 import { SERVICE_DEPTH_PART_3 } from './content/services-depth-3.mjs';
+
+/** Slugs withdrawn from the catalogue, which this pass must not republish. */
+const RETIRED_SLUGS = new Set(SERVICE_RETIREMENT.map((entry) => entry.slug));
 import { SERVICE_DEPTH_PART_4 } from './content/services-depth-4.mjs';
 import { SERVICE_DEPTH_PART_5 } from './content/services-depth-5.mjs';
 import { INSIGHTS_A } from './content/insights-a.mjs';
@@ -165,8 +169,13 @@ async function applyServices() {
     /* Every slug in SERVICE_DEPTH is a completed public professional service,
        not a client claim or placeholder. The F&B seed originally held most of
        them in draft for editorial review; this completion pass supplies that
-       review and makes the finished catalogue live. */
-    if (row.status === 'DRAFT') {
+       review and makes the finished catalogue live.
+
+       Withdrawn services are the exception. They are deliberately in draft
+       because the company does not offer them, and this pass runs after the
+       one that withdrew them — without this check it would publish them
+       straight back and the withdrawal would never survive a deploy. */
+    if (row.status === 'DRAFT' && !RETIRED_SLUGS.has(d.slug)) {
       data.status = 'PUBLISHED';
       data.noindex = false;
     }

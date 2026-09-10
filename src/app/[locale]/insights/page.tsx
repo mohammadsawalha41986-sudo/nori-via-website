@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { PageHero } from '@/components/public/PageHero';
+import { sectionHero } from '@/lib/section-images';
 import { CTASection } from '@/components/public/CTASection';
 import { EmptyState } from '@/components/public/EmptyState';
 import { Reveal } from '@/components/ui/Reveal';
@@ -50,6 +51,7 @@ export default async function InsightsPage({ params }: { params: Promise<{ local
         eyebrow={dict.nav.insights}
         title={page ? pick(page, 'title', locale) : dict.nav.insights}
         description={page ? pick(page, 'body', locale) : undefined}
+        image={sectionHero('insights')}
       />
 
       <section className="bg-bone py-24 sm:py-32">

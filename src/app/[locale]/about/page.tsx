@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { PageHero } from '@/components/public/PageHero';
 import { CTASection } from '@/components/public/CTASection';
@@ -17,7 +18,17 @@ import { getRelatedContent } from '@/lib/relations';
 
 export const revalidate = 60;
 
-type Section = { key?: string; titleEn?: string; titleAr?: string; bodyEn?: string; bodyAr?: string };
+type Section = {
+  key?: string;
+  titleEn?: string;
+  titleAr?: string;
+  bodyEn?: string;
+  bodyAr?: string;
+  /** Section photograph, set in Admin alongside the copy. */
+  image?: string;
+  imageAltEn?: string;
+  imageAltAr?: string;
+};
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale: raw } = await params;
@@ -45,8 +56,9 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
   // back up what it claims.
   const related = page ? await getRelatedContent('PAGE', page.id, locale) : [];
 
-  const content = (page?.content ?? {}) as { sections?: Section[] };
+  const content = (page?.content ?? {}) as { sections?: Section[]; heroImage?: string };
   const sections = (content.sections ?? []).filter((s) => pick(s, 'title', locale));
+  const heroImage = content.heroImage ?? null;
 
   return (
     <>
@@ -61,22 +73,49 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
         eyebrow={dict.nav.about}
         title={page ? pick(page, 'title', locale) : dict.nav.about}
         description={page ? pick(page, 'body', locale) : undefined}
+        image={heroImage}
       />
 
       {sections.length > 0 && (
         <section className="bg-bone py-24 sm:py-32">
           <div className="shell space-y-20 sm:space-y-28">
             {sections.map((s, i) => (
-              <div key={s.key ?? i} className="grid gap-8 lg:grid-cols-[minmax(0,18rem)_minmax(0,1fr)] lg:gap-16">
-                <Reveal>
+              <div
+                key={s.key ?? i}
+                /*
+                  Copy and picture alternate sides down the page. `lg:[direction:rtl]`
+                  is not used to do it — the flip is done by ordering the grid
+                  columns, so the reading order stays correct in both Arabic and
+                  English and the layout simply stacks on a phone.
+                */
+                className="grid items-start gap-8 lg:grid-cols-2 lg:gap-16"
+              >
+                <Reveal className={i % 2 === 1 ? 'lg:order-2' : undefined}>
                   <h2 className="font-display text-xl uppercase text-ink-900 sm:text-2xl">
                     <span className="me-3 font-mono text-xs text-brand">{String(i + 1).padStart(2, '0')}</span>
                     {pick(s, 'title', locale)}
                   </h2>
+                  <Prose text={pick(s, 'body', locale)} className="mt-6 max-w-2xl text-lg" />
                 </Reveal>
-                <Reveal delay={80}>
-                  <Prose text={pick(s, 'body', locale)} className="max-w-2xl text-lg" />
-                </Reveal>
+
+                {s.image && (
+                  <Reveal
+                    delay={80}
+                    className={`relative block aspect-[4/3] overflow-hidden rounded-card bg-ink-100 ${
+                      i % 2 === 1 ? 'lg:order-1' : ''
+                    }`}
+                  >
+                    <Image
+                      src={s.image}
+                      alt={pick(s, 'imageAlt', locale) || pick(s, 'title', locale)}
+                      fill
+                      // Half the shell on a wide screen, the full width below it —
+                      // so a phone never downloads the desktop-sized file.
+                      sizes="(min-width: 1024px) 50vw, 100vw"
+                      className="object-cover"
+                    />
+                  </Reveal>
+                )}
               </div>
             ))}
           </div>

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { PageHero } from '@/components/public/PageHero';
+import { sectionHero } from '@/lib/section-images';
 import { ServiceList, type ServiceGroup } from '@/components/public/ServiceList';
 import { CTASection } from '@/components/public/CTASection';
 import { EmptyState } from '@/components/public/EmptyState';
@@ -85,6 +86,7 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
         eyebrow={dict.nav.services}
         title={page ? pick(page, 'title', locale) : dict.nav.services}
         description={page ? pick(page, 'body', locale) : undefined}
+        image={sectionHero('services')}
       />
 
       <section className="bg-bone py-24 sm:py-32">

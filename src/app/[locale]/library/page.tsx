@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import type { Prisma, ResourceType } from '@prisma/client';
 import { PageHero } from '@/components/public/PageHero';
+import { sectionHero } from '@/lib/section-images';
 import { CTASection } from '@/components/public/CTASection';
 import { EmptyState } from '@/components/public/EmptyState';
 import { LibraryFilters } from '@/components/public/LibraryFilters';
@@ -122,6 +123,7 @@ export default async function LibraryPage({
         eyebrow={dict.library.title}
         title={pageContent ? pick(pageContent, 'title', locale) || dict.library.title : dict.library.title}
         description={pageContent ? pick(pageContent, 'body', locale) || dict.library.intro : dict.library.intro}
+        image={sectionHero('library')}
       />
 
       <section className="bg-bone section-y">

@@ -162,7 +162,11 @@ async function main() {
   /* The resource floor is the size of the shipped manifest, so adding a
      document to the Library raises the bar automatically and no number here
      has to be maintained by hand. */
-  const failed = published.services < 56 || published.insights < 20 || published.resources < LIBRARY_ASSETS.length ||
+  /* 54, not 56: video production and reels were withdrawn from the catalogue,
+     because the company does not produce video. The floor tracks what the site
+     is supposed to publish, so it moves with the catalogue rather than holding
+     a number the catalogue no longer meets. */
+  const failed = published.services < 54 || published.insights < 20 || published.resources < LIBRARY_ASSETS.length ||
     published.tools < 14 || published.projects < 6 || published.caseStudies < 6 ||
     missingDownloads.length || missingAssetRecords.length || translationFailures ||
     brokenDownloads.length || danglingLinks.length || missingImages.length;
