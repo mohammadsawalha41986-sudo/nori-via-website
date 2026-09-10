@@ -20,7 +20,9 @@ import {
   type DownloadItem,
   type MetricItem,
 } from '@/lib/content';
-import { buildMetadata, JsonLd, breadcrumbs } from '@/lib/seo';
+import { buildMetadata, JsonLd} from '@/lib/seo';
+import { Breadcrumbs } from '@/components/public/Breadcrumbs';
+import { brandName, SCHEMA_IDS } from '@/lib/brand';
 import { env } from '@/lib/env';
 import { EVENTS } from '@/lib/track';
 import { getRelatedContent } from '@/lib/relations';
@@ -120,15 +122,8 @@ export default async function ProjectPage({ params }: { params: Promise<{ locale
           description: pick(project, 'description', locale),
           url: `${env.siteUrl}/${locale}/work/${slug}`,
           datePublished: project.year ? `${project.year}` : undefined,
-          creator: { '@type': 'Organization', name: 'Noriva', url: env.siteUrl },
+          creator: { '@id': SCHEMA_IDS.organization },
         }}
-      />
-      <JsonLd
-        data={breadcrumbs(locale, [
-          { name: 'Noriva', path: '/' },
-          { name: dict.nav.work, path: '/work' },
-          { name: title, path: `/work/${slug}` },
-        ])}
       />
 
       <PageHero
@@ -147,6 +142,15 @@ export default async function ProjectPage({ params }: { params: Promise<{ locale
             </dl>
           ) : null
         }
+      />
+
+      <Breadcrumbs
+        locale={locale}
+        trail={[
+          { name: brandName(locale), path: '/' },
+          { name: dict.nav.work, path: '/work' },
+          { name: title, path: `/work/${slug}` },
+        ]}
       />
 
       {project.heroMediaUrl && (

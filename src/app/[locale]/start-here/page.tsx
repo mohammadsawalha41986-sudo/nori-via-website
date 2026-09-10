@@ -11,6 +11,7 @@ import { isLocale, pick, type Locale } from '@/lib/i18n';
 import { getPage, getPublishedServices } from '@/lib/content';
 import { getRelatedContent } from '@/lib/relations';
 import { buildMetadata, JsonLd, breadcrumbs } from '@/lib/seo';
+import { summarise } from '@/lib/seo-text';
 
 export const revalidate = 60;
 
@@ -29,7 +30,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     locale,
     path: '/start-here',
     fallbackTitle: getDictionary(locale).nav.startHere,
-    fallbackDescription: page ? pick(page, 'body', locale) : '',
+    fallbackDescription: page ? summarise(pick(page, 'body', locale)) : '',
   });
 }
 

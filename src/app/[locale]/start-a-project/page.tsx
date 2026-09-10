@@ -6,6 +6,7 @@ import { getDictionary } from '@/lib/dictionary';
 import { isLocale, pick, type Locale } from '@/lib/i18n';
 import { getPage, getSettings } from '@/lib/content';
 import { buildMetadata } from '@/lib/seo';
+import { summarise } from '@/lib/seo-text';
 
 export const revalidate = 300;
 
@@ -19,7 +20,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     locale,
     path: '/start-a-project',
     fallbackTitle: getDictionary(locale).nav.start,
-    fallbackDescription: page ? pick(page, 'body', locale) : '',
+    fallbackDescription: page ? summarise(pick(page, 'body', locale)) : '',
   });
 }
 

@@ -32,8 +32,7 @@ import {
 } from '@/lib/content';
 import { prisma } from '@/lib/db';
 import { getSettings } from '@/lib/content';
-import { JsonLd } from '@/lib/seo';
-import { env } from '@/lib/env';
+import { JsonLd, organizationSchema, websiteSchema } from '@/lib/seo';
 
 export const revalidate = 60;
 
@@ -123,19 +122,25 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
 
   return (
     <>
-      {/* Organization identity, including the logo uploaded in Admin. */}
+      {/*
+        Brand identity.
+
+        The site node names the brand entity — this is what a search engine
+        reads for the site name printed above a result — and the organisation
+        node describes the company behind it. Both carry stable `@id`s, so
+        every `Service`, `Article` and breadcrumb elsewhere on the site points
+        back at these two nodes instead of restating them.
+      */}
+      <JsonLd data={websiteSchema(locale)} />
       <JsonLd
-        data={{
-          '@context': 'https://schema.org',
-          '@type': 'Organization',
-          name: pick(settings, 'companyName', locale) || 'Noriva',
-          url: env.siteUrl,
+        data={organizationSchema({
+          locale,
           description: pick(settings, 'description', locale) || undefined,
-          logo: settings.logoUrl ? `${env.siteUrl}${settings.logoUrl}` : undefined,
-          email: settings.contactEmail || settings.inquiryEmail || undefined,
-          telephone: settings.phone || undefined,
-          sameAs: socials.length ? socials : undefined,
-        }}
+          email: settings.contactEmail || settings.inquiryEmail,
+          telephone: settings.phone,
+          sameAs: socials,
+          logoUrl: settings.logoUrl,
+        })}
       />
 
       {/* Homepage FAQs are eligible for rich results, so they are described too. */}

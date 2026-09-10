@@ -15,6 +15,11 @@
 
 export const POSITIONING = {
   settings: {
+    /* The registered brand entity. Search results were resolving the short
+       name to unrelated, similarly spelled companies, so the full name is what
+       the site states about itself everywhere. */
+    companyNameEn: 'NORIVA GLOBAL',
+    companyNameAr: 'نوريفا جلوبال',
     taglineEn: 'Food & Beverage · Consulting · Development · Growth',
     taglineAr: 'الأغذية والمشروبات · استشارات · تطوير · نمو',
     descriptionEn:
@@ -25,8 +30,8 @@ export const POSITIONING = {
       'Food & Beverage consulting, development, marketing and growth for restaurants, cafés and F&B concepts.',
     footerDescriptionAr:
       'استشارات وتطوير وتسويق ونمو لمشاريع الأغذية والمشروبات: المطاعم والمقاهي ومفاهيم الطعام والشراب.',
-    seoTitleEn: 'Food & Beverage Consulting, Development & Growth',
-    seoTitleAr: 'استشارات وتطوير ونمو مشاريع الأغذية والمشروبات',
+    seoTitleEn: 'Restaurant & F&B Consulting, Development and Growth in Saudi Arabia',
+    seoTitleAr: 'استشارات وتطوير المطاعم والمقاهي وقطاع الأغذية والمشروبات في السعودية',
     seoDescriptionEn:
       'Specialized F&B consulting: concept development, feasibility, operations, profitability, menu engineering and pricing, marketing and growth for restaurants, cafés and food & beverage businesses.',
     seoDescriptionAr:

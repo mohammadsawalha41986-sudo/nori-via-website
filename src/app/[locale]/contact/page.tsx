@@ -6,8 +6,9 @@ import { Reveal } from '@/components/ui/Reveal';
 import { getDictionary } from '@/lib/dictionary';
 import { isLocale, pick, type Locale } from '@/lib/i18n';
 import { getPage, getSettings } from '@/lib/content';
-import { buildMetadata, JsonLd, breadcrumbs } from '@/lib/seo';
-import { env } from '@/lib/env';
+import { buildMetadata, JsonLd, breadcrumbs, organizationSchema } from '@/lib/seo';
+import { summarise } from '@/lib/seo-text';
+import { brandName } from '@/lib/brand';
 
 export const revalidate = 60;
 
@@ -21,7 +22,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     locale,
     path: '/contact',
     fallbackTitle: getDictionary(locale).nav.contact,
-    fallbackDescription: page ? pick(page, 'body', locale) : '',
+    fallbackDescription: page ? summarise(pick(page, 'body', locale)) : '',
   });
 }
 
@@ -61,21 +62,23 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
     <>
       <JsonLd
         data={breadcrumbs(locale, [
-          { name: 'Noriva', path: '/' },
+          { name: brandName(locale), path: '/' },
           { name: dict.nav.contact, path: '/contact' },
         ])}
       />
+      {/*
+        The same organisation node as the homepage, not a second one: it repeats
+        the `@id`, so the contact details published here attach to the existing
+        entity rather than creating a look-alike company beside it.
+      */}
       <JsonLd
-        data={{
-          '@context': 'https://schema.org',
-          '@type': 'Organization',
-          name: pick(settings, 'companyName', locale) || 'Noriva',
-          url: env.siteUrl,
-          email: email || undefined,
-          telephone: settings.phone || undefined,
-          logo: settings.logoUrl || undefined,
-          sameAs: socials.map(([, href]) => href),
-        }}
+        data={organizationSchema({
+          locale,
+          email,
+          telephone: settings.phone,
+          sameAs: socials.map(([, href]) => href as string),
+          logoUrl: settings.logoUrl,
+        })}
       />
 
       <PageHero

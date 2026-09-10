@@ -8,6 +8,8 @@ import { getDictionary } from '@/lib/dictionary';
 import { isLocale, pick, type Locale } from '@/lib/i18n';
 import { getPublishedServices, getServiceCategories, getPage } from '@/lib/content';
 import { buildMetadata, JsonLd, breadcrumbs } from '@/lib/seo';
+import { summarise } from '@/lib/seo-text';
+import { brandName } from '@/lib/brand';
 
 export const revalidate = 60;
 
@@ -21,7 +23,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     locale,
     path: '/services',
     fallbackTitle: getDictionary(locale).nav.services,
-    fallbackDescription: page ? pick(page, 'body', locale) : '',
+    fallbackDescription: page ? summarise(pick(page, 'body', locale)) : '',
   });
 }
 
@@ -74,7 +76,7 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
     <>
       <JsonLd
         data={breadcrumbs(locale, [
-          { name: 'Noriva', path: '/' },
+          { name: brandName(locale), path: '/' },
           { name: dict.nav.services, path: '/services' },
         ])}
       />

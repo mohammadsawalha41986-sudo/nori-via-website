@@ -767,6 +767,25 @@ const SHIPPED_DEFAULTS = new Set([
   'ابدأ مشروعك',
   'Explore Our Work',
   'استعرض أعمالنا',
+  /*
+    The restaurant-era brand name and SEO copy shipped in prisma/seed.ts.
+
+    Registering these lets the F&B positioning reach the metadata as well as
+    the body copy: without them the site was serving marketing-agency SEO
+    titles over consulting content, which is a page describing itself as one
+    business and being indexed as another. As with every entry here, a value a
+    human has edited is left alone.
+  */
+  'Noriva',
+  'نوريفا',
+  'Noriva — Restaurant Marketing, Creative & Growth',
+  'نوريفا — تسويق وإبداع ونمو المطاعم',
+  'A restaurant-specialised creative and growth company. Social, advertising, branding, menu and profitability work for restaurants.',
+  'شركة إبداع ونمو متخصصة في المطاعم: التواصل الاجتماعي والإعلانات والهوية وقوائم الطعام والربحية.',
+  'Noriva is a restaurant-specialised creative and growth company. We build the attention that turns a restaurant brand, experience and business into growth.',
+  'نوريفا شركة إبداع ونمو متخصصة في المطاعم. نبني الانتباه الذي يحوّل العلامة والتجربة والنشاط إلى نمو.',
+  'Restaurant marketing, creative and growth. We make restaurants impossible to ignore.',
+  'تسويق وإبداع ونمو للمطاعم. نجعل المطاعم مستحيلة التجاهل.',
 ]);
 
 /** Rewrites a field only when it still carries shipped copy. */

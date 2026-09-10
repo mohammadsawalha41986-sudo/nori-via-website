@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { pick, dirOf, isLocale, localePath, formatDate, resolveLocale, defaultLocale } from '../src/lib/i18n';
+import { withBrand } from '../src/lib/brand';
 
 const row = {
   titleEn: 'Menu Engineering',
@@ -76,5 +77,28 @@ describe('resolveLocale', () => {
 
   it('ignores an unknown cookie value', () => {
     expect(resolveLocale('fr')).toBe(defaultLocale);
+  });
+});
+
+describe('withBrand', () => {
+  it('leaves a title that already names the brand untouched', () => {
+    expect(withBrand('NORIVA GLOBAL — Restaurant Consulting', 'en')).toBe(
+      'NORIVA GLOBAL — Restaurant Consulting',
+    );
+    expect(withBrand('نوريفا جلوبال — استشارات المطاعم', 'ar')).toBe('نوريفا جلوبال — استشارات المطاعم');
+  });
+
+  it('completes a title that opens with the short name', () => {
+    expect(withBrand('NORIVA — Restaurant Marketing', 'en')).toBe('NORIVA GLOBAL — Restaurant Marketing');
+    expect(withBrand('نوريفا — تسويق المطاعم', 'ar')).toBe('نوريفا جلوبال — تسويق المطاعم');
+  });
+
+  it('appends the brand to an unrelated title', () => {
+    expect(withBrand('Menu Engineering', 'en')).toBe('Menu Engineering — NORIVA GLOBAL');
+  });
+
+  it('falls back to the brand alone when there is no title', () => {
+    expect(withBrand('   ', 'en')).toBe('NORIVA GLOBAL');
+    expect(withBrand('', 'ar')).toBe('نوريفا جلوبال');
   });
 });

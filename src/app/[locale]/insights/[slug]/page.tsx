@@ -10,7 +10,9 @@ import { getInsightBySlug, asStringList } from '@/lib/content';
 import { getRelatedContent } from '@/lib/relations';
 import { getSessionUser } from '@/lib/auth';
 import { RelatedContent } from '@/components/public/RelatedContent';
-import { buildMetadata, JsonLd, breadcrumbs } from '@/lib/seo';
+import { buildMetadata, JsonLd} from '@/lib/seo';
+import { Breadcrumbs } from '@/components/public/Breadcrumbs';
+import { brandName, SCHEMA_IDS } from '@/lib/brand';
 import { env } from '@/lib/env';
 
 export const revalidate = 60;
@@ -84,17 +86,12 @@ export default async function InsightPage({
           image: article.coverImage ? [article.coverImage] : undefined,
           datePublished: article.publishedAt?.toISOString(),
           dateModified: article.updatedAt.toISOString(),
-          author: article.author ? { '@type': 'Person', name: article.author } : { '@type': 'Organization', name: 'Noriva' },
-          publisher: { '@type': 'Organization', name: 'Noriva', url: env.siteUrl },
+          author: article.author
+            ? { '@type': 'Person', name: article.author }
+            : { '@id': SCHEMA_IDS.organization },
+          publisher: { '@id': SCHEMA_IDS.organization },
           mainEntityOfPage: `${env.siteUrl}/${locale}/insights/${slug}`,
         }}
-      />
-      <JsonLd
-        data={breadcrumbs(locale, [
-          { name: 'Noriva', path: '/' },
-          { name: dict.nav.insights, path: '/insights' },
-          { name: title, path: `/insights/${slug}` },
-        ])}
       />
 
       <article>
@@ -117,6 +114,15 @@ export default async function InsightPage({
             </p>
           </div>
         </header>
+
+        <Breadcrumbs
+          locale={locale}
+          trail={[
+            { name: brandName(locale), path: '/' },
+            { name: dict.nav.insights, path: '/insights' },
+            { name: title, path: `/insights/${slug}` },
+          ]}
+        />
 
         {article.coverImage && (
           <div className="bg-bone">
