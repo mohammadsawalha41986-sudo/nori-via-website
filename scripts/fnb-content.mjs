@@ -637,22 +637,32 @@ export const SERVICE_REPOSITIONING = [
       whatWeDoAr:
         'التوجيه الفني، والصور الثابتة والمتحركة، وتصوير الطعام والديكور، والفيديو القصير للمنصات، والكتابة التحريرية التي تربطها بالعربية والإنجليزية. نخطط الإنتاج على دورات، لتغذّي جلسة واحدة محتوى ربع كامل بدل أسبوعين من الارتجال.',
     },
+    /*
+      What this entry wrote to production on an earlier deploy. It is kept
+      verbatim because live rows are sitting on exactly these strings, and
+      CONTENT_SERVICE_REPOSITIONING below lists them among the values it
+      accepts. Rewriting them here would strand those rows: neither pass would
+      recognise them and the service would keep advertising video for good.
+    */
     now: {
-      summaryEn: 'Designed social posts, stories and carousels — planned as a monthly set rather than made one post at a time.',
-      summaryAr: 'تصميم منشورات وقصص ومنشورات متعددة الشرائح، تُخطَّط كحزمة شهرية لا منشوراً في كل مرة.',
-      whatWeDoEn: 'Art direction and design for the social channel: Instagram feed posts, Instagram and TikTok stories, multi-slide carousels, offer and campaign artwork, and the Arabic and English typography that keeps all of it reading as one brand. We plan a month at a time, so the channel is designed against a calendar rather than assembled the night before.',
-      whatWeDoAr: 'التوجيه الفني والتصميم لقناة التواصل: منشورات إنستغرام، وقصص إنستغرام وتيك توك، والمنشورات متعددة الشرائح، وتصاميم العروض والحملات، والقواعد الطباعية العربية والإنجليزية التي تُبقيها جميعاً بصوت علامة واحدة. نخطط شهراً كاملاً، فتُصمَّم القناة وفق تقويم لا في الليلة السابقة للنشر.',
-      seoDescriptionEn: 'Social media post design for restaurants and cafés: Instagram feed, Instagram and TikTok stories, carousels and campaign artwork in Arabic and English.',
-      seoDescriptionAr: 'تصميم منشورات منصات التواصل للمطاعم والمقاهي: إنستغرام فيد، وقصص إنستغرام وتيك توك، والمنشورات متعددة الشرائح، وتصاميم الحملات بالعربية والإنجليزية.',
+      summaryEn:
+        'Food and product photography, short-form video and social content, produced against a plan rather than one shoot at a time.',
+      summaryAr: 'تصوير الطعام والمنتجات والفيديو القصير ومحتوى المنصات، يُنتَج وفق خطة لا جلسة تصوير في كل مرة.',
+      whatWeDoEn:
+        'Art direction, food and product photography, short-form video for social, campaign assets, and the content system that holds them together in both Arabic and English. We plan production in cycles, so one shoot supplies a quarter of scheduled content rather than a fortnight of scrambling.',
+      whatWeDoAr:
+        'التوجيه الفني، وتصوير الطعام والمنتجات، والفيديو القصير للمنصات، وأصول الحملات، ونظام المحتوى الذي يربطها بالعربية والإنجليزية. نخطط الإنتاج على دورات، لتغذّي جلسة واحدة محتوى ربع كامل بدل أسبوعين من الارتجال.',
+      seoDescriptionEn:
+        'Food and product photography, short-form video and social content, produced against a plan rather than one shoot at a time.',
+      seoDescriptionAr: 'تصوير الطعام والمنتجات والفيديو القصير ومحتوى المنصات، يُنتَج وفق خطة لا جلسة تصوير في كل مرة.',
     },
-    deliverables: [
-      { labelEn: 'Food photography', labelAr: 'تصوير الطعام' },
-      { labelEn: 'Product photography', labelAr: 'تصوير المنتجات' },
-      { labelEn: 'Short-form video', labelAr: 'الفيديو القصير' },
-      { labelEn: 'Social media content', labelAr: 'محتوى منصات التواصل' },
-      { labelEn: 'Campaign assets', labelAr: 'أصول الحملات' },
-      { labelEn: 'Content systems', labelAr: 'أنظمة المحتوى' },
-    ],
+    /*
+      Deliverables are deliberately not written here any more. This entry used
+      to install a set containing "Short-form video", which the pass below then
+      had to undo on the same run — and if that pass ever failed to match, the
+      video claim went back on the page. The design deliverables are written in
+      one place now, below.
+    */
   },
 ];
 
@@ -835,14 +845,29 @@ export const SERVICE_RETIREMENT = [
 export const CONTENT_SERVICE_REPOSITIONING = [
   {
     slug: 'content-production',
+    /*
+      Every wording this service has shipped with, oldest first. A list rather
+      than a single string because the row on a given deployment may be sitting
+      on either the original copy or the one the earlier pass wrote — matching
+      only one of them would leave the other advertising video indefinitely.
+    */
     was: {
-      summaryEn:
+      summaryEn: [
+        'Photography, film, and editorial content produced against a plan rather than one shoot at a time.',
         'Food and product photography, short-form video and social content, produced against a plan rather than one shoot at a time.',
-      summaryAr: 'تصوير الطعام والمنتجات والفيديو القصير ومحتوى المنصات، يُنتَج وفق خطة لا جلسة تصوير في كل مرة.',
-      whatWeDoEn:
+      ],
+      summaryAr: [
+        'تصوير وأفلام ومحتوى تحريري يُنتَج وفق خطة، لا جلسة تصوير في كل مرة.',
+        'تصوير الطعام والمنتجات والفيديو القصير ومحتوى المنصات، يُنتَج وفق خطة لا جلسة تصوير في كل مرة.',
+      ],
+      whatWeDoEn: [
+        'Art direction, stills and motion, food and interior photography, short-form social video, and the editorial writing that holds it together in both Arabic and English. We plan production in cycles so a single shoot supplies a quarter of scheduled content rather than a fortnight of scrambling.',
         'Art direction, food and product photography, short-form video for social, campaign assets, and the content system that holds them together in both Arabic and English. We plan production in cycles, so one shoot supplies a quarter of scheduled content rather than a fortnight of scrambling.',
-      whatWeDoAr:
+      ],
+      whatWeDoAr: [
+        'التوجيه الفني، والصور الثابتة والمتحركة، وتصوير الطعام والديكور، والفيديو القصير للمنصات، والكتابة التحريرية التي تربطها بالعربية والإنجليزية. نخطط الإنتاج على دورات، لتغذّي جلسة واحدة محتوى ربع كامل بدل أسبوعين من الارتجال.',
         'التوجيه الفني، وتصوير الطعام والمنتجات، والفيديو القصير للمنصات، وأصول الحملات، ونظام المحتوى الذي يربطها بالعربية والإنجليزية. نخطط الإنتاج على دورات، لتغذّي جلسة واحدة محتوى ربع كامل بدل أسبوعين من الارتجال.',
+      ],
     },
     now: {
       nameEn: 'Social Media Content Design',
@@ -868,21 +893,22 @@ export const CONTENT_SERVICE_REPOSITIONING = [
       { labelEn: 'Arabic and English content', labelAr: 'المحتوى العربي والإنجليزي' },
     ],
     /** The deliverable set this service shipped with, matched before replacing. */
-    shippedDeliverables: ['Food photography', 'Short-form video', 'Social media content'],
+    shippedDeliverables: [
+      ['Art direction', 'Photography', 'Motion and short-form video'],
+      ['Food photography', 'Short-form video', 'Social media content'],
+    ],
   },
   {
     slug: 'content-creation',
     was: {
-      summaryEn: 'Food, people and place, shot properly — the raw material every other channel depends on.',
-      summaryAr: 'الطعام والناس والمكان، بتصوير احترافي — المادة الخام التي تعتمد عليها كل قناة أخرى.',
-      whatWeDoEn:
-        'Recurring shoot days covering dishes, atmosphere, staff and process. We deliver a stocked library, not a one-off gallery, so the channel never runs dry.',
-      whatWeDoAr: 'أيام تصوير دورية تغطي الأطباق والأجواء والفريق والعملية، مع تسليم مكتبة متجددة.',
-      whyEn: 'You cannot run good advertising on bad assets. Creative quality sets the ceiling on every campaign that follows.',
-      whyAr: 'لا يمكن تشغيل إعلان جيد بمواد رديئة؛ جودة الإبداع تحدد سقف كل حملة.',
-      approachEn:
-        'Shot list built from the content plan, art-directed on site, delivered as an organised and tagged asset library.',
-      approachAr: 'قائمة لقطات مبنية على خطة المحتوى، بإدارة فنية في الموقع، وتسليم منظم.',
+      summaryEn: ['Food, people and place, shot properly — the raw material every other channel depends on.'],
+      summaryAr: ['الطعام والناس والمكان، بتصوير احترافي — المادة الخام التي تعتمد عليها كل قناة أخرى.'],
+      whatWeDoEn: ['Recurring shoot days covering dishes, atmosphere, staff and process. We deliver a stocked library, not a one-off gallery, so the channel never runs dry.'],
+      whatWeDoAr: ['أيام تصوير دورية تغطي الأطباق والأجواء والفريق والعملية، مع تسليم مكتبة متجددة.'],
+      whyEn: ['You cannot run good advertising on bad assets. Creative quality sets the ceiling on every campaign that follows.'],
+      whyAr: ['لا يمكن تشغيل إعلان جيد بمواد رديئة؛ جودة الإبداع تحدد سقف كل حملة.'],
+      approachEn: ['Shot list built from the content plan, art-directed on site, delivered as an organised and tagged asset library.'],
+      approachAr: ['قائمة لقطات مبنية على خطة المحتوى، بإدارة فنية في الموقع، وتسليم منظم.'],
     },
     now: {
       nameEn: 'Social Post Design',
@@ -912,6 +938,60 @@ export const CONTENT_SERVICE_REPOSITIONING = [
       { labelEn: 'Campaign designs', labelAr: 'تصاميم الحملات' },
       { labelEn: 'Arabic and English content', labelAr: 'المحتوى العربي والإنجليزي' },
     ],
-    shippedDeliverables: ['Photography shoot days', 'Short-form video and reels'],
+    shippedDeliverables: [['Photography shoot days', 'Short-form video and reels']],
+  },
+  {
+    slug: 'tiktok-ads',
+    /* The company runs the campaigns; the video is supplied by the client or
+       by creators. The shipped copy read as though NORIVA shot it. */
+    was: {
+      summaryEn: ['Native-feeling video advertising for the platform where food discovery now starts.'],
+      summaryAr: ['إعلانات فيديو بروح المنصة، حيث يبدأ اكتشاف المطاعم اليوم.'],
+      whatWeDoEn: [
+        'Hook-first creative made for TikTok rather than resized from Instagram, run against local audiences and iterated weekly.',
+      ],
+      whatWeDoAr: ['إبداع يبدأ بالخطاف، مصمم لتيك توك لا معاد تحجيمه من إنستغرام.'],
+      approachEn: ['Platform-native concepting, rapid shooting, and a testing loop measured on cost per order.'],
+      approachAr: ['ابتكار مناسب للمنصة، تصوير سريع، ودورة اختبار.'],
+    },
+    now: {
+      summaryEn: 'TikTok campaigns run against local audiences, on the platform where food discovery now starts.',
+      summaryAr: 'حملات تيك توك موجّهة للجمهور المحلي، على المنصة التي يبدأ منها اكتشاف المطاعم اليوم.',
+      whatWeDoEn:
+        'Account and campaign structure, local audience and catchment build-out, briefing the creative your team or your creators supply, and weekly iteration against cost per order.',
+      whatWeDoAr:
+        'بناء هيكل الحساب والحملات، وتحديد الجمهور والنطاق المحلي، وتوجيه المواد التي يوفرها فريقك أو صنّاع المحتوى، وتحسين أسبوعي على أساس تكلفة الطلب.',
+      approachEn: 'Platform-native briefs, a structured testing loop, and weekly optimisation measured on cost per order.',
+      approachAr: 'توجيهات مناسبة للمنصة، ودورة اختبار منظمة، وتحسين أسبوعي يُقاس بتكلفة الطلب.',
+      seoDescriptionEn: 'TikTok campaigns run against local audiences, on the platform where food discovery now starts.',
+      seoDescriptionAr: 'حملات تيك توك موجّهة للجمهور المحلي، على المنصة التي يبدأ منها اكتشاف المطاعم اليوم.',
+    },
+    deliverables: [
+      { labelEn: 'Campaign build and launch', labelAr: 'بناء الحملات وإطلاقها' },
+      { labelEn: 'Audience and geo strategy', labelAr: 'استراتيجية الجمهور والنطاق' },
+      { labelEn: 'Campaign management', labelAr: 'إدارة الحملات' },
+      { labelEn: 'Creator brief templates', labelAr: 'قوالب توجيه صنّاع المحتوى' },
+      { labelEn: 'Performance reporting', labelAr: 'تقارير الأداء' },
+    ],
+    shippedDeliverables: [['TikTok-native creative', 'Campaign management']],
+  },
+  {
+    slug: 'social-media-management-fnb',
+    /* Channel management, not a production house: the plan, the designed posts
+       and the daily replies. The shipped copy promised recurring video. */
+    was: {
+      whatWeDoEn: [
+        'We run the channels end to end: a monthly plan built from the menu and the calendar, recurring production of stills and short-form video, bilingual copy written natively in Arabic and English, scheduling, and daily community management across comments, messages and reviews.\n\nEach month begins with a commercial brief — a launch, a soft daypart, a category that needs attention — and ends with a report that changes the next brief rather than describing the last one.',
+      ],
+      whatWeDoAr: [
+        'ندير القنوات من البداية إلى النهاية: خطة شهرية مبنية على القائمة والتقويم، وإنتاج دوري للصور والفيديو القصير، ونصوص ثنائية اللغة مكتوبة أصلاً بالعربية والإنجليزية، وجدولة، وإدارة يومية للمجتمع عبر التعليقات والرسائل والتقييمات.\n\nيبدأ كل شهر بموجز تجاري — إطلاق، أو وقت ضعيف، أو تصنيف يحتاج انتباهاً — وينتهي بتقرير يغيّر الموجز التالي بدل وصف السابق.',
+      ],
+    },
+    now: {
+      whatWeDoEn:
+        'We run the channels end to end: a monthly plan built from the menu and the calendar, designed posts, stories and carousels, bilingual copy written natively in Arabic and English, scheduling, and daily community management across comments, messages and reviews.\n\nEach month begins with a commercial brief — a launch, a soft daypart, a category that needs attention — and ends with a report that changes the next brief rather than describing the last one.',
+      whatWeDoAr:
+        'ندير القنوات من البداية إلى النهاية: خطة شهرية مبنية على القائمة والتقويم، ومنشورات وقصص وشرائح مصمَّمة، ونصوص ثنائية اللغة مكتوبة أصلاً بالعربية والإنجليزية، وجدولة، وإدارة يومية للمجتمع عبر التعليقات والرسائل والتقييمات.\n\nيبدأ كل شهر بموجز تجاري — إطلاق، أو وقت ضعيف، أو تصنيف يحتاج انتباهاً — وينتهي بتقرير يغيّر الموجز التالي بدل وصف السابق.',
+    },
   },
 ];

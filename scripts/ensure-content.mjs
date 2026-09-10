@@ -884,8 +884,8 @@ async function applyFoodAndBeverage() {
     if (!row) continue;
 
     const patch = {};
-    for (const [key, oldValue] of Object.entries(entry.was)) {
-      if (row[key] === oldValue && entry.now[key] !== undefined) patch[key] = entry.now[key];
+    for (const [key, previous] of Object.entries(entry.was)) {
+      if (previous.includes(row[key]) && entry.now[key] !== undefined) patch[key] = entry.now[key];
     }
 
     // The name moves with the summary: renaming a service whose description an
@@ -896,14 +896,15 @@ async function applyFoodAndBeverage() {
     // The SEO description follows the summary when it was left as the summary.
     for (const key of ['seoDescriptionEn', 'seoDescriptionAr']) {
       const source = key.endsWith('En') ? 'summaryEn' : 'summaryAr';
-      if (row[key] === entry.was[source] && entry.now[key]) patch[key] = entry.now[key];
+      // Not every entry rewrites the summary; those leave the SEO text alone.
+      if (entry.was[source]?.includes(row[key]) && entry.now[key]) patch[key] = entry.now[key];
     }
 
     if (entry.deliverables) {
       const current = Array.isArray(row.deliverables) ? row.deliverables.map((d) => d?.labelEn) : [];
-      if (entry.shippedDeliverables.every((label) => current.includes(label))) {
-        patch.deliverables = entry.deliverables;
-      }
+      // Any of the shipped sets is enough: the service has had more than one.
+      const shipped = entry.shippedDeliverables.some((set) => set.every((label) => current.includes(label)));
+      if (shipped) patch.deliverables = entry.deliverables;
     }
 
     if (Object.keys(patch).length && !REPORT_ONLY) {

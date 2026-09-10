@@ -55,9 +55,9 @@ export const SERVICE_DEPTH_PART_5 = [
     heroAr:
       'إدارة قنوات لمشاريع الأغذية والمشروبات: تخطيط وإنتاج ونشر وإدارة مجتمع مرتبطة بما يحتاج المطعم لبيعه هذا الشهر.',
     whatEn:
-      'We run the channels end to end: a monthly plan built from the menu and the calendar, recurring production of stills and short-form video, bilingual copy written natively in Arabic and English, scheduling, and daily community management across comments, messages and reviews.\n\nEach month begins with a commercial brief — a launch, a soft daypart, a category that needs attention — and ends with a report that changes the next brief rather than describing the last one.',
+      'We run the channels end to end: a monthly plan built from the menu and the calendar, designed posts, stories and carousels, bilingual copy written natively in Arabic and English, scheduling, and daily community management across comments, messages and reviews.\n\nEach month begins with a commercial brief — a launch, a soft daypart, a category that needs attention — and ends with a report that changes the next brief rather than describing the last one.',
     whatAr:
-      'ندير القنوات من البداية إلى النهاية: خطة شهرية مبنية على القائمة والتقويم، وإنتاج دوري للصور والفيديو القصير، ونصوص ثنائية اللغة مكتوبة أصلاً بالعربية والإنجليزية، وجدولة، وإدارة يومية للمجتمع عبر التعليقات والرسائل والتقييمات.\n\nيبدأ كل شهر بموجز تجاري — إطلاق، أو وقت ضعيف، أو تصنيف يحتاج انتباهاً — وينتهي بتقرير يغيّر الموجز التالي بدل وصف السابق.',
+      'ندير القنوات من البداية إلى النهاية: خطة شهرية مبنية على القائمة والتقويم، ومنشورات وقصص وشرائح مصمَّمة، ونصوص ثنائية اللغة مكتوبة أصلاً بالعربية والإنجليزية، وجدولة، وإدارة يومية للمجتمع عبر التعليقات والرسائل والتقييمات.\n\nيبدأ كل شهر بموجز تجاري — إطلاق، أو وقت ضعيف، أو تصنيف يحتاج انتباهاً — وينتهي بتقرير يغيّر الموجز التالي بدل وصف السابق.',
     apprEn:
       'The account is treated as a commercial channel, not a portfolio. If a beautiful month did not move anything, the report says so and the next plan changes.',
     apprAr:
