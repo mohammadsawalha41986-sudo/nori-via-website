@@ -10,9 +10,9 @@ import { getInsightBySlug, asStringList } from '@/lib/content';
 import { getRelatedContent } from '@/lib/relations';
 import { getSessionUser } from '@/lib/auth';
 import { RelatedContent } from '@/components/public/RelatedContent';
-import { buildMetadata, JsonLd} from '@/lib/seo';
+import { buildMetadata, JsonLd, absoluteMediaUrl } from '@/lib/seo';
 import { Breadcrumbs } from '@/components/public/Breadcrumbs';
-import { brandName, SCHEMA_IDS } from '@/lib/brand';
+import { brandName, isBrandName, SCHEMA_IDS } from '@/lib/brand';
 import { env } from '@/lib/env';
 
 export const revalidate = 60;
@@ -83,12 +83,20 @@ export default async function InsightPage({
           '@type': 'Article',
           headline: title,
           description: pick(article, 'excerpt', locale),
-          image: article.coverImage ? [article.coverImage] : undefined,
+          // Absolute: a crawler reads structured data out of page context, so a
+          // relative path here resolves against nothing and the image is lost.
+          image: absoluteMediaUrl(article.coverImage) ? [absoluteMediaUrl(article.coverImage)] : undefined,
           datePublished: article.publishedAt?.toISOString(),
           dateModified: article.updatedAt.toISOString(),
-          author: article.author
-            ? { '@type': 'Person', name: article.author }
-            : { '@id': SCHEMA_IDS.organization },
+          /*
+            The byline is free text and the published articles carry the company
+            name in it. Emitting that as a `Person` asserts the company is a
+            human being, so a byline that is the brand resolves to the
+            organisation node instead; a real person's name still becomes one.
+          */
+          author: isBrandName(article.author)
+            ? { '@id': SCHEMA_IDS.organization }
+            : { '@type': 'Person', name: article.author },
           publisher: { '@id': SCHEMA_IDS.organization },
           mainEntityOfPage: `${env.siteUrl}/${locale}/insights/${slug}`,
         }}

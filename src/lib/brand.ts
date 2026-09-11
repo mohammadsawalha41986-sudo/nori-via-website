@@ -125,3 +125,86 @@ export function withBrand(title: string, locale: Locale): string {
 
   return `${text} — ${full}`;
 }
+
+/** Every spelling of the brand, longest first so a prefix never matches early. */
+const BRAND_SPELLINGS = [BRAND.name, BRAND.nameAr, BRAND.shortName, BRAND.shortNameAr];
+
+/**
+ * True when a value is the company itself rather than a person.
+ *
+ * The article `author` column holds a free-text byline, and the shipped
+ * articles put the company name in it. Rendered literally that produces a
+ * `Person` named after the company — structured data asserting that NORIVA
+ * GLOBAL is a human being. This is what tells the page to use the
+ * organisation node instead.
+ */
+export function isBrandName(value: string | null | undefined): boolean {
+  const text = (value ?? '').trim().toLowerCase();
+  if (!text) return true;
+  return BRAND_SPELLINGS.some((spelling) => spelling.toLowerCase() === text);
+}
+
+/**
+ * Removes a brand suffix an editor (or the content scripts) already appended.
+ *
+ * Page titles run through Next's `%s — NORIVA GLOBAL` template, so a stored
+ * title ending in the brand comes out branded twice: "… — نوريفا — NORIVA
+ * GLOBAL". Stripping the stored suffix first leaves the template to add the
+ * one canonical form, and costs the SERP no characters it did not need to
+ * spend. A title that merely mentions the brand mid-sentence is left alone —
+ * only a trailing separator + brand is removed. The separator class covers the
+ * pipe as well as the dashes, because the shipped titles use both.
+ */
+export function stripBrandSuffix(title: string): string {
+  let text = title.trim();
+
+  // Loop: content scripts have appended the short form to titles that already
+  // carried it, and one pass would leave the second copy behind.
+  for (;;) {
+    const match = text.match(TRAILING_SEGMENT);
+    if (!match) return text;
+
+    const head = text.slice(0, match.index).trim();
+    const cleaned = withoutBrandTokens(match[0]);
+    if (!head || cleaned === null) return text;
+
+    // "— Noriva Library" keeps its section word and loses only the brand, so
+    // titles that rely on that word to tell two pages apart still do.
+    text = cleaned ? `${head} — ${cleaned}` : head;
+  }
+}
+
+/** The last separator-delimited segment of a title, separator included. */
+const TRAILING_SEGMENT = /[\s]*[—–|·-][^—–|·-]*$/;
+
+/**
+ * Drops the brand from a trailing segment, or returns `null` to leave it be.
+ *
+ * "— Noriva", "— Noriva Library" and "— مكتبة نوريفا" are all a brand tag on
+ * the end of a real title, and only the brand part of them is noise: the
+ * section word is often the only thing distinguishing two pages that share a
+ * name, so it stays. The word limit keeps a genuine trailing clause that
+ * happens to mention the company from being rewritten.
+ */
+function withoutBrandTokens(segment: string): string | null {
+  const words = segment
+    .replace(/^[\s]*[—–|·-][\s]*/, '')
+    .split(/[\s]+/)
+    .filter(Boolean);
+
+  if (!words.length || words.length > 3) return null;
+
+  let remaining = words;
+  let removed = false;
+
+  // Longest spelling first, so "NORIVA GLOBAL" is not reduced to "GLOBAL".
+  for (const spelling of BRAND_SPELLINGS) {
+    const parts = spelling.toLowerCase().split(/\s+/);
+    const lowered = remaining.map((word) => word.toLowerCase());
+    if (!parts.every((part) => lowered.includes(part))) continue;
+    remaining = remaining.filter((word) => !parts.includes(word.toLowerCase()));
+    removed = true;
+  }
+
+  return removed ? remaining.join(' ') : null;
+}

@@ -157,9 +157,13 @@ async function applyServices() {
       process: d.process ? steps(d.process) : undefined,
       faqs: d.faqs ? questions(d.faqs) : undefined,
       /* SEO title is bounded by the Admin schema; the summary already fills
-         the description, so only the title is supplied here. */
-      seoTitleEn: clamp(`${row.nameEn} for Restaurants & Cafés — Noriva`, 160),
-      seoTitleAr: clamp(`${row.nameAr || row.nameEn} للمطاعم والمقاهي — نوريفا`, 160),
+         the description, so only the title is supplied here.
+
+         No brand suffix: the page title template appends "— NORIVA GLOBAL"
+         already, and appending it here too is what produced the doubled
+         "… — نوريفا — NORIVA GLOBAL" titles. */
+      seoTitleEn: clamp(`${row.nameEn} for Restaurants & Cafés`, 160),
+      seoTitleAr: clamp(`${row.nameAr || row.nameEn} للمطاعم والمقاهي`, 160),
       /* Five studio-era services shipped without a group. They are assigned to
          an existing category rather than to a new one. */
       categoryId: d.category ? byCategory[d.category] : undefined,
@@ -203,8 +207,8 @@ async function applyInsights() {
       tags: a.tags,
       author: 'Noriva',
       publishedAt: new Date(Date.now() - a.daysAgo * 86400000),
-      seoTitleEn: clamp(`${a.titleEn} — Noriva`, 160),
-      seoTitleAr: clamp(`${a.titleAr} — نوريفا`, 160),
+      seoTitleEn: clamp(a.titleEn, 160),
+      seoTitleAr: clamp(a.titleAr, 160),
       seoDescriptionEn: clamp(a.excerptEn, 320),
       seoDescriptionAr: clamp(a.excerptAr, 320),
     };
@@ -232,8 +236,8 @@ async function applyInsights() {
         tags: ['brand', 'craft', 'noriva'],
         author: 'Noriva',
         publishedAt: new Date(Date.now() - (150 + i * 7) * 86400000),
-        seoTitleEn: clamp(`${row.titleEn} — Noriva`, 160),
-        seoTitleAr: clamp(`${row.titleAr || row.titleEn} — نوريفا`, 160),
+        seoTitleEn: clamp(row.titleEn, 160),
+        seoTitleAr: clamp(row.titleAr || row.titleEn, 160),
         seoDescriptionEn: clamp(row.excerptEn, 320),
         seoDescriptionAr: clamp(row.excerptAr, 320),
       }),
@@ -260,8 +264,8 @@ async function applyWork() {
         { slug: p.slug },
         {
           ...fillEmpty(existing, {
-            seoTitleEn: clamp(`${p.titleEn} — Noriva`, 160),
-            seoTitleAr: clamp(`${p.titleAr} — نوريفا`, 160),
+            seoTitleEn: clamp(p.titleEn, 160),
+            seoTitleAr: clamp(p.titleAr, 160),
             seoDescriptionEn: clamp(p.descriptionEn.split('\n\n').pop(), 320),
             seoDescriptionAr: clamp(p.descriptionAr.split('\n\n').pop(), 320),
           }),
@@ -292,8 +296,8 @@ async function applyWork() {
         status: 'PUBLISHED',
         noindex: false,
         order: p.order,
-        seoTitleEn: clamp(`${p.titleEn} — Noriva`, 160),
-        seoTitleAr: clamp(`${p.titleAr} — نوريفا`, 160),
+        seoTitleEn: clamp(p.titleEn, 160),
+        seoTitleAr: clamp(p.titleAr, 160),
         seoDescriptionEn: clamp(p.descriptionEn.split('\n\n').pop(), 320),
         seoDescriptionAr: clamp(p.descriptionAr.split('\n\n').pop(), 320),
         /* results stays empty: no verified metric exists. */
@@ -316,8 +320,8 @@ async function applyWork() {
       'project',
       { slug },
       fillEmpty(row, {
-        seoTitleEn: clamp(`${titleEn} — Noriva`, 160),
-        seoTitleAr: clamp(`${titleAr} — نوريفا`, 160),
+        seoTitleEn: clamp(titleEn, 160),
+        seoTitleAr: clamp(titleAr, 160),
         seoDescriptionEn: clamp(row.descriptionEn, 320),
         seoDescriptionAr: clamp(row.descriptionAr, 320),
       }),
@@ -348,8 +352,8 @@ async function applyWork() {
       outcomeAr: c.outcomeAr,
       resultEn: c.resultEn,
       resultAr: c.resultAr,
-      seoTitleEn: clamp(`Illustrative Case — ${c.titleEn} — Noriva`, 160),
-      seoTitleAr: clamp(`حالة توضيحية — ${c.titleAr} — نوريفا`, 160),
+      seoTitleEn: clamp(`Illustrative Case — ${c.titleEn}`, 160),
+      seoTitleAr: clamp(`حالة توضيحية — ${c.titleAr}`, 160),
       seoDescriptionEn: clamp(c.outcomeEn, 320),
       seoDescriptionAr: clamp(c.outcomeAr, 320),
     };
@@ -438,8 +442,8 @@ async function applyLibrary() {
         includes: labels(d.includes),
         audience: labels(d.audience),
         tags: d.tags,
-        seoTitleEn: clamp(`${row.titleEn} — Noriva Library`, 160),
-        seoTitleAr: clamp(`${row.titleAr || row.titleEn} — مكتبة نوريفا`, 160),
+        seoTitleEn: clamp(`${row.titleEn} — Library`, 160),
+        seoTitleAr: clamp(`${row.titleAr || row.titleEn} — المكتبة`, 160),
       }),
       `resource:${d.slug}`,
     );
@@ -458,8 +462,8 @@ async function applyLibrary() {
       audience: labels(r.audience),
       tags: r.tags,
       categoryId: cats[r.category] ?? null,
-      seoTitleEn: clamp(`${r.titleEn} — Noriva Library`, 160),
-      seoTitleAr: clamp(`${r.titleAr} — مكتبة نوريفا`, 160),
+      seoTitleEn: clamp(`${r.titleEn} — Library`, 160),
+      seoTitleAr: clamp(`${r.titleAr} — المكتبة`, 160),
       seoDescriptionEn: clamp(r.summaryEn, 320),
       seoDescriptionAr: clamp(r.summaryAr, 320),
     };
@@ -518,8 +522,8 @@ async function applyLibrary() {
       includes: labels(asset.includes),
       audience: labels(asset.audience),
       order: asset.order,
-      seoTitleEn: clamp(`${asset.titleEn} — Noriva Library`, 160),
-      seoTitleAr: clamp(`${asset.titleAr} — مكتبة نوريفا`, 160),
+      seoTitleEn: clamp(`${asset.titleEn} — Library`, 160),
+      seoTitleAr: clamp(`${asset.titleAr} — المكتبة`, 160),
       seoDescriptionEn: clamp(asset.summaryEn, 320),
       seoDescriptionAr: clamp(asset.summaryAr, 320),
     };
@@ -561,8 +565,8 @@ async function applyTools() {
         descriptionAr: d.descAr,
         purposeEn: d.purposeEn,
         purposeAr: d.purposeAr,
-        seoTitleEn: clamp(`${row.nameEn} — Noriva`, 160),
-        seoTitleAr: clamp(`${row.nameAr || row.nameEn} — نوريفا`, 160),
+        seoTitleEn: clamp(row.nameEn, 160),
+        seoTitleAr: clamp(row.nameAr || row.nameEn, 160),
       }),
       `tool:${d.slug}`,
     );
@@ -580,8 +584,8 @@ async function applyTools() {
       purposeEn: t.purposeEn,
       purposeAr: t.purposeAr,
       config: t.config,
-      seoTitleEn: clamp(`${t.nameEn} — Noriva`, 160),
-      seoTitleAr: clamp(`${t.nameAr} — نوريفا`, 160),
+      seoTitleEn: clamp(t.nameEn, 160),
+      seoTitleAr: clamp(t.nameAr, 160),
       seoDescriptionEn: clamp(t.summaryEn, 320),
       seoDescriptionAr: clamp(t.summaryAr, 320),
     };

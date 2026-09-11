@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { pick, dirOf, isLocale, localePath, formatDate, resolveLocale, defaultLocale } from '../src/lib/i18n';
-import { withBrand } from '../src/lib/brand';
+import { withBrand, stripBrandSuffix, isBrandName } from '../src/lib/brand';
 
 const row = {
   titleEn: 'Menu Engineering',
@@ -100,5 +100,76 @@ describe('withBrand', () => {
   it('falls back to the brand alone when there is no title', () => {
     expect(withBrand('   ', 'en')).toBe('NORIVA GLOBAL');
     expect(withBrand('', 'ar')).toBe('نوريفا جلوبال');
+  });
+});
+
+describe('stripBrandSuffix', () => {
+  it('removes a trailing brand so the title template does not double it', () => {
+    expect(stripBrandSuffix('قراءة القائمة بوصفها وثيقة تجارية — نوريفا')).toBe(
+      'قراءة القائمة بوصفها وثيقة تجارية',
+    );
+    expect(stripBrandSuffix('Menu Engineering — Noriva')).toBe('Menu Engineering');
+    expect(stripBrandSuffix('Menu Engineering — NORIVA GLOBAL')).toBe('Menu Engineering');
+  });
+
+  it('removes a suffix that was appended more than once', () => {
+    expect(stripBrandSuffix('Menu Engineering — Noriva — NORIVA GLOBAL')).toBe('Menu Engineering');
+  });
+
+  it('leaves a brand mentioned inside the title alone', () => {
+    expect(stripBrandSuffix('How NORIVA reads a menu')).toBe('How NORIVA reads a menu');
+  });
+
+  it('never returns an empty title', () => {
+    expect(stripBrandSuffix('NORIVA GLOBAL')).toBe('NORIVA GLOBAL');
+  });
+});
+
+describe('isBrandName', () => {
+  it('treats the company, in any spelling, as the organisation', () => {
+    for (const value of ['Noriva', 'NORIVA GLOBAL', 'نوريفا', 'نوريفا جلوبال', '  noriva  ', '']) {
+      expect(isBrandName(value)).toBe(true);
+    }
+    expect(isBrandName(null)).toBe(true);
+  });
+
+  it('treats a real byline as a person', () => {
+    expect(isBrandName('Mohammad Sawalha')).toBe(false);
+  });
+});
+
+describe('stripBrandSuffix separators', () => {
+  it('handles the pipe separator the shipped titles also use', () => {
+    expect(stripBrandSuffix('Insights — Restaurant Strategy | Noriva')).toBe(
+      'Insights — Restaurant Strategy',
+    );
+    expect(stripBrandSuffix('نمو المطاعم — القائمة والهامش | نوريفا')).toBe(
+      'نمو المطاعم — القائمة والهامش',
+    );
+  });
+});
+
+describe('stripBrandSuffix brand segments', () => {
+  it('drops the brand but keeps the section word that tells pages apart', () => {
+    expect(stripBrandSuffix('Café KPI Dashboard — Noriva Library')).toBe('Café KPI Dashboard — Library');
+    expect(stripBrandSuffix('لوحة مؤشرات أداء المقهى — مكتبة نوريفا')).toBe('لوحة مؤشرات أداء المقهى — مكتبة');
+  });
+
+  it('keeps two same-named pages distinguishable', () => {
+    // A tool and a library resource share this name; the section word is the
+    // only thing separating their titles.
+    expect(stripBrandSuffix('Food Cost Calculator — Noriva')).toBe('Food Cost Calculator');
+    expect(stripBrandSuffix('Food Cost Calculator — Noriva Library')).toBe(
+      'Food Cost Calculator — Library',
+    );
+  });
+
+  it('keeps a trailing clause that is not just a brand tag', () => {
+    expect(stripBrandSuffix('Menu Engineering — what NORIVA looks at in a menu review')).toBe(
+      'Menu Engineering — what NORIVA looks at in a menu review',
+    );
+    expect(stripBrandSuffix('Restaurant Growth — Menu, Margin and Operations')).toBe(
+      'Restaurant Growth — Menu, Margin and Operations',
+    );
   });
 });

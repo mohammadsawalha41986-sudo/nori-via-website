@@ -1,7 +1,21 @@
 import type { Metadata } from 'next';
 import { env } from './env';
 import { pick, defaultLocale, type Locale } from './i18n';
-import { BRAND, BRAND_DESCRIPTION, BRAND_LOGO, BRAND_TOPICS, SCHEMA_IDS } from './brand';
+import { BRAND, BRAND_DESCRIPTION, BRAND_LOGO, BRAND_TOPICS, SCHEMA_IDS, stripBrandSuffix } from './brand';
+
+/**
+ * Turns a stored media path into an absolute URL.
+ *
+ * Structured data is read out of context by a crawler, so a relative `/img/…`
+ * in a JSON-LD `image` resolves against nothing and the image is dropped.
+ * Metadata does not need this — Next resolves those against `metadataBase` —
+ * but JSON-LD is hand-built and does.
+ */
+export function absoluteMediaUrl(path: string | null | undefined): string | undefined {
+  if (!path) return undefined;
+  if (/^https?:\/\//i.test(path)) return path;
+  return `${env.siteUrl}${path.startsWith('/') ? path : `/${path}`}`;
+}
 
 /** Absolute URL for a locale-prefixed path, with no trailing slash. */
 export function absoluteUrl(locale: Locale, path = '/') {
@@ -29,7 +43,12 @@ export function alternatesFor(locale: Locale, path = '/'): Metadata['alternates'
   };
 }
 
-type SeoSource = Record<string, unknown> & { noindex?: boolean; ogImage?: string | null };
+type SeoSource = Record<string, unknown> & {
+  noindex?: boolean;
+  ogImage?: string | null;
+  /** Editor-set canonical override. Only the Page model carries one. */
+  canonical?: string | null;
+};
 
 /**
  * Builds page metadata from any CMS row that carries the standard
@@ -59,16 +78,32 @@ export function buildMetadata({
   type?: 'website' | 'article';
   publishedTime?: string;
 }): Metadata {
-  const title = (row && pick(row, 'seoTitle', locale)) || fallbackTitle;
+  /*
+    The stored title may already end in the brand — the content scripts used to
+    append it — and the layout's `%s — NORIVA GLOBAL` template appends it again,
+    which is how "… — نوريفا — NORIVA GLOBAL" reaches the SERP. Strip whatever
+    is stored and let the template add the one canonical form.
+  */
+  const title = stripBrandSuffix((row && pick(row, 'seoTitle', locale)) || fallbackTitle);
   const description =
     (row && pick(row, 'seoDescription', locale)) || fallbackDescription || BRAND_DESCRIPTION[locale];
   const url = absoluteUrl(locale, path);
+  const stored = typeof row?.canonical === 'string' ? row.canonical.trim() : '';
+  const canonicalOverride = /^https?:\/\/\S+$/i.test(stored) ? stored : undefined;
   const image = row?.ogImage || fallbackImage || undefined;
 
   return {
     title,
     description,
-    alternates: alternatesFor(locale, path),
+    /*
+      Admin offers a "Canonical URL — leave empty to use the default" field on
+      pages, and until now nothing read it: the control silently did nothing.
+      An explicit value wins, but only when it is a real absolute URL, so a
+      half-typed one cannot point the canonical at nowhere.
+    */
+    alternates: canonicalOverride
+      ? { ...alternatesFor(locale, path), canonical: canonicalOverride }
+      : alternatesFor(locale, path),
     robots: row?.noindex ? { index: false, follow: false } : undefined,
     openGraph: {
       type,
