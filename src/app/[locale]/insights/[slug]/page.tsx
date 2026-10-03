@@ -1,5 +1,7 @@
+import { isShippedImage } from '@/lib/curated-media';
+import { ResourceCover } from '@/components/public/ResourceCover';
 import type { Metadata } from 'next';
-import Image from 'next/image';
+import { CmsImage as Image } from '@/components/public/CmsImage';
 import { notFound } from 'next/navigation';
 import { CTASection } from '@/components/public/CTASection';
 import { Prose } from '@/components/ui/Prose';
@@ -136,7 +138,7 @@ export default async function InsightPage({
           <div className="bg-bone">
             <div className="shell -mt-10 sm:-mt-16">
               <div className="relative aspect-[16/9] overflow-hidden rounded-2xl bg-ink-100 shadow-2xl shadow-ink-900/15">
-                <Image src={article.coverImage} alt={title} fill priority sizes="100vw" className="object-cover" />
+                <>{isShippedImage(article.coverImage) ? <ResourceCover title={title} slug={article.slug} type="ARTICLE" locale={locale} /> : <Image src={article.coverImage} alt={title} fill priority sizes="100vw" className="object-cover" />}</>
               </div>
             </div>
           </div>

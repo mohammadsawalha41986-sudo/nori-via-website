@@ -52,7 +52,7 @@ let failures = 0;
 const fail = (msg) => { failures++; console.log(`FAIL ${msg}`); };
 
 for (const route of [...adminRoutes, ...publicRoutes]) {
-  const response = await page.goto(`${BASE}${route}`, { waitUntil: 'domcontentloaded' });
+  const response = await page.goto(`${BASE}${route}`, { waitUntil: 'networkidle' });
   const status = response?.status() ?? 0;
   const brokeDown =
     (await page.locator('h1:has-text("Application error"), h2:has-text("Something went wrong")').count()) > 0;
@@ -66,7 +66,7 @@ for (const route of [
   '/en/services/menu-strategy-engineering-pricing', '/ar/services/menu-strategy-engineering-pricing',
   '/en/tools/food-cost-calculator',
 ]) {
-  await page.goto(`${BASE}${route}`, { waitUntil: 'domcontentloaded' });
+  await page.goto(`${BASE}${route}`, { waitUntil: 'networkidle' });
   const audit = await page.evaluate(() => {
     const imagesWithoutAlt = [...document.querySelectorAll('img')].filter((i) => !i.hasAttribute('alt')).length;
     const controls = [...document.querySelectorAll('input:not([type="hidden"]), select, textarea')];
@@ -91,8 +91,8 @@ for (const route of [
 
 // --------------------------------------------------------------- navigation
 for (const [locale, labels] of [
-  ['en', ['Start Here', 'Library', 'Tools']],
-  ['ar', ['ابدأ من هنا', 'المكتبة', 'الأدوات']],
+  ['en', ['Home', 'Resources', 'Tools']],
+  ['ar', ['الرئيسية', 'المكتبة', 'الأدوات']],
 ]) {
   await page.goto(`${BASE}/${locale}`);
   for (const label of labels) {
@@ -121,7 +121,7 @@ for (const [label, width, height] of [['mobile', 390, 844], ['tablet', 834, 1112
     '/en/tools/food-cost-calculator', '/ar/services/menu-strategy-engineering-pricing',
     '/ar/restaurant-growth',
   ]) {
-    await p2.goto(`${BASE}${route}`, { waitUntil: 'domcontentloaded' });
+    await p2.goto(`${BASE}${route}`, { waitUntil: 'networkidle' });
     const overflow = await p2.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
     if (overflow > 1) fail(`overflow ${overflow}px on ${label} ${route}`);
   }

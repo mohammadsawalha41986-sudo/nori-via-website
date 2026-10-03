@@ -105,7 +105,7 @@ export function LibraryFilters({
       <div className="flex flex-wrap items-center gap-2">
         <button
           type="button"
-          onClick={() => apply({ type: '' })}
+          onClick={() => apply({ kind: '', type: '' })}
           aria-pressed={!activeType}
           className={clsx(
             'rounded-btn border px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] transition-colors duration-300',
@@ -119,7 +119,7 @@ export function LibraryFilters({
           <button
             key={t.value}
             type="button"
-            onClick={() => apply({ type: t.value })}
+            onClick={() => apply({ kind: t.value, type: '' })}
             aria-pressed={activeType === t.value}
             className={clsx(
               'rounded-btn border px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] transition-colors duration-300',
@@ -135,7 +135,7 @@ export function LibraryFilters({
         {hasFilters && (
           <button
             type="button"
-            onClick={() => apply({ q: '', type: '', category: '', sort: '' })}
+            onClick={() => apply({ q: '', kind: '', type: '', category: '', sort: '' })}
             className="ms-1 text-xs font-semibold text-brand underline underline-offset-4"
           >
             {dict.library.reset}

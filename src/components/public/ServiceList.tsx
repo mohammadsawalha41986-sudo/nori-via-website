@@ -45,7 +45,7 @@ export function ServiceList({ groups, locale }: { groups: ServiceGroup[]; locale
                     <span className="relative hidden aspect-[4/3] w-28 shrink-0 overflow-hidden rounded-card bg-ink-100 sm:block">
                       <Image
                         src={s.image}
-                        alt=""
+                        alt={s.name}
                         fill
                         loading="lazy"
                         sizes="112px"

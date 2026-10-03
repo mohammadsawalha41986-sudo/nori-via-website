@@ -41,6 +41,14 @@ const rgb = (hex) => {
 const browser = await chromium.launch({ executablePath: CHROMIUM || undefined, args: ['--no-sandbox'] });
 const context = await browser.newContext();
 const page = await context.newPage();
+async function saveChanges() {
+  const target = new URL(page.url()).pathname;
+  await Promise.all([
+    page.waitForResponse(response => response.request().method() === 'POST' && new URL(response.url()).pathname === target),
+    page.click('button[type="submit"]:has-text("Save changes")'),
+  ]);
+}
+
 
 await page.goto(`${BASE}/admin/login`);
 await page.fill('input[name="email"]', EMAIL);
@@ -76,7 +84,7 @@ const invalid = await page.evaluate(() => {
 });
 check('every field is within its allowed range', invalid.length === 0, invalid.join(', '));
 
-await page.click('button[type="submit"]:has-text("Save changes")');
+await saveChanges();
 await page.waitForSelector('text=Saved', { timeout: 20000 });
 check('design system saved', true);
 
@@ -85,6 +93,8 @@ await page.reload();
 const savedBrand = await page.inputValue('input[name="color.brand"]');
 check('swatch-picked colour is stored', savedBrand.toUpperCase() === TEST.brand, savedBrand);
 
+// Arabic keeps the established 1.06 size / 1.08 leading multipliers, joined
+// letterforms (zero tracking), and selected Arabic display family.
 // ------------------------------------------------- measure the public pages
 async function measure(path) {
   await page.goto(`${BASE}${path}`, { waitUntil: 'networkidle' });
@@ -182,16 +192,16 @@ for (const [locale, path] of [['EN', '/en'], ['AR', '/ar']]) {
   check(`${locale} · muted text renders`, m.colours.inkMuted === rgb(TEST.inkMuted), m.colours.inkMuted ?? 'no consumer');
   check(`${locale} · border renders`, m.colours.border === rgb(TEST.border), m.colours.border ?? 'no consumer');
 
-  check(`${locale} · base font size`, m.typography.baseSize === '20px', m.typography.baseSize);
+  check(`${locale} · base font size`, m.typography.baseSize === (locale === 'AR' ? '21.2px' : '20px'), m.typography.baseSize);
   check(`${locale} · heading weight`, m.typography.headingWeight === '400', m.typography.headingWeight);
   // Letter spacing is em-relative to the heading's own size, not the base size.
   const trackingRatio = parseFloat(m.typography.headingTracking) / parseFloat(m.typography.headingFontSize);
   check(
     `${locale} · heading letter spacing`,
-    Math.abs(trackingRatio - 0.05) < 0.005,
+    locale === 'AR' ? (m.typography.headingTracking === 'normal' || parseFloat(m.typography.headingTracking) === 0) : Math.abs(trackingRatio - 0.05) < 0.005,
     `${m.typography.headingTracking} on ${m.typography.headingFontSize} (${trackingRatio.toFixed(3)}em) · ${m.typography.headingClasses}`,
   );
-  check(`${locale} · display font`, /Archivo/i.test(m.typography.displayFont ?? ''), (m.typography.displayFont ?? '').slice(0, 40));
+  check(`${locale} · display font`, (locale === 'AR' ? /Tajawal/i : /Archivo/i).test(m.typography.displayFont ?? ''), (m.typography.displayFont ?? '').slice(0, 40));
   check(
     `${locale} · body font`,
     locale === 'AR' ? /Tajawal/i.test(m.typography.bodyFont) : /Manrope/i.test(m.typography.bodyFont),
@@ -214,7 +224,7 @@ for (const [locale, path] of [['EN', '/en/services/menu-strategy-engineering-pri
   });
   check(
     `${locale} · body line height on long-form copy`,
-    prose !== null && Math.abs(parseFloat(prose.lineHeight) / parseFloat(prose.fontSize) - 2.1) < 0.05,
+    prose !== null && Math.abs(parseFloat(prose.lineHeight) / parseFloat(prose.fontSize) - (locale === 'AR' ? 2.1 * 1.08 : 2.1)) < 0.05,
     prose ? `${prose.lineHeight} / ${prose.fontSize}` : 'no prose on the page',
   );
 }

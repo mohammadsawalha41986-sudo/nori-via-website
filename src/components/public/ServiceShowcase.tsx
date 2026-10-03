@@ -1,32 +1,22 @@
 import Link from 'next/link';
-import Image from 'next/image';
+import { CmsImage as Image } from '@/components/public/CmsImage';
 import { Reveal } from '../ui/Reveal';
 import { SectionHeading } from '../ui/SectionHeading';
 import { TextLink } from '../ui/Button';
 import type { Locale } from '@/lib/i18n';
-
 export type ShowcaseService = {
   id: string;
   slug: string;
   name: string;
   summary: string;
-  /** Only the promoted card draws artwork, and only its own. */
   image?: string | null;
 };
-
-/**
- * The services grid: compact cards with one service promoted to a large card
- * carrying its own image. The promoted card is chosen in Admin; when none is
- * chosen, or the chosen one has no image, the grid degrades to plain cards
- * rather than borrowing another service's artwork.
- */
 export function ServiceShowcase({
   locale,
   headline,
   body,
   allLabel,
   services,
-  featured,
 }: {
   locale: Locale;
   headline: string;
@@ -35,68 +25,38 @@ export function ServiceShowcase({
   services: ShowcaseService[];
   featured?: ShowcaseService | null;
 }) {
-  if (!headline || services.length === 0) return null;
-
-  const hasFeature = Boolean(featured?.image);
-
+  if (!services.length) return null;
   return (
     <section className="bg-white section-y">
       <div className="shell">
-        <div className="mb-12 flex flex-wrap items-end justify-between gap-6">
+        <div className="mb-10 flex flex-wrap items-end justify-between gap-6">
           <SectionHeading title={headline} description={body} className="mb-0" />
           <TextLink href={`/${locale}/services`}>{allLabel}</TextLink>
         </div>
-
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {hasFeature && featured && (
-            <Reveal className="sm:col-span-2 lg:row-span-2">
-              <Link
-                href={`/${locale}/services/${featured.slug}`}
-                className="group relative flex h-full min-h-[22rem] flex-col justify-end overflow-hidden rounded-card bg-ink-900 p-8 text-white sm:min-h-[28rem]"
-              >
-                <Image
-                  src={featured.image as string}
-                  alt=""
-                  fill
-                  sizes="(max-width: 640px) 100vw, 66vw"
-                  className="object-cover transition-transform duration-700 ease-noriva group-hover:scale-105"
-                />
-                {/* Readability wash — the type sits over uncontrolled photography. */}
-                <div
-                  aria-hidden
-                  className="absolute inset-0 bg-gradient-to-t from-ink-950/90 via-ink-950/45 to-ink-950/10"
-                />
-                <div className="relative">
-                  <h3 className="font-display text-2xl font-display-soft uppercase sm:text-3xl">
-                    {featured.name}
-                  </h3>
-                  {featured.summary && (
-                    <p className="mt-3 max-w-xl text-sm leading-relaxed text-white/75">
-                      {featured.summary}
-                    </p>
+        <div className="pillar-grid">
+          {services.slice(0, 8).map((s, i) => (
+            <Reveal key={s.id} delay={(i % 4) * 50}>
+              <Link href={`/${locale}/services/${s.slug}`} className="pillar-card group">
+                <div className="relative aspect-[4/3] overflow-hidden bg-ink-100">
+                  {s.image && (
+                    <Image
+                      src={s.image}
+                      alt={s.name}
+                      fill
+                      sizes="(min-width:1280px) 25vw, (min-width:640px) 50vw, 88vw"
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
                   )}
+                  <span className="absolute bottom-3 start-3 bg-ink-900 px-3 py-1 font-mono text-xs text-white">
+                    0{i + 1}
+                  </span>
                 </div>
-              </Link>
-            </Reveal>
-          )}
-
-          {services.map((service, i) => (
-            <Reveal key={service.id} delay={Math.min(i, 6) * 55} y={16} className="h-full">
-              <Link
-                href={`/${locale}/services/${service.slug}`}
-                className="group flex h-full flex-col rounded-card border border-ink-900/10 bg-bone p-7 transition-colors duration-300 hover:border-brand"
-              >
-                <span aria-hidden className="font-mono text-xs text-brand">
-                  {String(i + 1).padStart(2, '0')}
-                </span>
-                <h3 className="mt-4 font-display text-lg font-display-soft uppercase text-ink-900 transition-colors duration-300 group-hover:text-brand">
-                  {service.name}
-                </h3>
-                {service.summary && (
-                  <p className="mt-3 line-clamp-3 text-sm leading-relaxed text-ink-400">
-                    {service.summary}
-                  </p>
-                )}
+                <div className="py-5">
+                  <h3 className="font-display text-lg text-ink-900 group-hover:text-brand">
+                    {s.name} <span aria-hidden>↗</span>
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-ink-500">{s.summary}</p>
+                </div>
               </Link>
             </Reveal>
           ))}

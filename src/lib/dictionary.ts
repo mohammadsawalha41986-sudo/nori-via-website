@@ -118,7 +118,7 @@ const dictionaries = {
     },
     example: { label: 'Illustrative example', note: 'An illustration of the method, not a client result.' },
     library: {
-      title: 'Library',
+      title: 'Resources',
       intro: 'Templates, models and guides you can put to work today.',
       searchPlaceholder: 'Search the library…',
       allTypes: 'All',
@@ -139,7 +139,7 @@ const dictionaries = {
       results: 'resources',
       noResults: 'No resources match those filters yet.',
       reset: 'Clear filters',
-      types: { EXCEL: 'Excel', WORD: 'Word', PDF: 'PDF', TEMPLATE: 'Templates', GUIDE: 'Guides', REPORT: 'Reports' },
+      types: { EXCEL: 'Working templates', WORD: 'Working templates', PDF: 'Guides', TEMPLATE: 'Templates', GUIDE: 'Guides', REPORT: 'Reports' },
     },
     tools: {
       title: 'Tools',
@@ -321,7 +321,7 @@ const dictionaries = {
       results: 'موردًا',
       noResults: 'لا توجد موارد مطابقة لهذه التصفية بعد.',
       reset: 'إزالة التصفية',
-      types: { EXCEL: 'إكسل', WORD: 'وورد', PDF: 'PDF', TEMPLATE: 'قوالب', GUIDE: 'أدلة', REPORT: 'تقارير' },
+      types: { EXCEL: 'نماذج عمل', WORD: 'نماذج عمل', PDF: 'أدلة', TEMPLATE: 'قوالب', GUIDE: 'أدلة', REPORT: 'تقارير' },
     },
     tools: {
       title: 'الأدوات',

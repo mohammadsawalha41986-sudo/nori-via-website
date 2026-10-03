@@ -1,5 +1,6 @@
+import { presentationGallery } from '@/lib/curated-media';
 import type { Metadata } from 'next';
-import Image from 'next/image';
+import { CmsImage as Image } from '@/components/public/CmsImage';
 import { notFound } from 'next/navigation';
 import { CTASection } from '@/components/public/CTASection';
 import { RelatedContent } from '@/components/public/RelatedContent';
@@ -66,7 +67,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ locale
   if (!project) notFound();
 
   const title = pick(project, 'title', locale);
-  const gallery = asObjectList<GalleryItem>(project.gallery);
+  const gallery = presentationGallery(asObjectList<GalleryItem>(project.gallery), project.heroMediaUrl);
   const videos = asObjectList<GalleryItem>(project.videos);
   const downloads = asObjectList<DownloadItem>(project.downloads);
   const results = asObjectList<MetricItem>(project.results);
@@ -84,7 +85,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ locale
   });
 
   const meta = [
-    project.client && { label: dict.common.client, value: project.client },
+    project.client && { label: dict.common.client, value: project.client === 'Illustrative project' ? (locale === 'ar' ? 'دراسة توضيحية — ليست عمل عميل' : 'Concept study — not client work') : project.client },
     project.category && { label: dict.common.category, value: pick(project.category, 'name', locale) },
     project.year && { label: dict.common.year, value: String(project.year) },
     project.location && { label: dict.common.location, value: project.location },
@@ -105,7 +106,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ locale
     : [];
 
   const csMetrics = cs ? asObjectList<MetricItem>(cs.metrics) : [];
-  const csGallery = cs ? asObjectList<GalleryItem>(cs.gallery) : [];
+  const csGallery = cs ? presentationGallery(asObjectList<GalleryItem>(cs.gallery), cs.heroMediaUrl) : [];
   const csFiles = cs ? asObjectList<DownloadItem>(cs.files) : [];
 
   const localisedLabel = (item: Record<string, unknown>, field: string) => pick(item, field, locale);

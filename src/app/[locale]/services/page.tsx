@@ -2,7 +2,8 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { PageHero } from '@/components/public/PageHero';
 import { sectionHero } from '@/lib/section-images';
-import { ServiceList, type ServiceGroup } from '@/components/public/ServiceList';
+import type { ServiceGroup } from '@/components/public/ServiceList';
+import { ServiceDiscovery } from '@/components/public/ServiceDiscovery';
 import { CTASection } from '@/components/public/CTASection';
 import { EmptyState } from '@/components/public/EmptyState';
 import { getDictionary } from '@/lib/dictionary';
@@ -57,7 +58,7 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
     }))
     .filter((g) => g.services.length > 0);
 
-  const uncategorised = services.filter((s) => !s.categoryId);
+  const uncategorised = services.filter((s) => !categories.some((c) => c.id === s.categoryId));
   if (uncategorised.length) {
     groups.push({
       id: 'other',
@@ -92,7 +93,7 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
       <section className="bg-bone py-24 sm:py-32">
         <div className="shell">
           {groups.length ? (
-            <ServiceList groups={groups} locale={locale} />
+            <ServiceDiscovery groups={groups} locale={locale} />
           ) : (
             <EmptyState title={dict.common.empty} body={dict.common.emptyServices} />
           )}

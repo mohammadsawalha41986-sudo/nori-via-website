@@ -1,0 +1,680 @@
+[
+  {
+    "key": "dining",
+    "url": "/img/noriva-editorial-dining.webp",
+    "width": 1800,
+    "height": 827,
+    "altEn": "Restaurant dining room and guest service layout",
+    "altAr": "صالة مطعم وتوزيع مناطق خدمة الضيوف",
+    "prompt": "Wide editorial commercial photograph of an elegant realistic Saudi restaurant dining room at early evening, warm lighting, contemporary furniture, clear service counter, a few guests in background, no foreground faces. Restaurant-business website hero, believable architecture, natural camera, no fantasy, no logos, no text."
+  },
+  {
+    "key": "menu",
+    "url": "/img/noriva-editorial-menu.webp",
+    "width": 1536,
+    "height": 1024,
+    "altEn": "Plated dishes reviewed against menu costing notes",
+    "altAr": "مراجعة أطباق مع ملاحظات تكلفة القائمة",
+    "prompt": "Editorial overhead commercial photograph of a restaurant menu development worktable: three distinct plated dishes, a simple unbranded printed menu with unobtrusive blurred print, costing notes, chef and manager hands reviewing portion sizes, natural proportions, actual menu analysis not random cooking. Premium realistic restaurant photography, no readable fake text, no dashboards."
+  },
+  {
+    "key": "delivery",
+    "url": "/img/noriva-editorial-delivery.webp",
+    "width": 1536,
+    "height": 1024,
+    "altEn": "Takeaway orders checked at restaurant dispatch",
+    "altAr": "فحص طلبات التوصيل في محطة إرسال المطعم",
+    "prompt": "Premium editorial commercial photograph of restaurant takeaway orders being checked at a dispatch station: kraft food packaging, sealed paper bags, organized ticket rail, stainless counter, believable delivery workflow, no logos or readable text, natural light, close-up composition, no faces."
+  },
+  {
+    "key": "inventory",
+    "url": "/img/noriva-editorial-inventory.webp",
+    "width": 1536,
+    "height": 1024,
+    "altEn": "Restaurant staff counting ingredient stock",
+    "altAr": "فريق المطعم يجرد مخزون المكونات",
+    "prompt": "Premium natural documentary restaurant photograph: staff counting ingredient containers and labelled dry goods in an organized restaurant storeroom, stainless shelving, clipboard without legible text, credible food safety and stock counting, Gulf restaurant context, no stylized effects."
+  },
+  {
+    "key": "brand",
+    "url": "/img/noriva-editorial-brand.webp",
+    "width": 1536,
+    "height": 1024,
+    "altEn": "Restaurant menu, cups and takeaway packaging",
+    "altAr": "قائمة وأكواب وتغليف متناسق لعلامة مطعم",
+    "prompt": "Premium commercial product photograph of a coherent restaurant brand application: unbranded navy and warm off-white takeaway packaging, folded menu, cup, paper bag, small signage piece on a stone restaurant table. Restrained identity system, no text, no logo, no people, realistic packaging."
+  },
+  {
+    "key": "launch",
+    "url": "/img/noriva-editorial-launch.webp",
+    "width": 1536,
+    "height": 1024,
+    "altEn": "Restaurant team reviewing site plans before opening",
+    "altAr": "فريق تطوير المطعم يراجع مخططات الموقع",
+    "prompt": "Realistic editorial photograph of a restaurant concept site discussion in an unfinished commercial restaurant interior: two professionals reviewing architectural floor plans on a table, sunlight, actual construction materials, credible Gulf context, candid wide framing, no readable text, no repeated faces."
+  },
+  {
+    "key": "costing",
+    "url": "/img/noriva-editorial-costing.webp",
+    "width": 1536,
+    "height": 1024,
+    "altEn": "Ingredients weighed for restaurant recipe costing",
+    "altAr": "وزن المكونات لحساب تكلفة الوصفات",
+    "prompt": "Natural commercial editorial photograph of precise restaurant recipe portioning and food costing: kitchen scales with measured ingredients, individual bowls, cutting board, notebook with indistinct handwritten notes, realistic stainless prep area, professional food safe setup, close-up no people, no fake dashboard text."
+  },
+  {
+    "key": "training",
+    "url": "/img/noriva-editorial-training.webp",
+    "width": 1536,
+    "height": 1024,
+    "altEn": "Restaurant team reviewing pre-service standards",
+    "altAr": "فريق المطعم يراجع معايير الخدمة",
+    "prompt": "Premium documentary photograph of a small restaurant service team in a practical pre-service briefing around the pass, uniforms, realistic stainless equipment, different people and composition than other images, Middle Eastern restaurant context, daylight, no text or logos, no fantasy cinematic effects."
+  },
+  {
+    "key": "service-brand-strategy-identity",
+    "serviceSlug": "brand-strategy-identity",
+    "url": "/img/noriva-editorial-service-brand-strategy-identity.webp",
+    "width": 1400,
+    "height": 933,
+    "altEn": "Brand Strategy & Identity for Restaurants & Cafés — restaurant work and analysis",
+    "altAr": "استراتيجية وهوية العلامة التجارية للمطاعم والمقاهي — عمل وتحليل داخل مشروع غذائي",
+    "prompt": "Individual subject-specific photographic scene: Brand Strategy & Identity for Restaurants & Cafés. Natural documentary light; no logos, text or actual client claims."
+  },
+  {
+    "key": "service-social-media-management",
+    "serviceSlug": "social-media-management",
+    "url": "/img/noriva-editorial-service-social-media-management.webp",
+    "width": 1400,
+    "height": 933,
+    "altEn": "Social Media Management for Restaurants — restaurant work and analysis",
+    "altAr": "إدارة وسائل التواصل الاجتماعي للمطاعم — عمل وتحليل داخل مشروع غذائي",
+    "prompt": "Individual subject-specific photographic scene: Social Media Management for Restaurants. Natural documentary light; no logos, text or actual client claims."
+  },
+  {
+    "key": "service-content-strategy",
+    "serviceSlug": "content-strategy",
+    "url": "/img/noriva-editorial-service-content-strategy.webp",
+    "width": 1400,
+    "height": 933,
+    "altEn": "Content Strategy for Restaurants — restaurant work and analysis",
+    "altAr": "استراتيجية المحتوى للمطاعم — عمل وتحليل داخل مشروع غذائي",
+    "prompt": "Individual subject-specific photographic scene: Content Strategy for Restaurants. Natural documentary light; no logos, text or actual client claims."
+  },
+  {
+    "key": "service-digital-product-web",
+    "serviceSlug": "digital-product-web",
+    "url": "/img/noriva-editorial-service-digital-product-web.webp",
+    "width": 1400,
+    "height": 933,
+    "altEn": "Digital Product & Web | F&B Websites & Digital Solutions — restaurant work and analysis",
+    "altAr": "المنتجات الرقمية والويب | مواقع وحلول رقمية للأغذية والمشروبات — عمل وتحليل داخل مشروع غذائي",
+    "prompt": "Individual subject-specific photographic scene: Digital Product & Web | F&B Websites & Digital Solutions. Natural documentary light; no logos, text or actual client claims."
+  },
+  {
+    "key": "service-content-production",
+    "serviceSlug": "content-production",
+    "url": "/img/noriva-editorial-service-content-production.webp",
+    "width": 1400,
+    "height": 933,
+    "altEn": "Content & Production | F&B Content & Creative Production — restaurant work and analysis",
+    "altAr": "Content & Production | F&B Content & Creative Production — عمل وتحليل داخل مشروع غذائي",
+    "prompt": "Individual subject-specific photographic scene: Content & Production | F&B Content & Creative Production. Natural documentary light; no logos, text or actual client claims."
+  },
+  {
+    "key": "service-content-creation",
+    "serviceSlug": "content-creation",
+    "url": "/img/noriva-editorial-service-content-creation.webp",
+    "width": 1400,
+    "height": 933,
+    "altEn": "Content Creation for Restaurants — restaurant work and analysis",
+    "altAr": "إنتاج المحتوى للمطاعم — عمل وتحليل داخل مشروع غذائي",
+    "prompt": "Individual subject-specific photographic scene: Content Creation for Restaurants. Natural documentary light; no logos, text or actual client claims."
+  },
+  {
+    "key": "service-community-management",
+    "serviceSlug": "community-management",
+    "url": "/img/noriva-editorial-service-community-management.webp",
+    "width": 1400,
+    "height": 933,
+    "altEn": "Community Management for Restaurants — restaurant work and analysis",
+    "altAr": "إدارة المجتمع للمطاعم — عمل وتحليل داخل مشروع غذائي",
+    "prompt": "Individual subject-specific photographic scene: Community Management for Restaurants. Natural documentary light; no logos, text or actual client claims."
+  },
+  {
+    "key": "service-cafe-consulting",
+    "serviceSlug": "cafe-consulting",
+    "url": "/img/noriva-editorial-service-cafe-consulting.webp",
+    "width": 1400,
+    "height": 933,
+    "altEn": "Café Consulting | Beverage, Operations & Profitability — restaurant work and analysis",
+    "altAr": "استشارات المقاهي | المشروبات والتشغيل والربحية — عمل وتحليل داخل مشروع غذائي",
+    "prompt": "Individual subject-specific photographic scene: Café Consulting | Beverage, Operations & Profitability. Natural documentary light; no logos, text or actual client claims."
+  },
+  {
+    "key": "service-social-media-design",
+    "serviceSlug": "social-media-design",
+    "url": "/img/noriva-editorial-service-social-media-design.webp",
+    "width": 1400,
+    "height": 933,
+    "altEn": "Social Media Design for Restaurants — restaurant work and analysis",
+    "altAr": "تصميم وسائل التواصل للمطاعم — عمل وتحليل داخل مشروع غذائي",
+    "prompt": "Individual subject-specific photographic scene: Social Media Design for Restaurants. Natural documentary light; no logos, text or actual client claims."
+  },
+  {
+    "key": "service-fnb-consulting",
+    "serviceSlug": "fnb-consulting",
+    "url": "/img/noriva-editorial-service-fnb-consulting.webp",
+    "width": 1400,
+    "height": 933,
+    "altEn": "F&B Consulting | Restaurant & F&B Business Consulting — restaurant work and analysis",
+    "altAr": "استشارات الأغذية والمشروبات | استشارات المطاعم وتطوير الأعمال — عمل وتحليل داخل مشروع غذائي",
+    "prompt": "Individual subject-specific photographic scene: F&B Consulting | Restaurant & F&B Business Consulting. Natural documentary light; no logos, text or actual client claims."
+  },
+  {
+    "key": "service-fnb-audit",
+    "serviceSlug": "fnb-audit",
+    "url": "/img/noriva-editorial-service-fnb-audit.webp",
+    "width": 1400,
+    "height": 933,
+    "altEn": "Comprehensive F&B Audit for Restaurants & Cafés — restaurant work and analysis",
+    "altAr": "تقييم شامل للمشروع: الأغذية والمشروبات للمطاعم والمقاهي — عمل وتحليل داخل مشروع غذائي",
+    "prompt": "Individual subject-specific photographic scene: Comprehensive F&B Audit for Restaurants & Cafés. Natural documentary light; no logos, text or actual client claims."
+  },
+  {
+    "key": "service-meta-ads",
+    "serviceSlug": "meta-ads",
+    "url": "/img/noriva-editorial-service-meta-ads.webp",
+    "width": 1400,
+    "height": 933,
+    "altEn": "Meta Ads for Restaurants — restaurant work and analysis",
+    "altAr": "إعلانات ميتا للمطاعم — عمل وتحليل داخل مشروع غذائي",
+    "prompt": "Individual subject-specific photographic scene: Meta Ads for Restaurants. Natural documentary light; no logos, text or actual client claims."
+  },
+  {
+    "key": "service-management-advisory",
+    "serviceSlug": "management-advisory",
+    "url": "/img/noriva-editorial-service-management-advisory.webp",
+    "width": 1400,
+    "height": 933,
+    "altEn": "Management Advisory for F&B Businesses — restaurant work and analysis",
+    "altAr": "الاستشارات الإدارية لمشاريع الأغذية والمشروبات | نيروفا — عمل وتحليل داخل مشروع غذائي",
+    "prompt": "Individual subject-specific photographic scene: Management Advisory for F&B Businesses. Natural documentary light; no logos, text or actual client claims."
+  },
+  {
+    "key": "service-google-ads",
+    "serviceSlug": "google-ads",
+    "url": "/img/noriva-editorial-service-google-ads.webp",
+    "width": 1400,
+    "height": 933,
+    "altEn": "Google Ads for Restaurants — restaurant work and analysis",
+    "altAr": "إعلانات جوجل للمطاعم — عمل وتحليل داخل مشروع غذائي",
+    "prompt": "Individual subject-specific photographic scene: Google Ads for Restaurants. Natural documentary light; no logos, text or actual client claims."
+  },
+  {
+    "key": "service-tiktok-ads",
+    "serviceSlug": "tiktok-ads",
+    "url": "/img/noriva-editorial-service-tiktok-ads.webp",
+    "width": 1400,
+    "height": 933,
+    "altEn": "TikTok Ads for Restaurants — restaurant work and analysis",
+    "altAr": "إعلانات تيك توك للمطاعم — عمل وتحليل داخل مشروع غذائي",
+    "prompt": "Individual subject-specific photographic scene: TikTok Ads for Restaurants. Natural documentary light; no logos, text or actual client claims."
+  },
+  {
+    "key": "service-new-cafe-project",
+    "serviceSlug": "new-cafe-project",
+    "url": "/img/noriva-editorial-service-new-cafe-project.webp",
+    "width": 1400,
+    "height": 933,
+    "altEn": "New Café Project for Restaurants & Cafés — restaurant work and analysis",
+    "altAr": "مشروع مقهى جديد للمطاعم والمقاهي — عمل وتحليل داخل مشروع غذائي",
+    "prompt": "Individual subject-specific photographic scene: New Café Project for Restaurants & Cafés. Natural documentary light; no logos, text or actual client claims."
+  },
+  {
+    "key": "service-new-restaurant-project",
+    "serviceSlug": "new-restaurant-project",
+    "url": "/img/noriva-editorial-service-new-restaurant-project.webp",
+    "width": 1400,
+    "height": 933,
+    "altEn": "New Restaurant Development & F&B Consulting | Nirova — restaurant work and analysis",
+    "altAr": "تطوير المطاعم الجديدة واستشارات الأغذية والمشروبات | نيروفا — عمل وتحليل داخل مشروع غذائي",
+    "prompt": "Individual subject-specific photographic scene: New Restaurant Development & F&B Consulting | Nirova. Natural documentary light; no logos, text or actual client claims."
+  },
+  {
+    "key": "service-campaign-optimization",
+    "serviceSlug": "campaign-optimization",
+    "url": "/img/noriva-editorial-service-campaign-optimization.webp",
+    "width": 1400,
+    "height": 933,
+    "altEn": "Campaign Optimization for Restaurants — restaurant work and analysis",
+    "altAr": "تحسين الحملات للمطاعم — عمل وتحليل داخل مشروع غذائي",
+    "prompt": "Individual subject-specific photographic scene: Campaign Optimization for Restaurants. Natural documentary light; no logos, text or actual client claims."
+  },
+  {
+    "key": "service-performance-marketing",
+    "serviceSlug": "performance-marketing",
+    "url": "/img/noriva-editorial-service-performance-marketing.webp",
+    "width": 1400,
+    "height": 933,
+    "altEn": "Performance Marketing for Restaurants — restaurant work and analysis",
+    "altAr": "التسويق بالأداء للمطاعم — عمل وتحليل داخل مشروع غذائي",
+    "prompt": "Individual subject-specific photographic scene: Performance Marketing for Restaurants. Natural documentary light; no logos, text or actual client claims."
+  },
+  {
+    "key": "service-concept-development",
+    "serviceSlug": "concept-development",
+    "url": "/img/noriva-editorial-service-concept-development.webp",
+    "width": 1400,
+    "height": 933,
+    "altEn": "F&B Concept Development for Restaurants & Cafés — restaurant work and analysis",
+    "altAr": "تطوير مفهوم غذائي للمطاعم والمقاهي — عمل وتحليل داخل مشروع غذائي",
+    "prompt": "Individual subject-specific photographic scene: F&B Concept Development for Restaurants & Cafés. Natural documentary light; no logos, text or actual client claims."
+  },
+  {
+    "key": "service-roas-analysis",
+    "serviceSlug": "roas-analysis",
+    "url": "/img/noriva-editorial-service-roas-analysis.webp",
+    "width": 1400,
+    "height": 933,
+    "altEn": "ROAS Analysis for Restaurants — restaurant work and analysis",
+    "altAr": "تحليل العائد على الإنفاق الإعلاني للمطاعم — عمل وتحليل داخل مشروع غذائي",
+    "prompt": "Individual subject-specific photographic scene: ROAS Analysis for Restaurants. Natural documentary light; no logos, text or actual client claims."
+  },
+  {
+    "key": "service-feasibility-study",
+    "serviceSlug": "feasibility-study",
+    "url": "/img/noriva-editorial-service-feasibility-study.webp",
+    "width": 1400,
+    "height": 933,
+    "altEn": "Feasibility Study for Restaurants & Cafés — restaurant work and analysis",
+    "altAr": "دراسة الجدوى للمطاعم والمقاهي — عمل وتحليل داخل مشروع غذائي",
+    "prompt": "Individual subject-specific photographic scene: Feasibility Study for Restaurants & Cafés. Natural documentary light; no logos, text or actual client claims."
+  },
+  {
+    "key": "service-brand-identity",
+    "serviceSlug": "brand-identity",
+    "url": "/img/noriva-editorial-service-brand-identity.webp",
+    "width": 1400,
+    "height": 933,
+    "altEn": "Brand Identity for Restaurants — restaurant work and analysis",
+    "altAr": "الهوية البصرية للمطاعم — عمل وتحليل داخل مشروع غذائي",
+    "prompt": "Individual subject-specific photographic scene: Brand Identity for Restaurants. Natural documentary light; no logos, text or actual client claims."
+  },
+  {
+    "key": "service-expansion-study",
+    "serviceSlug": "expansion-study",
+    "url": "/img/noriva-editorial-service-expansion-study.webp",
+    "width": 1400,
+    "height": 933,
+    "altEn": "Expansion Study for Restaurants & Cafés — restaurant work and analysis",
+    "altAr": "دراسة التوسع للمطاعم والمقاهي — عمل وتحليل داخل مشروع غذائي",
+    "prompt": "Individual subject-specific photographic scene: Expansion Study for Restaurants & Cafés. Natural documentary light; no logos, text or actual client claims."
+  },
+  {
+    "key": "service-creative-direction",
+    "serviceSlug": "creative-direction",
+    "url": "/img/noriva-editorial-service-creative-direction.webp",
+    "width": 1400,
+    "height": 933,
+    "altEn": "Creative Direction for Restaurants — restaurant work and analysis",
+    "altAr": "الإدارة الإبداعية للمطاعم — عمل وتحليل داخل مشروع غذائي",
+    "prompt": "Individual subject-specific photographic scene: Creative Direction for Restaurants. Natural documentary light; no logos, text or actual client claims."
+  },
+  {
+    "key": "service-profitability-analysis",
+    "serviceSlug": "profitability-analysis",
+    "url": "/img/noriva-editorial-service-profitability-analysis.webp",
+    "width": 1400,
+    "height": 933,
+    "altEn": "Profitability Analysis for Restaurants & Cafés — restaurant work and analysis",
+    "altAr": "تحليل الربحية للمطاعم والمقاهي — عمل وتحليل داخل مشروع غذائي",
+    "prompt": "Individual subject-specific photographic scene: Profitability Analysis for Restaurants & Cafés. Natural documentary light; no logos, text or actual client claims."
+  },
+  {
+    "key": "service-cost-reduction",
+    "serviceSlug": "cost-reduction",
+    "url": "/img/noriva-editorial-service-cost-reduction.webp",
+    "width": 1400,
+    "height": 933,
+    "altEn": "Cost Reduction for Restaurants & Cafés — restaurant work and analysis",
+    "altAr": "خفض التكاليف للمطاعم والمقاهي — عمل وتحليل داخل مشروع غذائي",
+    "prompt": "Individual subject-specific photographic scene: Cost Reduction for Restaurants & Cafés. Natural documentary light; no logos, text or actual client claims."
+  },
+  {
+    "key": "service-graphic-design",
+    "serviceSlug": "graphic-design",
+    "url": "/img/noriva-editorial-service-graphic-design.webp",
+    "width": 1400,
+    "height": 933,
+    "altEn": "Graphic Design for Restaurants — restaurant work and analysis",
+    "altAr": "التصميم الجرافيكي للمطاعم — عمل وتحليل داخل مشروع غذائي",
+    "prompt": "Individual subject-specific photographic scene: Graphic Design for Restaurants. Natural documentary light; no logos, text or actual client claims."
+  },
+  {
+    "key": "service-financial-planning",
+    "serviceSlug": "financial-planning",
+    "url": "/img/noriva-editorial-service-financial-planning.webp",
+    "width": 1400,
+    "height": 933,
+    "altEn": "Financial Planning & Budget for Restaurants & Cafés — restaurant work and analysis",
+    "altAr": "التخطيط المالي والموازنة للمطاعم والمقاهي — عمل وتحليل داخل مشروع غذائي",
+    "prompt": "Individual subject-specific photographic scene: Financial Planning & Budget for Restaurants & Cafés. Natural documentary light; no logos, text or actual client claims."
+  },
+  {
+    "key": "service-photography",
+    "serviceSlug": "photography",
+    "url": "/img/noriva-editorial-service-photography.webp",
+    "width": 1400,
+    "height": 933,
+    "altEn": "Photography for Restaurants — restaurant work and analysis",
+    "altAr": "التصوير الفوتوغرافي للمطاعم — عمل وتحليل داخل مشروع غذائي",
+    "prompt": "Individual subject-specific photographic scene: Photography for Restaurants. Natural documentary light; no logos, text or actual client claims."
+  },
+  {
+    "key": "service-menu-pricing",
+    "serviceSlug": "menu-pricing",
+    "url": "/img/noriva-editorial-service-menu-pricing.webp",
+    "width": 1400,
+    "height": 933,
+    "altEn": "Menu Pricing for Restaurants & Cafés — restaurant work and analysis",
+    "altAr": "تسعير القائمة للمطاعم والمقاهي — عمل وتحليل داخل مشروع غذائي",
+    "prompt": "Individual subject-specific photographic scene: Menu Pricing for Restaurants & Cafés. Natural documentary light; no logos, text or actual client claims."
+  },
+  {
+    "key": "service-food-cost-analysis",
+    "serviceSlug": "food-cost-analysis",
+    "url": "/img/noriva-editorial-service-food-cost-analysis.webp",
+    "width": 1400,
+    "height": 933,
+    "altEn": "Food Cost Analysis for Restaurants & Cafés — restaurant work and analysis",
+    "altAr": "تحليل تكلفة الطعام للمطاعم والمقاهي — عمل وتحليل داخل مشروع غذائي",
+    "prompt": "Individual subject-specific photographic scene: Food Cost Analysis for Restaurants & Cafés. Natural documentary light; no logos, text or actual client claims."
+  },
+  {
+    "key": "service-campaign-creatives",
+    "serviceSlug": "campaign-creatives",
+    "url": "/img/noriva-editorial-service-campaign-creatives.webp",
+    "width": 1400,
+    "height": 933,
+    "altEn": "Campaign Creatives for Restaurants — restaurant work and analysis",
+    "altAr": "إبداعات الحملات للمطاعم — عمل وتحليل داخل مشروع غذائي",
+    "prompt": "Individual subject-specific photographic scene: Campaign Creatives for Restaurants. Natural documentary light; no logos, text or actual client claims."
+  },
+  {
+    "key": "service-delivery-menu-pricing",
+    "serviceSlug": "delivery-menu-pricing",
+    "url": "/img/noriva-editorial-service-delivery-menu-pricing.webp",
+    "width": 1400,
+    "height": 933,
+    "altEn": "Delivery Menu & Pricing for Restaurants & Cafés — restaurant work and analysis",
+    "altAr": "قائمة وتسعير التوصيل للمطاعم والمقاهي — عمل وتحليل داخل مشروع غذائي",
+    "prompt": "Individual subject-specific photographic scene: Delivery Menu & Pricing for Restaurants & Cafés. Natural documentary light; no logos, text or actual client claims."
+  },
+  {
+    "key": "service-fnb-marketing",
+    "serviceSlug": "fnb-marketing",
+    "url": "/img/noriva-editorial-service-fnb-marketing.webp",
+    "width": 1400,
+    "height": 933,
+    "altEn": "F&B Marketing for Restaurants & Cafés — restaurant work and analysis",
+    "altAr": "تسويق الأغذية والمشروبات للمطاعم والمقاهي — عمل وتحليل داخل مشروع غذائي",
+    "prompt": "Individual subject-specific photographic scene: F&B Marketing for Restaurants & Cafés. Natural documentary light; no logos, text or actual client claims."
+  },
+  {
+    "key": "service-menu-development",
+    "serviceSlug": "menu-development",
+    "url": "/img/noriva-editorial-service-menu-development.webp",
+    "width": 1400,
+    "height": 933,
+    "altEn": "Menu Development for Restaurants — restaurant work and analysis",
+    "altAr": "تطوير قائمة الطعام للمطاعم — عمل وتحليل داخل مشروع غذائي",
+    "prompt": "Individual subject-specific photographic scene: Menu Development for Restaurants. Natural documentary light; no logos, text or actual client claims."
+  },
+  {
+    "key": "service-menu-engineering",
+    "serviceSlug": "menu-engineering",
+    "url": "/img/noriva-editorial-service-menu-engineering.webp",
+    "width": 1400,
+    "height": 933,
+    "altEn": "Menu Engineering for Restaurants — restaurant work and analysis",
+    "altAr": "هندسة قائمة الطعام للمطاعم — عمل وتحليل داخل مشروع غذائي",
+    "prompt": "Individual subject-specific photographic scene: Menu Engineering for Restaurants. Natural documentary light; no logos, text or actual client claims."
+  },
+  {
+    "key": "service-operational-audit",
+    "serviceSlug": "operational-audit",
+    "url": "/img/noriva-editorial-service-operational-audit.webp",
+    "width": 1400,
+    "height": 933,
+    "altEn": "Operational Audit for Restaurants & Cafés — restaurant work and analysis",
+    "altAr": "التقييم التشغيلي للمطاعم والمقاهي — عمل وتحليل داخل مشروع غذائي",
+    "prompt": "Operational audit: restaurant kitchen preparation stations and shift supervisor checking a clipboard. Illustrative scene, not an actual NORIVA client."
+  },
+  {
+    "key": "service-brand-identity-fnb",
+    "serviceSlug": "brand-identity-fnb",
+    "url": "/img/noriva-editorial-service-brand-identity-fnb.webp",
+    "width": 1400,
+    "height": 933,
+    "altEn": "Brand & Concept Positioning for Restaurants & Cafés — restaurant work and analysis",
+    "altAr": "العلامة وتموضع المفهوم للمطاعم والمقاهي — عمل وتحليل داخل مشروع غذائي",
+    "prompt": "A new independent realistic commercial editorial photograph. Restaurant identity material flat lay with dark green cups bags napkin packaging, no lettering, studio table. Natural documentary daylight, premium restrained restaurant-business imagery, believable details. No legible text, logos, fantasy architecture or synthetic glow. Wide 3:2 photograph. Illustrative methodological scene, not actual NORIVA client work."
+  },
+  {
+    "key": "service-restaurant-consulting",
+    "serviceSlug": "restaurant-consulting",
+    "url": "/img/noriva-editorial-service-restaurant-consulting.webp",
+    "width": 1400,
+    "height": 933,
+    "altEn": "Restaurant Consulting | Operations, Cost & Profitability — restaurant work and analysis",
+    "altAr": "استشارات المطاعم | التشغيل والتكاليف والربحية — عمل وتحليل داخل مشروع غذائي",
+    "prompt": "A new independent realistic commercial editorial photograph. Manager and chef walking through restaurant service floor before opening, wide candid. Natural documentary daylight, premium restrained restaurant-business imagery, believable details. No legible text, logos, fantasy architecture or synthetic glow. Wide 3:2 photograph. Illustrative methodological scene, not actual NORIVA client work."
+  },
+  {
+    "key": "service-recipe-costing",
+    "serviceSlug": "recipe-costing",
+    "url": "/img/noriva-editorial-service-recipe-costing.webp",
+    "width": 1400,
+    "height": 933,
+    "altEn": "Recipe Costing for Restaurants — restaurant work and analysis",
+    "altAr": "تكلفة الوصفات للمطاعم — عمل وتحليل داخل مشروع غذائي",
+    "prompt": "A new independent realistic commercial editorial photograph. Closeup chef hands weighing sauce portion on precise kitchen scale beside recipe notebook and ingredients. Natural documentary daylight, premium restrained restaurant-business imagery, believable details. No legible text, logos, fantasy architecture or synthetic glow. Wide 3:2 photograph. Illustrative methodological scene, not actual NORIVA client work."
+  },
+  {
+    "key": "service-growth-performance",
+    "serviceSlug": "growth-performance",
+    "url": "/img/noriva-editorial-service-growth-performance.webp",
+    "width": 1400,
+    "height": 933,
+    "altEn": "Growth & Performance for Restaurants & Cafés — restaurant work and analysis",
+    "altAr": "النمو والأداء للمطاعم والمقاهي — عمل وتحليل داخل مشروع غذائي",
+    "prompt": "A new independent realistic commercial editorial photograph. Two restaurant managers reviewing a wall plan in operations office, no food or consultant portrait. Natural documentary daylight, premium restrained restaurant-business imagery, believable details. No legible text, logos, fantasy architecture or synthetic glow. Wide 3:2 photograph. Illustrative methodological scene, not actual NORIVA client work."
+  },
+  {
+    "key": "service-customer-experience",
+    "serviceSlug": "customer-experience",
+    "url": "/img/noriva-editorial-service-customer-experience.webp",
+    "width": 1400,
+    "height": 933,
+    "altEn": "Customer Experience for Restaurants & Cafés — restaurant work and analysis",
+    "altAr": "تجربة العميل للمطاعم والمقاهي — عمل وتحليل داخل مشروع غذائي",
+    "prompt": "A new independent realistic commercial editorial photograph. Restaurant host welcoming a couple at entry reception, natural candid guest service. Natural documentary daylight, premium restrained restaurant-business imagery, believable details. No legible text, logos, fantasy architecture or synthetic glow. Wide 3:2 photograph. Illustrative methodological scene, not actual NORIVA client work."
+  },
+  {
+    "key": "service-cost-control",
+    "serviceSlug": "cost-control",
+    "url": "/img/noriva-editorial-service-cost-control.webp",
+    "width": 1400,
+    "height": 933,
+    "altEn": "Cost Control for Restaurants — restaurant work and analysis",
+    "altAr": "ضبط التكاليف للمطاعم — عمل وتحليل داخل مشروع غذائي",
+    "prompt": "A new independent realistic commercial editorial photograph. Restaurant stockkeeper counting dry-store containers and checking clipboard, shelves closeup. Natural documentary daylight, premium restrained restaurant-business imagery, believable details. No legible text, logos, fantasy architecture or synthetic glow. Wide 3:2 photograph. Illustrative methodological scene, not actual NORIVA client work."
+  },
+  {
+    "key": "service-fnb-growth",
+    "serviceSlug": "fnb-growth",
+    "url": "/img/noriva-editorial-service-fnb-growth.webp",
+    "width": 1400,
+    "height": 933,
+    "altEn": "F&B Growth for Restaurants & Cafés — restaurant work and analysis",
+    "altAr": "نمو مشاريع الأغذية والمشروبات للمطاعم والمقاهي — عمل وتحليل داخل مشروع غذائي",
+    "prompt": "A new independent realistic commercial editorial photograph. Exterior bustling restaurant terrace with orderly service and guests, natural business growth setting. Natural documentary daylight, premium restrained restaurant-business imagery, believable details. No legible text, logos, fantasy architecture or synthetic glow. Wide 3:2 photograph. Illustrative methodological scene, not actual NORIVA client work."
+  },
+  {
+    "key": "service-performance-analysis",
+    "serviceSlug": "performance-analysis",
+    "url": "/img/noriva-editorial-service-performance-analysis.webp",
+    "width": 1400,
+    "height": 933,
+    "altEn": "Performance Analysis for Restaurants — restaurant work and analysis",
+    "altAr": "تحليل الأداء للمطاعم — عمل وتحليل داخل مشروع غذائي",
+    "prompt": "A new independent realistic commercial editorial photograph. Overhead restaurant sales-analysis workspace with anonymous receipt rolls numerical report and calculator. Natural documentary daylight, premium restrained restaurant-business imagery, believable details. No legible text, logos, fantasy architecture or synthetic glow. Wide 3:2 photograph. Illustrative methodological scene, not actual NORIVA client work."
+  },
+  {
+    "key": "service-branch-development",
+    "serviceSlug": "branch-development",
+    "url": "/img/noriva-editorial-service-branch-development.webp",
+    "width": 1400,
+    "height": 933,
+    "altEn": "Branch Development for Restaurants & Cafés — restaurant work and analysis",
+    "altAr": "تطوير الفروع للمطاعم والمقاهي — عمل وتحليل داخل مشروع غذائي",
+    "prompt": "A new independent realistic commercial editorial photograph. Two architects inspecting newly finished restaurant branch, folded floor plan in hands, wide interior. Natural documentary daylight, premium restrained restaurant-business imagery, believable details. No legible text, logos, fantasy architecture or synthetic glow. Wide 3:2 photograph. Illustrative methodological scene, not actual NORIVA client work."
+  },
+  {
+    "key": "service-performance-improvement",
+    "serviceSlug": "performance-improvement",
+    "url": "/img/noriva-editorial-service-performance-improvement.webp",
+    "width": 1400,
+    "height": 933,
+    "altEn": "Performance Improvement for Restaurants & Cafés — restaurant work and analysis",
+    "altAr": "تحسين الأداء للمطاعم والمقاهي — عمل وتحليل داخل مشروع غذائي",
+    "prompt": "A new independent realistic commercial editorial photograph. Kitchen shift lead training two cooks at well organized prep line, side view. Natural documentary daylight, premium restrained restaurant-business imagery, believable details. No legible text, logos, fantasy architecture or synthetic glow. Wide 3:2 photograph. Illustrative methodological scene, not actual NORIVA client work."
+  },
+  {
+    "key": "service-advertising-campaigns",
+    "serviceSlug": "advertising-campaigns",
+    "url": "/img/noriva-editorial-service-advertising-campaigns.webp",
+    "width": 1400,
+    "height": 933,
+    "altEn": "Advertising & Campaigns for Restaurants & Cafés — restaurant work and analysis",
+    "altAr": "الدعاية والحملات الإعلانية للمطاعم والمقاهي — عمل وتحليل داخل مشروع غذائي",
+    "prompt": "A new independent realistic commercial editorial photograph. Studio product shoot of takeaway meal on deep blue background with softboxes at edges. Natural documentary daylight, premium restrained restaurant-business imagery, believable details. No legible text, logos, fantasy architecture or synthetic glow. Wide 3:2 photograph. Illustrative methodological scene, not actual NORIVA client work."
+  },
+  {
+    "key": "service-growth-strategy",
+    "serviceSlug": "growth-strategy",
+    "url": "/img/noriva-editorial-service-growth-strategy.webp",
+    "width": 1400,
+    "height": 933,
+    "altEn": "Growth Strategy for Restaurants — restaurant work and analysis",
+    "altAr": "استراتيجية النمو للمطاعم — عمل وتحليل داخل مشروع غذائي",
+    "prompt": "A new independent realistic commercial editorial photograph. Restaurant business planning wall with location sketches and neutral sticky notes, manager standing side view. Natural documentary daylight, premium restrained restaurant-business imagery, believable details. No legible text, logos, fantasy architecture or synthetic glow. Wide 3:2 photograph. Illustrative methodological scene, not actual NORIVA client work."
+  },
+  {
+    "key": "service-menu-design",
+    "serviceSlug": "menu-design",
+    "url": "/img/noriva-editorial-service-menu-design.webp",
+    "width": 1400,
+    "height": 933,
+    "altEn": "Menu Design & Packaging for Restaurants & Cafés — restaurant work and analysis",
+    "altAr": "تصميم القائمة والتغليف للمطاعم والمقاهي — عمل وتحليل داخل مشروع غذائي",
+    "prompt": "A new independent realistic commercial editorial photograph. Closeup restaurant menu booklet with indistinct lettering, sample paper colors, editorial flatlay. Natural documentary daylight, premium restrained restaurant-business imagery, believable details. No legible text, logos, fantasy architecture or synthetic glow. Wide 3:2 photograph. Illustrative methodological scene, not actual NORIVA client work."
+  },
+  {
+    "key": "service-menu-strategy-engineering-pricing",
+    "serviceSlug": "menu-strategy-engineering-pricing",
+    "url": "/img/noriva-editorial-service-menu-strategy-engineering-pricing.webp",
+    "width": 1400,
+    "height": 933,
+    "altEn": "Menu Strategy, Engineering & Pricing | F&B Menu Consulting — restaurant work and analysis",
+    "altAr": "استراتيجية وهندسة وتسعير القوائم | استشارات قوائم الأغذية والمشروبات — عمل وتحليل داخل مشروع غذائي",
+    "prompt": "A new independent realistic commercial editorial photograph. Overhead tasting and menu decision workspace with three distinct dishes calculator and printed menu, no people. Natural documentary daylight, premium restrained restaurant-business imagery, believable details. No legible text, logos, fantasy architecture or synthetic glow. Wide 3:2 photograph. Illustrative methodological scene, not actual NORIVA client work."
+  },
+  {
+    "key": "service-spatial-experience",
+    "serviceSlug": "spatial-experience",
+    "url": "/img/noriva-editorial-service-spatial-experience.webp",
+    "width": 1400,
+    "height": 933,
+    "altEn": "Spatial & Experience for Restaurants & Cafés — restaurant work and analysis",
+    "altAr": "التجربة والمكان للمطاعم والمقاهي — عمل وتحليل داخل مشروع غذائي",
+    "prompt": "A new independent realistic commercial editorial photograph. Architectural restaurant dining room showing entrance circulation and table spacing, no people, daylight. Natural documentary daylight, premium restrained restaurant-business imagery, believable details. No legible text, logos, fantasy architecture or synthetic glow. Wide 3:2 photograph. Illustrative methodological scene, not actual NORIVA client work."
+  },
+  {
+    "key": "service-social-media-management-fnb",
+    "serviceSlug": "social-media-management-fnb",
+    "url": "/img/noriva-editorial-service-social-media-management-fnb.webp",
+    "width": 1400,
+    "height": 933,
+    "altEn": "Social Media for Restaurants & Cafés — restaurant work and analysis",
+    "altAr": "إدارة السوشال ميديا للمطاعم والمقاهي — عمل وتحليل داخل مشروع غذائي",
+    "prompt": "A new independent realistic commercial editorial photograph. Barista hands holding phone to photograph a finished latte and pastry on café counter. Natural documentary daylight, premium restrained restaurant-business imagery, believable details. No legible text, logos, fantasy architecture or synthetic glow. Wide 3:2 photograph. Illustrative methodological scene, not actual NORIVA client work."
+  },
+  {
+    "key": "case-menu-restructure",
+    "projectSlug": "sample-menu-restructure",
+    "caseStudySlug": "menu-restructure-case-study",
+    "url": "/img/noriva-editorial-case-menu-restructure.webp",
+    "width": 1400,
+    "height": 933,
+    "altEn": "menu restructure — illustrative restaurant project",
+    "altAr": "مراجعة قائمة وتذوق أطباق — مشروع توضيحي",
+    "prompt": "Premium realistic editorial restaurant-business commercial photography. A restaurant menu restructuring concept case. Overhead review table with a carefully edited seasonal menu, four small plated tastings and a notebook of indistinct costing notes. A different composition than chef hands with 3plates. No faces. This illustrates methodology, not actual client work. Natural equipment and architecture, realistic anatomy, no text, no logos, no fake dashboards, no fantasy lighting. Wide 3:2 composition."
+  },
+  {
+    "key": "case-cafe-concept",
+    "projectSlug": "sample-cafe-concept-development",
+    "caseStudySlug": "cafe-concept-case-study",
+    "url": "/img/noriva-editorial-case-cafe-concept.webp",
+    "width": 1400,
+    "height": 933,
+    "altEn": "cafe concept — illustrative restaurant project",
+    "altAr": "بار قهوة ومسار خدمة — مشروع توضيحي",
+    "prompt": "Premium realistic editorial restaurant-business commercial photography. A café concept development case: a finished compact Gulf specialty coffee bar with espresso equipment, coordinated plain navy cups and pale wood counter, thoughtful service flow. No people, no signs. This illustrates methodology, not actual client work. Natural equipment and architecture, realistic anatomy, no text, no logos, no fake dashboards, no fantasy lighting. Wide 3:2 composition."
+  },
+  {
+    "key": "case-delivery-rebuild",
+    "projectSlug": "sample-delivery-channel-rebuild",
+    "caseStudySlug": "delivery-rebuild-case-study",
+    "url": "/img/noriva-editorial-case-delivery-rebuild.webp",
+    "width": 1400,
+    "height": 933,
+    "altEn": "delivery rebuild — illustrative restaurant project",
+    "altAr": "تجهيز طلبات توصيل — مشروع توضيحي",
+    "prompt": "Premium realistic editorial restaurant-business commercial photography. A delivery channel restructuring case: side view of a quality control packing area with two different branded-color but logo-free takeaway orders, small packaging scale, bag sealing materials, order checking. No faces. This illustrates methodology, not actual client work. Natural equipment and architecture, realistic anatomy, no text, no logos, no fake dashboards, no fantasy lighting. Wide 3:2 composition."
+  },
+  {
+    "key": "case-opening-programme",
+    "projectSlug": "sample-restaurant-opening-programme",
+    "caseStudySlug": "opening-programme-case-study",
+    "url": "/img/noriva-editorial-case-opening-programme.webp",
+    "width": 1400,
+    "height": 933,
+    "altEn": "opening programme — illustrative restaurant project",
+    "altAr": "استعداد مطعم للافتتاح — مشروع توضيحي",
+    "prompt": "Premium realistic editorial restaurant-business commercial photography. A restaurant opening programme case: pre-opening team setting a realistic new casual restaurant dining room, tables ready for soft launch, seating plan on a side table with no readable text. Natural daylight, broad documentary view. This illustrates methodology, not actual client work. Natural equipment and architecture, realistic anatomy, no text, no logos, no fake dashboards, no fantasy lighting. Wide 3:2 composition."
+  },
+  {
+    "key": "case-guest-experience",
+    "projectSlug": "sample-guest-experience-programme",
+    "caseStudySlug": "guest-experience-case-study",
+    "url": "/img/noriva-editorial-case-guest-experience.webp",
+    "width": 1400,
+    "height": 933,
+    "altEn": "guest experience — illustrative restaurant project",
+    "altAr": "تجربة ضيوف المطعم — مشروع توضيحي",
+    "prompt": "Premium realistic editorial restaurant-business commercial photography. A guest experience concept case: restaurant host welcoming a couple at a calm clear reception desk, entrance, seating and service stations composition show flow, natural realistic Gulf hospitality. Distinct faces, no readable signs. This illustrates methodology, not actual client work. Natural equipment and architecture, realistic anatomy, no text, no logos, no fake dashboards, no fantasy lighting. Wide 3:2 composition."
+  },
+  {
+    "key": "case-multi-branch-readiness",
+    "projectSlug": "sample-multi-branch-readiness",
+    "caseStudySlug": "multi-branch-readiness-case-study",
+    "url": "/img/noriva-editorial-case-multi-branch-readiness.webp",
+    "width": 1400,
+    "height": 933,
+    "altEn": "multi branch readiness — illustrative restaurant project",
+    "altAr": "مراجعة جاهزية الفروع — مشروع توضيحي",
+    "prompt": "Premium realistic editorial restaurant-business commercial photography. A multi-branch readiness case: restaurant regional manager and two branch supervisors comparing printed site floorplans and standard operating folders in a modest restaurant office overlooking a kitchen. No legible text or charts. This illustrates methodology, not actual client work. Natural equipment and architecture, realistic anatomy, no text, no logos, no fake dashboards, no fantasy lighting. Wide 3:2 composition."
+  }
+]

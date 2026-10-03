@@ -22,6 +22,7 @@ export type RelatedItem = {
   href: string;
   image: string | null;
   badge: string;
+  resourceType?: string;
 };
 
 export const CONTENT_TYPES = ['INSIGHT', 'RESOURCE', 'TOOL', 'SERVICE', 'CASE_STUDY', 'PROJECT', 'PAGE'] as const;
@@ -176,6 +177,7 @@ export async function loadRefs(refs: ContentRef[], locale: Locale): Promise<Rela
           summary: pick(row, 'summary', locale),
           href: `/${locale}/library/${row.slug}`,
           image: row.thumbnail,
+          resourceType: row.type,
         });
       }
     })(),

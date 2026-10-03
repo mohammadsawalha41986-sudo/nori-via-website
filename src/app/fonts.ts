@@ -1,64 +1,61 @@
-import {
-  Inter,
-  Manrope,
-  Plus_Jakarta_Sans,
-  Bricolage_Grotesque,
-  Space_Grotesk,
-  Archivo,
-  IBM_Plex_Sans_Arabic,
-  Tajawal,
-  Cairo,
-} from 'next/font/google';
+import localFont from 'next/font/local';
 
-/**
- * Every selectable family is self-hosted by `next/font` and exposes the same
- * CSS variable, so switching a font in Admin is a class swap on <html> — no
- * runtime request to a third-party font host, and no layout shift on load.
- *
- * Each loader must be called and assigned at module scope; the maps below just
- * index those constants.
- */
-const inter = Inter({ subsets: ['latin'], variable: '--font-sans', display: 'swap' });
-const manrope = Manrope({ subsets: ['latin'], variable: '--font-sans', display: 'swap' });
-const jakarta = Plus_Jakarta_Sans({ subsets: ['latin'], variable: '--font-sans', display: 'swap' });
-
-const bricolage = Bricolage_Grotesque({
-  subsets: ['latin'],
-  variable: '--font-display',
-  display: 'swap',
-  weight: ['400', '600', '700', '800'],
-});
-const spaceGrotesk = Space_Grotesk({
-  subsets: ['latin'],
-  variable: '--font-display',
-  display: 'swap',
-  weight: ['400', '600', '700'],
-});
-const archivo = Archivo({
-  subsets: ['latin'],
-  variable: '--font-display',
-  display: 'swap',
-  weight: ['400', '600', '700', '800'],
-});
-
-const plexArabic = IBM_Plex_Sans_Arabic({
-  subsets: ['arabic', 'latin'],
-  variable: '--font-arabic',
-  display: 'swap',
-  weight: ['300', '400', '500', '600', '700'],
-});
-const tajawal = Tajawal({
-  subsets: ['arabic'],
-  variable: '--font-arabic',
-  display: 'swap',
-  weight: ['300', '400', '500', '700'],
-});
-const cairo = Cairo({
-  subsets: ['arabic', 'latin'],
-  variable: '--font-arabic',
-  display: 'swap',
-  weight: ['300', '400', '600', '700'],
-});
+// Bundled licensed fonts make builds independent of Google availability.
+// The browser requests only the family selected in CMS.
+const inter = localFont({ src: [
+    { path: '../../public/fonts/inter-400.woff2', weight: '400', style: 'normal' },
+    { path: '../../public/fonts/inter-500.woff2', weight: '500', style: 'normal' },
+    { path: '../../public/fonts/inter-600.woff2', weight: '600', style: 'normal' },
+    { path: '../../public/fonts/inter-700.woff2', weight: '700', style: 'normal' }
+], variable: '--font-sans', display: 'swap', preload: false });
+const manrope = localFont({ src: [
+    { path: '../../public/fonts/manrope-400.woff2', weight: '400', style: 'normal' },
+    { path: '../../public/fonts/manrope-500.woff2', weight: '500', style: 'normal' },
+    { path: '../../public/fonts/manrope-600.woff2', weight: '600', style: 'normal' },
+    { path: '../../public/fonts/manrope-700.woff2', weight: '700', style: 'normal' }
+], variable: '--font-sans', display: 'swap', preload: false });
+const jakarta = localFont({ src: [
+    { path: '../../public/fonts/jakarta-400.woff2', weight: '400', style: 'normal' },
+    { path: '../../public/fonts/jakarta-500.woff2', weight: '500', style: 'normal' },
+    { path: '../../public/fonts/jakarta-600.woff2', weight: '600', style: 'normal' },
+    { path: '../../public/fonts/jakarta-700.woff2', weight: '700', style: 'normal' }
+], variable: '--font-sans', display: 'swap', preload: false });
+const bricolage = localFont({ src: [
+    { path: '../../public/fonts/bricolage-400.woff2', weight: '400', style: 'normal' },
+    { path: '../../public/fonts/bricolage-600.woff2', weight: '600', style: 'normal' },
+    { path: '../../public/fonts/bricolage-700.woff2', weight: '700', style: 'normal' },
+    { path: '../../public/fonts/bricolage-800.woff2', weight: '800', style: 'normal' }
+], variable: '--font-display', display: 'swap', preload: false });
+const spaceGrotesk = localFont({ src: [
+    { path: '../../public/fonts/space-400.woff2', weight: '400', style: 'normal' },
+    { path: '../../public/fonts/space-600.woff2', weight: '600', style: 'normal' },
+    { path: '../../public/fonts/space-700.woff2', weight: '700', style: 'normal' }
+], variable: '--font-display', display: 'swap', preload: false });
+const archivo = localFont({ src: [
+    { path: '../../public/fonts/archivo-400.woff2', weight: '400', style: 'normal' },
+    { path: '../../public/fonts/archivo-600.woff2', weight: '600', style: 'normal' },
+    { path: '../../public/fonts/archivo-700.woff2', weight: '700', style: 'normal' },
+    { path: '../../public/fonts/archivo-800.woff2', weight: '800', style: 'normal' }
+], variable: '--font-display', display: 'swap', preload: false });
+const plexArabic = localFont({ src: [
+    { path: '../../public/fonts/plex-arabic-300.woff2', weight: '300', style: 'normal' },
+    { path: '../../public/fonts/plex-arabic-400.woff2', weight: '400', style: 'normal' },
+    { path: '../../public/fonts/plex-arabic-500.woff2', weight: '500', style: 'normal' },
+    { path: '../../public/fonts/plex-arabic-600.woff2', weight: '600', style: 'normal' },
+    { path: '../../public/fonts/plex-arabic-700.woff2', weight: '700', style: 'normal' }
+], variable: '--font-arabic', display: 'swap', preload: false });
+const tajawal = localFont({ src: [
+    { path: '../../public/fonts/tajawal-300.woff2', weight: '300', style: 'normal' },
+    { path: '../../public/fonts/tajawal-400.woff2', weight: '400', style: 'normal' },
+    { path: '../../public/fonts/tajawal-500.woff2', weight: '500', style: 'normal' },
+    { path: '../../public/fonts/tajawal-700.woff2', weight: '700', style: 'normal' }
+], variable: '--font-arabic', display: 'swap', preload: false });
+const cairo = localFont({ src: [
+    { path: '../../public/fonts/cairo-300.woff2', weight: '300', style: 'normal' },
+    { path: '../../public/fonts/cairo-400.woff2', weight: '400', style: 'normal' },
+    { path: '../../public/fonts/cairo-600.woff2', weight: '600', style: 'normal' },
+    { path: '../../public/fonts/cairo-700.woff2', weight: '700', style: 'normal' }
+], variable: '--font-arabic', display: 'swap', preload: false });
 
 const sansFonts = { inter, manrope, jakarta };
 const displayFonts = { bricolage: bricolage, space: spaceGrotesk, archivo };

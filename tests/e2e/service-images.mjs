@@ -12,6 +12,8 @@
  * public pages actually render in a browser (English and Arabic, desktop and
  * mobile), and finally restores whatever the CMS held before it ran.
  */
+import 'dotenv/config';
+import { PrismaClient } from '@prisma/client';
 import { chromium } from 'playwright';
 
 const BASE = process.env.QA_BASE_URL ?? 'http://127.0.0.1:3000';
@@ -25,6 +27,9 @@ const SOCIAL = '/img/gallery-12.jpg';
 const GALLERY = ['/img/gallery-1.jpg', '/img/gallery-2.jpg'];
 const GALLERY_RAW = `${GALLERY[0]} | QA gallery one | معرض واحد\n${GALLERY[1]} | QA gallery two | معرض اثنان`;
 
+const db = new PrismaClient();
+const fixtureMedia = await db.media.findFirst({ where: { url: FEATURED } });
+await db.$disconnect();
 const results = [];
 const check = (name, ok, detail = '') => {
   results.push({ name, ok });
@@ -175,8 +180,8 @@ for (const locale of ['en', 'ar']) {
     featured ? `natural=${featured.natural} display=${featured.display}` : 'missing',
   );
   check(
-    `[${locale}] the featured image carries the service name as alt text`,
-    Boolean(featured) && featured.alt.trim().length > 0 && featured.alt.trim().toLocaleLowerCase() === heading.trim().toLocaleLowerCase(),
+    `[${locale}] the featured image uses localized CMS alt text or the service name`,
+    Boolean(featured) && featured.alt.trim().length > 0 && featured.alt.trim() === ((locale === 'ar' ? fixtureMedia?.altAr || fixtureMedia?.altEn : fixtureMedia?.altEn || fixtureMedia?.altAr) || heading).trim(),
     featured?.alt,
   );
 
@@ -223,6 +228,7 @@ await mobile.close();
 // ------------------------------------------------------------- services index
 for (const locale of ['en', 'ar']) {
   await page.goto(`${BASE}/${locale}/services`);
+  await page.locator('.discovery input[type="search"]').fill(locale === 'en' ? 'Menu Strategy' : 'القائمة');
   await settle(page);
   const imgs = await paintedImages(page);
   const thumb = imgs.find((i) => sourceOf(i.src) === FEATURED);

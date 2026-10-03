@@ -1,14 +1,15 @@
+import { isShippedImage } from '@/lib/curated-media';
 import type { Metadata } from 'next';
-import Image from 'next/image';
+import { CmsImage } from '@/components/public/CmsImage';
+import { ResourceCover } from '@/components/public/ResourceCover';
 import { notFound } from 'next/navigation';
 import { CTASection } from '@/components/public/CTASection';
 import { PageHero } from '@/components/public/PageHero';
 import { RelatedContent } from '@/components/public/RelatedContent';
 import { DownloadButton } from '@/components/public/DownloadButton';
 import { Prose } from '@/components/ui/Prose';
-import { Reveal } from '@/components/ui/Reveal';
 import { getDictionary } from '@/lib/dictionary';
-import { formatDate, isLocale, pick, type Locale } from '@/lib/i18n';
+import { isLocale, pick, type Locale } from '@/lib/i18n';
 import { asObjectList, getResourceBySlug } from '@/lib/content';
 import { getRelatedContent } from '@/lib/relations';
 import { getSessionUser } from '@/lib/auth';
@@ -97,34 +98,7 @@ export default async function ResourcePage({
         eyebrow={resource.category ? pick(resource.category, 'name', locale) : dict.library.title}
         title={pick(resource, 'title', locale)}
         description={pick(resource, 'summary', locale)}
-        meta={
-          <ul className="mt-10 flex flex-wrap gap-x-10 gap-y-4 text-sm text-white/55">
-            <li>
-              <span className="block text-xs font-bold uppercase tracking-[0.2em] text-white/35">
-                {dict.library.fileType}
-              </span>
-              <span className="mt-1 block font-semibold text-white">{format}</span>
-            </li>
-            {size && !isExternal && (
-              <li>
-                <span className="block text-xs font-bold uppercase tracking-[0.2em] text-white/35">
-                  {dict.library.fileSize}
-                </span>
-                <span className="mt-1 block font-semibold text-white">{size}</span>
-              </li>
-            )}
-            {resource.publishedAt && (
-              <li>
-                <span className="block text-xs font-bold uppercase tracking-[0.2em] text-white/35">
-                  {dict.library.updated}
-                </span>
-                <span className="mt-1 block font-semibold text-white">
-                  {formatDate(resource.updatedAt, locale)}
-                </span>
-              </li>
-            )}
-          </ul>
-        }
+
       />
 
       <Breadcrumbs
@@ -139,18 +113,7 @@ export default async function ResourcePage({
       <section className="bg-bone section-y">
         <div className="shell grid gap-14 lg:grid-cols-[1.6fr_1fr] lg:gap-20">
           <div>
-            {resource.thumbnail && (
-              <Reveal className="relative mb-12 block aspect-[16/9] overflow-hidden rounded-card bg-ink-100">
-                <Image
-                  src={resource.thumbnail}
-                  alt={pick(resource, 'title', locale)}
-                  fill
-                  sizes="(min-width:1024px) 60vw, 100vw"
-                  className="object-cover"
-                  priority
-                />
-              </Reveal>
-            )}
+            <div className="relative mb-12 min-h-64 overflow-hidden">{resource.thumbnail && !isShippedImage(resource.thumbnail) ? <CmsImage src={resource.thumbnail} alt={pick(resource, 'title', locale)} locale={locale} fill sizes="(min-width:1024px) 60vw, 100vw" className="object-cover" /> : <ResourceCover title={pick(resource, 'title', locale)} slug={resource.slug} type={resource.type} locale={locale} />}</div>
 
             {pick(resource, 'description', locale) && (
               <Prose text={pick(resource, 'description', locale)} className="text-lg" />

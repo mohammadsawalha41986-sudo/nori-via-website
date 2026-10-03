@@ -23,6 +23,14 @@ const check = (name, ok, detail = '') => {
 const browser = await chromium.launch({ executablePath: CHROMIUM || undefined, args: ['--no-sandbox'] });
 const context = await browser.newContext({ viewport: { width: 1440, height: 900 } });
 const page = await context.newPage();
+async function saveChanges() {
+  const target = new URL(page.url()).pathname;
+  await Promise.all([
+    page.waitForResponse(response => response.request().method() === 'POST' && new URL(response.url()).pathname === target),
+    page.click('button[type="submit"]:has-text("Save changes")'),
+  ]);
+}
+
 
 await page.goto(`${BASE}/admin/login`);
 await page.fill('input[name="email"]', EMAIL);
@@ -35,7 +43,7 @@ check('admin login', page.url().includes('/admin'));
 await page.goto(`${BASE}/admin/design`);
 await page.fill('input[name="color.brand"]', '#1E9E6A');
 await page.fill('input[name="shape.radiusCard"]', '4');
-await page.click('button[type="submit"]:has-text("Save changes")');
+await saveChanges();
 await page.waitForSelector('text=Saved', { timeout: 20000 });
 check('design tokens saved', true);
 
@@ -51,7 +59,7 @@ await page.fill('#type-size', '19');
 await page.fill('#shape-btn', '6');
 await page.fill('input[name="color.brand"]', '#F5106E');
 await page.fill('input[name="shape.radiusCard"]', '16');
-await page.click('button[type="submit"]:has-text("Save changes")');
+await saveChanges();
 await page.waitForSelector('text=Saved', { timeout: 20000 });
 
 await page.goto(`${BASE}/ar`);
@@ -68,7 +76,7 @@ await page.goto(`${BASE}/admin/design`);
 await page.selectOption('#type-arabic', 'plex-arabic');
 await page.fill('#type-size', '17');
 await page.fill('#shape-btn', '999');
-await page.click('button[type="submit"]:has-text("Save changes")');
+await saveChanges();
 await page.waitForSelector('text=Saved', { timeout: 20000 });
 
 // -------------------------------------------------------- social + floating
@@ -86,7 +94,7 @@ await page.goto(`${BASE}/en`);
 // Scoped to the floating container: the footer's contact column links to
 // WhatsApp too, and an unscoped selector would test whichever came first.
 check('floating WhatsApp button comes from the CMS',
-  (await page.getAttribute('div.fixed a[href^="https://wa.me/"]', 'href')) === 'https://wa.me/966500000000');
+  (await page.getAttribute('div.fixed a[href^="https://wa.me/"]', 'href')) .startsWith('https://wa.me/966500000000?text='));
 check('social link renders in the footer',
   (await page.locator('footer a[href*="linkedin.com/company/example"]').count()) > 0);
 
@@ -135,7 +143,7 @@ await page.fill('#includes', 'Cost sheet | ورقة التكاليف');
 await page.fill('#audience', 'Owners | أصحاب المشاريع');
 await page.setInputFiles('#file', FIXTURE);
 await page.selectOption('#status', 'PUBLISHED');
-await page.click('button[type="submit"]:has-text("Save changes")');
+await saveChanges();
 const resourceSaved = await savedTo('resources');
 check('resource created with an xlsx upload', resourceSaved === '', resourceSaved);
 
@@ -187,7 +195,7 @@ check('builder flags an unknown field', (await page.locator('text=Unknown field'
 await out.locator('input[dir="ltr"]').last().fill('ceil(fixedCost / contribution)');
 await page.waitForTimeout(300);
 await page.selectOption('#status', 'PUBLISHED');
-await page.click('button[type="submit"]:has-text("Save changes")');
+await saveChanges();
 const toolSaved = await savedTo('tools');
 check('tool created', toolSaved === '', toolSaved);
 
@@ -203,7 +211,7 @@ check('public tool recomputes on input',
 await page.goto(`${BASE}/admin/tools`);
 await page.click('a:has-text("QA Break-even Calculator")');
 await page.click('button:has-text("QA Profitability Model")');
-await page.click('button[type="submit"]:has-text("Save changes")');
+await saveChanges();
 await page.waitForSelector('text=Saved', { timeout: 20000 });
 
 await page.goto(`${BASE}/en/tools/qa-break-even`);
@@ -217,7 +225,7 @@ check('the relationship is bidirectional',
 await page.goto(`${BASE}/admin/resources`);
 await page.click('a:has-text("QA Profitability Model")');
 await page.selectOption('#status', 'DRAFT');
-await page.click('button[type="submit"]:has-text("Save changes")');
+await saveChanges();
 await page.waitForSelector('text=Saved', { timeout: 20000 });
 
 const anon = await browser.newContext();
@@ -238,7 +246,7 @@ check('search finds the published tool', (await page.locator('a[href*="/tools/qa
 await page.goto(`${BASE}/admin/resources`);
 await page.click('a:has-text("QA Profitability Model")');
 await page.selectOption('#status', 'PUBLISHED');
-await page.click('button[type="submit"]:has-text("Save changes")');
+await saveChanges();
 await page.waitForSelector('text=Saved', { timeout: 20000 });
 
 // ------------------------------------------------------------------ preview
@@ -260,7 +268,7 @@ await page.fill('#contentEn', 'Paragraph one.\n\nParagraph two.');
 await page.fill('#contentAr', 'الفقرة الأولى.\n\nالفقرة الثانية.');
 await page.click('button:has-text("QA Break-even Calculator")');
 await page.selectOption('#status', 'PUBLISHED');
-await page.click('button[type="submit"]:has-text("Save changes")');
+await saveChanges();
 const insightSaved = await savedTo('insights');
 check('article created through the existing CMS', insightSaved === '', insightSaved);
 
@@ -277,7 +285,7 @@ const future = new Date(Date.now() + 7 * 864e5).toISOString().slice(0, 10);
 await page.goto(`${BASE}/admin/insights`);
 await page.click('a:has-text("QA costing a menu")');
 await page.fill('#publishedAt', future);
-await page.click('button[type="submit"]:has-text("Save changes")');
+await saveChanges();
 await page.waitForSelector('text=Saved', { timeout: 20000 });
 
 const anon2 = await browser.newContext();
@@ -290,7 +298,7 @@ await page.goto(`${BASE}/admin/insights`);
 check('admin shows a SCHEDULED badge', (await page.locator('text=SCHEDULED').count()) > 0);
 await page.click('a:has-text("QA costing a menu")');
 await page.fill('#publishedAt', new Date().toISOString().slice(0, 10));
-await page.click('button[type="submit"]:has-text("Save changes")');
+await saveChanges();
 await page.waitForSelector('text=Saved', { timeout: 20000 });
 const anon3 = await browser.newContext();
 check('article returns once its date arrives', (await anon3.request.get(`${BASE}/en/insights/qa-costing-a-menu`)).status() === 200);
@@ -314,7 +322,7 @@ check('CMS refuses a navigation link that would 404',
 // ------------------------------------------------ Start Here + page relations
 await page.goto(`${BASE}/admin/pages/start-here`);
 await page.click('button:has-text("QA Profitability Model")');
-await page.click('button[type="submit"]:has-text("Save changes")');
+await saveChanges();
 await page.waitForSelector('text=Saved', { timeout: 20000 });
 
 await page.goto(`${BASE}/en/start-here`);

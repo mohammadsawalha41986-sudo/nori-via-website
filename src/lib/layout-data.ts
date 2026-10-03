@@ -33,7 +33,7 @@ export async function getLayoutData(locale: Locale) {
   const dict = getDictionary(locale);
 
   const toLinks = (rows: typeof header): NavLink[] =>
-    rows.map((r) => ({ id: r.id, label: pick(r, 'label', locale), href: r.href, external: r.external }));
+    rows.map((r) => ({ id: r.id, label: r.href === '/library' ? dict.library.title : pick(r, 'label', locale), href: r.href, external: r.external }));
 
   /**
    * Social channels are managed as rows in Admin. The original fixed columns on
@@ -90,7 +90,7 @@ export async function getLayoutData(locale: Locale) {
     .map(({ category, items }) => ({
       id: category.id,
       label: pick(category, 'name', locale),
-      href: `/services#group-${category.id}`,
+      href: `/services`,
       items: items.slice(0, perGroup).map((s) => ({
         id: s.id,
         label: pick(s, 'name', locale),

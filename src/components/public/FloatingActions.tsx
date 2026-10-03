@@ -1,4 +1,6 @@
+'use client';
 import clsx from 'clsx';
+import { usePathname } from 'next/navigation';
 
 export type FloatingActionItem = { id: string; kind: string; label: string; value: string };
 
@@ -6,14 +8,15 @@ export type FloatingActionItem = { id: string; kind: string; label: string; valu
  * Admin-configured quick contact buttons. Nothing here is hard-coded: an empty
  * configuration renders nothing at all.
  */
-function hrefFor(action: FloatingActionItem): string | null {
+function hrefFor(action: FloatingActionItem, pathname: string): string | null {
   const value = action.value.trim();
   if (!value) return null;
 
   switch (action.kind) {
     case 'whatsapp': {
       const digits = value.replace(/[^\d]/g, '');
-      return digits ? `https://wa.me/${digits}` : null;
+      const message = pathname.startsWith('/ar') ? `مرحبًا نوريفا، أود مناقشة احتياج مطعمي. الصفحة: https://norivaglobal.com${pathname}` : `Hello NORIVA, I would like to discuss my restaurant. Page: https://norivaglobal.com${pathname}`;
+      return digits ? `https://wa.me/${digits}?text=${encodeURIComponent(message)}` : null;
     }
     case 'phone':
       return `tel:${value.replace(/\s/g, '')}`;
@@ -59,8 +62,9 @@ function Icon({ kind }: { kind: string }) {
 }
 
 export function FloatingActions({ actions }: { actions: FloatingActionItem[] }) {
+  const pathname = usePathname();
   const usable = actions
-    .map((action) => ({ action, href: hrefFor(action) }))
+    .map((action) => ({ action, href: hrefFor(action, pathname) }))
     .filter((entry): entry is { action: FloatingActionItem; href: string } => entry.href !== null);
 
   if (usable.length === 0) return null;
@@ -76,7 +80,7 @@ export function FloatingActions({ actions }: { actions: FloatingActionItem[] }) 
           className={clsx(
             'pointer-events-auto group inline-flex items-center gap-2.5 rounded-btn px-4 py-3 text-sm font-semibold shadow-lg shadow-ink-900/15',
             'transition-transform duration-300 ease-noriva hover:-translate-y-0.5',
-            action.kind === 'whatsapp' ? 'bg-[#25D366] text-white' : 'bg-ink-900 text-white',
+            action.kind === 'whatsapp' ? 'border border-white/20 bg-ink-900 text-white [&>svg]:text-[#25D366]' : 'bg-ink-900 text-white',
           )}
         >
           <Icon kind={action.kind} />

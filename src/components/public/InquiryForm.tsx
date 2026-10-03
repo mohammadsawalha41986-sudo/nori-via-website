@@ -1,466 +1,373 @@
 'use client';
-
 import { useEffect, useRef, useState } from 'react';
-import clsx from 'clsx';
 import { FileUploader } from './FileUploader';
-import { MagneticButton } from '../ui/Button';
 import { track, EVENTS } from '@/lib/track';
 import type { Dictionary } from '@/lib/dictionary';
 import type { Locale } from '@/lib/i18n';
-
-const field =
-  'w-full rounded-lg border border-ink-900/15 bg-white px-4 py-3.5 text-sm text-ink-900 outline-none transition-colors duration-200 placeholder:text-ink-300 focus:border-brand';
-
-const SERVICE_OPTIONS = [
-  ['Social Media', 'وسائل التواصل الاجتماعي'],
-  ['Advertising', 'الإعلانات'],
-  ['Branding', 'الهوية'],
-  ['Creative', 'الإبداع'],
-  ['Menu', 'قائمة الطعام'],
-  ['Restaurant Growth', 'نمو المطاعم'],
-  ['Multiple Services', 'خدمات متعددة'],
+const inputClass =
+  'w-full rounded-input border border-ink-900/20 bg-white px-4 py-3.5 text-base text-ink-900';
+const needs = [
+  ['launch', 'New restaurant', 'مطعم جديد'],
+  ['existing', 'Existing restaurant', 'مطعم قائم'],
+  ['finance', 'Profitability', 'الربحية'],
+  ['menu', 'Menu', 'القائمة'],
+  ['operations', 'Operations', 'التشغيل'],
+  ['marketing', 'Marketing', 'التسويق'],
+  ['brand', 'Branding', 'العلامة'],
+  ['delivery', 'Delivery', 'التوصيل'],
+  ['growth', 'Expansion', 'التوسع'],
+  ['unsure', 'Not sure', 'غير متأكد'],
 ] as const;
-
-const GOAL_OPTIONS = [
-  ['Increase awareness', 'زيادة الوعي'],
-  ['Increase orders', 'زيادة الطلبات'],
-  ['Launch a restaurant', 'إطلاق مطعم'],
-  ['Improve social media', 'تحسين وسائل التواصل'],
-  ['Run advertising', 'تشغيل حملات إعلانية'],
-  ['Rebrand', 'إعادة بناء الهوية'],
-  ['Improve menu profitability', 'تحسين ربحية القائمة'],
-  ['Restaurant growth', 'نمو المطعم'],
-] as const;
-
-const BUDGETS = [
-  ['Under 10,000 SAR', 'أقل من ١٠٬٠٠٠ ريال'],
-  ['10,000 – 25,000 SAR', '١٠٬٠٠٠ – ٢٥٬٠٠٠ ريال'],
-  ['25,000 – 50,000 SAR', '٢٥٬٠٠٠ – ٥٠٬٠٠٠ ريال'],
-  ['50,000 – 100,000 SAR', '٥٠٬٠٠٠ – ١٠٠٬٠٠٠ ريال'],
-  ['Over 100,000 SAR', 'أكثر من ١٠٠٬٠٠٠ ريال'],
-  ['Not sure yet', 'غير محدد بعد'],
-] as const;
-
-const TIMELINES = [
-  ['As soon as possible', 'في أقرب وقت'],
-  ['Within 1 month', 'خلال شهر'],
-  ['1 – 3 months', 'من ١ إلى ٣ أشهر'],
-  ['3 – 6 months', 'من ٣ إلى ٦ أشهر'],
-  ['Just exploring', 'مجرد استكشاف'],
-] as const;
-
-const TOTAL_STEPS = 7;
-
 type Values = {
-  name: string;
+  need: string;
   business: string;
-  website: string;
-  social: string;
-  services: string[];
-  otherService: string;
-  goals: string[];
-  otherGoal: string;
+  businessType: string;
+  city: string;
+  branches: string;
+  status: string;
   description: string;
-  budget: string;
-  timeline: string;
+  name: string;
   email: string;
   phone: string;
-  whatsapp: string;
   preferredContact: 'email' | 'phone' | 'whatsapp';
 };
-
 const initial: Values = {
-  name: '', business: '', website: '', social: '',
-  services: [], otherService: '', goals: [], otherGoal: '',
-  description: '', budget: '', timeline: '',
-  email: '', phone: '', whatsapp: '', preferredContact: 'email',
+  need: '',
+  business: '',
+  businessType: '',
+  city: '',
+  branches: '1',
+  status: '',
+  description: '',
+  name: '',
+  email: '',
+  phone: '',
+  preferredContact: 'email',
 };
-
 export function InquiryForm({ dict, locale }: { dict: Dictionary; locale: Locale }) {
+  const ar = locale === 'ar';
   const [step, setStep] = useState(0);
-  const [values, setValues] = useState<Values>(initial);
+  const [values, setValues] = useState(initial);
   const [files, setFiles] = useState<File[]>([]);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [state, setState] = useState<'idle' | 'sending' | 'done' | 'error'>('idle');
   const [serverError, setServerError] = useState('');
+  const heading = useRef<HTMLHeadingElement>(null);
   const started = useRef(false);
-  const headingRef = useRef<HTMLHeadingElement>(null);
-
-  const opt = (pair: readonly [string, string]) => (locale === 'ar' ? pair[1] : pair[0]);
-
+  useEffect(() => {
+    const need = new URLSearchParams(window.location.search).get('need');
+    if (needs.some((n) => n[0] === need)) setValues((v) => ({ ...v, need: need! }));
+  }, []);
+  useEffect(() => {
+    if (step > 0) heading.current?.focus();
+  }, [step]);
   function set<K extends keyof Values>(key: K, value: Values[K]) {
     if (!started.current) {
       started.current = true;
       track(EVENTS.formStart);
     }
     setValues((v) => ({ ...v, [key]: value }));
-    setErrors((e) => {
-      if (!e[key as string]) return e;
-      const next = { ...e };
-      delete next[key as string];
-      return next;
-    });
+    setErrors((e) => ({ ...e, [key]: '' }));
   }
-
-  function toggle(key: 'services' | 'goals', value: string) {
-    const list = values[key];
-    set(key, list.includes(value) ? list.filter((v) => v !== value) : [...list, value]);
-  }
-
-  function validateStep(index: number) {
+  function validate(index: number) {
     const e: Record<string, string> = {};
-    if (index === 0 && values.name.trim().length < 2) e.name = dict.form.fieldRequired;
-    if (index === 1 && values.services.length === 0 && !values.otherService.trim()) e.services = dict.form.selectOne;
-    if (index === 3 && values.description.trim().length < 10) e.description = dict.form.fieldRequired;
-    if (index === 6) {
+    if (index === 0 && !values.need) e.need = dict.form.selectOne;
+    if (index === 1 && values.description.trim().length < 10)
+      e.description = dict.form.fieldRequired;
+    if (index === 2) {
+      if (values.name.trim().length < 2) e.name = dict.form.fieldRequired;
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email.trim())) e.email = dict.form.invalidEmail;
-      if (values.preferredContact === 'phone' && !values.phone.trim()) e.phone = dict.form.fieldRequired;
-      if (values.preferredContact === 'whatsapp' && !values.whatsapp.trim()) e.whatsapp = dict.form.fieldRequired;
+      if (values.phone.trim().replace(/\D/g, '').length < 7) e.phone = dict.form.fieldRequired;
     }
     setErrors(e);
-    return Object.keys(e).length === 0;
+    return !Object.keys(e).length;
   }
-
-  function next() {
-    if (!validateStep(step)) return;
-    track(EVENTS.formStep, { step: step + 1 });
-    setStep((s) => Math.min(s + 1, TOTAL_STEPS - 1));
-  }
-
-  // Move focus to the new step heading so keyboard and screen-reader users
-  // follow along. Skipped on first render — nobody has navigated yet — and the
-  // ring is suppressed below because the heading is not an interactive control.
-  const firstRender = useRef(true);
-  useEffect(() => {
-    if (firstRender.current) {
-      firstRender.current = false;
-      return;
-    }
-    if (state === 'idle') headingRef.current?.focus();
-  }, [step, state]);
-
   async function submit() {
-    if (!validateStep(6)) return;
+    if (!validate(2)) return;
     setState('sending');
     setServerError('');
-
-    const payload = {
-      ...values,
-      services: [...values.services, ...(values.otherService.trim() ? [values.otherService.trim()] : [])],
-      goals: [...values.goals, ...(values.otherGoal.trim() ? [values.otherGoal.trim()] : [])],
-      locale,
-    };
-
+    const chosen = needs.find((n) => n[0] === values.need)!;
+    const answers = [
+      ['businessType', ar ? 'نوع النشاط' : 'Business type', values.businessType],
+      ['city', ar ? 'المدينة' : 'City', values.city],
+      ['branches', ar ? 'عدد الفروع' : 'Branches', values.branches],
+      ['status', ar ? 'حالة المشروع' : 'Current status', values.status],
+    ]
+      .filter(([, , v]) => v)
+      .map(([key, label, value]) => ({ key, label, value }));
     const body = new FormData();
-    body.append('payload', JSON.stringify(payload));
+    body.append(
+      'payload',
+      JSON.stringify({
+        name: values.name,
+        business: values.business,
+        services: [chosen[ar ? 2 : 1]],
+        description: values.description,
+        email: values.email,
+        phone: values.phone,
+        whatsapp: values.preferredContact === 'whatsapp' ? values.phone : '',
+        preferredContact: values.preferredContact,
+        locale,
+        answers,
+      }),
+    );
     files.forEach((f) => body.append('files', f));
     body.append('company_website', '');
-
     try {
       const res = await fetch('/api/inquiry', { method: 'POST', body });
       if (!res.ok) {
-        const json = (await res.json().catch(() => ({}))) as { error?: string };
-        throw new Error(json.error || 'failed');
+        const json = await res.json().catch(() => ({}));
+        throw new Error(json.error || dict.form.errorBody);
       }
       track(EVENTS.formComplete);
       setState('done');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    } catch (err) {
+    } catch (e) {
+      setServerError(e instanceof Error ? e.message : dict.form.errorBody);
       setState('error');
-      setServerError(err instanceof Error && err.message !== 'failed' ? err.message : dict.form.errorBody);
     }
   }
-
-  if (state === 'done') {
+  function field(key: keyof Values, label: string, required = false, type = 'text') {
     return (
-      <div className="rounded-2xl border border-brand/25 bg-brand/[0.06] px-8 py-16 text-center">
-        <p className="font-display text-3xl uppercase text-ink-900">
-          {dict.form.successTitle}
-        </p>
-        <p className="mx-auto mt-5 max-w-lg text-base leading-relaxed text-ink-500">{dict.form.successBody}</p>
-        <div className="mt-10 flex justify-center">
-          <MagneticButton href={`/${locale}/work`} variant="ghost">
-            {dict.common.exploreWork}
-          </MagneticButton>
-        </div>
-      </div>
+      <label className="block" key={key}>
+        <span className="mb-2 block text-sm font-semibold">
+          {label}
+          {required ? ' *' : ''}
+        </span>
+        <input
+          id={key}
+          type={type}
+          value={values[key]}
+          onChange={(e) => set(key, e.target.value as never)}
+          className={inputClass}
+          maxLength={key === 'name' ? 120 : key === 'email' ? 160 : key === 'phone' ? 40 : 160}
+          required={required}
+          aria-invalid={!!errors[key]}
+          aria-describedby={errors[key] ? `${key}-error` : undefined}
+          dir={['email', 'phone'].includes(key) ? 'ltr' : undefined}
+          autoComplete={
+            key === 'name'
+              ? 'name'
+              : key === 'email'
+                ? 'email'
+                : key === 'phone'
+                  ? 'tel'
+                  : key === 'business'
+                    ? 'organization'
+                    : undefined
+          }
+        />
+        {errors[key] && (
+          <span id={`${key}-error`} className="mt-2 block text-sm text-red-700">
+            {errors[key]}
+          </span>
+        )}
+      </label>
     );
   }
-
-  const steps = [
-    { title: dict.form.s1Title, sub: dict.form.s1Sub },
-    { title: dict.form.s2Title, sub: dict.form.s2Sub },
-    { title: dict.form.s3Title, sub: dict.form.s3Sub },
-    { title: dict.form.s4Title, sub: dict.form.s4Sub },
-    { title: dict.form.s5Title, sub: dict.form.s5Sub },
-    { title: dict.form.s6Title, sub: dict.form.s6Sub },
-    { title: dict.form.s7Title, sub: dict.form.s7Sub },
-  ];
-
-  const current = steps[step]!;
-  const last = step === TOTAL_STEPS - 1;
-
+  if (state === 'done')
+    return (
+      <div role="status" className="border-t-2 border-brand bg-bone p-10">
+        <h2 className="font-display text-3xl">{dict.form.successTitle}</h2>
+        <p className="mt-5">{dict.form.successBody}</p>
+      </div>
+    );
+  const titles = ar
+    ? ['ما الذي تحتاج مساعدة فيه؟', 'حدثنا عن مشروعك', 'كيف نتواصل معك؟']
+    : ['What do you need help with?', 'Tell us about your restaurant', 'How can we reach you?'];
   return (
     <form
+      className="border-t-2 border-ink-900 bg-bone p-6 sm:p-10"
+      noValidate
       onSubmit={(e) => {
         e.preventDefault();
-        if (last) void submit();
-        else next();
+        if (step === 2) void submit();
+        else if (validate(step)) {
+          track(EVENTS.formStep, { step: step + 1 });
+          setStep(step + 1);
+        }
       }}
-      className="rounded-2xl border border-ink-900/10 bg-bone p-6 sm:p-10"
     >
-      {/* Progress */}
-      <div className="mb-9">
-        <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-[0.16em] text-ink-400">
-          <span>
-            {dict.form.step} {step + 1} {dict.form.of} {TOTAL_STEPS}
-          </span>
-          <span>{Math.round(((step + 1) / TOTAL_STEPS) * 100)}%</span>
-        </div>
-        <div
-          role="progressbar"
-          aria-valuemin={1}
-          aria-valuemax={TOTAL_STEPS}
-          aria-valuenow={step + 1}
-          className="mt-3 h-1 w-full overflow-hidden rounded-full bg-ink-900/10"
-        >
-          <div
-            className="h-full rounded-full bg-brand transition-[width] duration-500 ease-noriva"
-            style={{ width: `${((step + 1) / TOTAL_STEPS) * 100}%` }}
-          />
-        </div>
+      <div className="mb-7 flex gap-2" aria-label={ar ? 'تقدم الطلب' : 'Inquiry progress'}>
+        {titles.map((title, i) => (
+          <span key={title} className={`h-1 flex-1 ${i <= step ? 'bg-brand' : 'bg-ink-900/15'}`} />
+        ))}
       </div>
-
-      <h2
-        ref={headingRef}
-        tabIndex={-1}
-        className="font-display text-2xl uppercase text-ink-900 outline-none focus-visible:ring-0 sm:text-3xl"
-      >
-        {current.title}
+      <p className="mb-3 text-xs text-ink-500">
+        {dict.form.step} {step + 1} {dict.form.of} 3
+      </p>
+      <h2 ref={heading} tabIndex={-1} className="font-display text-2xl sm:text-3xl">
+        {titles[step]}
       </h2>
-      <p className="mt-2.5 text-sm text-ink-400">{current.sub}</p>
-
-      <div className="mt-9 space-y-6">
+      <div className="mt-8 space-y-6">
         {step === 0 && (
-          <>
-            <Field id="name" label={`${dict.form.name} *`} error={errors.name}>
-              <input id="name" className={field} value={values.name} onChange={(e) => set('name', e.target.value)} autoComplete="name" maxLength={120} />
-            </Field>
-            <Field id="business" label={dict.form.business}>
-              <input id="business" className={field} value={values.business} onChange={(e) => set('business', e.target.value)} autoComplete="organization" maxLength={160} />
-            </Field>
-            <div className="grid gap-6 sm:grid-cols-2">
-              <Field id="website" label={dict.form.website}>
-                <input id="website" className={field} value={values.website} onChange={(e) => set('website', e.target.value)} dir="ltr" maxLength={200} placeholder="https://" />
-              </Field>
-              <Field id="social" label={dict.form.social}>
-                <input id="social" className={field} value={values.social} onChange={(e) => set('social', e.target.value)} dir="ltr" maxLength={200} placeholder="@" />
-              </Field>
+          <fieldset>
+            <legend className="sr-only">{titles[0]}</legend>
+            <div className="grid gap-3 sm:grid-cols-2">
+              {needs.map(([id, en, arabic]) => (
+                <label
+                  key={id}
+                  className={`flex min-h-14 cursor-pointer items-center gap-3 border px-4 py-3 ${values.need === id ? 'border-brand bg-white' : 'border-ink-900/20'}`}
+                >
+                  <input
+                    type="radio"
+                    name="need"
+                    value={id}
+                    checked={values.need === id}
+                    onChange={() => set('need', id)}
+                  />
+                  {ar ? arabic : en}
+                </label>
+              ))}
             </div>
-          </>
+            {errors.need && (
+              <p role="alert" className="mt-4 text-red-700">
+                {errors.need}
+              </p>
+            )}
+          </fieldset>
         )}
-
         {step === 1 && (
           <>
-            <ChipGroup
-              legend={dict.form.s2Title}
-              options={SERVICE_OPTIONS.map(opt)}
-              selected={values.services}
-              onToggle={(v) => toggle('services', v)}
-              error={errors.services}
-            />
-            <Field id="otherService" label={dict.form.other}>
-              <input id="otherService" className={field} value={values.otherService} onChange={(e) => set('otherService', e.target.value)} maxLength={120} />
-            </Field>
+            {field('business', ar ? 'اسم المطعم أو المشروع' : 'Restaurant or business name')}
+            <div className="grid gap-5 sm:grid-cols-2">
+              {field('city', ar ? 'المدينة' : 'City')}
+              <label>
+                <span className="mb-2 block text-sm font-semibold">
+                  {ar ? 'عدد الفروع' : 'Number of branches'}
+                </span>
+                <input
+                  type="number"
+                  min="0"
+                  max="9999"
+                  value={values.branches}
+                  onChange={(e) => set('branches', e.target.value)}
+                  className={inputClass}
+                />
+              </label>
+              <label>
+                <span className="mb-2 block text-sm font-semibold">
+                  {ar ? 'نوع النشاط' : 'Business type'}
+                </span>
+                <select
+                  className={inputClass}
+                  value={values.businessType}
+                  onChange={(e) => set('businessType', e.target.value)}
+                >
+                  <option value="">{dict.form.choose}</option>
+                  {[
+                    ['Restaurant', 'مطعم'],
+                    ['Café', 'مقهى'],
+                    ['Bakery', 'مخبز أو حلويات'],
+                    ['Cloud kitchen', 'مطبخ سحابي'],
+                    ['Other F&B', 'نشاط غذائي آخر'],
+                  ].map(([en, arabic]) => (
+                    <option key={en} value={en}>
+                      {ar ? arabic : en}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              <label>
+                <span className="mb-2 block text-sm font-semibold">
+                  {ar ? 'حالة المشروع' : 'Current status'}
+                </span>
+                <select
+                  className={inputClass}
+                  value={values.status}
+                  onChange={(e) => set('status', e.target.value)}
+                >
+                  <option value="">{dict.form.choose}</option>
+                  {[
+                    ['Idea', 'فكرة'],
+                    ['Pre-opening', 'قبل الافتتاح'],
+                    ['Operating', 'قائم'],
+                    ['Expanding', 'التوسع'],
+                  ].map(([en, arabic]) => (
+                    <option key={en} value={en}>
+                      {ar ? arabic : en}
+                    </option>
+                  ))}
+                </select>
+              </label>
+            </div>
+            <label className="block">
+              <span className="mb-2 block text-sm font-semibold">
+                {ar ? 'ما التحدي الرئيسي؟' : 'What is the main challenge?'} *
+              </span>
+              <textarea
+                rows={4}
+                maxLength={5000}
+                className={inputClass}
+                value={values.description}
+                onChange={(e) => set('description', e.target.value)}
+                aria-invalid={!!errors.description}
+                aria-describedby={errors.description ? 'description-error' : undefined}
+              />
+              {errors.description && (
+                <span id="description-error" className="mt-2 block text-red-700">
+                  {errors.description}
+                </span>
+              )}
+            </label>
+            <FileUploader files={files} onChange={setFiles} dict={dict} />
           </>
         )}
-
         {step === 2 && (
           <>
-            <ChipGroup
-              legend={dict.form.s3Title}
-              options={GOAL_OPTIONS.map(opt)}
-              selected={values.goals}
-              onToggle={(v) => toggle('goals', v)}
-            />
-            <Field id="otherGoal" label={dict.form.other}>
-              <input id="otherGoal" className={field} value={values.otherGoal} onChange={(e) => set('otherGoal', e.target.value)} maxLength={120} />
-            </Field>
-          </>
-        )}
-
-        {step === 3 && (
-          <Field id="description" label={`${dict.form.description} *`} error={errors.description}>
-            <textarea
-              id="description"
-              rows={9}
-              className={clsx(field, 'resize-y')}
-              value={values.description}
-              onChange={(e) => set('description', e.target.value)}
-              maxLength={5000}
-            />
-          </Field>
-        )}
-
-        {step === 4 && (
-          <div className="grid gap-6 sm:grid-cols-2">
-            <Field id="budget" label={dict.form.budget}>
-              <select id="budget" className={field} value={values.budget} onChange={(e) => set('budget', e.target.value)}>
-                <option value="">{dict.form.choose}</option>
-                {BUDGETS.map((b) => (
-                  <option key={b[0]} value={opt(b)}>
-                    {opt(b)}
-                  </option>
-                ))}
-              </select>
-            </Field>
-            <Field id="timeline" label={dict.form.timeline}>
-              <select id="timeline" className={field} value={values.timeline} onChange={(e) => set('timeline', e.target.value)}>
-                <option value="">{dict.form.choose}</option>
-                {TIMELINES.map((t) => (
-                  <option key={t[0]} value={opt(t)}>
-                    {opt(t)}
-                  </option>
-                ))}
-              </select>
-            </Field>
-          </div>
-        )}
-
-        {step === 5 && <FileUploader files={files} onChange={setFiles} dict={dict} />}
-
-        {step === 6 && (
-          <>
-            <Field id="email" label={`${dict.common.email} *`} error={errors.email}>
-              <input id="email" type="email" className={field} value={values.email} onChange={(e) => set('email', e.target.value)} autoComplete="email" dir="ltr" maxLength={160} />
-            </Field>
-            <div className="grid gap-6 sm:grid-cols-2">
-              <Field id="phone" label={dict.common.phone} error={errors.phone}>
-                <input id="phone" type="tel" className={field} value={values.phone} onChange={(e) => set('phone', e.target.value)} autoComplete="tel" dir="ltr" maxLength={40} />
-              </Field>
-              <Field id="whatsapp" label={dict.common.whatsapp} error={errors.whatsapp}>
-                <input id="whatsapp" className={field} value={values.whatsapp} onChange={(e) => set('whatsapp', e.target.value)} dir="ltr" maxLength={40} />
-              </Field>
+            <div className="grid gap-5 sm:grid-cols-2">
+              {field('name', dict.form.name, true)}
+              {field('phone', dict.request.phone, true, 'tel')}
+              {field('email', dict.request.email, true, 'email')}
             </div>
-            <fieldset>
-              <legend className="mb-3 block text-sm font-semibold text-ink-700">{dict.form.preferred}</legend>
-              <div className="flex flex-wrap gap-2">
-                {(['email', 'phone', 'whatsapp'] as const).map((m) => (
-                  <label
-                    key={m}
-                    className={clsx(
-                      'cursor-pointer rounded-full border px-5 py-2.5 text-sm font-medium transition-all duration-300',
-                      values.preferredContact === m
-                        ? 'border-brand bg-brand text-white'
-                        : 'border-ink-900/15 bg-white text-ink-500 hover:border-ink-900/40',
-                    )}
-                  >
-                    <input
-                      type="radio"
-                      name="preferredContact"
-                      value={m}
-                      checked={values.preferredContact === m}
-                      onChange={() => set('preferredContact', m)}
-                      className="sr-only"
-                    />
-                    {m === 'email' ? dict.common.email : m === 'phone' ? dict.common.phone : dict.common.whatsapp}
-                  </label>
-                ))}
-              </div>
-            </fieldset>
+            <label className="block">
+              <span className="mb-2 block text-sm font-semibold">{dict.form.preferred}</span>
+              <select
+                className={inputClass}
+                value={values.preferredContact}
+                onChange={(e) =>
+                  set('preferredContact', e.target.value as Values['preferredContact'])
+                }
+              >
+                <option value="email">{dict.request.email}</option>
+                <option value="phone">{dict.request.phone}</option>
+                <option value="whatsapp">WhatsApp</option>
+              </select>
+            </label>
           </>
         )}
       </div>
-
-      {state === 'error' && (
-        <p role="alert" className="mt-7 rounded-lg bg-brand/10 px-4 py-3 text-sm font-medium text-brand-700">
-          <strong className="block">{dict.form.errorTitle}</strong>
+      {serverError && (
+        <p role="alert" className="mt-6 text-red-700">
           {serverError}
         </p>
       )}
-
-      <div className="mt-10 flex items-center justify-between gap-4 border-t border-ink-900/10 pt-7">
+      <div className="mt-8 flex justify-between gap-4">
+        {step > 0 ? (
+          <button
+            type="button"
+            className="min-h-12 border border-ink-900/20 px-5 py-3"
+            onClick={() => setStep(step - 1)}
+            disabled={state === 'sending'}
+          >
+            {dict.form.back}
+          </button>
+        ) : (
+          <span />
+        )}
         <button
-          type="button"
-          onClick={() => setStep((s) => Math.max(0, s - 1))}
-          disabled={step === 0}
-          className="text-sm font-semibold text-ink-400 transition-colors hover:text-ink-900 disabled:invisible"
+          type="submit"
+          disabled={state === 'sending'}
+          className="min-h-12 rounded-btn bg-ink-900 px-7 py-3 font-semibold text-white disabled:opacity-50"
         >
-          ← {dict.form.back}
+          {state === 'sending'
+            ? ar
+              ? 'جارٍ الإرسال…'
+              : 'Sending…'
+            : step === 2
+              ? dict.form.submit
+              : dict.form.next}
         </button>
-
-        <MagneticButton type="submit" disabled={state === 'sending'}>
-          {state === 'sending' ? dict.form.submitting : last ? dict.form.submit : dict.form.next}
-        </MagneticButton>
       </div>
     </form>
-  );
-}
-
-function Field({
-  id,
-  label,
-  error,
-  children,
-}: {
-  id: string;
-  label: string;
-  error?: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <div>
-      <label htmlFor={id} className="mb-2 block text-sm font-semibold text-ink-700">
-        {label}
-      </label>
-      {children}
-      {error && (
-        <p role="alert" className="mt-2 text-sm font-medium text-brand-700">
-          {error}
-        </p>
-      )}
-    </div>
-  );
-}
-
-function ChipGroup({
-  legend,
-  options,
-  selected,
-  onToggle,
-  error,
-}: {
-  legend: string;
-  options: string[];
-  selected: string[];
-  onToggle: (value: string) => void;
-  error?: string;
-}) {
-  return (
-    <fieldset>
-      <legend className="sr-only">{legend}</legend>
-      <div className="flex flex-wrap gap-2.5">
-        {options.map((o) => {
-          const on = selected.includes(o);
-          return (
-            <label
-              key={o}
-              className={clsx(
-                'cursor-pointer rounded-full border px-5 py-3 text-sm font-medium transition-all duration-300 ease-noriva',
-                on ? 'border-brand bg-brand text-white' : 'border-ink-900/15 bg-white text-ink-600 hover:border-ink-900/40',
-              )}
-            >
-              <input type="checkbox" checked={on} onChange={() => onToggle(o)} className="sr-only" />
-              {o}
-            </label>
-          );
-        })}
-      </div>
-      {error && (
-        <p role="alert" className="mt-3 text-sm font-medium text-brand-700">
-          {error}
-        </p>
-      )}
-    </fieldset>
   );
 }

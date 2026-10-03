@@ -1,3 +1,4 @@
+import { getMediaCatalog } from '@/lib/public-media';
 import { prisma } from '@/lib/db';
 import { PageHeader, Card, EmptyRow, inputClass } from '@/components/admin/ui';
 import { MediaUploader } from '@/components/admin/MediaUploader';
@@ -20,6 +21,7 @@ export default async function MediaPage({
   searchParams: Promise<{ q?: string; kind?: string }>;
 }) {
   const { q = '', kind = '' } = await searchParams;
+  const { metadata } = await getMediaCatalog();
 
   const media = await prisma.media.findMany({
     where: {
@@ -98,8 +100,12 @@ export default async function MediaPage({
                       aria-label={`Alt text Arabic for ${m.filename}`}
                       className="w-full rounded border border-slate-200 px-2 py-1 text-xs"
                     />
+                    <input name="title" defaultValue={metadata[m.url]?.title ?? ''} placeholder="Image title" aria-label={`Image title for ${m.filename}`} className={inputClass} />
+                    <input name="category" defaultValue={metadata[m.url]?.category ?? ''} placeholder="Business category" aria-label={`Category for ${m.filename}`} className={inputClass} />
+                    <input name="usage" defaultValue={metadata[m.url]?.usage ?? ''} placeholder="Usage / pages" aria-label={`Usage for ${m.filename}`} className={inputClass} />
+                    <div className="flex gap-2"><label className="text-xs">Focal X (%)<input name="focalX" type="number" min="0" max="100" defaultValue={metadata[m.url]?.focalX ?? 50} className={inputClass}/></label><label className="text-xs">Focal Y (%)<input name="focalY" type="number" min="0" max="100" defaultValue={metadata[m.url]?.focalY ?? 50} className={inputClass}/></label></div>
                     <SubmitButton variant="secondary" className="!px-2.5 !py-1 !text-xs" pendingLabel="…">
-                      Save alt
+                      Save metadata
                     </SubmitButton>
                   </form>
 

@@ -10,13 +10,13 @@
  * is designed to work with or without a photograph.
  */
 export const SECTION_HERO_IMAGES = {
-  services: '/img/noriva-system-06.webp',
-  work: '/img/noriva-system-07.webp',
-  insights: '/img/noriva-system-09.webp',
-  tools: '/img/noriva-system-04.webp',
-  library: '/img/noriva-system-10.webp',
-  'restaurant-growth': '/img/noriva-system-05.webp',
-  'start-here': '/img/noriva-system-01.webp',
+  services: '/img/noriva-editorial-training.webp',
+  work: '/img/noriva-editorial-brand.webp',
+  insights: '/img/noriva-editorial-menu.webp',
+  tools: '/img/noriva-editorial-costing.webp',
+  library: '/img/noriva-editorial-inventory.webp',
+  'restaurant-growth': '/img/noriva-editorial-delivery.webp',
+  'start-here': '/img/noriva-editorial-launch.webp',
   'start-a-project': '/img/cta.jpg',
   contact: '/img/gallery-3.jpg',
 } as const;

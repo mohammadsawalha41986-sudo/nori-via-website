@@ -70,7 +70,7 @@ export function ProjectCard({
 
           <div className="absolute inset-0 bg-ink-950/0 transition-colors duration-500 group-hover:bg-ink-950/25" />
 
-          <span className="pointer-events-none absolute bottom-5 end-5 translate-y-3 rounded-full bg-white px-5 py-2.5 text-xs font-bold text-ink-900 opacity-0 transition-all duration-500 ease-noriva group-hover:translate-y-0 group-hover:opacity-100">
+          <span className="pointer-events-none absolute bottom-5 end-5 rounded-full bg-white px-5 py-2.5 text-xs font-bold text-ink-900 transition-transform duration-500 ease-noriva group-hover:-translate-y-1">
             {viewLabel}
           </span>
         </div>
@@ -82,7 +82,7 @@ export function ProjectCard({
             </h3>
             {(project.client || project.category) && (
               <p className="mt-1.5 text-sm text-ink-400">
-                {[project.client, project.category].filter(Boolean).join(' · ')}
+                {[project.client === 'Illustrative project' ? (locale === 'ar' ? 'نموذج توضيحي — ليس مشروع عميل' : 'Concept study — not client work') : project.client, project.category].filter(Boolean).join(' · ')}
               </p>
             )}
           </div>

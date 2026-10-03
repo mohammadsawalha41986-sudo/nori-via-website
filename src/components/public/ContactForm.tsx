@@ -18,7 +18,8 @@ export function ContactForm({ dict, locale }: { dict: Dictionary; locale: Locale
     setState('sending');
     setError('');
 
-    const data = Object.fromEntries(new FormData(e.currentTarget).entries());
+    const form = e.currentTarget;
+    const data = Object.fromEntries(new FormData(form).entries());
 
     try {
       const res = await fetch('/api/contact', {
@@ -31,7 +32,7 @@ export function ContactForm({ dict, locale }: { dict: Dictionary; locale: Locale
         throw new Error(body.error || 'failed');
       }
       setState('sent');
-      e.currentTarget.reset();
+      form.reset();
     } catch {
       setState('error');
       setError(dict.form.errorBody);

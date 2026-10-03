@@ -1,3 +1,5 @@
+import { isShippedImage } from '@/lib/curated-media';
+import { ResourceCover } from '@/components/public/ResourceCover';
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -62,7 +64,7 @@ export default async function InsightsPage({ params }: { params: Promise<{ local
                 <Reveal as="li" key={a.id} delay={Math.min(i, 6) * 60}>
                   <Link href={`/${locale}/insights/${a.slug}`} className="group block">
                     <div className="relative aspect-[3/2] overflow-hidden rounded-xl bg-ink-100">
-                      {a.coverImage ? (
+                      {isShippedImage(a.coverImage) ? <ResourceCover title={pick(a, 'title', locale)} slug={a.slug} type="ARTICLE" locale={locale} /> : a.coverImage ? (
                         <Image
                           src={a.coverImage}
                           alt={pick(a, 'title', locale)}

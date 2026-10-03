@@ -61,7 +61,10 @@ export function Navbar({
   }, [open]);
 
   const home = `/${locale}`;
-  const isActive = (href: string) => pathname === `/${locale}${href}` || pathname.startsWith(`/${locale}${href}/`);
+  const primaryPaths = ['/', '/services', '/work', '/tools', '/library', '/about', '/contact'];
+  const secondaryLinks = links.filter(link => !primaryPaths.includes(link.href));
+  const primaryLinks = primaryPaths.map((href) => links.find((l) => l.href === href) ?? (href === '/' ? { id: 'home', label: locale === 'ar' ? 'الرئيسية' : 'Home', href: '/', external: false } : null)).filter((l): l is NavLink => Boolean(l));
+  const isActive = (href: string) => href === '/' ? pathname === home : pathname === `/${locale}${href}` || pathname.startsWith(`/${locale}${href}/`);
 
   // Every page opens on a dark hero, so the transparent bar needs light content
   // until the bone page background has scrolled up behind it.
@@ -78,16 +81,16 @@ export function Navbar({
             : 'border-b border-transparent bg-transparent',
         )}
       >
-        <nav className="shell flex h-[var(--nav-h)] items-center justify-between gap-6" aria-label="Main">
+        <nav className="shell flex h-[var(--nav-h)] items-center justify-between gap-6" aria-label={locale === 'ar' ? 'التنقل الرئيسي' : 'Main navigation'}>
           <Link href={home} className="shrink-0" aria-label={companyName}>
             <Logo logoUrl={logoUrl} logoInverseUrl={logoInverseUrl} name={companyName} tone={tone} />
           </Link>
 
-          <ul className="hidden items-center gap-8 lg:flex">
-            {links.map((link) => (
+          <ul className="hidden items-center gap-5 xl:flex">
+            {primaryLinks.map((link) => (
               <li key={link.id}>
                 <Link
-                  href={link.external ? link.href : `/${locale}${link.href}`}
+                  href={link.external ? link.href : link.href === '/' ? home : `/${locale}${link.href}`}
                   target={link.external ? '_blank' : undefined}
                   rel={link.external ? 'noopener noreferrer' : undefined}
                   aria-current={isActive(link.href) ? 'page' : undefined}
@@ -107,6 +110,10 @@ export function Navbar({
                 </Link>
               </li>
             ))}
+            {secondaryLinks.length > 0 && <li className="relative"><details onKeyDown={event => { if (event.key === 'Escape') { event.currentTarget.open = false; event.currentTarget.querySelector('summary')?.focus(); } }}>
+              <summary className={clsx('cursor-pointer py-2 text-sm font-medium', solid ? 'text-ink-600' : 'text-white/80')}>{locale === 'ar' ? 'المزيد' : 'More'}</summary>
+              <ul className="absolute end-0 mt-3 w-64 rounded-card border border-ink-900/10 bg-bone p-2 text-ink-900 shadow-xl">{secondaryLinks.map(link => <li key={link.id}><Link href={link.external ? link.href : link.href === '/' ? home : `/${locale}${link.href}`} target={link.external ? '_blank' : undefined} rel={link.external ? 'noopener noreferrer' : undefined} className="block rounded-btn px-4 py-3 text-sm hover:bg-ink-900/5" aria-current={isActive(link.href) ? 'page' : undefined}>{link.label}</Link></li>)}</ul>
+            </details></li>}
           </ul>
 
           <div className="flex items-center gap-3">
@@ -134,7 +141,7 @@ export function Navbar({
               aria-controls="mobile-menu"
               aria-label={open ? closeLabel : menuLabel}
               className={clsx(
-                'relative z-10 flex h-11 w-11 items-center justify-center rounded-full border lg:hidden',
+                'relative z-10 flex h-11 w-11 items-center justify-center rounded-full border xl:hidden',
                 solid ? 'border-ink-900/15' : 'border-white/30',
               )}
             >
@@ -152,14 +159,14 @@ export function Navbar({
       <div
         id="mobile-menu"
         hidden={!open}
-        className="fixed inset-0 z-40 bg-ink-900 text-white lg:hidden"
+        className="fixed inset-0 z-40 bg-ink-900 text-white xl:hidden"
       >
         <div className="shell flex h-full flex-col justify-between pb-12 pt-[calc(var(--nav-h)+2.5rem)]">
           <ul className="flex flex-col gap-1">
             {links.map((link, i) => (
               <li key={link.id}>
                 <Link
-                  href={link.external ? link.href : `/${locale}${link.href}`}
+                  href={link.external ? link.href : link.href === '/' ? home : `/${locale}${link.href}`}
                   className="block border-b border-white/10 py-4 font-display text-3xl uppercase transition-colors duration-300 hover:text-brand"
                   style={{
                     animation: open ? `fade-up 0.55s cubic-bezier(0.22,1,0.36,1) ${i * 55}ms both` : undefined,

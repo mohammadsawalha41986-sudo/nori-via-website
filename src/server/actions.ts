@@ -754,12 +754,16 @@ export async function updateMediaAlt(formData: FormData) {
   await guard();
   const id = String(formData.get('id') ?? '');
   if (!id) return;
-  await prisma.media.update({
-    where: { id },
-    data: {
-      altEn: String(formData.get('altEn') ?? '').slice(0, 300),
-      altAr: String(formData.get('altAr') ?? '').slice(0, 300),
-    },
+  const media = await prisma.media.findUnique({ where: { id } });
+  if (!media) return;
+  const focal = (key: string) => { const value = Number(formData.get(key) ?? 50); return Number.isFinite(value) ? Math.min(100, Math.max(0, value)) : 50; };
+  const metadata = { title: String(formData.get('title') ?? '').slice(0, 160), category: String(formData.get('category') ?? '').slice(0, 80), usage: String(formData.get('usage') ?? '').slice(0, 240), focalX: focal('focalX'), focalY: focal('focalY') };
+  await prisma.$transaction(async (tx) => {
+    await tx.media.update({ where: { id }, data: { altEn: String(formData.get('altEn') ?? '').slice(0, 300), altAr: String(formData.get('altAr') ?? '').slice(0, 300) } });
+    await tx.page.upsert({ where: { key: 'media-metadata' }, create: { key: 'media-metadata', titleEn: 'Public media metadata', content: {} }, update: {} });
+    // Merge atomically so editing two different images cannot lose either entry.
+    await tx.$executeRaw`UPDATE "Page" SET "content" = "content" || ${JSON.stringify({ [media.url]: metadata })}::jsonb, "updatedAt" = NOW() WHERE "key" = 'media-metadata'`;
   });
+  revalidatePublic();
   revalidatePath('/admin/media');
 }

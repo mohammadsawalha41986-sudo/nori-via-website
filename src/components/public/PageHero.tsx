@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import { CmsImage as Image } from '@/components/public/CmsImage';
 import { AnimatedText } from '../ui/AnimatedText';
 import { Reveal } from '../ui/Reveal';
 
@@ -25,12 +25,12 @@ export function PageHero({
   return (
     <section className="relative isolate overflow-hidden bg-ink-900 pb-20 pt-[calc(var(--nav-h)+4.5rem)] text-white sm:pb-28 sm:pt-[calc(var(--nav-h)+7rem)]">
       {image && (
-        <div aria-hidden className="absolute inset-0 -z-10">
+        <div className="absolute inset-0 -z-10">
           <Image
             src={image}
             // Decorative: the heading beside it already names the section, so
             // an alt text here would only repeat it to a screen reader.
-            alt={imageAlt ?? ''}
+            alt={imageAlt || title}
             fill
             priority
             sizes="100vw"

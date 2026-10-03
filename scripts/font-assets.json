@@ -1,0 +1,218 @@
+[
+  {
+    "file": "inter-400.woff2",
+    "url": "https://fonts.gstatic.com/s/inter/v20/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfMZg.ttf",
+    "key": "inter",
+    "weight": "400"
+  },
+  {
+    "file": "inter-500.woff2",
+    "url": "https://fonts.gstatic.com/s/inter/v20/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuI6fMZg.ttf",
+    "key": "inter",
+    "weight": "500"
+  },
+  {
+    "file": "inter-600.woff2",
+    "url": "https://fonts.gstatic.com/s/inter/v20/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuGKYMZg.ttf",
+    "key": "inter",
+    "weight": "600"
+  },
+  {
+    "file": "inter-700.woff2",
+    "url": "https://fonts.gstatic.com/s/inter/v20/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuFuYMZg.ttf",
+    "key": "inter",
+    "weight": "700"
+  },
+  {
+    "file": "manrope-400.woff2",
+    "url": "https://fonts.gstatic.com/s/manrope/v20/xn7_YHE41ni1AdIRqAuZuw1Bx9mbZk79FO_F.ttf",
+    "key": "manrope",
+    "weight": "400"
+  },
+  {
+    "file": "manrope-500.woff2",
+    "url": "https://fonts.gstatic.com/s/manrope/v20/xn7_YHE41ni1AdIRqAuZuw1Bx9mbZk7PFO_F.ttf",
+    "key": "manrope",
+    "weight": "500"
+  },
+  {
+    "file": "manrope-600.woff2",
+    "url": "https://fonts.gstatic.com/s/manrope/v20/xn7_YHE41ni1AdIRqAuZuw1Bx9mbZk4jE-_F.ttf",
+    "key": "manrope",
+    "weight": "600"
+  },
+  {
+    "file": "manrope-700.woff2",
+    "url": "https://fonts.gstatic.com/s/manrope/v20/xn7_YHE41ni1AdIRqAuZuw1Bx9mbZk4aE-_F.ttf",
+    "key": "manrope",
+    "weight": "700"
+  },
+  {
+    "file": "jakarta-400.woff2",
+    "url": "https://fonts.gstatic.com/s/plusjakartasans/v12/LDIbaomQNQcsA88c7O9yZ4KMCoOg4IA6-91aHEjcWuA_qU7NSg.ttf",
+    "key": "jakarta",
+    "weight": "400"
+  },
+  {
+    "file": "jakarta-500.woff2",
+    "url": "https://fonts.gstatic.com/s/plusjakartasans/v12/LDIbaomQNQcsA88c7O9yZ4KMCoOg4IA6-91aHEjcWuA_m07NSg.ttf",
+    "key": "jakarta",
+    "weight": "500"
+  },
+  {
+    "file": "jakarta-600.woff2",
+    "url": "https://fonts.gstatic.com/s/plusjakartasans/v12/LDIbaomQNQcsA88c7O9yZ4KMCoOg4IA6-91aHEjcWuA_d0nNSg.ttf",
+    "key": "jakarta",
+    "weight": "600"
+  },
+  {
+    "file": "jakarta-700.woff2",
+    "url": "https://fonts.gstatic.com/s/plusjakartasans/v12/LDIbaomQNQcsA88c7O9yZ4KMCoOg4IA6-91aHEjcWuA_TknNSg.ttf",
+    "key": "jakarta",
+    "weight": "700"
+  },
+  {
+    "file": "bricolage-400.woff2",
+    "url": "https://fonts.gstatic.com/s/bricolagegrotesque/v9/3y9U6as8bTXq_nANBjzKo3IeZx8z6up5BeSl5jBNz_19PpbpMXuECpwUxJBOm_OJWiaaD30YfKfjZZoLvRviyM0.ttf",
+    "key": "bricolage",
+    "weight": "400"
+  },
+  {
+    "file": "bricolage-600.woff2",
+    "url": "https://fonts.gstatic.com/s/bricolagegrotesque/v9/3y9U6as8bTXq_nANBjzKo3IeZx8z6up5BeSl5jBNz_19PpbpMXuECpwUxJBOm_OJWiaaD30YfKfjZZoLvcXlyM0.ttf",
+    "key": "bricolage",
+    "weight": "600"
+  },
+  {
+    "file": "bricolage-700.woff2",
+    "url": "https://fonts.gstatic.com/s/bricolagegrotesque/v9/3y9U6as8bTXq_nANBjzKo3IeZx8z6up5BeSl5jBNz_19PpbpMXuECpwUxJBOm_OJWiaaD30YfKfjZZoLvfzlyM0.ttf",
+    "key": "bricolage",
+    "weight": "700"
+  },
+  {
+    "file": "bricolage-800.woff2",
+    "url": "https://fonts.gstatic.com/s/bricolagegrotesque/v9/3y9U6as8bTXq_nANBjzKo3IeZx8z6up5BeSl5jBNz_19PpbpMXuECpwUxJBOm_OJWiaaD30YfKfjZZoLvZvlyM0.ttf",
+    "key": "bricolage",
+    "weight": "800"
+  },
+  {
+    "file": "space-400.woff2",
+    "url": "https://fonts.gstatic.com/s/spacegrotesk/v22/V8mQoQDjQSkFtoMM3T6r8E7mF71Q-gOoraIAEj7oUUsj.ttf",
+    "key": "space",
+    "weight": "400"
+  },
+  {
+    "file": "space-600.woff2",
+    "url": "https://fonts.gstatic.com/s/spacegrotesk/v22/V8mQoQDjQSkFtoMM3T6r8E7mF71Q-gOoraIAEj42Vksj.ttf",
+    "key": "space",
+    "weight": "600"
+  },
+  {
+    "file": "space-700.woff2",
+    "url": "https://fonts.gstatic.com/s/spacegrotesk/v22/V8mQoQDjQSkFtoMM3T6r8E7mF71Q-gOoraIAEj4PVksj.ttf",
+    "key": "space",
+    "weight": "700"
+  },
+  {
+    "file": "archivo-400.woff2",
+    "url": "https://fonts.gstatic.com/s/archivo/v25/k3k6o8UDI-1M0wlSV9XAw6lQkqWY8Q82sJaRE-NWIDdgffTTNDNp8A.ttf",
+    "key": "archivo",
+    "weight": "400"
+  },
+  {
+    "file": "archivo-600.woff2",
+    "url": "https://fonts.gstatic.com/s/archivo/v25/k3k6o8UDI-1M0wlSV9XAw6lQkqWY8Q82sJaRE-NWIDdgffTT6jRp8A.ttf",
+    "key": "archivo",
+    "weight": "600"
+  },
+  {
+    "file": "archivo-700.woff2",
+    "url": "https://fonts.gstatic.com/s/archivo/v25/k3k6o8UDI-1M0wlSV9XAw6lQkqWY8Q82sJaRE-NWIDdgffTT0zRp8A.ttf",
+    "key": "archivo",
+    "weight": "700"
+  },
+  {
+    "file": "archivo-800.woff2",
+    "url": "https://fonts.gstatic.com/s/archivo/v25/k3k6o8UDI-1M0wlSV9XAw6lQkqWY8Q82sJaRE-NWIDdgffTTtDRp8A.ttf",
+    "key": "archivo",
+    "weight": "800"
+  },
+  {
+    "file": "plex-arabic-300.woff2",
+    "url": "https://fonts.gstatic.com/s/ibmplexsansarabic/v15/Qw3NZRtWPQCuHme67tEYUIx3Kh0PHR9N6YOW_tCT.ttf",
+    "key": "plex-arabic",
+    "weight": "300"
+  },
+  {
+    "file": "plex-arabic-400.woff2",
+    "url": "https://fonts.gstatic.com/s/ibmplexsansarabic/v15/Qw3CZRtWPQCuHme67tEYUIx3Kh0PHR9N6bs6.ttf",
+    "key": "plex-arabic",
+    "weight": "400"
+  },
+  {
+    "file": "plex-arabic-500.woff2",
+    "url": "https://fonts.gstatic.com/s/ibmplexsansarabic/v15/Qw3NZRtWPQCuHme67tEYUIx3Kh0PHR9N6YPO_9CT.ttf",
+    "key": "plex-arabic",
+    "weight": "500"
+  },
+  {
+    "file": "plex-arabic-600.woff2",
+    "url": "https://fonts.gstatic.com/s/ibmplexsansarabic/v15/Qw3NZRtWPQCuHme67tEYUIx3Kh0PHR9N6YPi-NCT.ttf",
+    "key": "plex-arabic",
+    "weight": "600"
+  },
+  {
+    "file": "plex-arabic-700.woff2",
+    "url": "https://fonts.gstatic.com/s/ibmplexsansarabic/v15/Qw3NZRtWPQCuHme67tEYUIx3Kh0PHR9N6YOG-dCT.ttf",
+    "key": "plex-arabic",
+    "weight": "700"
+  },
+  {
+    "file": "tajawal-300.woff2",
+    "url": "https://fonts.gstatic.com/s/tajawal/v12/Iurf6YBj_oCad4k1l5qjLrY.ttf",
+    "key": "tajawal",
+    "weight": "300"
+  },
+  {
+    "file": "tajawal-400.woff2",
+    "url": "https://fonts.gstatic.com/s/tajawal/v12/Iura6YBj_oCad4k1rzY.ttf",
+    "key": "tajawal",
+    "weight": "400"
+  },
+  {
+    "file": "tajawal-500.woff2",
+    "url": "https://fonts.gstatic.com/s/tajawal/v12/Iurf6YBj_oCad4k1l8KiLrY.ttf",
+    "key": "tajawal",
+    "weight": "500"
+  },
+  {
+    "file": "tajawal-700.woff2",
+    "url": "https://fonts.gstatic.com/s/tajawal/v12/Iurf6YBj_oCad4k1l4qkLrY.ttf",
+    "key": "tajawal",
+    "weight": "700"
+  },
+  {
+    "file": "cairo-300.woff2",
+    "url": "https://fonts.gstatic.com/s/cairo/v31/SLXgc1nY6HkvangtZmpQdkhzfH5lkSs2SgRjCAGMQ1z0hL4-W1Q.ttf",
+    "key": "cairo",
+    "weight": "300"
+  },
+  {
+    "file": "cairo-400.woff2",
+    "url": "https://fonts.gstatic.com/s/cairo/v31/SLXgc1nY6HkvangtZmpQdkhzfH5lkSs2SgRjCAGMQ1z0hOA-W1Q.ttf",
+    "key": "cairo",
+    "weight": "400"
+  },
+  {
+    "file": "cairo-600.woff2",
+    "url": "https://fonts.gstatic.com/s/cairo/v31/SLXgc1nY6HkvangtZmpQdkhzfH5lkSs2SgRjCAGMQ1z0hD45W1Q.ttf",
+    "key": "cairo",
+    "weight": "600"
+  },
+  {
+    "file": "cairo-700.woff2",
+    "url": "https://fonts.gstatic.com/s/cairo/v31/SLXgc1nY6HkvangtZmpQdkhzfH5lkSs2SgRjCAGMQ1z0hAc5W1Q.ttf",
+    "key": "cairo",
+    "weight": "700"
+  }
+]

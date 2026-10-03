@@ -1,3 +1,4 @@
+import { RESOURCE_KINDS, resourcePurpose, resourcePurposeLabel } from '@/lib/service-discovery';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import type { Prisma, ResourceType } from '@prisma/client';
@@ -21,7 +22,7 @@ import { buildMetadata, JsonLd, breadcrumbs } from '@/lib/seo';
 export const dynamic = 'force-dynamic';
 
 const RESOURCE_TYPES: ResourceType[] = ['EXCEL', 'WORD', 'PDF', 'TEMPLATE', 'GUIDE', 'REPORT'];
-const PAGE_SIZE = 24;
+const PAGE_SIZE = 12;
 
 type SearchParams = Promise<Record<string, string | string[] | undefined>>;
 
@@ -57,15 +58,19 @@ export default async function LibraryPage({
   const q = single(query.q).trim().slice(0, 120);
   const typeParam = single(query.type).toUpperCase();
   const type = (RESOURCE_TYPES as string[]).includes(typeParam) ? (typeParam as ResourceType) : '';
+  const kindParam = single(query.kind);
+  const kind = (RESOURCE_KINDS as readonly string[]).includes(kindParam) ? kindParam : '';
   const categorySlug = single(query.category);
   const sort = single(query.sort) || 'newest';
   const page = Math.max(1, Number(single(query.page)) || 1);
 
   const [categories, pageContent] = await Promise.all([getResourceCategories(), getPage('library')]);
   const category = categories.find((c) => c.slug === categorySlug);
+  const candidateIds = kind ? (await prisma.resource.findMany({ where: publishedNow(), select: { id: true, slug: true, type: true } })).filter((r) => resourcePurpose(r.slug, r.type) === kind).map((r) => r.id) : null;
 
   const where: Prisma.ResourceWhereInput = {
     ...publishedNow(),
+    ...(candidateIds ? { id: { in: candidateIds } } : {}),
     ...(type ? { type } : {}),
     ...(category ? { categoryId: category.id } : {}),
     ...(q
@@ -103,6 +108,7 @@ export default async function LibraryPage({
     const params = new URLSearchParams();
     if (q) params.set('q', q);
     if (type) params.set('type', type);
+    if (kind) params.set('kind', kind);
     if (categorySlug) params.set('category', categorySlug);
     if (sort !== 'newest') params.set('sort', sort);
     if (target > 1) params.set('page', String(target));
@@ -128,11 +134,12 @@ export default async function LibraryPage({
 
       <section className="bg-bone section-y">
         <div className="shell">
+          <a href={`/${locale}/tools`} className="mb-6 inline-block font-semibold text-brand underline underline-offset-4">{locale === 'ar' ? 'الحاسبات التفاعلية ←' : 'Interactive calculators →'}</a>
           <LibraryFilters
             dict={dict}
-            types={RESOURCE_TYPES.map((t) => ({ value: t, label: dict.library.types[t] }))}
+            types={RESOURCE_KINDS.map((k) => ({ value: k, label: resourcePurposeLabel(k, locale) }))}
             categories={categories.map((c) => ({ value: c.slug, label: pick(c, 'name', locale) }))}
-            activeType={type}
+            activeType={kind}
             activeCategory={category?.slug ?? ''}
             activeSort={sort}
             query={q}

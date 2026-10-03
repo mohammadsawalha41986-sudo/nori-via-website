@@ -1,5 +1,7 @@
 import Link from 'next/link';
-import Image from 'next/image';
+import { isShippedImage } from '@/lib/curated-media';
+import { ResourceCover } from './ResourceCover';
+import { CmsImage as Image } from '@/components/public/CmsImage';
 import { Reveal } from '../ui/Reveal';
 import { SectionHeading } from '../ui/SectionHeading';
 import type { RelatedItem } from '@/lib/relations';
@@ -28,17 +30,19 @@ export function RelatedContent({
         <SectionHeading eyebrow={eyebrow} title={title} />
 
         <ul className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {items.map((item, i) => (
+          {items.slice(0, 6).map((item, i) => (
             <Reveal as="li" key={`${item.type}-${item.id}`} delay={Math.min(i, 6) * 55} y={14}>
               <Link
                 href={item.href}
                 className="group flex h-full flex-col overflow-hidden rounded-card border border-ink-900/10 bg-white transition-colors duration-300 hover:border-brand"
               >
-                {item.image && (
+                {item.type === 'RESOURCE' && <ResourceCover title={item.title} slug={item.href.split('/').pop() || ''} type={item.resourceType || 'GUIDE'} locale={item.href.startsWith('/ar') ? 'ar' : 'en'} />}
+                {item.type === 'INSIGHT' && isShippedImage(item.image) && <ResourceCover title={item.title} slug={item.href.split('/').pop() || ''} type="ARTICLE" locale={item.href.startsWith('/ar') ? 'ar' : 'en'} />}
+                {item.image && item.type !== 'RESOURCE' && item.type !== 'TOOL' && !(item.type === 'INSIGHT' && isShippedImage(item.image)) && (
                   <span className="relative block aspect-[16/9] overflow-hidden bg-ink-100">
                     <Image
                       src={item.image}
-                      alt=""
+                      alt={item.title}
                       fill
                       sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw"
                       className="object-cover transition-transform duration-700 ease-noriva group-hover:scale-105"

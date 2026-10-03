@@ -1,5 +1,7 @@
+import { presentationGallery } from '@/lib/curated-media';
+import { ServiceAnalysis, serviceAction } from '@/components/public/ServiceAnalysis';
 import type { Metadata } from 'next';
-import Image from 'next/image';
+import { CmsImage as Image } from '@/components/public/CmsImage';
 import { notFound } from 'next/navigation';
 import { PageHero } from '@/components/public/PageHero';
 import { CTASection } from '@/components/public/CTASection';
@@ -109,14 +111,17 @@ export default async function ServiceDetailPage({
   const benefits = asObjectList<{ labelEn?: string; labelAr?: string }>(service.benefits);
   const process = asObjectList<ProcessItem>(service.process);
   const faqs = asObjectList<FaqItem>(service.faqs);
-  const gallery = asObjectList<GalleryItem>(service.gallery);
+  const gallery = presentationGallery(asObjectList<GalleryItem>(service.gallery), service.featuredImage);
   const relatedProjects = service.projects.map((p) => p.project).filter((p) => p.status === 'PUBLISHED');
 
   const sections = [
+    { key: 'whyItMatters', label: locale === 'ar' ? 'التحدي التجاري' : 'The business problem', body: pick(service, 'whyItMatters', locale) },
     { key: 'whatWeDo', label: dict.service.whatWeDo, body: pick(service, 'whatWeDo', locale) },
-    { key: 'whyItMatters', label: dict.service.whyItMatters, body: pick(service, 'whyItMatters', locale) },
     { key: 'approach', label: dict.service.approach, body: pick(service, 'approach', locale) },
   ].filter((s) => s.body);
+
+  const problem = sections.find(s => s.key === 'whyItMatters');
+  const details = sections.filter(s => s.key !== 'whyItMatters');
 
   const faqEntries = faqs
     .map((f) => ({ q: localised(f, 'question', locale), a: localised(f, 'answer', locale) }))
@@ -156,6 +161,9 @@ export default async function ServiceDetailPage({
         eyebrow={service.category ? pick(service.category, 'name', locale) : dict.nav.services}
         title={pick(service, 'heroHeadline', locale) || name}
         description={pick(service, 'heroDescription', locale) || pick(service, 'summary', locale)}
+        image={service.featuredImage}
+        imageAlt={name}
+        meta={<a href="#request" className="mt-8 inline-flex min-h-12 items-center rounded-btn bg-white px-6 py-3 text-sm font-semibold text-ink-900">{serviceAction(slug, locale)} →</a>}
       />
 
       <Breadcrumbs
@@ -167,33 +175,13 @@ export default async function ServiceDetailPage({
         ]}
       />
 
-      {/*
-        The Featured Image is this service's own main image. It is rendered only
-        when the CMS holds one — no placeholder and no fallback to another
-        service's artwork, so a card or page can never show the wrong image.
-        The social share image is a separate field and belongs in metadata only.
-      */}
-      {service.featuredImage && (
-        <section className="bg-bone pt-16 sm:pt-20">
-          <div className="shell">
-            <Reveal className="relative block aspect-[16/9] overflow-hidden rounded-card bg-ink-100 sm:aspect-[21/9]">
-              <Image
-                src={service.featuredImage}
-                alt={name}
-                fill
-                priority
-                sizes="(min-width:1536px) 1400px, 100vw"
-                className="object-cover"
-              />
-            </Reveal>
-          </div>
-        </section>
-      )}
+      {problem && <section className="bg-bone section-y"><div className="shell grid gap-8 lg:grid-cols-[minmax(0,18rem)_minmax(0,1fr)] lg:gap-16"><h2 className="font-display text-xl uppercase text-ink-900 sm:text-2xl">{problem.label}</h2><Prose text={problem.body} className="max-w-2xl text-lg" /></div></section>}
+      <ServiceAnalysis slug={slug} locale={locale} />
 
-      {sections.length > 0 && (
+      {details.length > 0 && (
         <section className="bg-bone py-24 sm:py-32">
           <div className="shell space-y-20 sm:space-y-28">
-            {sections.map((s, i) => (
+            {details.map((s, i) => (
               <div key={s.key} className="grid gap-8 lg:grid-cols-[minmax(0,18rem)_minmax(0,1fr)] lg:gap-16">
                 <Reveal>
                   <h2 className="font-display text-xl uppercase text-ink-900 sm:text-2xl">
@@ -265,6 +253,7 @@ export default async function ServiceDetailPage({
                 <Reveal key={g.url + i} delay={i * 60} className="relative aspect-[4/3] overflow-hidden rounded-xl bg-ink-100">
                   <Image
                     src={g.url}
+                    preferAlt={Boolean(localised(g, 'alt', locale))}
                     alt={localised(g, 'alt', locale) || name}
                     fill
                     sizes="(min-width:1024px) 33vw, 100vw"

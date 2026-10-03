@@ -115,7 +115,9 @@ async function main() {
       where: { status: 'PUBLISHED', OR: [{ [field]: null }, { [field]: '' }] },
       select: { slug: true },
     });
-    for (const row of rows) missingImages.push(`${label}:${row.slug}`);
+    // Resources render a native purpose-led ResourceCover when no custom photo is set.
+    // An empty thumbnail is intentional for worked examples, not a broken image.
+    if (label !== 'resources') for (const row of rows) missingImages.push(`${label}:${row.slug}`);
   }
 
   const report = {

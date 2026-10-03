@@ -4,7 +4,7 @@ import { useRef, useState } from 'react';
 import clsx from 'clsx';
 import type { Dictionary } from '@/lib/dictionary';
 
-const ACCEPT = 'image/jpeg,image/png,image/webp,application/pdf';
+const ACCEPT = 'image/jpeg,image/png,image/webp,image/avif,application/pdf,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.ms-excel,application/msword';
 const MAX_BYTES = 10 * 1024 * 1024;
 const MAX_FILES = 8;
 

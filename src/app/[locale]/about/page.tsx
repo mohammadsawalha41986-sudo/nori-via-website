@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import Image from 'next/image';
+import { CmsImage as Image } from '@/components/public/CmsImage';
 import { notFound } from 'next/navigation';
 import { PageHero } from '@/components/public/PageHero';
 import { CTASection } from '@/components/public/CTASection';
