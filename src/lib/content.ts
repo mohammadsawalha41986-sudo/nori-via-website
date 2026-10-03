@@ -1,3 +1,4 @@
+import { LIBRARY_STARTERS } from './library-selection';
 import { cache } from 'react';
 import type { HomepageFaqGroup } from '@prisma/client';
 import { prisma } from './db';
@@ -180,7 +181,7 @@ export const getResourceCategories = cache(async () =>
 
 export const getFeaturedResources = cache(async (take = 3) =>
   prisma.resource.findMany({
-    where: publishedNow(),
+    where: { ...publishedNow(), slug: { in: LIBRARY_STARTERS } },
     orderBy: [{ featured: 'desc' }, { order: 'asc' }, { publishedAt: 'desc' }],
     include: { category: true },
     take,

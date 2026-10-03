@@ -1,0 +1,4071 @@
+{
+  "documents": [
+    {
+      "file": "noriva-restaurant-feasibility-study-template.xlsx",
+      "slug": "restaurant-feasibility-study-template",
+      "titleEn": "Noriva Restaurant Feasibility Study",
+      "titleAr": "دراسة جدوى المطاعم من نوريفا",
+      "category": "strategy-development",
+      "type": "EXCEL",
+      "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "summaryEn": "An editable restaurant workbook for noriva restaurant feasibility study, with structured inputs, working calculations and an action-ready summary.",
+      "summaryAr": "مصنف مطاعم قابل للتعديل من أجل دراسة جدوى المطاعم من نوريفا، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار.",
+      "order": 1,
+      "sourcePath": "resources/library/xlsx/noriva-restaurant-feasibility-study-template.xlsx",
+      "storageKey": "library/noriva-restaurant-feasibility-study-template.xlsx",
+      "descriptionEn": "An editable restaurant workbook for noriva restaurant feasibility study, with structured inputs, working calculations and an action-ready summary. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "مصنف مطاعم قابل للتعديل من أجل دراسة جدوى المطاعم من نوريفا، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Editable input sheets",
+          "أوراق مدخلات قابلة للتعديل"
+        ],
+        [
+          "Working formulas and checks",
+          "معادلات وفحوصات عملية"
+        ],
+        [
+          "Summary and action fields",
+          "حقول للملخص والإجراءات"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "strategy-development",
+        "excel",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "xlsx"
+    },
+    {
+      "file": "restaurant-startup-budget.xlsx",
+      "slug": "restaurant-startup-budget",
+      "titleEn": "Restaurant Startup Budget",
+      "titleAr": "ميزانية تأسيس مطعم",
+      "category": "finance",
+      "type": "EXCEL",
+      "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "summaryEn": "An editable restaurant workbook for restaurant startup budget, with structured inputs, working calculations and an action-ready summary.",
+      "summaryAr": "مصنف مطاعم قابل للتعديل من أجل ميزانية تأسيس مطعم، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار.",
+      "order": 2,
+      "sourcePath": "resources/library/xlsx/restaurant-startup-budget.xlsx",
+      "storageKey": "library/restaurant-startup-budget.xlsx",
+      "descriptionEn": "An editable restaurant workbook for restaurant startup budget, with structured inputs, working calculations and an action-ready summary. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "مصنف مطاعم قابل للتعديل من أجل ميزانية تأسيس مطعم، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Editable input sheets",
+          "أوراق مدخلات قابلة للتعديل"
+        ],
+        [
+          "Working formulas and checks",
+          "معادلات وفحوصات عملية"
+        ],
+        [
+          "Summary and action fields",
+          "حقول للملخص والإجراءات"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "finance",
+        "excel",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "xlsx"
+    },
+    {
+      "file": "capex-budget.xlsx",
+      "slug": "capex-budget",
+      "titleEn": "CAPEX Budget",
+      "titleAr": "ميزانية النفقات الرأسمالية",
+      "category": "finance",
+      "type": "EXCEL",
+      "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "summaryEn": "An editable restaurant workbook for capex budget, with structured inputs, working calculations and an action-ready summary.",
+      "summaryAr": "مصنف مطاعم قابل للتعديل من أجل ميزانية النفقات الرأسمالية، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار.",
+      "order": 3,
+      "sourcePath": "resources/library/xlsx/capex-budget.xlsx",
+      "storageKey": "library/capex-budget.xlsx",
+      "descriptionEn": "An editable restaurant workbook for capex budget, with structured inputs, working calculations and an action-ready summary. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "مصنف مطاعم قابل للتعديل من أجل ميزانية النفقات الرأسمالية، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Editable input sheets",
+          "أوراق مدخلات قابلة للتعديل"
+        ],
+        [
+          "Working formulas and checks",
+          "معادلات وفحوصات عملية"
+        ],
+        [
+          "Summary and action fields",
+          "حقول للملخص والإجراءات"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "finance",
+        "excel",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "xlsx"
+    },
+    {
+      "file": "pre-opening-budget.xlsx",
+      "slug": "pre-opening-budget",
+      "titleEn": "Pre-opening Budget",
+      "titleAr": "ميزانية ما قبل الافتتاح",
+      "category": "finance",
+      "type": "EXCEL",
+      "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "summaryEn": "An editable restaurant workbook for pre-opening budget, with structured inputs, working calculations and an action-ready summary.",
+      "summaryAr": "مصنف مطاعم قابل للتعديل من أجل ميزانية ما قبل الافتتاح، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار.",
+      "order": 4,
+      "sourcePath": "resources/library/xlsx/pre-opening-budget.xlsx",
+      "storageKey": "library/pre-opening-budget.xlsx",
+      "descriptionEn": "An editable restaurant workbook for pre-opening budget, with structured inputs, working calculations and an action-ready summary. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "مصنف مطاعم قابل للتعديل من أجل ميزانية ما قبل الافتتاح، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Editable input sheets",
+          "أوراق مدخلات قابلة للتعديل"
+        ],
+        [
+          "Working formulas and checks",
+          "معادلات وفحوصات عملية"
+        ],
+        [
+          "Summary and action fields",
+          "حقول للملخص والإجراءات"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "finance",
+        "excel",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "xlsx"
+    },
+    {
+      "file": "monthly-pl.xlsx",
+      "slug": "restaurant-pl-template",
+      "titleEn": "Monthly Restaurant P&L",
+      "titleAr": "قائمة أرباح وخسائر شهرية للمطعم",
+      "category": "finance",
+      "type": "EXCEL",
+      "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "summaryEn": "An editable restaurant workbook for monthly restaurant p&l, with structured inputs, working calculations and an action-ready summary.",
+      "summaryAr": "مصنف مطاعم قابل للتعديل من أجل قائمة أرباح وخسائر شهرية للمطعم، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار.",
+      "order": 5,
+      "sourcePath": "resources/library/xlsx/monthly-pl.xlsx",
+      "storageKey": "library/monthly-pl.xlsx",
+      "descriptionEn": "An editable restaurant workbook for monthly restaurant p&l, with structured inputs, working calculations and an action-ready summary. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "مصنف مطاعم قابل للتعديل من أجل قائمة أرباح وخسائر شهرية للمطعم، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Monthly P&L structure",
+          "هيكل قائمة أرباح وخسائر شهري"
+        ],
+        [
+          "Revenue by daypart and channel",
+          "الإيراد حسب الوقت والقناة"
+        ],
+        [
+          "Prime cost calculation",
+          "حساب التكلفة الأولية"
+        ],
+        [
+          "Year-to-date and prior-period comparison",
+          "مقارنة السنة حتى تاريخه والفترة السابقة"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "finance",
+        "excel",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "xlsx"
+    },
+    {
+      "file": "break-even-analysis.xlsx",
+      "slug": "break-even-model",
+      "titleEn": "Break-even Analysis",
+      "titleAr": "تحليل نقطة التعادل",
+      "category": "finance",
+      "type": "EXCEL",
+      "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "summaryEn": "An editable restaurant workbook for break-even analysis, with structured inputs, working calculations and an action-ready summary.",
+      "summaryAr": "مصنف مطاعم قابل للتعديل من أجل تحليل نقطة التعادل، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار.",
+      "order": 6,
+      "sourcePath": "resources/library/xlsx/break-even-analysis.xlsx",
+      "storageKey": "library/break-even-analysis.xlsx",
+      "descriptionEn": "An editable restaurant workbook for break-even analysis, with structured inputs, working calculations and an action-ready summary. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "مصنف مطاعم قابل للتعديل من أجل تحليل نقطة التعادل، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Fixed and variable cost separation",
+          "فصل التكاليف الثابتة عن المتغيرة"
+        ],
+        [
+          "Break-even in revenue, covers and ATV",
+          "التعادل بالإيراد وعدد الطلبات ومتوسط الفاتورة"
+        ],
+        [
+          "Contribution margin calculation",
+          "حساب هامش المساهمة"
+        ],
+        [
+          "Sensitivity view",
+          "منظور الحساسية"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "finance",
+        "excel",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "xlsx"
+    },
+    {
+      "file": "restaurant-sales-forecast.xlsx",
+      "slug": "restaurant-sales-forecast",
+      "titleEn": "Restaurant Sales Forecast",
+      "titleAr": "توقع مبيعات المطعم",
+      "category": "finance",
+      "type": "EXCEL",
+      "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "summaryEn": "An editable restaurant workbook for restaurant sales forecast, with structured inputs, working calculations and an action-ready summary.",
+      "summaryAr": "مصنف مطاعم قابل للتعديل من أجل توقع مبيعات المطعم، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار.",
+      "order": 7,
+      "sourcePath": "resources/library/xlsx/restaurant-sales-forecast.xlsx",
+      "storageKey": "library/restaurant-sales-forecast.xlsx",
+      "descriptionEn": "An editable restaurant workbook for restaurant sales forecast, with structured inputs, working calculations and an action-ready summary. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "مصنف مطاعم قابل للتعديل من أجل توقع مبيعات المطعم، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Editable input sheets",
+          "أوراق مدخلات قابلة للتعديل"
+        ],
+        [
+          "Working formulas and checks",
+          "معادلات وفحوصات عملية"
+        ],
+        [
+          "Summary and action fields",
+          "حقول للملخص والإجراءات"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "finance",
+        "excel",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "xlsx"
+    },
+    {
+      "file": "revenue-forecast-by-channel.xlsx",
+      "slug": "revenue-forecast-by-channel",
+      "titleEn": "Revenue Forecast by Channel",
+      "titleAr": "توقع الإيرادات حسب القناة",
+      "category": "finance",
+      "type": "EXCEL",
+      "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "summaryEn": "An editable restaurant workbook for revenue forecast by channel, with structured inputs, working calculations and an action-ready summary.",
+      "summaryAr": "مصنف مطاعم قابل للتعديل من أجل توقع الإيرادات حسب القناة، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار.",
+      "order": 8,
+      "sourcePath": "resources/library/xlsx/revenue-forecast-by-channel.xlsx",
+      "storageKey": "library/revenue-forecast-by-channel.xlsx",
+      "descriptionEn": "An editable restaurant workbook for revenue forecast by channel, with structured inputs, working calculations and an action-ready summary. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "مصنف مطاعم قابل للتعديل من أجل توقع الإيرادات حسب القناة، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Editable input sheets",
+          "أوراق مدخلات قابلة للتعديل"
+        ],
+        [
+          "Working formulas and checks",
+          "معادلات وفحوصات عملية"
+        ],
+        [
+          "Summary and action fields",
+          "حقول للملخص والإجراءات"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "finance",
+        "excel",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "xlsx"
+    },
+    {
+      "file": "food-cost-calculator.xlsx",
+      "slug": "food-cost-calculator",
+      "titleEn": "Food Cost Calculator",
+      "titleAr": "حاسبة تكلفة الطعام",
+      "category": "menu",
+      "type": "EXCEL",
+      "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "summaryEn": "An editable restaurant workbook for food cost calculator, with structured inputs, working calculations and an action-ready summary.",
+      "summaryAr": "مصنف مطاعم قابل للتعديل من أجل حاسبة تكلفة الطعام، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار.",
+      "order": 9,
+      "sourcePath": "resources/library/xlsx/food-cost-calculator.xlsx",
+      "storageKey": "library/food-cost-calculator.xlsx",
+      "descriptionEn": "An editable restaurant workbook for food cost calculator, with structured inputs, working calculations and an action-ready summary. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "مصنف مطاعم قابل للتعديل من أجل حاسبة تكلفة الطعام، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Editable input sheets",
+          "أوراق مدخلات قابلة للتعديل"
+        ],
+        [
+          "Working formulas and checks",
+          "معادلات وفحوصات عملية"
+        ],
+        [
+          "Summary and action fields",
+          "حقول للملخص والإجراءات"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "menu",
+        "excel",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "xlsx"
+    },
+    {
+      "file": "recipe-costing.xlsx",
+      "slug": "recipe-costing",
+      "titleEn": "Recipe Costing",
+      "titleAr": "تكلفة الوصفات",
+      "category": "menu",
+      "type": "EXCEL",
+      "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "summaryEn": "An editable restaurant workbook for recipe costing, with structured inputs, working calculations and an action-ready summary.",
+      "summaryAr": "مصنف مطاعم قابل للتعديل من أجل تكلفة الوصفات، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار.",
+      "order": 10,
+      "sourcePath": "resources/library/xlsx/recipe-costing.xlsx",
+      "storageKey": "library/recipe-costing.xlsx",
+      "descriptionEn": "An editable restaurant workbook for recipe costing, with structured inputs, working calculations and an action-ready summary. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "مصنف مطاعم قابل للتعديل من أجل تكلفة الوصفات، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Editable input sheets",
+          "أوراق مدخلات قابلة للتعديل"
+        ],
+        [
+          "Working formulas and checks",
+          "معادلات وفحوصات عملية"
+        ],
+        [
+          "Summary and action fields",
+          "حقول للملخص والإجراءات"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "menu",
+        "excel",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "xlsx"
+    },
+    {
+      "file": "menu-engineering.xlsx",
+      "slug": "menu-engineering-template",
+      "titleEn": "Menu Engineering",
+      "titleAr": "هندسة القائمة",
+      "category": "menu",
+      "type": "EXCEL",
+      "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "summaryEn": "An editable restaurant workbook for menu engineering, with structured inputs, working calculations and an action-ready summary.",
+      "summaryAr": "مصنف مطاعم قابل للتعديل من أجل هندسة القائمة، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار.",
+      "order": 11,
+      "sourcePath": "resources/library/xlsx/menu-engineering.xlsx",
+      "storageKey": "library/menu-engineering.xlsx",
+      "descriptionEn": "An editable restaurant workbook for menu engineering, with structured inputs, working calculations and an action-ready summary. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "مصنف مطاعم قابل للتعديل من أجل هندسة القائمة، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Item entry sheet for sales, price and cost",
+          "ورقة إدخال للمبيعات والسعر والتكلفة"
+        ],
+        [
+          "Contribution and margin calculation per item",
+          "حساب المساهمة والهامش لكل صنف"
+        ],
+        [
+          "Popularity and contribution quadrant view",
+          "عرض أرباع الإقبال والمساهمة"
+        ],
+        [
+          "Category-level summary",
+          "ملخص على مستوى التصنيف"
+        ],
+        [
+          "Decision column with reason field",
+          "عمود القرار مع حقل للسبب"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "menu",
+        "excel",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "xlsx"
+    },
+    {
+      "file": "menu-pricing-calculator.xlsx",
+      "slug": "menu-pricing-worksheet",
+      "titleEn": "Menu Pricing Calculator",
+      "titleAr": "حاسبة تسعير القائمة",
+      "category": "menu",
+      "type": "EXCEL",
+      "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "summaryEn": "An editable restaurant workbook for menu pricing calculator, with structured inputs, working calculations and an action-ready summary.",
+      "summaryAr": "مصنف مطاعم قابل للتعديل من أجل حاسبة تسعير القائمة، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار.",
+      "order": 12,
+      "sourcePath": "resources/library/xlsx/menu-pricing-calculator.xlsx",
+      "storageKey": "library/menu-pricing-calculator.xlsx",
+      "descriptionEn": "An editable restaurant workbook for menu pricing calculator, with structured inputs, working calculations and an action-ready summary. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "مصنف مطاعم قابل للتعديل من أجل حاسبة تسعير القائمة، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Cost-up pricing calculation per item",
+          "حساب التسعير من التكلفة لكل صنف"
+        ],
+        [
+          "Target margin and reverse-price solver",
+          "محلّل الهامش المستهدف والسعر العكسي"
+        ],
+        [
+          "Dine-in and delivery price columns",
+          "عمودا سعر الصالة والتوصيل"
+        ],
+        [
+          "Threshold and rounding guidance",
+          "إرشادات العتبات والتقريب"
+        ],
+        [
+          "Before-and-after margin comparison",
+          "مقارنة الهامش قبل وبعد"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "menu",
+        "excel",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "xlsx"
+    },
+    {
+      "file": "inventory-count.xlsx",
+      "slug": "inventory-count",
+      "titleEn": "Inventory Count",
+      "titleAr": "جرد المخزون",
+      "category": "operations",
+      "type": "EXCEL",
+      "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "summaryEn": "An editable restaurant workbook for inventory count, with structured inputs, working calculations and an action-ready summary.",
+      "summaryAr": "مصنف مطاعم قابل للتعديل من أجل جرد المخزون، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار.",
+      "order": 13,
+      "sourcePath": "resources/library/xlsx/inventory-count.xlsx",
+      "storageKey": "library/inventory-count.xlsx",
+      "descriptionEn": "An editable restaurant workbook for inventory count, with structured inputs, working calculations and an action-ready summary. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "مصنف مطاعم قابل للتعديل من أجل جرد المخزون، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Editable input sheets",
+          "أوراق مدخلات قابلة للتعديل"
+        ],
+        [
+          "Working formulas and checks",
+          "معادلات وفحوصات عملية"
+        ],
+        [
+          "Summary and action fields",
+          "حقول للملخص والإجراءات"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "operations",
+        "excel",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "xlsx"
+    },
+    {
+      "file": "stock-movement.xlsx",
+      "slug": "stock-movement",
+      "titleEn": "Stock Movement",
+      "titleAr": "حركة المخزون",
+      "category": "operations",
+      "type": "EXCEL",
+      "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "summaryEn": "An editable restaurant workbook for stock movement, with structured inputs, working calculations and an action-ready summary.",
+      "summaryAr": "مصنف مطاعم قابل للتعديل من أجل حركة المخزون، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار.",
+      "order": 14,
+      "sourcePath": "resources/library/xlsx/stock-movement.xlsx",
+      "storageKey": "library/stock-movement.xlsx",
+      "descriptionEn": "An editable restaurant workbook for stock movement, with structured inputs, working calculations and an action-ready summary. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "مصنف مطاعم قابل للتعديل من أجل حركة المخزون، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Editable input sheets",
+          "أوراق مدخلات قابلة للتعديل"
+        ],
+        [
+          "Working formulas and checks",
+          "معادلات وفحوصات عملية"
+        ],
+        [
+          "Summary and action fields",
+          "حقول للملخص والإجراءات"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "operations",
+        "excel",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "xlsx"
+    },
+    {
+      "file": "purchasing-tracker.xlsx",
+      "slug": "purchasing-tracker",
+      "titleEn": "Purchasing Tracker",
+      "titleAr": "متتبع المشتريات",
+      "category": "operations",
+      "type": "EXCEL",
+      "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "summaryEn": "An editable restaurant workbook for purchasing tracker, with structured inputs, working calculations and an action-ready summary.",
+      "summaryAr": "مصنف مطاعم قابل للتعديل من أجل متتبع المشتريات، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار.",
+      "order": 15,
+      "sourcePath": "resources/library/xlsx/purchasing-tracker.xlsx",
+      "storageKey": "library/purchasing-tracker.xlsx",
+      "descriptionEn": "An editable restaurant workbook for purchasing tracker, with structured inputs, working calculations and an action-ready summary. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "مصنف مطاعم قابل للتعديل من أجل متتبع المشتريات، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Editable input sheets",
+          "أوراق مدخلات قابلة للتعديل"
+        ],
+        [
+          "Working formulas and checks",
+          "معادلات وفحوصات عملية"
+        ],
+        [
+          "Summary and action fields",
+          "حقول للملخص والإجراءات"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "operations",
+        "excel",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "xlsx"
+    },
+    {
+      "file": "supplier-comparison.xlsx",
+      "slug": "supplier-evaluation-template",
+      "titleEn": "Supplier Comparison",
+      "titleAr": "مقارنة الموردين",
+      "category": "operations",
+      "type": "EXCEL",
+      "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "summaryEn": "An editable restaurant workbook for supplier comparison, with structured inputs, working calculations and an action-ready summary.",
+      "summaryAr": "مصنف مطاعم قابل للتعديل من أجل مقارنة الموردين، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار.",
+      "order": 16,
+      "sourcePath": "resources/library/xlsx/supplier-comparison.xlsx",
+      "storageKey": "library/supplier-comparison.xlsx",
+      "descriptionEn": "An editable restaurant workbook for supplier comparison, with structured inputs, working calculations and an action-ready summary. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "مصنف مطاعم قابل للتعديل من أجل مقارنة الموردين، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Supplier scorecard",
+          "بطاقة تقييم المورّد"
+        ],
+        [
+          "Specification compliance tracking",
+          "تتبع الالتزام بالمواصفات"
+        ],
+        [
+          "Short-delivery and quality log",
+          "سجل التوريدات الناقصة والجودة"
+        ],
+        [
+          "Second-source register",
+          "سجل المصادر البديلة"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "operations",
+        "excel",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "xlsx"
+    },
+    {
+      "file": "waste-log.xlsx",
+      "slug": "waste-log",
+      "titleEn": "Waste Log",
+      "titleAr": "سجل الهدر",
+      "category": "operations",
+      "type": "EXCEL",
+      "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "summaryEn": "An editable restaurant workbook for waste log, with structured inputs, working calculations and an action-ready summary.",
+      "summaryAr": "مصنف مطاعم قابل للتعديل من أجل سجل الهدر، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار.",
+      "order": 17,
+      "sourcePath": "resources/library/xlsx/waste-log.xlsx",
+      "storageKey": "library/waste-log.xlsx",
+      "descriptionEn": "An editable restaurant workbook for waste log, with structured inputs, working calculations and an action-ready summary. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "مصنف مطاعم قابل للتعديل من أجل سجل الهدر، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Editable input sheets",
+          "أوراق مدخلات قابلة للتعديل"
+        ],
+        [
+          "Working formulas and checks",
+          "معادلات وفحوصات عملية"
+        ],
+        [
+          "Summary and action fields",
+          "حقول للملخص والإجراءات"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "operations",
+        "excel",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "xlsx"
+    },
+    {
+      "file": "theoretical-vs-actual-food-cost.xlsx",
+      "slug": "theoretical-vs-actual-food-cost",
+      "titleEn": "Theoretical vs Actual Food Cost",
+      "titleAr": "تكلفة الطعام النظرية مقابل الفعلية",
+      "category": "operations",
+      "type": "EXCEL",
+      "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "summaryEn": "An editable restaurant workbook for theoretical vs actual food cost, with structured inputs, working calculations and an action-ready summary.",
+      "summaryAr": "مصنف مطاعم قابل للتعديل من أجل تكلفة الطعام النظرية مقابل الفعلية، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار.",
+      "order": 18,
+      "sourcePath": "resources/library/xlsx/theoretical-vs-actual-food-cost.xlsx",
+      "storageKey": "library/theoretical-vs-actual-food-cost.xlsx",
+      "descriptionEn": "An editable restaurant workbook for theoretical vs actual food cost, with structured inputs, working calculations and an action-ready summary. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "مصنف مطاعم قابل للتعديل من أجل تكلفة الطعام النظرية مقابل الفعلية، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Editable input sheets",
+          "أوراق مدخلات قابلة للتعديل"
+        ],
+        [
+          "Working formulas and checks",
+          "معادلات وفحوصات عملية"
+        ],
+        [
+          "Summary and action fields",
+          "حقول للملخص والإجراءات"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "operations",
+        "excel",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "xlsx"
+    },
+    {
+      "file": "labor-cost-tracker.xlsx",
+      "slug": "labour-cost-tracker",
+      "titleEn": "Labor Cost Tracker",
+      "titleAr": "متتبع تكلفة العمالة",
+      "category": "operations",
+      "type": "EXCEL",
+      "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "summaryEn": "An editable restaurant workbook for labor cost tracker, with structured inputs, working calculations and an action-ready summary.",
+      "summaryAr": "مصنف مطاعم قابل للتعديل من أجل متتبع تكلفة العمالة، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار.",
+      "order": 19,
+      "sourcePath": "resources/library/xlsx/labor-cost-tracker.xlsx",
+      "storageKey": "library/labor-cost-tracker.xlsx",
+      "descriptionEn": "An editable restaurant workbook for labor cost tracker, with structured inputs, working calculations and an action-ready summary. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "مصنف مطاعم قابل للتعديل من أجل متتبع تكلفة العمالة، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Demand curve in fifteen-minute intervals",
+          "منحنى الطلب في فترات خمس عشرة دقيقة"
+        ],
+        [
+          "Rota overlay",
+          "إسقاط الجدول على المنحنى"
+        ],
+        [
+          "Cost per hour by function",
+          "التكلفة بالساعة حسب الوظيفة"
+        ],
+        [
+          "Variance against plan",
+          "الانحراف مقابل الخطة"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "operations",
+        "excel",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "xlsx"
+    },
+    {
+      "file": "staffing-plan.xlsx",
+      "slug": "staffing-plan",
+      "titleEn": "Staffing Plan",
+      "titleAr": "خطة التوظيف",
+      "category": "operations",
+      "type": "EXCEL",
+      "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "summaryEn": "An editable restaurant workbook for staffing plan, with structured inputs, working calculations and an action-ready summary.",
+      "summaryAr": "مصنف مطاعم قابل للتعديل من أجل خطة التوظيف، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار.",
+      "order": 20,
+      "sourcePath": "resources/library/xlsx/staffing-plan.xlsx",
+      "storageKey": "library/staffing-plan.xlsx",
+      "descriptionEn": "An editable restaurant workbook for staffing plan, with structured inputs, working calculations and an action-ready summary. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "مصنف مطاعم قابل للتعديل من أجل خطة التوظيف، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Editable input sheets",
+          "أوراق مدخلات قابلة للتعديل"
+        ],
+        [
+          "Working formulas and checks",
+          "معادلات وفحوصات عملية"
+        ],
+        [
+          "Summary and action fields",
+          "حقول للملخص والإجراءات"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "operations",
+        "excel",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "xlsx"
+    },
+    {
+      "file": "restaurant-kpi-dashboard.xlsx",
+      "slug": "restaurant-kpi-dashboard",
+      "titleEn": "Restaurant KPI Dashboard",
+      "titleAr": "لوحة مؤشرات أداء المطعم",
+      "category": "finance",
+      "type": "EXCEL",
+      "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "summaryEn": "An editable restaurant workbook for restaurant kpi dashboard, with structured inputs, working calculations and an action-ready summary.",
+      "summaryAr": "مصنف مطاعم قابل للتعديل من أجل لوحة مؤشرات أداء المطعم، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار.",
+      "order": 21,
+      "sourcePath": "resources/library/xlsx/restaurant-kpi-dashboard.xlsx",
+      "storageKey": "library/restaurant-kpi-dashboard.xlsx",
+      "descriptionEn": "An editable restaurant workbook for restaurant kpi dashboard, with structured inputs, working calculations and an action-ready summary. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "مصنف مطاعم قابل للتعديل من أجل لوحة مؤشرات أداء المطعم، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Monthly input sheet",
+          "ورقة إدخال شهرية"
+        ],
+        [
+          "Revenue by daypart and channel",
+          "الإيراد حسب الوقت والقناة"
+        ],
+        [
+          "Theoretical versus actual food cost",
+          "التكلفة النظرية مقابل الفعلية"
+        ],
+        [
+          "Labour and average transaction value",
+          "العمالة ومتوسط قيمة المعاملة"
+        ],
+        [
+          "Trend view with threshold flags",
+          "عرض الاتجاه مع إشارات العتبات"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "finance",
+        "excel",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "xlsx"
+    },
+    {
+      "file": "branch-performance-comparison.xlsx",
+      "slug": "branch-performance-comparison",
+      "titleEn": "Branch Performance Comparison",
+      "titleAr": "مقارنة أداء الفروع",
+      "category": "growth-expansion",
+      "type": "EXCEL",
+      "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "summaryEn": "An editable restaurant workbook for branch performance comparison, with structured inputs, working calculations and an action-ready summary.",
+      "summaryAr": "مصنف مطاعم قابل للتعديل من أجل مقارنة أداء الفروع، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار.",
+      "order": 22,
+      "sourcePath": "resources/library/xlsx/branch-performance-comparison.xlsx",
+      "storageKey": "library/branch-performance-comparison.xlsx",
+      "descriptionEn": "An editable restaurant workbook for branch performance comparison, with structured inputs, working calculations and an action-ready summary. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "مصنف مطاعم قابل للتعديل من أجل مقارنة أداء الفروع، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Editable input sheets",
+          "أوراق مدخلات قابلة للتعديل"
+        ],
+        [
+          "Working formulas and checks",
+          "معادلات وفحوصات عملية"
+        ],
+        [
+          "Summary and action fields",
+          "حقول للملخص والإجراءات"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "growth-expansion",
+        "excel",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "xlsx"
+    },
+    {
+      "file": "delivery-platform-performance.xlsx",
+      "slug": "delivery-platform-performance",
+      "titleEn": "Delivery Platform Performance",
+      "titleAr": "أداء منصات التوصيل",
+      "category": "finance",
+      "type": "EXCEL",
+      "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "summaryEn": "An editable restaurant workbook for delivery platform performance, with structured inputs, working calculations and an action-ready summary.",
+      "summaryAr": "مصنف مطاعم قابل للتعديل من أجل أداء منصات التوصيل، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار.",
+      "order": 23,
+      "sourcePath": "resources/library/xlsx/delivery-platform-performance.xlsx",
+      "storageKey": "library/delivery-platform-performance.xlsx",
+      "descriptionEn": "An editable restaurant workbook for delivery platform performance, with structured inputs, working calculations and an action-ready summary. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "مصنف مطاعم قابل للتعديل من أجل أداء منصات التوصيل، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Editable input sheets",
+          "أوراق مدخلات قابلة للتعديل"
+        ],
+        [
+          "Working formulas and checks",
+          "معادلات وفحوصات عملية"
+        ],
+        [
+          "Summary and action fields",
+          "حقول للملخص والإجراءات"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "finance",
+        "excel",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "xlsx"
+    },
+    {
+      "file": "marketing-budget.xlsx",
+      "slug": "marketing-budget",
+      "titleEn": "Marketing Budget",
+      "titleAr": "ميزانية التسويق",
+      "category": "marketing",
+      "type": "EXCEL",
+      "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "summaryEn": "An editable restaurant workbook for marketing budget, with structured inputs, working calculations and an action-ready summary.",
+      "summaryAr": "مصنف مطاعم قابل للتعديل من أجل ميزانية التسويق، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار.",
+      "order": 24,
+      "sourcePath": "resources/library/xlsx/marketing-budget.xlsx",
+      "storageKey": "library/marketing-budget.xlsx",
+      "descriptionEn": "An editable restaurant workbook for marketing budget, with structured inputs, working calculations and an action-ready summary. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "مصنف مطاعم قابل للتعديل من أجل ميزانية التسويق، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Editable input sheets",
+          "أوراق مدخلات قابلة للتعديل"
+        ],
+        [
+          "Working formulas and checks",
+          "معادلات وفحوصات عملية"
+        ],
+        [
+          "Summary and action fields",
+          "حقول للملخص والإجراءات"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "marketing",
+        "excel",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "xlsx"
+    },
+    {
+      "file": "marketing-campaign-tracker.xlsx",
+      "slug": "marketing-campaign-planner",
+      "titleEn": "Marketing Campaign Tracker",
+      "titleAr": "متتبع الحملات التسويقية",
+      "category": "marketing",
+      "type": "EXCEL",
+      "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "summaryEn": "An editable restaurant workbook for marketing campaign tracker, with structured inputs, working calculations and an action-ready summary.",
+      "summaryAr": "مصنف مطاعم قابل للتعديل من أجل متتبع الحملات التسويقية، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار.",
+      "order": 25,
+      "sourcePath": "resources/library/xlsx/marketing-campaign-tracker.xlsx",
+      "storageKey": "library/marketing-campaign-tracker.xlsx",
+      "descriptionEn": "An editable restaurant workbook for marketing campaign tracker, with structured inputs, working calculations and an action-ready summary. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "مصنف مطاعم قابل للتعديل من أجل متتبع الحملات التسويقية، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Twelve-month calendar grid",
+          "شبكة تقويم اثني عشر شهراً"
+        ],
+        [
+          "Objective and success definition per activity",
+          "الهدف وتعريف النجاح لكل نشاط"
+        ],
+        [
+          "Budget allocation by channel",
+          "توزيع الميزانية حسب القناة"
+        ],
+        [
+          "Offer margin check column",
+          "عمود فحص هامش العرض"
+        ],
+        [
+          "Review date tracker",
+          "متتبع تواريخ المراجعة"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "marketing",
+        "excel",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "xlsx"
+    },
+    {
+      "file": "restaurant-opening-checklist.xlsx",
+      "slug": "restaurant-opening-workbook",
+      "titleEn": "Restaurant Opening Checklist Workbook",
+      "titleAr": "مصنف قائمة تحقق افتتاح مطعم",
+      "category": "strategy-development",
+      "type": "EXCEL",
+      "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "summaryEn": "An editable restaurant workbook for restaurant opening checklist workbook, with structured inputs, working calculations and an action-ready summary.",
+      "summaryAr": "مصنف مطاعم قابل للتعديل من أجل مصنف قائمة تحقق افتتاح مطعم، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار.",
+      "order": 26,
+      "sourcePath": "resources/library/xlsx/restaurant-opening-checklist.xlsx",
+      "storageKey": "library/restaurant-opening-checklist.xlsx",
+      "descriptionEn": "An editable restaurant workbook for restaurant opening checklist workbook, with structured inputs, working calculations and an action-ready summary. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "مصنف مطاعم قابل للتعديل من أجل مصنف قائمة تحقق افتتاح مطعم، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Editable input sheets",
+          "أوراق مدخلات قابلة للتعديل"
+        ],
+        [
+          "Working formulas and checks",
+          "معادلات وفحوصات عملية"
+        ],
+        [
+          "Summary and action fields",
+          "حقول للملخص والإجراءات"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "strategy-development",
+        "excel",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "xlsx"
+    },
+    {
+      "file": "site-evaluation-scorecard.xlsx",
+      "slug": "site-evaluation-scorecard",
+      "titleEn": "Site Evaluation Scorecard",
+      "titleAr": "بطاقة تقييم الموقع",
+      "category": "strategy-development",
+      "type": "EXCEL",
+      "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "summaryEn": "An editable restaurant workbook for site evaluation scorecard, with structured inputs, working calculations and an action-ready summary.",
+      "summaryAr": "مصنف مطاعم قابل للتعديل من أجل بطاقة تقييم الموقع، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار.",
+      "order": 27,
+      "sourcePath": "resources/library/xlsx/site-evaluation-scorecard.xlsx",
+      "storageKey": "library/site-evaluation-scorecard.xlsx",
+      "descriptionEn": "An editable restaurant workbook for site evaluation scorecard, with structured inputs, working calculations and an action-ready summary. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "مصنف مطاعم قابل للتعديل من أجل بطاقة تقييم الموقع، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Editable input sheets",
+          "أوراق مدخلات قابلة للتعديل"
+        ],
+        [
+          "Working formulas and checks",
+          "معادلات وفحوصات عملية"
+        ],
+        [
+          "Summary and action fields",
+          "حقول للملخص والإجراءات"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "strategy-development",
+        "excel",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "xlsx"
+    },
+    {
+      "file": "competitor-analysis.xlsx",
+      "slug": "competitor-analysis-template",
+      "titleEn": "Competitor Analysis",
+      "titleAr": "تحليل المنافسين",
+      "category": "strategy-development",
+      "type": "EXCEL",
+      "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "summaryEn": "An editable restaurant workbook for competitor analysis, with structured inputs, working calculations and an action-ready summary.",
+      "summaryAr": "مصنف مطاعم قابل للتعديل من أجل تحليل المنافسين، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار.",
+      "order": 28,
+      "sourcePath": "resources/library/xlsx/competitor-analysis.xlsx",
+      "storageKey": "library/competitor-analysis.xlsx",
+      "descriptionEn": "An editable restaurant workbook for competitor analysis, with structured inputs, working calculations and an action-ready summary. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "مصنف مطاعم قابل للتعديل من أجل تحليل المنافسين، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Catchment competitor list",
+          "قائمة منافسي النطاق"
+        ],
+        [
+          "Price band comparison",
+          "مقارنة النطاقات السعرية"
+        ],
+        [
+          "Occasion and service model comparison",
+          "مقارنة المناسبة ونموذج الخدمة"
+        ],
+        [
+          "Delivery and channel presence",
+          "الحضور في التوصيل والقنوات"
+        ],
+        [
+          "Gap and opportunity summary",
+          "ملخص الفجوات والفرص"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "strategy-development",
+        "excel",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "xlsx"
+    },
+    {
+      "file": "swot-analysis.xlsx",
+      "slug": "swot-analysis",
+      "titleEn": "SWOT Analysis",
+      "titleAr": "تحليل نقاط القوة والضعف والفرص والتهديدات",
+      "category": "strategy-development",
+      "type": "EXCEL",
+      "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "summaryEn": "An editable restaurant workbook for swot analysis, with structured inputs, working calculations and an action-ready summary.",
+      "summaryAr": "مصنف مطاعم قابل للتعديل من أجل تحليل نقاط القوة والضعف والفرص والتهديدات، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار.",
+      "order": 29,
+      "sourcePath": "resources/library/xlsx/swot-analysis.xlsx",
+      "storageKey": "library/swot-analysis.xlsx",
+      "descriptionEn": "An editable restaurant workbook for swot analysis, with structured inputs, working calculations and an action-ready summary. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "مصنف مطاعم قابل للتعديل من أجل تحليل نقاط القوة والضعف والفرص والتهديدات، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Editable input sheets",
+          "أوراق مدخلات قابلة للتعديل"
+        ],
+        [
+          "Working formulas and checks",
+          "معادلات وفحوصات عملية"
+        ],
+        [
+          "Summary and action fields",
+          "حقول للملخص والإجراءات"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "strategy-development",
+        "excel",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "xlsx"
+    },
+    {
+      "file": "customer-feedback-analysis.xlsx",
+      "slug": "customer-feedback-analysis",
+      "titleEn": "Customer Feedback Analysis",
+      "titleAr": "تحليل ملاحظات العملاء",
+      "category": "brand-experience",
+      "type": "EXCEL",
+      "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "summaryEn": "An editable restaurant workbook for customer feedback analysis, with structured inputs, working calculations and an action-ready summary.",
+      "summaryAr": "مصنف مطاعم قابل للتعديل من أجل تحليل ملاحظات العملاء، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار.",
+      "order": 30,
+      "sourcePath": "resources/library/xlsx/customer-feedback-analysis.xlsx",
+      "storageKey": "library/customer-feedback-analysis.xlsx",
+      "descriptionEn": "An editable restaurant workbook for customer feedback analysis, with structured inputs, working calculations and an action-ready summary. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "مصنف مطاعم قابل للتعديل من أجل تحليل ملاحظات العملاء، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Editable input sheets",
+          "أوراق مدخلات قابلة للتعديل"
+        ],
+        [
+          "Working formulas and checks",
+          "معادلات وفحوصات عملية"
+        ],
+        [
+          "Summary and action fields",
+          "حقول للملخص والإجراءات"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "brand-experience",
+        "excel",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "xlsx"
+    },
+    {
+      "file": "restaurant-audit-scorecard.xlsx",
+      "slug": "restaurant-audit-scorecard",
+      "titleEn": "Restaurant Audit Scorecard",
+      "titleAr": "بطاقة تدقيق المطعم",
+      "category": "operations",
+      "type": "EXCEL",
+      "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "summaryEn": "An editable restaurant workbook for restaurant audit scorecard, with structured inputs, working calculations and an action-ready summary.",
+      "summaryAr": "مصنف مطاعم قابل للتعديل من أجل بطاقة تدقيق المطعم، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار.",
+      "order": 31,
+      "sourcePath": "resources/library/xlsx/restaurant-audit-scorecard.xlsx",
+      "storageKey": "library/restaurant-audit-scorecard.xlsx",
+      "descriptionEn": "An editable restaurant workbook for restaurant audit scorecard, with structured inputs, working calculations and an action-ready summary. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "مصنف مطاعم قابل للتعديل من أجل بطاقة تدقيق المطعم، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Editable input sheets",
+          "أوراق مدخلات قابلة للتعديل"
+        ],
+        [
+          "Working formulas and checks",
+          "معادلات وفحوصات عملية"
+        ],
+        [
+          "Summary and action fields",
+          "حقول للملخص والإجراءات"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "operations",
+        "excel",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "xlsx"
+    },
+    {
+      "file": "mystery-shopper-scorecard.xlsx",
+      "slug": "mystery-shopper-scorecard",
+      "titleEn": "Mystery Shopper Scorecard",
+      "titleAr": "بطاقة تقييم المتسوق الخفي",
+      "category": "brand-experience",
+      "type": "EXCEL",
+      "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "summaryEn": "An editable restaurant workbook for mystery shopper scorecard, with structured inputs, working calculations and an action-ready summary.",
+      "summaryAr": "مصنف مطاعم قابل للتعديل من أجل بطاقة تقييم المتسوق الخفي، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار.",
+      "order": 32,
+      "sourcePath": "resources/library/xlsx/mystery-shopper-scorecard.xlsx",
+      "storageKey": "library/mystery-shopper-scorecard.xlsx",
+      "descriptionEn": "An editable restaurant workbook for mystery shopper scorecard, with structured inputs, working calculations and an action-ready summary. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "مصنف مطاعم قابل للتعديل من أجل بطاقة تقييم المتسوق الخفي، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Editable input sheets",
+          "أوراق مدخلات قابلة للتعديل"
+        ],
+        [
+          "Working formulas and checks",
+          "معادلات وفحوصات عملية"
+        ],
+        [
+          "Summary and action fields",
+          "حقول للملخص والإجراءات"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "brand-experience",
+        "excel",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "xlsx"
+    },
+    {
+      "file": "expansion-feasibility.xlsx",
+      "slug": "expansion-feasibility",
+      "titleEn": "Expansion Feasibility",
+      "titleAr": "جدوى التوسع",
+      "category": "growth-expansion",
+      "type": "EXCEL",
+      "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "summaryEn": "An editable restaurant workbook for expansion feasibility, with structured inputs, working calculations and an action-ready summary.",
+      "summaryAr": "مصنف مطاعم قابل للتعديل من أجل جدوى التوسع، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار.",
+      "order": 33,
+      "sourcePath": "resources/library/xlsx/expansion-feasibility.xlsx",
+      "storageKey": "library/expansion-feasibility.xlsx",
+      "descriptionEn": "An editable restaurant workbook for expansion feasibility, with structured inputs, working calculations and an action-ready summary. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "مصنف مطاعم قابل للتعديل من أجل جدوى التوسع، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Editable input sheets",
+          "أوراق مدخلات قابلة للتعديل"
+        ],
+        [
+          "Working formulas and checks",
+          "معادلات وفحوصات عملية"
+        ],
+        [
+          "Summary and action fields",
+          "حقول للملخص والإجراءات"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "growth-expansion",
+        "excel",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "xlsx"
+    },
+    {
+      "file": "franchise-readiness-scorecard.xlsx",
+      "slug": "franchise-readiness-scorecard",
+      "titleEn": "Franchise Readiness Scorecard",
+      "titleAr": "بطاقة الجاهزية للامتياز التجاري",
+      "category": "growth-expansion",
+      "type": "EXCEL",
+      "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "summaryEn": "An editable restaurant workbook for franchise readiness scorecard, with structured inputs, working calculations and an action-ready summary.",
+      "summaryAr": "مصنف مطاعم قابل للتعديل من أجل بطاقة الجاهزية للامتياز التجاري، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار.",
+      "order": 34,
+      "sourcePath": "resources/library/xlsx/franchise-readiness-scorecard.xlsx",
+      "storageKey": "library/franchise-readiness-scorecard.xlsx",
+      "descriptionEn": "An editable restaurant workbook for franchise readiness scorecard, with structured inputs, working calculations and an action-ready summary. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "مصنف مطاعم قابل للتعديل من أجل بطاقة الجاهزية للامتياز التجاري، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Editable input sheets",
+          "أوراق مدخلات قابلة للتعديل"
+        ],
+        [
+          "Working formulas and checks",
+          "معادلات وفحوصات عملية"
+        ],
+        [
+          "Summary and action fields",
+          "حقول للملخص والإجراءات"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "growth-expansion",
+        "excel",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "xlsx"
+    },
+    {
+      "file": "90-day-turnaround-plan.xlsx",
+      "slug": "90-day-turnaround-plan",
+      "titleEn": "90-day Turnaround Plan",
+      "titleAr": "خطة تحول لمدة 90 يوماً",
+      "category": "growth-expansion",
+      "type": "EXCEL",
+      "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "summaryEn": "An editable restaurant workbook for 90-day turnaround plan, with structured inputs, working calculations and an action-ready summary.",
+      "summaryAr": "مصنف مطاعم قابل للتعديل من أجل خطة تحول لمدة 90 يوماً، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار.",
+      "order": 35,
+      "sourcePath": "resources/library/xlsx/90-day-turnaround-plan.xlsx",
+      "storageKey": "library/90-day-turnaround-plan.xlsx",
+      "descriptionEn": "An editable restaurant workbook for 90-day turnaround plan, with structured inputs, working calculations and an action-ready summary. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "مصنف مطاعم قابل للتعديل من أجل خطة تحول لمدة 90 يوماً، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Editable input sheets",
+          "أوراق مدخلات قابلة للتعديل"
+        ],
+        [
+          "Working formulas and checks",
+          "معادلات وفحوصات عملية"
+        ],
+        [
+          "Summary and action fields",
+          "حقول للملخص والإجراءات"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "growth-expansion",
+        "excel",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "xlsx"
+    },
+    {
+      "file": "restaurant-feasibility-study-report.docx",
+      "slug": "restaurant-feasibility-study-report",
+      "titleEn": "Restaurant Feasibility Study Report",
+      "titleAr": "تقرير دراسة جدوى مطعم",
+      "category": "strategy-development",
+      "type": "WORD",
+      "mime": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "summaryEn": "A bilingual, editable restaurant feasibility study report with evidence prompts, decision fields and an owned action plan.",
+      "summaryAr": "تقرير دراسة جدوى مطعم ثنائي اللغة وقابل للتعديل، مع حقول للأدلة والقرارات وخطة عمل محددة المسؤوليات.",
+      "order": 36,
+      "sourcePath": "resources/library/docx/restaurant-feasibility-study-report.docx",
+      "storageKey": "library/restaurant-feasibility-study-report.docx",
+      "descriptionEn": "A bilingual, editable restaurant feasibility study report with evidence prompts, decision fields and an owned action plan. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "تقرير دراسة جدوى مطعم ثنائي اللغة وقابل للتعديل، مع حقول للأدلة والقرارات وخطة عمل محددة المسؤوليات. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Concept and customer",
+          "المفهوم والعميل المستهدف"
+        ],
+        [
+          "Location and demand evidence",
+          "الموقع وأدلة الطلب"
+        ],
+        [
+          "Investment and operating assumptions",
+          "افتراضات الاستثمار والتشغيل"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "strategy-development",
+        "word",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "docx"
+    },
+    {
+      "file": "restaurant-business-plan.docx",
+      "slug": "restaurant-business-plan-template",
+      "titleEn": "Restaurant Business Plan",
+      "titleAr": "خطة عمل مطعم",
+      "category": "strategy-development",
+      "type": "WORD",
+      "mime": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "summaryEn": "A bilingual, editable restaurant business plan with evidence prompts, decision fields and an owned action plan.",
+      "summaryAr": "خطة عمل مطعم ثنائي اللغة وقابل للتعديل، مع حقول للأدلة والقرارات وخطة عمل محددة المسؤوليات.",
+      "order": 37,
+      "sourcePath": "resources/library/docx/restaurant-business-plan.docx",
+      "storageKey": "library/restaurant-business-plan.docx",
+      "descriptionEn": "A bilingual, editable restaurant business plan with evidence prompts, decision fields and an owned action plan. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "خطة عمل مطعم ثنائي اللغة وقابل للتعديل، مع حقول للأدلة والقرارات وخطة عمل محددة المسؤوليات. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Concept and positioning section",
+          "قسم المفهوم والتموضع"
+        ],
+        [
+          "Market and catchment analysis",
+          "تحليل السوق والنطاق"
+        ],
+        [
+          "Menu, cost base and pricing",
+          "القائمة وقاعدة التكلفة والتسعير"
+        ],
+        [
+          "Investment and operating cost structure",
+          "الاستثمار وهيكل التكاليف التشغيلية"
+        ],
+        [
+          "Monthly cash flow and break-even",
+          "التدفق النقدي الشهري ونقطة التعادل"
+        ],
+        [
+          "Assumptions register",
+          "سجل الافتراضات"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "strategy-development",
+        "word",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "docx"
+    },
+    {
+      "file": "restaurant-audit-report.docx",
+      "slug": "restaurant-audit-report",
+      "titleEn": "Restaurant Audit Report",
+      "titleAr": "تقرير تدقيق مطعم",
+      "category": "operations",
+      "type": "WORD",
+      "mime": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "summaryEn": "A bilingual, editable restaurant audit report with evidence prompts, decision fields and an owned action plan.",
+      "summaryAr": "تقرير تدقيق مطعم ثنائي اللغة وقابل للتعديل، مع حقول للأدلة والقرارات وخطة عمل محددة المسؤوليات.",
+      "order": 38,
+      "sourcePath": "resources/library/docx/restaurant-audit-report.docx",
+      "storageKey": "library/restaurant-audit-report.docx",
+      "descriptionEn": "A bilingual, editable restaurant audit report with evidence prompts, decision fields and an owned action plan. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "تقرير تدقيق مطعم ثنائي اللغة وقابل للتعديل، مع حقول للأدلة والقرارات وخطة عمل محددة المسؤوليات. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Guest journey observations",
+          "ملاحظات تجربة الضيف"
+        ],
+        [
+          "Kitchen and service standards",
+          "معايير المطبخ والخدمة"
+        ],
+        [
+          "Risks and priority actions",
+          "المخاطر والإجراءات ذات الأولوية"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "operations",
+        "word",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "docx"
+    },
+    {
+      "file": "restaurant-development-plan.docx",
+      "slug": "restaurant-development-plan",
+      "titleEn": "Restaurant Development Plan",
+      "titleAr": "خطة تطوير مطعم",
+      "category": "growth-expansion",
+      "type": "WORD",
+      "mime": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "summaryEn": "A bilingual, editable restaurant development plan with evidence prompts, decision fields and an owned action plan.",
+      "summaryAr": "خطة تطوير مطعم ثنائي اللغة وقابل للتعديل، مع حقول للأدلة والقرارات وخطة عمل محددة المسؤوليات.",
+      "order": 39,
+      "sourcePath": "resources/library/docx/restaurant-development-plan.docx",
+      "storageKey": "library/restaurant-development-plan.docx",
+      "descriptionEn": "A bilingual, editable restaurant development plan with evidence prompts, decision fields and an owned action plan. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "خطة تطوير مطعم ثنائي اللغة وقابل للتعديل، مع حقول للأدلة والقرارات وخطة عمل محددة المسؤوليات. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Baseline and business constraint",
+          "الوضع الحالي وما يعيق المشروع"
+        ],
+        [
+          "Priority improvements",
+          "التحسينات ذات الأولوية"
+        ],
+        [
+          "Owners and review milestones",
+          "المسؤولون ومواعيد المراجعة"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "growth-expansion",
+        "word",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "docx"
+    },
+    {
+      "file": "restaurant-opening-plan.docx",
+      "slug": "restaurant-opening-plan",
+      "titleEn": "Restaurant Opening Plan",
+      "titleAr": "خطة افتتاح مطعم",
+      "category": "strategy-development",
+      "type": "WORD",
+      "mime": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "summaryEn": "A bilingual, editable restaurant opening plan with evidence prompts, decision fields and an owned action plan.",
+      "summaryAr": "خطة افتتاح مطعم ثنائي اللغة وقابل للتعديل، مع حقول للأدلة والقرارات وخطة عمل محددة المسؤوليات.",
+      "order": 40,
+      "sourcePath": "resources/library/docx/restaurant-opening-plan.docx",
+      "storageKey": "library/restaurant-opening-plan.docx",
+      "descriptionEn": "A bilingual, editable restaurant opening plan with evidence prompts, decision fields and an owned action plan. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "خطة افتتاح مطعم ثنائي اللغة وقابل للتعديل، مع حقول للأدلة والقرارات وخطة عمل محددة المسؤوليات. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Site and equipment readiness",
+          "جاهزية الموقع والمعدات"
+        ],
+        [
+          "Team and operating standards",
+          "الفريق ومعايير التشغيل"
+        ],
+        [
+          "Soft opening and follow up",
+          "التشغيل التجريبي والمتابعة"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "strategy-development",
+        "word",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "docx"
+    },
+    {
+      "file": "restaurant-operations-manual.docx",
+      "slug": "restaurant-operations-manual",
+      "titleEn": "Restaurant Operations Manual",
+      "titleAr": "دليل تشغيل مطعم",
+      "category": "operations",
+      "type": "WORD",
+      "mime": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "summaryEn": "A bilingual, editable restaurant operations manual with evidence prompts, decision fields and an owned action plan.",
+      "summaryAr": "دليل تشغيل مطعم ثنائي اللغة وقابل للتعديل، مع حقول للأدلة والقرارات وخطة عمل محددة المسؤوليات.",
+      "order": 41,
+      "sourcePath": "resources/library/docx/restaurant-operations-manual.docx",
+      "storageKey": "library/restaurant-operations-manual.docx",
+      "descriptionEn": "A bilingual, editable restaurant operations manual with evidence prompts, decision fields and an owned action plan. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "دليل تشغيل مطعم ثنائي اللغة وقابل للتعديل، مع حقول للأدلة والقرارات وخطة عمل محددة المسؤوليات. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Purpose and responsibility",
+          "الغرض والمسؤولية"
+        ],
+        [
+          "Work steps and standards",
+          "خطوات العمل والمعايير"
+        ],
+        [
+          "Verification and corrective action",
+          "التحقق والإجراء التصحيحي"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "operations",
+        "word",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "docx"
+    },
+    {
+      "file": "restaurant-sop-template.docx",
+      "slug": "restaurant-sop-template",
+      "titleEn": "Restaurant SOP Template",
+      "titleAr": "قالب إجراء تشغيلي قياسي للمطعم",
+      "category": "operations",
+      "type": "WORD",
+      "mime": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "summaryEn": "A bilingual, editable restaurant sop template with evidence prompts, decision fields and an owned action plan.",
+      "summaryAr": "قالب إجراء تشغيلي قياسي للمطعم ثنائي اللغة وقابل للتعديل، مع حقول للأدلة والقرارات وخطة عمل محددة المسؤوليات.",
+      "order": 42,
+      "sourcePath": "resources/library/docx/restaurant-sop-template.docx",
+      "storageKey": "library/restaurant-sop-template.docx",
+      "descriptionEn": "A bilingual, editable restaurant sop template with evidence prompts, decision fields and an owned action plan. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "قالب إجراء تشغيلي قياسي للمطعم ثنائي اللغة وقابل للتعديل، مع حقول للأدلة والقرارات وخطة عمل محددة المسؤوليات. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Purpose and responsibility",
+          "الغرض والمسؤولية"
+        ],
+        [
+          "Work steps and standards",
+          "خطوات العمل والمعايير"
+        ],
+        [
+          "Verification and corrective action",
+          "التحقق والإجراء التصحيحي"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "operations",
+        "word",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "docx"
+    },
+    {
+      "file": "restaurant-marketing-plan.docx",
+      "slug": "marketing-plan-template",
+      "titleEn": "Restaurant Marketing Plan",
+      "titleAr": "خطة تسويق مطعم",
+      "category": "marketing",
+      "type": "WORD",
+      "mime": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "summaryEn": "A bilingual, editable restaurant marketing plan with evidence prompts, decision fields and an owned action plan.",
+      "summaryAr": "خطة تسويق مطعم ثنائي اللغة وقابل للتعديل، مع حقول للأدلة والقرارات وخطة عمل محددة المسؤوليات.",
+      "order": 43,
+      "sourcePath": "resources/library/docx/restaurant-marketing-plan.docx",
+      "storageKey": "library/restaurant-marketing-plan.docx",
+      "descriptionEn": "A bilingual, editable restaurant marketing plan with evidence prompts, decision fields and an owned action plan. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "خطة تسويق مطعم ثنائي اللغة وقابل للتعديل، مع حقول للأدلة والقرارات وخطة عمل محددة المسؤوليات. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Positioning and messaging section",
+          "قسم التموضع والرسائل"
+        ],
+        [
+          "Audience and catchment definition",
+          "تعريف الجمهور والنطاق"
+        ],
+        [
+          "Offer and promotion architecture",
+          "بنية العروض والترويج"
+        ],
+        [
+          "Channel plan and budget allocation",
+          "خطة القنوات وتوزيع الميزانية"
+        ],
+        [
+          "Twelve-month calendar",
+          "تقويم اثني عشر شهراً"
+        ],
+        [
+          "Measurement framework",
+          "إطار القياس"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "marketing",
+        "word",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "docx"
+    },
+    {
+      "file": "restaurant-brand-brief.docx",
+      "slug": "restaurant-brand-brief",
+      "titleEn": "Restaurant Brand Brief",
+      "titleAr": "موجز علامة مطعم",
+      "category": "brand-experience",
+      "type": "WORD",
+      "mime": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "summaryEn": "A bilingual, editable restaurant brand brief with evidence prompts, decision fields and an owned action plan.",
+      "summaryAr": "موجز علامة مطعم ثنائي اللغة وقابل للتعديل، مع حقول للأدلة والقرارات وخطة عمل محددة المسؤوليات.",
+      "order": 44,
+      "sourcePath": "resources/library/docx/restaurant-brand-brief.docx",
+      "storageKey": "library/restaurant-brand-brief.docx",
+      "descriptionEn": "A bilingual, editable restaurant brand brief with evidence prompts, decision fields and an owned action plan. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "موجز علامة مطعم ثنائي اللغة وقابل للتعديل، مع حقول للأدلة والقرارات وخطة عمل محددة المسؤوليات. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Audience and positioning",
+          "الجمهور والتموضع"
+        ],
+        [
+          "Channels and guest touchpoints",
+          "القنوات ونقاط تواصل الضيف"
+        ],
+        [
+          "Budget and measurement",
+          "الميزانية والقياس"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "brand-experience",
+        "word",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "docx"
+    },
+    {
+      "file": "menu-development-brief.docx",
+      "slug": "menu-development-brief",
+      "titleEn": "Menu Development Brief",
+      "titleAr": "موجز تطوير قائمة",
+      "category": "menu",
+      "type": "WORD",
+      "mime": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "summaryEn": "A bilingual, editable menu development brief with evidence prompts, decision fields and an owned action plan.",
+      "summaryAr": "موجز تطوير قائمة ثنائي اللغة وقابل للتعديل، مع حقول للأدلة والقرارات وخطة عمل محددة المسؤوليات.",
+      "order": 45,
+      "sourcePath": "resources/library/docx/menu-development-brief.docx",
+      "storageKey": "library/menu-development-brief.docx",
+      "descriptionEn": "A bilingual, editable menu development brief with evidence prompts, decision fields and an owned action plan. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "موجز تطوير قائمة ثنائي اللغة وقابل للتعديل، مع حقول للأدلة والقرارات وخطة عمل محددة المسؤوليات. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Concept and occasion section",
+          "قسم المفهوم والمناسبة"
+        ],
+        [
+          "Structure, categories and length",
+          "البنية والتصنيفات والطول"
+        ],
+        [
+          "Price position and target margin",
+          "الموقع السعري والهامش المستهدف"
+        ],
+        [
+          "Kitchen and equipment constraints",
+          "قيود المطبخ والمعدات"
+        ],
+        [
+          "Explicit exclusions",
+          "الاستبعادات الصريحة"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "menu",
+        "word",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "docx"
+    },
+    {
+      "file": "site-visit-report.docx",
+      "slug": "site-visit-report",
+      "titleEn": "Restaurant Site Visit Report",
+      "titleAr": "تقرير زيارة موقع مطعم",
+      "category": "strategy-development",
+      "type": "WORD",
+      "mime": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "summaryEn": "A bilingual, editable restaurant site visit report with evidence prompts, decision fields and an owned action plan.",
+      "summaryAr": "تقرير زيارة موقع مطعم ثنائي اللغة وقابل للتعديل، مع حقول للأدلة والقرارات وخطة عمل محددة المسؤوليات.",
+      "order": 46,
+      "sourcePath": "resources/library/docx/site-visit-report.docx",
+      "storageKey": "library/site-visit-report.docx",
+      "descriptionEn": "A bilingual, editable restaurant site visit report with evidence prompts, decision fields and an owned action plan. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "تقرير زيارة موقع مطعم ثنائي اللغة وقابل للتعديل، مع حقول للأدلة والقرارات وخطة عمل محددة المسؤوليات. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Guest journey observations",
+          "ملاحظات تجربة الضيف"
+        ],
+        [
+          "Kitchen and service standards",
+          "معايير المطبخ والخدمة"
+        ],
+        [
+          "Risks and priority actions",
+          "المخاطر والإجراءات ذات الأولوية"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "strategy-development",
+        "word",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "docx"
+    },
+    {
+      "file": "mystery-shopping-report.docx",
+      "slug": "mystery-shopping-report",
+      "titleEn": "Mystery Shopping Report",
+      "titleAr": "تقرير المتسوق الخفي",
+      "category": "brand-experience",
+      "type": "WORD",
+      "mime": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "summaryEn": "A bilingual, editable mystery shopping report with evidence prompts, decision fields and an owned action plan.",
+      "summaryAr": "تقرير المتسوق الخفي ثنائي اللغة وقابل للتعديل، مع حقول للأدلة والقرارات وخطة عمل محددة المسؤوليات.",
+      "order": 47,
+      "sourcePath": "resources/library/docx/mystery-shopping-report.docx",
+      "storageKey": "library/mystery-shopping-report.docx",
+      "descriptionEn": "A bilingual, editable mystery shopping report with evidence prompts, decision fields and an owned action plan. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "تقرير المتسوق الخفي ثنائي اللغة وقابل للتعديل، مع حقول للأدلة والقرارات وخطة عمل محددة المسؤوليات. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Guest journey observations",
+          "ملاحظات تجربة الضيف"
+        ],
+        [
+          "Kitchen and service standards",
+          "معايير المطبخ والخدمة"
+        ],
+        [
+          "Risks and priority actions",
+          "المخاطر والإجراءات ذات الأولوية"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "brand-experience",
+        "word",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "docx"
+    },
+    {
+      "file": "restaurant-turnaround-report.docx",
+      "slug": "restaurant-turnaround-report",
+      "titleEn": "Restaurant Turnaround Report",
+      "titleAr": "تقرير تحول المطعم",
+      "category": "growth-expansion",
+      "type": "WORD",
+      "mime": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "summaryEn": "A bilingual, editable restaurant turnaround report with evidence prompts, decision fields and an owned action plan.",
+      "summaryAr": "تقرير تحول المطعم ثنائي اللغة وقابل للتعديل، مع حقول للأدلة والقرارات وخطة عمل محددة المسؤوليات.",
+      "order": 48,
+      "sourcePath": "resources/library/docx/restaurant-turnaround-report.docx",
+      "storageKey": "library/restaurant-turnaround-report.docx",
+      "descriptionEn": "A bilingual, editable restaurant turnaround report with evidence prompts, decision fields and an owned action plan. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "تقرير تحول المطعم ثنائي اللغة وقابل للتعديل، مع حقول للأدلة والقرارات وخطة عمل محددة المسؤوليات. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Baseline and business constraint",
+          "الوضع الحالي وما يعيق المشروع"
+        ],
+        [
+          "Priority improvements",
+          "التحسينات ذات الأولوية"
+        ],
+        [
+          "Owners and review milestones",
+          "المسؤولون ومواعيد المراجعة"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "growth-expansion",
+        "word",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "docx"
+    },
+    {
+      "file": "monthly-management-report.docx",
+      "slug": "monthly-management-report",
+      "titleEn": "Restaurant Monthly Management Report",
+      "titleAr": "تقرير الإدارة الشهري للمطعم",
+      "category": "finance",
+      "type": "WORD",
+      "mime": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "summaryEn": "A bilingual, editable restaurant monthly management report with evidence prompts, decision fields and an owned action plan.",
+      "summaryAr": "تقرير الإدارة الشهري للمطعم ثنائي اللغة وقابل للتعديل، مع حقول للأدلة والقرارات وخطة عمل محددة المسؤوليات.",
+      "order": 49,
+      "sourcePath": "resources/library/docx/monthly-management-report.docx",
+      "storageKey": "library/monthly-management-report.docx",
+      "descriptionEn": "A bilingual, editable restaurant monthly management report with evidence prompts, decision fields and an owned action plan. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "تقرير الإدارة الشهري للمطعم ثنائي اللغة وقابل للتعديل، مع حقول للأدلة والقرارات وخطة عمل محددة المسؤوليات. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Sales and operating results",
+          "المبيعات ونتائج التشغيل"
+        ],
+        [
+          "Cost variance and causes",
+          "انحراف التكلفة وأسبابه"
+        ],
+        [
+          "Decisions for the next period",
+          "قرارات الفترة التالية"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "finance",
+        "word",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "docx"
+    },
+    {
+      "file": "branch-performance-review.docx",
+      "slug": "branch-performance-review",
+      "titleEn": "Branch Performance Review",
+      "titleAr": "مراجعة أداء الفروع",
+      "category": "growth-expansion",
+      "type": "WORD",
+      "mime": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "summaryEn": "A bilingual, editable branch performance review with evidence prompts, decision fields and an owned action plan.",
+      "summaryAr": "مراجعة أداء الفروع ثنائي اللغة وقابل للتعديل، مع حقول للأدلة والقرارات وخطة عمل محددة المسؤوليات.",
+      "order": 50,
+      "sourcePath": "resources/library/docx/branch-performance-review.docx",
+      "storageKey": "library/branch-performance-review.docx",
+      "descriptionEn": "A bilingual, editable branch performance review with evidence prompts, decision fields and an owned action plan. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "مراجعة أداء الفروع ثنائي اللغة وقابل للتعديل، مع حقول للأدلة والقرارات وخطة عمل محددة المسؤوليات. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Sales and operating results",
+          "المبيعات ونتائج التشغيل"
+        ],
+        [
+          "Cost variance and causes",
+          "انحراف التكلفة وأسبابه"
+        ],
+        [
+          "Decisions for the next period",
+          "قرارات الفترة التالية"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "growth-expansion",
+        "word",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "docx"
+    },
+    {
+      "file": "restaurant-feasibility-study-checklist.pdf",
+      "slug": "restaurant-feasibility-study-checklist",
+      "titleEn": "Restaurant Feasibility Study Checklist",
+      "titleAr": "قائمة تحقق دراسة جدوى مطعم",
+      "category": "strategy-development",
+      "type": "PDF",
+      "mime": "application/pdf",
+      "summaryEn": "A bilingual working guide to restaurant feasibility study checklist, designed to turn review points into documented actions.",
+      "summaryAr": "دليل عمل ثنائي اللغة حول قائمة تحقق دراسة جدوى مطعم، مصمم لتحويل نقاط المراجعة إلى إجراءات موثقة.",
+      "order": 51,
+      "sourcePath": "resources/library/pdf/restaurant-feasibility-study-checklist.pdf",
+      "storageKey": "library/restaurant-feasibility-study-checklist.pdf",
+      "descriptionEn": "A bilingual working guide to restaurant feasibility study checklist, designed to turn review points into documented actions. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "دليل عمل ثنائي اللغة حول قائمة تحقق دراسة جدوى مطعم، مصمم لتحويل نقاط المراجعة إلى إجراءات موثقة. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Bilingual review points",
+          "نقاط مراجعة باللغتين"
+        ],
+        [
+          "Evidence and status fields",
+          "حقول للأدلة والحالة"
+        ],
+        [
+          "Action planning table",
+          "جدول لتخطيط الإجراءات"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "strategy-development",
+        "pdf",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "pdf"
+    },
+    {
+      "file": "30-questions-before-opening.pdf",
+      "slug": "30-questions-before-opening",
+      "titleEn": "30 Questions Before Opening a Restaurant",
+      "titleAr": "30 سؤالاً قبل افتتاح مطعم",
+      "category": "strategy-development",
+      "type": "PDF",
+      "mime": "application/pdf",
+      "summaryEn": "A bilingual working guide to 30 questions before opening a restaurant, designed to turn review points into documented actions.",
+      "summaryAr": "دليل عمل ثنائي اللغة حول 30 سؤالاً قبل افتتاح مطعم، مصمم لتحويل نقاط المراجعة إلى إجراءات موثقة.",
+      "order": 52,
+      "sourcePath": "resources/library/pdf/30-questions-before-opening.pdf",
+      "storageKey": "library/30-questions-before-opening.pdf",
+      "descriptionEn": "A bilingual working guide to 30 questions before opening a restaurant, designed to turn review points into documented actions. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "دليل عمل ثنائي اللغة حول 30 سؤالاً قبل افتتاح مطعم، مصمم لتحويل نقاط المراجعة إلى إجراءات موثقة. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Bilingual review points",
+          "نقاط مراجعة باللغتين"
+        ],
+        [
+          "Evidence and status fields",
+          "حقول للأدلة والحالة"
+        ],
+        [
+          "Action planning table",
+          "جدول لتخطيط الإجراءات"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "strategy-development",
+        "pdf",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "pdf"
+    },
+    {
+      "file": "restaurant-profitability-checklist.pdf",
+      "slug": "restaurant-profitability-checklist",
+      "titleEn": "Restaurant Profitability Checklist",
+      "titleAr": "قائمة تحقق ربحية المطعم",
+      "category": "finance",
+      "type": "PDF",
+      "mime": "application/pdf",
+      "summaryEn": "A bilingual working guide to restaurant profitability checklist, designed to turn review points into documented actions.",
+      "summaryAr": "دليل عمل ثنائي اللغة حول قائمة تحقق ربحية المطعم، مصمم لتحويل نقاط المراجعة إلى إجراءات موثقة.",
+      "order": 53,
+      "sourcePath": "resources/library/pdf/restaurant-profitability-checklist.pdf",
+      "storageKey": "library/restaurant-profitability-checklist.pdf",
+      "descriptionEn": "A bilingual working guide to restaurant profitability checklist, designed to turn review points into documented actions. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "دليل عمل ثنائي اللغة حول قائمة تحقق ربحية المطعم، مصمم لتحويل نقاط المراجعة إلى إجراءات موثقة. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Bilingual review points",
+          "نقاط مراجعة باللغتين"
+        ],
+        [
+          "Evidence and status fields",
+          "حقول للأدلة والحالة"
+        ],
+        [
+          "Action planning table",
+          "جدول لتخطيط الإجراءات"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "finance",
+        "pdf",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "pdf"
+    },
+    {
+      "file": "food-cost-control-guide.pdf",
+      "slug": "food-cost-control-guide",
+      "titleEn": "Food Cost Control Guide",
+      "titleAr": "دليل ضبط تكلفة الطعام",
+      "category": "operations",
+      "type": "PDF",
+      "mime": "application/pdf",
+      "summaryEn": "A bilingual working guide to food cost control guide, designed to turn review points into documented actions.",
+      "summaryAr": "دليل عمل ثنائي اللغة حول دليل ضبط تكلفة الطعام، مصمم لتحويل نقاط المراجعة إلى إجراءات موثقة.",
+      "order": 54,
+      "sourcePath": "resources/library/pdf/food-cost-control-guide.pdf",
+      "storageKey": "library/food-cost-control-guide.pdf",
+      "descriptionEn": "A bilingual working guide to food cost control guide, designed to turn review points into documented actions. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "دليل عمل ثنائي اللغة حول دليل ضبط تكلفة الطعام، مصمم لتحويل نقاط المراجعة إلى إجراءات موثقة. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Bilingual review points",
+          "نقاط مراجعة باللغتين"
+        ],
+        [
+          "Evidence and status fields",
+          "حقول للأدلة والحالة"
+        ],
+        [
+          "Action planning table",
+          "جدول لتخطيط الإجراءات"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "operations",
+        "pdf",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "pdf"
+    },
+    {
+      "file": "menu-engineering-quick-guide.pdf",
+      "slug": "menu-engineering-guide",
+      "titleEn": "Menu Engineering Quick Guide",
+      "titleAr": "دليل سريع لهندسة القائمة",
+      "category": "menu",
+      "type": "PDF",
+      "mime": "application/pdf",
+      "summaryEn": "A bilingual working guide to menu engineering quick guide, designed to turn review points into documented actions.",
+      "summaryAr": "دليل عمل ثنائي اللغة حول دليل سريع لهندسة القائمة، مصمم لتحويل نقاط المراجعة إلى إجراءات موثقة.",
+      "order": 55,
+      "sourcePath": "resources/library/pdf/menu-engineering-quick-guide.pdf",
+      "storageKey": "library/menu-engineering-quick-guide.pdf",
+      "descriptionEn": "A bilingual working guide to menu engineering quick guide, designed to turn review points into documented actions. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "دليل عمل ثنائي اللغة حول دليل سريع لهندسة القائمة، مصمم لتحويل نقاط المراجعة إلى إجراءات موثقة. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Data requirements and how to export them",
+          "متطلبات البيانات وكيفية تصديرها"
+        ],
+        [
+          "Building the popularity and contribution view",
+          "بناء منظور الإقبال والمساهمة"
+        ],
+        [
+          "What each quadrant means and what to do",
+          "ماذا يعني كل ربع وماذا تفعل"
+        ],
+        [
+          "Common errors and how to avoid them",
+          "الأخطاء الشائعة وكيفية تجنبها"
+        ],
+        [
+          "Re-measurement method",
+          "منهج إعادة القياس"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "menu",
+        "pdf",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "pdf"
+    },
+    {
+      "file": "restaurant-opening-checklist-guide.pdf",
+      "slug": "opening-checklist",
+      "titleEn": "Restaurant Opening Checklist",
+      "titleAr": "قائمة تحقق افتتاح مطعم",
+      "category": "strategy-development",
+      "type": "PDF",
+      "mime": "application/pdf",
+      "summaryEn": "A bilingual working guide to restaurant opening checklist, designed to turn review points into documented actions.",
+      "summaryAr": "دليل عمل ثنائي اللغة حول قائمة تحقق افتتاح مطعم، مصمم لتحويل نقاط المراجعة إلى إجراءات موثقة.",
+      "order": 56,
+      "sourcePath": "resources/library/pdf/restaurant-opening-checklist-guide.pdf",
+      "storageKey": "library/restaurant-opening-checklist-guide.pdf",
+      "descriptionEn": "A bilingual working guide to restaurant opening checklist, designed to turn review points into documented actions. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "دليل عمل ثنائي اللغة حول قائمة تحقق افتتاح مطعم، مصمم لتحويل نقاط المراجعة إلى إجراءات موثقة. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Sequenced pre-opening task list",
+          "قائمة مهام ما قبل الافتتاح مرتبة"
+        ],
+        [
+          "Decision gates before each stage",
+          "بوابات قرار قبل كل مرحلة"
+        ],
+        [
+          "Supplier and equipment readiness checks",
+          "فحوصات جاهزية الموردين والمعدات"
+        ],
+        [
+          "Standards and training checkpoints",
+          "نقاط تحقق المعايير والتدريب"
+        ],
+        [
+          "Soft opening test plan",
+          "خطة اختبار الافتتاح التجريبي"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "strategy-development",
+        "pdf",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "pdf"
+    },
+    {
+      "file": "restaurant-kpi-guide.pdf",
+      "slug": "restaurant-kpi-guide",
+      "titleEn": "Restaurant KPI Guide",
+      "titleAr": "دليل مؤشرات أداء المطاعم",
+      "category": "finance",
+      "type": "PDF",
+      "mime": "application/pdf",
+      "summaryEn": "A bilingual working guide to restaurant kpi guide, designed to turn review points into documented actions.",
+      "summaryAr": "دليل عمل ثنائي اللغة حول دليل مؤشرات أداء المطاعم، مصمم لتحويل نقاط المراجعة إلى إجراءات موثقة.",
+      "order": 57,
+      "sourcePath": "resources/library/pdf/restaurant-kpi-guide.pdf",
+      "storageKey": "library/restaurant-kpi-guide.pdf",
+      "descriptionEn": "A bilingual working guide to restaurant kpi guide, designed to turn review points into documented actions. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "دليل عمل ثنائي اللغة حول دليل مؤشرات أداء المطاعم، مصمم لتحويل نقاط المراجعة إلى إجراءات موثقة. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Bilingual review points",
+          "نقاط مراجعة باللغتين"
+        ],
+        [
+          "Evidence and status fields",
+          "حقول للأدلة والحالة"
+        ],
+        [
+          "Action planning table",
+          "جدول لتخطيط الإجراءات"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "finance",
+        "pdf",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "pdf"
+    },
+    {
+      "file": "restaurant-audit-checklist-guide.pdf",
+      "slug": "restaurant-audit-checklist",
+      "titleEn": "Restaurant Audit Checklist",
+      "titleAr": "قائمة تدقيق مطعم",
+      "category": "operations",
+      "type": "PDF",
+      "mime": "application/pdf",
+      "summaryEn": "A bilingual working guide to restaurant audit checklist, designed to turn review points into documented actions.",
+      "summaryAr": "دليل عمل ثنائي اللغة حول قائمة تدقيق مطعم، مصمم لتحويل نقاط المراجعة إلى إجراءات موثقة.",
+      "order": 58,
+      "sourcePath": "resources/library/pdf/restaurant-audit-checklist-guide.pdf",
+      "storageKey": "library/restaurant-audit-checklist-guide.pdf",
+      "descriptionEn": "A bilingual working guide to restaurant audit checklist, designed to turn review points into documented actions. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "دليل عمل ثنائي اللغة حول قائمة تدقيق مطعم، مصمم لتحويل نقاط المراجعة إلى إجراءات موثقة. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Concept and market position section",
+          "قسم المفهوم والتموضع"
+        ],
+        [
+          "Menu, costing and pricing section",
+          "قسم القائمة والتكلفة والتسعير"
+        ],
+        [
+          "Purchasing, receiving and storage section",
+          "قسم الشراء والاستلام والتخزين"
+        ],
+        [
+          "Kitchen and service observation section",
+          "قسم معاينة المطبخ والخدمة"
+        ],
+        [
+          "Guest journey section",
+          "قسم رحلة الضيف"
+        ],
+        [
+          "Findings register with cost-of-inaction column",
+          "سجل نتائج بعمود تكلفة التقاعس"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "operations",
+        "pdf",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "pdf"
+    },
+    {
+      "file": "delivery-profitability-checklist.pdf",
+      "slug": "delivery-profitability-checklist",
+      "titleEn": "Delivery Profitability Checklist",
+      "titleAr": "قائمة تحقق ربحية التوصيل",
+      "category": "finance",
+      "type": "PDF",
+      "mime": "application/pdf",
+      "summaryEn": "A bilingual working guide to delivery profitability checklist, designed to turn review points into documented actions.",
+      "summaryAr": "دليل عمل ثنائي اللغة حول قائمة تحقق ربحية التوصيل، مصمم لتحويل نقاط المراجعة إلى إجراءات موثقة.",
+      "order": 59,
+      "sourcePath": "resources/library/pdf/delivery-profitability-checklist.pdf",
+      "storageKey": "library/delivery-profitability-checklist.pdf",
+      "descriptionEn": "A bilingual working guide to delivery profitability checklist, designed to turn review points into documented actions. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "دليل عمل ثنائي اللغة حول قائمة تحقق ربحية التوصيل، مصمم لتحويل نقاط المراجعة إلى إجراءات موثقة. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Bilingual review points",
+          "نقاط مراجعة باللغتين"
+        ],
+        [
+          "Evidence and status fields",
+          "حقول للأدلة والحالة"
+        ],
+        [
+          "Action planning table",
+          "جدول لتخطيط الإجراءات"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "finance",
+        "pdf",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "pdf"
+    },
+    {
+      "file": "restaurant-marketing-planning-guide.pdf",
+      "slug": "restaurant-marketing-planning-guide",
+      "titleEn": "Restaurant Marketing Planning Guide",
+      "titleAr": "دليل تخطيط تسويق المطاعم",
+      "category": "marketing",
+      "type": "PDF",
+      "mime": "application/pdf",
+      "summaryEn": "A bilingual working guide to restaurant marketing planning guide, designed to turn review points into documented actions.",
+      "summaryAr": "دليل عمل ثنائي اللغة حول دليل تخطيط تسويق المطاعم، مصمم لتحويل نقاط المراجعة إلى إجراءات موثقة.",
+      "order": 60,
+      "sourcePath": "resources/library/pdf/restaurant-marketing-planning-guide.pdf",
+      "storageKey": "library/restaurant-marketing-planning-guide.pdf",
+      "descriptionEn": "A bilingual working guide to restaurant marketing planning guide, designed to turn review points into documented actions. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "دليل عمل ثنائي اللغة حول دليل تخطيط تسويق المطاعم، مصمم لتحويل نقاط المراجعة إلى إجراءات موثقة. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Bilingual review points",
+          "نقاط مراجعة باللغتين"
+        ],
+        [
+          "Evidence and status fields",
+          "حقول للأدلة والحالة"
+        ],
+        [
+          "Action planning table",
+          "جدول لتخطيط الإجراءات"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "marketing",
+        "pdf",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "pdf"
+    },
+    {
+      "file": "annual-budget-model.xlsx",
+      "slug": "annual-budget-model",
+      "titleEn": "Annual Budget Model",
+      "titleAr": "نموذج الموازنة السنوية",
+      "category": "finance",
+      "type": "EXCEL",
+      "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "summaryEn": "An editable restaurant workbook for annual budget model, with structured inputs, working calculations and an action-ready summary.",
+      "summaryAr": "مصنف مطاعم قابل للتعديل من أجل نموذج الموازنة السنوية، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار.",
+      "order": 61,
+      "sourcePath": "resources/library/xlsx/annual-budget-model.xlsx",
+      "storageKey": "library/annual-budget-model.xlsx",
+      "descriptionEn": "An editable restaurant workbook for annual budget model, with structured inputs, working calculations and an action-ready summary. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "مصنف مطاعم قابل للتعديل من أجل نموذج الموازنة السنوية، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Monthly revenue model by segment",
+          "نموذج إيراد شهري حسب الشريحة"
+        ],
+        [
+          "Cost of sales from menu mix",
+          "تكلفة المبيعات من مزيج القائمة"
+        ],
+        [
+          "Labour schedule model",
+          "نموذج جدول العمالة"
+        ],
+        [
+          "Fixed and annual cost calendar",
+          "تقويم التكاليف الثابتة والسنوية"
+        ],
+        [
+          "Monthly cash flow and break-even",
+          "التدفق النقدي الشهري ونقطة التعادل"
+        ],
+        [
+          "Downside case toggle",
+          "مفتاح حالة الهبوط"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "finance",
+        "excel",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "xlsx"
+    },
+    {
+      "file": "cafe-kpi-dashboard.xlsx",
+      "slug": "cafe-kpi-dashboard",
+      "titleEn": "Café KPI Dashboard",
+      "titleAr": "لوحة مؤشرات أداء المقهى",
+      "category": "finance",
+      "type": "EXCEL",
+      "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "summaryEn": "An editable restaurant workbook for café kpi dashboard, with structured inputs, working calculations and an action-ready summary.",
+      "summaryAr": "مصنف مطاعم قابل للتعديل من أجل لوحة مؤشرات أداء المقهى، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار.",
+      "order": 62,
+      "sourcePath": "resources/library/xlsx/cafe-kpi-dashboard.xlsx",
+      "storageKey": "library/cafe-kpi-dashboard.xlsx",
+      "descriptionEn": "An editable restaurant workbook for café kpi dashboard, with structured inputs, working calculations and an action-ready summary. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "مصنف مطاعم قابل للتعديل من أجل لوحة مؤشرات أداء المقهى، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Beverage and food margin split",
+          "فصل هامش المشروبات عن الطعام"
+        ],
+        [
+          "Attachment rate tracking",
+          "تتبع نسبة الإضافات"
+        ],
+        [
+          "Ticket size by hour",
+          "حجم الفاتورة حسب الساعة"
+        ],
+        [
+          "Peak throughput measure",
+          "مقياس الطاقة في الذروة"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "finance",
+        "excel",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "xlsx"
+    },
+    {
+      "file": "cash-flow-forecast.xlsx",
+      "slug": "cash-flow-forecast",
+      "titleEn": "Cash Flow Forecast",
+      "titleAr": "توقعات التدفق النقدي",
+      "category": "finance",
+      "type": "EXCEL",
+      "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "summaryEn": "An editable restaurant workbook for cash flow forecast, with structured inputs, working calculations and an action-ready summary.",
+      "summaryAr": "مصنف مطاعم قابل للتعديل من أجل توقعات التدفق النقدي، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار.",
+      "order": 63,
+      "sourcePath": "resources/library/xlsx/cash-flow-forecast.xlsx",
+      "storageKey": "library/cash-flow-forecast.xlsx",
+      "descriptionEn": "An editable restaurant workbook for cash flow forecast, with structured inputs, working calculations and an action-ready summary. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "مصنف مطاعم قابل للتعديل من أجل توقعات التدفق النقدي، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Monthly receipts and payments model",
+          "نموذج المقبوضات والمدفوعات الشهري"
+        ],
+        [
+          "Annual and quarterly cost calendar",
+          "تقويم التكاليف السنوية والربع سنوية"
+        ],
+        [
+          "Supplier terms and rent timing",
+          "شروط الموردين وتوقيت الإيجار"
+        ],
+        [
+          "Lowest-point identification",
+          "تحديد أدنى نقطة"
+        ],
+        [
+          "Downside case toggle",
+          "مفتاح حالة الهبوط"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "finance",
+        "excel",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "xlsx"
+    },
+    {
+      "file": "food-cost-sheet.xlsx",
+      "slug": "food-cost-sheet",
+      "titleEn": "Food Cost Sheet",
+      "titleAr": "ورقة تكلفة الطعام",
+      "category": "menu",
+      "type": "EXCEL",
+      "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "summaryEn": "An editable restaurant workbook for food cost sheet, with structured inputs, working calculations and an action-ready summary.",
+      "summaryAr": "مصنف مطاعم قابل للتعديل من أجل ورقة تكلفة الطعام، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار.",
+      "order": 64,
+      "sourcePath": "resources/library/xlsx/food-cost-sheet.xlsx",
+      "storageKey": "library/food-cost-sheet.xlsx",
+      "descriptionEn": "An editable restaurant workbook for food cost sheet, with structured inputs, working calculations and an action-ready summary. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "مصنف مطاعم قابل للتعديل من أجل ورقة تكلفة الطعام، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Ingredient master list with pack sizes",
+          "قائمة مكونات رئيسية بأحجام العبوات"
+        ],
+        [
+          "Yield and waste factor fields",
+          "حقول نسب الاستخلاص والهدر"
+        ],
+        [
+          "Sub-recipe support",
+          "دعم الوصفات الفرعية"
+        ],
+        [
+          "Cost per portion and per plate",
+          "التكلفة لكل حصة ولكل طبق"
+        ],
+        [
+          "Supplier price update column",
+          "عمود تحديث أسعار الموردين"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "menu",
+        "excel",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "xlsx"
+    },
+    {
+      "file": "item-profitability-analysis.xlsx",
+      "slug": "item-profitability-analysis",
+      "titleEn": "Item Profitability Analysis",
+      "titleAr": "تحليل ربحية الأصناف",
+      "category": "menu",
+      "type": "EXCEL",
+      "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "summaryEn": "An editable restaurant workbook for item profitability analysis, with structured inputs, working calculations and an action-ready summary.",
+      "summaryAr": "مصنف مطاعم قابل للتعديل من أجل تحليل ربحية الأصناف، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار.",
+      "order": 65,
+      "sourcePath": "resources/library/xlsx/item-profitability-analysis.xlsx",
+      "storageKey": "library/item-profitability-analysis.xlsx",
+      "descriptionEn": "An editable restaurant workbook for item profitability analysis, with structured inputs, working calculations and an action-ready summary. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "مصنف مطاعم قابل للتعديل من أجل تحليل ربحية الأصناف، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Gross profit and contribution per item",
+          "الربح الإجمالي والمساهمة لكل صنف"
+        ],
+        [
+          "Channel commission and packaging inputs",
+          "مدخلات عمولة القناة والتغليف"
+        ],
+        [
+          "Ranking by total contribution",
+          "ترتيب حسب إجمالي المساهمة"
+        ],
+        [
+          "Loss-making item flag",
+          "إشارة للأصناف الخاسرة"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "menu",
+        "excel",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "xlsx"
+    },
+    {
+      "file": "product-mix-analysis.xlsx",
+      "slug": "product-mix-analysis",
+      "titleEn": "Product Mix Analysis",
+      "titleAr": "تحليل مزيج المنتجات",
+      "category": "menu",
+      "type": "EXCEL",
+      "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "summaryEn": "An editable restaurant workbook for product mix analysis, with structured inputs, working calculations and an action-ready summary.",
+      "summaryAr": "مصنف مطاعم قابل للتعديل من أجل تحليل مزيج المنتجات، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار.",
+      "order": 66,
+      "sourcePath": "resources/library/xlsx/product-mix-analysis.xlsx",
+      "storageKey": "library/product-mix-analysis.xlsx",
+      "descriptionEn": "An editable restaurant workbook for product mix analysis, with structured inputs, working calculations and an action-ready summary. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "مصنف مطاعم قابل للتعديل من أجل تحليل مزيج المنتجات، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Category and item share of sales",
+          "حصة التصنيفات والأصناف من المبيعات"
+        ],
+        [
+          "Period-on-period movement",
+          "الحركة بين الفترات"
+        ],
+        [
+          "Mix-weighted contribution",
+          "المساهمة مرجّحة بالمزيج"
+        ],
+        [
+          "Top and bottom mover lists",
+          "قوائم الأصناف الأكثر صعوداً وهبوطاً"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "menu",
+        "excel",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "xlsx"
+    },
+    {
+      "file": "social-media-content-planner.xlsx",
+      "slug": "social-media-content-planner",
+      "titleEn": "Social Media Content Planner",
+      "titleAr": "مخطط محتوى وسائل التواصل",
+      "category": "marketing",
+      "type": "EXCEL",
+      "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "summaryEn": "An editable restaurant workbook for social media content planner, with structured inputs, working calculations and an action-ready summary.",
+      "summaryAr": "مصنف مطاعم قابل للتعديل من أجل مخطط محتوى وسائل التواصل، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار.",
+      "order": 67,
+      "sourcePath": "resources/library/xlsx/social-media-content-planner.xlsx",
+      "storageKey": "library/social-media-content-planner.xlsx",
+      "descriptionEn": "An editable restaurant workbook for social media content planner, with structured inputs, working calculations and an action-ready summary. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "مصنف مطاعم قابل للتعديل من أجل مخطط محتوى وسائل التواصل، ويضم مدخلات منظمة وحسابات عملية وملخصاً جاهزاً لاتخاذ القرار. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Monthly commercial brief page",
+          "صفحة الموجز التجاري الشهري"
+        ],
+        [
+          "Content pillar and format library",
+          "مكتبة محاور المحتوى وصيغه"
+        ],
+        [
+          "Production day planner",
+          "مخطط أيام الإنتاج"
+        ],
+        [
+          "Publishing calendar in both languages",
+          "تقويم نشر باللغتين"
+        ],
+        [
+          "Performance review sheet",
+          "ورقة مراجعة الأداء"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "marketing",
+        "excel",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "xlsx"
+    },
+    {
+      "file": "brand-positioning-worksheet.docx",
+      "slug": "brand-positioning-worksheet",
+      "titleEn": "Brand Positioning Worksheet",
+      "titleAr": "ورقة عمل تموضع العلامة",
+      "category": "brand-experience",
+      "type": "WORD",
+      "mime": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "summaryEn": "A bilingual, editable brand positioning worksheet with evidence prompts, decision fields and an owned action plan.",
+      "summaryAr": "ورقة عمل تموضع العلامة ثنائي اللغة وقابل للتعديل، مع حقول للأدلة والقرارات وخطة عمل محددة المسؤوليات.",
+      "order": 68,
+      "sourcePath": "resources/library/docx/brand-positioning-worksheet.docx",
+      "storageKey": "library/brand-positioning-worksheet.docx",
+      "descriptionEn": "A bilingual, editable brand positioning worksheet with evidence prompts, decision fields and an owned action plan. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "ورقة عمل تموضع العلامة ثنائي اللغة وقابل للتعديل، مع حقول للأدلة والقرارات وخطة عمل محددة المسؤوليات. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Occasion and audience mapping",
+          "رسم المناسبة والجمهور"
+        ],
+        [
+          "Named competitive set exercise",
+          "تمرين المجموعة التنافسية بالأسماء"
+        ],
+        [
+          "Operational proof checklist",
+          "قائمة تحقق الدليل التشغيلي"
+        ],
+        [
+          "Position statement drafting",
+          "صياغة بيان التموضع"
+        ],
+        [
+          "Self-exclusion test",
+          "اختبار الاستبعاد الذاتي"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "brand-experience",
+        "word",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "docx"
+    },
+    {
+      "file": "campaign-brief-template.docx",
+      "slug": "campaign-brief-template",
+      "titleEn": "Campaign Brief",
+      "titleAr": "موجز الحملة",
+      "category": "marketing",
+      "type": "WORD",
+      "mime": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "summaryEn": "A bilingual, editable campaign brief with evidence prompts, decision fields and an owned action plan.",
+      "summaryAr": "موجز الحملة ثنائي اللغة وقابل للتعديل، مع حقول للأدلة والقرارات وخطة عمل محددة المسؤوليات.",
+      "order": 69,
+      "sourcePath": "resources/library/docx/campaign-brief-template.docx",
+      "storageKey": "library/campaign-brief-template.docx",
+      "descriptionEn": "A bilingual, editable campaign brief with evidence prompts, decision fields and an owned action plan. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "موجز الحملة ثنائي اللغة وقابل للتعديل، مع حقول للأدلة والقرارات وخطة عمل محددة المسؤوليات. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Objective and success definition",
+          "الهدف وتعريف النجاح"
+        ],
+        [
+          "Offer design and margin check",
+          "تصميم العرض وفحص الهامش"
+        ],
+        [
+          "Audience and channel selection",
+          "اختيار الجمهور والقنوات"
+        ],
+        [
+          "Creative variant requirements",
+          "متطلبات النسخ الإبداعية"
+        ],
+        [
+          "Measurement and review date",
+          "القياس وتاريخ المراجعة"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "marketing",
+        "word",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "docx"
+    },
+    {
+      "file": "restaurant-concept-brief.docx",
+      "slug": "restaurant-concept-brief",
+      "titleEn": "Restaurant Concept Brief",
+      "titleAr": "موجز مفهوم مطعم",
+      "category": "strategy-development",
+      "type": "WORD",
+      "mime": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "summaryEn": "A bilingual, editable restaurant concept brief with evidence prompts, decision fields and an owned action plan.",
+      "summaryAr": "موجز مفهوم مطعم ثنائي اللغة وقابل للتعديل، مع حقول للأدلة والقرارات وخطة عمل محددة المسؤوليات.",
+      "order": 70,
+      "sourcePath": "resources/library/docx/restaurant-concept-brief.docx",
+      "storageKey": "library/restaurant-concept-brief.docx",
+      "descriptionEn": "A bilingual, editable restaurant concept brief with evidence prompts, decision fields and an owned action plan. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "موجز مفهوم مطعم ثنائي اللغة وقابل للتعديل، مع حقول للأدلة والقرارات وخطة عمل محددة المسؤوليات. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Audience and occasion definition",
+          "تعريف الجمهور والمناسبة"
+        ],
+        [
+          "Offer structure and menu direction",
+          "بنية العرض واتجاه القائمة"
+        ],
+        [
+          "Price positioning worksheet",
+          "ورقة عمل التموضع السعري"
+        ],
+        [
+          "Named competitive set",
+          "المجموعة التنافسية بالأسماء"
+        ],
+        [
+          "One-sentence definition test",
+          "اختبار التعريف في جملة واحدة"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "strategy-development",
+        "word",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "docx"
+    },
+    {
+      "file": "restaurant-launch-plan.docx",
+      "slug": "restaurant-launch-plan",
+      "titleEn": "Restaurant Launch Plan",
+      "titleAr": "خطة إطلاق مطعم",
+      "category": "marketing",
+      "type": "WORD",
+      "mime": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "summaryEn": "A bilingual, editable restaurant launch plan with evidence prompts, decision fields and an owned action plan.",
+      "summaryAr": "خطة إطلاق مطعم ثنائي اللغة وقابل للتعديل، مع حقول للأدلة والقرارات وخطة عمل محددة المسؤوليات.",
+      "order": 71,
+      "sourcePath": "resources/library/docx/restaurant-launch-plan.docx",
+      "storageKey": "library/restaurant-launch-plan.docx",
+      "descriptionEn": "A bilingual, editable restaurant launch plan with evidence prompts, decision fields and an owned action plan. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "خطة إطلاق مطعم ثنائي اللغة وقابل للتعديل، مع حقول للأدلة والقرارات وخطة عمل محددة المسؤوليات. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Soft opening test plan",
+          "خطة اختبار الافتتاح التجريبي"
+        ],
+        [
+          "Capacity gate before launch",
+          "بوابة الطاقة قبل الإطلاق"
+        ],
+        [
+          "Awareness build sequence",
+          "تسلسل بناء الوعي"
+        ],
+        [
+          "Content and asset checklist",
+          "قائمة تحقق المحتوى والمواد"
+        ],
+        [
+          "Week-by-week timeline",
+          "جدول زمني أسبوعاً بأسبوع"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "marketing",
+        "word",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "docx"
+    },
+    {
+      "file": "branch-feasibility-checklist.pdf",
+      "slug": "branch-feasibility-checklist",
+      "titleEn": "Branch Feasibility Checklist",
+      "titleAr": "قائمة تحقق جدوى الفرع",
+      "category": "growth-expansion",
+      "type": "PDF",
+      "mime": "application/pdf",
+      "summaryEn": "A bilingual working guide to branch feasibility checklist, designed to turn review points into documented actions.",
+      "summaryAr": "دليل عمل ثنائي اللغة حول قائمة تحقق جدوى الفرع، مصمم لتحويل نقاط المراجعة إلى إجراءات موثقة.",
+      "order": 72,
+      "sourcePath": "resources/library/pdf/branch-feasibility-checklist.pdf",
+      "storageKey": "library/branch-feasibility-checklist.pdf",
+      "descriptionEn": "A bilingual working guide to branch feasibility checklist, designed to turn review points into documented actions. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "دليل عمل ثنائي اللغة حول قائمة تحقق جدوى الفرع، مصمم لتحويل نقاط المراجعة إلى إجراءات موثقة. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Site scoring criteria",
+          "معايير تقييم الموقع"
+        ],
+        [
+          "Catchment comparison grid",
+          "شبكة مقارنة النطاقات"
+        ],
+        [
+          "Format fit assessment",
+          "تقييم ملاءمة الصيغة"
+        ],
+        [
+          "Investment and payback outline",
+          "مخطط الاستثمار والاسترداد"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "growth-expansion",
+        "pdf",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "pdf"
+    },
+    {
+      "file": "brand-and-digital-presence-audit.pdf",
+      "slug": "brand-and-digital-presence-audit",
+      "titleEn": "Brand & Digital Presence Audit",
+      "titleAr": "تدقيق العلامة والحضور الرقمي",
+      "category": "brand-experience",
+      "type": "PDF",
+      "mime": "application/pdf",
+      "summaryEn": "A bilingual working guide to brand & digital presence audit, designed to turn review points into documented actions.",
+      "summaryAr": "دليل عمل ثنائي اللغة حول تدقيق العلامة والحضور الرقمي، مصمم لتحويل نقاط المراجعة إلى إجراءات موثقة.",
+      "order": 73,
+      "sourcePath": "resources/library/pdf/brand-and-digital-presence-audit.pdf",
+      "storageKey": "library/brand-and-digital-presence-audit.pdf",
+      "descriptionEn": "A bilingual working guide to brand & digital presence audit, designed to turn review points into documented actions. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "دليل عمل ثنائي اللغة حول تدقيق العلامة والحضور الرقمي، مصمم لتحويل نقاط المراجعة إلى إجراءات موثقة. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Listing and map accuracy checks",
+          "فحوصات دقة القوائم المعروضة والخرائط"
+        ],
+        [
+          "Website task-completion timing",
+          "توقيت إنجاز مهام الموقع"
+        ],
+        [
+          "Bilingual consistency checks",
+          "فحوصات الاتساق بين اللغتين"
+        ],
+        [
+          "Photography and expectation review",
+          "مراجعة الصور والتوقعات"
+        ],
+        [
+          "Review sentiment themes",
+          "أنماط انطباع التقييمات"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "brand-experience",
+        "pdf",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "pdf"
+    },
+    {
+      "file": "cafe-audit-checklist.pdf",
+      "slug": "cafe-audit-checklist",
+      "titleEn": "Café Audit Checklist",
+      "titleAr": "قائمة تقييم المقهى",
+      "category": "operations",
+      "type": "PDF",
+      "mime": "application/pdf",
+      "summaryEn": "A bilingual working guide to café audit checklist, designed to turn review points into documented actions.",
+      "summaryAr": "دليل عمل ثنائي اللغة حول قائمة تقييم المقهى، مصمم لتحويل نقاط المراجعة إلى إجراءات موثقة.",
+      "order": 74,
+      "sourcePath": "resources/library/pdf/cafe-audit-checklist.pdf",
+      "storageKey": "library/cafe-audit-checklist.pdf",
+      "descriptionEn": "A bilingual working guide to café audit checklist, designed to turn review points into documented actions. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "دليل عمل ثنائي اللغة حول قائمة تقييم المقهى، مصمم لتحويل نقاط المراجعة إلى إجراءات موثقة. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Beverage specification and consistency checks",
+          "فحوصات مواصفات المشروبات واتساقها"
+        ],
+        [
+          "Attachment and ticket size section",
+          "قسم الإضافات وحجم الفاتورة"
+        ],
+        [
+          "Bar throughput and queue checks",
+          "فحوصات طاقة البار والطوابير"
+        ],
+        [
+          "Food offer and preparation load",
+          "عرض الطعام وحمل التحضير"
+        ],
+        [
+          "Dwell time and seating review",
+          "مراجعة مدة البقاء والجلوس"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "operations",
+        "pdf",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "pdf"
+    },
+    {
+      "file": "customer-experience-audit.pdf",
+      "slug": "customer-experience-audit",
+      "titleEn": "Customer Experience Audit",
+      "titleAr": "تدقيق تجربة العميل",
+      "category": "brand-experience",
+      "type": "PDF",
+      "mime": "application/pdf",
+      "summaryEn": "A bilingual working guide to customer experience audit, designed to turn review points into documented actions.",
+      "summaryAr": "دليل عمل ثنائي اللغة حول تدقيق تجربة العميل، مصمم لتحويل نقاط المراجعة إلى إجراءات موثقة.",
+      "order": 75,
+      "sourcePath": "resources/library/pdf/customer-experience-audit.pdf",
+      "storageKey": "library/customer-experience-audit.pdf",
+      "descriptionEn": "A bilingual working guide to customer experience audit, designed to turn review points into documented actions. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "دليل عمل ثنائي اللغة حول تدقيق تجربة العميل، مصمم لتحويل نقاط المراجعة إلى إجراءات موثقة. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Dining room journey sections",
+          "أقسام رحلة الصالة"
+        ],
+        [
+          "Delivery journey sections",
+          "أقسام رحلة التوصيل"
+        ],
+        [
+          "Friction register with frequency scoring",
+          "سجل الاحتكاك بتقييم التكرار"
+        ],
+        [
+          "Standards drafting page",
+          "صفحة صياغة المعايير"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "brand-experience",
+        "pdf",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "pdf"
+    },
+    {
+      "file": "expansion-checklist.pdf",
+      "slug": "expansion-checklist",
+      "titleEn": "Expansion Checklist",
+      "titleAr": "قائمة مراجعة التوسع",
+      "category": "operations",
+      "type": "PDF",
+      "mime": "application/pdf",
+      "summaryEn": "A bilingual working guide to expansion checklist, designed to turn review points into documented actions.",
+      "summaryAr": "دليل عمل ثنائي اللغة حول قائمة مراجعة التوسع، مصمم لتحويل نقاط المراجعة إلى إجراءات موثقة.",
+      "order": 76,
+      "sourcePath": "resources/library/pdf/expansion-checklist.pdf",
+      "storageKey": "library/expansion-checklist.pdf",
+      "descriptionEn": "A bilingual working guide to expansion checklist, designed to turn review points into documented actions. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "دليل عمل ثنائي اللغة حول قائمة مراجعة التوسع، مصمم لتحويل نقاط المراجعة إلى إجراءات موثقة. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Documentation readiness section",
+          "قسم جاهزية التوثيق"
+        ],
+        [
+          "Training transfer test",
+          "اختبار انتقال التدريب"
+        ],
+        [
+          "Supplier scalability checks",
+          "فحوصات قابلية الموردين للتوسع"
+        ],
+        [
+          "Management structure requirements",
+          "متطلبات الهيكل الإداري"
+        ],
+        [
+          "Fixed versus flexible register template",
+          "قالب سجل الثابت مقابل المرن"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "operations",
+        "pdf",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "pdf"
+    },
+    {
+      "file": "expansion-readiness-assessment.pdf",
+      "slug": "expansion-readiness-assessment",
+      "titleEn": "Expansion Readiness Assessment",
+      "titleAr": "تقييم الجاهزية للتوسع",
+      "category": "growth-expansion",
+      "type": "PDF",
+      "mime": "application/pdf",
+      "summaryEn": "A bilingual working guide to expansion readiness assessment, designed to turn review points into documented actions.",
+      "summaryAr": "دليل عمل ثنائي اللغة حول تقييم الجاهزية للتوسع، مصمم لتحويل نقاط المراجعة إلى إجراءات موثقة.",
+      "order": 77,
+      "sourcePath": "resources/library/pdf/expansion-readiness-assessment.pdf",
+      "storageKey": "library/expansion-readiness-assessment.pdf",
+      "descriptionEn": "A bilingual working guide to expansion readiness assessment, designed to turn review points into documented actions. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "دليل عمل ثنائي اللغة حول تقييم الجاهزية للتوسع، مصمم لتحويل نقاط المراجعة إلى إجراءات موثقة. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Documentation completeness score",
+          "درجة اكتمال التوثيق"
+        ],
+        [
+          "Training transfer test",
+          "اختبار انتقال التدريب"
+        ],
+        [
+          "Supplier and management readiness",
+          "جاهزية الموردين والإدارة"
+        ],
+        [
+          "Gap list as a work plan",
+          "قائمة الفجوات كخطة عمل"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "growth-expansion",
+        "pdf",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "pdf"
+    },
+    {
+      "file": "inventory-control-checklist.pdf",
+      "slug": "inventory-control-checklist",
+      "titleEn": "Inventory Control Checklist",
+      "titleAr": "قائمة تحقق ضبط المخزون",
+      "category": "operations",
+      "type": "PDF",
+      "mime": "application/pdf",
+      "summaryEn": "A bilingual working guide to inventory control checklist, designed to turn review points into documented actions.",
+      "summaryAr": "دليل عمل ثنائي اللغة حول قائمة تحقق ضبط المخزون، مصمم لتحويل نقاط المراجعة إلى إجراءات موثقة.",
+      "order": 78,
+      "sourcePath": "resources/library/pdf/inventory-control-checklist.pdf",
+      "storageKey": "library/inventory-control-checklist.pdf",
+      "descriptionEn": "A bilingual working guide to inventory control checklist, designed to turn review points into documented actions. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "دليل عمل ثنائي اللغة حول قائمة تحقق ضبط المخزون، مصمم لتحويل نقاط المراجعة إلى إجراءات موثقة. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Count routine and sheet structure",
+          "روتين الجرد وبنية الورقة"
+        ],
+        [
+          "Storage and rotation checks",
+          "فحوصات التخزين والتدوير"
+        ],
+        [
+          "Par level review section",
+          "قسم مراجعة حدود المخزون"
+        ],
+        [
+          "Waste log guidance",
+          "إرشادات سجل الهدر"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "operations",
+        "pdf",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "pdf"
+    },
+    {
+      "file": "menu-pricing-checklist.pdf",
+      "slug": "menu-pricing-checklist",
+      "titleEn": "Menu Pricing Checklist",
+      "titleAr": "قائمة مراجعة التسعير",
+      "category": "menu",
+      "type": "PDF",
+      "mime": "application/pdf",
+      "summaryEn": "A bilingual working guide to menu pricing checklist, designed to turn review points into documented actions.",
+      "summaryAr": "دليل عمل ثنائي اللغة حول قائمة مراجعة التسعير، مصمم لتحويل نقاط المراجعة إلى إجراءات موثقة.",
+      "order": 79,
+      "sourcePath": "resources/library/pdf/menu-pricing-checklist.pdf",
+      "storageKey": "library/menu-pricing-checklist.pdf",
+      "descriptionEn": "A bilingual working guide to menu pricing checklist, designed to turn review points into documented actions. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "دليل عمل ثنائي اللغة حول قائمة مراجعة التسعير، مصمم لتحويل نقاط المراجعة إلى إجراءات موثقة. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Cost base verification steps",
+          "خطوات التحقق من قاعدة التكلفة"
+        ],
+        [
+          "Anchor item identification",
+          "تحديد الأصناف المرجعية"
+        ],
+        [
+          "Threshold and rounding checks",
+          "فحوصات العتبات والتقريب"
+        ],
+        [
+          "Channel separation check",
+          "فحص فصل القنوات"
+        ],
+        [
+          "Staging plan and re-measurement",
+          "خطة التدرج وإعادة القياس"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "menu",
+        "pdf",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "pdf"
+    },
+    {
+      "file": "menu-review-checklist.pdf",
+      "slug": "menu-review-checklist",
+      "titleEn": "Menu Review Checklist",
+      "titleAr": "قائمة مراجعة القائمة",
+      "category": "menu",
+      "type": "PDF",
+      "mime": "application/pdf",
+      "summaryEn": "A bilingual working guide to menu review checklist, designed to turn review points into documented actions.",
+      "summaryAr": "دليل عمل ثنائي اللغة حول قائمة مراجعة القائمة، مصمم لتحويل نقاط المراجعة إلى إجراءات موثقة.",
+      "order": 80,
+      "sourcePath": "resources/library/pdf/menu-review-checklist.pdf",
+      "storageKey": "library/menu-review-checklist.pdf",
+      "descriptionEn": "A bilingual working guide to menu review checklist, designed to turn review points into documented actions. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "دليل عمل ثنائي اللغة حول قائمة مراجعة القائمة، مصمم لتحويل نقاط المراجعة إلى إجراءات موثقة. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Structure and length review",
+          "مراجعة البنية والطول"
+        ],
+        [
+          "Category and item sequence checks",
+          "فحوصات تسلسل التصنيفات والأصناف"
+        ],
+        [
+          "Description and price presentation checks",
+          "فحوصات الأوصاف وعرض السعر"
+        ],
+        [
+          "Kitchen load and sole-use ingredient checks",
+          "فحوصات حمل المطبخ والمكونات وحيدة الاستخدام"
+        ],
+        [
+          "Delivery list comparison",
+          "مقارنة قائمة التوصيل"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "menu",
+        "pdf",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "pdf"
+    },
+    {
+      "file": "procurement-checklist.pdf",
+      "slug": "procurement-checklist",
+      "titleEn": "Purchasing & Receiving Checklist",
+      "titleAr": "قائمة تحقق الشراء والاستلام",
+      "category": "operations",
+      "type": "PDF",
+      "mime": "application/pdf",
+      "summaryEn": "A bilingual working guide to purchasing & receiving checklist, designed to turn review points into documented actions.",
+      "summaryAr": "دليل عمل ثنائي اللغة حول قائمة تحقق الشراء والاستلام، مصمم لتحويل نقاط المراجعة إلى إجراءات موثقة.",
+      "order": 81,
+      "sourcePath": "resources/library/pdf/procurement-checklist.pdf",
+      "storageKey": "library/procurement-checklist.pdf",
+      "descriptionEn": "A bilingual working guide to purchasing & receiving checklist, designed to turn review points into documented actions. Use verified project inputs, retain the assumptions register and document the owner and review date for every material decision.",
+      "descriptionAr": "دليل عمل ثنائي اللغة حول قائمة تحقق الشراء والاستلام، مصمم لتحويل نقاط المراجعة إلى إجراءات موثقة. استخدم مدخلات موثقة للمشروع، واحتفظ بسجل الافتراضات، وحدد المسؤول وتاريخ المراجعة لكل قرار جوهري.",
+      "includes": [
+        [
+          "Receiving standard and responsibilities",
+          "معيار الاستلام والمسؤوليات"
+        ],
+        [
+          "Order-versus-delivery check sheet",
+          "ورقة فحص الطلب مقابل التوريد"
+        ],
+        [
+          "Weight and quality verification",
+          "التحقق من الوزن والجودة"
+        ],
+        [
+          "Discrepancy log",
+          "سجل الفروق"
+        ],
+        [
+          "Price drift check",
+          "فحص انحراف الأسعار"
+        ]
+      ],
+      "audience": [
+        [
+          "Restaurant owners and operators",
+          "ملاك المطاعم والمشغلون"
+        ],
+        [
+          "Managers preparing a documented decision",
+          "المديرون الذين يعدون قراراً موثقاً"
+        ]
+      ],
+      "tags": [
+        "operations",
+        "pdf",
+        "restaurant",
+        "noriva"
+      ],
+      "kind": "pdf"
+    }
+  ]
+}

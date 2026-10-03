@@ -1,3 +1,4 @@
+import { LIBRARY_STARTERS } from '@/lib/library-selection';
 import { RESOURCE_KINDS, resourcePurpose, resourcePurposeLabel } from '@/lib/service-discovery';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
@@ -62,6 +63,8 @@ export default async function LibraryPage({
   const kind = (RESOURCE_KINDS as readonly string[]).includes(kindParam) ? kindParam : '';
   const categorySlug = single(query.category);
   const sort = single(query.sort) || 'newest';
+  const fullCatalogue = single(query.view) === 'all' || Boolean(q || type || kind || categorySlug);
+
   const page = Math.max(1, Number(single(query.page)) || 1);
 
   const [categories, pageContent] = await Promise.all([getResourceCategories(), getPage('library')]);
@@ -70,6 +73,7 @@ export default async function LibraryPage({
 
   const where: Prisma.ResourceWhereInput = {
     ...publishedNow(),
+    ...(!fullCatalogue ? { slug: { in: LIBRARY_STARTERS } } : {}),
     ...(candidateIds ? { id: { in: candidateIds } } : {}),
     ...(type ? { type } : {}),
     ...(category ? { categoryId: category.id } : {}),
@@ -106,6 +110,7 @@ export default async function LibraryPage({
   const pages = Math.max(1, Math.ceil(total / PAGE_SIZE));
   const buildPageHref = (target: number) => {
     const params = new URLSearchParams();
+    if (single(query.view) === 'all') params.set('view', 'all');
     if (q) params.set('q', q);
     if (type) params.set('type', type);
     if (kind) params.set('kind', kind);
@@ -135,6 +140,10 @@ export default async function LibraryPage({
       <section className="bg-bone section-y">
         <div className="shell">
           <a href={`/${locale}/tools`} className="mb-6 inline-block font-semibold text-brand underline underline-offset-4">{locale === 'ar' ? 'الحاسبات التفاعلية ←' : 'Interactive calculators →'}</a>
+          <div className="mb-8 flex flex-wrap items-center justify-between gap-4 border-b border-ink-900/10 pb-6">
+            <p className="max-w-2xl text-sm leading-7 text-ink-600">{locale === 'ar' ? 'ابدأ بنموذج مختصر أو مثال تطبيقي. شاركنا بيانات مشروعك لإكمال الدراسة وخطة التنفيذ.' : 'Start with a compact template or worked example. Share your business data with us to complete the study and implementation plan.'}</p>
+            <a href={`/${locale}/library${fullCatalogue ? '' : '?view=all'}`} className="text-sm font-semibold text-brand underline underline-offset-4">{fullCatalogue ? (locale === 'ar' ? 'المجموعة المختصرة' : 'Starter collection') : (locale === 'ar' ? 'تصفح جميع الموارد' : 'Browse all resources')}</a>
+          </div>
           <LibraryFilters
             dict={dict}
             types={RESOURCE_KINDS.map((k) => ({ value: k, label: resourcePurposeLabel(k, locale) }))}

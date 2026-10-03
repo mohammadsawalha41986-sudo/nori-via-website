@@ -10,15 +10,15 @@
  * is designed to work with or without a photograph.
  */
 export const SECTION_HERO_IMAGES = {
-  services: '/img/noriva-editorial-training.webp',
-  work: '/img/noriva-editorial-brand.webp',
-  insights: '/img/noriva-editorial-menu.webp',
-  tools: '/img/noriva-editorial-costing.webp',
-  library: '/img/noriva-editorial-inventory.webp',
-  'restaurant-growth': '/img/noriva-editorial-delivery.webp',
-  'start-here': '/img/noriva-editorial-launch.webp',
-  'start-a-project': '/img/cta.jpg',
-  contact: '/img/gallery-3.jpg',
+  services: '/img/noriva-photo-training.webp',
+  work: '/img/noriva-photo-brand.webp',
+  insights: '/img/noriva-photo-menu.webp',
+  tools: '/img/noriva-photo-costing.webp',
+  library: '/img/noriva-photo-inventory.webp',
+  'restaurant-growth': '/img/noriva-photo-delivery.webp',
+  'start-here': '/img/noriva-photo-launch.webp',
+  'start-a-project': '/img/noriva-photo-planning.webp',
+  contact: '/img/noriva-photo-cafe.webp',
 } as const;
 
 export type SectionKey = keyof typeof SECTION_HERO_IMAGES;

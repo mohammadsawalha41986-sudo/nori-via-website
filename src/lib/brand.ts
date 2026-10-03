@@ -37,8 +37,8 @@ export const SCHEMA_IDS = {
 
 /** Brand mark used wherever a logo has to be an absolute, always-present URL. */
 export const BRAND_LOGO = {
-  path: '/icon-512.png',
-  width: 512,
+  path: '/brand/noriva-original.jpg',
+  width: 1536,
   height: 512,
 } as const;
 

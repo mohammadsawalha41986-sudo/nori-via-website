@@ -1,5 +1,7 @@
 import 'dotenv/config';
 import { PrismaClient } from '@prisma/client';
+import { mkdirSync, copyFileSync, statSync } from 'node:fs';
+import path from 'node:path';
 const db = new PrismaClient();
 const samples = [
   {
@@ -51,30 +53,37 @@ try {
       continue;
     }
     const { source: _, ...content } = sample;
+    const fileName = `${sample.slug}.pdf`;
+    const sourcePath = path.resolve('resources/library/pdf', fileName);
+    const fileKey = `library/brief-v1/${fileName}`;
+    const target = path.resolve(process.env.STORAGE_DIR || './storage', 'private', fileKey);
+    mkdirSync(path.dirname(target), { recursive: true });
+    copyFileSync(sourcePath, target);
+    const fileFields = { type: 'PDF', fileKey, fileName, fileMime: 'application/pdf', fileSize: statSync(sourcePath).size };
+    content.descriptionEn = content.descriptionEn.replace(/The download is[^]*$/, 'Download the one-page worked example. Contact NORIVA to complete a review with your verified data.').replace(/The supporting download[^]*$/, 'Download the one-page worked example. Contact NORIVA to complete your menu review.');
+    content.descriptionAr = content.descriptionAr.replace(/التنزيل[^]*$/, 'حمّل المثال التطبيقي المختصر. تواصل مع نوريفا لإكمال المراجعة ببيانات مشروعك الموثقة.');
+    const existing = await db.resource.findUnique({ where: { slug: sample.slug } });
+    const update = existing?.fileKey === fileKey ? fileFields : (!existing?.fileKey || existing.fileKey === source.fileKey ? { ...fileFields, ...content } : {});
     await db.resource.upsert({
       where: { slug: sample.slug },
       create: {
         ...content,
-        type: source.type,
+        ...fileFields,
         categoryId: source.categoryId,
-        fileKey: source.fileKey,
-        fileName: source.fileName,
-        fileMime: source.fileMime,
-        fileSize: source.fileSize,
         status: 'PUBLISHED',
         publishedAt: new Date(),
         order: 5,
         includes: [
           {
-            labelEn: 'Worked decision example and supporting working document',
-            labelAr: 'مثال على قرار عملي ومستند عمل مساند',
+            labelEn: 'One-page worked decision example',
+            labelAr: 'مثال تطبيقي مختصر في صفحة واحدة',
           },
         ],
         audience: [{ labelEn: 'Restaurant owners and managers', labelAr: 'ملاك المطاعم ومديروها' }],
         seoDescriptionEn: sample.summaryEn,
         seoDescriptionAr: sample.summaryAr,
       },
-      update: {},
+      update,
     });
   }
 } finally {

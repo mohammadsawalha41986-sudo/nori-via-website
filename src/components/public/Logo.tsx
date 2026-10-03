@@ -31,12 +31,12 @@ export function Logo({
   className?: string;
 }) {
   const onDark = tone === 'light';
-  const source = onDark && logoInverseUrl ? logoInverseUrl : logoUrl;
+  const source = onDark && logoInverseUrl ? logoInverseUrl : (logoUrl || '/brand/noriva-original.jpg');
 
   if (source) {
     // A single-version logo on a dark background gets a light plate. The plate
     // is the only thing added; the artwork itself is untouched.
-    const needsPlate = onDark && !logoInverseUrl;
+    const needsPlate = source === '/brand/noriva-original.jpg' || (onDark && !logoInverseUrl);
 
     const large = size === 'lg';
 

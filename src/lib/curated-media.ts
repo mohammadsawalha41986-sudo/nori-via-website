@@ -26,7 +26,7 @@ export function isShippedImage(url: string | null | undefined) {
 }
 /** Retain authored/uploaded galleries. New editorial heroes supersede the old stock set. */
 export function presentationGallery<T extends { url?: string }>(items: T[], hero: string | null) {
-  return hero?.startsWith('/img/noriva-editorial-')
+  return (hero?.startsWith('/img/noriva-editorial-') || hero?.startsWith('/img/noriva-photo-'))
     ? items.filter((item) => !isShippedImage(item.url) && item.url !== hero)
     : items;
 }
