@@ -3,8 +3,19 @@ import { locales, resolveLocale, LOCALE_COOKIE } from '@/lib/i18n';
 
 const PUBLIC_FILE = /\.[a-zA-Z0-9]+$/;
 
+// The client-facing company profile is a standalone static page in
+// public/profile/, shared by link (e.g. on WhatsApp). It is Arabic-only and
+// lives outside the locale tree, so /profile serves it directly instead of
+// being redirected to /{locale}/profile.
+const PROFILE_PATHS = new Set(['/profile', '/profile/']);
+const PROFILE_FILE = '/profile/index.html';
+
 export function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
+
+  if (PROFILE_PATHS.has(pathname)) {
+    return NextResponse.rewrite(new URL(PROFILE_FILE, req.url));
+  }
 
   // Admin, API, media and static assets are not locale-prefixed.
   if (
