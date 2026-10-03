@@ -40,4 +40,24 @@ describe('client profile route', () => {
       expect(existsSync(path.join(dir, file))).toBe(true);
     }
   });
+
+  it('ships every local file the page references (photos, posts, srcset candidates)', () => {
+    const dir = path.resolve(import.meta.dirname, '../public/profile');
+    const html = readFileSync(path.join(dir, 'index.html'), 'utf8');
+    const refs = new Set(html.match(/\/profile\/[\w./-]+\.(?:webp|png|jpe?g|svg|avif)/g) ?? []);
+    expect(refs.size).toBeGreaterThan(3);
+    const missing = [...refs].filter((ref) => !existsSync(path.join(dir, ref.slice('/profile/'.length))));
+    expect(missing).toEqual([]);
+  });
+
+  it('shares the canonical profile URL from every share link', () => {
+    const html = readFileSync(path.resolve(import.meta.dirname, '../public/profile/index.html'), 'utf8');
+    const encoded = encodeURIComponent('https://norivaglobal.com/profile');
+    for (const target of ['https://wa.me/?text=', 'https://t.me/share/url?', 'https://x.com/intent/post?', 'https://www.linkedin.com/sharing/share-offsite/?', 'mailto:?']) {
+      const href = html.match(new RegExp(`href="(${target.replace(/[.?/]/g, '\\$&')}[^"]*)"`))?.[1];
+      expect(href, target).toBeDefined();
+      expect(href).toContain(encoded);
+    }
+    expect(html).toContain('data-copy="https://norivaglobal.com/profile"');
+  });
 });
