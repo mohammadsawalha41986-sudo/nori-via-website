@@ -271,3 +271,14 @@
   .hero-photo { animation: none; }
   .trust-strip { font-size: .875rem; }
 }
+
+/* Sequential work cards with native touch scrolling and lazy imagery. */
+.work-carousel { display: flex; gap: 1.5rem; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: thin; padding-bottom: 1rem; }
+.work-slide { flex: 0 0 70%; min-width: 0; scroll-snap-align: start; scroll-snap-stop: always; }
+.work-slide:last-child { flex-basis: 100%; }
+.work-slide:last-child > article { max-width: 70%; }
+@media (max-width: 639px) {
+  .work-carousel { gap: 1rem; }
+  .work-slide { flex-basis: 90%; }
+  .work-slide:last-child > article { max-width: 90%; }
+}

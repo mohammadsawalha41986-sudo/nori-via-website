@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { Hero } from '@/components/public/Hero';
 import { SystemStages, type Stage } from '@/components/public/SystemStages';
 import { ProjectCard } from '@/components/public/ProjectCard';
+import { WorkCarousel } from '@/components/public/WorkCarousel';
 import { ResourceCard } from '@/components/public/ResourceCard';
 import { CTASection } from '@/components/public/CTASection';
 import { ServiceShowcase } from '@/components/public/ServiceShowcase';
@@ -138,12 +139,13 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               />
               <TextLink href={`/${locale}/work`}>{dict.common.allWork}</TextLink>
             </div>
-            <div className="grid gap-x-6 gap-y-10 lg:grid-cols-12">
+            <WorkCarousel locale={locale}>
               {projects.map((p, i) => (
                 <ProjectCard
                   key={p.id}
                   locale={locale}
                   index={i}
+                  layout="slide"
                   viewLabel={dict.common.viewCaseStudy}
                   project={{
                     id: p.id,
@@ -158,7 +160,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                   }}
                 />
               ))}
-            </div>
+            </WorkCarousel>
           </div>
         </section>
       )}

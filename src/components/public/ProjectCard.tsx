@@ -24,11 +24,13 @@ export function ProjectCard({
   locale,
   index = 0,
   viewLabel,
+  layout = 'grid',
 }: {
   project: ProjectCardData;
   locale: Locale;
   index?: number;
   viewLabel: string;
+  layout?: 'grid' | 'slide';
 }) {
   const wide = index % 5 === 0 || index % 5 === 3;
   const href = `/${locale}/work/${project.slug}`;
@@ -37,8 +39,8 @@ export function ProjectCard({
     <article
       className={clsx(
         'group animate-fade-up',
-        wide ? 'lg:col-span-7' : 'lg:col-span-5',
-        index % 5 === 3 && 'lg:mt-[-4rem]',
+        layout === 'grid' && (wide ? 'lg:col-span-7' : 'lg:col-span-5'),
+        layout === 'grid' && index % 5 === 3 && 'lg:mt-[-4rem]',
       )}
       style={{ animationDelay: `${Math.min(index, 6) * 70}ms` }}
     >
@@ -46,7 +48,7 @@ export function ProjectCard({
         <div
           className={clsx(
             'relative overflow-hidden rounded-xl bg-ink-100',
-            wide ? 'aspect-[16/10]' : 'aspect-[4/5]',
+            layout === 'slide' ? 'aspect-[16/10]' : wide ? 'aspect-[16/10]' : 'aspect-[4/5]',
           )}
         >
           {project.heroMediaUrl ? (
@@ -54,7 +56,8 @@ export function ProjectCard({
               src={project.heroMediaUrl}
               alt={project.title}
               fill
-              sizes="(min-width:1024px) 55vw, 100vw"
+              sizes={layout === 'slide' ? '(min-width:1024px) 55vw, 88vw' : '(min-width:1024px) 55vw, 100vw'}
+              loading="lazy"
               className="object-cover transition-transform duration-[900ms] ease-noriva group-hover:scale-[1.045]"
             />
           ) : (

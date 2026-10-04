@@ -4,6 +4,7 @@ import { MagneticButton } from '../ui/Button';
 import { AnimatedText } from '../ui/AnimatedText';
 import { Reveal } from '../ui/Reveal';
 import { track, EVENTS } from '@/lib/track';
+import Image from 'next/image';
 
 export function CTASection({
   headline,
@@ -23,8 +24,9 @@ export function CTASection({
   if (!headline && !label) return null;
 
   return (
-    <section className="relative overflow-hidden bg-brand text-white">
-      <div aria-hidden className="grain absolute inset-0" />
+    <section className="relative isolate overflow-hidden bg-ink-950 text-white">
+      <Image src="/img/noriva-photo-planning.webp" alt="" fill sizes="100vw" loading="lazy" className="-z-20 object-cover" />
+      <div aria-hidden className="absolute inset-0 -z-10 bg-ink-950/75" />
       <div className="shell relative py-24 sm:py-36">
         <AnimatedText
           text={headline}
