@@ -24,21 +24,21 @@ export function CTASection({
   if (!headline && !label) return null;
 
   return (
-    <section className="relative isolate overflow-hidden bg-ink-950 text-white">
+    <section className="cta-photo-section relative isolate overflow-hidden bg-ink-950 text-white">
       <Image src="/img/noriva-photo-planning.webp" alt="" fill sizes="100vw" loading="lazy" className="-z-20 object-cover" />
       <div aria-hidden className="absolute inset-0 -z-10 bg-ink-950/75" />
-      <div className="shell relative py-24 sm:py-36">
+      <div className="shell relative py-10 sm:py-14">
         <AnimatedText
           text={headline}
           as="h2"
-          className="max-w-4xl font-display text-display-md uppercase"
+          className="max-w-4xl font-display text-display-sm uppercase"
         />
         {description && (
           <Reveal delay={140}>
-            <p className="mt-8 max-w-xl text-lg leading-relaxed text-white/80">{description}</p>
+            <p className="mt-4 max-w-xl text-base leading-relaxed text-white/80">{description}</p>
           </Reveal>
         )}
-        <Reveal delay={220} className="mt-11 flex flex-wrap gap-3">
+        <Reveal delay={220} className="mt-6 flex flex-wrap gap-3">
           <MagneticButton href={href} variant="light" onClick={() => track(EVENTS.ctaClick, { label })}>
             {label}
           </MagneticButton>

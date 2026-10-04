@@ -295,3 +295,12 @@
   .pillar-grid { display: grid; grid-template-columns: minmax(0, 1fr); overflow: visible; padding-bottom: 0; }
   .problem-link { gap: .75rem; padding-block: 1rem; }
 }
+
+/* Compact, touch-friendly service strip; start follows the page language. */
+.service-carousel { --service-width: 86%; --service-gap: 1rem; display: flex; gap: var(--service-gap); overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: thin; padding-bottom: .75rem; }
+.service-slide { flex: 0 0 var(--service-width); min-width: 0; scroll-snap-align: start; scroll-snap-stop: always; }
+.service-carousel::after { content: ''; flex: 0 0 calc(100% - var(--service-width) - var(--service-gap)); }
+@media (min-width: 640px) { .service-carousel { --service-width: calc((100% - 1rem) / 2); } }
+@media (min-width: 1024px) { .service-carousel { --service-width: calc((100% - 2rem) / 3); } }
+/* A neutral band separates the CTA photograph from the footer photograph. */
+.cta-photo-section { border-bottom: clamp(1.5rem, 4vw, 2.5rem) solid rgb(var(--c-bone)); }
