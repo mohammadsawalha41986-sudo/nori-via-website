@@ -25,6 +25,12 @@ export const dynamic = 'force-dynamic';
 const RESOURCE_TYPES: ResourceType[] = ['EXCEL', 'WORD', 'PDF', 'TEMPLATE', 'GUIDE', 'REPORT'];
 const PAGE_SIZE = 12;
 
+// Older CMS rows still contain setup instructions intended for editors.
+function libraryIntro(value: string, locale: Locale) {
+  return value.replace(/أضف الموارد من لوحة التحكم\.?/g, '').replace(/Add resources from Admin\.?/gi, '').trim()
+    || (locale === 'ar' ? 'نماذج مختصرة وأمثلة تطبيقية تساعدك على مراجعة مطعمك وتحديد الخطوة التالية.' : 'Brief worksheets and practical examples to help you review your restaurant and plan your next step.');
+}
+
 type SearchParams = Promise<Record<string, string | string[] | undefined>>;
 
 const single = (value: string | string[] | undefined) => (Array.isArray(value) ? value[0] ?? '' : value ?? '');
@@ -39,7 +45,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     locale,
     path: '/library',
     fallbackTitle: getDictionary(locale).library.title,
-    fallbackDescription: page ? pick(page, 'body', locale) : getDictionary(locale).library.intro,
+    fallbackDescription: libraryIntro(page ? pick(page, 'body', locale) : getDictionary(locale).library.intro, locale),
   });
 }
 
@@ -134,7 +140,7 @@ export default async function LibraryPage({
       <PageHero
         eyebrow={dict.library.title}
         title={pageContent ? pick(pageContent, 'title', locale) || dict.library.title : dict.library.title}
-        description={pageContent ? pick(pageContent, 'body', locale) || dict.library.intro : dict.library.intro}
+        description={libraryIntro(pageContent ? pick(pageContent, 'body', locale) || dict.library.intro : dict.library.intro, locale)}
         image={sectionHero('library')}
       />
 

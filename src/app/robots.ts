@@ -24,10 +24,7 @@ export default function robots(): MetadataRoute.Robots {
           '/login',
           '/cms',
           '/private',
-          // On-site search results: already `noindex`, listed here so they do
-          // not consume crawl budget in the first place.
-          '/ar/search',
-          '/en/search',
+          // Search pages remain crawlable so engines can read their noindex.
           // Draft previews are reachable by link for editors only.
           '/*?preview=1',
         ],

@@ -17,7 +17,7 @@ export function ResourceCover({
   return (
     <div className={`resource-cover resource-cover-${p.id}`}>
       <div className="flex items-center justify-between gap-4 text-xs">
-        <span>{locale === 'ar' ? 'نوريڤا / المعرفة' : 'NORIVA / KNOWLEDGE'}</span>
+        <span>{locale === 'ar' ? 'نوريفا / المعرفة' : 'NORIVA / KNOWLEDGE'}</span>
         <span>
           {type === 'ARTICLE'
             ? locale === 'ar'

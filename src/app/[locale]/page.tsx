@@ -113,9 +113,9 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           </p>
         </div>
       </section>
-      <section className="bg-bone py-12"><div className="shell max-w-3xl">
+      <section className="bg-bone home-intro"><div className="shell">
         <h2 className="font-display text-2xl">{ar ? 'نوريفا: من تشخيص المطعم إلى تحسين الأداء' : 'NORIVA: from restaurant diagnosis to better performance'}</h2>
-        <p className="mt-4 leading-8 text-ink-700">{ar ? 'نخدم أصحاب المطاعم والمقاهي وفرق الأغذية والمشروبات في السعودية. نحلل المبيعات وتكلفة الوصفات والتشغيل والمنيو لنحدد أين يتراجع هامش الربح، ثم نبني خطة تحسين قابلة للتنفيذ. نربط الاستشارات بالتشغيل والتسويق والمحتوى، وفق احتياج المشروع وبياناته.' : 'We work with restaurant and café owners and F&B teams in Saudi Arabia. We review sales, recipe costs, operations and menus to identify where margin is lost, then build a practical improvement plan. Consulting, operations, marketing and content are connected to your project’s needs and data.'}</p>
+        <p className="mt-4 max-w-3xl leading-8 text-ink-700">{ar ? 'نخدم أصحاب المطاعم والمقاهي وفرق الأغذية والمشروبات في السعودية. نحلل المبيعات وتكلفة الوصفات والتشغيل والمنيو لنحدد أين يتراجع هامش الربح، ثم نبني خطة تحسين قابلة للتنفيذ. نربط الاستشارات بالتشغيل والتسويق والمحتوى، وفق احتياج المشروع وبياناته.' : 'We work with restaurant and café owners and F&B teams in Saudi Arabia. We review sales, recipe costs, operations and menus to identify where margin is lost, then build a practical improvement plan. Consulting, operations, marketing and content are connected to your project’s needs and data.'}</p>
         <Link href={`/${locale}/contact`} className="mt-4 inline-block font-semibold text-ink-700">{ar ? 'ناقش تحديات مطعمك معنا' : 'Discuss your restaurant with us'} →</Link>
       </div></section>
       <RestaurantProblems locale={locale} published={services.map((s) => s.slug)} />

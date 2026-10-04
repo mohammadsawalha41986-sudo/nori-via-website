@@ -39,7 +39,7 @@ export function Hero({ locale, eyebrow, headline, subtitle, primaryCta, secondar
   }, [reduced, paused]);
 
   return (
-    <section className="relative isolate flex min-h-[min(900px,100svh)] items-center overflow-hidden bg-ink-950 text-white">
+    <section className="hero-section relative isolate flex items-center overflow-hidden bg-ink-950 text-white">
       <div className="absolute inset-0 -z-20">
         {mediaUrl && mediaKind === 'VIDEO' ? <video ref={video} className="h-full w-full object-cover" src={mediaUrl} muted loop playsInline preload="metadata" poster={SCENES[0]} /> : editorial ?
           (reduced ? [SCENES[scene]] : SCENES).map(src => <Image key={src} src={src} alt={photoAlts[SCENES.indexOf(src)]} fill priority={src === SCENES[0]} sizes="100vw" className={`hero-photo object-cover ${paused ? 'hero-paused' : ''}`} style={{ opacity: src === SCENES[scene] ? 1 : 0, transition: reduced ? 'none' : 'opacity 1200ms ease' }} />) :
@@ -47,10 +47,10 @@ export function Hero({ locale, eyebrow, headline, subtitle, primaryCta, secondar
       </div>
       <div className="absolute inset-0 -z-10" style={{ background: ar ? 'linear-gradient(270deg,rgba(5,10,22,.92) 0%,rgba(5,10,22,.66) 48%,rgba(5,10,22,.18) 100%)' : 'linear-gradient(90deg,rgba(5,10,22,.92) 0%,rgba(5,10,22,.66) 48%,rgba(5,10,22,.18) 100%)' }} />
       <div className="absolute inset-x-0 bottom-0 -z-10 h-1/3 bg-gradient-to-t from-ink-950/85 to-transparent" />
-      <div className="shell w-full pb-28 pt-[calc(var(--nav-h)+4rem)] sm:pb-36 lg:pt-[calc(var(--nav-h)+5rem)]">
+      <div className="shell w-full pb-28 pt-[calc(var(--nav-h)+2rem)] sm:pb-28 lg:pt-[calc(var(--nav-h)+3rem)]">
         <div className="max-w-3xl">
           {eyebrow && <p className="mb-6 text-xs font-semibold leading-7 tracking-[0.12em] text-brand-300">{eyebrow}</p>}
-          <h1 className="max-w-[15ch] font-display text-[clamp(2.6rem,5.7vw,5.6rem)] font-semibold leading-[1.14] tracking-[-0.035em]">
+          <h1 className="hero-headline max-w-[15ch] font-display text-[clamp(2.6rem,5.7vw,5.6rem)] font-semibold leading-[1.14] tracking-[-0.035em]">
             {headline.replace(/\n/g, ' ').replace(/\.$/, '')}<span className="text-brand">.</span>
           </h1>
           {subtitle && <p className="mt-7 max-w-xl text-base leading-8 text-white/85 sm:text-lg">{subtitle}</p>}

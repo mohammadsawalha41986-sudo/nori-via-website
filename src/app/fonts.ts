@@ -2,7 +2,7 @@ import localFont from 'next/font/local';
 
 // Bundled licensed fonts make builds independent of Google availability.
 // The browser requests only the family selected in CMS.
-// Optional display prevents late font swaps from moving the hero on slow links.
+// Swap display ensures the selected brand font is used even on slow links.
 const inter = localFont({ src: [
     { path: '../../public/fonts/inter-400.woff2', weight: '400', style: 'normal' },
     { path: '../../public/fonts/inter-500.woff2', weight: '500', style: 'normal' },
@@ -44,19 +44,19 @@ const plexArabic = localFont({ src: [
     { path: '../../public/fonts/plex-arabic-500.woff2', weight: '500', style: 'normal' },
     { path: '../../public/fonts/plex-arabic-600.woff2', weight: '600', style: 'normal' },
     { path: '../../public/fonts/plex-arabic-700.woff2', weight: '700', style: 'normal' }
-], variable: '--font-arabic', display: 'optional', preload: false });
+], variable: '--font-arabic', display: 'swap', preload: false });
 const tajawal = localFont({ src: [
     { path: '../../public/fonts/tajawal-300.woff2', weight: '300', style: 'normal' },
     { path: '../../public/fonts/tajawal-400.woff2', weight: '400', style: 'normal' },
     { path: '../../public/fonts/tajawal-500.woff2', weight: '500', style: 'normal' },
     { path: '../../public/fonts/tajawal-700.woff2', weight: '700', style: 'normal' }
-], variable: '--font-arabic', display: 'optional', preload: false });
+], variable: '--font-arabic', display: 'swap', preload: false });
 const cairo = localFont({ src: [
     { path: '../../public/fonts/cairo-300.woff2', weight: '300', style: 'normal' },
     { path: '../../public/fonts/cairo-400.woff2', weight: '400', style: 'normal' },
     { path: '../../public/fonts/cairo-600.woff2', weight: '600', style: 'normal' },
     { path: '../../public/fonts/cairo-700.woff2', weight: '700', style: 'normal' }
-], variable: '--font-arabic', display: 'optional', preload: false });
+], variable: '--font-arabic', display: 'swap', preload: false });
 
 const sansFonts = { inter, manrope, jakarta };
 const displayFonts = { bricolage: bricolage, space: spaceGrotesk, archivo };

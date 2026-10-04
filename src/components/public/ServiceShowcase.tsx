@@ -34,7 +34,7 @@ export function ServiceShowcase({
           <TextLink href={`/${locale}/services`}>{allLabel}</TextLink>
         </div>
         <div className="pillar-grid">
-          {services.slice(0, 8).map((s, i) => (
+          {services.slice(0, 4).map((s, i) => (
             <Reveal key={s.id} delay={(i % 4) * 50}>
               <Link href={`/${locale}/services/${s.slug}`} className="pillar-card group">
                 <div className="relative aspect-[4/3] overflow-hidden bg-ink-100">
@@ -52,7 +52,7 @@ export function ServiceShowcase({
                   </span>
                 </div>
                 <div className="py-5">
-                  <h3 className="font-display text-lg text-ink-900 group-hover:text-brand">
+                  <h3 className="font-display text-lg text-ink-900 group-hover:underline underline-offset-4">
                     {s.name} <span aria-hidden>↗</span>
                   </h3>
                   <p className="mt-3 text-sm leading-relaxed text-ink-500">{s.summary}</p>

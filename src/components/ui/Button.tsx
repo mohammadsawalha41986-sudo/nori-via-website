@@ -109,7 +109,7 @@ export function TextLink({ href, children, className }: { href: string; children
       href={href}
       className={clsx(
         'group inline-flex items-center gap-2 text-sm font-semibold tracking-tight',
-        'border-b border-current pb-1 transition-colors duration-300 hover:text-brand',
+        'border-b border-current pb-1 transition-colors duration-300 hover:underline underline-offset-4',
         className,
       )}
     >

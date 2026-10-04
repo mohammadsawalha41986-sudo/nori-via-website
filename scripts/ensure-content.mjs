@@ -585,8 +585,8 @@ const PAGES = [
     key: 'library',
     titleEn: 'Library',
     titleAr: 'المكتبة',
-    bodyEn: 'Templates, models and guides you can put to work today. Add resources from Admin.',
-    bodyAr: 'قوالب ونماذج وأدلة جاهزة للاستخدام اليوم. أضف الموارد من لوحة التحكم.',
+    bodyEn: 'Brief worksheets and practical examples to help you review your restaurant and plan your next step.',
+    bodyAr: 'نماذج مختصرة وأمثلة تطبيقية تساعدك على مراجعة مطعمك وتحديد الخطوة التالية.',
     content: {},
   },
   {

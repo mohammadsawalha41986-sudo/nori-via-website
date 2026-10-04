@@ -45,8 +45,8 @@
 
     /* Locale typography multipliers. Every step of the Tailwind type scale is
        `calc(<rem> * var(--font-scale))`, so these two values retune the whole
-       interface for a script without touching a single component. Latin is the
-       1.0 baseline; the RTL block below steps both up. */
+       interface for a script without touching a single component. Both scripts share a
+       1.0 baseline; Arabic display sizes and leading are tuned separately. */
     --font-scale: 1;
     --leading-scale: 1;
 
@@ -55,8 +55,8 @@
     --radius-input: 10px;
 
     --shell-x: clamp(1.25rem, 5vw, 4.5rem);
-    --shell-max: 108rem;
-    --section-y: 6rem;
+    --shell-max: 82rem;
+    --section-y: 4rem;
     --nav-h: 76px;
   }
 
@@ -80,13 +80,13 @@
    *
    * At an identical nominal size Arabic reads smaller and denser than Latin:
    * there are no capitals to set the apparent height, the letters join, and the
-   * marks sit above and below the baseline. So the scale steps up, the leading
-   * opens up, and the two Latin display habits that actively damage the script
+   * marks sit above and below the baseline. Its display scale is tuned separately, and the
+   * two Latin display habits that actively damage the script
    * — negative tracking and a sub-1 line height — are switched off.
    */
   [dir='rtl'] {
-    --font-scale: 1.06;
-    --leading-scale: 1.08;
+    --font-scale: 1;
+    --leading-scale: 1;
   }
 
   [dir='rtl'] body {
@@ -142,11 +142,11 @@
 
   /* Vertical rhythm for public sections, driven by the spacing token. */
   .section-y {
-    padding-block: var(--section-y);
+    padding-block: clamp(2rem, 5vw, var(--section-y));
   }
   @screen sm {
     .section-y {
-      padding-block: calc(var(--section-y) * 1.3);
+      padding-block: clamp(3.5rem, 5vw, var(--section-y));
     }
   }
 
@@ -204,9 +204,9 @@
   }
 
   /* Display leading below 1 clips the ascenders and the marks. */
-  [dir='rtl'] .text-display-sm { line-height: 1.2; }
-  [dir='rtl'] .text-display-md { line-height: 1.16; }
-  [dir='rtl'] .text-display-lg { line-height: 1.12; }
+  [dir='rtl'] .text-display-sm { font-size: clamp(1.75rem, 3.2vw, 2.75rem); line-height: 1.4; }
+  [dir='rtl'] .text-display-md { font-size: clamp(2rem, 4vw, 3.5rem); line-height: 1.35; }
+  [dir='rtl'] .text-display-lg { font-size: clamp(2.25rem, 5vw, 4.5rem); line-height: 1.3; }
 
   .text-balance { text-wrap: balance; }
 
@@ -237,10 +237,10 @@
 }
 
 /* Editorial public experience; existing CMS tokens continue to govern color. */
-.editorial-kicker { color: rgb(var(--c-brand-500)); font-size: .7rem; font-weight: 700; letter-spacing: .16em; }
+.editorial-kicker { color: rgb(var(--c-ink-600)); font-size: .8125rem; font-weight: 700; letter-spacing: .16em; }
 .trust-strip { padding-block: 1.5rem; border-top: 1px solid rgb(255 255 255 / .15); }
 .problem-link { display: flex; align-items: center; gap: 1.2rem; padding-block: 1.5rem; border-bottom: 1px solid rgb(11 18 37 / .15); transition: color .25s; }
-.problem-link:hover { color: rgb(var(--c-brand-500)); }
+.problem-link:hover { color: rgb(var(--c-ink-700)); background: rgb(var(--c-ink-900) / .035); }
 .pillar-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 2rem 1.3rem; }
 .pillar-card { display: block; border-bottom: 1px solid rgb(11 18 37 / .15); height: 100%; }
 .evidence-panel { padding: clamp(1.5rem,4vw,2.5rem); border: 1px solid rgb(255 255 255 / .2); background: rgb(255 255 255 / .03); }
@@ -281,4 +281,17 @@
   .work-carousel { gap: 1rem; }
   .work-slide { flex-basis: 90%; }
   .work-slide:last-child > article { max-width: 90%; }
+}
+
+/* Arabic keeps joined letters, a stable family and readable labels. */
+[dir='rtl'] .font-display-soft { font-family: var(--font-arabic), sans-serif; }
+[dir='rtl'] .editorial-kicker { letter-spacing: 0; }
+[dir='rtl'] .hero-headline { font-size: clamp(2.125rem, 4.8vw, 4.25rem); line-height: 1.35; max-width: 18ch; }
+.home-intro { padding-block: clamp(2rem, 4vw, 3rem); }
+.home-intro + section.section-y { padding-top: 1.5rem; }
+.hero-section { min-height: min(760px, 92svh); }
+@media (max-width: 639px) {
+  .hero-section { min-height: 0; }
+  .pillar-grid { display: grid; grid-template-columns: minmax(0, 1fr); overflow: visible; padding-bottom: 0; }
+  .problem-link { gap: .75rem; padding-block: 1rem; }
 }

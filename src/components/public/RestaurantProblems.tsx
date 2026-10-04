@@ -60,7 +60,7 @@ export function RestaurantProblems({ locale, published }: { locale: Locale; publ
                 }
                 className="problem-link"
               >
-                <span className="font-mono text-xs text-brand">0{i + 1}</span>
+                <span className="font-mono text-xs text-ink-500">0{i + 1}</span>
                 <h3 className="flex-1 font-display text-lg sm:text-xl">{ar ? arabic : en}</h3>
                 <span aria-hidden>↗</span>
               </Link>

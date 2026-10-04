@@ -104,8 +104,8 @@ export const TOKEN_DEFAULTS: Required<{
     radiusButton: 999,
     radiusCard: 16,
     radiusInput: 10,
-    containerWidth: 108,
-    sectionSpacing: 6,
+    containerWidth: 82,
+    sectionSpacing: 4,
   },
 };
 
