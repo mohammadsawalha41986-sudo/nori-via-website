@@ -41,7 +41,7 @@ export function ServiceCarousel({ children, locale }: { children: ReactNode; loc
         {items.map((item, index) => <div className="service-slide" key={index} role="group" aria-roledescription="slide" aria-label={`${index + 1} / ${items.length}`}>{item}</div>)}
       </div>
       {items.length > 1 && <div className="mt-4 flex items-center justify-between gap-4">
-        <p className="font-mono text-xs text-ink-500" aria-live="polite">{active + 1} / {items.length}</p>
+        <p dir="ltr" className="font-mono text-xs text-ink-500" aria-live="polite">{active + 1} / {items.length}</p>
         <div className="flex gap-3">
           <button type="button" onClick={() => move(active - 1)} disabled={active === 0} aria-label={ar ? 'الخدمة السابقة' : 'Previous service'} className="flex h-11 w-11 items-center justify-center rounded-full border border-ink-900/20 text-xl disabled:opacity-30">{ar ? '→' : '←'}</button>
           <button type="button" onClick={() => move(active + 1)} disabled={active === items.length - 1} aria-label={ar ? 'الخدمة التالية' : 'Next service'} className="flex h-11 w-11 items-center justify-center rounded-full border border-ink-900/20 text-xl disabled:opacity-30">{ar ? '←' : '→'}</button>
