@@ -23,7 +23,7 @@ export function PageHero({
   imageAlt?: string;
 }) {
   return (
-    <section className="relative isolate overflow-hidden bg-ink-900 pb-20 pt-[calc(var(--nav-h)+4.5rem)] text-white sm:pb-28 sm:pt-[calc(var(--nav-h)+7rem)]">
+    <section className="relative isolate overflow-hidden bg-ink-900 pb-12 pt-[calc(var(--nav-h)+2.5rem)] text-white sm:pb-16 sm:pt-[calc(var(--nav-h)+3.5rem)]">
       {image && (
         <div className="absolute inset-0 -z-10">
           <Image
@@ -60,7 +60,7 @@ export function PageHero({
 
         {description && (
           <Reveal delay={200}>
-            <p className="mt-8 max-w-2xl text-lg leading-relaxed text-white/60">{description}</p>
+            <p className="mt-5 max-w-2xl text-base leading-relaxed text-white/80 sm:text-lg">{description}</p>
           </Reveal>
         )}
 
