@@ -1,11 +1,15 @@
 import { describe, expect, it } from 'vitest';
-import { tokensToCss, resolveTokens, hexToChannels } from '../src/lib/design-tokens';
+import { tokensToCss, resolveTokens, hexToChannels, brandTextColor } from '../src/lib/design-tokens';
 import { evaluateFormula, FormulaError, parseToolConfig } from '../src/lib/tool-engine';
 import { resolveKey, sniffMime, safeDisplayName, RESOURCE_MIME } from '../src/lib/storage';
 
 process.env.STORAGE_DIR = './storage';
 
 describe('design tokens are not an injection vector', () => {
+  it('keeps button labels readable on pale and dark CMS palettes', () => {
+    expect(brandTextColor('#c9b5be')).toBe('#000000');
+    expect(brandTextColor('#111111')).toBe('#ffffff');
+  });
   it('never emits an unvalidated value into the stylesheet', () => {
     const hostile = resolveTokens({
       colors: { brand: '</style><script>alert(1)</script>', ink: 'red; background: url(javascript:alert(1))' },
@@ -31,7 +35,8 @@ describe('design tokens are not an injection vector', () => {
 
   it('produces valid CSS for an accepted override', () => {
     const css = tokensToCss(resolveTokens({ colors: { brand: '#1E9E6A' }, typography: {}, shape: {} }));
-    expect(css).toBe(':root{--c-brand-500:30 158 106}');
+    expect(css).toContain('--c-brand-500:30 158 106');
+    expect(css).toContain('--on-brand:#000000');
   });
 });
 

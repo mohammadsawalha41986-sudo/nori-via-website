@@ -147,12 +147,26 @@ export function hexToChannels(value: string): string | null {
   return `${(n >> 16) & 255} ${(n >> 8) & 255} ${n & 255}`;
 }
 
+/** Select the higher-contrast text color without changing the configured brand. */
+export function brandTextColor(background: string): '#000000' | '#ffffff' {
+  const channels = hexToChannels(background)?.split(' ').map(Number) || [0, 0, 0];
+  const linear = channels.map(channel => {
+    const value = channel / 255;
+    return value <= 0.04045 ? value / 12.92 : ((value + 0.055) / 1.055) ** 2.4;
+  });
+  const luminance = 0.2126 * linear[0] + 0.7152 * linear[1] + 0.0722 * linear[2];
+  return (luminance + 0.05) / 0.05 >= 1.05 / (luminance + 0.05) ? '#000000' : '#ffffff';
+}
+
 /**
  * Renders the token overrides as a `:root` block. Only values that differ from
  * the stylesheet defaults are emitted, keeping the inline style tiny.
  */
 export function tokensToCss(tokens: ResolvedTokens): string {
-  const decls: string[] = [];
+  const decls: string[] = [
+    `--on-brand:${brandTextColor(tokens.colors.brand)}`,
+    `--on-brand-hover:${brandTextColor(tokens.colors.brandDark)}`,
+  ];
 
   for (const token of COLOR_TOKENS) {
     const value = tokens.colors[token.key];

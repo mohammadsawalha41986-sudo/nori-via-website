@@ -7,7 +7,7 @@ import clsx from 'clsx';
 type Variant = 'primary' | 'ghost' | 'light' | 'outline';
 
 const styles: Record<Variant, string> = {
-  primary: 'bg-brand text-white hover:bg-brand-600',
+  primary: 'bg-brand text-[color:var(--on-brand,#ffffff)] hover:bg-brand-600 hover:text-[color:var(--on-brand-hover,#ffffff)]',
   ghost: 'bg-transparent text-ink-900 hover:bg-ink-900 hover:text-white border border-ink-900/25',
   light: 'bg-white text-ink-900 hover:bg-bone',
   outline: 'bg-transparent text-white border border-white/35 hover:bg-white hover:text-ink-900',

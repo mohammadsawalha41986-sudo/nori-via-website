@@ -44,7 +44,7 @@ async function worker() {
         const href = decode(match[1]);
         if (href.startsWith('/') && !href.startsWith('//') && !href.startsWith('/api/') && !href.startsWith('/admin')) internal.add(new URL(href, origin).pathname);
       }
-      results.push({ url, status: page.status, title: page.text.match(/<title>(.*?)<\/title>/s)?.[1], description: meta('description'), canonical, alternates, h1, schemaTypes: schemas.map(s => s['@type']), imageCount: images.length, errors });
+      results.push({ url, status: page.status, title: page.text.match(/<title>(.*?)<\/title>/s)?.[1], description: meta('description'), canonical, alternates, h1, schemaTypes: schemas.map(s => s['@type']), ogImage: meta('og:image'), imageCount: images.length, errors });
     } catch (error) { results.push({ url, errors: [String(error)] }); }
   }
 }
@@ -58,11 +58,25 @@ await Promise.all(Array.from({ length: 4 }, async () => {
     try { if ((await get(path)).status >= 400) brokenInternal.add(path); } catch { brokenInternal.add(path); }
   }
 }));
+const imageUrls = [...new Set(results.map(page => page.ogImage).filter(Boolean))];
+const brokenShareImages = [];
+cursor = 0;
+await Promise.all(Array.from({ length: 4 }, async () => {
+  while (cursor < imageUrls.length) {
+    const url = imageUrls[cursor++];
+    try {
+      const imageUrl = new URL(url);
+      const target = imageUrl.origin === canonicalOrigin ? new URL(imageUrl.pathname, origin) : imageUrl;
+      const response = await fetch(target, { method: 'HEAD', signal: AbortSignal.timeout(20000) });
+      if (!response.ok || !response.headers.get('content-type')?.startsWith('image/')) brokenShareImages.push(url);
+    } catch { brokenShareImages.push(url); }
+  }
+}));
 const notFound = await get('/ar/services/noriva-seo-nonexistent-page');
 const report = { timestamp: new Date().toISOString(), origin, sitemapStatus: sitemap.status, robotsStatus: robots.status,
   robots: robots.text, sitemapCount: urls.length, pages: results.sort((a,b) => a.url.localeCompare(b.url)),
-  brokenInternal: [...brokenInternal], unknownPageStatus: notFound.status,
+  brokenShareImages, checkedShareImages: imageUrls.length, brokenInternal: [...brokenInternal], unknownPageStatus: notFound.status,
   issues: results.filter(page => page.errors.length), duplicateTitles: results.filter((p,i) => results.findIndex(q => q.title === p.title) !== i).map(p => p.url) };
 await writeFile(output, JSON.stringify(report, null, 2));
-console.log(JSON.stringify({ output, sitemapCount: urls.length, issues: report.issues.length, brokenInternal: report.brokenInternal, unknownPageStatus: report.unknownPageStatus, duplicateTitles: report.duplicateTitles.length }));
-if (report.issues.length || report.brokenInternal.length || notFound.status !== 404 || sitemap.status !== 200) process.exitCode = 1;
+console.log(JSON.stringify({ output, sitemapCount: urls.length, issues: report.issues.length, brokenShareImages, checkedShareImages: imageUrls.length, brokenInternal: report.brokenInternal, unknownPageStatus: report.unknownPageStatus, duplicateTitles: report.duplicateTitles.length }));
+if (brokenShareImages.length || report.issues.length || report.brokenInternal.length || notFound.status !== 404 || sitemap.status !== 200) process.exitCode = 1;
