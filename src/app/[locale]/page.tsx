@@ -24,7 +24,7 @@ import {
   getFeaturedResources,
   asStringList,
 } from '@/lib/content';
-import { PRACTICES, practiceFor } from '@/lib/service-discovery';
+import { PRACTICES, practiceEntryPoint } from '@/lib/service-discovery';
 import { JsonLd, organizationSchema, websiteSchema } from '@/lib/seo';
 export const revalidate = 60;
 export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
@@ -44,7 +44,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       getFeaturedResources(3),
     ]);
   const pillars = PRACTICES.filter((p) => p.id !== 'finance').flatMap((p) => {
-    const service = services.find((s) => practiceFor(s.slug).id === p.id);
+    const service = practiceEntryPoint(p.id, services);
     return service
       ? [
           {

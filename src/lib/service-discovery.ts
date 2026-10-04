@@ -108,7 +108,27 @@ export function practiceFor(slug: string) {
   // A delivery menu is a channel decision, before it is a menu decision.
   if (/delivery/.test(slug)) return PRACTICES[7];
   if (/operational/.test(slug)) return PRACTICES[3];
+  // Social media management belongs to marketing, despite "management".
+  if (PRACTICES[6].match.test(slug)) return PRACTICES[6];
   return PRACTICES.find((p) => p.match.test(slug)) ?? PRACTICES[0];
+}
+
+const PRACTICE_ENTRY_POINTS: Record<string, string> = {
+  strategy: 'restaurant-consulting',
+  launch: 'new-restaurant-project',
+  menu: 'menu-strategy-engineering-pricing',
+  operations: 'operational-audit',
+  finance: 'profitability-analysis',
+  brand: 'brand-strategy-identity',
+  marketing: 'fnb-marketing',
+  delivery: 'delivery-menu-pricing',
+  growth: 'expansion-study',
+};
+
+/** Link a practice to its main published service, regardless of CMS sort order. */
+export function practiceEntryPoint<T extends { slug: string }>(practiceId: string, services: T[]) {
+  return services.find((s) => s.slug === PRACTICE_ENTRY_POINTS[practiceId])
+    ?? services.find((s) => practiceFor(s.slug).id === practiceId);
 }
 
 export function practiceLabel(p: (typeof PRACTICES)[number], locale: Locale, byNeed = false) {
