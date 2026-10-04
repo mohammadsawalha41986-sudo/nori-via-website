@@ -67,8 +67,16 @@ await Promise.all(Array.from({ length: 4 }, async () => {
     try {
       const imageUrl = new URL(url);
       const target = imageUrl.origin === canonicalOrigin ? new URL(imageUrl.pathname, origin) : imageUrl;
-      const response = await fetch(target, { method: 'HEAD', signal: AbortSignal.timeout(20000) });
-      if (!response.ok || !response.headers.get('content-type')?.startsWith('image/')) brokenShareImages.push(url);
+      let valid = false;
+      // One retry covers an interrupted connection during a rolling deployment.
+      for (let attempt = 0; attempt < 2; attempt++) {
+        try {
+          const response = await fetch(target, { method: 'HEAD', signal: AbortSignal.timeout(20000) });
+          valid = response.ok && Boolean(response.headers.get('content-type')?.startsWith('image/'));
+          if (valid || (response.status >= 400 && response.status < 500)) break;
+        } catch { /* Retry once, then report a real unresolved failure. */ }
+      }
+      if (!valid) brokenShareImages.push(url);
     } catch { brokenShareImages.push(url); }
   }
 }));

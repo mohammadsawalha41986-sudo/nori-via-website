@@ -35,7 +35,12 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   if (!isLocale(locale)) return {};
   const [settings, page] = await Promise.all([getSettings(), getPage('home')]);
-  return buildMetadata({ row: page, locale, path: '/',
+  return buildMetadata({ row: { ...settings, ...page,
+    seoTitleEn: page?.seoTitleEn || settings.seoTitleEn,
+    seoTitleAr: page?.seoTitleAr || settings.seoTitleAr,
+    seoDescriptionEn: page?.seoDescriptionEn || settings.seoDescriptionEn,
+    seoDescriptionAr: page?.seoDescriptionAr || settings.seoDescriptionAr,
+  }, locale, path: '/',
     fallbackTitle: locale === 'ar' ? 'إدارة وتطوير وتسويق المطاعم في السعودية' : 'Restaurant Consulting & Growth in Saudi Arabia',
     fallbackDescription: BRAND_DESCRIPTION[locale], fallbackImage: settings.defaultOgImage || '/img/noriva-photo-dining.webp' });
 }
