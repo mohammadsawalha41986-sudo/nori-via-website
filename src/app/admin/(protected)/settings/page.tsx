@@ -97,6 +97,23 @@ export default async function SettingsPage() {
           </Grid>
         </Card>
 
+        <Card
+          title="Invoice details"
+          description="These details are copied onto each new invoice. Existing invoices keep the details they were issued with."
+        >
+          <Grid>
+            <Field label="VAT registration number" htmlFor="invoiceTaxNumber">
+              <input id="invoiceTaxNumber" name="invoiceTaxNumber" defaultValue={s.invoiceTaxNumber} className={inputClass} />
+            </Field>
+            <Field label="Commercial registration number" htmlFor="invoiceCommercialRegNumber">
+              <input id="invoiceCommercialRegNumber" name="invoiceCommercialRegNumber" defaultValue={s.invoiceCommercialRegNumber} className={inputClass} />
+            </Field>
+            <Field label="Payment details" htmlFor="invoicePaymentDetails" hint="Bank transfer details or payment instructions shown on invoices.">
+              <textarea id="invoicePaymentDetails" name="invoicePaymentDetails" rows={3} defaultValue={s.invoicePaymentDetails} className={inputClass} />
+            </Field>
+          </Grid>
+        </Card>
+
         <Card title="Social">
           <Grid cols={3}>
             {(['instagram', 'tiktok', 'linkedin', 'x', 'youtube'] as const).map((key) => (

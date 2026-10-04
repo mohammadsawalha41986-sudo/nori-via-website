@@ -105,6 +105,10 @@ model SiteSettings {
   addressAr String @default("")
   mapsUrl   String @default("")
 
+  invoiceTaxNumber           String @default("")
+  invoiceCommercialRegNumber String @default("")
+  invoicePaymentDetails      String @default("")
+
   instagram String @default("")
   tiktok    String @default("")
   linkedin  String @default("")
@@ -583,6 +587,43 @@ model Page {
   noindex          Boolean @default(false)
 
   updatedAt DateTime @updatedAt
+}
+
+/// An issued invoice stores a snapshot of both parties' details so later site
+/// setting changes do not rewrite an invoice already sent to a client.
+model Invoice {
+  id                          String   @id @default(cuid())
+  invoiceNumber               String   @unique
+  companyName                 String
+  companyEmail                String   @default("")
+  companyPhone                String   @default("")
+  companyAddress              String   @default("")
+  companyTaxNumber            String   @default("")
+  companyCommercialRegNumber  String   @default("")
+  companyLogoUrl              String?
+  paymentDetails              String   @default("")
+  clientName                  String
+  clientCompany               String   @default("")
+  clientEmail                 String   @default("")
+  clientPhone                 String   @default("")
+  clientAddress               String   @default("")
+  clientTaxNumber             String   @default("")
+  serviceName                 String
+  serviceDescription          String   @default("")
+  currency                    String   @default("SAR")
+  subtotal                    Decimal  @db.Decimal(12, 2)
+  vatPercent                  Decimal  @db.Decimal(5, 2) @default(0)
+  vatAmount                   Decimal  @db.Decimal(12, 2) @default(0)
+  totalAmount                 Decimal  @db.Decimal(12, 2)
+  issueDate                   DateTime @default(now())
+  dueDate                     DateTime?
+  notes                       String   @default("")
+  status                      String   @default("ISSUED")
+  createdById                 String?
+  createdAt                   DateTime @default(now())
+
+  @@index([createdAt])
+  @@index([clientName])
 }
 
 model ProjectInquiry {

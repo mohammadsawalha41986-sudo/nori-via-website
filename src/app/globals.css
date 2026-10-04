@@ -2,6 +2,49 @@
 @tailwind components;
 @tailwind utilities;
 
+@page {
+  size: A4;
+  margin: 12mm;
+}
+
+@media print {
+  body.printing-invoice {
+    background: #fff !important;
+    color: #111c3a !important;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  body.printing-invoice [data-invoice-print-hide],
+  body.printing-invoice .invoice-toolbar {
+    display: none !important;
+  }
+
+  body.printing-invoice [data-invoice-print-main] {
+    padding: 0 !important;
+  }
+
+  body.printing-invoice .invoice-admin-page {
+    padding: 0 !important;
+    background: #fff !important;
+  }
+
+  body.printing-invoice .invoice-document {
+    width: 100% !important;
+    max-width: none !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    overflow: visible !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+
+  body.printing-invoice .invoice-document * {
+    break-inside: avoid;
+  }
+}
+
 @layer base {
   /*
    * Brand design tokens.

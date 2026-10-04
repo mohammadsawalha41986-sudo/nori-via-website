@@ -13,6 +13,7 @@ export const NAV_GROUPS = [
       { href: '/admin', label: 'Dashboard', exact: true },
       { href: '/admin/preview', label: 'Preview site' },
       { href: '/admin/inquiries', label: 'Inquiries' },
+      { href: '/admin/invoices', label: 'Invoices' },
       { href: '/admin/messages', label: 'Contact messages' },
     ],
   },
@@ -84,6 +85,7 @@ export function AdminShell({
     <div className="flex min-h-screen bg-slate-100">
       {/* Sidebar */}
       <aside
+        data-invoice-print-hide
         className={clsx(
           'fixed inset-y-0 z-40 flex w-64 flex-col border-e border-slate-200 bg-white transition-transform duration-300 lg:static lg:translate-x-0',
           open ? 'translate-x-0' : '-translate-x-full',
@@ -178,7 +180,7 @@ export function AdminShell({
       )}
 
       <div className="flex min-w-0 flex-1 flex-col">
-        <header className="sticky top-0 z-20 flex h-14 items-center gap-3 border-b border-slate-200 bg-white px-4 lg:hidden">
+        <header data-invoice-print-hide className="sticky top-0 z-20 flex h-14 items-center gap-3 border-b border-slate-200 bg-white px-4 lg:hidden">
           <button
             type="button"
             onClick={() => setOpen(true)}
@@ -190,7 +192,7 @@ export function AdminShell({
           <span className="text-sm font-semibold text-slate-900">Noriva Admin</span>
         </header>
 
-        <main className="min-w-0 flex-1 p-4 sm:p-6 lg:p-8">{children}</main>
+        <main data-invoice-print-main className="min-w-0 flex-1 p-4 sm:p-6 lg:p-8">{children}</main>
       </div>
     </div>
   );
