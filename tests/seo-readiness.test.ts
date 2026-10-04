@@ -5,6 +5,12 @@ import { indexNowUrls, validIndexNowKey } from '@/lib/indexnow';
 import { env } from '@/lib/env';
 
 describe('search engine readiness', () => {
+  it('explicitly brands homepage titles because the same-segment layout template does not apply', () => {
+    const en = buildMetadata({ locale: 'en', path: '/', fallbackTitle: 'Restaurant consulting' });
+    const ar = buildMetadata({ locale: 'ar', path: '/', fallbackTitle: 'إدارة المطاعم' });
+    expect(en.title).toEqual({ absolute: 'Restaurant consulting — NORIVA GLOBAL' });
+    expect(ar.title).toEqual({ absolute: 'إدارة المطاعم — نوريفا جلوبال' });
+  });
   it('keeps reciprocal Saudi language links without replacing the canonical', () => {
     const ar = alternatesFor('ar', '/services/menu');
     const en = alternatesFor('en', '/services/menu');

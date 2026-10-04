@@ -3,7 +3,7 @@ import { sectionHero, SECTION_HERO_IMAGES, type SectionKey } from './section-ima
 import type { Metadata } from 'next';
 import { env } from './env';
 import { pick, defaultLocale, type Locale } from './i18n';
-import { BRAND, BRAND_DESCRIPTION, BRAND_LOGO, BRAND_TOPICS, SCHEMA_IDS, stripBrandSuffix } from './brand';
+import { BRAND, BRAND_DESCRIPTION, BRAND_LOGO, BRAND_TOPICS, SCHEMA_IDS, stripBrandSuffix, withBrand } from './brand';
 
 /**
  * Turns a stored media path into an absolute URL.
@@ -106,8 +106,10 @@ export function buildMetadata({
   const image = absoluteMediaUrl(row?.ogImage || fallbackImage ||
     (section in SECTION_HERO_IMAGES ? sectionHero(section) : BRAND_LOGO.path));
 
+  // A layout title template does not apply to its own segment's page.
+  const shareTitle = path === '/' ? withBrand(title, locale) : title;
   return {
-    title,
+    title: path === '/' ? { absolute: shareTitle } : title,
     description,
     /*
       Admin offers a "Canonical URL — leave empty to use the default" field on
@@ -122,7 +124,7 @@ export function buildMetadata({
     openGraph: {
       type,
       url,
-      title,
+      title: shareTitle,
       description,
       // Stated on every page, so the brand a crawler reads never depends on
       // which page it happened to land on first.
@@ -131,7 +133,7 @@ export function buildMetadata({
       publishedTime,
       locale: locale === 'ar' ? 'ar_SA' : 'en_SA',
     },
-    twitter: { card: 'summary_large_image', title, description, images: image ? [image] : undefined },
+    twitter: { card: 'summary_large_image', title: shareTitle, description, images: image ? [image] : undefined },
   };
 }
 
