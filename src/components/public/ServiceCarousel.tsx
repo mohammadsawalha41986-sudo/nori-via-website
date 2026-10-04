@@ -3,11 +3,20 @@
 import { Children, useRef, useState, type ReactNode } from 'react';
 import type { Locale } from '@/lib/i18n';
 
-export function ServiceCarousel({ children, locale }: { children: ReactNode; locale: Locale }) {
+export function ServiceCarousel({ children, locale, kind = 'services' }: {
+  children: ReactNode;
+  locale: Locale;
+  kind?: 'services' | 'tools' | 'library';
+}) {
   const items = Children.toArray(children);
   const track = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
   const ar = locale === 'ar';
+  const labels = {
+    services: { region: ar ? 'تصفح خدماتنا' : 'Browse our services', previous: ar ? 'الخدمة السابقة' : 'Previous service', next: ar ? 'الخدمة التالية' : 'Next service' },
+    tools: { region: ar ? 'تصفح الأدوات' : 'Browse our tools', previous: ar ? 'الأداة السابقة' : 'Previous tool', next: ar ? 'الأداة التالية' : 'Next tool' },
+    library: { region: ar ? 'تصفح المكتبة' : 'Browse our library', previous: ar ? 'المورد السابق' : 'Previous resource', next: ar ? 'المورد التالي' : 'Next resource' },
+  }[kind];
   function move(index: number) {
     const next = Math.max(0, Math.min(index, items.length - 1));
     const container = track.current;
@@ -31,7 +40,7 @@ export function ServiceCarousel({ children, locale }: { children: ReactNode; loc
     setActive(closest);
   }
   return (
-    <div role="region" aria-label={ar ? 'تصفح خدماتنا' : 'Browse our services'} aria-roledescription="carousel">
+    <div role="region" aria-label={labels.region} aria-roledescription="carousel">
       <div ref={track} dir={ar ? 'rtl' : 'ltr'} className="service-carousel" tabIndex={0} onScroll={syncActive}
         onKeyDown={event => {
           if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
@@ -43,8 +52,8 @@ export function ServiceCarousel({ children, locale }: { children: ReactNode; loc
       {items.length > 1 && <div className="mt-4 flex items-center justify-between gap-4">
         <p dir="ltr" className="font-mono text-xs text-ink-500" aria-live="polite">{active + 1} / {items.length}</p>
         <div className="flex gap-3">
-          <button type="button" onClick={() => move(active - 1)} disabled={active === 0} aria-label={ar ? 'الخدمة السابقة' : 'Previous service'} className="flex h-11 w-11 items-center justify-center rounded-full border border-ink-900/20 text-xl disabled:opacity-30">{ar ? '→' : '←'}</button>
-          <button type="button" onClick={() => move(active + 1)} disabled={active === items.length - 1} aria-label={ar ? 'الخدمة التالية' : 'Next service'} className="flex h-11 w-11 items-center justify-center rounded-full border border-ink-900/20 text-xl disabled:opacity-30">{ar ? '←' : '→'}</button>
+          <button type="button" onClick={() => move(active - 1)} disabled={active === 0} aria-label={labels.previous} className="flex h-11 w-11 items-center justify-center rounded-full border border-ink-900/20 text-xl disabled:opacity-30">{ar ? '→' : '←'}</button>
+          <button type="button" onClick={() => move(active + 1)} disabled={active === items.length - 1} aria-label={labels.next} className="flex h-11 w-11 items-center justify-center rounded-full border border-ink-900/20 text-xl disabled:opacity-30">{ar ? '←' : '→'}</button>
         </div>
       </div>}
     </div>

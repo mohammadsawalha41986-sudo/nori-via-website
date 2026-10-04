@@ -26,16 +26,18 @@ export function ResourceCard({
   locale,
   dict,
   index = 0,
+  as = 'li',
 }: {
   resource: ResourceCardData;
   locale: Locale;
   dict: Dictionary;
   index?: number;
+  as?: 'li' | 'article';
 }) {
   const format = resourcePurposeLabel(resourcePurpose(resource.slug, resource.type), locale);
 
   return (
-    <Reveal as="li" delay={Math.min(index, 8) * 50} y={14} className="h-full">
+    <Reveal as={as} delay={Math.min(index, 8) * 50} y={14} className="h-full">
       <Link
         href={`/${locale}/library/${resource.slug}`}
         className="group flex h-full flex-col overflow-hidden rounded-card border border-ink-900/10 bg-white transition-colors duration-300 hover:border-brand"

@@ -6,6 +6,7 @@ import { ProjectCard } from '@/components/public/ProjectCard';
 import { WorkCarousel } from '@/components/public/WorkCarousel';
 import { ResourceCard } from '@/components/public/ResourceCard';
 import { CTASection } from '@/components/public/CTASection';
+import { ServiceCarousel } from '@/components/public/ServiceCarousel';
 import { ServiceShowcase } from '@/components/public/ServiceShowcase';
 import { BusinessEvidence } from '@/components/public/BusinessEvidence';
 import { RestaurantProblems } from '@/components/public/RestaurantProblems';
@@ -200,9 +201,9 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               />
               <TextLink href={`/${locale}/tools`}>{dict.tools.title}</TextLink>
             </div>
-            <ul className="grid gap-6 md:grid-cols-3">
+            <ServiceCarousel locale={locale} kind="tools">
               {tools.map((t, i) => (
-                <li key={t.id}>
+                <article key={t.id} className="h-full">
                   <Link href={`/${locale}/tools/${t.slug}`} className="tool-editorial group">
                     <span className="font-mono text-xs text-ink-600">
                       0{i + 1} / {ar ? 'أداة تفاعلية' : 'INTERACTIVE'}
@@ -213,9 +214,9 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                       {ar ? 'استخدم الأداة' : 'Run the calculator'} →
                     </span>
                   </Link>
-                </li>
+                </article>
               ))}
-            </ul>
+            </ServiceCarousel>
           </div>
         </section>
       )}
@@ -230,10 +231,11 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               />
               <TextLink href={`/${locale}/library`}>{dict.library.title}</TextLink>
             </div>
-            <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <ServiceCarousel locale={locale} kind="library">
               {resources.map((r, i) => (
                 <ResourceCard
                   key={r.id}
+                  as="article"
                   locale={locale}
                   dict={dict}
                   index={i}
@@ -251,7 +253,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                   }}
                 />
               ))}
-            </ul>
+            </ServiceCarousel>
           </div>
         </section>
       )}
