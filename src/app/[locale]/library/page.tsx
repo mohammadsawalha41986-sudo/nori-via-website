@@ -13,7 +13,7 @@ import { getDictionary } from '@/lib/dictionary';
 import { isLocale, pick, type Locale } from '@/lib/i18n';
 import { getPage, getResourceCategories, publishedNow } from '@/lib/content';
 import { prisma } from '@/lib/db';
-import { buildMetadata, JsonLd, breadcrumbs } from '@/lib/seo';
+import { webpageSchema, buildMetadata, JsonLd, breadcrumbs } from '@/lib/seo';
 
 /**
  * Filtering, searching and sorting all happen in the database and are driven
@@ -123,6 +123,7 @@ export default async function LibraryPage({
 
   return (
     <>
+      <JsonLd data={webpageSchema(locale, '/library', dict.library.title)} />
       <JsonLd
         data={breadcrumbs(locale, [
           { name: dict.nav.work, path: '/' },

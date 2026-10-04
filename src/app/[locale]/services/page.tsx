@@ -9,7 +9,7 @@ import { EmptyState } from '@/components/public/EmptyState';
 import { getDictionary } from '@/lib/dictionary';
 import { isLocale, pick, type Locale } from '@/lib/i18n';
 import { getPublishedServices, getServiceCategories, getPage } from '@/lib/content';
-import { buildMetadata, JsonLd, breadcrumbs } from '@/lib/seo';
+import { webpageSchema, buildMetadata, JsonLd, breadcrumbs } from '@/lib/seo';
 import { summarise } from '@/lib/seo-text';
 import { brandName } from '@/lib/brand';
 
@@ -76,6 +76,7 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
 
   return (
     <>
+      <JsonLd data={webpageSchema(locale, '/services', page ? pick(page, 'title', locale) : (locale === 'ar' ? 'نوريفا — حلول المطاعم' : 'NORIVA — Restaurant solutions'))} />
       <JsonLd
         data={breadcrumbs(locale, [
           { name: brandName(locale), path: '/' },

@@ -21,7 +21,7 @@ import {
   type ProcessItem,
   type GalleryItem,
 } from '@/lib/content';
-import { buildMetadata, JsonLd} from '@/lib/seo';
+import { webpageSchema, buildMetadata, JsonLd} from '@/lib/seo';
 import { Breadcrumbs } from '@/components/public/Breadcrumbs';
 import { ServiceCrossLinks } from '@/components/public/ServiceCrossLinks';
 import { brandName, SCHEMA_IDS } from '@/lib/brand';
@@ -129,6 +129,7 @@ export default async function ServiceDetailPage({
 
   return (
     <>
+      <JsonLd data={webpageSchema(locale, `/services/${slug}`, name)} />
       <JsonLd
         data={{
           '@context': 'https://schema.org',

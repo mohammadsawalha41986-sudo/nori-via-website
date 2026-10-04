@@ -11,7 +11,7 @@ import { getToolBySlug } from '@/lib/content';
 import { parseToolConfig } from '@/lib/tool-engine';
 import { getRelatedContent } from '@/lib/relations';
 import { getSessionUser } from '@/lib/auth';
-import { buildMetadata, JsonLd } from '@/lib/seo';
+import { webpageSchema, buildMetadata, JsonLd } from '@/lib/seo';
 import { env } from '@/lib/env';
 import { Breadcrumbs } from '@/components/public/Breadcrumbs';
 import { brandName, SCHEMA_IDS } from '@/lib/brand';
@@ -62,6 +62,7 @@ export default async function ToolPage({
 
   return (
     <>
+      <JsonLd data={webpageSchema(locale, `/tools/${slug}`, pick(tool, 'name', locale))} />
 
       {isPreview && tool.status !== 'PUBLISHED' && (
         <p className="bg-amber-400 px-4 py-2 text-center text-sm font-semibold text-ink-900">{dict.draft.badge}</p>

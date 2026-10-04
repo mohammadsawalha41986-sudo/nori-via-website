@@ -13,7 +13,7 @@ import { getDictionary } from '@/lib/dictionary';
 import { isLocale, pick, type Locale } from '@/lib/i18n';
 import { getPage, getPublishedServices } from '@/lib/content';
 import { getRelatedContent } from '@/lib/relations';
-import { buildMetadata, JsonLd, breadcrumbs } from '@/lib/seo';
+import { webpageSchema, buildMetadata, JsonLd, breadcrumbs } from '@/lib/seo';
 import { summarise } from '@/lib/seo-text';
 import { brandName } from '@/lib/brand';
 
@@ -55,6 +55,7 @@ export default async function RestaurantGrowthPage({ params }: { params: Promise
 
   return (
     <>
+      <JsonLd data={webpageSchema(locale, '/restaurant-growth', page ? pick(page, 'title', locale) : (locale === 'ar' ? 'نوريفا — حلول المطاعم' : 'NORIVA — Restaurant solutions'))} />
       <JsonLd
         data={breadcrumbs(locale, [
           { name: brandName(locale), path: '/' },

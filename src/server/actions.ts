@@ -1,5 +1,6 @@
 'use server';
 
+import { notifyIndexNow } from '@/lib/indexnow';
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 import type { Prisma } from '@prisma/client';
@@ -47,6 +48,7 @@ const J = (v: unknown) => v as Prisma.InputJsonValue;
  * silently leave an unpublished page cached and still reachable.
  */
 function revalidatePublic(...paths: string[]) {
+  notifyIndexNow('/', ...paths);
   for (const locale of locales) {
     revalidatePath(`/${locale}`);
     for (const p of paths) revalidatePath(`/${locale}${p}`);
@@ -56,6 +58,7 @@ function revalidatePublic(...paths: string[]) {
 
 /** Used when settings or navigation change, since those render in the layout. */
 function revalidateEverything() {
+  notifyIndexNow('/', '/about', '/contact');
   for (const locale of locales) revalidatePath(`/${locale}`, 'layout');
   revalidatePath('/sitemap.xml');
 }
@@ -208,6 +211,13 @@ export async function saveService(_prev: ActionState, formData: FormData): Promi
     gallery: J(gallery),
   };
 
+  if (id) {
+    const previous = await prisma.service.findUnique({ where: { id } });
+    if (previous?.status === 'PUBLISHED' && previous.slug !== data.slug) {
+      return fail('A published URL cannot be renamed here. Keep its slug to preserve links and search indexing.');
+    }
+  }
+
   const clash = await prisma.service.findFirst({ where: { slug: data.slug, NOT: id ? { id } : undefined } });
   if (clash) return fail('Another service already uses that slug.');
 
@@ -226,11 +236,12 @@ export async function saveService(_prev: ActionState, formData: FormData): Promi
 export async function deleteService(formData: FormData) {
   await guard();
   const id = String(formData.get('id') ?? '');
+  const previous = id ? await prisma.service.findUnique({ where: { id } }) : null;
   if (id) {
     await prisma.service.delete({ where: { id } });
     await deleteContentLinksFor('SERVICE', id);
   }
-  revalidatePublic('/services');
+  revalidatePublic('/services', ...(previous ? [`/services/${previous.slug}`] : []));
   revalidatePath('/admin/services');
   redirect('/admin/services');
 }
@@ -277,6 +288,13 @@ export async function saveProject(_prev: ActionState, formData: FormData): Promi
     results: J(results),
   };
 
+  if (id) {
+    const previous = await prisma.project.findUnique({ where: { id } });
+    if (previous?.status === 'PUBLISHED' && previous.slug !== data.slug) {
+      return fail('A published URL cannot be renamed here. Keep its slug to preserve links and search indexing.');
+    }
+  }
+
   const clash = await prisma.project.findFirst({ where: { slug: data.slug, NOT: id ? { id } : undefined } });
   if (clash) return fail('Another project already uses that slug.');
 
@@ -303,11 +321,12 @@ export async function saveProject(_prev: ActionState, formData: FormData): Promi
 export async function deleteProject(formData: FormData) {
   await guard();
   const id = String(formData.get('id') ?? '');
+  const previous = id ? await prisma.project.findUnique({ where: { id } }) : null;
   if (id) {
     await prisma.project.delete({ where: { id } });
     await deleteContentLinksFor('PROJECT', id);
   }
-  revalidatePublic('/work');
+  revalidatePublic('/work', ...(previous ? [`/work/${previous.slug}`] : []));
   revalidatePath('/admin/work');
   redirect('/admin/work');
 }
@@ -330,6 +349,7 @@ export async function toggleProjectStatus(formData: FormData) {
 export async function saveCaseStudy(_prev: ActionState, formData: FormData): Promise<ActionState> {
   await guard();
   const id = String(formData.get('id') ?? '');
+  const previous = id ? await prisma.caseStudy.findUnique({ where: { id }, include: { project: true } }) : null;
 
   const parsed = caseStudySchema.safeParse({
     ...formToObject(formData),
@@ -376,7 +396,8 @@ export async function saveCaseStudy(_prev: ActionState, formData: FormData): Pro
     });
   }
 
-  revalidatePublic('/work');
+  const linked = saved.projectId ? await prisma.project.findUnique({ where: { id: saved.projectId } }) : null;
+  revalidatePublic('/work', ...(linked ? [`/work/${linked.slug}`] : []), ...(previous?.project ? [`/work/${previous.project.slug}`] : []));
   revalidatePath('/admin/case-studies');
   if (!id) redirect(`/admin/case-studies/${saved.id}`);
   return { ok: true };
@@ -385,11 +406,13 @@ export async function saveCaseStudy(_prev: ActionState, formData: FormData): Pro
 export async function deleteCaseStudy(formData: FormData) {
   await guard();
   const id = String(formData.get('id') ?? '');
+  const previous = id ? await prisma.caseStudy.findUnique({ where: { id }, include: { project: true } }) : null;
   if (id) {
     await prisma.caseStudy.delete({ where: { id } });
     await deleteContentLinksFor('CASE_STUDY', id);
   }
-  revalidatePublic('/work');
+  const linked = previous?.projectId ? await prisma.project.findUnique({ where: { id: previous.projectId } }) : null;
+  revalidatePublic('/work', ...(linked ? [`/work/${linked.slug}`] : []));
   revalidatePath('/admin/case-studies');
   redirect('/admin/case-studies');
 }
@@ -397,13 +420,15 @@ export async function deleteCaseStudy(formData: FormData) {
 export async function toggleCaseStudyStatus(formData: FormData) {
   await guard();
   const id = String(formData.get('id') ?? '');
+  const previous = id ? await prisma.caseStudy.findUnique({ where: { id }, include: { project: true } }) : null;
   const cs = await prisma.caseStudy.findUnique({ where: { id } });
   if (!cs) return;
   await prisma.caseStudy.update({
     where: { id },
     data: { status: cs.status === 'PUBLISHED' ? 'DRAFT' : 'PUBLISHED' },
   });
-  revalidatePublic('/work');
+  const linked = previous?.projectId ? await prisma.project.findUnique({ where: { id: previous.projectId } }) : null;
+  revalidatePublic('/work', ...(linked ? [`/work/${linked.slug}`] : []));
   revalidatePath('/admin/case-studies');
 }
 
@@ -439,6 +464,13 @@ export async function saveInsight(_prev: ActionState, formData: FormData): Promi
           : null,
   };
 
+  if (id) {
+    const previous = await prisma.insight.findUnique({ where: { id } });
+    if (previous?.status === 'PUBLISHED' && previous.slug !== data.slug) {
+      return fail('A published URL cannot be renamed here. Keep its slug to preserve links and search indexing.');
+    }
+  }
+
   const clash = await prisma.insight.findFirst({ where: { slug: data.slug, NOT: id ? { id } : undefined } });
   if (clash) return fail('Another article already uses that slug.');
 
@@ -457,12 +489,13 @@ export async function saveInsight(_prev: ActionState, formData: FormData): Promi
 export async function deleteInsight(formData: FormData) {
   await guard();
   const id = String(formData.get('id') ?? '');
+  const previous = id ? await prisma.insight.findUnique({ where: { id } }) : null;
   if (id) {
     await prisma.insight.delete({ where: { id } });
     // Content links are polymorphic, so they carry no cascade of their own.
     await deleteContentLinksFor('INSIGHT', id);
   }
-  revalidatePublic('/insights');
+  revalidatePublic('/insights', ...(previous ? [`/insights/${previous.slug}`] : []));
   revalidatePath('/admin/insights');
   redirect('/admin/insights');
 }

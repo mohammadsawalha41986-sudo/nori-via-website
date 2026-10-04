@@ -1,5 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  trailingSlash: false,
+  async redirects() {
+    return [{ source: '/:path*', has: [{ type: 'host', value: 'www.norivaglobal.com' }], destination: 'https://norivaglobal.com/:path*', permanent: true }];
+  },
   images: {
     formats: ['image/avif', 'image/webp'],
     remotePatterns: [{ protocol: 'https', hostname: '**' }],
@@ -15,6 +19,7 @@ const nextConfig = {
           { key: 'X-DNS-Prefetch-Control', value: 'on' },
         ],
       },
+      { source: '/api/:path*', headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }] },
       { source: '/admin/:path*', headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }] },
     ];
   },

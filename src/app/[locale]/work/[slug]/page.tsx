@@ -21,7 +21,7 @@ import {
   type DownloadItem,
   type MetricItem,
 } from '@/lib/content';
-import { buildMetadata, JsonLd} from '@/lib/seo';
+import { webpageSchema, buildMetadata, JsonLd} from '@/lib/seo';
 import { Breadcrumbs } from '@/components/public/Breadcrumbs';
 import { brandName, SCHEMA_IDS } from '@/lib/brand';
 import { env } from '@/lib/env';
@@ -113,6 +113,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ locale
 
   return (
     <>
+      <JsonLd data={webpageSchema(locale, `/work/${slug}`, title)} />
       <TrackView event={cs ? EVENTS.caseStudyView : EVENTS.workView} slug={slug} />
 
       <JsonLd

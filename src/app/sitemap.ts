@@ -35,7 +35,7 @@ const STATIC_PATHS = [
 ];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const [services, projects, insights, tools, resources] = await Promise.all([
+  const [services, projects, insights, tools, resources, pages] = await Promise.all([
     getPublishedServices(),
     getPublishedProjects(),
     getPublishedInsights(),
@@ -44,12 +44,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       where: { ...publishedNow(), noindex: false },
       select: { slug: true, updatedAt: true },
     }),
+    prisma.page.findMany({ select: { key: true, noindex: true, canonical: true, updatedAt: true } }),
   ]);
 
   const entries: MetadataRoute.Sitemap = [];
 
-  const push = (path: string, lastModified?: Date, priority = 0.6) => {
+  const push = (path: string, lastModified?: Date, priority = 0.6, canonical?: string) => {
     for (const locale of locales) {
+      // Omit an alias when the editor chose another page in this locale.
+      try {
+        const target = new URL(canonical || '');
+        if (target.origin === env.siteUrl && target.pathname.startsWith(`/${locale}/`) && target.pathname.replace(/\/+$/, '') !== `${'/' + locale}${path}`) continue;
+      } catch { /* Default self canonical. */ }
       entries.push({
         url: `${env.siteUrl}/${locale}${path}`,
         lastModified,
@@ -59,6 +65,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
           languages: {
             ...Object.fromEntries(locales.map((l) => [l, `${env.siteUrl}/${l}${path}`])),
             'ar-SA': `${env.siteUrl}/ar${path}`,
+            'en-SA': `${env.siteUrl}/en${path}`,
             // Matches the `x-default` the pages themselves declare; a sitemap
             // that disagrees with the page is a signal Google discards.
             'x-default': `${env.siteUrl}/${defaultLocale}${path}`,
@@ -78,7 +85,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   */
   const indexable = <T extends { noindex: boolean }>(rows: T[]) => rows.filter((row) => !row.noindex);
 
-  for (const path of STATIC_PATHS) push(path, undefined, path === '' ? 1 : 0.7);
+  for (const path of STATIC_PATHS) {
+    const page = pages.find(p => p.key === (path.slice(1) || 'home'));
+    if (!page?.noindex) push(path, page?.updatedAt, path === '' ? 1 : 0.7, page?.canonical);
+  }
+  entries.push({ url: `${env.siteUrl}/profile`, changeFrequency: 'monthly', priority: 0.6 });
   for (const s of indexable(services)) push(`/services/${s.slug}`, s.updatedAt, 0.8);
   for (const p of indexable(projects)) push(`/work/${p.slug}`, p.updatedAt, 0.8);
   for (const a of indexable(insights)) push(`/insights/${a.slug}`, a.updatedAt, 0.6);

@@ -11,7 +11,7 @@ import { getDictionary } from '@/lib/dictionary';
 import { isLocale, pick, type Locale } from '@/lib/i18n';
 import { getPage, getPublishedServices } from '@/lib/content';
 import { getRelatedContent } from '@/lib/relations';
-import { buildMetadata, JsonLd, breadcrumbs } from '@/lib/seo';
+import { webpageSchema, buildMetadata, JsonLd, breadcrumbs } from '@/lib/seo';
 import { summarise } from '@/lib/seo-text';
 
 export const revalidate = 60;
@@ -60,6 +60,7 @@ export default async function StartHerePage({ params }: { params: Promise<{ loca
 
   return (
     <>
+      <JsonLd data={webpageSchema(locale, '/start-here', page ? pick(page, 'title', locale) : (locale === 'ar' ? 'نوريفا — حلول المطاعم' : 'NORIVA — Restaurant solutions'))} />
       <JsonLd data={breadcrumbs(locale, [{ name: dict.nav.startHere, path: '/start-here' }])} />
 
       <PageHero

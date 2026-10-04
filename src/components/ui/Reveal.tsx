@@ -19,7 +19,7 @@ type Props = {
  */
 export function Reveal({ children, className, delay = 0, y = 26, as = 'div' }: Props) {
   const ref = useRef<HTMLElement>(null);
-  const [shown, setShown] = useState(false);
+  const [shown, setShown] = useState(true);
 
   useEffect(() => {
     const el = ref.current;
@@ -30,6 +30,7 @@ export function Reveal({ children, className, delay = 0, y = 26, as = 'div' }: P
       return;
     }
 
+    if (el.getBoundingClientRect().top > window.innerHeight) setShown(false);
     const io = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
@@ -51,7 +52,7 @@ export function Reveal({ children, className, delay = 0, y = 26, as = 'div' }: P
   return (
     <Tag
       ref={ref as React.RefObject<HTMLDivElement>}
-      className={clsx('transition-[opacity,transform] duration-700 ease-noriva will-change-transform', className)}
+      className={clsx('transition-[opacity,transform] duration-700 ease-noriva', className)}
       style={{
         opacity: shown ? 1 : 0,
         transform: shown ? 'none' : `translate3d(0, ${y}px, 0)`,

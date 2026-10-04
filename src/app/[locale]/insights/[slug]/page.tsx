@@ -12,7 +12,7 @@ import { getInsightBySlug, asStringList } from '@/lib/content';
 import { getRelatedContent } from '@/lib/relations';
 import { getSessionUser } from '@/lib/auth';
 import { RelatedContent } from '@/components/public/RelatedContent';
-import { buildMetadata, JsonLd, absoluteMediaUrl } from '@/lib/seo';
+import { webpageSchema, buildMetadata, JsonLd, absoluteMediaUrl } from '@/lib/seo';
 import { Breadcrumbs } from '@/components/public/Breadcrumbs';
 import { brandName, isBrandName, SCHEMA_IDS } from '@/lib/brand';
 import { env } from '@/lib/env';
@@ -75,6 +75,7 @@ export default async function InsightPage({
 
   return (
     <>
+      <JsonLd data={webpageSchema(locale, `/insights/${slug}`, pick(article, 'title', locale))} />
       {isPreview && article.status !== 'PUBLISHED' && (
         <p className="bg-amber-400 px-4 py-2 text-center text-sm font-semibold text-ink-900">{dict.draft.badge}</p>
       )}

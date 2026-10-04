@@ -4,7 +4,7 @@ import { PageHero } from '@/components/public/PageHero';
 import { Prose } from '@/components/ui/Prose';
 import { isLocale, pick, type Locale } from '@/lib/i18n';
 import { getPage } from '@/lib/content';
-import { buildMetadata } from '@/lib/seo';
+import { JsonLd, webpageSchema, buildMetadata } from '@/lib/seo';
 import { summarise } from '@/lib/seo-text';
 
 export const revalidate = 300;
@@ -34,6 +34,7 @@ export default async function LegalPage({ params }: { params: Promise<{ locale: 
 
   return (
     <>
+      <JsonLd data={webpageSchema(locale, '/privacy', page ? pick(page, 'title', locale) : (locale === 'ar' ? 'نوريفا — حلول المطاعم' : 'NORIVA — Restaurant solutions'))} />
       <PageHero title={pick(page, 'title', locale)} />
       <section className="bg-bone py-20 sm:py-28">
         <div className="shell max-w-3xl">

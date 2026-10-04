@@ -5,6 +5,8 @@ import Script from 'next/script';
  * environment variables. No inquiry content is ever passed to analytics.
  */
 export function Analytics({ gaId, gtmId }: { gaId?: string; gtmId?: string }) {
+  gaId = /^G-[A-Z0-9]+$/.test(gaId || '') ? gaId : undefined;
+  gtmId = /^GTM-[A-Z0-9]+$/.test(gtmId || '') ? gtmId : undefined;
   return (
     <>
       {gtmId && (

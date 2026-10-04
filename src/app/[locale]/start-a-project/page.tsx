@@ -6,7 +6,7 @@ import { InquiryForm } from '@/components/public/InquiryForm';
 import { getDictionary } from '@/lib/dictionary';
 import { isLocale, pick, type Locale } from '@/lib/i18n';
 import { getPage, getSettings } from '@/lib/content';
-import { buildMetadata } from '@/lib/seo';
+import { JsonLd, webpageSchema, buildMetadata } from '@/lib/seo';
 import { summarise } from '@/lib/seo-text';
 
 export const revalidate = 300;
@@ -36,6 +36,7 @@ export default async function StartAProjectPage({ params }: { params: Promise<{ 
 
   return (
     <>
+      <JsonLd data={webpageSchema(locale, '/start-a-project', page ? pick(page, 'title', locale) : (locale === 'ar' ? 'نوريفا — حلول المطاعم' : 'NORIVA — Restaurant solutions'))} />
       <PageHero
         eyebrow={dict.nav.start}
         title={page ? pick(page, 'title', locale) : dict.nav.start}

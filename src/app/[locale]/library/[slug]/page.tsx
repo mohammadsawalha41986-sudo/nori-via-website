@@ -14,7 +14,7 @@ import { asObjectList, getResourceBySlug } from '@/lib/content';
 import { getRelatedContent } from '@/lib/relations';
 import { getSessionUser } from '@/lib/auth';
 import { documentLabel, formatBytes } from '@/lib/storage';
-import { buildMetadata, JsonLd} from '@/lib/seo';
+import { webpageSchema, buildMetadata, JsonLd} from '@/lib/seo';
 import { Breadcrumbs } from '@/components/public/Breadcrumbs';
 import { brandName } from '@/lib/brand';
 import { env } from '@/lib/env';
@@ -75,6 +75,7 @@ export default async function ResourcePage({
 
   return (
     <>
+      <JsonLd data={webpageSchema(locale, `/library/${slug}`, pick(resource, 'title', locale))} />
       {resource.status === 'PUBLISHED' && (
         <JsonLd
           data={{

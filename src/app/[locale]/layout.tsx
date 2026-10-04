@@ -10,6 +10,7 @@ import { isLocale, dirOf, pick, type Locale } from '@/lib/i18n';
 import { getSettings } from '@/lib/content';
 import { env } from '@/lib/env';
 import { getDesignTokens, tokensToCss } from '@/lib/design-tokens';
+import { JsonLd, organizationSchema, websiteSchema } from '@/lib/seo';
 import { alternatesFor } from '@/lib/seo';
 import { BRAND, BRAND_DESCRIPTION, brandName, withBrand } from '@/lib/brand';
 
@@ -66,7 +67,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       siteName: BRAND.name,
       title,
       description,
-      locale: locale === 'ar' ? 'ar_SA' : 'en_US',
+      locale: locale === 'ar' ? 'ar_SA' : 'en_SA',
       url: `${env.siteUrl}/${locale}`,
       images: shareImage ? [{ url: shareImage }] : undefined,
     },
@@ -96,9 +97,10 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     manifest: '/manifest.webmanifest',
     // Only rendered when a token is configured; Search Console also accepts
     // DNS verification, in which case this stays unset.
-    verification: env.googleSiteVerification
-      ? { google: env.googleSiteVerification }
-      : undefined,
+    verification: {
+      google: env.googleSiteVerification || undefined,
+      other: env.bingSiteVerification ? { 'msvalidate.01': env.bingSiteVerification } : undefined,
+    },
   };
 }
 
@@ -162,6 +164,8 @@ export default async function LocaleLayout({
           closeLabel={dict.nav.close}
         />
 
+        <JsonLd data={organizationSchema({ locale, address: contact.address, email: contact.email, telephone: contact.phone, logoUrl: settings.logoUrl, sameAs: socials.map(s => s.href) })} />
+        <JsonLd data={websiteSchema(locale)} />
         <main id="main" className="flex-1">
           {children}
         </main>

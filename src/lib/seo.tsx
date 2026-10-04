@@ -1,3 +1,5 @@
+import { summarise } from './seo-text';
+import { sectionHero, SECTION_HERO_IMAGES, type SectionKey } from './section-images';
 import type { Metadata } from 'next';
 import { env } from './env';
 import { pick, defaultLocale, type Locale } from './i18n';
@@ -38,6 +40,7 @@ export function alternatesFor(locale: Locale, path = '/'): Metadata['alternates'
       en: absoluteUrl('en', path),
       ar: absoluteUrl('ar', path),
       'ar-SA': absoluteUrl('ar', path),
+      'en-SA': absoluteUrl('en', path),
       'x-default': absoluteUrl(defaultLocale, path),
     },
   };
@@ -84,13 +87,24 @@ export function buildMetadata({
     which is how "… — نوريفا — NORIVA GLOBAL" reaches the SERP. Strip whatever
     is stored and let the template add the one canonical form.
   */
-  const title = stripBrandSuffix((row && pick(row, 'seoTitle', locale)) || fallbackTitle);
+  const storedTitle = row && pick(row, 'seoTitle', locale);
+  const localTitle = locale === 'ar' && storedTitle && !/[\u0600-\u06ff]/.test(storedTitle) ? '' : storedTitle;
+  const title = stripBrandSuffix(localTitle || fallbackTitle);
   const description =
-    (row && pick(row, 'seoDescription', locale)) || fallbackDescription || BRAND_DESCRIPTION[locale];
+    (row && pick(row, 'seoDescription', locale)) || summarise(fallbackDescription || BRAND_DESCRIPTION[locale]);
   const url = absoluteUrl(locale, path);
   const stored = typeof row?.canonical === 'string' ? row.canonical.trim() : '';
-  const canonicalOverride = /^https?:\/\/\S+$/i.test(stored) ? stored : undefined;
-  const image = row?.ogImage || fallbackImage || undefined;
+  // Canonicals remain on the official origin and in this language.
+  let canonicalOverride: string | undefined;
+  try {
+    const candidate = new URL(stored);
+    if (candidate.origin === env.siteUrl && (candidate.pathname === `/${locale}` || candidate.pathname.startsWith(`/${locale}/`))) {
+      canonicalOverride = `${env.siteUrl}${candidate.pathname.replace(/\/+$/, '')}`;
+    }
+  } catch { /* An incomplete CMS override uses the page URL. */ }
+  const section = path.split('/')[1] as SectionKey;
+  const image = absoluteMediaUrl(row?.ogImage || fallbackImage ||
+    (section in SECTION_HERO_IMAGES ? sectionHero(section) : BRAND_LOGO.path));
 
   return {
     title,
@@ -115,7 +129,7 @@ export function buildMetadata({
       siteName: BRAND.name,
       images: image ? [{ url: image }] : undefined,
       publishedTime,
-      locale: locale === 'ar' ? 'ar_SA' : 'en_US',
+      locale: locale === 'ar' ? 'ar_SA' : 'en_SA',
     },
     twitter: { card: 'summary_large_image', title, description, images: image ? [image] : undefined },
   };
@@ -137,6 +151,7 @@ export function organizationSchema({
   telephone,
   sameAs,
   logoUrl,
+  address,
 }: {
   locale: Locale;
   description?: string;
@@ -144,6 +159,7 @@ export function organizationSchema({
   telephone?: string | null;
   sameAs?: string[];
   logoUrl?: string | null;
+  address?: string | null;
 }) {
   return {
     '@context': 'https://schema.org',
@@ -156,16 +172,15 @@ export function organizationSchema({
     description: description || BRAND_DESCRIPTION[locale],
     logo: {
       '@type': 'ImageObject',
-      url: `${env.siteUrl}${logoUrl || BRAND_LOGO.path}`,
-      width: BRAND_LOGO.width,
-      height: BRAND_LOGO.height,
+      url: absoluteMediaUrl(logoUrl || BRAND_LOGO.path),
     },
     image: `${env.siteUrl}${BRAND_LOGO.path}`,
+    address: address || undefined,
     email: email || undefined,
     telephone: telephone || undefined,
     areaServed: { '@type': 'Country', name: BRAND.areaServed },
     knowsAbout: BRAND_TOPICS[locale],
-    sameAs: sameAs && sameAs.length ? sameAs : undefined,
+    sameAs: sameAs?.filter((url) => /^https:\/\//i.test(url)),
   };
 }
 
@@ -184,7 +199,7 @@ export function websiteSchema(locale: Locale) {
     alternateName: [BRAND.shortName, BRAND.nameAr],
     url: env.siteUrl,
     description: BRAND_DESCRIPTION[locale],
-    inLanguage: locale === 'ar' ? 'ar-SA' : 'en',
+    inLanguage: locale === 'ar' ? 'ar-SA' : 'en-SA',
     publisher: { '@id': SCHEMA_IDS.organization },
     potentialAction: {
       '@type': 'SearchAction',
@@ -218,5 +233,16 @@ export function breadcrumbs(locale: Locale, trail: { name: string; path: string 
       name: t.name,
       item: absoluteUrl(locale, t.path),
     })),
+  };
+}
+
+/** A page node tied to the same stable publisher and site entities. */
+export function webpageSchema(locale: Locale, path: string, name: string) {
+  return {
+    '@context': 'https://schema.org', '@type': 'WebPage',
+    '@id': `${absoluteUrl(locale, path)}#webpage`, url: absoluteUrl(locale, path), name,
+    inLanguage: locale === 'ar' ? 'ar-SA' : 'en-SA',
+    isPartOf: { '@id': SCHEMA_IDS.website },
+    publisher: { '@id': SCHEMA_IDS.organization },
   };
 }

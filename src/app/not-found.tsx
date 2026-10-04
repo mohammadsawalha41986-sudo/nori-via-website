@@ -48,6 +48,8 @@ export default async function NotFound() {
             >
               {dict.common.exploreWork} →
             </Link>
+            <Link href={localePath(locale, '/services')} className="inline-flex rounded-full border border-white/35 px-7 py-4 font-semibold">{dict.nav.services} →</Link>
+            <Link href={localePath(locale, '/contact')} className="inline-flex rounded-full border border-white/35 px-7 py-4 font-semibold">{dict.nav.contact} →</Link>
           </div>
         </div>
       </body>

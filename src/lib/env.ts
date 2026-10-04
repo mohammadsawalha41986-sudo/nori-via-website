@@ -17,7 +17,7 @@ export const env = {
    * generated hostname, which is exactly what it does. Resolving the value
    * rejects such a hostname however it arrives. See `site-url.ts`.
    */
-  siteUrl: resolveSiteUrl(process.env.NEXT_PUBLIC_SITE_URL, process.env.NODE_ENV === 'production'),
+  siteUrl: resolveSiteUrl(process.env.NEXT_PUBLIC_SITE_URL || process.env.SITE_URL, process.env.NODE_ENV === 'production'),
   authSecret: process.env.AUTH_SECRET || '',
   contactEmail: process.env.CONTACT_EMAIL || '',
   storageDir: process.env.STORAGE_DIR || './storage',
@@ -41,6 +41,8 @@ export const env = {
    * is the normal state once the property is verified by DNS instead.
    */
   googleSiteVerification: process.env.GOOGLE_SITE_VERIFICATION || '',
+  bingSiteVerification: process.env.BING_SITE_VERIFICATION || '',
+  indexNowKey: process.env.INDEXNOW_KEY || '',
 };
 
 export function isMailConfigured() {

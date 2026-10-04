@@ -70,6 +70,7 @@ jobs:
             exit 1
           fi
           npm run test:e2e
+          QA_BASE_URL=http://127.0.0.1:3000 npm run test:seo
       - name: Server log on failure
         if: failure()
         run: tail -200 /tmp/noriva-server.log 2>/dev/null || true

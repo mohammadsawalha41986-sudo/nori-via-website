@@ -89,7 +89,7 @@ export function ProjectCard({
               </p>
             )}
           </div>
-          {project.year && <span className="shrink-0 pt-1 font-mono text-xs text-ink-300">{project.year}</span>}
+          {project.year && <span className="shrink-0 pt-1 font-mono text-xs text-ink-500">{project.year}</span>}
         </div>
 
         {project.services.length > 0 && (

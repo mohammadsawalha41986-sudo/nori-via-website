@@ -16,6 +16,7 @@ import { getDictionary } from '@/lib/dictionary';
 import { isLocale, pick } from '@/lib/i18n';
 import {
   getHomepage,
+  getPage,
   getSettings,
   getSystemStages,
   getFeaturedProjects,
@@ -26,17 +27,27 @@ import {
   asStringList,
 } from '@/lib/content';
 import { PRACTICES, practiceEntryPoint } from '@/lib/service-discovery';
-import { JsonLd, organizationSchema, websiteSchema } from '@/lib/seo';
+import type { Metadata } from 'next';
+import { JsonLd, webpageSchema, buildMetadata } from '@/lib/seo';
+import { BRAND_DESCRIPTION } from '@/lib/brand';
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  if (!isLocale(locale)) return {};
+  const [settings, page] = await Promise.all([getSettings(), getPage('home')]);
+  return buildMetadata({ row: page, locale, path: '/',
+    fallbackTitle: locale === 'ar' ? 'إدارة وتطوير وتسويق المطاعم في السعودية' : 'Restaurant Consulting & Growth in Saudi Arabia',
+    fallbackDescription: BRAND_DESCRIPTION[locale], fallbackImage: settings.defaultOgImage || '/img/noriva-photo-dining.webp' });
+}
 export const revalidate = 60;
 export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
   const ar = locale === 'ar';
   const dict = getDictionary(locale);
-  const [home, settings, stageRows, projects, stats, services, tools, resources] =
+  const [home, stageRows, projects, stats, services, tools, resources] =
     await Promise.all([
       getHomepage(),
-      getSettings(),
       getSystemStages(),
       getFeaturedProjects(3),
       getStatistics(),
@@ -68,31 +79,16 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   }));
   return (
     <>
-      <JsonLd data={websiteSchema(locale)} />
-      <JsonLd
-        data={organizationSchema({
-          locale,
-          description: pick(settings, 'description', locale) || undefined,
-          email: settings.contactEmail || settings.inquiryEmail,
-          telephone: settings.phone,
-          sameAs: [
-            settings.instagram,
-            settings.tiktok,
-            settings.linkedin,
-            settings.x,
-            settings.youtube,
-          ].filter(Boolean),
-          logoUrl: settings.logoUrl,
-        })}
-      />
+      <JsonLd data={webpageSchema(locale, '/', locale === 'ar' ? 'نوريفا — حلول المطاعم' : 'NORIVA — Restaurant solutions')} />
       <Hero
         locale={locale}
         eyebrow={pick(home, 'heroEyebrow', locale)}
-        headline={
-          pick(home, 'heroHeadline', locale) ||
-          (ar ? 'نبني مشاريع\nأغذية ومشروبات أقوى.' : 'WE BUILD BETTER\nFOOD BUSINESSES.')
-        }
-        subtitle={pick(home, 'heroSubtitle', locale)}
+        headline={(() => {
+          const text = pick(home, 'heroHeadline', locale);
+          return /^(من فكرة مطعمك|Your restaurant\.|نبني مشاريع|WE BUILD BETTER)/i.test(text) || !text
+            ? (ar ? 'حلول متكاملة لنمو وإدارة المطاعم' : 'Restaurant consulting, operations and growth') : text;
+        })()}
+        subtitle={pick(home, 'heroSubtitle', locale) || BRAND_DESCRIPTION[locale]}
         primaryCta={pick(home, 'heroPrimaryCta', locale) || dict.nav.start}
         secondaryCta={pick(home, 'heroSecondaryCta', locale) || dict.common.allServices}
         mediaUrl={home.heroMediaUrl}
@@ -112,6 +108,11 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           </p>
         </div>
       </section>
+      <section className="bg-bone py-12"><div className="shell max-w-3xl">
+        <h2 className="font-display text-2xl">{ar ? 'نوريفا: من تشخيص المطعم إلى تحسين الأداء' : 'NORIVA: from restaurant diagnosis to better performance'}</h2>
+        <p className="mt-4 leading-8 text-ink-700">{ar ? 'نخدم أصحاب المطاعم والمقاهي وفرق الأغذية والمشروبات في السعودية. نحلل المبيعات وتكلفة الوصفات والتشغيل والمنيو لنحدد أين يتراجع هامش الربح، ثم نبني خطة تحسين قابلة للتنفيذ. نربط الاستشارات بالتشغيل والتسويق والمحتوى، وفق احتياج المشروع وبياناته.' : 'We work with restaurant and café owners and F&B teams in Saudi Arabia. We review sales, recipe costs, operations and menus to identify where margin is lost, then build a practical improvement plan. Consulting, operations, marketing and content are connected to your project’s needs and data.'}</p>
+        <Link href={`/${locale}/contact`} className="mt-4 inline-block font-semibold text-ink-700">{ar ? 'ناقش تحديات مطعمك معنا' : 'Discuss your restaurant with us'} →</Link>
+      </div></section>
       <RestaurantProblems locale={locale} published={services.map((s) => s.slug)} />
       <ServiceShowcase
         locale={locale}
@@ -198,12 +199,12 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               {tools.map((t, i) => (
                 <li key={t.id}>
                   <Link href={`/${locale}/tools/${t.slug}`} className="tool-editorial group">
-                    <span className="font-mono text-xs text-brand">
+                    <span className="font-mono text-xs text-ink-600">
                       0{i + 1} / {ar ? 'أداة تفاعلية' : 'INTERACTIVE'}
                     </span>
                     <h3 className="mt-5 font-display text-2xl">{pick(t, 'name', locale)}</h3>
                     <p className="mt-4 text-sm text-ink-600">{pick(t, 'summary', locale)}</p>
-                    <span className="mt-8 block text-sm font-semibold text-brand">
+                    <span className="mt-8 block text-sm font-semibold text-ink-700">
                       {ar ? 'استخدم الأداة' : 'Run the calculator'} →
                     </span>
                   </Link>

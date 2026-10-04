@@ -10,7 +10,7 @@ import { getDictionary } from '@/lib/dictionary';
 import { isLocale, pick, type Locale } from '@/lib/i18n';
 import { getPage, getPublishedTools } from '@/lib/content';
 import { parseToolConfig } from '@/lib/tool-engine';
-import { buildMetadata, JsonLd, breadcrumbs } from '@/lib/seo';
+import { webpageSchema, buildMetadata, JsonLd, breadcrumbs } from '@/lib/seo';
 
 export const revalidate = 60;
 
@@ -38,6 +38,7 @@ export default async function ToolsPage({ params }: { params: Promise<{ locale: 
 
   return (
     <>
+      <JsonLd data={webpageSchema(locale, '/tools', page ? pick(page, 'title', locale) : (locale === 'ar' ? 'نوريفا — حلول المطاعم' : 'NORIVA — Restaurant solutions'))} />
       <JsonLd
         data={breadcrumbs(locale, [
           { name: dict.tools.title, path: '/tools' },

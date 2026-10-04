@@ -85,6 +85,7 @@ export function resolveSiteUrl(raw: string | undefined, isProduction: boolean): 
 
   const hostname = url.hostname.toLowerCase().replace(/\.$/, '');
 
+  if (hostname === 'norivaglobal.com' || hostname === 'www.norivaglobal.com') return CANONICAL_SITE_URL;
   if (isPlatformHost(hostname)) return fallback;
 
   if (LOCAL_HOSTNAMES.has(hostname)) {

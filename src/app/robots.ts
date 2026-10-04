@@ -20,6 +20,10 @@ export default function robots(): MetadataRoute.Robots {
           '/admin',
           '/admin/',
           '/api/',
+          '/dashboard',
+          '/login',
+          '/cms',
+          '/private',
           // On-site search results: already `noindex`, listed here so they do
           // not consume crawl budget in the first place.
           '/ar/search',

@@ -19,6 +19,7 @@ export function Hero({ locale, eyebrow, headline, subtitle, primaryCta, secondar
   const [reduced, setReduced] = useState(true);
   const video = useRef<HTMLVideoElement>(null);
   const editorial = !mediaUrl || ['/img/hero.jpg', '/img/noriva-editorial-dining.webp', SCENES[0]].includes(mediaUrl);
+  const photoAlts = ar ? ['قاعة مطعم وتجربة الضيوف', 'الشيف أثناء تحضير الطعام في المطبخ', 'تجهيز طلبات المطعم للتوصيل'] : ['Restaurant dining room and guest experience', 'Chef preparing food in the kitchen', 'Preparing restaurant delivery orders'];
   const captions = ar ? ['تجربة تترك أثرًا', 'تشغيل يضبط التفاصيل', 'طلبات تُبنى على الربحية'] : ['An experience that stays', 'Operations in the details', 'Orders built around margin'];
   useEffect(() => {
     const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -41,8 +42,8 @@ export function Hero({ locale, eyebrow, headline, subtitle, primaryCta, secondar
     <section className="relative isolate flex min-h-[min(900px,100svh)] items-center overflow-hidden bg-ink-950 text-white">
       <div className="absolute inset-0 -z-20">
         {mediaUrl && mediaKind === 'VIDEO' ? <video ref={video} className="h-full w-full object-cover" src={mediaUrl} muted loop playsInline preload="metadata" poster={SCENES[0]} /> : editorial ?
-          (reduced ? [SCENES[scene]] : SCENES).map(src => <Image key={src} src={src} alt="" fill priority={src === SCENES[0]} sizes="100vw" className={`hero-photo object-cover ${paused ? 'hero-paused' : ''}`} style={{ opacity: src === SCENES[scene] ? 1 : 0, transition: reduced ? 'none' : 'opacity 1200ms ease' }} />) :
-          <Image src={mediaUrl || SCENES[0]} alt="" fill priority sizes="100vw" className="object-cover" />}
+          (reduced ? [SCENES[scene]] : SCENES).map(src => <Image key={src} src={src} alt={photoAlts[SCENES.indexOf(src)]} fill priority={src === SCENES[0]} sizes="100vw" className={`hero-photo object-cover ${paused ? 'hero-paused' : ''}`} style={{ opacity: src === SCENES[scene] ? 1 : 0, transition: reduced ? 'none' : 'opacity 1200ms ease' }} />) :
+          <Image src={mediaUrl || SCENES[0]} alt={ar ? 'نوريفا — تطوير تجربة المطعم' : 'NORIVA — restaurant guest experience'} fill priority sizes="100vw" className="object-cover" />}
       </div>
       <div className="absolute inset-0 -z-10" style={{ background: ar ? 'linear-gradient(270deg,rgba(5,10,22,.92) 0%,rgba(5,10,22,.66) 48%,rgba(5,10,22,.18) 100%)' : 'linear-gradient(90deg,rgba(5,10,22,.92) 0%,rgba(5,10,22,.66) 48%,rgba(5,10,22,.18) 100%)' }} />
       <div className="absolute inset-x-0 bottom-0 -z-10 h-1/3 bg-gradient-to-t from-ink-950/85 to-transparent" />

@@ -25,7 +25,8 @@
     "preflight": "node scripts/preflight-env.mjs",
     "boot": "npm run db:seed || echo '[start] baseline seed failed - continuing with existing content'; npm run content:provision || echo '[start] content provisioning failed - serving the content already on the volume'; node scripts/audit-content.mjs --summary || true; npm run start",
     "start:production": "npm run preflight && npm run boot",
-    "test:e2e": "node tests/e2e/platform.mjs && node tests/e2e/design-tokens.mjs && node tests/e2e/fnb.mjs && node tests/e2e/service-images.mjs && node tests/e2e/sweep.mjs && node tests/e2e/inquiry-journey.mjs"
+    "test:e2e": "node tests/e2e/platform.mjs && node tests/e2e/design-tokens.mjs && node tests/e2e/fnb.mjs && node tests/e2e/service-images.mjs && node tests/e2e/sweep.mjs && node tests/e2e/inquiry-journey.mjs",
+    "test:seo": "node scripts/verify-seo.mjs"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"

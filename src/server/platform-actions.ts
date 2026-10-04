@@ -1,5 +1,6 @@
 'use server';
 
+import { notifyIndexNow } from '@/lib/indexnow';
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 import type { Prisma } from '@prisma/client';
@@ -23,6 +24,7 @@ import { formToObject, checkbox, nullableId, toFieldErrors, type ActionState } f
 const J = (v: unknown) => v as Prisma.InputJsonValue;
 
 function revalidatePublic(...paths: string[]) {
+  notifyIndexNow('/', ...paths);
   for (const locale of locales) {
     revalidatePath(`/${locale}`);
     for (const p of paths) revalidatePath(`/${locale}${p}`);
@@ -214,6 +216,10 @@ export async function saveResource(_prev: ActionState, formData: FormData): Prom
 
   const { publishedAt, tags, includes, audience, ...rest } = parsed.data;
 
+  if (id) {
+    const previous = await prisma.resource.findUnique({ where: { id } });
+    if (previous?.status === 'PUBLISHED' && previous.slug !== parsed.data.slug) return fail('Keep the published slug to preserve links and search indexing.');
+  }
   const clash = await prisma.resource.findFirst({ where: { slug: rest.slug, NOT: id ? { id } : undefined } });
   if (clash) return fail('Another resource already uses that slug.');
 
@@ -275,7 +281,7 @@ export async function deleteResource(formData: FormData) {
     if (resource.fileKey) await deleteStoredFile('private', resource.fileKey);
   }
 
-  revalidatePublic('/library');
+  revalidatePublic('/library', ...(resource ? [`/library/${resource.slug}`] : []));
   revalidatePath('/admin/resources');
   redirect('/admin/resources');
 }
@@ -336,6 +342,10 @@ export async function saveTool(_prev: ActionState, formData: FormData): Promise<
     }
   }
 
+  if (id) {
+    const previous = await prisma.tool.findUnique({ where: { id } });
+    if (previous?.status === 'PUBLISHED' && previous.slug !== parsed.data.slug) return fail('Keep the published slug to preserve links and search indexing.');
+  }
   const clash = await prisma.tool.findFirst({ where: { slug: parsed.data.slug, NOT: id ? { id } : undefined } });
   if (clash) return fail('Another tool already uses that slug.');
 
@@ -358,11 +368,12 @@ export async function saveTool(_prev: ActionState, formData: FormData): Promise<
 export async function deleteTool(formData: FormData) {
   await guard();
   const id = String(formData.get('id') ?? '');
+  const previous = id ? await prisma.tool.findUnique({ where: { id } }) : null;
   if (id) {
     await prisma.tool.delete({ where: { id } });
     await deleteContentLinksFor('TOOL', id);
   }
-  revalidatePublic('/tools');
+  revalidatePublic('/tools', ...(previous ? [`/tools/${previous.slug}`] : []));
   revalidatePath('/admin/tools');
   redirect('/admin/tools');
 }
